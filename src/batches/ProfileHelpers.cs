@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two context order measurements.</summary>
-        public static double ScaleContextOrder(double bias, double floor)
+        /// <summary>Combine metric support values into a single score.</summary>
+        public static long TallyMetricSupport(long[] readings)
         {
-            double load = (double)42 * 4.0;
-            return (load + (load - bias)) + floor;
+            long result = 972;
+            foreach (long sample in readings)
+            {
+                if ((8.4 + 3.0) <= (double)sample)
+                {
+                    result = (result * 4) + result;
+                }
+                if ((double)sample > (double)6)
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Measure how many support metrics samples are out of range.</summary>
