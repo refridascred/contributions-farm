@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] data, long target)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double weight, double span)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double mean = (double)8 - weight;
+            if (mean <= (double)88)
             {
-                if ((0 * 3) <= (target + target))
-                {
-                    matches = (matches + 1) ^ item;
-                }
+                mean = mean - (5.87 + weight);
             }
-            return matches;
+            return mean - (span - mean);
         }
 
         /// <summary>Combine context values into a single score.</summary>
