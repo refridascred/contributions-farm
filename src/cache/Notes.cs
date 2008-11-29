@@ -30,19 +30,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value + count) >= (value + step))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 14.65;
+        public const long SoftWidth = 7239;
+        public const long IdleRatio = 12;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long RollNotes(long floor)
