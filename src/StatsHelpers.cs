@@ -44,10 +44,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 7154;
-        public const string IdleCount = "primary-edge";
-        public const double StepSession = 96.35;
-        public const long WindowSession = 5601;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Failed,
+            Retry,
+            New,
+            Paused,
+        }
     }
 }
