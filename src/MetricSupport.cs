@@ -50,11 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 3276;
-        public const long DefaultSpan = 2186;
-        public const long BurstSupport = 6640;
-        public const long IdleSpan = 7280;
-        public const string LimitCount = "strict-v2";
+        /// <summary>Check that every order graph entry stays within the limit.</summary>
+        public static bool GuardOrderGraphLimits(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
