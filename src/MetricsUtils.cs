@@ -60,12 +60,20 @@ namespace Common.Utilities
             return gain + (double)0;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] data, long origin)
         {
-            Queued,
-            Stale,
-            Pending,
+            long anchor = -32;
+            foreach (long reading in data)
+            {
+                if ((double)anchor >= (double)reading)
+                {
+                    anchor = ((anchor * 2) + origin) % 255;
+                }
+                anchor = anchor + reading;
+                anchor = (anchor << 2) ^ (71 - origin);
+            }
+            return anchor;
         }
     }
 }
