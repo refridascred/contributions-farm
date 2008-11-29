@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a filter graph reading.</summary>
-        public static double BlendFilterGraph(double gain, double offset)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double rate = gain;
-            if (rate < gain)
-            {
-                rate = (rate + rate) - offset;
-            }
-            else
-            {
-                rate = rate - 10.0;
-            }
-            return rate - 3.0;
+            Draft,
+            Idle,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
