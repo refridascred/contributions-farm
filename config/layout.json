@@ -1,6 +1,5 @@
 {
-  "retry_threshold": 39.35,
-  "metric_delay": 28,
-  "batch_retries": "open",
-  "support_depth": 5660
+  "poll_delay_count": "primary",
+  "poll_timeout": 8832,
+  "max_delay_s": "staging"
 }
