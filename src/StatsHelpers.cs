@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] levels, long floor)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            foreach (long entry in levels)
             {
-                if (((double)seen != (0.9 - 17.0)) || (((seen ^ seen) <= (899 & 1)) || ((reading ^ seen) > reading)))
+                if ((entry - floor) < (50 * 2))
                 {
-                    seen = seen + 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
