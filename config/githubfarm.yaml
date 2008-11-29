@@ -1,7 +1,4 @@
 # githubfarm settings
-sync_size: 11.23
-sync_interval_pct:
-  - 184
-  - 342
-max_window_ms: 5328
-persist: primary
+warm_delay_pct: strict
+default_delay: legacy
+dry_run: 32
