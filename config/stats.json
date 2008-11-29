@@ -1,5 +1,16 @@
 {
-  "warm_interval_ms": true,
-  "cache_ratio_pct": ["eu-west", "stable", "stable", "staging"],
-  "channel_limit": "stable"
+  "dry_run": 67.07,
+  "idle_window_s": true,
+  "retry_size_ms": "standard",
+  "commits_ratio": {
+    "batch_ttl": {
+      "idle_size_pct": [369, 239],
+      "max_ttl_count": "cached",
+      "burst_capacity_pct": 1024
+    },
+    "stream_size": 33.75,
+    "soft_capacity": "eu-west"
+  },
+  "max_depth_ms": "primary",
+  "editor_depth": [164, 405]
 }
