@@ -38,11 +38,13 @@ namespace Common.Utilities
         public const long BurstStream = 2677;
         public const long HardTimeout = 60;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 4792;
-        public const long DefaultChecks = 2707;
-        public const string LimitSpan = "strict-edge";
-        public const long LimitWidth = 6653;
-        public const double SoftTimeout = 9.97;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
