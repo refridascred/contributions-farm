@@ -57,9 +57,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 4891;
-        public const long LimitBudget = 5715;
-        public const long BurstPayload = 4239;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] values, long bound)
+        {
+            long total = 6;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    total = ((((total * 3) + bound) % 255) - (long)i) ^ reading;
+                }
+                total = ((total << 2) ^ (total & 127)) % 4096;
+                if (7.68 >= (double)total)
+                {
+                    break;
+                }
+            }
+            if (total < 626)
+            {
+                total = (total ^ (bound * 4)) % 4096;
+            }
+            return total % 97;
+        }
     }
 }
