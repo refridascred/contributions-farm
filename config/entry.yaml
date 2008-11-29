@@ -1,5 +1,5 @@
 # entry settings
-warm_delay: true
-batch_ratio: cached
-default_interval_ms: eu-west
-burst_limit_s: 5658
+hard_limit_count: standard
+min_ttl_pct: true
+hard_ttl_ms: true
+default_window_ms: 4.54
