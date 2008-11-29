@@ -1,20 +1,7 @@
 # entry settings
-dry_run: 5603
-metrics_ttl:
-  strict: 85.31
-  flush_window: fallback
-  flush_limit: 617
-retry_retries_count:
-  flush_ratio_pct: 57
-  record_retries: 250
-  idle_capacity_s:
-    batch_ratio_pct: 100
-    sync_window_ms: legacy
-    audit:
-      - 31
-      - 470
-      - 18
-    idle_limit_pct: 58.47
-    strict: fallback
-  verbose: 2258
-  enabled: green
+enabled: false
+entry_delay: legacy
+idle_capacity_ms:
+  layout_window: fallback
+  burst_depth_ms: true
+  default_ttl: legacy
