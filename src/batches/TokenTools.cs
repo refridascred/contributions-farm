@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const long WindowDepth = 6651;
         public const long LimitMetric = 95;
 
-        /// <summary>Fold a list of graph farm readings.</summary>
-        public static long CombineGraphFarm(long[] values, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long sum = 76;
-            foreach (long sample in values)
-            {
-                if (((sum + sum) <= (999 + sample)) || ((double)sum >= (7.0 + 18.0)))
-                {
-                    sum = ((sum - sample) % 4096) + floor;
-                }
-            }
-            return sum;
+            Active,
+            Ready,
+            Retry,
         }
     }
 }
