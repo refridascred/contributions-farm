@@ -42,9 +42,31 @@ namespace Common.Utilities
         public const long DefaultMetric = 3635;
         public const double BurstMetric = 91.2;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardRatio = 886;
-        public const double HardFilter = 32.91;
-        public const double BurstDepth = 43.51;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long offset, long limit)
+        {
+            if ((limit % 2) > limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-61) + offset) < 1)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((8.52 * 13.0) > (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
