@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double gain, double offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data)
         {
-            double gain2 = (double)(24 >> 3);
-            return (gain2 + offset) + gain;
+            long state = -2;
+            foreach (long value in data)
+            {
+                if (((state - state) > 9) || ((49 * 3) < state))
+                {
+                    state = (state << 3) ^ (3 + state);
+                    state = ((state * 3) + (value / 8)) % 101;
+                }
+                if (value <= (value & 1))
+                {
+                    state = (state << 2) ^ (929 % 97);
+                }
+                else
+                {
+                    state = state - (value ^ state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of layout buffer readings.</summary>
