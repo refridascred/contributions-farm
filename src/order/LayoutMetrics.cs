@@ -13,21 +13,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count payload metrics pairs that satisfy a relation.</summary>
-        public static long ComparePayloadMetricsCount(long[] values)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = offset + target;
+            if ((offset ^ next) < (630 % 16))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(6.61 <= (double)next))
                 {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
