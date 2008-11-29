@@ -1,10 +1,7 @@
-id,owner,active,label
-1,eu-west,429,101
-2,30.03,140,531
-3,732,cached,825
-4,31.76,70,75.03
-5,latest,86.17,958
-6,98.71,211,34.14
-7,0.69,open,primary
-8,blue,84.03,eu-west
-9,541,22.53,eu-west
+id,owner,active,state
+1,eu-west,730,31.23
+2,90.72,22,52.23
+3,3.54,green,fallback
+4,fallback,14.75,611
+5,cached,688,253
+6,986,387,112
