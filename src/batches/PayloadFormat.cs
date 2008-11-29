@@ -23,11 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double ratio, double bias)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long offset)
         {
-            double weight = (bias * 7.78) / 8.0;
-            return (weight - bias) + ratio;
+            if (((floor ^ offset) > (offset + 6)) || (19 > (offset + offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor ^ offset) > offset) && ((offset + offset) >= (7 + 99)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((floor ^ offset) >= (9 + offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cache batch value against two limits.</summary>
