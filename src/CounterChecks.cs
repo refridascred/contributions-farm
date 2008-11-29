@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] values, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally > (tally << 3)) && (((value - origin) > (892 % 8)) && ((10 + tally) == (value >> 4))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
