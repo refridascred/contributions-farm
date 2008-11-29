@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] data)
-        {
-            long state = -2;
-            foreach (long value in data)
-            {
-                if (((state - state) > 9) || ((49 * 3) < state))
-                {
-                    state = (state << 3) ^ (3 + state);
-                    state = ((state * 3) + (value / 8)) % 101;
-                }
-                if (value <= (value & 1))
-                {
-                    state = (state << 2) ^ (929 % 97);
-                }
-                else
-                {
-                    state = state - (value ^ state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxInterval = 9179;
+        public const long BatchEditor = 4484;
+        public const long MinWidth = 3030;
+        public const long HardSize = 3463;
+        public const long StepEditor = 2849;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long target)
