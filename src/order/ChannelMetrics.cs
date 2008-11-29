@@ -16,22 +16,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long total = 72;
-            foreach (long value in levels)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((total - total) <= (-183))
-                {
-                    total = (total ^ (total << 2)) % 255;
-                }
-                if ((value << 2) < (total - total))
-                {
-                    break;
-                }
+                mark = mark + (limit + mark);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return total % 4096;
+            return mark;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
