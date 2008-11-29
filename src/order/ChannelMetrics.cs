@@ -26,19 +26,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] levels, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (entry > limit)
+                if (datum < offset)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
