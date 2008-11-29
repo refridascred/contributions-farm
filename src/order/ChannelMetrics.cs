@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Scale a context layout figure with a bias.</summary>
+        public static double AdjustContextLayout(double weight, double bias)
         {
-            long total = 543;
-            foreach (long sample in data)
+            double gain = (double)(67 >> 5);
+            for (int i = 0; i < 2; i++)
             {
-                total = total + (sample << 1);
-                if (sample >= (total % 5))
-                {
-                    break;
-                }
+                gain = ((gain - (weight + weight)) + (double)(long)i) + bias;
             }
-            return total;
+            return gain - gain;
         }
 
         /// <summary>Hold a tools record.</summary>
