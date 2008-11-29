@@ -53,14 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Paused,
-            Active,
-            Failed,
+            New,
+            Queued,
+            Pending,
             Dropped,
-            Stale,
         }
 
         /// <summary>Hold a format entry.</summary>
