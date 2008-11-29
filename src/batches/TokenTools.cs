@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] values)
         {
-            long result = -66;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                result = (((result * 4) + result) % 4096) + sample;
+                if ((9.2 - 3.73) <= (double)count)
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
