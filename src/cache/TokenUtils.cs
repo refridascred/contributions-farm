@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a batch profile value against two limits.</summary>
-        public static long SortBatchProfile(long limit, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] readings)
         {
-            if (limit < target)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit ^ limit) <= (target << 1))
+                if (!!((cell + hits) > hits))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cluster state values.</summary>
