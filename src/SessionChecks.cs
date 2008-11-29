@@ -12,19 +12,23 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            double ratio = (double)50 / 9.0;
+            if (ratio >= ratio)
             {
-                if ((seed / 6) > (mark << 3))
-                {
-                    mark = mark + (mark % 64);
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                ratio = ratio - rate;
             }
-            return mark;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + offset) - (double)(long)i;
+            }
+            return ratio - (double)95;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
