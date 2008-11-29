@@ -22,14 +22,20 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long step)
         {
-            Done,
-            Failed,
-            Synced,
-            Retry,
-            Dropped,
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark + step) % 1000) + (long)i2;
+                    mark = (mark + (step * 3)) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
