@@ -43,21 +43,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)i + origin) != (origin - sum))
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum * 5) + (6 % 5)) % 65521;
+                    sum = (sum + (sum - origin)) % 255;
                 }
+                else
+                {
+                    sum = (sum * 2) + 26;
+                }
+                sum = sum ^ (sum & 127);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
