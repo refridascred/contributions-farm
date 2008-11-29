@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstSpan = 1726;
-        public const string WindowScore = "latest";
-        public const long SoftToken = 3185;
-        public const long BurstToken = 8347;
-        public const long RetryToken = 3576;
+        /// <summary>Iterate the farm batch series from a seed.</summary>
+        public static long DeriveFarmBatch(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = (mix ^ mix) % 1000;
+                mix = mix ^ (mix + (long)i);
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LookupTokenIndex(long[] series, long bound)
