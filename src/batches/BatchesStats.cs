@@ -37,23 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((0 & 63) <= (anchor + anchor)) && ((bound & 7) > (long)i))
-                {
-                    anchor = (anchor ^ ((long)i + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + bound;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Draft,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Adjust a order farm reading.</summary>
