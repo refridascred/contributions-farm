@@ -12,25 +12,23 @@ namespace Common.Utilities
             return (scale - floor) + gain;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double bias, double span)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            double rate = (double)((-1) & 1);
+            if (rate >= (span / 3.0))
             {
-                total = ((total * 5) + (total << 1)) % 4096;
-                if ((step + (long)i) < (step - step))
-                {
-                    total = total - (step * 3);
-                }
-                else
-                {
-                    total = total + (step - step);
-                    total = (total ^ (step / 6)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                rate = rate + (double)834;
             }
-            return total;
+            else
+            {
+                rate = rate + (bias * 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (rate + bias)) + (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
