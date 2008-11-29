@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            long acc = 2;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc - (770 >> 5)) % 4096) ^ (long)i2;
-                    acc = acc ^ acc;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                acc = ((acc ^ (item + item)) % 255) + floor;
             }
             return acc;
         }
