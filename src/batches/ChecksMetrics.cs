@@ -89,18 +89,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
-        public static long AuditGithubfarmRouteMatches(long[] values, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((origin / 8) >= tally)
+                if (entry != origin)
                 {
-                    tally = (tally + 2) - reading;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
