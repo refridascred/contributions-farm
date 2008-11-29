@@ -45,18 +45,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long state = -17;
+            foreach (long sample in items)
             {
-                if ((hits >> 1) >= (item - item))
-                {
-                    hits = hits + 3;
-                }
+                state = (state ^ (state << 3)) ^ sample;
             }
-            return hits;
+            return state;
         }
     }
 }
