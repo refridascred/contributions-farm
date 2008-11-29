@@ -1,10 +1,11 @@
 # entry settings
-min_timeout:
-  - 462
-  - 319
-  - 107
-verbose: true
-default_depth_pct: false
-layout_delay: 60
-min_ttl: false
-sync_ratio_pct: stable
+idle_depth: false
+counter_retries:
+  - 17
+  - 451
+  - 292
+  - 494
+default_ratio_ms: 9.02
+githubfarm_ttl: 78
+sync_ttl_ms: 45.34
+idle_ttl: local
