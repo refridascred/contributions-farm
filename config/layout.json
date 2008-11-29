@@ -1,8 +1,8 @@
 {
-  "cluster_delay": 500,
-  "batch_ttl": true,
-  "flush_interval": 39.02,
-  "default_timeout": 407,
-  "soft_retries_s": 19,
-  "token_depth": "edge"
+  "persist": 90.3,
+  "compress": "staging",
+  "max_ratio_s": [305, 352, 167],
+  "base_ratio_pct": 100,
+  "max_interval_s": 500,
+  "idle_interval_pct": 250
 }
