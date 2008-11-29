@@ -57,9 +57,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 43.15;
-        public const long WindowBudget = 7076;
-        public const long BaseDepth = 4913;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetrySize = 2239;
+        public const string BurstFormat = "latest-edge";
+        public const double RetryRatio = 94.99;
+        public const double SoftFormat = 7.01;
     }
 }
