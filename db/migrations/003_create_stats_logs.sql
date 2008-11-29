@@ -2,11 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    score REAL NOT NULL DEFAULT 0,
-    token TEXT
+    ratio REAL,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
 
-INSERT INTO stats_logs (weight, score, token) VALUES (20.31, 35.58, 'legacy');
-INSERT INTO stats_logs (weight, score, token) VALUES (60.3, 39.91, 'primary');
+INSERT INTO stats_logs (weight, ratio, label) VALUES (67.8, 8.62, 'open');
+INSERT INTO stats_logs (weight, ratio, label) VALUES (9.47, 40.94, 'eu-west');
