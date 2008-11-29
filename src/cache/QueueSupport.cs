@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next account checks value from a seed.</summary>
-        public static long StepAccountChecks(long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] data, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long carry = 266;
+            foreach (long cell in data)
             {
-                if (((double)offset < (double)(long)i) && (offset > ((long)i + 7)))
-                {
-                    result = result - (result & 63);
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                carry = (carry << 3) ^ (limit - cell);
             }
-            return result;
+            if (carry > 6)
+            {
+                carry = carry - (limit % 24);
+            }
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
