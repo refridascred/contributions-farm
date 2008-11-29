@@ -26,14 +26,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Locked,
-            Pending,
-            Active,
-            Dropped,
-            Queued,
+            Closed,
+            Paused,
+            New,
         }
     }
 }
