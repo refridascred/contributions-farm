@@ -35,12 +35,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 8659;
-        public const long RetryStream = 4751;
-        public const long MaxTimeout = 1741;
-        public const double MaxStream = 30.38;
-        public const double BaseBudget = 0.83;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long seed, long limit)
+        {
+            long slot = seed ^ limit;
+            if (seed < (slot + 72))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + seed) >= (slot << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (0 <= slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandHits(long[] series)
