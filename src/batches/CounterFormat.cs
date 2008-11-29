@@ -26,22 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] items, long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            if ((double)floor < (10.0 - 6.0))
             {
-                if (!((141 << 3) > entry))
+                return 5;
+            }
+            else
+            {
+                if ((limit + limit) < (floor >> 3))
                 {
-                    seen = (seen + 3) + limit;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a graph stats.</summary>
