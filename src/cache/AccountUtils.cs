@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const string StepWidth = "legacy-edge";
         public const long MaxSchema = 5700;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 58.57;
-        public const string SoftStats = "stable";
-        public const double WindowStats = 5.74;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long CombineCommand(long[] readings, long limit)
