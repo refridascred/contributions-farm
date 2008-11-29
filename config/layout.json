@@ -1,7 +1,7 @@
 {
-  "cache_size_ms": "cached",
-  "cache_delay_count": ["eu-west", "stable", "staging", "blue"],
-  "min_limit_ms": "legacy",
-  "batches_ratio": true,
-  "burst_delay_s": 81.5
+  "default_threshold_pct": [499, 48],
+  "channel_threshold": 62.87,
+  "min_retries_pct": 49.73,
+  "verbose": 2452,
+  "retry_interval": "legacy"
 }
