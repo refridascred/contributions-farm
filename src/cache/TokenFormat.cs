@@ -32,19 +32,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] readings, long limit)
+        /// <summary>Rank batch layout input into a small class.</summary>
+        public static long GradeBatchLayout(long offset, long floor)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long span = offset + floor;
+            if ((span / 8) >= (offset & 1))
             {
-                if (datum <= limit)
+                return 5;
+            }
+            else
+            {
+                if ((double)span < (7.9 - 7.6))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)span == (8.23 - 13.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset == (10.0 / 7.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
