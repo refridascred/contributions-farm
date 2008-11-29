@@ -1,16 +1,15 @@
 {
-  "dry_run": 67.07,
-  "idle_window_s": true,
-  "retry_size_ms": "standard",
-  "commits_ratio": {
-    "batch_ttl": {
-      "idle_size_pct": [369, 239],
-      "max_ttl_count": "cached",
-      "burst_capacity_pct": 1024
-    },
-    "stream_size": 33.75,
-    "soft_capacity": "eu-west"
+  "poll_ratio_s": true,
+  "flush_depth_count": {
+    "batch_size": [407, 215, 155, 476],
+    "command_ratio": "stable",
+    "sync_ratio_ms": 3112
   },
-  "max_depth_ms": "primary",
-  "editor_depth": [164, 405]
+  "flush_ttl_s": {
+    "sync_threshold_count": "fallback",
+    "poll_depth": 2158,
+    "graph_size": [383, 471, 81, 488],
+    "dry_run": ["legacy", "cached", "legacy", "green"],
+    "stats_interval": false
+  }
 }
