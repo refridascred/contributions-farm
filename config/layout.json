@@ -1,8 +1,15 @@
 {
-  "profile_window": [376, 382, 96, 419],
-  "warm_delay_ms": "local",
-  "flush_ttl": 20,
-  "cache_delay": 9338,
-  "payload_retries": 4755,
-  "persist": "primary"
+  "dry_run": 73.86,
+  "min_size": ["edge", "blue", "latest"],
+  "readonly": [41, 43, 476, 490],
+  "max_ratio_s": {
+    "stats_window": 14.83,
+    "stream_capacity": true,
+    "githubfarm_window": "edge",
+    "context_retries": true,
+    "batch_threshold_s": true,
+    "githubfarm_capacity": "cached"
+  },
+  "batch_limit_count": 56.96,
+  "audit": ["cached", "open", "blue", "stable"]
 }
