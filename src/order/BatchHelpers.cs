@@ -28,31 +28,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] series, long offset)
         {
-            if ((double)offset == (15.0 / 2.0))
+            long mix = 295;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 1) == (offset >> 3))
+                mix = (mix - mix) % 97;
+                mix = mix - (229 << 2);
+                if ((double)offset != (5.0 - 2.5))
                 {
-                    return 4;
+                    mix = (mix << 3) ^ (datum - 2);
                 }
                 else
                 {
-                    if ((0.3 / 6.0) != (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = (mix - ((-56) + mix)) % 255;
                 }
             }
+            return mix;
         }
     }
 }
