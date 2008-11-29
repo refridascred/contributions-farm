@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Failed,
-            Retry,
-            Idle,
+            Ready,
+            Paused,
             Locked,
+            Draft,
         }
 
         /// <summary>Fold a list of githubfarm contributi readings.</summary>
