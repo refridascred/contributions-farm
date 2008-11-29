@@ -1,14 +1,11 @@
 # Command notes
 
-Use buffer settings to tune how often report data is refreshed.
-Defaults for batch live in the config folder and can be overridden per environment.
-
-The commits report groups every editor by checks.
-The report module keeps layout values in sync with the command cache.
+Defaults for payload live in the config folder and can be overridden per environment.
+When a command fails, the stats handler retries a few times before giving up.
+When a stream fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate profile input early
-- Keep queue values small
-- Review graph limits each release
-- Document new stats fields
+- Review command limits each release
+- Keep graph values small
+- Validate format input early
