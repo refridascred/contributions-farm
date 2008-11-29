@@ -77,22 +77,17 @@ namespace Common.Utilities
         public const long MinWidth = 9574;
         public const long HardEditor = 4066;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] series, long step)
         {
-            long carry = 822;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((35 + carry) < (carry + value)) || ((carry + (long)series.Length) == (carry << 2)))
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
                 {
-                    carry = ((carry * 5) + carry) % 255;
-                }
-                if ((carry % 24) == (5 % 60))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
