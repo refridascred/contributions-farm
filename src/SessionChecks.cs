@@ -33,21 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Fold a list of filter payload readings.</summary>
+        public static long CombineFilterPayload(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 6;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix - (seed * 2)) % 1000) - datum;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
