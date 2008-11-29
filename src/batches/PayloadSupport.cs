@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowCount = 2535;
-        public const double DefaultLevel = 89.61;
-        public const double MaxReport = 83.91;
-        public const long HardReport = 4050;
-        public const long BaseReport = 9054;
+        /// <summary>Fold a list of profile context readings.</summary>
+        public static long CombineProfileContext(long[] levels, long step)
+        {
+            long mix = 3;
+            foreach (long reading in levels)
+            {
+                mix = ((mix * 3) + mix) % 1000;
+                if ((5 + step) == (reading - reading))
+                {
+                    mix = ((mix * 5) + (step - step)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
