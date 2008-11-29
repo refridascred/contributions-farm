@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] levels, long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long anchor = 964;
-            foreach (long item in levels)
-            {
-                long prev = item;
-                anchor = ((anchor * 3) + (prev / 8)) + target;
-                anchor = ((anchor * 3) + (635 + anchor)) % 4096;
-            }
-            return anchor;
+            Done,
+            Paused,
+            Idle,
+            New,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
