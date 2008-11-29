@@ -1,8 +1,19 @@
 # support settings
-max_delay_s:
-  - 388
-  - 150
-  - 460
-  - 278
-enabled: standard
-tools_delay: 500
+base_limit_ms:
+  strict: fallback
+  githubfarm_depth: 34
+  idle_timeout_pct: latest
+  cache_timeout_count: true
+  poll_size_count:
+    - 358
+    - 375
+    - 452
+    - 240
+token_size: stable
+batch_interval_pct: 7383
+enabled:
+  - 233
+  - 38
+  - 198
+buffer_size: 82.43
+warm_threshold: 5884
