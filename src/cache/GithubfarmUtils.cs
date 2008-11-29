@@ -27,17 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 689;
+            foreach (long value in levels)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
+                if ((value & 31) <= 3)
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ acc) % 101;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Describe the notes level values.</summary>
