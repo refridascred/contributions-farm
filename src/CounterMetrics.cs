@@ -20,15 +20,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double scale, double bias)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] readings, long bound)
         {
-            double ratio = scale;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                ratio = ((ratio - 0.23) + (double)(long)i) - bias;
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio - ratio;
+            return ok;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
