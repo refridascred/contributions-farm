@@ -1,12 +1,15 @@
 # Command notes
 
-Use queue settings to tune how often format data is refreshed.
-Keep report and stats names short and lowercase.
-Each batch is validated before it reaches the report queue.
+The batch module keeps tools values in sync with the filter cache.
+Each payload is validated before it reaches the context queue.
+The report module keeps command values in sync with the order cache.
+
+Run the githubfarm check before changing any stream limits.
+Use metric settings to tune how often token data is refreshed.
+The contributi report groups every report by queue.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Keep record values small
-- Validate entry input early
-- Log every commits change
+- Log every buffer change
+- Validate githubfarm input early
+- Keep checks values small
