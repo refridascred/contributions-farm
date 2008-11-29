@@ -14,21 +14,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up entry token samples.</summary>
-        public static long CompareEntryTokenCount(long[] levels)
+        /// <summary>Look up the position of a support format sample.</summary>
+        public static long SeekSupportFormatIndex(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] >= limit)
                 {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
