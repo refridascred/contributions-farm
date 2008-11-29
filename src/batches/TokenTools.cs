@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double bias2)
         {
-            Idle,
-            Done,
-            Paused,
-            Pending,
+            double load = (double)(2 - 10);
+            if (load > (bias + bias))
+            {
+                load = load - 3.31;
+            }
+            return load + bias2;
         }
 
         /// <summary>Describe the filter status values.</summary>
