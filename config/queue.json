@@ -1,7 +1,5 @@
 {
-  "min_limit_count": false,
-  "channel_ttl": 7003,
-  "audit": 9695,
-  "cache_capacity": ["eu-west", "green"],
-  "batch_capacity": true
+  "entry_size": false,
+  "cache_size": 97,
+  "stream_ttl": 100
 }
