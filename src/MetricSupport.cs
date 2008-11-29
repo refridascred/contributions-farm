@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] values, long limit)
         {
-            long sum = 57;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                sum = (sum ^ item) - origin;
+                if (!((double)datum > (0.68 - 3.1)) && ((188 >> 1) == (hits & 31)))
+                {
+                    hits = (hits + 2) - limit;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
