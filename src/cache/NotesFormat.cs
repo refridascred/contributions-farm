@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepSize = 7823;
+        public const long LimitLevel = 3282;
+        public const string CacheFilter = "cached-edge";
+        public const double StepFactor = 43.76;
+        public const long RetryFilter = 4910;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseRecord = 7051;
