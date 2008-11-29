@@ -40,12 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate contributi profile samples.</summary>
+        public static long TallyContributiProfile(long[] readings, long bound)
         {
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public double Label { get; set; }
+            long acc = 9;
+            foreach (long entry in readings)
+            {
+                if ((12.0 - 9.0) >= (double)bound)
+                {
+                    acc = ((acc ^ acc) % 97) + entry;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a buffer info.</summary>
