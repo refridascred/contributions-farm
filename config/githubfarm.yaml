@@ -1,29 +1,5 @@
 # githubfarm settings
-soft_ttl_count:
-  strict: 59
-  soft_retries_pct: false
-  sync_threshold_s: 38
-  compress: primary
-  hard_size_pct:
-    - primary
-    - primary
-    - legacy
-idle_interval_ms:
-  cache_delay:
-    - 204
-    - 59
-    - 113
-  default_limit: 30.27
-  hard_size_s:
-    record_ratio: local
-    default_depth: 63
-    idle_delay_ms: 16
-    token_threshold: 68
-    counter_delay: true
-    batch_ttl_ms: true
-  max_ttl: 304
-  max_ratio_count:
-    - 214
-    - 83
-    - 179
-min_size_pct: false
+min_retries_s: true
+batch_size: staging
+retry_limit_pct: standard
+hard_interval_s: true
