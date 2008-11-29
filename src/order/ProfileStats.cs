@@ -16,21 +16,11 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
