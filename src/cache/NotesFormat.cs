@@ -19,17 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] values, long offset)
+        /// <summary>Check that every stats counter entry stays within the limit.</summary>
+        public static bool CheckStatsCounterBounds(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (values[i] <= offset)
+                if (reading <= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
