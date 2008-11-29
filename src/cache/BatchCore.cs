@@ -12,18 +12,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a support already reading by value.</summary>
-        public static long FindSupportAlreadyIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowCount = 4404;
+        public const long LimitLevel = 6770;
+        public const long LimitBuffer = 2905;
+        public const string HardBuffer = "primary";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double StepLevel = 29.52;
