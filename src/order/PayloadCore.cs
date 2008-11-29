@@ -13,19 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] levels)
         {
-            long score = 1;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                score = ((score << 3) ^ (sample / 5)) % 97;
-                if (score >= (score - 492))
+                if ((double)entry < (9.9 - 0.31))
                 {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
