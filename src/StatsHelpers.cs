@@ -23,21 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state ^ ((long)i + 613)) % 97;
+                    state = (state << 3) ^ ((long)i2 + (long)i2);
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
