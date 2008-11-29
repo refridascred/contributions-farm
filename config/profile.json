@@ -1,8 +1,8 @@
 {
-  "farm_interval": 44,
-  "soft_capacity_s": ["edge", "edge"],
-  "flush_interval": "blue",
-  "cache_window_ms": 23,
-  "warm_interval_ms": "fallback",
-  "batch_retries_pct": 73.26
+  "burst_ttl_count": 34.99,
+  "warm_delay_ms": "primary",
+  "retry_ratio_ms": 8806,
+  "graph_retries": 2755,
+  "max_delay": 30,
+  "min_limit_s": 56.36
 }
