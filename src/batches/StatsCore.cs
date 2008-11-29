@@ -57,13 +57,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            Synced,
+            Queued,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a tools stats.</summary>
