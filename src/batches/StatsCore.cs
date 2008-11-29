@@ -29,31 +29,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long target, long origin)
+        /// <summary>Scale a batch layout figure with a bias.</summary>
+        public static double ScaleBatchLayout(double rate, double floor)
         {
-            if ((origin + target) != (origin ^ 835))
+            double gain = floor;
+            if (gain <= (double)(-46))
             {
-                return 1;
+                gain = gain - gain;
             }
             else
             {
-                if (((-397) + 86) >= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target > (origin + origin)) || ((origin ^ origin) < (target * 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                gain = gain + (7.9 - rate);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (gain * 3.3);
         }
 
         /// <summary>Hold a notes snapshot.</summary>
