@@ -15,21 +15,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -9;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (mark * 4) + sample;
+                if ((sample % 100) < (sample ^ target))
                 {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark * 4) + 74;
                 }
             }
-            return hits;
+            if (mark > 99)
+            {
+                mark = ((mark * 4) + (4 - mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
