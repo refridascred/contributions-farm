@@ -37,18 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] values)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)value < (5.65 * 0.73))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
