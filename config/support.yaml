@@ -1,7 +1,5 @@
 # support settings
-checks_size: 500
-warm_ratio_pct: true
-poll_depth_s: 30
-burst_ttl: cached
-buffer_capacity: blue
-audit: 92.84
+compress: false
+strict: 1024
+burst_limit: true
+dry_run: 3.26
