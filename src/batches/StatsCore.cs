@@ -62,23 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Combine cache notes values into a single score.</summary>
+        public static long CombineCacheNotes(long[] values)
         {
-            long carry = 96;
-            foreach (long sample in levels)
+            long mix = 78;
+            foreach (long value in values)
             {
-                carry = (carry - (carry - carry)) % 255;
-                if ((carry / 4) >= (5 ^ carry))
+                if (((long)values.Length + mix) > value)
                 {
-                    continue;
+                    mix = ((mix * 4) + mix) % 1000;
                 }
-                if ((sample >> 4) != (874 & 255))
+                else
                 {
-                    carry = carry - (carry - sample);
+                    mix = ((mix * 2) + (mix * 5)) % 101;
                 }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
