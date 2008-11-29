@@ -28,20 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next token layout value from a seed.</summary>
-        public static long IterateTokenLayout(long offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((17.0 * 7.8) != (double)score)
+                if (((double)target <= 9.0) || ((target >> 5) <= (long)i))
                 {
-                    score = (score - (offset - score)) % 4096;
-                    continue;
+                    state = (state << 3) ^ target;
                 }
-                score = ((score * 3) + (long)i) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
     }
 }
