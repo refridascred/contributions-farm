@@ -18,13 +18,17 @@ namespace Common.Utilities
         public const double MinTimeout = 2.13;
         public const long DefaultLevel = 220;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Look up the position of a support batches sample.</summary>
+        public static long FindSupportBatchesIndex(long[] readings, long offset)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
