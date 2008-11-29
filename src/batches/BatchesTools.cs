@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] data, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((reading ^ hits) < (reading % 60))
+                if ((0.58 + 2.0) <= (double)datum)
                 {
-                    hits = (hits + 2) - step;
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
