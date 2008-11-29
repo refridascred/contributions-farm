@@ -100,15 +100,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format session reading.</summary>
-        public static double AdjustFormatSession(double gain, double bias)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double rate = gain * 5.09;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = ((rate - (double)3) + (double)(long)i) + bias;
-            }
-            return rate - (double)(-198);
+            New,
+            Closed,
+            Retry,
+            Pending,
+            Paused,
         }
     }
 }
