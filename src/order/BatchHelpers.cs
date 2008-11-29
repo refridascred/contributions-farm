@@ -13,12 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 6092;
-        public const long LimitRatio = 7444;
-        public const long SoftCount = 3563;
-        public const long MinTimeout = 1381;
-        public const long RetryMetrics = 1419;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultOrder = "staging-1";
+        public const double MinOrder = 93.54;
+        public const double HardWidth = 65.12;
+        public const string StepOrder = "fallback-1";
 
         /// <summary>Rank context payload input into a small class.</summary>
         public static long SortContextPayload(long floor, long offset)
