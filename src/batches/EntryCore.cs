@@ -14,16 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double scale, double bias)
-        {
-            double gain = (bias - scale) / 3.0;
-            if (gain > (double)72)
-            {
-                gain = gain + (gain - scale);
-            }
-            return gain + (scale / 3.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 51.16;
+        public const long CacheTools = 9208;
+        public const long IdleTools = 346;
+        public const long SoftCount = 6441;
+        public const double MinTools = 10.43;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] data, long bound)
