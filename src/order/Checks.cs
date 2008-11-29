@@ -20,10 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "legacy-v2";
-        public const long CacheFactor = 5243;
-        public const long SoftSpan = 6040;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long bound, long seed)
+        {
+            if (7.0 < (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((62 - 93) < (bound & 63)) && ((bound & 255) <= (92 + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + seed) >= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound - seed) != (bound >> 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two channel profile measurements.</summary>
         public static double ScaleChannelProfile(double bias, double floor)
