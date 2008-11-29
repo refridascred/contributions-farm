@@ -1,5 +1,4 @@
 # githubfarm settings
-min_retries_s: true
-batch_size: staging
-retry_limit_pct: standard
-hard_interval_s: true
+account_timeout: 96.35
+hard_depth_count: 57.14
+persist: strict
