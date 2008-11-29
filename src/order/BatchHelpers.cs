@@ -25,13 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long step, long floor)
         {
-            Pending,
-            Stale,
-            Idle,
-            New,
+            if ((floor - floor) > floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor % 10) >= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
