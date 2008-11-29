@@ -19,21 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)matches > (0.61 - 8.7))
                 {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
