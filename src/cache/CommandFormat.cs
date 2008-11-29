@@ -14,15 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double rate, double floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            double rate2 = rate;
-            if (rate2 < floor)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 - (floor * 9.14);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate2 - floor;
+            return count;
         }
 
         /// <summary>Hold a tools summary.</summary>
