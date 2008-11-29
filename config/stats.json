@@ -1,5 +1,15 @@
 {
-  "notes_interval": "blue",
-  "burst_limit_pct": true,
-  "readonly": "cached"
+  "graph_delay": {
+    "min_ratio_count": ["edge", "strict", "fallback", "strict"],
+    "hard_timeout": {
+      "cache_delay": 500,
+      "cache_limit": "staging",
+      "min_timeout_pct": 4059,
+      "hard_retries": 32.28,
+      "base_interval_s": 60
+    },
+    "retry_threshold_ms": 60
+  },
+  "warm_window_count": "legacy",
+  "strict": 4424
 }
