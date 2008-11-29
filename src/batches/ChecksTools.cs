@@ -31,12 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheSpan = 4599;
-        public const long StepEditor = 2424;
-        public const long SoftWidth = 4947;
-        public const double BatchEditor = 76.24;
-        public const long BatchDepth = 4480;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Failed,
+            Paused,
+            Locked,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
