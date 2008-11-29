@@ -23,15 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Queued,
-            Active,
-            Synced,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSize = 71.31;
+        public const long CacheTimeout = 2298;
+        public const long HardDepth = 9308;
+        public const long BatchBudget = 8392;
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] data)
