@@ -51,17 +51,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a queue token sample.</summary>
-        public static long FindQueueTokenIndex(long[] data, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(763 - 92);
+            if (scale >= 14.0)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                scale = (scale + rate) + offset;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale - (3.0 - 0.72);
         }
 
         /// <summary>Describe the cache mode values.</summary>
