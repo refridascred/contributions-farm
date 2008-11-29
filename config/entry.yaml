@@ -1,4 +1,9 @@
 # entry settings
-burst_limit_count: 24.22
-burst_ratio: true
-min_size_ms: true
+githubfarm_delay: stable
+audit: 97.65
+warm_capacity_s:
+  min_ttl: edge
+  stream_interval: 27.61
+  verbose: 8645
+  flush_delay_count: stable
+flush_window_ms: 8402
