@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] readings)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample % 3) <= (sample + sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Stale,
+            Closed,
+            Synced,
         }
 
         /// <summary>Match up editor stream samples.</summary>
