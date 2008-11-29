@@ -34,14 +34,10 @@ namespace Common.Utilities
         public const long DefaultMetric = 3635;
         public const double BurstMetric = 91.2;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            New,
-            Pending,
-            Locked,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 8260;
+        public const long MaxProfile = 4962;
+        public const long MinSize = 1653;
+        public const long HardProfile = 15;
     }
 }
