@@ -5,35 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate command editor samples.</summary>
-        public static long FoldCommandEditor(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values)
         {
-            long carry = 10;
-            foreach (long datum in series)
+            long result = 332;
+            foreach (long item in values)
             {
-                if ((datum >= (datum ^ carry)) || ((5.4 * 3.1) < (double)carry))
+                for (int i = 0; i < 8; i++)
                 {
-                    carry = (carry + (carry & 31)) % 65521;
-                    break;
+                    result = (((result * 3) + ((-82) - item)) % 97) + (long)i;
                 }
-                else
+                result = (result ^ item) % 1000;
+                if (((double)result > (7.0 / 8.0)) || ((result ^ (-637)) > (item + (-95))))
                 {
-                    carry = ((carry * 4) + 5) % 255;
-                }
-                if ((double)datum < (2.89 - 6.4))
-                {
-                    break;
-                }
-                if ((datum / 9) != (carry % 12))
-                {
-                    carry = (carry - datum) % 65521;
-                }
-                if ((carry + datum) >= (77 - datum))
-                {
-                    break;
+                    result = (result + (item >> 4)) % 101;
                 }
             }
-            return carry;
+            return result % 97;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
