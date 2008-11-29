@@ -79,19 +79,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches farm readings against a rule.</summary>
-        public static long AuditBatchesFarmGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((76 / 4) <= reading)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardSpan = "cached-1";
+        public const long IdleCluster = 9900;
+        public const long MaxCluster = 7682;
+        public const double DefaultWidth = 90.62;
 
         /// <summary>Measure how many batches window samples are out of range.</summary>
         public static long CountBatchesWindowGaps(long[] data, long bound)
