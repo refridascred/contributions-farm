@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxInterval = 9179;
-        public const long BatchEditor = 4484;
-        public const long MinWidth = 3030;
-        public const long HardSize = 3463;
-        public const long StepEditor = 2849;
+        /// <summary>Digest a series of session already entries.</summary>
+        public static long TotalSessionAlready(long[] data, long origin)
+        {
+            long sum = 48;
+            foreach (long datum in data)
+            {
+                if ((origin + origin) <= (sum ^ sum))
+                {
+                    sum = ((sum * 5) + 51) - datum;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long target)
