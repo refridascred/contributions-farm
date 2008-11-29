@@ -29,21 +29,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count session metric pairs that satisfy a relation.</summary>
-        public static long MatchSessionMetricCount(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Idle,
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
