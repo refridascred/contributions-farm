@@ -32,22 +32,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache already readings against a rule.</summary>
-        public static long CountCacheAlreadyHits(long[] values)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (((sample + matches) <= (matches % 8)) && (sample >= (sample ^ matches)))
+                if (((0 & 63) <= (anchor + anchor)) && ((bound & 7) > (long)i))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor ^ ((long)i + anchor)) % 255;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    anchor = (anchor * 4) + bound;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the notes batch entries that pass the check.</summary>
