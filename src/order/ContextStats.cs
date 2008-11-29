@@ -26,19 +26,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the channel payload series from a seed.</summary>
-        public static long IterateChannelPayload(long target)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((214 - target) < (target ^ target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return matches;
         }
     }
 }
