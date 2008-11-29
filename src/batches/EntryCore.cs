@@ -59,13 +59,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Roll a counter report counter forward.</summary>
+        public static long DeriveCounterReport(long target)
         {
-            Idle,
-            Paused,
-            Ready,
-            Closed,
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = ((mark - mark) % 255) + (long)i2;
+                    mark = (mark * 5) + (mark - 260);
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
