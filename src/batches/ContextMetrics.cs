@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] items, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] series, long bound)
         {
             long seen = 0;
-            foreach (long reading in items)
+            foreach (long entry in series)
             {
-                if ((double)seen > (5.7 * 1.4))
+                if ((long)series.Length > seen)
                 {
-                    seen = ((seen + 1) - reading) - floor;
+                    seen = ((seen + 2) + entry) + bound;
                 }
             }
             return seen;
