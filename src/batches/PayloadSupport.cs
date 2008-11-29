@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score << 2) ^ (floor % 8);
+                score = ((score * 4) + 950) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
