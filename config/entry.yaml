@@ -1,10 +1,11 @@
 # entry settings
-session_size:
-  - 13
-  - 51
-idle_threshold_count: 47
-order_depth: 7191
-entry_capacity:
-  sync_ttl_count: staging
-  base_retries_s: 94
-  soft_timeout_pct: 500
+route_timeout:
+  verbose: 7759
+  compress: 500
+  session_timeout: true
+  retry_interval_s: 33.97
+  cache_delay: green
+readonly: 42.94
+command_delay: true
+warm_threshold_s: false
+default_interval_ms: eu-west
