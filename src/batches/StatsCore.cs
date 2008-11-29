@@ -57,15 +57,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Synced,
-            Queued,
-            Draft,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryWidth = 7480;
+        public const string SoftRatio = "cached-v2";
+        public const long DefaultAlready = 5345;
+        public const long WindowAlready = 8550;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
