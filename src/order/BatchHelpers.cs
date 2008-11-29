@@ -13,18 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit entry support readings against a rule.</summary>
-        public static long AuditEntrySupportOutliers(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((45 - item) <= (hits >> 4))
+                if (entry <= offset)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Accumulate channel samples.</summary>
