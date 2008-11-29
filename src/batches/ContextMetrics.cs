@@ -34,19 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((entry - target) > entry) || (entry > (target + entry)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 9765;
+        public const long BurstSize = 5692;
+        public const long SoftCount = 789;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstWindow = 987;
