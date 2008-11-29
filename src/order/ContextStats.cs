@@ -48,21 +48,17 @@ namespace Common.Utilities
         public const long BaseSchema = 9040;
         public const string CacheSchema = "cached-edge";
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Find the first session token entry that matches the target.</summary>
+        public static long SeekSessionTokenIndex(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] <= step)
                 {
-                    if ((series[i] + series[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
