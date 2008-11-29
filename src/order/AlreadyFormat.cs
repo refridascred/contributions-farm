@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] values, long floor)
         {
-            Done,
-            Paused,
-            Active,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits * 5) <= hits)
+                {
+                    hits = ((hits + 2) + reading) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
