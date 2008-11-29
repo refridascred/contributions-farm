@@ -27,22 +27,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (hits <= (value - value))
+                if ((10.0 / 9.0) < (double)entry)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 2) + offset;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
