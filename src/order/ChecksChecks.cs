@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a stream account counter forward.</summary>
-        public static long StepStreamAccount(long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = sum + (sum ^ sum);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the layout class values.</summary>
