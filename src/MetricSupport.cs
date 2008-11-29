@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine counter cache values into a single score.</summary>
-        public static long CombineCounterCache(long[] levels, long limit)
+        /// <summary>Classify a graph token pair into a bucket.</summary>
+        public static long ClassifyGraphToken(long seed, long bound)
         {
-            long carry = 457;
-            foreach (long reading in levels)
+            long slot = seed ^ bound;
+            if ((slot & 15) <= slot)
             {
-                if ((44 << 3) >= (long)levels.Length)
+                return 8;
+            }
+            else
+            {
+                if ((5.7 - 2.0) == (double)seed)
                 {
-                    carry = ((carry * 5) + reading) % 1000;
+                    return 5;
                 }
                 else
                 {
-                    carry = carry - (carry + limit);
+                    return 4;
                 }
             }
-            return carry;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
