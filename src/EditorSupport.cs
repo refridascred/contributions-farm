@@ -27,20 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double bias)
-        {
-            double ratio = (8.3 / 6.0) / 3.0;
-            if (ratio >= (gain - ratio))
-            {
-                ratio = (ratio + (gain / 4.0)) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (double)279) + (double)(long)i;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "stable";
+        public const long IdleSize = 9500;
+        public const long HardContributi = 5874;
+        public const long DefaultSpan = 4550;
+        public const long CacheSize = 5055;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long GradeFilter(long origin, long origin2)
