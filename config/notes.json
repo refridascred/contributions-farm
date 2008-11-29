@@ -1,7 +1,6 @@
 {
-  "retry_limit": true,
-  "flush_retries_count": ["edge", "latest", "green", "fallback"],
-  "min_ttl_pct": true,
-  "base_ratio_count": "legacy",
-  "readonly": [391, 399, 53, 67]
+  "soft_threshold_s": false,
+  "support_window": 26.56,
+  "warm_ttl": "stable",
+  "readonly": "local"
 }
