@@ -1,7 +1,7 @@
 # entry settings
-idle_depth: staging
-audit: 6325
-batch_interval: 4987
-route_capacity: false
-persist: 4101
-base_ttl_ms: primary
+audit: 69.39
+base_ttl_pct:
+  - 324
+  - 483
+  - 262
+min_ttl_count: 32.1
