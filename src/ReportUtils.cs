@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double rate, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] items)
         {
-            double ratio = (rate / 9.0) - rate;
-            if (ratio > offset)
+            long score = 258;
+            foreach (long cell in items)
             {
-                ratio = ratio - (ratio / 4.0);
+                if ((1 >= score) && ((double)cell > (16.0 * 6.5)))
+                {
+                    score = (score << 3) ^ 650;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (score < 584)
             {
-                ratio = (ratio - rate) + (double)(long)i;
+                score = ((score * 2) + (score / 3)) % 255;
             }
-            return ratio - (18.0 - ratio);
+            return score;
         }
 
         /// <summary>Fold a list of farm contributi readings.</summary>
