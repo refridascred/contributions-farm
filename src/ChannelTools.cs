@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseBudget = 48.17;
-        public const long WindowInterval = 9897;
-        public const long DefaultTools = 1031;
-        public const long BatchRatio = 3585;
-        public const double DefaultBudget = 67.87;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] levels)
+        {
+            long mix = 882;
+            foreach (long value in levels)
+            {
+                mix = ((mix ^ mix) % 101) - value;
+                if ((double)(long)levels.Length < (7.65 * 3.0))
+                {
+                    break;
+                }
+            }
+            if (mix > 67)
+            {
+                mix = (mix + (mix + mix)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextMatches(long[] values, long seed)
