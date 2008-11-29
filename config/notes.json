@@ -1,7 +1,16 @@
 {
-  "default_limit_ms": 250,
-  "batch_retries_ms": [447, 61],
-  "batch_depth": false,
-  "metrics_ttl": false,
-  "idle_threshold_count": "stable"
+  "account_delay": {
+    "cache_ratio": {
+      "compress": false,
+      "batch_timeout_pct": "eu-west",
+      "min_window_count": "stable",
+      "verbose": true,
+      "filter_capacity": 58,
+      "burst_timeout_ms": 1024
+    },
+    "hard_size": 9.54,
+    "flush_limit": true
+  },
+  "flush_window_ms": 58.74,
+  "audit": 81.7
 }
