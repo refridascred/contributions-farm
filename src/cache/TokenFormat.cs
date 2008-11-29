@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] items, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((long)items.Length << 3) < (target + (-3)))
+                if (((datum << 2) > datum) && (2.7 >= (double)floor))
                 {
-                    hits = (hits + 3) + entry;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
