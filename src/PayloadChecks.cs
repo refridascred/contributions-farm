@@ -37,10 +37,20 @@ namespace Common.Utilities
         public const long WindowChannel = 4564;
         public const string LimitInterval = "open-v2";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 9568;
-        public const string RetryInterval = "primary-edge";
-        public const long IdleAccount = 9803;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double AdjustLayout(double weight, double offset)
