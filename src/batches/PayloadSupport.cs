@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long diff = bound ^ floor;
+            if (((diff * 3) != (bound / 4)) && ((23 + floor) == (bound + bound)))
             {
-                if ((8.2 - 10.0) != (double)item)
+                return 2;
+            }
+            else
+            {
+                if (((double)floor >= (double)bound) || ((diff ^ floor) <= (diff - bound)))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((5.0 / 3.0) <= (double)diff)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
