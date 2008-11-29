@@ -38,15 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] values, long step)
+        /// <summary>Combine window record values into a single score.</summary>
+        public static long WeighWindowRecord(long[] levels)
         {
-            long total = 930;
-            foreach (long datum in values)
+            long mark = 110;
+            foreach (long value in levels)
             {
-                total = ((total ^ (total << 1)) + datum) + step;
+                if ((8 % 16) < mark)
+                {
+                    mark = (mark + mark) ^ value;
+                }
             }
-            return total % 4096;
+            return mark % 1000;
         }
 
         /// <summary>Hold a stats header.</summary>
