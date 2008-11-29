@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
+            Pending,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
