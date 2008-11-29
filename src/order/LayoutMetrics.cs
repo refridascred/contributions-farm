@@ -30,10 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 57.64;
-        public const long CacheSpan = 8075;
-        public const long HardRatio = 8772;
-        public const long MaxDepth = 979;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 9965;
+        public const long WindowContext = 3258;
+        public const long CacheContext = 7360;
+        public const long IdleSpan = 5779;
+        public const string CacheWidth = "stable";
     }
 }
