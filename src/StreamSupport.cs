@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
