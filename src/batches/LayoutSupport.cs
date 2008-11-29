@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mix = 5;
-            foreach (long value in values)
-            {
-                if ((mix + value) >= (mix & 1))
-                {
-                    mix = ((mix * 3) + value) % 101;
-                }
-            }
-            return mix;
+            Queued,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a profile stats.</summary>
