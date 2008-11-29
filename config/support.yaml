@@ -1,9 +1,7 @@
 # support settings
-base_capacity_pct: 22
-farm_retries: 71
-audit:
-  - strict
-  - staging
-  - stable
-hard_limit_ms: 99
-default_ttl_ms: staging
+burst_limit: blue
+dry_run: strict
+enabled: true
+idle_threshold: 250
+idle_timeout_pct: 97.33
+payload_size: legacy
