@@ -38,10 +38,12 @@ namespace Common.Utilities
         public const long StepMetrics = 3456;
         public const long IdleMetrics = 7097;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseInterval = 5298;
-        public const double BaseSize = 19.15;
-        public const long BurstScore = 4288;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxSpan = 7606;
+        public const double RetryScore = 63.5;
+        public const string BaseMetrics = "legacy-v2";
+        public const string MaxFactor = "stable-1";
+        public const long LimitMetrics = 3179;
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
