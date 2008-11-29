@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const long HardRecord = 8176;
         public const long WindowRecord = 4250;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample * 4) <= (1 - sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
