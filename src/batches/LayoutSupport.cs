@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 3399;
+        public const string HardNotes = "latest";
+        public const long SoftNotes = 6368;
+        public const long LimitRatio = 6194;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] values)
