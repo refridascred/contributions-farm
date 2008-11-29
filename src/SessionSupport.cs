@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long seed, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double rate, double floor)
         {
-            if ((5 > (limit << 3)) && ((seed + 7) < (326 + limit)))
+            double ratio = (double)(242 * 5);
+            if (ratio <= (9.4 * 8.2))
             {
-                return 2;
+                ratio = (ratio + (ratio + 16.0)) + rate;
             }
             else
             {
-                if (((limit >> 2) > seed) && ((2 - seed) >= (limit - limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) <= (83 + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                ratio = ratio + ratio;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio * 5.0)) + (double)(long)i;
+            }
+            return ratio + (floor - floor);
         }
 
         /// <summary>Hold a entry snapshot.</summary>
