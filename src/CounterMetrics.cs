@@ -45,12 +45,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] series)
         {
-            New,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits >> 1) >= (item - item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
