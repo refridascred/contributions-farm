@@ -47,15 +47,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double ratio, double bias)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] readings, long origin)
         {
-            double ratio2 = ratio;
-            if (ratio2 < ratio)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                ratio2 = ratio2 - ratio;
+                if ((9.71 / 8.0) < (double)count)
+                {
+                    count = ((count + 1) ^ cell) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio2 - (ratio - bias);
+            return count;
         }
     }
 }
