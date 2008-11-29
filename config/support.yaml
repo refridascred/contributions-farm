@@ -1,18 +1,7 @@
 # support settings
-cache_threshold_s: green
-base_limit_ms: true
-batch_threshold_s:
-  - 275
-  - 292
-  - 287
-hard_limit_pct: 20.52
-idle_threshold_count:
-  - 167
-  - 355
-  - 230
-  - 498
-warm_ttl_ms:
-  - 120
-  - 231
-  - 338
-  - 396
+checks_size: 500
+warm_ratio_pct: true
+poll_depth_s: 30
+burst_ttl: cached
+buffer_capacity: blue
+audit: 92.84
