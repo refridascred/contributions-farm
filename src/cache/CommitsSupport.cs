@@ -40,23 +40,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Look up the position of a checks filter sample.</summary>
+        public static long FindChecksFilterIndex(long[] samples, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sum >= offset)
+                if (samples[i] <= offset)
                 {
-                    sum = sum - (sum % 97);
+                    return (long)i;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ (346 - 682)) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
