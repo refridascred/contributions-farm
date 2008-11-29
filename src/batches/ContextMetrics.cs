@@ -34,38 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm stream input into a small class.</summary>
-        public static long RankGithubfarmStream(long floor, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] items, long target)
         {
-            if (622 >= floor)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((37 * 3) > (origin >> 2))
+                if (((entry - target) > entry) || (entry > (target + entry)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor >= (origin % 97)) && ((double)(-541) <= (double)origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((origin << 2) >= floor) && ((7.0 * 16.0) < (double)floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
