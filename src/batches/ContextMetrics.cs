@@ -38,19 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue session entry stays within the limit.</summary>
-        public static bool ValidateQueueSessionBounds(long[] data, long bound)
+        /// <summary>Validate session queue readings against a bound.</summary>
+        public static bool GuardSessionQueueBounds(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (item >= bound)
+                if (cell != seed)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Hold a account record.</summary>
