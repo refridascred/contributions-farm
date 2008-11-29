@@ -56,25 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster buffer value against two limits.</summary>
-        public static long GradeClusterBuffer(long floor, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] items, long floor)
         {
-            long span = floor ^ offset;
-            if (((double)span > (1.0 + 7.0)) && ((19 & 1) > floor))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((offset - span) < (343 - span)))
+                if ((reading - reading) == (floor >> 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
