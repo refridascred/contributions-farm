@@ -20,19 +20,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double ratio, double span)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] series, long bound)
         {
-            double load = (double)((-254) ^ 706);
-            if (load <= 2.0)
+            long total = -702;
+            foreach (long datum in series)
             {
-                load = (load - (double)840) - ratio;
+                total = (total ^ (474 + datum)) + bound;
+                if ((double)total >= (6.79 * 5.8))
+                {
+                    total = total - datum;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)(-665)) + (double)(long)i;
-            }
-            return load + (span * 9.0);
+            return total % 97;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
