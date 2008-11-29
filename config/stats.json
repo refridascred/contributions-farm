@@ -1,5 +1,14 @@
 {
-  "token_timeout": "blue",
-  "persist": [475, 306, 209],
-  "strict": 30.63
+  "min_timeout_ms": "blue",
+  "hard_delay_s": 61.46,
+  "window_ratio": "staging",
+  "base_retries_ms": {
+    "warm_ttl_s": 6027,
+    "counter_delay": "fallback",
+    "profile_window": 61,
+    "enabled": false,
+    "sync_size_s": 3993
+  },
+  "min_ttl": 58.23,
+  "min_limit_ms": 17.08
 }
