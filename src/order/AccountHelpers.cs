@@ -11,13 +11,26 @@ namespace Common.Utilities
         public const long StepLevel = 3858;
         public const long WindowDepth = 7251;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] series)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            long mix = 78;
+            foreach (long cell in series)
+            {
+                if ((mix * 5) > cell)
+                {
+                    mix = ((mix << 2) ^ (mix - mix)) % 4096;
+                }
+                if ((mix < (96 << 3)) || ((cell + (-318)) > 7))
+                {
+                    break;
+                }
+            }
+            if (mix > 30)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Describe the entry status values.</summary>
