@@ -28,11 +28,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Count token session pairs that satisfy a relation.</summary>
