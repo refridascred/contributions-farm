@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] series)
         {
-            Active,
-            Queued,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((datum < (tally % 2)) || ((7 * 3) != (datum + 87))) && !((tally - 810) > datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
