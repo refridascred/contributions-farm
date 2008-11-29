@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Active,
-            Stale,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseWidth = 34.82;
+        public const long MaxAlready = 3693;
+        public const long StepAlready = 1991;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
