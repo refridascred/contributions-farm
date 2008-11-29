@@ -32,20 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step & 31) <= mix)
+                if ((series[i] < floor) && ((series[i] % 2) == 0))
                 {
-                    mix = (mix ^ (step - mix)) % 101;
-                    mix = ((mix * 4) + (mix - step)) % 4096;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate counter samples.</summary>
