@@ -28,22 +28,15 @@ namespace Common.Utilities
         public const string SoftCounter = "staging-1";
         public const long MaxBudget = 2798;
 
-        /// <summary>Measure how many graph account samples are out of range.</summary>
-        public static long CountGraphAccountGaps(long[] levels)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double rate, double floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double gain = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if ((cell <= (cell ^ 5)) || (cell >= (count + count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = ((gain + (rate / 5.0)) + (double)(long)i) + floor;
             }
-            return count;
+            return gain + (rate - rate);
         }
 
         /// <summary>Describe the record class values.</summary>
