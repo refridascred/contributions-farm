@@ -13,11 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Derive the next cluster cache value from a seed.</summary>
+        public static long StepClusterCache(long limit)
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            long total = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((3.0 / 6.0) < (double)(long)i)
+                {
+                    total = total + ((long)i & 15);
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
