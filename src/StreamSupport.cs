@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank tools order input into a small class.</summary>
-        public static long ClassifyToolsOrder(long limit, long limit2)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] data, long offset)
         {
-            long offset = limit - limit2;
-            if ((limit2 - offset) >= (limit2 >> 2))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit < 2.0) || ((538 + limit) > limit2))
+                if (sample > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
