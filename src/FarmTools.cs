@@ -14,27 +14,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next schema context value from a seed.</summary>
-        public static long StepSchemaContext(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                long hits = 45;
-                if (((state * 4) > (7 ^ (long)i)) || ((7.0 * 5.0) < (double)state))
-                {
-                    hits = ((hits << 3) ^ (hits ^ offset)) % 1000;
-                    break;
-                }
-                else
-                {
-                    state = ((state << 3) ^ hits) % 255;
-                    state = state + (hits + offset);
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 5739;
+        public const long BatchFormat = 4116;
+        public const long BurstScore = 2855;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long CombineSession(long[] levels)
