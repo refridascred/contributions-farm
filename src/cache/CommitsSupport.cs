@@ -37,13 +37,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Idle,
-            New,
-            Failed,
             Pending,
+            Queued,
             Paused,
         }
 
