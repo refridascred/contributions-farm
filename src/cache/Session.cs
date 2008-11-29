@@ -46,10 +46,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 9341;
         public const long RetryRatio = 9708;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowFactor = 5596;
-        public const long DefaultSize = 3854;
-        public const long MinStats = 665;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 87.39;
+        public const string DefaultBudget = "strict-edge";
+        public const long WindowTimeout = 4007;
+        public const long SoftSchema = 3184;
+        public const string LimitDepth = "primary";
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] levels, long seed)
