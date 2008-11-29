@@ -36,17 +36,32 @@ namespace Common.Utilities
         public const double RetryReport = 82.36;
         public const long IdleReport = 6708;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long seed, long seed2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound = seed - seed2;
+            if (bound >= (seed2 + bound))
             {
-                if (values[i] == origin)
+                return 2;
+            }
+            else
+            {
+                if ((seed2 - seed) == (seed + seed))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (seed2 < (seed >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
