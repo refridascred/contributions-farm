@@ -39,21 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long origin, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((target * 2) != (2 / 7)) && ((double)origin >= (8.51 / 6.0)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)target >= 3.07)
                 {
-                    if ((readings[i] - readings[j]) == 7)
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - origin) < target)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((15.0 / 6.0) == (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a farm entry.</summary>
