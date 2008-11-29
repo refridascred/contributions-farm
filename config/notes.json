@@ -1,8 +1,7 @@
 {
-  "max_size_count": "latest",
-  "metrics_size": "eu-west",
-  "compress": "strict",
-  "poll_retries_pct": 41,
-  "stream_window": "strict",
-  "strict": 250
+  "metrics_capacity": "green",
+  "soft_timeout": true,
+  "persist": "green",
+  "support_window": 100,
+  "already_timeout": ["green", "stable", "blue", "edge"]
 }
