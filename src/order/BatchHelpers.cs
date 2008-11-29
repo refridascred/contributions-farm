@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit batch checks readings against a rule.</summary>
-        public static long CountBatchChecksOutliers(long[] items)
+        /// <summary>Locate a editor farm reading by value.</summary>
+        public static long LocateEditorFarmIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry >> 2) < count)
+                if (series[i] > offset)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
