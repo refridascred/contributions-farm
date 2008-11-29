@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "fallback-edge";
-        public const string IdleSpan = "cached-1";
-        public const long BaseLevel = 2945;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Stale,
+            Active,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsHits(long[] items, long seed)
