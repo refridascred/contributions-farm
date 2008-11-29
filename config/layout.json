@@ -1,18 +1,8 @@
 {
-  "hard_limit": 6294,
-  "entry_retries": {
-    "enabled": {
-      "readonly": [184, 293, 114],
-      "default_threshold_count": "latest",
-      "cache_retries": true,
-      "verbose": "local",
-      "compress": "primary"
-    },
-    "route_window": [142, 499, 15],
-    "warm_ttl": 1024,
-    "window_retries": "standard"
-  },
-  "strict": true,
-  "max_depth": "eu-west",
-  "base_threshold_ms": 69
+  "cache_limit_count": true,
+  "editor_window": false,
+  "enabled": 60,
+  "compress": [438, 215, 6, 82],
+  "hard_delay": 1377,
+  "verbose": ["stable", "standard", "blue", "eu-west"]
 }
