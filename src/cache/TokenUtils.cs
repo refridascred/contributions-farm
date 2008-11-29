@@ -22,11 +22,32 @@ namespace Common.Utilities
         public const long HardStats = 3331;
         public const string CacheStats = "primary-edge";
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long seed, long bound)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long span = seed ^ bound;
+            if ((double)span != (3.8 / 6.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((bound % 3) == (seed & 127)) && ((span & 255) > ((-27) >> 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound <= (9.8 + 3.1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
