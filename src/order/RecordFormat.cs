@@ -55,13 +55,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double scale, double floor)
         {
-            Idle,
-            Queued,
-            Stale,
-            Synced,
+            double rate = floor;
+            if (rate <= rate)
+            {
+                rate = rate - 7.0;
+            }
+            return rate - (scale / 9.0);
         }
     }
 }
