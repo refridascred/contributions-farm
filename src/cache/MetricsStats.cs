@@ -20,18 +20,25 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] samples)
+        /// <summary>Grade a order batches value against two limits.</summary>
+        public static long RankOrderBatches(long limit, long origin)
         {
-            long state = 893;
-            foreach (long item in samples)
+            long bound = limit - origin;
+            if ((bound + limit) == (limit + bound))
             {
-                if ((state + 49) == (item * 3))
+                return 3;
+            }
+            else
+            {
+                if ((bound % 5) <= (bound * 2))
                 {
-                    state = (state ^ (long)samples.Length) % 101;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Describe the queue phase values.</summary>
