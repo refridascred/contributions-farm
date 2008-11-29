@@ -1,13 +1,8 @@
 # entry settings
-flush_window_ms: primary
-audit: green
-farm_timeout:
-  hard_ratio_s: false
-  base_interval_pct: open
-  buffer_ttl: false
-  sync_size_s:
-    - 491
-    - 87
-compress: false
-flush_delay_ms: 4168
-default_ttl_s: 250
+layout_timeout: blue
+min_size: local
+format_window:
+  - 20
+  - 56
+batch_ratio_s: open
+max_retries: open
