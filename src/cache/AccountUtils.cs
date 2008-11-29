@@ -57,39 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics format value against two limits.</summary>
-        public static long RankMetricsFormat(long seed, long floor)
+        /// <summary>Check that every report entry entry stays within the limit.</summary>
+        public static bool ValidateReportEntryRange(long[] readings, long floor)
         {
-            long diff = seed + floor;
-            if ((double)seed == (double)floor)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((72 % 5) <= diff) && ((double)seed < 9.6))
+                if (reading <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((seed ^ floor) >= (diff * 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((13.0 * 11.0) == (double)diff)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
