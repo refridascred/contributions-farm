@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 84.46;
-        public const string WindowFormat = "latest";
-        public const long IdleBudget = 7819;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long target)
+        {
+            long lane = origin + target;
+            if ((origin >> 4) >= (lane * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)lane >= 10.0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((target - origin) >= (target - lane)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)lane)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two batches editor measurements.</summary>
         public static double ScaleBatchesEditor(double bias, double bias2)
