@@ -20,21 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] samples, long target)
         {
-            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] > target)
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
