@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxTimeout = 6689;
+        public const double MaxCounter = 2.61;
+        public const double BatchCounter = 25.02;
+        public const long BurstScore = 4652;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long step, long target)
