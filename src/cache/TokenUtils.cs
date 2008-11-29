@@ -27,19 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] series, long bound)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            double bias = (offset + 8.1) * 11.0;
+            if (bias < bias)
             {
-                if (item > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias + offset) + gain;
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (offset - 7.16)) - (double)(long)i;
+            }
+            return bias - 1.0;
         }
     }
 }
