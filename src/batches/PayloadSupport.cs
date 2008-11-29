@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of profile context readings.</summary>
-        public static long CombineProfileContext(long[] levels, long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long mix = 3;
-            foreach (long reading in levels)
-            {
-                mix = ((mix * 3) + mix) % 1000;
-                if ((5 + step) == (reading - reading))
-                {
-                    mix = ((mix * 5) + (step - step)) % 1000;
-                }
-            }
-            return mix;
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a window record.</summary>
