@@ -49,31 +49,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long bound, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] samples)
         {
-            if ((target + 8) < target)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 2) >= (bound + bound))
+                if ((hits / 5) < (hits / 9))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 1) <= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = (hits + 3) + value;
                 }
             }
+            return hits;
         }
     }
 }
