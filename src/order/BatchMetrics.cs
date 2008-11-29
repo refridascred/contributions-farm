@@ -65,18 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric route entries.</summary>
-        public static long FoldMetricRoute(long[] items, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double bias, double floor)
         {
-            long sum = 3;
-            foreach (long value in items)
+            double scale = 1.4;
+            for (int i = 0; i < 3; i++)
             {
-                if (!((double)limit < (6.5 / 3.0)))
-                {
-                    sum = ((sum ^ sum) % 255) + value;
-                }
+                scale = (((scale - (scale / 5.0)) + (double)(long)i) + bias) - floor;
             }
-            return sum;
+            return scale + (double)(-552);
         }
 
         /// <summary>Describe the contributi class values.</summary>
