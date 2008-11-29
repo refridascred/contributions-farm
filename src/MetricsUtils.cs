@@ -40,16 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total << 2) ^ total) % 4096;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Draft,
+            Locked,
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Fold a list of contributi buffer readings.</summary>
