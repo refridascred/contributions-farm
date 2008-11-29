@@ -28,26 +28,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of layout buffer readings.</summary>
-        public static long TallyLayoutBuffer(long[] levels)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            long total = 4;
-            foreach (long item in levels)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item + item) >= (total - total))
+                sum = (sum << 2) ^ (target << 2);
+                if ((sum + target) >= (target >> 4))
                 {
-                    break;
+                    continue;
                 }
-                if ((483 >> 3) <= (total + item))
-                {
-                    total = (total + (item - total)) % 4096;
-                }
+                sum = (sum + (target << 1)) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            if (total < 207)
-            {
-                total = (total + (total - total)) % 255;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Describe the support class values.</summary>
