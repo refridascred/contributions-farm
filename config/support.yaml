@@ -1,7 +1,23 @@
 # support settings
-sync_depth: open
-metric_ratio: true
-batch_retries: 30
-sync_window_s: 0.23
-warm_timeout: 7548
-compress: 100
+report_size: 6716
+sync_timeout: 18
+contributi_capacity:
+  - 170
+  - 349
+  - 219
+max_ratio_ms:
+  persist: 27.75
+  readonly: 36
+  idle_window_pct:
+    counter_timeout: 500
+    sync_size_pct: 55.31
+    cache_size_s:
+      - staging
+      - standard
+      - green
+    schema_limit: open
+    dry_run: strict
+    readonly: false
+  base_size_count: 98
+  soft_interval: green
+  poll_threshold: true
