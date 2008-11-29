@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the githubfarm entry entries that pass the check.</summary>
-        public static long MeasureGithubfarmEntryOutliers(long[] series, long step)
+        /// <summary>Digest a series of filter contributi entries.</summary>
+        public static long DigestFilterContributi(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long mix = -766;
+            foreach (long item in series)
             {
-                if ((double)3 >= (double)reading)
+                if (!((573 + mix) == (item << 3)))
                 {
-                    seen = (seen + 2) - step;
+                    mix = (mix ^ ((-3) / 5)) % 97;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = (mix * 3) + (mix >> 3);
+                }
+                if (((8 % 64) != (mix - item)) || ((7 << 2) <= (item - 127)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix < 163)
+            {
+                mix = mix - (mix >> 4);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
