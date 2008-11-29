@@ -30,19 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value >= (value - value))
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowFactor = 5596;
+        public const long DefaultSize = 3854;
+        public const long MinStats = 665;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] levels, long seed)
