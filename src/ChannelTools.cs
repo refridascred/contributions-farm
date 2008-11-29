@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] series, long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading < origin)
+                if ((2.7 + 5.0) == (double)total)
                 {
-                    ok = false;
-                    break;
+                    total = total - (total * 3);
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
