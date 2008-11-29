@@ -34,18 +34,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] levels, long seed)
+        /// <summary>Grade a cluster buffer value against two limits.</summary>
+        public static long GradeClusterBuffer(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long span = floor ^ offset;
+            if (((double)span > (1.0 + 7.0)) && ((19 & 1) > floor))
             {
-                if ((datum >> 5) >= datum)
+                return 7;
+            }
+            else
+            {
+                if (!((offset - span) < (343 - span)))
                 {
-                    seen = (seen + 3) + seed;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
