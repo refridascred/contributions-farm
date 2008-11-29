@@ -23,13 +23,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] data, long floor)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)hits == (double)floor)
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
         }
     }
 }
