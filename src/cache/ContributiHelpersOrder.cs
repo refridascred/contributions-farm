@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
