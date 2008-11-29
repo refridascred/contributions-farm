@@ -28,12 +28,32 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long target)
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
+            long cur = offset - target;
+            if ((target + offset) > (target << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((cur ^ offset) != (cur % 24))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.0 / 7.0) < (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
