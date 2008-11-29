@@ -1,9 +1,7 @@
-id,ratio,token,level
-1,staging,46.42,fallback
-2,890,93.54,60.81
-3,13.08,268,69.39
-4,968,53.44,fallback
-5,legacy,94.14,cached
-6,866,745,414
-7,primary,cached,local
-8,108,72.4,15.67
+id,region,ratio
+1,10.96,711
+2,4.61,8.78
+3,67.34,7
+4,eu-west,68.95
+5,57.27,cached
+6,487,21.2
