@@ -14,19 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long state = 893;
+            foreach (long item in samples)
             {
-                if (value < target)
+                if ((state + 49) == (item * 3))
                 {
-                    valid = false;
-                    break;
+                    state = (state ^ (long)samples.Length) % 101;
                 }
             }
-            return valid;
+            return state % 1000;
         }
 
         /// <summary>Describe the queue phase values.</summary>
