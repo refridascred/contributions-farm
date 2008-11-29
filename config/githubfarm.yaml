@@ -1,7 +1,5 @@
 # githubfarm settings
-verbose:
-  - 359
-  - 482
-cache_window_ms: 60
-batch_interval_pct: green
-min_depth_pct: true
+cache_retries: standard
+notes_ttl: 4739
+min_size: 250
+strict: 58.09
