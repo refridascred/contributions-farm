@@ -1,14 +1,5 @@
 {
-  "min_timeout_ms": "blue",
-  "hard_delay_s": 61.46,
-  "window_ratio": "staging",
-  "base_retries_ms": {
-    "warm_ttl_s": 6027,
-    "counter_delay": "fallback",
-    "profile_window": 61,
-    "enabled": false,
-    "sync_size_s": 3993
-  },
-  "min_ttl": 58.23,
-  "min_limit_ms": 17.08
+  "default_delay_count": [402, 15, 23, 454],
+  "persist": 2913,
+  "sync_ratio_ms": 42
 }
