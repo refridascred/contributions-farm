@@ -1,10 +1,17 @@
 # already settings
-default_window: true
-warm_delay_pct: false
-hard_window: staging
-hard_window_s: false
-base_size_s:
-  - 145
-  - 473
-  - 88
-base_depth: 4.36
+booking_limit: green
+hard_ratio_pct:
+  sync_threshold: 29.7
+  already_depth:
+    dry_run: true
+    batch_size_s:
+      - staging
+      - local
+      - strict
+      - stable
+    metrics_interval: false
+    warm_limit_pct: false
+  batch_limit: false
+  audit: 60
+support_size: legacy
+sync_limit_s: 5863
