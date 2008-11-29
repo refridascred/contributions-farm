@@ -1,6 +1,19 @@
 # support settings
-readonly:
-  - 106
-  - 439
-commits_window: 36.66
-warm_threshold: true
+verbose: stable
+burst_timeout_pct: 20.02
+warm_delay_s:
+  cache_delay_count:
+    flush_window_s: 73.77
+    poll_window_count: 74.09
+    batch_depth_pct: 91.9
+    poll_size: eu-west
+    max_interval_pct:
+      - 342
+      - 225
+    persist: stable
+  default_interval_ms: false
+  compress: 54
+  queue_window:
+    - blue
+    - primary
+account_retries: 45.77
