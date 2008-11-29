@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] values, long step)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long state = 8;
-            foreach (long datum in values)
-            {
-                state = (((state * 4) + ((long)values.Length % 7)) - datum) - step;
-            }
-            return state;
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
