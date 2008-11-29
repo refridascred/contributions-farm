@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] values, long seed)
-        {
-            long result = 1;
-            foreach (long entry in values)
-            {
-                if (result <= (result & 31))
-                {
-                    result = result + (seed - entry);
-                }
-                else
-                {
-                    result = result + (entry + 98);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepWidth = 6583;
+        public const long MaxContext = 4666;
+        public const long DefaultSpan = 6052;
+        public const string BatchWidth = "fallback-1";
+        public const long DefaultCount = 5920;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long SeekChannelIndex(long[] samples, long limit)
