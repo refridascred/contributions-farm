@@ -90,18 +90,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample * 5) != (hits + hits))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleLevel = 6838;
+        public const long SoftEditor = 4590;
+        public const long MaxEditor = 7657;
+        public const double MinEditor = 93.03;
+        public const double BatchEditor = 77.28;
     }
 }
