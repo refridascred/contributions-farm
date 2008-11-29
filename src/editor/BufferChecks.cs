@@ -22,19 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] data, long target)
+        /// <summary>Grade a editor commits value against two limits.</summary>
+        public static long RankEditorCommits(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            if ((146 & 3) <= (limit >> 1))
             {
-                if (entry < target)
+                return 2;
+            }
+            else
+            {
+                if ((double)limit >= (double)bound)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((limit ^ bound) <= (bound / 8)) || ((387 & 15) == (bound % 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + limit) == (limit + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate checks samples.</summary>
