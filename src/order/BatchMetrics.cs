@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 6268;
+        public const long StepBatch = 9926;
+        public const double BaseFactor = 83.59;
+        public const long BaseBatch = 8157;
+        public const long IdleLevel = 124;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long RollBatch(long step)
