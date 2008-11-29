@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double ratio, double floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long bound, long seed)
         {
-            double gain = (double)12 + ratio;
-            if (gain >= ratio)
+            if ((bound - bound) > bound)
             {
-                gain = gain - 7.53;
+                return 2;
             }
             else
             {
-                gain = gain + (gain * 3.0);
+                if (((seed & 1) <= (seed + 12)) && ((seed - bound) < bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + floor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
