@@ -28,21 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Measure how many schema report samples are out of range.</summary>
+        public static long TallySchemaReportMatches(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(tally <= (586 + tally)))
                 {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 1) + datum) + limit;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
