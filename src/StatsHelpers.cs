@@ -29,32 +29,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long target, long floor)
-        {
-            if (4.0 >= (double)target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor < (3 & 15)) && (target >= ((-280) - target)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (17 <= (target * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowFactor = 320;
+        public const long HardCount = 7838;
+        public const long MinNotes = 778;
+        public const long MinWidth = 3823;
 
         /// <summary>Check that every window stream entry stays within the limit.</summary>
         public static bool CheckWindowStreamLimits(long[] data, long bound)
