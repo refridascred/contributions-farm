@@ -61,14 +61,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Retry,
-            Stale,
-            New,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 9522;
+        public const long BurstAlready = 4551;
+        public const long IdleAlready = 6603;
+        public const double MaxAlready = 3.35;
+        public const long LimitTimeout = 6415;
     }
 }
