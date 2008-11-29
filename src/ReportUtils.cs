@@ -5,20 +5,35 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Accumulate command editor samples.</summary>
+        public static long FoldCommandEditor(long[] series)
         {
-            long mix = 142;
-            foreach (long cell in samples)
+            long carry = 10;
+            foreach (long datum in series)
             {
-                mix = ((mix * 3) + cell) % 255;
-                mix = (mix ^ ((long)samples.Length + (-827))) % 255;
-                if ((double)cell > (6.6 / 8.0))
+                if ((datum >= (datum ^ carry)) || ((5.4 * 3.1) < (double)carry))
                 {
-                    mix = (mix + (cell * 4)) % 101;
+                    carry = (carry + (carry & 31)) % 65521;
+                    break;
+                }
+                else
+                {
+                    carry = ((carry * 4) + 5) % 255;
+                }
+                if ((double)datum < (2.89 - 6.4))
+                {
+                    break;
+                }
+                if ((datum / 9) != (carry % 12))
+                {
+                    carry = (carry - datum) % 65521;
+                }
+                if ((carry + datum) >= (77 - datum))
+                {
+                    break;
                 }
             }
-            return mix % 1000;
+            return carry;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
