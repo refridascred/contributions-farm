@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long bound, long step)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
+            long next = bound - step;
+            if ((bound - (-54)) != (next ^ 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((5.6 - 2.13) > (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((next + bound) >= (step + next))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step < (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
