@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the batch level values.</summary>
