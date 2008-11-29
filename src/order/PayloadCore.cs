@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = ((mix << 2) ^ (target % 64)) % 255;
+                if ((((long)i - 7) >= target) || (((long)i ^ target) >= (target + target)))
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
