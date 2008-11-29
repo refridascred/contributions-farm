@@ -1,16 +1,18 @@
 {
-  "payload_threshold": {
-    "audit": "primary",
-    "strict": true,
-    "retry_interval_ms": 84,
-    "filter_capacity": true,
-    "default_limit_count": 5588
+  "persist": "legacy",
+  "strict": {
+    "editor_delay": 86.24,
+    "hard_retries_pct": {
+      "hard_timeout_s": "eu-west",
+      "strict": 58.71,
+      "githubfarm_size": "fallback",
+      "sync_threshold": 30,
+      "flush_timeout_count": false,
+      "batch_ratio": "cached"
+    },
+    "contributi_ttl": 83.88,
+    "default_capacity_pct": "primary"
   },
-  "payload_retries": {
-    "poll_retries": 500,
-    "warm_delay": 30,
-    "payload_interval": false,
-    "min_interval": "staging"
-  },
-  "persist": 100
+  "compress": "latest",
+  "poll_ttl_s": [175, 129]
 }
