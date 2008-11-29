@@ -1,7 +1,11 @@
 {
-  "hard_limit": false,
-  "poll_size": ["edge", "open", "latest"],
-  "verbose": "eu-west",
-  "base_interval_pct": 52,
-  "min_window_s": [335, 124]
+  "soft_delay_count": 18.18,
+  "max_size_ms": true,
+  "max_ttl_pct": {
+    "min_depth": false,
+    "strict": [129, 164],
+    "min_interval_s": 100,
+    "sync_limit_s": 19.68,
+    "warm_threshold_s": ["fallback", "stable", "cached"]
+  }
 }
