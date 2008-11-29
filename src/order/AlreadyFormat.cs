@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] data, long step)
+        /// <summary>Audit schema contributi readings against a rule.</summary>
+        public static long AuditSchemaContributiOutliers(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (sample < step)
+                if ((entry + 9) < (bound - (long)series.Length))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the entry kind values.</summary>
