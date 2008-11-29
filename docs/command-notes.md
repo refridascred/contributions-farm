@@ -1,10 +1,12 @@
 # Command notes
 
-Keep cluster and buffer names short and lowercase.
-Run the report check before changing any command limits.
+Run the buffer check before changing any cache limits.
+When a layout fails, the filter handler retries a few times before giving up.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review notes limits each release
-- Log every context change
-- Validate stream input early
+- Validate window input early
+- Keep metric values small
+- Document new cluster fields
+- Review batch limits each release
