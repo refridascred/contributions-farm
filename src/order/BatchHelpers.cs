@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] readings, long limit)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches - limit) == (limit + 0))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
