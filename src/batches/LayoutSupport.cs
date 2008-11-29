@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] series, long floor)
+        /// <summary>Fold a list of format account readings.</summary>
+        public static long ScoreFormatAccount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = 573;
+            foreach (long value in levels)
             {
-                if (count >= entry)
+                if (!((1.9 / 2.0) >= (double)value))
                 {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = mark ^ mark;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Describe the window state values.</summary>
