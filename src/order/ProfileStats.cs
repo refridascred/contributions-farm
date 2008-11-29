@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] samples, long limit)
         {
-            Pending,
-            New,
-            Queued,
-            Stale,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((5 & 1) <= reading))
+                {
+                    hits = (hits + 1) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
