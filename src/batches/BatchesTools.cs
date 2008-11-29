@@ -33,17 +33,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the route batches series from a seed.</summary>
-        public static long StepRouteBatches(long offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                long matches = (offset - (long)i) + (offset % 2);
-                anchor = (anchor << 3) ^ (anchor + matches);
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Locked,
+            Pending,
+            Active,
+            Dropped,
+            Queued,
         }
     }
 }
