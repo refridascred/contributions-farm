@@ -61,19 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] items, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale = weight;
+            return (scale - 0.4) + floor;
         }
     }
 }
