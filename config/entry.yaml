@@ -1,5 +1,7 @@
 # entry settings
-burst_interval_count: 79
-sync_ttl_s: 5632
-window_interval: 36.32
-burst_limit: 91.74
+batch_window_ms: 500
+warm_size_count: 500
+window_threshold: 2748
+default_threshold_s: 38.79
+sync_size_s: 96
+flush_window: stable
