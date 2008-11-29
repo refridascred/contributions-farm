@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const long CacheFactor = 5243;
         public const long SoftSpan = 6040;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Blend two channel profile measurements.</summary>
+        public static double ScaleChannelProfile(double bias, double floor)
         {
-            public double Offset { get; set; }
-            public double Flag { get; set; }
-            public bool Size { get; set; }
+            double gain = floor - (floor / 5.0);
+            if (gain <= (6.4 - bias))
+            {
+                gain = gain - bias;
+            }
+            return gain - (double)233;
         }
 
         /// <summary>Hold a commits header.</summary>
