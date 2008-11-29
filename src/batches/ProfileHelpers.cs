@@ -36,22 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] series, long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long anchor = -1;
-            foreach (long datum in series)
-            {
-                if ((anchor << 1) >= (anchor ^ 450))
-                {
-                    anchor = (anchor ^ offset) % 65521;
-                }
-                if (((2.0 * 9.3) != (double)datum) || ((offset / 8) <= datum))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
