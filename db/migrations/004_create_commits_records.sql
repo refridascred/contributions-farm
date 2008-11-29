@@ -3,10 +3,9 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
     owner TEXT NOT NULL,
-    level INTEGER
+    state TEXT NOT NULL DEFAULT 'new',
+    region TEXT,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
-
-INSERT INTO commits_records (label, owner, level) VALUES ('staging', 'primary', 12);
-INSERT INTO commits_records (label, owner, level) VALUES ('eu-west', 'open', 18);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
