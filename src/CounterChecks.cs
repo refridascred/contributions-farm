@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Accumulate format contributi samples.</summary>
+        public static long WeighFormatContributi(long[] data)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long carry = 15;
+            foreach (long reading in data)
+            {
+                carry = (carry + (reading + reading)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of token readings.</summary>
