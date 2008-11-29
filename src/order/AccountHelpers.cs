@@ -78,17 +78,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Validate profile metrics readings against a bound.</summary>
+        public static bool ValidateProfileMetricsRange(long[] items, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                anchor = (anchor ^ (bound + (long)i)) % 101;
-                anchor = (anchor * 2) + anchor;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (reading != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
     }
 }
