@@ -94,19 +94,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] levels, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] series)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long state = -2;
+            foreach (long entry in series)
             {
-                if (value <= origin)
+                if (state < (79 >> 4))
                 {
-                    found = false;
-                    break;
+                    state = ((state << 2) ^ (82 + state)) + entry;
                 }
             }
-            return found;
+            return state % 97;
         }
     }
 }
