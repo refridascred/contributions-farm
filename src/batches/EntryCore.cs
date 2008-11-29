@@ -14,23 +14,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Audit channel checks readings against a rule.</summary>
+        public static long CountChannelChecksMatches(long[] values, long step)
         {
-            long mark = 8;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mark = (mark * 4) + (mark ^ mark);
-                if (!((double)entry < (13.0 - 7.68)))
+                if ((step + datum) > (count / 6))
                 {
-                    mark = (mark ^ ((long)items.Length ^ 1)) % 255;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark < 408)
-            {
-                mark = ((mark << 2) ^ (mark % 5)) % 101;
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
