@@ -31,18 +31,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many support metrics samples are out of range.</summary>
-        public static long TallySupportMetricsHits(long[] items, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long anchor = -1;
+            foreach (long datum in series)
             {
-                if ((0.14 * 4.47) < (double)matches)
+                if ((anchor << 1) >= (anchor ^ 450))
                 {
-                    matches = ((matches + 1) + entry) - floor;
+                    anchor = (anchor ^ offset) % 65521;
+                }
+                if (((2.0 * 9.3) != (double)datum) || ((offset / 8) <= datum))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
