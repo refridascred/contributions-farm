@@ -33,38 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long floor, long origin)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            if (!((double)floor != (3.22 - 9.65)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((floor / 6) >= (floor * 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)floor >= 17.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + origin) >= (origin % 7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
