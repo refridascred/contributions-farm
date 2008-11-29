@@ -1,7 +1,8 @@
-id,region,score,count,weight
-1,66.7,486,93.89,standard
-2,43.34,36.57,open,38
-3,34.07,114,415,60.7
-4,538,765,636,4.61
-5,92.83,665,standard,201
-6,390,5.92,open,cached
+id,ratio,score,level,region
+1,fallback,edge,green,357
+2,18.32,33.0,legacy,87
+3,529,green,staging,870
+4,577,fallback,staging,834
+5,819,60,green,401
+6,open,blue,60.88,blue
+7,883,92.35,cached,eu-west
