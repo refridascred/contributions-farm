@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const double DefaultMetrics = 94.8;
         public const long CacheMetrics = 7912;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Blend two command batch measurements.</summary>
+        public static double ScaleCommandBatch(double gain, double bias)
         {
-            Synced,
-            Paused,
-            Pending,
-            Stale,
-            Failed,
+            double drift = gain;
+            if (drift < (drift + gain))
+            {
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift - (drift + gain);
+            }
+            return drift + drift;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
