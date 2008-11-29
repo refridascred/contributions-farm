@@ -50,13 +50,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Accumulate checks support samples.</summary>
+        public static long WeighChecksSupport(long[] readings)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long total = 772;
+            foreach (long reading in readings)
+            {
+                total = (total + (total ^ total)) ^ reading;
+            }
+            if (total < 462)
+            {
+                total = (total + (total << 2)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the graph phase values.</summary>
