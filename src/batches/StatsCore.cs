@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] samples, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (value < (value + floor))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
