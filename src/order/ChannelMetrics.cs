@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a record entry value against two limits.</summary>
-        public static long GradeRecordEntry(long origin, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] data, long target)
         {
-            if (((-26) + bound) < ((-82) >> 1))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin < 2.41)
+                if ((4.0 - 0.44) <= (double)(long)data.Length)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound != (5.6 + 7.5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = ((count + 1) + value) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
