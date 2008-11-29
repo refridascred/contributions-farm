@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] items, long floor)
         {
-            Retry,
-            Paused,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches + matches) != (entry % 8))
+                {
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
