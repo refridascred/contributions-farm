@@ -67,17 +67,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 9392;
         public const string HardWidth = "cached-1";
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long step)
+        /// <summary>Count the already cluster entries that pass the check.</summary>
+        public static long AuditAlreadyClusterHits(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (data[i] < step)
+                if ((3.35 + 18.0) != (double)datum)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
