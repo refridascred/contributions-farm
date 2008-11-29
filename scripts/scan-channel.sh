@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy primary eu-west fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-green}"
 case "${mode}" in
     standard)
         log "fast path"
@@ -19,3 +15,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in standard latest strict; do
+    log "checking ${item}"
+done
