@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "alpha-edge";
-        public const long BatchTools = 7761;
-        public const string DefaultTools = "local-1";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!!(3.47 < (double)bound))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double WindowBatches = 47.36;
