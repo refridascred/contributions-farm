@@ -1,20 +1,18 @@
 # support settings
-strict:
-  - 317
-  - 140
-  - 133
-  - 138
-flush_depth_ms: 30.28
-sync_ttl_s:
-  idle_depth_s:
-    readonly: primary
-    hard_ttl_ms: 33.43
-    burst_depth_ms:
-      - eu-west
-      - local
-      - standard
-    account_ttl: 4762
-    dry_run: 92.04
-  burst_delay: strict
-  max_limit_pct: green
-layout_ttl: 56
+idle_retries: false
+enabled: 30
+max_threshold_s:
+  farm_capacity: 23
+  dry_run: true
+  readonly:
+    soft_timeout_ms: 250
+    command_depth: standard
+    context_retries:
+      - 46
+      - 241
+      - 15
+    poll_delay: 6046
+  retry_window: 6634
+stream_retries: false
+persist: strict
+warm_depth: 45.68
