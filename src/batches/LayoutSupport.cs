@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of format account readings.</summary>
-        public static long ScoreFormatAccount(long[] levels)
+        /// <summary>Count the queue stats entries that pass the check.</summary>
+        public static long TallyQueueStatsGaps(long[] samples, long limit)
         {
-            long mark = 573;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (!((1.9 / 2.0) >= (double)value))
+                if ((double)datum <= (7.05 + 6.88))
                 {
-                    mark = mark ^ mark;
+                    seen = (seen + 3) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Describe the batches phase values.</summary>
