@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
+        public static long SortGithubfarmCounter(long limit, long seed)
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
+            long slot = limit - seed;
+            if (!(slot > (limit - slot)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((slot + seed) <= (slot * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((74 * 5) > (limit + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context snapshot.</summary>
