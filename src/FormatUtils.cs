@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
