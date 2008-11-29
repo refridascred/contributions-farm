@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] samples)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!((8 % 7) >= reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
