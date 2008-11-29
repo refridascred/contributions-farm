@@ -85,19 +85,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate profile metrics readings against a bound.</summary>
-        public static bool ValidateProfileMetricsRange(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxBudget = 6499;
+        public const string RetryToken = "open-v2";
+        public const double HardSize = 77.75;
     }
 }
