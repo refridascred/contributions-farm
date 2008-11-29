@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const long HardRecord = 8176;
         public const long WindowRecord = 4250;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long carry = 19;
-            foreach (long sample in values)
-            {
-                if ((88 - 939) == (carry - 176))
-                {
-                    carry = (carry - (long)values.Length) + sample;
-                }
-            }
-            return carry;
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
     }
 }
