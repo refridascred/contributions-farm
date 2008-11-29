@@ -14,22 +14,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] values, long seed)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((3.2 - 9.71) != (double)seen)
-                {
-                    seen = ((seen + 2) ^ datum) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Active,
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Adjust a format session reading.</summary>
