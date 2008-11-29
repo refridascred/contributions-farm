@@ -20,21 +20,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Find the first schema filter entry that matches the target.</summary>
+        public static long LocateSchemaFilterIndex(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] > origin) && ((series[i] % 3) != 0))
                 {
-                    if ((levels[i] - levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the payload phase values.</summary>
