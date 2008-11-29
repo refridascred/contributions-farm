@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleCount = 62.55;
-        public const double WindowProfile = 27.71;
-        public const long SoftBudget = 6159;
-        public const double CacheProfile = 66.17;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardBudget = 756;
+        public const double RetrySize = 89.34;
+        public const long BaseDepth = 3476;
+        public const long HardTimeout = 3917;
 
         /// <summary>Count the filter support entries that pass the check.</summary>
         public static long AuditFilterSupportHits(long[] readings)
