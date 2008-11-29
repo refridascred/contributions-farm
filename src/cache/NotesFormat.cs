@@ -29,38 +29,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a command batch value against two limits.</summary>
-        public static long SortCommandBatch(long limit, long origin)
+        /// <summary>Find the first route commits entry that matches the target.</summary>
+        public static long LocateRouteCommitsIndex(long[] series, long bound)
         {
-            if (((limit / 6) >= 994) || ((double)(-81) <= (double)origin))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit >= (origin ^ limit))
+                if (series[i] == bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit <= (limit + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit < 4.0)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
