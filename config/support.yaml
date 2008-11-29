@@ -1,18 +1,9 @@
 # support settings
-default_interval_s:
-  - legacy
+burst_threshold: standard
+flush_threshold: 19.13
+max_timeout_count: 2149
+soft_window_s: latest
+readonly: 64.5
+min_ratio_ms:
+  - standard
   - cached
-  - blue
-  - eu-west
-base_depth: 23
-warm_depth: false
-max_retries:
-  base_timeout_count: false
-  layout_limit: 45
-  sync_window_count:
-    - 420
-    - 273
-    - 42
-    - 366
-  persist: 9742
-  flush_delay_s: 100
