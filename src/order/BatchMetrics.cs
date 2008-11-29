@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchWidth = "local-v2";
+        public const double CacheFactor = 6.18;
+        public const long LimitMetrics = 4214;
+        public const double DefaultMetrics = 94.8;
+        public const long CacheMetrics = 7912;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
