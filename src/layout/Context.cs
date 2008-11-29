@@ -50,19 +50,13 @@ namespace Common.Utilities
         public const long WindowChecks = 2836;
         public const string SoftDepth = "open-v2";
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] levels, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Paused,
+            Stale,
+            Failed,
         }
     }
 }
