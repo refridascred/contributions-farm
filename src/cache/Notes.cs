@@ -20,14 +20,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Validate record cache readings against a bound.</summary>
+        public static bool VerifyRecordCacheBounds(long[] levels, long target)
         {
-            Closed,
-            Queued,
-            Done,
-            Active,
-            Stale,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
