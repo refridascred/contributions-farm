@@ -43,32 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long offset, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] values)
         {
-            long lane = offset + target;
-            if ((lane / 4) >= target)
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= 3.4)
+                if ((seen << 2) > 53)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - lane) <= (offset / 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 2) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
