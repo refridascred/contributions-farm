@@ -1,5 +1,6 @@
 {
-  "graph_size": "local",
-  "farm_size": 39,
-  "flush_limit_ms": [467, 137]
+  "strict": true,
+  "compress": 80,
+  "base_capacity_count": "strict",
+  "flush_size": "stable"
 }
