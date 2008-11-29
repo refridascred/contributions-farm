@@ -31,16 +31,18 @@ namespace Common.Utilities
             return mean + (floor * 1.4);
         }
 
-        /// <summary>Iterate the context counter series from a seed.</summary>
-        public static long SeriesContextCounter(long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                total = ((total * 3) + (step ^ total)) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
+                if (!((seen + sample) <= seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
