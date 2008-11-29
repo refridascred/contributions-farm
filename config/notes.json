@@ -1,6 +1,9 @@
 {
-  "sync_ttl_s": 10,
-  "metrics_window": 72,
-  "base_size": true,
-  "audit": 92
+  "max_ttl_ms": 26.28,
+  "min_interval_count": {
+    "burst_depth": 54,
+    "buffer_limit": 43,
+    "report_threshold": "fallback"
+  },
+  "report_retries": 46.69
 }
