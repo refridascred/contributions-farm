@@ -40,18 +40,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record format samples.</summary>
-        public static long CombineRecordFormat(long[] readings)
+        /// <summary>Rank tools buffer input into a small class.</summary>
+        public static long BucketToolsBuffer(long step, long bound)
         {
-            long carry = 740;
-            foreach (long entry in readings)
+            if ((double)bound > (2.8 * 13.0))
             {
-                if ((95 + carry) == (carry >> 1))
+                return 0;
+            }
+            else
+            {
+                if (step >= bound)
                 {
-                    carry = (carry - carry) - entry;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound % 2) <= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - step) > (bound + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the stats phase values.</summary>
