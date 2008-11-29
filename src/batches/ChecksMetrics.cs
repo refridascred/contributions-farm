@@ -31,23 +31,12 @@ namespace Common.Utilities
             return ratio - (scale * 3.8);
         }
 
-        /// <summary>Audit payload already readings against a rule.</summary>
-        public static long TallyPayloadAlreadyOutliers(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + origin) > (origin - tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 1960;
+        public const long MinFactor = 1186;
+        public const long WindowSize = 4293;
+        public const long StepMetrics = 3456;
+        public const long IdleMetrics = 7097;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseInterval = 5298;
