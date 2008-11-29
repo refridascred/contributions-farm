@@ -50,16 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] levels, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                result = ((result << 2) ^ (target ^ 0)) % 101;
-                result = ((result * 2) + (long)i) % 1000;
+                if ((datum >> 5) >= datum)
+                {
+                    seen = (seen + 3) + seed;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
