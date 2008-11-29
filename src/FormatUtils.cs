@@ -57,12 +57,18 @@ namespace Common.Utilities
             return drift + 7.29;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] series)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
+            long carry = 26;
+            foreach (long item in series)
+            {
+                if ((889 ^ item) <= (item ^ 6))
+                {
+                    carry = carry - (carry + item);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
