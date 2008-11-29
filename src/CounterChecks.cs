@@ -65,10 +65,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstTimeout = 45.59;
-        public const string MinSupport = "open-edge";
-        public const double BaseSupport = 55.77;
-        public const long BatchSupport = 2255;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((double)value >= (5.2 + 4.01)) && ((2.86 - 1.25) < (double)value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
