@@ -67,19 +67,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double rate, double offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            double scale = (double)(763 - 92);
-            if (scale >= 14.0)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                scale = (scale + rate) + offset;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale - (3.0 - 0.72);
+            return state;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
