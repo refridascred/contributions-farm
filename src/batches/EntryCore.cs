@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Project the next buffer value.</summary>
