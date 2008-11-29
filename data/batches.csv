@@ -1,7 +1,7 @@
-id,active,count
-1,staging,stable
-2,785,strict
-3,495,97.85
-4,fallback,80.14
-5,blue,80.52
-6,552,591
+id,active,level,owner
+1,56.27,251,48.01
+2,62.3,413,staging
+3,24.03,83.72,689
+4,legacy,340,stable
+5,305,latest,62.18
+6,15.8,fallback,442
