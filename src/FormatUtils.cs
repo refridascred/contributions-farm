@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long bound, long target)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long step = bound ^ target;
-            if ((bound ^ step) <= (bound + 20))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + step) <= (target + 846))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound % 2) > (4 << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
