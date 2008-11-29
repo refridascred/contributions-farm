@@ -49,12 +49,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Rank account order input into a small class.</summary>
+        public static long SortAccountOrder(long target, long step)
         {
-            Synced,
-            Queued,
-            New,
+            if ((double)target <= (6.51 / 5.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target >= (target << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
