@@ -47,25 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report stats value against two limits.</summary>
-        public static long GradeReportStats(long limit, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] values, long step)
         {
-            long offset = limit - target;
-            if (!((offset + target) > (target - offset)))
+            long total = 930;
+            foreach (long datum in values)
             {
-                return 0;
+                total = ((total ^ (total << 1)) + datum) + step;
             }
-            else
-            {
-                if (!(target > offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Accumulate window samples.</summary>
