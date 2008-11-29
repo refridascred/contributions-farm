@@ -20,32 +20,18 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long seed, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] items, long seed)
         {
-            long cur = seed + offset;
-            if ((double)cur > (double)offset)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + seed) > (seed + offset))
+                if ((9.84 - 2.26) != (double)seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset * 3) < ((-486) & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = (tally + 2) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
