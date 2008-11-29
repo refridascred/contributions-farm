@@ -14,39 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account order readings.</summary>
-        public static long WeighAccountOrder(long[] levels)
-        {
-            long total = 764;
-            foreach (long cell in levels)
-            {
-                if (total >= cell)
-                {
-                    total = ((total * 4) + (5 + total)) % 4096;
-                }
-                else
-                {
-                    total = total + (total << 1);
-                }
-                if (((cell * 4) >= (54 * 2)) || ((cell >> 4) < total))
-                {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = (total << 2) ^ total;
-                }
-                if ((total >> 4) >= (total & 7))
-                {
-                    break;
-                }
-            }
-            if (total > 571)
-            {
-                total = ((total << 2) ^ (4 >> 1)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstRatio = 1.94;
+        public const long CacheCount = 3181;
+        public const long DefaultWidth = 8000;
+        public const string CacheEditor = "latest-v2";
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long GradeFilter(long origin, long origin2)
