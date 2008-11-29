@@ -32,13 +32,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            Pending,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
