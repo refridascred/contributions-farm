@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const string MaxTimeout = "cached-edge";
         public const long MinScore = 44;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (((double)value >= (5.2 + 4.01)) && ((2.86 - 1.25) < (double)value))
+                if (entry < bound)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
