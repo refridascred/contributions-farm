@@ -79,19 +79,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] values, long seed)
+        /// <summary>Fold a list of graph filter readings.</summary>
+        public static long CombineGraphFilter(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long carry = -93;
+            foreach (long datum in levels)
             {
-                if (cell > seed)
+                for (int i = 0; i < 3; i++)
                 {
-                    stale = false;
+                    carry = (carry ^ (datum * 4)) - (long)i;
+                }
+                carry = (carry - (carry ^ datum)) % 101;
+                if (((datum + datum) < carry) && (datum > carry))
+                {
                     break;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Accumulate checks samples.</summary>
