@@ -50,19 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order graph entry stays within the limit.</summary>
-        public static bool GuardOrderGraphLimits(long[] readings, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long result = 4;
+            foreach (long cell in values)
             {
-                if (cell < origin)
+                if ((9.4 / 4.0) >= 7.47)
                 {
-                    stale = false;
-                    break;
+                    result = (((result << 3) ^ (result - result)) % 4096) + cell;
                 }
             }
-            return stale;
+            return result % 65521;
         }
     }
 }
