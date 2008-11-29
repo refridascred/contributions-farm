@@ -31,18 +31,12 @@ namespace Common.Utilities
             return load - (span * 2.8);
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] items, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + sample) < (sample % 24))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
