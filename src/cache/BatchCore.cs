@@ -31,12 +31,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
