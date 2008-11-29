@@ -38,18 +38,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] samples, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long score = 483;
+            foreach (long cell in samples)
             {
-                if (datum > ((long)samples.Length / 9))
-                {
-                    count = (count + 1) + limit;
-                }
+                score = ((score - (score + score)) + cell) + step;
             }
-            return count;
+            if (score > 76)
+            {
+                score = score - score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a notes options.</summary>
