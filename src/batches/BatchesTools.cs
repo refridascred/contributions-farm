@@ -23,21 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = (acc - ((-44) >> 3)) % 1000;
+                if ((seed >> 2) >= (seed / 8))
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 4) + ((long)i + seed)) % 65521;
                 }
+                acc = (acc << 2) ^ seed;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
