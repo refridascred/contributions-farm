@@ -68,20 +68,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series, long seed)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long acc = 31;
-            foreach (long entry in series)
-            {
-                acc = acc - (seed - acc);
-                acc = ((acc << 2) ^ (entry - seed)) % 4096;
-            }
-            if (acc > 8)
-            {
-                acc = (acc - (acc / 7)) % 1000;
-            }
-            return acc % 1000;
+            public bool Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
