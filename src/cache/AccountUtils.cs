@@ -31,16 +31,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a account payload counter forward.</summary>
-        public static long SeriesAccountPayload(long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            long total = 76;
+            foreach (long item in data)
             {
-                sum = (sum - (sum - bound)) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((item << 2) != (item - item))
+                {
+                    total = total - (item - item);
+                }
             }
-            return sum;
+            if (total > 3)
+            {
+                total = (total ^ (33 + total)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
