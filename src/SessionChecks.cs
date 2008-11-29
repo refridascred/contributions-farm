@@ -45,22 +45,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] series, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((item << 2) > (item - tally))
+                if (sample <= bound)
                 {
-                    tally = (tally + 3) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
