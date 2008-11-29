@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] data, long step)
         {
-            Paused,
-            Stale,
-            Closed,
-            Queued,
-            Locked,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((41 > matches) && ((cell <= (step - cell)) && ((double)step > (1.2 * 18.0))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up metric samples.</summary>
