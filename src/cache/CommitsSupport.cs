@@ -54,22 +54,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data, long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (bound > (matches + cell))
+                if (sum >= offset)
                 {
-                    matches = matches + 2;
+                    sum = sum - (sum % 97);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = ((sum << 2) ^ (346 - 682)) % 1000;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of account readings.</summary>
