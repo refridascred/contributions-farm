@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of session already entries.</summary>
-        public static long TotalSessionAlready(long[] data, long origin)
+        /// <summary>Audit report account readings against a rule.</summary>
+        public static long TallyReportAccountOutliers(long[] levels, long limit)
         {
-            long sum = 48;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((origin + origin) <= (sum ^ sum))
+                if (((limit + (long)levels.Length) <= (entry - entry)) && ((2.5 - 7.0) == (double)hits))
                 {
-                    sum = ((sum * 5) + 51) - datum;
+                    hits = hits + 2;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
