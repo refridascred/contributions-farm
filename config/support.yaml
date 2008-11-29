@@ -1,17 +1,16 @@
 # support settings
-verbose: 37
-cache_limit_s:
-  poll_ratio_ms: 11.81
-  hard_size_ms: cached
-  order_capacity:
-    - 228
-    - 78
-    - 427
-  audit:
-    - 202
-    - 68
-sync_threshold: 3.48
-base_depth:
-  - local
-  - strict
-min_delay: cached
+sync_ttl_count: 1024
+graph_timeout: false
+flush_retries_pct: 90.42
+default_window_ms: true
+base_size_count:
+  default_size: legacy
+  already_window: 24.68
+  poll_interval: true
+  dry_run: local
+  burst_depth_s:
+    audit: 53.7
+    record_window: staging
+    max_interval_count: stable
+    format_capacity: true
+  sync_capacity_count: strict
