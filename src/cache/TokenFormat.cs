@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] levels, long limit)
+        /// <summary>Roll a editor account counter forward.</summary>
+        public static long SeriesEditorAccount(long seed)
         {
-            long acc = 1;
-            foreach (long cell in levels)
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((limit - limit) < (limit - 3))
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-                else
-                {
-                    acc = (acc + cell) % 97;
-                }
+                anchor = (anchor + 340) % 101;
+                anchor = (anchor ^ (anchor + seed)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return acc % 4096;
+            return anchor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
