@@ -49,21 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count token session pairs that satisfy a relation.</summary>
-        public static long MatchTokenSessionCount(long[] readings)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)(3 * 5);
+            if (bias <= weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias + (3.6 + bias)) - offset;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (8.07 * 1.67);
         }
 
         /// <summary>Define already limits and defaults.</summary>
