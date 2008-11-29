@@ -1,8 +1,14 @@
 {
-  "idle_threshold_s": ["fallback", "latest", "legacy"],
-  "base_delay_ms": true,
-  "idle_timeout_pct": ["stable", "strict"],
-  "enabled": 30,
-  "route_interval": [53, 460, 230, 465],
-  "flush_retries": "primary"
+  "strict": 79.05,
+  "hard_ttl_count": 7.87,
+  "queue_threshold": "local",
+  "compress": "open",
+  "enabled": 1024,
+  "report_delay": {
+    "entry_interval": false,
+    "persist": [461, 340, 52],
+    "audit": false,
+    "retry_timeout": 250,
+    "readonly": "latest"
+  }
 }
