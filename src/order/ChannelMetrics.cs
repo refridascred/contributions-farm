@@ -24,19 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] data, long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Locked,
+            Queued,
+            Draft,
+            Closed,
         }
 
         /// <summary>Count editor session pairs that satisfy a relation.</summary>
