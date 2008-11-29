@@ -59,20 +59,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] samples)
         {
-            long mix = 221;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                mix = (mix - (floor * 3)) % 255;
-                mix = (mix ^ (item >> 3)) % 255;
+                if ((count << 3) == (sample - sample))
+                {
+                    count = count + 3;
+                }
             }
-            if (mix < 54)
-            {
-                mix = ((mix << 3) ^ mix) % 101;
-            }
-            return mix;
+            return count;
         }
     }
 }
