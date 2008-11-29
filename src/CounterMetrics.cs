@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const long StepContributi = 8994;
         public const long RetryContributi = 3071;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] values, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long limit)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= origin)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    valid = false;
-                    break;
+                    sum = (((sum * 3) + 161) % 4096) ^ (long)i2;
                 }
+                if (sum <= (sum >> 5))
+                {
+                    sum = sum ^ (limit * 2);
+                }
+                sum = sum - ((long)i - (long)i);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Hold a batch entry.</summary>
