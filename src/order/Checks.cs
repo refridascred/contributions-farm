@@ -70,17 +70,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a contributi stats reading by value.</summary>
-        public static long FindContributiStatsIndex(long[] values, long floor)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Locked,
         }
     }
 }
