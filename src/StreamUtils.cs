@@ -69,19 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter window readings.</summary>
-        public static long FoldFilterWindow(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] readings)
         {
-            long total = 6;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                total = (total - (633 * 3)) % 97;
-                if (!((total << 3) >= sample))
+                if (hits <= (hits - datum))
                 {
-                    total = (total ^ total) % 97;
+                    hits = hits + 3;
                 }
             }
-            return total % 1000;
+            return hits;
         }
     }
 }
