@@ -23,12 +23,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] items, long step)
         {
-            Active,
-            Draft,
-            Stale,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count / 9) >= (entry & 7))
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
