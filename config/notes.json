@@ -1,17 +1,7 @@
 {
-  "enabled": 59.99,
-  "soft_threshold_s": [83, 252, 152, 238],
-  "format_delay": 2576,
-  "batches_ratio": {
-    "cache_interval_s": {
-      "batch_size_count": "primary",
-      "persist": ["primary", "local", "local", "latest"],
-      "soft_ttl": 10.42
-    },
-    "base_capacity": "stable",
-    "compress": 25.57,
-    "default_ratio_pct": 57
-  },
-  "min_timeout": "cached",
-  "contributi_limit": "blue"
+  "default_limit_ms": 250,
+  "batch_retries_ms": [447, 61],
+  "batch_depth": false,
+  "metrics_ttl": false,
+  "idle_threshold_count": "stable"
 }
