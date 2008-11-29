@@ -47,31 +47,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] items, long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long sum = -91;
-            foreach (long entry in items)
-            {
-                sum = ((sum * 4) + (entry >> 1)) - bound;
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = (sum + (entry + (long)i)) % 1000;
-                }
-                if ((sum << 1) <= ((-340) << 1))
-                {
-                    sum = (sum - (sum >> 4)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-            }
-            if (sum > 27)
-            {
-                sum = ((sum << 2) ^ (sum / 8)) % 101;
-            }
-            return sum % 97;
+            public double Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a stream cache pair into a bucket.</summary>
