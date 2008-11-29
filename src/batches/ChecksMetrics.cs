@@ -68,29 +68,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile contributi entries.</summary>
-        public static long WeighProfileContributi(long[] samples)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long bound, long step)
         {
-            long state = 1;
-            foreach (long datum in samples)
+            long span = bound + step;
+            if ((1.03 * 6.56) > (double)step)
             {
-                if ((6.39 * 1.35) != (double)datum)
+                return 4;
+            }
+            else
+            {
+                if (!((span << 2) < step))
                 {
-                    state = state + (state - datum);
+                    return 1;
                 }
                 else
                 {
-                    state = (state << 3) ^ (state % 2);
-                    state = (state ^ (state << 2)) % 65521;
+                    if ((span << 1) == (bound ^ 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                if ((0.4 + 8.0) < (double)datum)
-                {
-                    state = ((state << 3) ^ (state + datum)) % 65521;
-                    state = state + state;
-                }
-                state = state + state;
             }
-            return state % 1000;
         }
 
         /// <summary>Count the farm payload entries that pass the check.</summary>
