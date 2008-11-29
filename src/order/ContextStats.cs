@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 3619;
-        public const double DefaultSchema = 60.97;
-        public const long MinSchema = 8736;
-        public const string StepRatio = "staging";
+        /// <summary>Derive the next checks githubfarm value from a seed.</summary>
+        public static long RollChecksGithubfarm(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                result = result + result;
+                result = (result << 2) ^ (floor * 2);
+                result = (result + result) % 4096;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
