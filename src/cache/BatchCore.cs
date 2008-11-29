@@ -19,17 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] samples, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 936;
+            foreach (long value in values)
             {
-                if (samples[i] > origin)
+                if (!((3.06 - 17.0) > (double)value))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (value & 63)) % 65521;
+                }
+                else
+                {
+                    score = (score << 3) ^ (678 + score);
                 }
             }
-            return -1;
+            if (score < 234)
+            {
+                score = (score - (score / 9)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
