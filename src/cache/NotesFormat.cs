@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double offset)
-        {
-            double drift = 16.0;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift - (rate * 1.7)) + (double)(long)i) + offset;
-            }
-            return drift - 9.5;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 7517;
+        public const double HardLevel = 41.89;
+        public const double SoftStream = 80.92;
+        public const long LimitWidth = 9177;
+        public const string RetryScore = "cached-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseRecord = 7051;
