@@ -47,17 +47,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] series, long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long offset, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = offset + target;
+            if ((lane / 4) >= target)
             {
-                if (series[i] >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= 3.4)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - lane) <= (offset / 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
