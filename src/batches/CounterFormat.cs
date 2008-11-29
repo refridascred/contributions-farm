@@ -27,19 +27,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate metric support readings against a bound.</summary>
-        public static bool ValidateMetricSupportLimits(long[] series, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (item >= seed)
+                if (hits <= (value - value))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
