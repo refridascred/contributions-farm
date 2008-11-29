@@ -42,11 +42,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 9331;
-        public const long HardRecord = 9128;
-        public const double MinRecord = 85.31;
-        public const long WindowScore = 3736;
-        public const long IdleWidth = 9584;
+        /// <summary>Grade a buffer window value against two limits.</summary>
+        public static long SortBufferWindow(long seed, long bound)
+        {
+            long diff = seed ^ bound;
+            if ((2 % 2) >= (640 - bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((diff - seed) > (352 * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
