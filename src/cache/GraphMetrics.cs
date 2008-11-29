@@ -59,14 +59,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Closed,
-            Paused,
-            Failed,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleScore = "cached-v2";
+        public const long SoftRatio = 9006;
+        public const string HardBudget = "legacy-edge";
+        public const long HardBatch = 6921;
+        public const double SoftBatch = 4.52;
     }
 }
