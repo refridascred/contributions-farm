@@ -25,15 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "strict";
+        public const string CacheCounter = "stable-v2";
+        public const string StepRatio = "standard-v2";
+        public const double RetryCounter = 60.13;
     }
 }
