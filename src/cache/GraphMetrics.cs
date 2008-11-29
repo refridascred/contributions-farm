@@ -27,24 +27,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long target, long bound)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            if (((target - bound) <= (target << 2)) || ((6.0 * 2.5) < (double)target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((2.88 * 5.4) >= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
