@@ -39,15 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Done,
-            Retry,
-            Failed,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepLevel = 29.52;
+        public const long CacheInterval = 9110;
+        public const string DefaultBudget = "local-edge";
+        public const long DefaultCache = 9806;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
