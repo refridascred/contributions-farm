@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 8171;
+        public const long CacheDepth = 3208;
+        public const long BurstScore = 5269;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
