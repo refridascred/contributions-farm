@@ -1,5 +1,9 @@
 {
-  "audit": "open",
-  "strict": 7.18,
-  "token_window": 83
+  "account_ttl": 20.87,
+  "counter_timeout": {
+    "poll_ratio": 48.21,
+    "sync_capacity_s": false,
+    "default_ratio_count": "staging"
+  },
+  "sync_capacity_count": 92.24
 }
