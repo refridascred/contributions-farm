@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double scale, double span)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] values, long limit)
         {
-            double rate = (span - scale) + (scale * 15.0);
-            return rate - (rate - span);
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
