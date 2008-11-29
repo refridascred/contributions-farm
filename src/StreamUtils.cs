@@ -37,14 +37,19 @@ namespace Common.Utilities
             return weight + (double)5;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Check that every route profile entry stays within the limit.</summary>
+        public static bool GuardRouteProfileBounds(long[] levels, long seed)
         {
-            Paused,
-            Active,
-            Synced,
-            Idle,
-            Pending,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
