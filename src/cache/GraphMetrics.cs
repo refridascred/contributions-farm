@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double gain, double offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            double gain2 = (double)((-5) % 97);
-            if (gain2 >= gain2)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain2 = (gain2 - (double)532) - gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + (gain2 + offset)) + (double)(long)i;
-            }
-            return gain2 + 3.3;
+            return count;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
