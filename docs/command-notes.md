@@ -1,10 +1,16 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the batch list.
-A farm that stays idle for too long is moved to the metrics list.
+Run the metric check before changing any account limits.
+The context module keeps entry values in sync with the metrics cache.
+Keep account and notes names short and lowercase.
+
+Run the channel check before changing any metric limits.
+Use session settings to tune how often stats data is refreshed.
+When a command fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate command input early
-- Review account limits each release
-- Prefer githubfarm defaults
+- Document new commits fields
+- Keep githubfarm values small
+- Validate support input early
+- Prefer counter defaults
