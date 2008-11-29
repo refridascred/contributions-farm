@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const long MinNotes = 778;
         public const long MinWidth = 3823;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] readings)
         {
-            long mark = 715;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((double)mark > 2.32)
+                if ((cell + hits) == (cell + cell))
                 {
-                    mark = ((mark * 5) + (datum / 5)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
