@@ -19,12 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long bound, long origin)
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
+            long slot = bound ^ origin;
+            if (!((bound * 2) < (slot + bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound > (bound & 255))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound + slot) > origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command snapshot.</summary>
