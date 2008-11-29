@@ -29,12 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Compare every pair of already metric readings.</summary>
+        public static long OverlapAlreadyMetricCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
