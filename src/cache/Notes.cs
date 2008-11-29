@@ -40,24 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((floor - acc) > acc)
-                {
-                    acc = (acc - (floor + acc)) % 4096;
-                }
-                if (((double)floor <= (12.0 + 1.86)) || ((6.12 / 5.0) != (double)floor))
-                {
-                    acc = acc + (acc - acc);
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
