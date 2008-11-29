@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.7 + 5.0) == (double)total)
+                if (items[i] == target)
                 {
-                    total = total - (total * 3);
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
