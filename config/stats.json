@@ -1,8 +1,8 @@
 {
-  "readonly": "blue",
-  "editor_window": "strict",
-  "base_capacity": false,
-  "base_depth": false,
-  "flush_limit_pct": 20.3,
-  "min_ratio_pct": true
+  "poll_timeout_ms": 1024,
+  "idle_threshold_ms": 63.54,
+  "burst_window_count": "local",
+  "profile_timeout": 77.92,
+  "cache_size": "staging",
+  "sync_ratio_pct": 24
 }
