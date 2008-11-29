@@ -52,11 +52,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleWidth = 36.63;
-        public const long BatchCache = 5763;
-        public const long LimitSize = 9681;
-        public const string MaxFactor = "staging";
+        /// <summary>Count the order token entries that pass the check.</summary>
+        public static long AuditOrderTokenOutliers(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((limit - seen) < cell) || (((limit + cell) == (cell ^ limit)) || ((20.0 / 2.0) <= (double)seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
