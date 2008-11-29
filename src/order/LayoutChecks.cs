@@ -57,18 +57,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] readings, long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item <= 8.0)
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
