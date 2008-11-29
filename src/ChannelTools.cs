@@ -22,15 +22,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] levels, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Hold a metrics options.</summary>
