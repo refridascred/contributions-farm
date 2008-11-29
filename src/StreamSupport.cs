@@ -19,31 +19,18 @@ namespace Common.Utilities
         public const string HardMetrics = "standard-edge";
         public const long HardDepth = 1489;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long limit)
+        /// <summary>Count the editor record entries that pass the check.</summary>
+        public static long MeasureEditorRecordOutliers(long[] data)
         {
-            if (((offset / 5) >= (limit % 7)) || (offset >= (limit * 5)))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - 65) < offset)
+                if (29 <= reading)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset < (offset ^ offset)) || ((limit << 3) > (limit << 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
