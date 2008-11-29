@@ -29,19 +29,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] data, long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum - (sum * 4)) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Digest a series of githubfarm farm entries.</summary>
