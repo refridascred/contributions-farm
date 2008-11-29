@@ -24,16 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double floor)
         {
-            long mark = limit;
+            double load = (5.7 / 3.0) + (double)(-16);
+            if (load >= floor)
+            {
+                load = (load + (load * 1.1)) - scale;
+            }
             for (int i = 0; i < 4; i++)
             {
-                mark = mark + (limit + mark);
-                mark = ((mark * 2) + (long)i) % 4093;
+                load = (load + 9.31) + (double)(long)i;
             }
-            return mark;
+            return load + load;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
