@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Grade a notes support value against two limits.</summary>
