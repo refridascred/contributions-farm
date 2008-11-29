@@ -28,13 +28,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Synced,
-            New,
-            Failed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxInterval = "staging-v2";
+        public const long BaseBudget = 2926;
+        public const string StepLevel = "cached";
 
         /// <summary>Count token session pairs that satisfy a relation.</summary>
         public static long MatchTokenSessionCount(long[] readings)
