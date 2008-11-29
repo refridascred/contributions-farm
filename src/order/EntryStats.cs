@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long offset, long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if (!(offset >= step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((offset * 4) < offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
