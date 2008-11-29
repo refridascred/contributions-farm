@@ -53,14 +53,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long seed)
         {
-            Synced,
-            Paused,
-            Closed,
-            Locked,
-            Done,
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (3 <= mix)
+                {
+                    mix = (mix + (seed - mix)) % 101;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
