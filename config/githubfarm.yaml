@@ -1,4 +1,10 @@
 # githubfarm settings
-warm_delay_pct: strict
-default_delay: legacy
-dry_run: 32
+hard_window: 60
+retry_size_s:
+  - 102
+  - 87
+  - 304
+  - 38
+context_ttl: latest
+idle_ratio: legacy
+strict: 3525
