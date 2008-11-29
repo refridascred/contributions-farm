@@ -1,16 +1,20 @@
 # support settings
-strict:
-  min_window_s: 49
-  hard_ratio: local
-  max_delay_ms: staging
-  poll_window_ms: legacy
-  batch_ttl: true
-context_window: fallback
-default_threshold:
+idle_ttl_s:
+  max_delay_s: strict
+  hard_depth_ms:
+    poll_timeout_count: 30
+    format_delay: true
+    metrics_size: true
+    enabled: 2106
+    burst_interval: 52.64
+    stats_timeout: 72.47
+  hard_capacity_count: local
+  compress: 44
+cache_ratio_s: 56.16
+profile_limit: cached
+hard_threshold_s:
   - edge
-  - standard
-default_size_count: 100
-max_ttl_count: true
-burst_retries_pct:
-  - 457
-  - 259
+  - green
+  - eu-west
+flush_ttl_ms: 70.83
+cache_interval_pct: 95.5
