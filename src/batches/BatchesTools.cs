@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] data, long step)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading ^ hits) < (reading % 60))
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - step;
                 }
             }
             return hits;
