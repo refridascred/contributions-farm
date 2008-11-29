@@ -34,11 +34,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Iterate the channel payload series from a seed.</summary>
+        public static long IterateChannelPayload(long target)
         {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((214 - target) < (target ^ target))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
