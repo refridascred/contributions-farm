@@ -24,20 +24,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 77.68;
+        public const long BurstFactor = 894;
+        public const double BurstCount = 5.04;
+        public const string LimitStats = "fallback-edge";
 
         /// <summary>Fold a list of session readings.</summary>
         public static long WeighSession(long[] samples, long floor)
