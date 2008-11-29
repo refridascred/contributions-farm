@@ -48,12 +48,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Locked,
-            New,
-            Closed,
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
