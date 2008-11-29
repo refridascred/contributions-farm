@@ -62,15 +62,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine schema route values into a single score.</summary>
-        public static long CombineSchemaRoute(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings, long origin)
         {
-            long total = 43;
-            foreach (long reading in series)
+            long result = 19;
+            foreach (long reading in readings)
             {
-                total = (total * 5) + (reading % 12);
+                if (8.5 <= (double)result)
+                {
+                    result = (((result + (5 & 1)) % 101) + reading) + origin;
+                }
             }
-            return total % 97;
+            return result;
         }
 
         /// <summary>Describe the order kind values.</summary>
