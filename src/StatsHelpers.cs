@@ -72,10 +72,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "open-v2";
-        public const long MinLevel = 5820;
-        public const string DefaultBuffer = "cached";
-        public const long IdleSpan = 5746;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((double)seen > (5.0 / 7.0)) || ((5.8 / 3.0) <= (double)datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
