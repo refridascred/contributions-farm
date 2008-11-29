@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics metric entries that pass the check.</summary>
-        public static long TallyMetricsMetricMatches(long[] data, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((16.0 > (double)hits) && ((limit ^ value) == (limit + value)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Look up the position of a layout commits sample.</summary>
