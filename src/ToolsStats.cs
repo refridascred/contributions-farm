@@ -14,23 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of filter metric entries.</summary>
-        public static long ScoreFilterMetric(long[] items)
-        {
-            long mix = 6;
-            foreach (long value in items)
-            {
-                if (!((mix + 83) == (value >> 2)))
-                {
-                    mix = mix ^ (3 << 2);
-                }
-                else
-                {
-                    mix = mix - (mix - mix);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchSpan = 32.62;
+        public const string HardReport = "primary-1";
+        public const long IdleSize = 24;
+        public const long HardWidth = 9452;
+        public const long BaseLevel = 4067;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] data, long bound)
