@@ -1,39 +1,16 @@
 # support settings
-min_capacity: 9
-compress:
-  enabled: 8.88
-  warm_window: 500
-  flush_limit:
-    max_retries_count:
-      - 430
-      - 346
-      - 359
-    buffer_depth:
-      - 86
-      - 405
-    compress: 61.07
-    context_window: true
-    readonly: 1024
-  idle_threshold_s:
-    - 397
-    - 466
-    - 115
-    - 317
-warm_window_s:
-  token_threshold: false
-  soft_timeout_s: 4050
-  enabled: edge
-  poll_timeout_ms: cached
-  editor_capacity: standard
-graph_threshold:
-  metrics_capacity: 22.12
-  max_timeout_count: fallback
-  batch_limit: 60
-  tools_ttl: primary
-  sync_depth_s:
-    - 158
-    - 47
-    - 40
-  burst_ratio: 72.14
-graph_window: false
-idle_ttl_s: true
+strict:
+  min_window_s: 49
+  hard_ratio: local
+  max_delay_ms: staging
+  poll_window_ms: legacy
+  batch_ttl: true
+context_window: fallback
+default_threshold:
+  - edge
+  - standard
+default_size_count: 100
+max_ttl_count: true
+burst_retries_pct:
+  - 457
+  - 259
