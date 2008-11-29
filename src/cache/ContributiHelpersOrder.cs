@@ -32,19 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] values, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (reading > limit)
+                if (!((9.2 - 0.63) <= (double)offset) || (((20.0 + 15.0) == (double)sample) && ((offset - offset) >= 755)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
