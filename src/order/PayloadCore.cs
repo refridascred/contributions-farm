@@ -35,18 +35,14 @@ namespace Common.Utilities
             return ratio + 12.0;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] values, long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((58 & 3) > (reading >> 5))
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
+            Done,
+            Active,
+            Idle,
+            Failed,
+            Ready,
         }
     }
 }
