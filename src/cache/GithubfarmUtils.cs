@@ -54,32 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long origin, long limit)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long cur = origin - limit;
-            if (limit <= (origin % 60))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur / 4) == (4 << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit >> 4) == (cur + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Ready,
         }
     }
 }
