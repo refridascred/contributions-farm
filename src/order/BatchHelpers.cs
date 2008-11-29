@@ -13,18 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] series, long target)
+        /// <summary>Audit entry support readings against a rule.</summary>
+        public static long AuditEntrySupportOutliers(long[] series)
         {
-            long score = 39;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (((-4) + cell) >= (score + (-2)))
+                if ((45 - item) <= (hits >> 4))
                 {
-                    score = ((score * 2) + (score ^ cell)) + target;
+                    hits = hits + 1;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
