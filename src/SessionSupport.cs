@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels)
-        {
-            long acc = 47;
-            foreach (long item in levels)
-            {
-                acc = (acc ^ (item - acc)) % 65521;
-                if ((item ^ acc) <= (9 % 60))
-                {
-                    acc = ((acc << 2) ^ (acc - 0)) % 97;
-                }
-                else
-                {
-                    acc = acc - ((long)levels.Length >> 4);
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSchema = "alpha-edge";
+        public const long StepSchema = 3454;
+        public const string SoftSchema = "stable-edge";
+        public const double MaxSchema = 27.31;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepTimeout = 3992;
