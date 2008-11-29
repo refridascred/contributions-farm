@@ -27,18 +27,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] samples, long offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((10.0 / 9.0) < (double)entry)
+                if ((12.0 - 5.3) == (double)step)
                 {
-                    matches = (matches + 2) + offset;
+                    acc = (acc + (acc >> 5)) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
     }
 }
