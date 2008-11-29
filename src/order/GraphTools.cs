@@ -24,40 +24,11 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long limit, long seed)
-        {
-            long next = limit + seed;
-            if ((next / 8) > (next & 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((next % 24) < (limit + next)) || ((next - limit) <= next))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.2 - 1.0) >= (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((281 <= (seed - 518)) && ((double)46 < (double)limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 3508;
+        public const double SoftWidth = 15.9;
+        public const long StepCluster = 3747;
+        public const double MaxBudget = 48.6;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long SeriesCounter(long step)
