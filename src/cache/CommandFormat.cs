@@ -31,13 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Active,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepCount = "primary-edge";
+        public const long MaxRatio = 501;
+        public const string DefaultEditor = "stable";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseFactor = 1508;
