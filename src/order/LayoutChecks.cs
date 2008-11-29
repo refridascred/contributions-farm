@@ -47,12 +47,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepScore = 53.82;
+        public const long BatchScore = 1971;
+        public const string DefaultInterval = "local";
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
