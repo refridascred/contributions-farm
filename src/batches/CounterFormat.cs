@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] levels)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)(long)levels.Length > (double)cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
