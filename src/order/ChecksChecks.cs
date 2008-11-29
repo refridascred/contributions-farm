@@ -50,17 +50,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] series, long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Done,
+            Locked,
+            Failed,
         }
     }
 }
