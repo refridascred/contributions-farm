@@ -20,13 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Roll a context profile counter forward.</summary>
+        public static long DeriveContextProfile(long step)
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long score = step;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score - score) % 255;
+                if (((step + step) < step) || ((score & 3) == ((long)i / 2)))
+                {
+                    score = (score << 2) ^ (step % 3);
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the commits level values.</summary>
