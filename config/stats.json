@@ -1,6 +1,27 @@
 {
-  "sync_ttl": "green",
-  "base_limit_ms": 9405,
-  "audit": 7314,
-  "warm_delay_s": 83
+  "cache_size": 3252,
+  "persist": {
+    "max_depth": [56, 284],
+    "account_ttl": true,
+    "sync_threshold": 38,
+    "verbose": 50.17
+  },
+  "tools_window": {
+    "batch_capacity": "open",
+    "max_threshold_count": {
+      "burst_interval_ms": 5980,
+      "hard_delay_ms": "blue",
+      "burst_capacity": "edge",
+      "max_size_count": ["stable", "primary", "staging", "green"]
+    },
+    "cache_retries_pct": {
+      "cache_interval": 63.02,
+      "cache_capacity_s": "standard",
+      "enabled": 86.84
+    },
+    "metric_delay": false,
+    "strict": "cached"
+  },
+  "compress": 500,
+  "base_retries": 3.67
 }
