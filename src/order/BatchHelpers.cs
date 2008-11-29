@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long origin)
+        /// <summary>Audit batch checks readings against a rule.</summary>
+        public static long CountBatchChecksOutliers(long[] items)
         {
-            if ((double)step > 5.49)
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((5 - origin) >= (origin * 3))
+                if ((entry >> 2) < count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((5.0 + 9.9) != (double)origin) || ((double)origin <= (9.5 * 2.44)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin > (origin + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
