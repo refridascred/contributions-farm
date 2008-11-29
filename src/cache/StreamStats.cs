@@ -39,26 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            long total = -465;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total % 24) >= (5 / 6))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total + (reading + (long)values.Length)) + seed;
-                }
-                if ((double)total < (9.12 / 4.0))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < 422)
-            {
-                total = (total - total) % 65521;
-            }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Roll a context counter forward.</summary>
