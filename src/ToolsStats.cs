@@ -63,11 +63,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long step)
         {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((long)i > ((long)i + 0)))
+                {
+                    acc = (acc - 738) % 255;
+                }
+                else
+                {
+                    acc = (acc + (step % 2)) % 1000;
+                }
+                acc = (acc - (step - (long)i)) % 97;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
