@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseLevel = 3204;
-        public const long MinCount = 7140;
-        public const double IdleNotes = 34.04;
-        public const long IdleWidth = 2090;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples)
+        {
+            long mix = 142;
+            foreach (long cell in samples)
+            {
+                mix = ((mix * 3) + cell) % 255;
+                mix = (mix ^ ((long)samples.Length + (-827))) % 255;
+                if ((double)cell > (6.6 / 8.0))
+                {
+                    mix = (mix + (cell * 4)) % 101;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string MinSpan = "alpha-1";
