@@ -26,12 +26,22 @@ namespace Common.Utilities
         public const double WindowGithubfarm = 67.81;
         public const double HardFactor = 44.42;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] readings)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((586 / 3) != (hits & 31))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
