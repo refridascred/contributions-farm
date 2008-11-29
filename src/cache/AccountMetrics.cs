@@ -22,12 +22,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 77.64;
-        public const double HardRatio = 34.13;
-        public const long BaseBudget = 1013;
-        public const string DefaultStream = "local-1";
-        public const long IdleFactor = 9010;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 5362;
+        public const string DefaultBatches = "stable";
+        public const long RetryBatches = 359;
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] readings)
