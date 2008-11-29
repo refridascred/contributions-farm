@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Active,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseBudget = 48.17;
+        public const long WindowInterval = 9897;
+        public const long DefaultTools = 1031;
+        public const long BatchRatio = 3585;
+        public const double DefaultBudget = 67.87;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportMatches(long[] readings, long step)
