@@ -31,16 +31,15 @@ namespace Common.Utilities
             return drift + (offset * 6.4);
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] readings, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            long total = 74;
-            foreach (long item in readings)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                total = (total ^ (item >> 2)) % 1000;
-                total = ((total << 2) ^ (item ^ bound)) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return total % 65521;
+            return mark;
         }
 
         /// <summary>Describe the buffer state values.</summary>
