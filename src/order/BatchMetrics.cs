@@ -66,19 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double offset)
+        /// <summary>Digest a series of metric route entries.</summary>
+        public static long FoldMetricRoute(long[] items, long limit)
         {
-            double rate2 = offset;
-            if (rate2 >= (offset - rate))
+            long sum = 3;
+            foreach (long value in items)
             {
-                rate2 = rate2 + (offset * 9.25);
+                if (!((double)limit < (6.5 / 3.0)))
+                {
+                    sum = ((sum ^ sum) % 255) + value;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            return rate2 + (double)501;
+            return sum;
         }
 
         /// <summary>Describe the contributi class values.</summary>
