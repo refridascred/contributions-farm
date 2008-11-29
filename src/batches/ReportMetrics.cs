@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] samples, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
+            long mark = 5;
+            foreach (long value in samples)
             {
-                sum = ((sum << 2) ^ floor) % 255;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (((mark + seed) == ((-2) << 2)) && ((7.22 - 3.95) != (double)value))
+                {
+                    mark = ((mark << 2) ^ (mark + seed)) % 65521;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (seed + mark);
+                }
             }
-            return sum;
+            return mark % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
