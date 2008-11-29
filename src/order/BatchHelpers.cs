@@ -28,24 +28,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] series, long offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mix = 295;
-            foreach (long datum in series)
-            {
-                mix = (mix - mix) % 97;
-                mix = mix - (229 << 2);
-                if ((double)offset != (5.0 - 2.5))
-                {
-                    mix = (mix << 3) ^ (datum - 2);
-                }
-                else
-                {
-                    mix = (mix - ((-56) + mix)) % 255;
-                }
-            }
-            return mix;
+            Pending,
+            Stale,
+            Idle,
+            New,
         }
     }
 }
