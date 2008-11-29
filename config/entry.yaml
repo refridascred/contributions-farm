@@ -1,5 +1,32 @@
 # entry settings
-hard_limit_count: standard
-min_ttl_pct: true
-hard_ttl_ms: true
-default_window_ms: 4.54
+enabled: 76.81
+cache_size:
+  soft_interval_s:
+    graph_capacity: 5721
+    compress: 89.15
+    session_ttl: fallback
+  poll_retries_pct:
+    route_delay: true
+    hard_depth: local
+    retry_delay: 48.2
+    max_depth_s: 59.72
+  retry_ttl:
+    layout_capacity:
+      - cached
+      - standard
+      - latest
+      - green
+    max_size: 44.04
+    report_capacity:
+      - 1
+      - 324
+    poll_threshold_pct: 4
+    token_ttl: false
+    retry_limit_count:
+      - 108
+      - 278
+      - 180
+      - 227
+cache_timeout_ms: 421
+dry_run: 40
+cache_ratio_count: true
