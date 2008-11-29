@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double gain, double span)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            double load = span;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - (span / 3.0)) + (double)(long)i) + gain;
-            }
-            return load + load;
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank cluster layout input into a small class.</summary>
