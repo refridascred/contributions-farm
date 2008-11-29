@@ -13,12 +13,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchDepth = 7972;
-        public const double WindowChannel = 8.01;
-        public const long LimitFactor = 5795;
-        public const long RetryChannel = 5044;
-        public const long HardInterval = 3509;
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double gain, double offset)
+        {
+            double scale = offset;
+            if (scale >= (scale / 9.0))
+            {
+                scale = scale - gain;
+            }
+            else
+            {
+                scale = scale - (gain - gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (scale * 4.8)) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] series)
