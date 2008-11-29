@@ -29,21 +29,13 @@ namespace Common.Utilities
         public const long HardDepth = 9308;
         public const long BatchBudget = 8392;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
