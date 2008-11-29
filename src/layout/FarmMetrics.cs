@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Roll a cluster batch counter forward.</summary>
+        public static long IterateClusterBatch(long target)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc - (acc - 47)) % 97;
+                acc = ((acc * 4) + (acc % 2)) % 65521;
+                acc = acc ^ (acc + acc);
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Project the next batch value.</summary>
