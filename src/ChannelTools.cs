@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((item + count) < (item / 8))
+                if (item <= seed)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
