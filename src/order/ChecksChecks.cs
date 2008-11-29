@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of layout profile entries.</summary>
+        public static long ScoreLayoutProfile(long[] items)
         {
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 820;
+            foreach (long entry in items)
+            {
+                result = ((result - (result % 2)) % 101) + entry;
+                result = result ^ (result % 100);
+            }
+            if (result > 2)
+            {
+                result = ((result << 2) ^ (result + result)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the layout class values.</summary>
