@@ -1,6 +1,8 @@
 {
-  "soft_threshold_s": false,
-  "support_window": 26.56,
-  "warm_ttl": "stable",
-  "readonly": "local"
+  "verbose": "strict",
+  "base_interval_ms": "eu-west",
+  "default_depth_count": 51.88,
+  "hard_size_count": "edge",
+  "persist": 250,
+  "cache_timeout_pct": true
 }
