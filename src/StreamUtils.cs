@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long sum = 410;
+            foreach (long cell in levels)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((double)sum > (1.37 + 1.71))
+                {
+                    sum = (sum ^ cell) % 255;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum & 15)) % 97;
+                }
             }
-            return sum;
+            return sum % 65521;
         }
 
         /// <summary>Describe the contributi class values.</summary>
