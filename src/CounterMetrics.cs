@@ -43,15 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long state = -17;
-            foreach (long sample in items)
-            {
-                state = (state ^ (state << 3)) ^ sample;
-            }
-            return state;
+            Pending,
+            Idle,
+            New,
         }
     }
 }
