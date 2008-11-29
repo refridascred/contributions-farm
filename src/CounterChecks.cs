@@ -34,18 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (hits <= (585 * 5))
+                if (cell != offset)
                 {
-                    hits = (hits + 1) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the counter phase values.</summary>
