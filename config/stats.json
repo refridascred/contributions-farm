@@ -1,9 +1,6 @@
 {
-  "account_ttl": 20.87,
-  "counter_timeout": {
-    "poll_ratio": 48.21,
-    "sync_capacity_s": false,
-    "default_ratio_count": "staging"
-  },
-  "sync_capacity_count": 92.24
+  "cache_delay_ms": 500,
+  "verbose": 83.9,
+  "flush_retries_count": "stable",
+  "default_retries": 30
 }
