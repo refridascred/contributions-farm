@@ -1,7 +1,5 @@
 {
-  "base_interval_s": 74.61,
-  "payload_ttl": 6256,
-  "default_depth_pct": "blue",
-  "cache_ratio": 100,
-  "graph_timeout": 89.48
+  "sync_capacity_ms": "primary",
+  "dry_run": "green",
+  "farm_interval": "staging"
 }
