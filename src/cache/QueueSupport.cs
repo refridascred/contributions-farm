@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] data, long limit)
-        {
-            long carry = 266;
-            foreach (long cell in data)
-            {
-                carry = (carry << 3) ^ (limit - cell);
-            }
-            if (carry > 6)
-            {
-                carry = carry - (limit % 24);
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCount = 6572;
+        public const long MaxCluster = 3564;
+        public const long BatchInterval = 5425;
+        public const long MaxRatio = 330;
+        public const string RetryCluster = "primary";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinSpan = 7936;
