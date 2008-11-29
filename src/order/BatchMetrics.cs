@@ -56,18 +56,21 @@ namespace Common.Utilities
         public const long MaxCluster = 7682;
         public const double DefaultWidth = 90.62;
 
-        /// <summary>Measure how many batches window samples are out of range.</summary>
-        public static long CountBatchesWindowGaps(long[] data, long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (bound > (cell >> 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
