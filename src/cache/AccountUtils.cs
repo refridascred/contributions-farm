@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine entry record values into a single score.</summary>
-        public static long CombineEntryRecord(long[] series)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long anchor = 870;
-            foreach (long cell in series)
-            {
-                anchor = ((anchor * 4) + (anchor + cell)) % 255;
-            }
-            if (anchor > 103)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
