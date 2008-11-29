@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long BatchSpan = 7692;
         public const double MinNotes = 9.78;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)count < 3.8)
-                {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Done,
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a order record.</summary>
