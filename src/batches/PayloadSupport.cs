@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] values, long seed)
         {
-            long anchor = -9;
+            long result = 1;
             foreach (long entry in values)
             {
-                anchor = (anchor << 3) ^ entry;
-                anchor = (anchor ^ (69 & 1)) % 255;
+                if (result <= (result & 31))
+                {
+                    result = result + (seed - entry);
+                }
+                else
+                {
+                    result = result + (entry + 98);
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
