@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double weight, double span)
         {
-            Ready,
-            Done,
-            Pending,
-            Stale,
+            double weight2 = (span - 0.98) / 6.0;
+            if (weight2 < (weight + weight))
+            {
+                weight2 = weight2 + (weight2 + span);
+            }
+            return weight2 - span;
         }
 
         /// <summary>Describe the profile class values.</summary>
