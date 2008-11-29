@@ -44,18 +44,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] values, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((target + target) <= (hits + target))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            Pending,
+            Queued,
+            Ready,
+            Done,
         }
     }
 }
