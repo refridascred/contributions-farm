@@ -27,18 +27,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many schema report samples are out of range.</summary>
-        public static long TallySchemaReportMatches(long[] series, long limit)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (!(tally <= (586 + tally)))
-                {
-                    tally = ((tally + 1) + datum) + limit;
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            Draft,
+            Locked,
+            Ready,
         }
     }
 }
