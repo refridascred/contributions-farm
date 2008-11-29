@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)bound >= (3.96 + 6.0))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate order readings against a bound.</summary>
