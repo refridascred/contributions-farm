@@ -32,12 +32,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            Pending,
-            Queued,
-            Paused,
+            long result = 713;
+            foreach (long sample in data)
+            {
+                result = (result - sample) % 255;
+            }
+            if (result < (-23))
+            {
+                result = result + (result << 2);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a checks filter sample.</summary>
