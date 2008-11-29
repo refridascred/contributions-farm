@@ -1,7 +1,8 @@
 # githubfarm settings
-enabled: 26.01
-min_size_s: 27.45
-queue_retries: 85
-base_limit: true
-base_size_count: 250
-dry_run: 12.7
+burst_limit_count: false
+flush_limit: strict
+warm_depth:
+  - legacy
+  - stable
+sync_window_s: 45.72
+cache_size_ms: 16.36
