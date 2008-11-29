@@ -36,12 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBatch = 47.64;
-        public const long MaxBatch = 9288;
-        public const long CacheWidth = 9026;
-        public const long BurstBatch = 4521;
-        public const string DefaultFactor = "strict-edge";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!((matches * 5) < (value % 24)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string HardSpan = "cached-1";
