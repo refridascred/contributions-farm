@@ -1,7 +1,13 @@
 {
-  "idle_delay_count": "fallback",
-  "warm_delay_s": ["local", "staging", "local"],
-  "verbose": ["standard", "open", "strict", "edge"],
-  "min_limit_ms": 53.83,
-  "persist": 48.71
+  "sync_depth_ms": "eu-west",
+  "default_interval": 39.53,
+  "strict": [58, 100, 388, 123],
+  "flush_capacity_s": {
+    "burst_capacity": true,
+    "dry_run": true,
+    "base_depth_count": false,
+    "command_ratio": ["stable", "stable"],
+    "metrics_timeout": 9,
+    "readonly": ["stable", "cached"]
+  }
 }
