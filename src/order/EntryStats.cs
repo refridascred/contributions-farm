@@ -54,13 +54,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Iterate the farm payload series from a seed.</summary>
+        public static long IterateFarmPayload(long seed)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = (mark * 5) + (long)i;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
