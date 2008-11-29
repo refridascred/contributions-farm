@@ -63,11 +63,12 @@ namespace Common.Utilities
         public const long DefaultAlready = 5345;
         public const long WindowAlready = 8550;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            Dropped,
+            New,
+            Queued,
         }
     }
 }
