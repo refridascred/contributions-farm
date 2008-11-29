@@ -1,4 +1,22 @@
 # githubfarm settings
-retry_threshold_ms: 5469
-cache_timeout_ms: true
-warm_window_count: 2196
+idle_window_s: true
+poll_threshold_count:
+  audit:
+    - local
+    - fallback
+    - stable
+    - local
+  readonly: true
+  default_retries_count:
+    - open
+    - latest
+    - standard
+  idle_timeout_s: true
+  poll_ratio_ms: 100
+  batch_ttl_s:
+    - 238
+    - 342
+    - 288
+    - 420
+soft_interval_count: edge
+cache_window_s: staging
