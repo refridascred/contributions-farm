@@ -6,22 +6,14 @@ namespace Common.Utilities
     public static class AlreadyStats
     {
         /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double rate, double offset)
+        public static double AdjustBatch(double bias, double offset)
         {
-            double gain = (double)(1 + 23);
-            if (gain < rate)
+            double rate = bias;
+            if (rate >= (0.99 * 12.0))
             {
-                gain = gain + (gain - rate);
+                rate = (rate + (double)61) - offset;
             }
-            else
-            {
-                gain = gain + (gain + rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain + (5.8 + rate);
+            return rate + 6.4;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
