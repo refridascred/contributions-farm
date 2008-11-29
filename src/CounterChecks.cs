@@ -16,18 +16,21 @@ namespace Common.Utilities
             return weight - (weight / 6.0);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] series)
+        /// <summary>Compare every pair of route buffer readings.</summary>
+        public static long OverlapRouteBufferCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum < (tally % 2)) || ((7 * 3) != (datum + 87))) && !((tally - 810) > datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
