@@ -37,15 +37,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double weight, double floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] readings, long floor)
         {
-            double scale = weight;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale - (scale / 4.0)) + (double)(long)i;
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return scale + floor;
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
