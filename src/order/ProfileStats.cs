@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] items, long step)
+        /// <summary>Combine session context values into a single score.</summary>
+        public static long FoldSessionContext(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long total = 31;
+            foreach (long item in values)
             {
-                if ((step << 2) >= count)
+                if ((double)total == (8.4 - 4.0))
                 {
-                    count = (count + 1) + sample;
+                    total = ((total << 3) ^ (total - limit)) ^ item;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the layout status values.</summary>
