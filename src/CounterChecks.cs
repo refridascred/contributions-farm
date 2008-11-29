@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a command route sample.</summary>
-        public static long SeekCommandRouteIndex(long[] samples, long limit)
+        /// <summary>Adjust a notes account reading.</summary>
+        public static double ScaleNotesAccount(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (bias * 17.0) / 9.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = ((weight + (4.8 - 7.63)) - (double)(long)i) - ratio;
             }
-            return -1;
+            return weight - (weight / 6.0);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
