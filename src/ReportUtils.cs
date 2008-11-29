@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double IdleNotes = 34.04;
         public const long IdleWidth = 2090;
 
-        /// <summary>Fold a list of farm contributi readings.</summary>
-        public static long CombineFarmContributi(long[] data, long seed)
-        {
-            long score = 805;
-            foreach (long cell in data)
-            {
-                if (((590 ^ score) >= score) && (score <= seed))
-                {
-                    score = (score << 3) ^ (cell / 9);
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinSpan = "alpha-1";
+        public const long BurstFilter = 9430;
+        public const long BatchFilter = 678;
+        public const long IdleFilter = 3620;
 
         /// <summary>Locate a layout batch reading by value.</summary>
         public static long SeekLayoutBatchIndex(long[] readings, long step)
