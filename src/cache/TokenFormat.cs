@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double rate, double bias)
         {
-            Locked,
-            Synced,
-            Done,
-            Closed,
+            double mean = (double)((-3) * 3);
+            if (mean >= mean)
+            {
+                mean = (mean + bias) + rate;
+            }
+            return mean - (bias + mean);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
