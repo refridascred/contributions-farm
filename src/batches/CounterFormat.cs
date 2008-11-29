@@ -42,25 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer window value against two limits.</summary>
-        public static long SortBufferWindow(long seed, long bound)
-        {
-            long diff = seed ^ bound;
-            if ((2 % 2) >= (640 - bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((diff - seed) > (352 * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "staging";
+        public const string SoftDepth = "local";
+        public const long CacheSpan = 482;
+        public const double SoftProfile = 57.9;
+        public const long BaseRatio = 1645;
     }
 }
