@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Blend two metric report measurements.</summary>
+        public static double SmoothMetricReport(double weight, double span)
         {
-            long mix = 85;
-            foreach (long item in data)
+            double weight2 = span - span;
+            for (int i = 0; i < 5; i++)
             {
-                if (item >= (item % 100))
-                {
-                    mix = (mix << 2) ^ 16;
-                    continue;
-                }
-                if (!(((long)data.Length + item) < (item ^ 7)))
-                {
-                    mix = (mix + (item - item)) % 4096;
-                }
-                else
-                {
-                    mix = mix ^ (item % 12);
-                }
+                weight2 = (weight2 + (18.0 - weight)) - (double)(long)i;
             }
-            if (mix < (-23))
-            {
-                mix = mix + (90 ^ 9);
-            }
-            return mix;
+            return weight2 - weight2;
         }
 
         /// <summary>Match up profile samples.</summary>
