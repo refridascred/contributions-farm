@@ -14,11 +14,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "stable-1";
-        public const long BurstRatio = 4947;
-        public const string BaseCount = "stable-v2";
-        public const long MaxEntry = 7704;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] series)
+        {
+            long mix = 72;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (((mix << 2) ^ (value / 8)) % 65521) - (long)i;
+                    mix = (mix ^ 757) % 101;
+                }
+                if ((mix >= (value ^ mix)) || ((value / 6) >= 7))
+                {
+                    mix = mix - (9 ^ value);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long RetryGithubfarm = 3732;
