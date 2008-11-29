@@ -82,39 +82,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format commits pair into a bucket.</summary>
-        public static long SortFormatCommits(long bound, long seed)
-        {
-            long cur = bound - seed;
-            if (((8.0 / 8.0) != (double)cur) && ((double)cur > (6.06 - 1.4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur ^ cur) < (79 * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed + cur) == (3 + bound)) && (bound > (seed >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed < (bound + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseTimeout = 1956;
+        public const string LimitScore = "standard-edge";
+        public const long BatchEntry = 1445;
+        public const long SoftEntry = 5841;
+        public const long HardEntry = 858;
     }
 }
