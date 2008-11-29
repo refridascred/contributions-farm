@@ -16,21 +16,19 @@ namespace Common.Utilities
             return rate - (12.0 - rate);
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= origin)
                 {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Rank contributi farm input into a small class.</summary>
