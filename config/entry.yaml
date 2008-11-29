@@ -1,11 +1,7 @@
 # entry settings
-route_timeout:
-  verbose: 7759
-  compress: 500
-  session_timeout: true
-  retry_interval_s: 33.97
-  cache_delay: green
-readonly: 42.94
-command_delay: true
-warm_threshold_s: false
-default_interval_ms: eu-west
+idle_depth: staging
+audit: 6325
+batch_interval: 4987
+route_capacity: false
+persist: 4101
+base_ttl_ms: primary
