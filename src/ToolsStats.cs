@@ -37,18 +37,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] readings, long step)
+        public static bool VerifyStreamBounds(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (value <= step)
+                if (datum > bound)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
