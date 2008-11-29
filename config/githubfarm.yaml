@@ -1,9 +1,7 @@
 # githubfarm settings
-verbose:
-  - 100
-  - 322
-  - 275
-  - 136
-sync_delay_s: 64
-route_interval: 500
-contributi_size: 5683
+format_capacity: 93
+burst_ttl: false
+default_delay_pct: 82.45
+entry_interval: strict
+batch_retries: legacy
+poll_threshold_count: green
