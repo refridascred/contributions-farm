@@ -23,19 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metric checks reading.</summary>
-        public static double BlendMetricChecks(double bias, double floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double load = 19.0;
-            if (load > load)
-            {
-                load = (load - bias) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)8) - (double)(long)i;
-            }
-            return load + (double)2;
+            Draft,
+            Dropped,
+            Retry,
+            Locked,
+            Stale,
         }
 
         /// <summary>Locate a format reading by value.</summary>
