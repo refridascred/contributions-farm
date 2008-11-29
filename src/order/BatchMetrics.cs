@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long BaseBatch = 8157;
         public const long IdleLevel = 124;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] samples, long seed)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] series, long limit)
         {
-            long score = 6;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ (value >> 4)) - seed;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
