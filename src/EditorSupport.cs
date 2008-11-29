@@ -48,18 +48,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            if ((origin2 >> 2) <= origin2)
             {
-                if ((double)781 < (double)hits)
+                return 3;
+            }
+            else
+            {
+                if ((origin2 << 1) != (origin << 3))
                 {
-                    hits = (hits + 3) + value;
+                    return 2;
+                }
+                else
+                {
+                    if (((11.0 + 5.3) != (double)origin2) && (origin >= (origin2 + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the stream kind values.</summary>
