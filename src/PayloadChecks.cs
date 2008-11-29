@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] series, long floor)
         {
-            long score = 77;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                score = ((score * 3) + (score << 2)) % 65521;
-                if (((double)value > (double)score) && ((360 * 3) > score))
+                if ((seen & 31) > (seen << 3))
                 {
-                    score = ((score * 3) + value) % 101;
+                    seen = ((seen + 1) - datum) - floor;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
