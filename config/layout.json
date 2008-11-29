@@ -1,6 +1,18 @@
 {
-  "commits_interval": 2158,
-  "default_retries_pct": [484, 176, 219, 252],
-  "hard_limit_ms": 39,
-  "counter_ratio": [132, 200]
+  "hard_limit": 6294,
+  "entry_retries": {
+    "enabled": {
+      "readonly": [184, 293, 114],
+      "default_threshold_count": "latest",
+      "cache_retries": true,
+      "verbose": "local",
+      "compress": "primary"
+    },
+    "route_window": [142, 499, 15],
+    "warm_ttl": 1024,
+    "window_retries": "standard"
+  },
+  "strict": true,
+  "max_depth": "eu-west",
+  "base_threshold_ms": 69
 }
