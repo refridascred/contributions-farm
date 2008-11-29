@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const long DefaultMetric = 3635;
         public const double BurstMetric = 91.2;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Done,
-            Active,
+            New,
+            Pending,
+            Locked,
             Idle,
-            Failed,
             Ready,
         }
     }
