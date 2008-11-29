@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            if ((double)floor <= (19.0 * 3.7))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target >= (20.0 - 4.33))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.24 - 7.8) <= (2.0 - 15.0))
+                    if ((series[i] - series[j]) > 17)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((target & 3) > floor) && ((floor % 10) > (target * 4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
