@@ -54,22 +54,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 4070;
+        public const double CacheAccount = 79.47;
+        public const string MaxTimeout = "cached-edge";
+        public const long MinScore = 44;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenGaps(long[] series)
