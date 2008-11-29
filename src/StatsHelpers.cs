@@ -62,18 +62,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] readings)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + hits) == (cell + cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
