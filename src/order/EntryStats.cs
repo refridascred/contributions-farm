@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a editor entry reading by value.</summary>
-        public static long LookupEditorEntryIndex(long[] items, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!(offset >= step))
             {
-                if ((items[i] >= offset) && ((items[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (!((offset * 4) < offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up profile layout samples.</summary>
