@@ -55,21 +55,12 @@ namespace Common.Utilities
         public const long WindowPayload = 9231;
         public const double StepTimeout = 62.1;
 
-        /// <summary>Match up channel checks samples.</summary>
-        public static long MatchChannelChecksCount(long[] data)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Paused,
         }
     }
 }
