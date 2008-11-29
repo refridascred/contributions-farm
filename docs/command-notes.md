@@ -1,11 +1,10 @@
 # Command notes
 
-Keep metrics and context names short and lowercase.
-Run the stream check before changing any command limits.
-Each stream is validated before it reaches the queue queue.
+Keep cluster and buffer names short and lowercase.
+Run the report check before changing any command limits.
 
 ## Guidelines
 
-- Document new metric fields
-- Review format limits each release
-- Log every githubfarm change
+- Review notes limits each release
+- Log every context change
+- Validate stream input early
