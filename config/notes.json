@@ -1,5 +1,6 @@
 {
-  "flush_threshold": 780,
-  "min_ratio_pct": 0.79,
-  "max_ratio_count": false
+  "sync_ttl_s": 10,
+  "metrics_window": 72,
+  "base_size": true,
+  "audit": 92
 }
