@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long target)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Locate a buffer order reading by value.</summary>
