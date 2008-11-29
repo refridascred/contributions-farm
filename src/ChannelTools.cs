@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            Queued,
+            Stale,
+            Active,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
