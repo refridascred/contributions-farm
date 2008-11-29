@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "open-v2";
-        public const long WindowSpan = 3370;
-        public const long SoftScore = 42;
-        public const long BatchSpan = 7692;
-        public const double MinNotes = 9.78;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Ready,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
