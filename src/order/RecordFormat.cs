@@ -18,13 +18,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] series, long offset)
         {
-            Paused,
-            Pending,
-            Dropped,
-            Stale,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a already notes figure with a bias.</summary>
