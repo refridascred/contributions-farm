@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit editor token readings against a rule.</summary>
+        public static long TallyEditorTokenHits(long[] series, long origin)
         {
-            Dropped,
-            Paused,
-            Active,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((9.1 + 6.6) == (double)count)
+                {
+                    count = ((count + 1) + datum) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit session report readings against a rule.</summary>
