@@ -23,25 +23,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long floor, long target)
-        {
-            if (((target ^ target) == (target % 3)) || ((target * 3) >= (floor ^ target)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target != (1.48 * 0.8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardSpan = 8211;
+        public const double HardLevel = 55.45;
+        public const string RetryCount = "staging-v2";
+        public const double StepBatch = 3.78;
+        public const long BurstSpan = 2535;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long DeriveMetric(long offset)
