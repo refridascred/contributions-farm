@@ -1,10 +1,10 @@
 # Command notes
 
-Each checks is validated before it reaches the session queue.
-A stats that stays idle for too long is moved to the graph list.
+Run the command check before changing any session limits.
+The session report groups every stream by format.
 
 ## Guidelines
 
-- Document new record fields
-- Keep session values small
-- Log every profile change
+- Prefer checks defaults
+- Keep batch values small
+- Log every filter change
