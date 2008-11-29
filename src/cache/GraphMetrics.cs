@@ -71,18 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] levels, long floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long result = 7;
-            foreach (long item in levels)
-            {
-                if (1.59 >= (double)result)
-                {
-                    result = (result - floor) ^ item;
-                }
-            }
-            return result;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
