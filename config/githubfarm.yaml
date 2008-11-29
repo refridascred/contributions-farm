@@ -1,4 +1,24 @@
 # githubfarm settings
-verbose: cached
-commits_delay: 87.01
-min_window_pct: 250
+default_depth: 91
+soft_limit:
+  stats_threshold: false
+  sync_capacity_s: eu-west
+  audit: 61
+  retry_size_s: 1024
+  burst_capacity_ms: true
+retry_capacity_pct:
+  compress:
+    - blue
+    - cached
+    - eu-west
+    - strict
+  sync_ratio_s: 87
+  idle_interval_ms: 30
+  batch_retries: 8517
+  contributi_limit: false
+  already_limit:
+    - cached
+    - stable
+    - green
+    - latest
+poll_retries_ms: 53
