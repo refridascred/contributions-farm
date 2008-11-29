@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 1226;
+        public const long BurstBuffer = 8738;
+        public const double WindowBuffer = 89.11;
 
         /// <summary>Look up the position of a support format sample.</summary>
         public static long SeekSupportFormatIndex(long[] items, long limit)
