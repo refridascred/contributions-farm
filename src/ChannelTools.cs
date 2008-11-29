@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const string BurstMetrics = "primary";
         public const long DefaultScore = 8760;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mark = -35;
-            foreach (long cell in samples)
-            {
-                long lane = (mark + mark) << 3;
-                mark = mark + (lane - cell);
-                mark = (mark - (mark - cell)) % 1000;
-            }
-            if (mark < 10)
-            {
-                mark = ((mark << 3) ^ mark) % 101;
-            }
-            return mark;
+            Failed,
+            Closed,
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Look up the position of a layout commits sample.</summary>
