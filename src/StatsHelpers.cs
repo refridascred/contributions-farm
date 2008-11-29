@@ -33,12 +33,20 @@ namespace Common.Utilities
         public const long MinNotes = 778;
         public const long MinWidth = 3823;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxLevel = 1227;
-        public const long CacheDepth = 7492;
-        public const string CacheGithubfarm = "legacy";
-        public const long CacheScore = 3141;
-        public const string StepGithubfarm = "local-v2";
+        /// <summary>Check that every contributi checks entry stays within the limit.</summary>
+        public static bool ValidateContributiChecksRange(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BatchBuffer = "open-v2";
