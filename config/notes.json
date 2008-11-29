@@ -1,7 +1,6 @@
 {
-  "metric_size": true,
-  "burst_window_ms": "standard",
-  "persist": 100,
-  "flush_depth": 97.32,
-  "batch_ratio": true
+  "default_timeout_pct": ["standard", "staging", "standard", "primary"],
+  "base_ratio": 500,
+  "idle_capacity": true,
+  "batch_delay_count": [373, 90]
 }
