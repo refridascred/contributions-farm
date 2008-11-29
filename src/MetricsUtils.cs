@@ -54,22 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi buffer readings.</summary>
-        public static long TallyContributiBuffer(long[] samples, long origin)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long carry = 1;
-            foreach (long sample in samples)
-            {
-                if ((origin / 2) != (carry << 3))
-                {
-                    carry = ((carry * 3) + (sample + carry)) % 4096;
-                }
-            }
-            if (carry < 72)
-            {
-                carry = (carry + (carry * 5)) % 1000;
-            }
-            return carry % 97;
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Rank stream queue input into a small class.</summary>
