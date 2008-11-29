@@ -19,18 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support channel entries that pass the check.</summary>
-        public static long AuditSupportChannelOutliers(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)reading > (11.0 * 9.8)) || ((reading + reading) <= reading))
-                {
-                    seen = seen + 2;
-                }
+                mark = ((mark * 2) + target) % 97;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine session values into a single score.</summary>
