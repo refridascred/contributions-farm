@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the context commits entries that pass the check.</summary>
-        public static long CountContextCommitsMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell ^ count) != (count - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 1436;
+        public const long BaseSchema = 803;
+        public const string StepWidth = "legacy-edge";
+        public const long MaxSchema = 5700;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BurstStats = 58.57;
