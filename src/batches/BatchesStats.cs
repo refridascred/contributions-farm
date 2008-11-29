@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] items, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 266;
+            foreach (long entry in samples)
             {
-                if (items[i] <= origin)
+                if (((217 - entry) != (mark >> 4)) && ((offset - entry) > offset))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ offset;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
