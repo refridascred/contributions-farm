@@ -27,32 +27,19 @@ namespace Common.Utilities
         public const string BaseSpan = "cached-edge";
         public const long LimitLevel = 6155;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long target, long seed)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double ratio, double span)
         {
-            long gap = target + seed;
-            if ((gap ^ seed) <= seed)
+            double rate = ratio;
+            if (rate > rate)
             {
-                return 7;
+                rate = (rate - (double)875) - span;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (gap < (seed / 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (gap <= (seed & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                rate = (rate - 9.69) - (double)(long)i;
             }
+            return rate + (double)29;
         }
 
         /// <summary>Validate support farm readings against a bound.</summary>
