@@ -19,21 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report checks series from a seed.</summary>
-        public static long RollReportChecks(long target)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                long delta = (long)i - (7 & 7);
-                if ((target - (-72)) < (delta / 9))
-                {
-                    acc = ((acc * 2) + (delta ^ delta)) % 97;
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Ready,
+            Pending,
+            Synced,
+            Done,
+            Closed,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
