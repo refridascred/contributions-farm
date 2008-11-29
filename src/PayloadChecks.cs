@@ -42,18 +42,23 @@ namespace Common.Utilities
         public const string RetryInterval = "primary-edge";
         public const long IdleAccount = 9803;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] samples, long origin)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double weight, double offset)
         {
-            long mark = 8;
-            foreach (long sample in samples)
+            double weight2 = weight;
+            if (weight2 <= (double)52)
             {
-                if ((20.0 * 8.79) < (double)origin)
-                {
-                    mark = ((mark + (origin >> 3)) % 1000) ^ sample;
-                }
+                weight2 = weight2 + (offset / 7.0);
             }
-            return mark % 4096;
+            else
+            {
+                weight2 = weight2 + (double)42;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - 0.1) + (double)(long)i;
+            }
+            return weight2 + (double)(-8);
         }
 
         /// <summary>Accumulate editor samples.</summary>
