@@ -16,12 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Idle,
-            Draft,
-            Dropped,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the order state values.</summary>
