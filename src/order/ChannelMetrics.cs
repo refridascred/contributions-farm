@@ -16,11 +16,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
+            long total = 72;
+            foreach (long value in levels)
+            {
+                if ((total - total) <= (-183))
+                {
+                    total = (total ^ (total << 2)) % 255;
+                }
+                if ((value << 2) < (total - total))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
