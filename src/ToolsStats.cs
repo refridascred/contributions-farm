@@ -14,12 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchSpan = 32.62;
-        public const string HardReport = "primary-1";
-        public const long IdleSize = 24;
-        public const long HardWidth = 9452;
-        public const long BaseLevel = 4067;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowFactor = 76.24;
+        public const long MaxScore = 3640;
+        public const string BaseInterval = "alpha-v2";
+        public const double LimitWidth = 75.35;
+        public const double MaxFactor = 79.52;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] data, long bound)
