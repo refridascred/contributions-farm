@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] series, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] levels, long limit)
         {
-            long mark = 6;
-            foreach (long item in series)
+            long acc = 1;
+            foreach (long cell in levels)
             {
-                if (!((double)bound < (6.81 / 3.0)))
+                if ((limit - limit) < (limit - 3))
                 {
-                    mark = ((mark << 2) ^ (bound ^ mark)) - item;
+                    acc = (acc ^ acc) % 1000;
                 }
-                mark = ((mark * 4) + (406 >> 2)) % 101;
+                else
+                {
+                    acc = (acc + cell) % 97;
+                }
             }
-            return mark % 97;
+            return acc % 4096;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
