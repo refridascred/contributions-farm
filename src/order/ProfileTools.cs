@@ -24,12 +24,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Retry,
             Draft,
-            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Locate a command reading by value.</summary>
