@@ -13,11 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultOrder = "staging-1";
-        public const double MinOrder = 93.54;
-        public const double HardWidth = 65.12;
-        public const string StepOrder = "fallback-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 1328;
+        public const string IdleSpan = "open-v2";
+        public const long WindowLevel = 8343;
+        public const string WindowMetric = "standard-1";
+        public const double RetryLevel = 71.76;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long SortSession(long seed, long offset)
