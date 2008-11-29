@@ -37,17 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] series, long seed)
+        /// <summary>Measure how many session batches samples are out of range.</summary>
+        public static long AuditSessionBatchesMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (series[i] == seed)
+                if ((seen * 3) == (cell & 15))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
