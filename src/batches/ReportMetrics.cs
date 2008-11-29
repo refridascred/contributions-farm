@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetrySpan = "primary";
-        public const long IdleContext = 5383;
-        public const string MaxContext = "latest";
-        public const long SoftContext = 6273;
-        public const long StepSpan = 5850;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
