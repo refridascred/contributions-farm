@@ -38,24 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank filter counter input into a small class.</summary>
-        public static long RankFilterCounter(long floor, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series)
         {
-            if ((floor - floor) < (235 ^ floor))
+            long sum = 91;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset <= (floor & 31))
+                sum = (sum ^ 235) + reading;
+                if (!((double)946 < (double)sum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
