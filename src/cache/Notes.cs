@@ -62,19 +62,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] series, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
