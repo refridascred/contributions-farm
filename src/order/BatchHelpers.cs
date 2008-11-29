@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] values, long limit)
+        /// <summary>Compare every pair of cache already readings.</summary>
+        public static long CompareCacheAlreadyCount(long[] series)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Roll a session counter forward.</summary>
