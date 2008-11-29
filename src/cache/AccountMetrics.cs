@@ -61,13 +61,18 @@ namespace Common.Utilities
             return load + (load + 9.2);
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] data)
         {
-            Closed,
-            Paused,
-            Ready,
-            Stale,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading % 5) < (reading << 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
