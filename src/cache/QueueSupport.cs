@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardSize = 994;
+        public const long CacheGraph = 2840;
+        public const long BatchGraph = 8966;
+        public const double IdleDepth = 54.87;
+        public const double RetryGraph = 15.99;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] values)
