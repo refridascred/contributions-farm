@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Locate a metric window reading by value.</summary>
+        public static long LocateMetricWindowIndex(long[] readings, long seed)
         {
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
