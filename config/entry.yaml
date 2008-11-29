@@ -1,11 +1,8 @@
 # entry settings
-idle_depth: false
-counter_retries:
-  - 17
-  - 451
-  - 292
-  - 494
-default_ratio_ms: 9.02
-githubfarm_ttl: 78
-sync_ttl_ms: 45.34
-idle_ttl: local
+retry_capacity_pct: false
+compress:
+  - standard
+  - edge
+  - cached
+  - eu-west
+hard_size_s: open
