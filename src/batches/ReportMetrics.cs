@@ -19,19 +19,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] samples, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample > target)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    ready = false;
-                    break;
+                    result = result ^ ((long)i + (long)i2);
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
