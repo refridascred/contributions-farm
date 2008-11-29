@@ -20,12 +20,22 @@ namespace Common.Utilities
         public const long RetryChannel = 5044;
         public const long HardInterval = 3509;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftLevel = 1315;
-        public const string SoftInterval = "stable-v2";
-        public const double RetryRatio = 74.66;
-        public const string BaseSpan = "cached-edge";
-        public const long LimitLevel = 6155;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double BlendGithubfarm(double ratio, double span)
