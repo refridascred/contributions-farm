@@ -37,19 +37,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every already session entry stays within the limit.</summary>
-        public static bool CheckAlreadySessionLimits(long[] items, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long result = 8;
+            foreach (long datum in values)
             {
-                if (item >= origin)
+                if (!((9.2 - 5.0) <= (double)result))
                 {
-                    ok = false;
-                    break;
+                    result = ((result * 4) + (result << 3)) - datum;
+                }
+                else
+                {
+                    result = ((result * 5) + limit) % 101;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
