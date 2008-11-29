@@ -26,19 +26,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = (carry - (carry - origin)) ^ (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
