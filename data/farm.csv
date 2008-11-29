@@ -1,9 +1,8 @@
-id,token,ratio
-1,primary,local
-2,445,fallback
-3,standard,eu-west
-4,62.31,270
-5,open,586
-6,77.58,30.81
-7,standard,361
-8,fallback,26.78
+id,owner,weight
+1,standard,972
+2,730,87.01
+3,81.05,staging
+4,113,32
+5,88.85,931
+6,290,333
+7,75.29,42.79
