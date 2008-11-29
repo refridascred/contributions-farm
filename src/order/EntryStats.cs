@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxTimeout = 6689;
-        public const double MaxCounter = 2.61;
-        public const double BatchCounter = 25.02;
-        public const long BurstScore = 4652;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) >= (tally + cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long step, long target)
