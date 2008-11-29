@@ -22,14 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Ready,
-            Queued,
-            Locked,
-            New,
-            Stale,
+            Active,
+            Draft,
+            Paused,
+            Pending,
+            Closed,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
