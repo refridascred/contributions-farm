@@ -54,13 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] series, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            long state = 6;
+            foreach (long item in series)
+            {
+                state = (((state * 5) + (state << 3)) - item) - limit;
+            }
+            return state;
         }
     }
 }
