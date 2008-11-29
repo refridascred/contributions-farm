@@ -59,12 +59,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series, long floor)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            long mix = 221;
+            foreach (long item in series)
+            {
+                mix = (mix - (floor * 3)) % 255;
+                mix = (mix ^ (item >> 3)) % 255;
+            }
+            if (mix < 54)
+            {
+                mix = ((mix << 3) ^ mix) % 101;
+            }
+            return mix;
         }
     }
 }
