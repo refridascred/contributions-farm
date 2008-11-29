@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Pending,
-            Failed,
-            Queued,
             Retry,
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the support phase values.</summary>
