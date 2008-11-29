@@ -1,10 +1,7 @@
 {
-  "support_window": {
-    "sync_ratio_pct": "cached",
-    "audit": "fallback",
-    "burst_timeout": 30
-  },
-  "metrics_ttl": "primary",
-  "poll_depth_count": 5298,
-  "default_window_pct": "standard"
+  "readonly": ["blue", "open", "cached", "strict"],
+  "flush_depth_count": "primary",
+  "session_ratio": false,
+  "batch_retries_s": "open",
+  "enabled": 100
 }
