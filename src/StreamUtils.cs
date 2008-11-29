@@ -76,11 +76,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double weight, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] series, long floor)
         {
-            double scale = weight;
-            return (scale - 0.4) + floor;
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
