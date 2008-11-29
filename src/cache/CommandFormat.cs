@@ -33,10 +33,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheDepth = 4247;
-        public const long BurstStream = 2677;
-        public const long HardTimeout = 60;
+        /// <summary>Rank contributi farm input into a small class.</summary>
+        public static long GradeContributiFarm(long floor, long seed)
+        {
+            long cur = floor ^ seed;
+            if (((double)floor >= (11.0 - 9.2)) || ((143 + seed) > (cur / 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor != (3.22 / 9.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
