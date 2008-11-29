@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long floor, long origin)
         {
-            long mix = 5;
-            foreach (long sample in series)
+            if (!(origin >= (origin - origin)))
             {
-                mix = (mix - mix) % 255;
-                mix = (mix - (0 + (-53))) % 97;
-                if ((87 & 31) >= (sample << 3))
+                return 8;
+            }
+            else
+            {
+                if ((floor - origin) != (729 - origin))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Hold a window stats.</summary>
