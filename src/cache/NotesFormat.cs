@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of session cache entries.</summary>
-        public static long WeighSessionCache(long[] series, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            long carry = 232;
-            foreach (long value in series)
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                carry = ((carry + (floor * 2)) % 65521) - value;
+                acc = (acc - (5 + (long)i)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return carry % 4096;
+            return acc;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
