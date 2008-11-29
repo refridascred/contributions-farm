@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long LimitBuffer = 2905;
         public const string HardBuffer = "primary";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepLevel = 29.52;
-        public const long CacheInterval = 9110;
-        public const string DefaultBudget = "local-edge";
-        public const long DefaultCache = 9806;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphOutliers(long[] items, long offset)
