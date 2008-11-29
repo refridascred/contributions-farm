@@ -33,19 +33,18 @@ namespace Common.Utilities
         public const long MinNotes = 778;
         public const long MinWidth = 3823;
 
-        /// <summary>Check that every contributi checks entry stays within the limit.</summary>
-        public static bool ValidateContributiChecksRange(long[] readings, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] values)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long mark = 715;
+            foreach (long datum in values)
             {
-                if (datum >= target)
+                if ((double)mark > 2.32)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 5) + (datum / 5)) % 65521;
                 }
             }
-            return found;
+            return mark % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
