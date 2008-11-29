@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=279
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-local}"
 case "${mode}" in
-    open)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable strict staging; do
+for item in blue open; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=320
+log "limit is ${RECORD_LIMIT}"
