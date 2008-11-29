@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a batch buffer counter forward.</summary>
-        public static long IterateBatchBuffer(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((step + (long)i) == (69 - step)) && ((long)i >= result))
-                {
-                    result = result ^ (step * 4);
-                    result = (result << 3) ^ ((long)i << 2);
-                }
-                else
-                {
-                    result = (result ^ ((long)i & 1)) % 101;
-                    result = (result ^ (step * 3)) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleTimeout = "stable";
+        public const string BurstChannel = "legacy-1";
+        public const long RetryChannel = 6278;
+        public const long BatchChannel = 6678;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
