@@ -14,13 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Synced,
-            Retry,
-            Ready,
-            Idle,
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit record readings against a rule.</summary>
