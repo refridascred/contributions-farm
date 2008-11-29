@@ -1,6 +1,9 @@
-id,region,level,label
-1,blue,557,staging
-2,green,staging,58.96
-3,84.45,15.13,31.8
-4,62.7,primary,294
-5,open,fallback,976
+id,token,state
+1,97.74,strict
+2,537,standard
+3,fallback,81.84
+4,293,754
+5,legacy,blue
+6,881,260
+7,89.64,742
+8,fallback,29
