@@ -52,11 +52,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 4456;
-        public const double LimitOrder = 74.44;
-        public const string CacheInterval = "strict-1";
-        public const double BaseScore = 25.22;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples, long seed)
+        {
+            long result = 0;
+            foreach (long cell in samples)
+            {
+                result = ((((result * 2) + ((long)samples.Length >> 5)) % 97) ^ cell) + seed;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Blend two channel session measurements.</summary>
         public static double ScaleChannelSession(double weight, double bias)
