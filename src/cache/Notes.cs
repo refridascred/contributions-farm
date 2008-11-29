@@ -48,17 +48,19 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] series, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                carry = (carry ^ (floor >> 2)) % 4096;
-                carry = ((carry * 2) + (floor << 3)) % 65521;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
