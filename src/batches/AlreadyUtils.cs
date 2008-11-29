@@ -26,18 +26,13 @@ namespace Common.Utilities
             return drift - (double)390;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long carry = 715;
+            foreach (long cell in items)
             {
-                if (offset >= (offset - carry))
-                {
-                    carry = (carry - offset) % 255;
-                }
-                carry = (carry ^ offset) % 255;
-                carry = ((carry * 2) + (long)i) % 101;
+                carry = (carry << 2) ^ (cell + carry);
             }
             return carry;
         }
