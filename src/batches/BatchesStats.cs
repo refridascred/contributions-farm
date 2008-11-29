@@ -31,12 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 6981;
+        public const long MinSpan = 5991;
+        public const double WindowCount = 0.22;
+        public const long MaxScore = 8508;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepProfile = 4044;
