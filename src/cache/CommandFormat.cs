@@ -38,17 +38,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] series, long target)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 < ratio)
             {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 - ratio;
             }
-            return -1;
+            return ratio2 - (ratio - bias);
         }
     }
 }
