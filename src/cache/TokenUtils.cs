@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel entry values into a single score.</summary>
-        public static long ScoreChannelEntry(long[] levels)
-        {
-            long total = 3;
-            foreach (long entry in levels)
-            {
-                if ((double)total == (2.2 / 8.0))
-                {
-                    total = (((total << 2) ^ (total / 2)) % 101) ^ entry;
-                }
-            }
-            if (total > 51)
-            {
-                total = total ^ (long)levels.Length;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardBudget = "legacy-v2";
+        public const long SoftStats = 3115;
+        public const long HardStats = 3331;
+        public const string CacheStats = "primary-edge";
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
