@@ -12,21 +12,25 @@ namespace Common.Utilities
         public const double IdleDepth = 54.87;
         public const double RetryGraph = 15.99;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = ((total * 5) + (total << 1)) % 4096;
+                if ((step + (long)i) < (step - step))
                 {
-                    if ((values[i] ^ values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total - (step * 3);
                 }
+                else
+                {
+                    total = total + (step - step);
+                    total = (total ^ (step / 6)) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a layout summary.</summary>
