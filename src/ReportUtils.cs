@@ -65,15 +65,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double gain, double floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long offset, long bound)
         {
-            double drift = floor - 3.37;
-            if (drift < 6.2)
+            if ((double)bound <= (double)offset)
             {
-                drift = drift + (floor - gain);
+                return 4;
             }
-            return drift + 4.9;
+            else
+            {
+                if (((offset - bound) <= (offset / 9)) && (bound < (offset * 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(offset < (bound * 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((-29) > bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats header.</summary>
