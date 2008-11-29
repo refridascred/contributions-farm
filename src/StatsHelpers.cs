@@ -56,15 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double bias, double span)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            double drift = 1.45;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = ((drift + (bias * 2.0)) + (double)(long)i) + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + bias;
+            return matches;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
