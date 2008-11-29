@@ -34,12 +34,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long seed)
         {
-            Stale,
-            Paused,
-            Idle,
+            long total = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                total = (total ^ ((long)i ^ total)) % 4096;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    long tally = (total >> 1) * 2;
+                    total = ((total + tally) % 255) ^ (long)i2;
+                }
+                total = (total + (seed - seed)) % 4096;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the stream status values.</summary>
