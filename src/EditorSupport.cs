@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long BurstBuffer = 8738;
         public const double WindowBuffer = 89.11;
 
-        /// <summary>Look up the position of a support format sample.</summary>
-        public static long SeekSupportFormatIndex(long[] items, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (bias + offset) - (offset - bias);
+            if (bias2 < (bias / 3.0))
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (bias * 5.59);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - (bias2 + offset);
         }
 
         /// <summary>Rank filter input into a small class.</summary>
