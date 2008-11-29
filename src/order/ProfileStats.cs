@@ -16,12 +16,21 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
