@@ -1,11 +1,15 @@
 # Command notes
 
-The contributi module keeps context values in sync with the entry cache.
-A profile that stays idle for too long is moved to the editor list.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Run the payload check before changing any checks limits.
+Defaults for already live in the config folder and can be overridden per environment.
+
+Run the githubfarm check before changing any session limits.
+Each batch is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Keep record values small
-- Document new schema fields
-- Log every notes change
-- Review graph limits each release
+- Document new window fields
+- Prefer graph defaults
+- Keep channel values small
+- Review queue limits each release
