@@ -47,17 +47,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a checks filter sample.</summary>
-        public static long FindChecksFilterIndex(long[] samples, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
