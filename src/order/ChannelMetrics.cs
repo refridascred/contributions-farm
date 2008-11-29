@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Accumulate counter stats samples.</summary>
+        public static long DigestCounterStats(long[] items, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            long total = 2;
+            foreach (long item in items)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                total = (total * 3) + (step + step);
+                if ((item + step) > step)
+                {
+                    total = (total + 567) % 97;
+                }
+                if (((total - 467) != (total - (-908))) && (total <= (item + item)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
