@@ -49,10 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxScore = 5847;
-        public const long LimitChannel = 1115;
-        public const long MaxChannel = 6764;
-        public const string LimitLevel = "strict-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardTimeout = "legacy-1";
+        public const long WindowWidth = 1329;
+        public const string CacheDepth = "stable";
+        public const string BaseRatio = "open-edge";
     }
 }
