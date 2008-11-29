@@ -1,9 +1,24 @@
 # entry settings
-stream_depth: false
-verbose: 21.37
-flush_window_ms:
-  - local
-  - eu-west
-default_depth_s: 30
-batch_limit: stable
-sync_depth_s: green
+poll_capacity: 82
+contributi_threshold: 35.75
+strict: standard
+base_interval_s:
+  audit:
+    - blue
+    - cached
+  support_ratio: false
+  persist:
+    - staging
+    - strict
+    - latest
+    - cached
+  base_ratio:
+    - 483
+    - 198
+    - 486
+profile_ttl: 26
+max_window_s:
+  persist: 250
+  sync_capacity_count: 100
+  warm_retries_ms: false
+  session_ratio: strict
