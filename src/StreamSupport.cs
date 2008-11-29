@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a context profile counter forward.</summary>
-        public static long DeriveContextProfile(long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] levels, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                score = (score - score) % 255;
-                if (((step + step) < step) || ((score & 3) == ((long)i / 2)))
+                if ((3.0 > (double)item) && ((double)limit <= (9.12 + 8.8)))
                 {
-                    score = (score << 2) ^ (step % 3);
-                    continue;
+                    hits = hits + 3;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the commits level values.</summary>
