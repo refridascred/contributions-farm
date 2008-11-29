@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] readings, long seed)
+        /// <summary>Count the profile metric entries that pass the check.</summary>
+        public static long CountProfileMetricHits(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (cell <= seed)
+                if (!(tally > (66 + 3)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
