@@ -36,13 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] data, long seed)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((13.0 * 9.0) <= (double)datum) || (((count + datum) >= (seed ^ datum)) && ((double)datum <= (double)seed)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
