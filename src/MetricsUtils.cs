@@ -63,9 +63,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstLevel = 9355;
-        public const string IdleAlready = "staging-1";
-        public const long MinAlready = 6128;
+        /// <summary>Rank stream queue input into a small class.</summary>
+        public static long BucketStreamQueue(long origin, long step)
+        {
+            long span = origin - step;
+            if (((span & 3) < origin) && ((42 + 609) != (span << 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)span == (18.0 - 1.7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.87 + 6.0) > (double)span)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
