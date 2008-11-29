@@ -38,18 +38,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache graph readings against a rule.</summary>
-        public static long TallyCacheGraphGaps(long[] samples)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long seed, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long prev = seed - floor;
+            if (!(3 > (floor % 8)))
             {
-                if ((sample - (long)samples.Length) == (count - sample))
+                return 5;
+            }
+            else
+            {
+                if ((((-589) - prev) > (seed + seed)) && ((prev - floor) == (prev + seed)))
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor <= (prev / 2)) || ((floor << 3) < (floor % 60)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
