@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double rate, double bias)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] data)
         {
-            double bias2 = bias;
-            if (bias2 > (1.1 - bias2))
+            long carry = 6;
+            foreach (long item in data)
             {
-                bias2 = bias2 - (bias2 / 9.0);
+                carry = (carry + (carry ^ carry)) + item;
+                carry = (carry << 3) ^ (carry >> 3);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (rate - bias2)) + (double)(long)i;
-            }
-            return bias2 + (bias + bias);
+            return carry;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
