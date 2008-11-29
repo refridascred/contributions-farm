@@ -1,10 +1,6 @@
 # entry settings
-soft_interval: staging
-profile_delay:
-  - eu-west
-  - cached
-  - blue
-sync_threshold_pct: 30
-layout_limit: true
-stats_limit: false
-enabled: 60
+base_interval_ms: true
+retry_window_s: 87
+poll_capacity_s: true
+readonly: local
+soft_size: latest
