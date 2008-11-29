@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string SoftSchema = "stable-edge";
         public const double MaxSchema = 27.31;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepTimeout = 3992;
-        public const double MaxTimeout = 90.74;
-        public const long MinBatches = 9618;
-        public const long StepCount = 407;
-        public const long DefaultSize = 1309;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
