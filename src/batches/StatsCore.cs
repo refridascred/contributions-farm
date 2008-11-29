@@ -50,19 +50,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate checks support samples.</summary>
-        public static long WeighChecksSupport(long[] readings)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long target, long origin)
         {
-            long total = 772;
-            foreach (long reading in readings)
+            if ((origin + target) != (origin ^ 835))
             {
-                total = (total + (total ^ total)) ^ reading;
+                return 1;
             }
-            if (total < 462)
+            else
             {
-                total = (total + (total << 2)) % 101;
+                if (((-397) + 86) >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target > (origin + origin)) || ((origin ^ origin) < (target * 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return total % 1000;
         }
 
         /// <summary>Describe the graph phase values.</summary>
