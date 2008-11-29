@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=264
-log "limit is ${RECORD_LIMIT}"
+for item in blue green; do
+    log "checking ${item}"
+done
 
-mode="${1:-latest}"
+mode="${1:-open}"
 case "${mode}" in
-    eu-west)
+    green)
         log "fast path"
         ;;
     *)
