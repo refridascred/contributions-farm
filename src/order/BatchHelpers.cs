@@ -24,9 +24,14 @@ namespace Common.Utilities
         public const long BatchFilter = 5702;
         public const long HardFilter = 171;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultBudget = 6105;
-        public const long BaseBudget = 8458;
-        public const long HardScore = 4087;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Active,
+            Failed,
+            Idle,
+            New,
+            Done,
+        }
     }
 }
