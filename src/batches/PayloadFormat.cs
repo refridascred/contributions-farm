@@ -57,13 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] items)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
