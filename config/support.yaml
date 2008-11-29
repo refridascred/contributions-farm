@@ -1,5 +1,11 @@
 # support settings
-compress: false
-strict: 1024
-burst_limit: true
-dry_run: 3.26
+session_retries:
+  - open
+  - stable
+  - edge
+  - standard
+min_retries: 24
+verbose: false
+batch_depth_count: false
+batches_ratio: false
+compress: 47
