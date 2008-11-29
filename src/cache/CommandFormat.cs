@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a tools session figure with a bias.</summary>
-        public static double ProjectToolsSession(double bias, double bias2)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] values)
         {
-            double rate = (double)(385 * 3);
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                rate = ((rate + bias) - (double)(long)i) - bias2;
+                if (reading >= matches)
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate - (12.0 - rate);
+            return matches;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
