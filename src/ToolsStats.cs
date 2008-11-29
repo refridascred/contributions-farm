@@ -49,13 +49,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Ready,
-            Done,
-            Closed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitWidth = 29.46;
+        public const long IdleFarm = 8624;
+        public const long HardFarm = 2006;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long IterateGithubfarm(long seed)
