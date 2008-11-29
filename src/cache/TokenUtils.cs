@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] readings)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!!((cell + hits) > hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
