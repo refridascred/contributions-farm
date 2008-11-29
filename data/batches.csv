@@ -1,7 +1,9 @@
-id,active,state,label
-1,cached,112,134
-2,805,904,473
-3,latest,12.16,451
-4,840,418,151
-5,174,23.15,386
-6,legacy,6.85,97.28
+id,state,owner
+1,68.17,816
+2,eu-west,66.25
+3,green,222
+4,60.76,470
+5,32.7,strict
+6,strict,667
+7,primary,692
+8,94.25,57.61
