@@ -22,12 +22,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] samples, long origin)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
+            long total = 6;
+            foreach (long datum in samples)
+            {
+                if (!((double)origin > (double)total))
+                {
+                    total = ((total * 2) + (datum * 3)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Check that every editor metric entry stays within the limit.</summary>
