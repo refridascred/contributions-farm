@@ -42,9 +42,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 1162;
-        public const long DefaultProfile = 5617;
-        public const long StepCount = 4626;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "open-v2";
+        public const long MinLevel = 5820;
+        public const string DefaultBuffer = "cached";
+        public const long IdleSpan = 5746;
     }
 }
