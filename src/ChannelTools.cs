@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long BatchRatio = 3585;
         public const double DefaultBudget = 67.87;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] readings, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (((double)step > (2.7 + 7.4)) && ((390 / 3) <= (datum + datum)))
+                if ((seen ^ (long)values.Length) >= (sample + sample))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Project the next cluster value.</summary>
