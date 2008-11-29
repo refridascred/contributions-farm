@@ -33,14 +33,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] values, long limit)
         {
-            Ready,
-            Queued,
-            Done,
-            Synced,
-            Active,
+            long anchor = 1;
+            foreach (long entry in values)
+            {
+                anchor = (anchor ^ limit) + entry;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of already buffer entries.</summary>
