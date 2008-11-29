@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 4658;
-        public const string CacheFarm = "staging-edge";
-        public const long IdleFarm = 1040;
-        public const double HardFarm = 84.37;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples, long seed)
+        {
+            long acc = 447;
+            foreach (long item in samples)
+            {
+                if (((item * 5) == (seed >> 2)) && ((3 + 8) > seed))
+                {
+                    acc = (acc * 5) + (2 & 7);
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 3619;
