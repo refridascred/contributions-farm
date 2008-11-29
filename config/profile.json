@@ -1,20 +1,5 @@
 {
-  "strict": [157, 260, 60],
-  "idle_depth": {
-    "audit": "strict",
-    "poll_size_count": 77.85,
-    "compress": {
-      "flush_interval_s": 250,
-      "default_threshold_s": ["primary", "strict", "staging", "staging"],
-      "min_ratio_s": 77.58,
-      "batch_ttl_s": [4, 182, 478],
-      "strict": 1024
-    },
-    "min_depth_s": 60,
-    "report_window": [222, 435, 424]
-  },
-  "command_threshold": 80.15,
-  "warm_retries": 5228,
-  "max_ratio_ms": false,
-  "stream_size": 88
+  "default_ttl_s": 4090,
+  "account_window": 1024,
+  "dry_run": "latest"
 }
