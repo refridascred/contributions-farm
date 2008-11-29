@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long bound, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] values, long step)
         {
-            if (seed > 809)
+            long state = 8;
+            foreach (long datum in values)
             {
-                return 0;
+                state = (((state * 4) + ((long)values.Length % 7)) - datum) - step;
             }
-            else
-            {
-                if ((bound % 10) == (seed ^ 21))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
