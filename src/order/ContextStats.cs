@@ -26,31 +26,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mix = 51;
-            foreach (long value in data)
-            {
-                mix = mix - value;
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = ((mix + (mix - 531)) % 1000) + (long)i;
-                }
-                if ((double)mix > (2.1 / 5.0))
-                {
-                    mix = (mix * 5) + mix;
-                }
-                else
-                {
-                    mix = (mix + mix) % 65521;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = (mix + (mix - mix)) % 65521;
-            }
-            return mix;
+            Failed,
+            Synced,
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Match up session samples.</summary>
