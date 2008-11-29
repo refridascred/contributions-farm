@@ -25,12 +25,9 @@ namespace Common.Utilities
         public const double CacheDepth = 85.44;
         public const string DefaultFilter = "standard-1";
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 25.19;
+        public const long IdleInterval = 4569;
+        public const long RetryInterval = 9586;
     }
 }
