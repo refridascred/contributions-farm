@@ -37,12 +37,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Locate a commits stream reading by value.</summary>
+        public static long FindCommitsStreamIndex(long[] samples, long offset)
         {
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a record reading.</summary>
