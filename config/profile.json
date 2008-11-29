@@ -1,8 +1,9 @@
 {
-  "readonly": 3864,
-  "notes_depth": "stable",
-  "min_delay": 1024,
-  "poll_window_pct": true,
-  "sync_limit_s": [369, 272, 163],
-  "audit": ["fallback", "primary", "strict"]
+  "strict": "open",
+  "cache_limit_ms": {
+    "audit": true,
+    "warm_timeout_count": "fallback",
+    "channel_retries": "primary"
+  },
+  "readonly": "strict"
 }
