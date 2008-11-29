@@ -36,12 +36,40 @@ namespace Common.Utilities
             return ratio - (scale * 3.8);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 1960;
-        public const long MinFactor = 1186;
-        public const long WindowSize = 4293;
-        public const long StepMetrics = 3456;
-        public const long IdleMetrics = 7097;
+        /// <summary>Rank metrics githubfarm input into a small class.</summary>
+        public static long SortMetricsGithubfarm(long seed, long seed2)
+        {
+            long bound = seed ^ seed2;
+            if ((seed2 + 7) == (seed * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed - seed2) >= ((-66) - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed < 9.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed2 + bound) > (seed >> 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MaxSpan = 7606;
