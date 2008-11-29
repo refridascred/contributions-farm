@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 1436;
-        public const long BaseSchema = 803;
-        public const string StepWidth = "legacy-edge";
-        public const long MaxSchema = 5700;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] readings, long origin)
+        {
+            long acc = 1;
+            foreach (long cell in readings)
+            {
+                acc = ((acc + acc) ^ cell) + origin;
+            }
+            if (acc < 123)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc % 97;
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
