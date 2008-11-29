@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double bias, double span)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double weight = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (span - span)) + (double)(long)i;
-            }
-            return weight + weight;
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a cluster buffer reading by value.</summary>
