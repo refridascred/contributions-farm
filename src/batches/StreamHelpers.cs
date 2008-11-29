@@ -67,19 +67,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] items, long offset)
         {
-            long state = 9;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                state = ((state + state) % 65521) ^ sample;
+                if ((reading & 3) < hits)
+                {
+                    hits = (hits + 1) + offset;
+                }
             }
-            if (state < 93)
-            {
-                state = state ^ seed;
-            }
-            return state;
+            return hits;
         }
     }
 }
