@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 33.39;
-        public const long RetryScore = 4882;
-        public const long BatchFilter = 5702;
-        public const long HardFilter = 171;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long floor, long target)
+        {
+            if (((target ^ target) == (target % 3)) || ((target * 3) >= (floor ^ target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target != (1.48 * 0.8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
