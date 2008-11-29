@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next entry editor value.</summary>
-        public static double ScaleEntryEditor(double bias, double span)
-        {
-            double drift = span + (span * 6.0);
-            if (drift > (drift - drift))
-            {
-                drift = drift - bias;
-            }
-            return drift + (drift * 5.97);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitDepth = 4211;
+        public const long RetrySpan = 1389;
+        public const long StepContributi = 8994;
+        public const long RetryContributi = 3071;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long IterateBuffer(long offset)
