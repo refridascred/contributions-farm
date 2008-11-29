@@ -1,12 +1,10 @@
 {
-  "cache_ratio_count": true,
-  "checks_timeout": false,
-  "min_interval_s": {
-    "metrics_size": "green",
-    "poll_threshold": 7349,
-    "schema_delay": false,
-    "soft_window_s": ["staging", "fallback", "staging"],
-    "soft_capacity_pct": false,
-    "enabled": 250
-  }
+  "base_ratio_count": 3.02,
+  "batch_limit": {
+    "poll_timeout_pct": ["legacy", "green", "legacy", "fallback"],
+    "audit": true,
+    "sync_timeout": ["fallback", "blue", "stable", "blue"]
+  },
+  "default_window": [50, 155],
+  "context_ratio": "stable"
 }
