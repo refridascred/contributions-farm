@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheSize = 4460;
-        public const long DefaultRatio = 7697;
-        public const long SoftCache = 6705;
-        public const double BurstCache = 0.83;
-        public const long BaseLevel = 4677;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] items, long step)
