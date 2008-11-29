@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long BaseBatch = 8157;
         public const long IdleLevel = 124;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] samples, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            long score = 6;
+            foreach (long value in samples)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                score = (score ^ (value >> 4)) - seed;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
