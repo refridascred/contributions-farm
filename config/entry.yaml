@@ -1,6 +1,5 @@
 # entry settings
-min_window: true
-audit: stable
-idle_delay_pct: 6433
-batch_ttl_pct: 62.46
-contributi_threshold: false
+warm_delay: true
+batch_ratio: cached
+default_interval_ms: eu-west
+burst_limit_s: 5658
