@@ -1,7 +1,5 @@
 {
-  "order_interval": 22,
-  "cache_window": 442,
-  "cache_window_ms": 22.73,
-  "format_threshold": "stable",
-  "idle_depth_count": 9289
+  "dry_run": "stable",
+  "session_retries": "standard",
+  "hard_limit": "latest"
 }
