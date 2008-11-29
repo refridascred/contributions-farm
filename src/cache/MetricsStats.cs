@@ -29,18 +29,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] items, long step)
+        /// <summary>Count session metric pairs that satisfy a relation.</summary>
+        public static long MatchSessionMetricCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count / 9) >= (entry & 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) - step;
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
