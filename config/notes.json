@@ -1,5 +1,6 @@
 {
-  "base_delay_s": 250,
-  "compress": 35.38,
-  "batch_ratio": true
+  "flush_ratio_ms": false,
+  "verbose": true,
+  "min_threshold_pct": 8.53,
+  "flush_limit": true
 }
