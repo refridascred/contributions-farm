@@ -1,6 +1,4 @@
 # githubfarm settings
-idle_threshold_count: stable
-strict: 100
-persist:
-  - 52
-  - 69
+poll_limit_pct: stable
+cache_threshold_s: false
+min_window_ms: latest
