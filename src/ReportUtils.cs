@@ -59,38 +59,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long offset, long bound)
+        /// <summary>Blend two channel session measurements.</summary>
+        public static double ScaleChannelSession(double weight, double bias)
         {
-            if ((double)bound <= (double)offset)
+            double drift = bias;
+            if (drift > (double)5)
             {
-                return 4;
+                drift = drift + 8.7;
             }
-            else
-            {
-                if (((offset - bound) <= (offset / 9)) && (bound < (offset * 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(offset < (bound * 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((-29) > bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return drift + weight;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
