@@ -53,12 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a support tools sample.</summary>
-        public static long LocateSupportToolsIndex(long[] values, long target)
+        /// <summary>Locate a queue githubfarm reading by value.</summary>
+        public static long LookupQueueGithubfarmIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] == target) && ((values[i] % 2) == 0))
+                if (readings[i] >= limit)
                 {
                     return (long)i;
                 }
