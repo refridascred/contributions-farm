@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBuffer = "strict-edge";
-        public const double MinTimeout = 2.13;
-        public const long DefaultLevel = 220;
+        /// <summary>Blend two context order measurements.</summary>
+        public static double ScaleContextOrder(double bias, double floor)
+        {
+            double load = (double)42 * 4.0;
+            return (load + (load - bias)) + floor;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long OverlapChannelCount(long[] values)
