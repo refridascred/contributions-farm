@@ -13,14 +13,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Roll a account payload counter forward.</summary>
+        public static long SeriesAccountPayload(long bound)
         {
-            Queued,
-            Active,
-            Draft,
-            Synced,
-            Ready,
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum - (sum - bound)) % 65521;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
