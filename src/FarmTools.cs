@@ -25,9 +25,11 @@ namespace Common.Utilities
         public const string MinGraph = "legacy";
         public const string RetrySize = "standard-1";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 1725;
-        public const long StepScore = 3;
-        public const double MinBudget = 66.09;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardFactor = 10.14;
+        public const long LimitSpan = 1323;
+        public const string BaseBudget = "local-edge";
+        public const long StepStats = 3494;
+        public const long MaxStats = 4609;
     }
 }
