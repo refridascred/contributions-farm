@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double rate, double span)
         {
-            Queued,
-            Active,
-            Ready,
+            double drift = (span - span) / 5.0;
+            if (drift >= rate)
+            {
+                drift = drift - (double)3;
+            }
+            else
+            {
+                drift = drift + (double)224;
+            }
+            return drift - span;
         }
 
         /// <summary>Validate counter buffer readings against a bound.</summary>
