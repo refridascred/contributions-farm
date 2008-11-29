@@ -18,14 +18,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Stale,
             Synced,
-            Pending,
+            Retry,
             Ready,
-            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the counter state values.</summary>
