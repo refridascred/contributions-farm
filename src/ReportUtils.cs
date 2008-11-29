@@ -61,22 +61,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series, long offset)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long result = 9;
-            foreach (long datum in series)
-            {
-                if ((datum + datum) != (result & 31))
-                {
-                    result = result ^ (datum % 12);
-                }
-                else
-                {
-                    result = (result + offset) % 65521;
-                }
-            }
-            return result;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
