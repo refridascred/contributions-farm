@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long target)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            if (!((target ^ target) <= (offset & 127)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target * 5) > offset) || (80 > offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((66 - offset) > offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((offset / 7) == (target / 6)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
