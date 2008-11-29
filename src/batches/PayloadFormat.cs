@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Retry,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstTimeout = 6227;
+        public const string RetryFactor = "local-edge";
+        public const long IdleOrder = 6478;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long floor, long offset)
