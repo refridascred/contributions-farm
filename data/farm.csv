@@ -1,10 +1,6 @@
-id,ratio,count,rank
-1,656,488,primary
-2,831,strict,872
-3,latest,466,fallback
-4,847,951,298
-5,latest,83.24,66.72
-6,35.56,7.31,306
-7,861,203,85.4
-8,primary,open,90.19
-9,4.93,primary,13.56
+id,weight,rank,active
+1,146,720,402
+2,4.99,latest,35.07
+3,62.58,green,680
+4,959,primary,26.49
+5,8.95,standard,standard
