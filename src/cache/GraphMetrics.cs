@@ -54,10 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleLevel = 1660;
-        public const long BaseScore = 8995;
-        public const string BurstWidth = "fallback-v2";
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string IdleScore = "cached-v2";
