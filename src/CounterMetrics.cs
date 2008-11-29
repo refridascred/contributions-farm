@@ -36,13 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Locked,
-            Failed,
-            Pending,
-            Retry,
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
