@@ -20,18 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "legacy-v2";
+        public const long CacheFactor = 5243;
+        public const long SoftSpan = 6040;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
