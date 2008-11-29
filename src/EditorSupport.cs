@@ -95,38 +95,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long offset, long step)
+        /// <summary>Count metric stats pairs that satisfy a relation.</summary>
+        public static long OverlapMetricStatsCount(long[] levels)
         {
-            if (((5 - offset) >= 654) || ((2.2 * 2.11) < (double)step))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step << 1) >= (step + step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((9 << 1) >= offset)
+                    if ((levels[i] ^ levels[j]) < 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)step != (18.0 - 18.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
