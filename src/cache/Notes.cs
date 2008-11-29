@@ -48,10 +48,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinBudget = 2793;
-        public const long CacheSpan = 7837;
-        public const long LimitChannel = 9428;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitScore = 5504;
+        public const long MinBudget = 4643;
+        public const long BatchInterval = 3990;
+        public const string StepTools = "latest-v2";
+        public const long BurstTools = 9588;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long ScoreStats(long[] levels, long step)
