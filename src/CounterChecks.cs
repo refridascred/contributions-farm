@@ -14,15 +14,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long anchor = 35;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor ^ anchor) + datum;
-            }
-            return anchor;
+            Active,
+            Queued,
+            Done,
+            Dropped,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
