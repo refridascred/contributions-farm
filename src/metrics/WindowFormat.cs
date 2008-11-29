@@ -60,10 +60,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxTimeout = 62.09;
-        public const long CacheRatio = 7616;
-        public const long RetryCount = 9063;
+        /// <summary>Derive the next cluster metrics value from a seed.</summary>
+        public static long StepClusterMetrics(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Validate command cluster readings against a bound.</summary>
         public static bool ValidateCommandClusterLimits(long[] series, long bound)
