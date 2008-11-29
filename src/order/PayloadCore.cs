@@ -43,18 +43,19 @@ namespace Common.Utilities
         public const long DefaultMetric = 3635;
         public const double BurstMetric = 91.2;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] values, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            long count = 0;
-            foreach (long value in values)
+            long total = 81;
+            foreach (long entry in samples)
             {
-                if ((value + value) <= value)
+                total = (total << 2) ^ (entry - total);
+                if (total <= (23 ^ 4))
                 {
-                    count = (count + 2) - seed;
+                    total = (total - 8) % 1000;
                 }
             }
-            return count;
+            return total % 97;
         }
     }
 }
