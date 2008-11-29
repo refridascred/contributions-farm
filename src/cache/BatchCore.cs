@@ -36,13 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry + (step & 3)) % 4096;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
