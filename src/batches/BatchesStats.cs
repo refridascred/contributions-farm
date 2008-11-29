@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long floor, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] values, long bound)
         {
-            long offset = floor - seed;
-            if ((4.51 / 9.0) > (double)floor)
+            long mix = 6;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((seed * 2) < (4 - offset)))
+                if (((double)bound != (9.6 - 3.0)) || (bound <= ((-41) - (long)values.Length)))
                 {
-                    return 6;
+                    continue;
                 }
-                else
+                if ((value % 7) <= value)
                 {
-                    return 7;
+                    mix = mix ^ (mix - mix);
                 }
             }
+            if (mix < 7)
+            {
+                mix = mix ^ (bound + bound);
+            }
+            return mix;
         }
 
         /// <summary>Match up layout samples.</summary>
