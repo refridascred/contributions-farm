@@ -33,14 +33,12 @@ namespace Common.Utilities
         public const long MinNotes = 778;
         public const long MinWidth = 3823;
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Idle,
-            Paused,
-            New,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxLevel = 1227;
+        public const long CacheDepth = 7492;
+        public const string CacheGithubfarm = "legacy";
+        public const long CacheScore = 3141;
+        public const string StepGithubfarm = "local-v2";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BatchBuffer = "open-v2";
