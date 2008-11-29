@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 7517;
-        public const double HardLevel = 41.89;
-        public const double SoftStream = 80.92;
-        public const long LimitWidth = 9177;
-        public const string RetryScore = "cached-1";
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseRecord = 7051;
