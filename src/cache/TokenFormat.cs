@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] series, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((datum << 2) > datum) && (2.7 >= (double)floor))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            Synced,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
