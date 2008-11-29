@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the queue stats entries that pass the check.</summary>
-        public static long TallyQueueStatsGaps(long[] samples, long limit)
+        /// <summary>Rank entry session input into a small class.</summary>
+        public static long GradeEntrySession(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long next = floor + bound;
+            if (!(3.0 >= (double)floor))
             {
-                if ((double)datum <= (7.05 + 6.88))
+                return 5;
+            }
+            else
+            {
+                if (!((9.1 - 9.6) >= (double)next))
                 {
-                    seen = (seen + 3) - limit;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((next - bound) < (bound - next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound - 329) <= bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the batches phase values.</summary>
