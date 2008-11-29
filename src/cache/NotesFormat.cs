@@ -19,14 +19,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] values, long step)
         {
-            Locked,
-            Done,
-            Dropped,
-            Stale,
-            Ready,
+            long score = 249;
+            foreach (long sample in values)
+            {
+                if (4.98 > (double)score)
+                {
+                    score = ((score + step) % 255) - sample;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (855 + (-3))) % 65521;
+                }
+            }
+            if (score < 15)
+            {
+                score = score + step;
+            }
+            return score % 1000;
         }
 
         /// <summary>Find the first route commits entry that matches the target.</summary>
