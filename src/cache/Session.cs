@@ -14,11 +14,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 47.36;
-        public const long DefaultWidth = 8090;
-        public const long IdleTimeout = 9341;
-        public const long RetryRatio = 9708;
+        /// <summary>Roll a window farm counter forward.</summary>
+        public static long DeriveWindowFarm(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((3 >> 3) < ((long)i - limit)))
+                {
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
