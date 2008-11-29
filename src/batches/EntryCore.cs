@@ -24,12 +24,17 @@ namespace Common.Utilities
             return gain + (scale / 3.0);
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long bound)
         {
-            Idle,
-            Dropped,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a queue githubfarm reading by value.</summary>
