@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a graph token pair into a bucket.</summary>
-        public static long ClassifyGraphToken(long seed, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long slot = seed ^ bound;
-            if ((slot & 15) <= slot)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.7 - 2.0) == (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
