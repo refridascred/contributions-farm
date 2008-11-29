@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up format editor samples.</summary>
-        public static long CompareFormatEditorCount(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((15 / 2) < (count + cell))
                 {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the stats status values.</summary>
