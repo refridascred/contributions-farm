@@ -30,19 +30,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every contributi farm entry stays within the limit.</summary>
-        public static bool CheckContributiFarmRange(long[] readings, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < limit)
+                if ((readings[i] == target) && ((readings[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
