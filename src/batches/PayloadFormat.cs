@@ -15,13 +15,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long floor, long bound)
         {
-            Closed,
-            Queued,
-            Draft,
-            Failed,
+            if (floor < bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor > (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor == (6.0 - 0.55))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)bound >= (double)floor) && (bound < (floor & 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
