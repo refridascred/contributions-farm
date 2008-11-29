@@ -64,9 +64,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 76.65;
-        public const long BurstFactor = 229;
-        public const long BaseWindow = 9215;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Stale,
+            Queued,
+            Active,
+            Failed,
+            Retry,
+        }
     }
 }
