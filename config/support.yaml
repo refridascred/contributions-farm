@@ -1,19 +1,20 @@
 # support settings
-verbose: stable
-burst_timeout_pct: 20.02
-warm_delay_s:
-  cache_delay_count:
-    flush_window_s: 73.77
-    poll_window_count: 74.09
-    batch_depth_pct: 91.9
-    poll_size: eu-west
-    max_interval_pct:
-      - 342
-      - 225
-    persist: stable
-  default_interval_ms: false
-  compress: 54
-  queue_window:
-    - blue
-    - primary
-account_retries: 45.77
+strict:
+  - 317
+  - 140
+  - 133
+  - 138
+flush_depth_ms: 30.28
+sync_ttl_s:
+  idle_depth_s:
+    readonly: primary
+    hard_ttl_ms: 33.43
+    burst_depth_ms:
+      - eu-west
+      - local
+      - standard
+    account_ttl: 4762
+    dry_run: 92.04
+  burst_delay: strict
+  max_limit_pct: green
+layout_ttl: 56
