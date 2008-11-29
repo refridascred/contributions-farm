@@ -36,12 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double ratio, double floor)
-        {
-            double load = ratio;
-            return (load - (double)18) + floor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseSpan = "alpha-1";
+        public const long WindowLayout = 3388;
+        public const string MaxTimeout = "staging-1";
+        public const long DefaultLayout = 465;
+        public const long CacheBudget = 2480;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long BucketStream(long origin, long origin2)
