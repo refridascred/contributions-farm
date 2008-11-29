@@ -41,13 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] series, long floor)
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (hits <= sample)
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
