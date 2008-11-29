@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowSize = 7106;
-        public const string DefaultEditor = "alpha-v2";
-        public const string MaxEditor = "primary-v2";
-        public const long StepTimeout = 9149;
-        public const long IdleEditor = 9219;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Ready,
+            Done,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Derive the next schema context value from a seed.</summary>
         public static long StepSchemaContext(long offset)
