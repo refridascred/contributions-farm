@@ -44,19 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] data, long seed)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Project the next queue value.</summary>
