@@ -71,12 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] samples, long bound)
         {
-            Queued,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((bound + count) < (bound ^ 9)) || ((double)count >= (double)576))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
