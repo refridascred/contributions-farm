@@ -26,14 +26,12 @@ namespace Common.Utilities
         public const long LimitDepth = 9756;
         public const string CacheGraph = "fallback";
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowFactor = "alpha-v2";
+        public const long StepBudget = 1582;
+        public const long BurstSchema = 8050;
+        public const long BaseSchema = 9040;
+        public const string CacheSchema = "cached-edge";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsOutliers(long[] samples, long limit)
