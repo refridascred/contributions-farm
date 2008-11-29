@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Synced,
-            Ready,
-            Failed,
-            Closed,
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
