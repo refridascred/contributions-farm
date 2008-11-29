@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BurstToken = 8347;
         public const long RetryToken = 3576;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] values, long target)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] >= target)
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
