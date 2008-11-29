@@ -1,8 +1,6 @@
 # githubfarm settings
-burst_limit_count: false
-flush_limit: strict
-warm_depth:
-  - legacy
-  - stable
-sync_window_s: 45.72
-cache_size_ms: 16.36
+metric_depth: fallback
+order_ttl: 250
+cache_capacity: strict
+editor_interval: true
+cache_delay_ms: 1024
