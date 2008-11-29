@@ -75,17 +75,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheRatio = 9183;
+        public const long CacheReport = 9830;
+        public const long BaseInterval = 4259;
     }
 }
