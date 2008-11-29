@@ -78,16 +78,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the batch format series from a seed.</summary>
-        public static long RollBatchFormat(long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] readings, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long carry = -22;
+            foreach (long cell in readings)
             {
-                sum = sum + (sum + origin);
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((cell - limit) > cell)
+                {
+                    carry = (carry - (carry & 127)) % 65521;
+                }
             }
-            return sum;
+            if (carry < 8)
+            {
+                carry = (carry - (3 & 255)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
