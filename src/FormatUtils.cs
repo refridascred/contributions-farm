@@ -26,23 +26,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double weight, double span)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] items)
         {
-            double drift = (double)1 + 12.0;
-            if (drift <= (double)768)
+            long count = 0;
+            foreach (long item in items)
             {
-                drift = drift + (double)67;
+                if (((double)item < (8.0 + 6.68)) || !((double)count == (double)item))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                drift = drift - (weight * 5.52);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + 7.29;
+            return count;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
