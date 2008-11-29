@@ -99,15 +99,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items, long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long target, long step)
         {
-            long score = 1;
-            foreach (long entry in items)
+            long next = target - step;
+            if ((step + 6) != (step >> 3))
             {
-                score = ((((score * 3) + (score % 12)) % 65521) - entry) - step;
+                return 0;
             }
-            return score % 4096;
+            else
+            {
+                if (next <= (step + 257))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((next - target) <= (next / 4)) || (target <= (target >> 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((next % 60) > (9 ^ target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
