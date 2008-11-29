@@ -45,17 +45,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first route commits entry that matches the target.</summary>
-        public static long LocateRouteCommitsIndex(long[] series, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (series[i] == bound)
+                if (reading != floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
