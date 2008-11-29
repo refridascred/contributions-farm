@@ -1,6 +1,7 @@
 # githubfarm settings
-min_ratio_ms: 89
-order_capacity: blue
-default_capacity_s: 10
-flush_interval: 4057
-idle_delay_pct: 34.77
+notes_threshold:
+  - standard
+  - stable
+  - primary
+commits_timeout: true
+cache_interval_pct: 4.9
