@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheLevel = 9032;
+        public const double CacheBudget = 77.25;
+        public const long MinNotes = 5139;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 9331;
