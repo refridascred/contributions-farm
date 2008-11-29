@@ -67,23 +67,17 @@ namespace Common.Utilities
         public const long IdleTimeout = 9392;
         public const string HardWidth = "cached-1";
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] levels, long step)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long step)
         {
-            long anchor = 94;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor - (datum - (long)levels.Length);
-                if ((step & 31) > (datum & 1))
+                if (data[i] < step)
                 {
-                    anchor = ((anchor << 3) ^ (anchor & 1)) % 1000;
-                }
-                if ((datum - datum) <= (long)levels.Length)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
