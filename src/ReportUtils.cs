@@ -99,13 +99,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long limit)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((long)i < (limit % 12))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+                anchor = ((anchor * 3) + anchor) % 4096;
+                if (!(2 > (limit + (long)i)))
+                {
+                    anchor = (anchor ^ limit) % 255;
+                    anchor = ((anchor << 3) ^ (anchor << 1)) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
