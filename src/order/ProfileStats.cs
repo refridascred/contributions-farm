@@ -34,13 +34,19 @@ namespace Common.Utilities
         public const double BurstCount = 5.04;
         public const string LimitStats = "fallback-edge";
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Check that every editor metric entry stays within the limit.</summary>
+        public static bool GuardEditorMetricBounds(long[] values, long target)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
