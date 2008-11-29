@@ -13,38 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long limit, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            if ((limit + 59) <= 172)
+            long sum = -148;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(6 > offset))
+                for (int i = 0; i < 8; i++)
                 {
-                    return 6;
+                    sum = ((sum - sum) % 1000) - (long)i;
                 }
-                else
-                {
-                    if ((limit >= offset) || (647 < (limit << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((limit % 8) != (8 * 3)) || ((offset / 9) < limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = ((sum * 4) + (sample + sample)) % 101;
             }
+            return sum;
         }
 
         /// <summary>Audit session report readings against a rule.</summary>
