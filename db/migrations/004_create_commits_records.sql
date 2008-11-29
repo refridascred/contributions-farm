@@ -3,10 +3,7 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
     region TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
-
-INSERT INTO commits_records (label, region, count) VALUES ('local', 'eu-west', 89);
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
