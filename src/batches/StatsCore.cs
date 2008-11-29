@@ -26,31 +26,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long bound, long offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            if (4 < (bound ^ 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound < (509 / 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound == (8.31 * 7.7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Pending,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a token summary.</summary>
