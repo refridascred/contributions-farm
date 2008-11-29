@@ -38,10 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepInterval = 2517;
-        public const long LimitPayload = 1450;
-        public const double HardDepth = 15.48;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] values, long seed)
