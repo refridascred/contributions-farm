@@ -1,5 +1,5 @@
 {
-  "hard_timeout_s": ["strict", "blue", "legacy", "legacy"],
-  "burst_window_s": "fallback",
-  "metric_interval": 100
+  "flush_window": 86,
+  "route_size": "legacy",
+  "compress": 32
 }
