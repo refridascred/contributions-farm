@@ -32,20 +32,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] levels, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long sum = 52;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = (((sum ^ sample) % 101) ^ (long)i) + limit;
-                    sum = sum ^ sample;
-                }
-                sum = (sum ^ (long)levels.Length) % 65521;
-            }
-            return sum;
+            Dropped,
+            New,
+            Queued,
+            Active,
         }
     }
 }
