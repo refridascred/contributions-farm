@@ -42,11 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] values, long seed)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
