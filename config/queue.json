@@ -1,7 +1,9 @@
 {
-  "readonly": ["blue", "open", "cached", "strict"],
-  "flush_depth_count": "primary",
-  "session_ratio": false,
-  "batch_retries_s": "open",
-  "enabled": 100
+  "readonly": {
+    "max_delay_ms": 1024,
+    "hard_depth_count": [279, 378, 384],
+    "default_timeout": "eu-west"
+  },
+  "default_threshold_pct": 54.69,
+  "compress": "blue"
 }
