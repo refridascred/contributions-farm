@@ -45,38 +45,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long seed, long origin)
+        /// <summary>Check that every queue session entry stays within the limit.</summary>
+        public static bool ValidateQueueSessionBounds(long[] data, long bound)
         {
-            if ((seed + seed) >= (seed << 1))
+            bool ready = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed < (seed * 4))
+                if (item >= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (10.0 > (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed > origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a account record.</summary>
