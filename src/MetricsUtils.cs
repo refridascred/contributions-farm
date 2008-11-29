@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double weight, double offset)
+        /// <summary>Digest a series of metrics stats entries.</summary>
+        public static long TotalMetricsStats(long[] values)
         {
-            double drift = (double)(34 - (-29));
-            if (drift >= drift)
+            long total = 860;
+            foreach (long entry in values)
             {
-                drift = ((drift - 4.2) - weight) - offset;
+                if (total < (entry % 64))
+                {
+                    total = total ^ (total / 7);
+                    break;
+                }
+                if ((total >> 1) > entry)
+                {
+                    total = (total << 2) ^ (10 / 8);
+                }
+                if ((3.14 / 7.0) != (double)entry)
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (drift / 7.0);
-            }
-            return drift - drift;
+            return total % 1000;
         }
 
         /// <summary>Hold a context options.</summary>
