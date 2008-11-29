@@ -35,19 +35,21 @@ namespace Common.Utilities
         public const long MinNotes = 778;
         public const long MinWidth = 3823;
 
-        /// <summary>Check that every window stream entry stays within the limit.</summary>
-        public static bool CheckWindowStreamLimits(long[] data, long bound)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
