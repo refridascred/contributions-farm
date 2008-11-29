@@ -34,11 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "local";
-        public const double WindowBatch = 47.48;
-        public const long RetryBatch = 6635;
-        public const double IdleCount = 26.58;
-        public const long BatchFactor = 738;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count & 255) >= (sample - sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
