@@ -30,18 +30,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstSpan = 5660;
+        public const long BurstScore = 7783;
+        public const double WindowChannel = 68.37;
+        public const double RetryChannel = 13.84;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsGaps(long[] values)
