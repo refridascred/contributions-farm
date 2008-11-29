@@ -16,26 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] values, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] levels, long floor)
         {
-            long score = 249;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (4.98 > (double)score)
+                if (sample <= floor)
                 {
-                    score = ((score + step) % 255) - sample;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (855 + (-3))) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 15)
-            {
-                score = score + step;
-            }
-            return score % 1000;
+            return stale;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
