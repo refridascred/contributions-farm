@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Scale a tools session figure with a bias.</summary>
+        public static double ProjectToolsSession(double bias, double bias2)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            double rate = (double)(385 * 3);
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate + bias) - (double)(long)i) - bias2;
+            }
+            return rate - (12.0 - rate);
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
