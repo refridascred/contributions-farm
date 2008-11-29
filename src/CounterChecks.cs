@@ -45,18 +45,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = 93;
+            foreach (long reading in items)
             {
-                if (((entry + 462) >= hits) && ((hits <= (hits % 3)) && ((entry >> 1) != (long)data.Length)))
+                if ((reading + reading) <= (acc << 3))
                 {
-                    hits = hits + 1;
+                    acc = (acc - (acc ^ 373)) % 1000;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
