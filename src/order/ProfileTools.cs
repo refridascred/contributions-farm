@@ -24,12 +24,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] series, long offset)
         {
-            Draft,
-            Closed,
-            Queued,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (value >= (hits % 60))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit cache graph readings against a rule.</summary>
