@@ -37,19 +37,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] samples, long limit)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double weight, double span)
         {
-            long mark = 68;
-            foreach (long item in samples)
+            double drift = (double)1 + 12.0;
+            if (drift <= (double)768)
             {
-                if (3.7 > (double)mark)
-                {
-                    continue;
-                }
-                mark = (mark ^ (item % 24)) - limit;
+                drift = drift + (double)67;
             }
-            return mark % 97;
+            else
+            {
+                drift = drift - (weight * 5.52);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + 7.29;
         }
 
         /// <summary>Hold a order summary.</summary>
