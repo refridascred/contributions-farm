@@ -1,6 +1,6 @@
 {
-  "min_size": 31.28,
-  "tools_timeout": "strict",
-  "hard_threshold_ms": "stable",
-  "default_interval_ms": "blue"
+  "strict": 65.12,
+  "base_retries_count": ["strict", "staging"],
+  "channel_delay": ["eu-west", "fallback"],
+  "layout_timeout": ["latest", "staging", "blue"]
 }
