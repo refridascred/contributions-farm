@@ -64,19 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record support samples.</summary>
-        public static long TotalRecordSupport(long[] items)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] items, long target)
         {
-            long anchor = 10;
+            bool stale = true;
             foreach (long reading in items)
             {
-                anchor = ((anchor << 2) ^ (anchor >> 4)) ^ reading;
+                if (reading <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor > (-81))
-            {
-                anchor = ((anchor << 3) ^ anchor) % 1000;
-            }
-            return anchor % 1000;
+            return stale;
         }
     }
 }
