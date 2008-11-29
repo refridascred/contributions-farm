@@ -33,13 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            Closed,
+            Synced,
+            Draft,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define command limits and defaults.</summary>
