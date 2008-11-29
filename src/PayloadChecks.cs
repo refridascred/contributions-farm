@@ -48,17 +48,18 @@ namespace Common.Utilities
         public const string RetryInterval = "primary-edge";
         public const long IdleAccount = 9803;
 
-        /// <summary>Locate a support metrics reading by value.</summary>
-        public static long FindSupportMetricsIndex(long[] items, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 8;
+            foreach (long sample in samples)
             {
-                if (items[i] < bound)
+                if ((20.0 * 8.79) < (double)origin)
                 {
-                    return (long)i;
+                    mark = ((mark + (origin >> 3)) % 1000) ^ sample;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate editor samples.</summary>
