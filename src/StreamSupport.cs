@@ -26,26 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                long seen = state;
-                if (((long)i << 2) > (-661))
-                {
-                    seen = ((seen * 4) + seen) % 97;
-                    state = state + (origin % 24);
-                }
-                if ((origin - state) != (seen * 4))
-                {
-                    state = ((state << 2) ^ (long)i) % 101;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
