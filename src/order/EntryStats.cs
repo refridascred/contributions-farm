@@ -28,18 +28,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit session report readings against a rule.</summary>
-        public static long AuditSessionReportHits(long[] samples)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((((long)samples.Length / 3) >= (83 + count)) || ((count - 4) <= count)) || ((count + count) >= sample))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Active,
+            Failed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a format entry.</summary>
