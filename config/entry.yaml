@@ -1,16 +1,6 @@
 # entry settings
-poll_interval: 84.08
-stats_window:
-  batch_limit: green
-  compress: 33
-  persist: 67.96
-  counter_ratio:
-    base_window_pct:
-      - 223
-      - 374
-      - 490
-      - 350
-    base_threshold: 8031
-    warm_threshold_s: false
-default_depth_count: standard
-schema_timeout: green
+persist: local
+compress: 68.48
+idle_timeout_ms:
+  - 306
+  - 244
