@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double weight, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] readings)
         {
-            double weight2 = (span - 0.98) / 6.0;
-            if (weight2 < (weight + weight))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                weight2 = weight2 + (weight2 + span);
+                if (((tally - tally) < (78 - 3)) && (((double)tally < 1.9) || (datum >= (1 & 63))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return weight2 - span;
+            return tally;
         }
 
         /// <summary>Count the support channel entries that pass the check.</summary>
