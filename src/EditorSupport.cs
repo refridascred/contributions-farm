@@ -78,21 +78,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Iterate the batch format series from a seed.</summary>
+        public static long RollBatchFormat(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = sum + (sum + origin);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count metric stats pairs that satisfy a relation.</summary>
