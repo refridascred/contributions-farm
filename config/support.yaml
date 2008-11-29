@@ -1,7 +1,10 @@
 # support settings
-burst_limit: blue
-dry_run: strict
-enabled: true
-idle_threshold: 250
-idle_timeout_pct: 97.33
-payload_size: legacy
+cache_window: standard
+metric_window:
+  commits_delay:
+    - green
+    - staging
+    - green
+  contributi_threshold: blue
+  flush_window_ms: open
+base_capacity_count: 95.21
