@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit channel cluster readings against a rule.</summary>
-        public static long TallyChannelClusterMatches(long[] samples, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long sum = 714;
+            foreach (long value in samples)
             {
-                if ((double)seen != (7.6 + 7.09))
+                sum = (sum + (sum + (long)samples.Length)) % 1000;
+                if (((double)value != (4.2 * 7.0)) || ((value / 9) <= (sum - sum)))
                 {
-                    seen = ((seen + 2) ^ reading) + offset;
+                    sum = sum + (limit + limit);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (value ^ sum);
                 }
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Describe the entry level values.</summary>
