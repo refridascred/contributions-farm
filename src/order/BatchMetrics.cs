@@ -66,38 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long target, long origin)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double offset)
         {
-            if ((origin % 2) != (542 + target))
+            double rate2 = offset;
+            if (rate2 >= (offset - rate))
             {
-                return 1;
+                rate2 = rate2 + (offset * 9.25);
             }
             else
             {
-                if (((62 - target) <= (target - origin)) && ((double)target < (2.18 - 17.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + target) == (origin - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target < (double)22)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                rate2 = rate2 + rate2;
             }
+            return rate2 + (double)501;
         }
 
         /// <summary>Describe the contributi class values.</summary>
