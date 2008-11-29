@@ -22,12 +22,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 77.64;
+        public const double HardRatio = 34.13;
+        public const long BaseBudget = 1013;
+        public const string DefaultStream = "local-1";
+        public const long IdleFactor = 9010;
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] readings)
