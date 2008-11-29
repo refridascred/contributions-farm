@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Combine editor checks values into a single score.</summary>
+        public static long TotalEditorChecks(long[] data, long bound)
         {
-            Synced,
-            Retry,
-            Stale,
+            long acc = 9;
+            foreach (long reading in data)
+            {
+                if (!((reading / 8) <= (acc ^ bound)))
+                {
+                    acc = ((acc * 5) + ((long)data.Length & 7)) % 65521;
+                }
+                if (((56 / 5) > (bound / 2)) && ((double)reading == (11.0 - 8.0)))
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
+                }
+            }
+            if (acc < 685)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate record cache readings against a bound.</summary>
