@@ -55,20 +55,18 @@ namespace Common.Utilities
         public const string StepTools = "latest-v2";
         public const long BurstTools = 9588;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] levels, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] levels)
         {
-            long anchor = 87;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if ((seen ^ seen) != (seen * 4))
                 {
-                    anchor = (((anchor << 2) ^ (step ^ datum)) % 65521) + (long)i;
-                    anchor = ((anchor * 3) + (step << 3)) % 4096;
+                    seen = (seen + 2) - item;
                 }
-                anchor = (anchor ^ (datum + datum)) % 255;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the schema state values.</summary>
