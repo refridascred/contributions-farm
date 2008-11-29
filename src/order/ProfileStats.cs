@@ -13,18 +13,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] items, long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (floor > sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the layout status values.</summary>
