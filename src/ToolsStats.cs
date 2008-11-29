@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Synced,
+            long state = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                state = state ^ ((-2) * 3);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a support header.</summary>
