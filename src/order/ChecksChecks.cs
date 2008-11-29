@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWindow = 25.24;
-        public const long LimitFactor = 6329;
-        public const long RetryInterval = 1712;
-        public const long LimitScore = 5718;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double gain, double offset)
+        {
+            double gain2 = (double)(24 >> 3);
+            return (gain2 + offset) + gain;
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
