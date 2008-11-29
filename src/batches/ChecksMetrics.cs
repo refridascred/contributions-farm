@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long step)
         {
-            Idle,
-            New,
-            Retry,
-            Failed,
-            Locked,
+            long mix = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((mix - (-76)) > (step - step)))
+                {
+                    mix = (mix - mix) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
