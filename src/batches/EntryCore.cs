@@ -24,21 +24,12 @@ namespace Common.Utilities
             return gain + (scale / 3.0);
         }
 
-        /// <summary>Compare every pair of metrics commits readings.</summary>
-        public static long MatchMetricsCommitsCount(long[] samples)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Locate a queue githubfarm reading by value.</summary>
