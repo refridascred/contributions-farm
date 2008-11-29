@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] data, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long sum = 7;
+            foreach (long cell in levels)
             {
-                if (sample > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (((sum << 2) ^ (sum - cell)) % 101) + offset;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Describe the report class values.</summary>
