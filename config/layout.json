@@ -1,19 +1,6 @@
 {
-  "order_ttl": 250,
-  "dry_run": {
-    "context_limit": [114, 303],
-    "cache_limit_ms": "edge",
-    "readonly": "strict",
-    "stats_depth": false,
-    "poll_threshold": 4675
-  },
-  "max_depth": 35.14,
-  "max_retries": 40.99,
-  "default_size_s": {
-    "sync_delay": "stable",
-    "batch_depth": 60,
-    "max_threshold": 95.86,
-    "soft_size_s": "staging",
-    "persist": 87
-  }
+  "burst_delay_count": "latest",
+  "warm_ttl_s": false,
+  "burst_interval": [230, 72, 173],
+  "strict": 55.59
 }
