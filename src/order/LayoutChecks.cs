@@ -54,13 +54,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Active,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
