@@ -22,20 +22,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
-            {
-                bool found = !((mix & 31) >= step);
-                if (!found)
-                {
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Draft,
+            Locked,
+            Paused,
         }
     }
 }
