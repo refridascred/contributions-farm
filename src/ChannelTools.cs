@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (items[i] == target)
+                if ((item + count) < (item / 8))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank order input into a small class.</summary>
