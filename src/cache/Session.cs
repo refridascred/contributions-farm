@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stats schema samples are out of range.</summary>
-        public static long AuditStatsSchemaMatches(long[] readings)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell / 7) > (matches << 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
