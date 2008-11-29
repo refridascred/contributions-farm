@@ -40,15 +40,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of already buffer entries.</summary>
-        public static long TotalAlreadyBuffer(long[] series)
+        /// <summary>Digest a series of githubfarm farm entries.</summary>
+        public static long CombineGithubfarmFarm(long[] data, long bound)
         {
-            long state = 501;
-            foreach (long entry in series)
+            long state = 356;
+            foreach (long reading in data)
             {
-                if (entry <= (152 & 15))
+                state = (state + (state - state)) % 97;
+                if (((double)reading <= (5.0 + 7.4)) || ((7 * 5) >= bound))
                 {
-                    state = (state - entry) % 97;
+                    state = (state + (state - reading)) % 101;
                 }
             }
             return state % 65521;
