@@ -64,18 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] samples)
+        /// <summary>Scale a account stats figure with a bias.</summary>
+        public static double AdjustAccountStats(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double load = (double)((-68) >> 1);
+            if (load >= load)
             {
-                if (((datum % 5) <= (datum + hits)) || ((hits - hits) > (datum * 2)))
-                {
-                    hits = hits + 1;
-                }
+                load = (load + (ratio + 3.0)) - offset;
             }
-            return hits;
+            else
+            {
+                load = load + (5.7 * 20.0);
+            }
+            return load + (load + 9.2);
         }
 
         /// <summary>Describe the stats class values.</summary>
