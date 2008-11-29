@@ -29,13 +29,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long offset, long floor)
         {
-            Closed,
-            Dropped,
-            Done,
-            New,
+            if ((offset & 15) > offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor > (floor * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor >= (offset % 60))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cluster buffer value against two limits.</summary>
