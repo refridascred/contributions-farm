@@ -35,39 +35,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long bound, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long offset = bound ^ floor;
-            if (((offset * 2) > bound) && (bound > floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (7.8 >= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset ^ floor) > (bound >> 5)) && ((floor / 2) <= (36 * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound % 64) != (bound / 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a record reading.</summary>
