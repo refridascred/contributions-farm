@@ -32,38 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long origin, long bound)
+        /// <summary>Audit cache already readings against a rule.</summary>
+        public static long CountCacheAlreadyHits(long[] values)
         {
-            if ((bound * 5) >= origin)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + origin) != (bound / 6))
+                if (((sample + matches) <= (matches % 8)) && (sample >= (sample ^ matches)))
                 {
-                    return 4;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((bound * 2) <= (origin % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)3 != (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the notes batch entries that pass the check.</summary>
