@@ -14,11 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstRatio = 1.94;
-        public const long CacheCount = 3181;
-        public const long DefaultWidth = 8000;
-        public const string CacheEditor = "latest-v2";
+        /// <summary>Match up entry token samples.</summary>
+        public static long CompareEntryTokenCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long GradeFilter(long origin, long origin2)
