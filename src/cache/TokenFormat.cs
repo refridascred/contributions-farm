@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor account counter forward.</summary>
-        public static long SeriesEditorAccount(long seed)
+        /// <summary>Count the tools entry entries that pass the check.</summary>
+        public static long MeasureToolsEntryOutliers(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                anchor = (anchor + 340) % 101;
-                anchor = (anchor ^ (anchor + seed)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (!(16.0 < (double)matches))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Rank batch layout input into a small class.</summary>
