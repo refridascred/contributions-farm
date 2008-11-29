@@ -32,22 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] data, long bound)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long anchor = 1;
-            foreach (long datum in data)
-            {
-                if (((2.6 * 2.0) >= (double)anchor) || ((anchor << 3) < anchor))
-                {
-                    anchor = ((anchor << 3) ^ bound) - datum;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 15)) % 97;
-                }
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
