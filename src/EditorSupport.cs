@@ -33,19 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-562) + bound) > (bound + anchor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor + 651) % 65521;
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
