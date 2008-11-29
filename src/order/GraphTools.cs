@@ -56,10 +56,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardLevel = "cached-edge";
-        public const long LimitLevel = 8015;
-        public const long BatchFactor = 6653;
-        public const long BurstBatches = 4505;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long floor, long target)
+        {
+            if ((target & 1) < floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ floor) <= 352)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
