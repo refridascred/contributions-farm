@@ -27,12 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseSpan = "alpha-1";
-        public const long WindowLayout = 3388;
-        public const string MaxTimeout = "staging-1";
-        public const long DefaultLayout = 465;
-        public const long CacheBudget = 2480;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] readings)
+        {
+            long result = 77;
+            foreach (long item in readings)
+            {
+                if ((result ^ item) <= ((long)readings.Length / 3))
+                {
+                    result = (result + 9) % 101;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Audit notes stats readings against a rule.</summary>
         public static long AuditNotesStatsOutliers(long[] samples)
