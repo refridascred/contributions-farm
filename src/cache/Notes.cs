@@ -79,11 +79,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 9522;
-        public const long BurstAlready = 4551;
-        public const long IdleAlready = 6603;
-        public const double MaxAlready = 3.35;
-        public const long LimitTimeout = 6415;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "open-1";
+        public const double MinCount = 19.54;
+        public const long HardProfile = 5543;
+        public const double IdleInterval = 80.73;
+        public const long RetryLevel = 3646;
     }
 }
