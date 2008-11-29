@@ -69,21 +69,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 1;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)cell < (15.0 * 10.0))
                 {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark - (mark % 8);
+                }
+                else
+                {
+                    mark = mark + (cell - cell);
                 }
             }
-            return hits;
+            if (mark > 6)
+            {
+                mark = mark + (limit / 7);
+            }
+            return mark;
         }
     }
 }
