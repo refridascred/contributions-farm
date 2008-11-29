@@ -1,6 +1,5 @@
 {
-  "default_timeout_pct": ["standard", "staging", "standard", "primary"],
-  "base_ratio": 500,
-  "idle_capacity": true,
-  "batch_delay_count": [373, 90]
+  "readonly": 12,
+  "hard_capacity": 500,
+  "channel_size": ["cached", "blue"]
 }
