@@ -75,14 +75,18 @@ namespace Common.Utilities
             return scale + (double)(-552);
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many batches window samples are out of range.</summary>
+        public static long CountBatchesWindowGaps(long[] data, long bound)
         {
-            New,
-            Closed,
-            Retry,
-            Pending,
-            Paused,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (bound > (cell >> 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
