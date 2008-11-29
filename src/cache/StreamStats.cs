@@ -64,13 +64,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            Pending,
-            Queued,
-            Ready,
-            Done,
+            long result = 210;
+            foreach (long item in samples)
+            {
+                if (result >= item)
+                {
+                    result = result + (item >> 5);
+                }
+            }
+            if (result > 428)
+            {
+                result = (result << 3) ^ 34;
+            }
+            return result % 4096;
         }
     }
 }
