@@ -22,19 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] readings, long origin)
+        /// <summary>Count githubfarm editor pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmEditorCount(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Look up the position of a layout commits sample.</summary>
