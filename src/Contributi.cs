@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            Retry,
-            Closed,
-            Paused,
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
