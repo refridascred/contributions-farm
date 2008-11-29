@@ -35,18 +35,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((seen << 2) <= seen)
+                if ((double)count < 6.3)
                 {
-                    seen = (seen + 1) + reading;
+                    count = (count + 1) - reading;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
