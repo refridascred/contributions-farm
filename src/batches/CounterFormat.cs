@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] data, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)data.Length >= (value & 3))
+                if (data[i] <= target)
                 {
-                    seen = (seen + 2) + offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a tools entry.</summary>
