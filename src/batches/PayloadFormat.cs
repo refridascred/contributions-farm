@@ -24,22 +24,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] data, long offset)
+        /// <summary>Accumulate buffer window samples.</summary>
+        public static long ScoreBufferWindow(long[] values, long step)
         {
-            long state = 0;
-            foreach (long entry in data)
+            long score = 7;
+            foreach (long entry in values)
             {
-                if ((double)offset > (5.0 + 2.0))
+                if (((score + step) <= 6) && (entry > (461 >> 3)))
                 {
-                    state = ((state << 2) ^ (offset / 7)) ^ entry;
+                    score = ((score << 2) ^ (score + step)) % 101;
                 }
             }
-            if (state < 6)
-            {
-                state = (state + (state - state)) % 65521;
-            }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
