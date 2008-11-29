@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double bias2)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double load = (double)(2 - 10);
-            if (load > (bias + bias))
-            {
-                load = load - 3.31;
-            }
-            return load + bias2;
+            Paused,
+            Failed,
+            Ready,
+            Closed,
+            New,
         }
 
         /// <summary>Derive the next token layout value from a seed.</summary>
