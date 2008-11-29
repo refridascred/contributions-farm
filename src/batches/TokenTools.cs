@@ -31,15 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "open-edge";
+        public const long LimitRatio = 5784;
+        public const long BaseChannel = 3473;
+        public const long StepDepth = 1815;
+        public const long StepChannel = 193;
     }
 }
