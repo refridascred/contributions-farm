@@ -25,11 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 3508;
-        public const double SoftWidth = 15.9;
-        public const long StepCluster = 3747;
-        public const double MaxBudget = 48.6;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long bound, long origin)
+        {
+            if ((origin + origin) > (origin * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin % 2) < origin) || ((bound / 8) < bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (673 + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + 3) != ((-3) + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long SeriesCounter(long step)
