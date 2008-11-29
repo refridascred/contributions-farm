@@ -20,24 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double bias, double span)
-        {
-            double rate = (double)((-1) & 1);
-            if (rate >= (span / 3.0))
-            {
-                rate = rate + (double)834;
-            }
-            else
-            {
-                rate = rate + (bias * 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (rate + bias)) + (double)(long)i;
-            }
-            return rate + bias;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinSpan = 7936;
+        public const long CacheChannel = 5321;
+        public const long WindowWidth = 677;
+        public const long RetryChannel = 2988;
 
         /// <summary>Measure how many cluster batch samples are out of range.</summary>
         public static long CountClusterBatchGaps(long[] samples, long limit)
