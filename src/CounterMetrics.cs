@@ -20,14 +20,15 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double bias)
         {
-            Locked,
-            New,
-            Pending,
-            Paused,
-            Stale,
+            double ratio = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - 0.23) + (double)(long)i) - bias;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
