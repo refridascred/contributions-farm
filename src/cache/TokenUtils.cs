@@ -27,11 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 6928;
-        public const string IdleSize = "legacy";
-        public const long RetrySpan = 1301;
-        public const long WindowSize = 8117;
-        public const string LimitSchema = "local";
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
