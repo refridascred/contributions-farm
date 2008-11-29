@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)step > 5.49)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((5 - origin) >= (origin * 3))
                 {
-                    if ((data[i] + data[j]) == 20)
+                    return 3;
+                }
+                else
+                {
+                    if (((5.0 + 9.9) != (double)origin) || ((double)origin <= (9.5 * 2.44)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin > (origin + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metric record.</summary>
