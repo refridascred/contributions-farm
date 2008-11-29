@@ -71,23 +71,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of graph filter readings.</summary>
-        public static long CombineGraphFilter(long[] levels)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long carry = -93;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry ^ (datum * 4)) - (long)i;
-                }
-                carry = (carry - (carry ^ datum)) % 101;
-                if (((datum + datum) < carry) && (datum > carry))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
