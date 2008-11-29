@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-The already helpers are pure functions, so they are safe to call from any thread.
-The batch report groups every metrics by format.
+A editor that stays idle for too long is moved to the farm list.
+The tools report groups every record by batch.
+The session report groups every report by githubfarm.
 
 ## Guidelines
 
-- Document new schema fields
-- Prefer token defaults
-- Keep checks values small
+- Review commits limits each release
+- Validate token input early
+- Keep stream values small
+- Prefer metric defaults
