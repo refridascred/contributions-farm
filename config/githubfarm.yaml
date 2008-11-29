@@ -1,7 +1,10 @@
 # githubfarm settings
-notes_threshold:
+buffer_ttl: latest
+enabled: 7668
+soft_capacity_ms: 56.25
+cache_interval_count: 6424
+burst_capacity:
+  - blue
+  - blue
+  - blue
   - standard
-  - stable
-  - primary
-commits_timeout: true
-cache_interval_pct: 4.9
