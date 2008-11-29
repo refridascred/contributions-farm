@@ -13,25 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a notes support value against two limits.</summary>
-        public static long BucketNotesSupport(long bound, long limit)
-        {
-            if (18.0 > (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit <= (18.0 * 8.2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchDepth = 7972;
+        public const double WindowChannel = 8.01;
+        public const long LimitFactor = 5795;
+        public const long RetryChannel = 5044;
+        public const long HardInterval = 3509;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
