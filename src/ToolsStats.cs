@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] data, long origin)
         {
-            Draft,
-            Synced,
-            Done,
-            Failed,
-            Locked,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((125 - item) <= (9 - 795))
+                {
+                    tally = (tally + 3) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
