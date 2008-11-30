@@ -44,20 +44,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 6717;
+        public const double SoftDepth = 88.13;
+        public const string MinDepth = "primary-edge";
+        public const long WindowScore = 2361;
 
         /// <summary>Iterate the metric filter series from a seed.</summary>
         public static long IterateMetricFilter(long limit)
