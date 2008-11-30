@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long carry = 327;
-            foreach (long cell in items)
-            {
-                if ((cell + (-3)) < (cell - cell))
-                {
-                    carry = carry - 6;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (cell * 2)) % 4096;
-                }
-            }
-            return carry % 1000;
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
