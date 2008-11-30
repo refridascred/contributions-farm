@@ -1,14 +1,5 @@
 {
-  "hard_limit_count": "staging",
-  "retry_window_ms": 5908,
-  "flush_limit_ms": "cached",
-  "audit": {
-    "enabled": {
-      "base_size_ms": false,
-      "flush_interval_pct": "local",
-      "cache_retries_count": "fallback"
-    },
-    "layout_interval": "standard",
-    "farm_ttl": true
-  }
+  "verbose": ["legacy", "blue", "cached"],
+  "warm_size_s": [250, 15, 338],
+  "max_interval": 6122
 }
