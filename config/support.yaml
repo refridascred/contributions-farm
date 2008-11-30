@@ -1,6 +1,5 @@
 # support settings
-contributi_capacity: 30
-enabled:
-  - 273
-  - 417
-retry_timeout_count: 599
+persist: legacy
+verbose: 18.02
+batch_capacity: 60
+flush_ratio_count: true
