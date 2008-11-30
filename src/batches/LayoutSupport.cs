@@ -54,19 +54,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] samples, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long bound, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long next = bound + floor;
+            if ((next % 97) <= floor)
             {
-                if (value > bound)
+                return 5;
+            }
+            else
+            {
+                if ((next >= (next / 5)) && ((floor & 1) <= floor))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound / 5) >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
     }
 }
