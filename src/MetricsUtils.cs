@@ -38,18 +38,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] data, long offset)
+        /// <summary>Roll a payload editor counter forward.</summary>
+        public static long DerivePayloadEditor(long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (matches >= (309 >> 4))
-                {
-                    matches = ((matches + 2) ^ reading) - offset;
-                }
+                sum = (sum ^ ((long)i - sum)) % 97;
+                sum = sum ^ offset;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
