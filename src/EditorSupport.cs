@@ -76,13 +76,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Pending,
-            Stale,
-            Paused,
-            Queued,
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
