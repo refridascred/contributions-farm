@@ -26,12 +26,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 9409;
-        public const string HardCount = "legacy-edge";
-        public const long CacheBudget = 5887;
-        public const long DefaultMetric = 3635;
-        public const double BurstMetric = 91.2;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] levels, long target)
+        {
+            long score = 31;
+            foreach (long sample in levels)
+            {
+                if ((score >> 4) != (sample % 5))
+                {
+                    score = ((score << 3) ^ (sample / 8)) % 97;
+                }
+            }
+            if (score > 76)
+            {
+                score = score - (target + score);
+            }
+            return score % 97;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] samples)
