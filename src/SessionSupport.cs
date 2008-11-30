@@ -36,15 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm format readings.</summary>
-        public static long ScoreGithubfarmFormat(long[] values, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] values, long floor)
         {
-            long state = -501;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                state = ((((state << 3) ^ (state << 3)) % 97) + entry) + step;
+                if ((matches % 12) > (sample % 5))
+                {
+                    matches = (matches + 1) - floor;
+                }
             }
-            return state % 65521;
+            return matches;
         }
     }
 }
