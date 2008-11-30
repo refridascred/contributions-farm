@@ -30,13 +30,26 @@ namespace Common.Utilities
         public const long StepCount = 8471;
         public const long LimitContributi = 6274;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] values, long bound)
         {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long carry = 16;
+            foreach (long datum in values)
+            {
+                if (((datum & 127) != (carry + bound)) && ((carry + bound) == (22 + carry)))
+                {
+                    carry = (carry << 3) ^ (carry + 3);
+                }
+                if (5.76 <= (double)bound)
+                {
+                    break;
+                }
+            }
+            if (carry < 849)
+            {
+                carry = ((carry << 2) ^ (bound + bound)) % 4096;
+            }
+            return carry;
         }
     }
 }
