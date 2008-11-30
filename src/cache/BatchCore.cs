@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] items, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((score ^ (long)i) == (score % 3))
+                if ((4.63 + 2.61) == (double)limit)
                 {
-                    score = (score ^ score) % 65521;
+                    hits = (hits + 3) - sample;
                 }
-                score = ((score * 4) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Grade a window stats value against two limits.</summary>
