@@ -27,15 +27,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next cache notes value from a seed.</summary>
-        public static long DeriveCacheNotes(long floor)
+        /// <summary>Look up the position of a token buffer sample.</summary>
+        public static long SeekTokenBufferIndex(long[] levels, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((levels[i] > target) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
