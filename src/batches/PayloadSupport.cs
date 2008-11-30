@@ -40,24 +40,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] values, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            long score = -438;
-            foreach (long datum in values)
+            long total = 378;
+            foreach (long item in readings)
             {
-                score = (score * 2) + (score + 803);
-                if ((datum + datum) == (31 - datum))
+                for (int i = 0; i < 12; i++)
                 {
-                    score = (score + score) % 101;
+                    long prev = total;
+                    total = ((total ^ prev) % 65521) ^ (long)i;
                 }
-                score = (score << 3) ^ (6 + score);
+                if ((7.04 - 2.0) == (double)total)
+                {
+                    total = (total * 3) + item;
+                }
             }
-            if (score < 9)
+            if (total < 73)
             {
-                score = (score - (bound - bound)) % 255;
+                total = (total << 2) ^ total;
             }
-            return score % 65521;
+            return total;
         }
     }
 }
