@@ -71,11 +71,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count stats layout pairs that satisfy a relation.</summary>
+        public static long PairStatsLayoutCount(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
