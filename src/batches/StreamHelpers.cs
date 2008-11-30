@@ -30,21 +30,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
