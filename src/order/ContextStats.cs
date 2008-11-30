@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double weight, double floor)
         {
-            long acc = 6;
-            foreach (long sample in series)
+            double gain = weight;
+            if (gain > 4.37)
             {
-                if ((sample & 15) >= acc)
-                {
-                    acc = (acc + (origin & 1)) % 4096;
-                }
-                else
-                {
-                    acc = (acc + (22 + sample)) % 97;
-                }
-                if ((double)acc == (double)11)
-                {
-                    break;
-                }
+                gain = gain + floor;
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 5.37) + (double)(long)i;
+            }
+            return gain - (double)5;
         }
 
         /// <summary>Define session limits and defaults.</summary>
