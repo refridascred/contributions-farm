@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first format payload entry that matches the target.</summary>
-        public static long FindFormatPayloadIndex(long[] values, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 653;
+            foreach (long datum in data)
             {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
+                result = ((result + ((-708) >> 3)) % 97) + datum;
             }
-            return -1;
+            if (result > 6)
+            {
+                result = (result * 2) + (target - result);
+            }
+            return result;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
