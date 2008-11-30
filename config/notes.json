@@ -1,12 +1,8 @@
 {
-  "commits_ratio": 500,
-  "default_limit_ms": {
-    "batches_ttl": ["strict", "staging", "eu-west", "open"],
-    "hard_capacity": "strict",
-    "batch_threshold": 91.82,
-    "hard_depth_pct": 3.36,
-    "cache_timeout_pct": 22.43
-  },
-  "enabled": ["blue", "open", "stable", "latest"],
-  "cache_retries": "legacy"
+  "batch_size": 40,
+  "enabled": 500,
+  "retry_delay_ms": 60,
+  "min_capacity_ms": "latest",
+  "batch_retries_count": 21.83,
+  "counter_threshold": 1024
 }
