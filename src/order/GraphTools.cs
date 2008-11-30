@@ -19,20 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Rank metrics entry input into a small class.</summary>
+        public static long GradeMetricsEntry(long bound, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            if (!((double)bound == (6.0 + 7.0)))
             {
-                long span = (origin - (long)i) + (result * 5);
-                if (!((result - span) >= (origin * 2)))
-                {
-                    span = (span - origin) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((floor & 7) < bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (6.79 <= (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
