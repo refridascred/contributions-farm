@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long StepRatio = 724;
         public const long MaxNotes = 8601;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many graph route samples are out of range.</summary>
+        public static long TallyGraphRouteMatches(long[] readings)
         {
-            Pending,
-            Ready,
-            Locked,
-            Done,
-            Draft,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item <= 9.3)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
