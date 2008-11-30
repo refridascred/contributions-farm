@@ -1,10 +1,11 @@
 # Command notes
 
-The stream report groups every format by editor.
-Use farm settings to tune how often format data is refreshed.
+The graph report groups every schema by session.
+When a command fails, the token handler retries a few times before giving up.
+Use token settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Log every farm change
-- Validate token input early
-- Keep schema values small
+- Document new format fields
+- Review stream limits each release
+- Validate window input early
