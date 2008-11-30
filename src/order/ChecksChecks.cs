@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long mix = 5;
-            foreach (long sample in values)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (((32 >> 3) <= sample) || ((double)mix <= (9.1 * 12.0)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    mix = (mix - sample) % 1000;
+                    result = (result ^ (long)i2) % 255;
                 }
-                else
-                {
-                    mix = mix ^ 59;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
