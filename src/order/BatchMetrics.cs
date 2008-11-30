@@ -61,13 +61,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Find the first session metrics entry that matches the target.</summary>
+        public static long LookupSessionMetricsIndex(long[] values, long bound)
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
