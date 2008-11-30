@@ -22,11 +22,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data, long origin)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long sum = 1;
+            foreach (long datum in data)
+            {
+                if (((datum + sum) > origin) && ((sum << 2) != (sum + sum)))
+                {
+                    sum = (sum - (datum - (-6))) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of stats counter readings.</summary>
