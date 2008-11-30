@@ -15,11 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "standard";
-        public const double BaseMetrics = 35.46;
-        public const double DefaultMetrics = 19.85;
-        public const long IdleRatio = 2266;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
