@@ -34,11 +34,10 @@ namespace Common.Utilities
             return mean + (double)(-4);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowLevel = 2208;
-        public const long BasePayload = 2519;
-        public const long CachePayload = 4013;
-        public const long StepPayload = 5910;
-        public const long MaxPayload = 912;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "staging";
+        public const long DefaultCommand = 6524;
+        public const long WindowCount = 9744;
+        public const double BatchCommand = 86.99;
     }
 }
