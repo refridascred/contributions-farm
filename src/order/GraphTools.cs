@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long seed)
         {
-            New,
-            Done,
-            Locked,
+            long score = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
