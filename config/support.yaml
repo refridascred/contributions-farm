@@ -1,9 +1,19 @@
 # support settings
-githubfarm_capacity: 30
-context_threshold: fallback
-audit: standard
-enabled: 30
-flush_capacity: 60
-hard_threshold:
-  - strict
-  - strict
+flush_limit_ms: legacy
+cache_depth_pct:
+  warm_ttl_count: eu-west
+  dry_run:
+    - blue
+    - latest
+    - blue
+  audit: open
+  entry_ttl:
+    - legacy
+    - strict
+    - latest
+    - open
+  flush_ttl_count: 40
+max_size: 54.75
+min_delay_ms: blue
+context_depth: edge
+notes_capacity: fallback
