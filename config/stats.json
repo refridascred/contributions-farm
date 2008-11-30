@@ -1,5 +1,8 @@
 {
-  "metrics_timeout": 250,
-  "notes_window": false,
-  "verbose": "staging"
+  "warm_depth_count": 94.85,
+  "min_capacity_count": "eu-west",
+  "contributi_size": ["standard", "legacy", "strict", "cached"],
+  "hard_size_count": 25.12,
+  "flush_delay": [72, 339, 75],
+  "soft_timeout_count": [220, 352, 439, 96]
 }
