@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long step, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            if ((offset / 5) > offset)
             {
-                if ((hits + hits) > value)
+                return 5;
+            }
+            else
+            {
+                if (step <= (37 >> 3))
                 {
-                    hits = hits + 3;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
