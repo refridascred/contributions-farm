@@ -56,13 +56,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Failed,
-            Active,
-            Queued,
-            Synced,
+            Done,
+            Paused,
+            Closed,
+            Dropped,
+            Stale,
         }
     }
 }
