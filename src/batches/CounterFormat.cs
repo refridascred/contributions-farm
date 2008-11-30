@@ -25,20 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] levels, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                long span = mark - (560 - target);
-                if (((mark ^ mark) >= (target >> 4)) || (mark > target))
+                if (cell >= target)
                 {
-                    mark = (mark * 3) + (span + span);
+                    ready = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
