@@ -27,19 +27,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((((value + value) <= (8 << 2)) || ((double)value <= 9.0)) || ((3 - seen) <= value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseTimeout = 8568;
+        public const long MinProfile = 5544;
+        public const double BatchSize = 60.15;
+        public const string StepProfile = "open-edge";
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] readings)
