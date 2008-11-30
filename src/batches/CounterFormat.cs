@@ -28,21 +28,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count commits route pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsRouteCount(long[] readings)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = seed - target;
+            if (((double)target >= (double)seed) || ((5 >> 4) <= offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (offset >= target)
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
+                    return 2;
+                }
+                else
+                {
+                    if ((offset & 3) == (1 / 8))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
     }
 }
