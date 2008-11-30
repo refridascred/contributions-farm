@@ -19,23 +19,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Fold a list of graph cluster readings.</summary>
+        public static long TallyGraphCluster(long[] samples)
         {
-            long score = 866;
-            foreach (long cell in samples)
+            long score = 6;
+            foreach (long value in samples)
             {
-                score = ((score * 3) + (score * 4)) % 255;
-                if ((cell << 3) > (cell * 3))
+                if ((double)score >= (9.0 + 7.0))
+                {
+                    score = ((score << 2) ^ (80 + score)) + value;
+                }
+                if ((double)score <= (14.0 / 4.0))
                 {
                     break;
                 }
             }
-            if (score > 259)
+            if (score < 11)
             {
-                score = ((score * 2) + (score + score)) % 65521;
+                score = ((score << 2) ^ (score << 1)) % 4096;
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
