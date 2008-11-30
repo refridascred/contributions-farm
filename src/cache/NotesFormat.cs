@@ -25,16 +25,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = acc ^ (889 - origin);
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultLevel = 10.92;
+        public const double LimitFactor = 58.87;
+        public const string DefaultDepth = "latest-v2";
     }
 }
