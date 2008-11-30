@@ -28,13 +28,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] items, long seed)
         {
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
