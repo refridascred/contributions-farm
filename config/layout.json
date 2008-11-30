@@ -1,5 +1,14 @@
 {
-  "cache_ratio_count": 28.11,
-  "hard_limit_pct": "standard",
-  "poll_ttl_pct": true
+  "idle_threshold": {
+    "base_retries_ms": {
+      "tools_threshold": "blue",
+      "persist": "latest",
+      "session_size": ["blue", "edge", "local", "latest"],
+      "base_ratio_ms": "legacy"
+    },
+    "default_ratio_s": "eu-west",
+    "soft_ttl_s": 1024
+  },
+  "soft_size_pct": true,
+  "cache_retries": "cached"
 }
