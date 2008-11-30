@@ -36,12 +36,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            long state = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((state - (long)i) > 611)
+                {
+                    state = state ^ (state << 3);
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many notes contributi samples are out of range.</summary>
