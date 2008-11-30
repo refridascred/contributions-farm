@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long acc = 67;
-            foreach (long sample in samples)
-            {
-                acc = ((acc + (sample % 5)) % 1000) + step;
-            }
-            return acc;
+            Failed,
+            Dropped,
+            Done,
+            Ready,
         }
 
         /// <summary>Look up the position of a token buffer sample.</summary>
