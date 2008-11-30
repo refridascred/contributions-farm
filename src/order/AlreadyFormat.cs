@@ -54,19 +54,19 @@ namespace Common.Utilities
             return mean - (double)(-8);
         }
 
-        /// <summary>Accumulate metrics entry samples.</summary>
-        public static long FoldMetricsEntry(long[] values)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] values, long step)
         {
-            long score = 48;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long value in values)
             {
-                score = score ^ (entry - entry);
-                if (((-18) - entry) >= 3)
+                if (value > step)
                 {
-                    score = score + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
     }
 }
