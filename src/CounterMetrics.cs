@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 843;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)limit <= (12.0 / 6.0))
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix - (mix - mix)) % 255) ^ reading;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Fold a list of command readings.</summary>
