@@ -42,12 +42,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Active,
-            Done,
-            Pending,
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Locate a account reading by value.</summary>
