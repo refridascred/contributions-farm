@@ -26,26 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Count the window entry entries that pass the check.</summary>
+        public static long MeasureWindowEntryOutliers(long[] values, long step)
         {
-            long score = 484;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (((reading & 1) != (reading * 3)) || ((4 * 5) > (score / 8)))
+                if ((7.0 * 5.8) <= (2.0 / 6.0))
                 {
-                    score = (score + (95 ^ reading)) % 101;
-                }
-                else
-                {
-                    score = (score ^ 41) % 255;
+                    hits = ((hits + 1) - reading) - step;
                 }
             }
-            if (score < 88)
-            {
-                score = ((score * 4) + (score - score)) % 1000;
-            }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
