@@ -43,19 +43,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] series, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long result = 60;
+            foreach (long entry in readings)
             {
-                if (item != seed)
+                result = (result * 3) + 623;
+                if (entry > result)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (result > 5)
+            {
+                result = (result + (result * 4)) % 255;
+            }
+            return result;
         }
     }
 }
