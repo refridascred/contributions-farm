@@ -20,15 +20,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Failed,
-            Synced,
-            Dropped,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFarm = 29.77;
+        public const double MinWidth = 5.32;
+        public const long DefaultFarm = 6914;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long origin, long step)
