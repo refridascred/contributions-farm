@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Pending,
-            Draft,
-            Dropped,
-            Locked,
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the checks mode values.</summary>
