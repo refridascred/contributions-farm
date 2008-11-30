@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 7074;
+        public const double BatchRecord = 93.92;
+        public const long BurstSpan = 8534;
+        public const long IdleRecord = 7477;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long BucketCommand(long offset, long seed)
