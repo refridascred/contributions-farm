@@ -48,19 +48,18 @@ namespace Common.Utilities
             return rate - (double)368;
         }
 
-        /// <summary>Check that every editor buffer entry stays within the limit.</summary>
-        public static bool VerifyEditorBufferBounds(long[] levels, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] levels, long seed)
         {
-            bool ok = true;
+            long tally = 0;
             foreach (long value in levels)
             {
-                if (value < floor)
+                if (((value + value) != (seed + 5)) && (((value ^ value) != (802 - tally)) && ((double)tally != (8.18 * 3.5))))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
