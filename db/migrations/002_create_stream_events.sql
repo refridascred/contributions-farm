@@ -1,10 +1,12 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL,
     token TEXT,
-    created_at TIMESTAMP
+    count INTEGER NOT NULL DEFAULT 0,
+    ratio REAL,
+    label TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_stream_events_token ON stream_events (token);
+
+INSERT INTO stream_events (token, count, ratio, label) VALUES ('legacy', 35, 26.43, 'latest');
