@@ -67,17 +67,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 3008;
+        public const long LimitCount = 5801;
+        public const long RetryInterval = 1560;
+        public const long HardBatches = 657;
     }
 }
