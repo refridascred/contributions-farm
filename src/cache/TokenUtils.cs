@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] samples, long target)
         {
-            Retry,
-            Dropped,
-            Active,
-            Pending,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!((target >> 5) <= ((-5) + hits)))
+                {
+                    hits = (hits + 1) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
