@@ -14,21 +14,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((double)entry < 6.4) || ((1.0 * 9.98) != (double)entry)))
                 {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a account batch sample.</summary>
