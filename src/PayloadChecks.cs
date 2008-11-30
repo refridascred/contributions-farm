@@ -46,22 +46,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] items, long seed)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long acc = 1;
-            foreach (long sample in items)
-            {
-                if ((0.38 - 4.0) == (double)acc)
-                {
-                    acc = (acc << 2) ^ (49 ^ seed);
-                }
-                else
-                {
-                    acc = acc + (sample >> 2);
-                }
-            }
-            return acc;
+            Dropped,
+            Synced,
+            Stale,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a graph options.</summary>
