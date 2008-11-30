@@ -8,9 +8,9 @@ namespace Common.Utilities
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
         {
+            Done,
             Ready,
-            Synced,
-            Retry,
+            Queued,
         }
 
         /// <summary>Hold a counter info.</summary>
