@@ -1,21 +1,7 @@
 {
-  "max_size_pct": 30,
-  "account_size": {
-    "verbose": 35,
-    "account_delay": 51,
-    "compress": 500,
-    "warm_interval_s": ["strict", "primary"],
-    "session_delay": true,
-    "sync_window": "strict"
-  },
-  "base_size": {
-    "cache_threshold_s": 91.98,
-    "cache_threshold": {
-      "sync_retries_s": 8830,
-      "batch_depth": "latest",
-      "idle_size_ms": "eu-west",
-      "poll_ttl_pct": "edge"
-    },
-    "base_window_s": 78
-  }
+  "hard_limit": false,
+  "compress": "cached",
+  "sync_depth": ["latest", "staging", "standard"],
+  "warm_size": 55,
+  "already_delay": 79
 }
