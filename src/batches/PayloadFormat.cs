@@ -26,18 +26,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] values, long floor)
         {
-            long state = -33;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (((state + state) > (state - 106)) || ((state / 3) <= ((-106) - sample)))
+                if (cell != floor)
                 {
-                    state = (state - (sample - state)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
     }
 }
