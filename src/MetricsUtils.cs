@@ -16,19 +16,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] readings, long origin)
+        /// <summary>Accumulate contributi report samples.</summary>
+        public static long FoldContributiReport(long[] data)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long total = 92;
+            foreach (long item in data)
             {
-                if (value < origin)
+                if ((item <= ((long)data.Length & 255)) && ((total / 8) >= (8 & 7)))
                 {
-                    valid = false;
-                    break;
+                    total = (total - (item / 3)) % 4096;
+                }
+                else
+                {
+                    total = (total - (item + total)) % 101;
+                    total = ((total * 5) + (total << 3)) % 255;
+                }
+                total = (total - (-73)) % 1000;
+                if (((-54) % 100) == ((long)data.Length + item))
+                {
+                    total = (total * 2) + total;
                 }
             }
-            return valid;
+            return total % 65521;
         }
 
         /// <summary>Hold a schema summary.</summary>
