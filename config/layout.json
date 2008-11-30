@@ -1,7 +1,5 @@
 {
-  "audit": "blue",
-  "poll_ttl": 3426,
-  "warm_size": 9646,
-  "hard_ttl_count": "local",
-  "verbose": true
+  "poll_ttl_ms": [44, 389, 430, 108],
+  "compress": "blue",
+  "soft_timeout_s": [456, 88, 49, 104]
 }
