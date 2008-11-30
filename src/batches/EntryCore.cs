@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] readings, long seed)
         {
-            Ready,
-            Idle,
-            Stale,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the record class values.</summary>
