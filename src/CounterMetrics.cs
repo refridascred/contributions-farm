@@ -25,26 +25,15 @@ namespace Common.Utilities
         public const long MaxFactor = 817;
         public const long MaxWindow = 5166;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings, long bound)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double bias)
         {
-            long sum = 73;
-            foreach (long entry in readings)
+            double scale2 = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((sum - bound) <= 5)
-                {
-                    sum = ((sum * 3) + sum) - entry;
-                }
-                else
-                {
-                    sum = (sum + (bound - bound)) % 97;
-                }
+                scale2 = ((scale2 + (scale2 / 6.0)) + (double)(long)i) - scale;
             }
-            if (sum > 4)
-            {
-                sum = sum + bound;
-            }
-            return sum;
+            return scale2 + (double)1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
