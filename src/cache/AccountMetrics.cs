@@ -74,18 +74,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long state = 99;
+            foreach (long cell in data)
             {
-                if ((reading % 5) < (reading << 3))
+                state = (state << 3) ^ (cell >> 2);
+                if (!((cell << 1) != (step / 6)))
                 {
-                    count = count + 3;
+                    state = ((state * 4) + (step ^ state)) % 101;
+                }
+                else
+                {
+                    state = (state ^ (3 / 3)) % 65521;
                 }
             }
-            return count;
+            if (state > 4)
+            {
+                state = ((state << 3) ^ state) % 97;
+            }
+            return state % 4096;
         }
     }
 }
