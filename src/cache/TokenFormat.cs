@@ -37,22 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] samples, long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (((floor & 15) < (cell - (-5))) || ((floor % 3) != (count - count)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Failed,
         }
     }
 }
