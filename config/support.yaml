@@ -1,8 +1,7 @@
 # support settings
-default_size: stable
-base_limit:
-  - 314
-  - 99
-  - 373
-  - 80
-dry_run: strict
+batches_limit: 250
+buffer_retries: green
+poll_retries: 3883
+strict: 65.96
+poll_ratio_pct: false
+batch_capacity_s: 17
