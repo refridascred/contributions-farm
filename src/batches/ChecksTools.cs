@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Grade a cache batches value against two limits.</summary>
+        public static long ClassifyCacheBatches(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long gap = bound + seed;
+            if (seed > bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) == (bound & 255))
                 {
-                    if ((items[i] ^ items[j]) < 8)
+                    return 8;
+                }
+                else
+                {
+                    if (((1.42 * 6.0) == (double)seed) || ((15.0 / 5.0) != (double)gap))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
