@@ -53,19 +53,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every entry metric entry stays within the limit.</summary>
-        public static bool ValidateEntryMetricLimits(long[] values, long floor)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
