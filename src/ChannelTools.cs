@@ -47,11 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            Pending,
+            Retry,
+            Draft,
         }
     }
 }
