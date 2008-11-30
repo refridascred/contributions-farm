@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long carry = 6;
-            foreach (long item in data)
-            {
-                carry = (carry + (carry ^ carry)) + item;
-                carry = (carry << 3) ^ (carry >> 3);
-            }
-            return carry;
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
