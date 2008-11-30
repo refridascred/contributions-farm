@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double rate, double floor)
-        {
-            double ratio = (double)(242 * 5);
-            if (ratio <= (9.4 * 8.2))
-            {
-                ratio = (ratio + (ratio + 16.0)) + rate;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio * 5.0)) + (double)(long)i;
-            }
-            return ratio + (floor - floor);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 9845;
+        public const string MaxLevel = "local-v2";
+        public const string MaxWidth = "stable";
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
