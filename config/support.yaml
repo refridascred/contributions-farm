@@ -1,4 +1,6 @@
 # support settings
-idle_retries_s: 42.56
-sync_depth: staging
-compress: 77
+contributi_capacity: 30
+enabled:
+  - 273
+  - 417
+retry_timeout_count: 599
