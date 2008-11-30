@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 4900;
-        public const double LimitGraph = 89.17;
-        public const long MaxBudget = 4605;
-        public const long StepScore = 1055;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] items)
+        {
+            long score = -103;
+            foreach (long reading in items)
+            {
+                if (reading <= (score + reading))
+                {
+                    score = (score ^ score) % 255;
+                }
+                else
+                {
+                    score = (score ^ (reading >> 5)) % 65521;
+                }
+            }
+            if (score > 812)
+            {
+                score = score - score;
+            }
+            return score;
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
