@@ -43,18 +43,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit graph tools readings against a rule.</summary>
-        public static long TallyGraphToolsHits(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((tally - tally) != (tally + 339)) || ((bound % 12) == (sample ^ bound)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryWidth = 8369;
+        public const long BurstSpan = 8863;
+        public const double HardCounter = 96.5;
+        public const long MinCounter = 5369;
     }
 }
