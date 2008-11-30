@@ -82,12 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] items, long floor)
         {
-            Dropped,
-            Closed,
-            Idle,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
