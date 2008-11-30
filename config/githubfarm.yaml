@@ -1,16 +1,10 @@
 # githubfarm settings
-readonly:
-  - 459
-  - 393
-  - 138
-  - 344
-persist:
-  soft_size: 57
-  min_limit_s: 9074
-  strict:
-    - 371
-    - 418
-    - 19
-    - 441
-  default_ttl_count: 5280
-hard_interval_ms: 90
+verbose: 88
+compress: staging
+base_interval_s: 52.74
+base_window_pct: 60
+schema_retries:
+  base_window_pct: 30
+  batch_ratio_count: 5466
+  payload_ttl: latest
+  hard_retries_count: 8168
