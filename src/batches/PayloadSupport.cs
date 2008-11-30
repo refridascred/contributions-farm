@@ -19,10 +19,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "latest-v2";
-        public const long BaseFormat = 7679;
-        public const double MaxScore = 68.35;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (count > (datum + datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
