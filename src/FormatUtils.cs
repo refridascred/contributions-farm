@@ -29,10 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxInterval = 5994;
-        public const double WindowDepth = 23.14;
-        public const double CacheSize = 5.86;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitTimeout = "standard";
+        public const string MinRatio = "standard-edge";
+        public const long BaseStats = 451;
+        public const long StepStats = 4988;
+        public const long WindowStats = 7084;
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long CompareChannelCount(long[] values)
