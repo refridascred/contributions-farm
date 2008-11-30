@@ -33,19 +33,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((double)limit > 20.0))
-                {
-                    carry = ((carry << 2) ^ carry) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
