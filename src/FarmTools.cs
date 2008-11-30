@@ -33,18 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] levels)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (7.3 - 3.19))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
