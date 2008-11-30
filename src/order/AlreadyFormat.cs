@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 8190;
+        public const string LimitFormat = "standard-edge";
+        public const double BaseFormat = 58.09;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountMatches(long[] values, long floor)
