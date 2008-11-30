@@ -14,15 +14,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] readings, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Audit route profile readings against a rule.</summary>
