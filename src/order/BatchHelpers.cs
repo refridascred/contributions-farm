@@ -16,23 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metric command readings against a rule.</summary>
-        public static long MeasureMetricCommandOutliers(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((89 * 3) >= (long)items.Length) || (tally < (floor << 2)))
-                {
-                    tally = (tally + 1) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 2595;
+        public const double MaxBuffer = 81.93;
+        public const long SoftBuffer = 3461;
+        public const long BaseWidth = 882;
+        public const long MaxSize = 6995;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
