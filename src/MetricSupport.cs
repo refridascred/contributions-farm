@@ -28,15 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already support series from a seed.</summary>
-        public static long DeriveAlreadySupport(long target)
+        /// <summary>Check that every profile batch entry stays within the limit.</summary>
+        public static bool VerifyProfileBatchBounds(long[] readings, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (sample < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
     }
 }
