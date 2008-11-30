@@ -36,15 +36,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double scale, double span)
-        {
-            double gain = span;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain - (gain - 3.9)) - (double)(long)i) + scale;
-            }
-            return gain - span;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 89;
+        public const long LimitCount = 1009;
+        public const string RetryRatio = "open-v2";
+        public const double BurstAlready = 18.05;
     }
 }
