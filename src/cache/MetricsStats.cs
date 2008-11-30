@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double scale, double span)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double scale2 = (double)(0 / 2);
-            if (scale2 > (double)55)
-            {
-                scale2 = ((scale2 + (double)587) + scale) - span;
-            }
-            return scale2 + scale2;
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
