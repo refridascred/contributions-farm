@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                if ((9.01 / 5.0) > (16.0 + 4.06))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + entry) + seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
