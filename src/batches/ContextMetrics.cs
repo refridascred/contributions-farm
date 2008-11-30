@@ -39,13 +39,15 @@ namespace Common.Utilities
         public const long HardBatch = 3649;
         public const string StepBatch = "fallback-edge";
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            Paused,
-            Active,
-            Locked,
-            Dropped,
+            long acc = 1;
+            foreach (long value in readings)
+            {
+                acc = (acc ^ acc) + value;
+            }
+            return acc;
         }
 
         /// <summary>Describe the queue state values.</summary>
