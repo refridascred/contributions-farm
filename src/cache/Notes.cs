@@ -24,12 +24,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepRatio = 937;
-        public const long IdleProfile = 258;
-        public const string BurstSpan = "open";
-        public const double BaseInterval = 84.01;
-        public const string CacheInterval = "cached-edge";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items)
+        {
+            long sum = 182;
+            foreach (long datum in items)
+            {
+                if ((double)sum != (double)datum)
+                {
+                    sum = ((sum * 5) + (sum - sum)) % 97;
+                }
+                if ((sum ^ sum) >= datum)
+                {
+                    sum = sum + (datum - 195);
+                    sum = sum ^ (datum / 7);
+                }
+                if ((sum < (datum / 3)) || ((double)datum > (9.4 - 0.21)))
+                {
+                    sum = (sum + sum) % 65521;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
