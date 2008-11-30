@@ -1,14 +1,10 @@
 {
-  "max_retries": [397, 234, 273, 389],
-  "default_limit_pct": {
-    "counter_interval": "standard",
-    "hard_ratio": {
-      "batch_ratio": ["open", "fallback", "edge", "staging"],
-      "retry_depth": 238,
-      "session_capacity": "stable",
-      "cache_threshold_s": 51.67
-    },
-    "batch_ttl": 42.07
-  },
-  "sync_ttl": 37.98
+  "idle_limit_pct": false,
+  "default_limit_pct": 68.0,
+  "readonly": 79.88,
+  "base_window_pct": {
+    "retry_delay": true,
+    "burst_retries_pct": false,
+    "readonly": "legacy"
+  }
 }
