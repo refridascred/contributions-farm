@@ -41,18 +41,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] levels, long origin)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)count < (double)origin)
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Synced,
+            Retry,
+            Paused,
         }
     }
 }
