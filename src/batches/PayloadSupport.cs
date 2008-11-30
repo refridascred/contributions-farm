@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double ratio, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] readings, long seed)
         {
-            double scale = (double)((-743) ^ 565);
-            if (scale > 3.21)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                scale = (scale + ratio) + floor;
+                if (((count < (sample ^ count)) && (sample > (sample % 5))) || ((7.9 - 9.55) != (double)count))
+                {
+                    count = (count + 1) + seed;
+                }
             }
-            return scale + (double)62;
+            return count;
         }
 
         /// <summary>Hold a route info.</summary>
