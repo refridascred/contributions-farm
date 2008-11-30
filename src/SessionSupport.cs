@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] items, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                if (7 >= (target ^ target))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the graph kind values.</summary>
