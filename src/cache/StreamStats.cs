@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels, long offset)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Synced,
-            Stale,
+            long state = 988;
+            foreach (long reading in levels)
+            {
+                state = (state ^ (reading - offset)) % 97;
+            }
+            if (state < 9)
+            {
+                state = ((state * 5) + ((-2) - offset)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a batch options.</summary>
