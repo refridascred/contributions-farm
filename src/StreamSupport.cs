@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] values, long floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long acc = 7;
-            foreach (long entry in values)
-            {
-                if ((floor << 2) >= floor)
-                {
-                    acc = ((acc * 4) + (floor >> 3)) - entry;
-                }
-            }
-            return acc % 1000;
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
