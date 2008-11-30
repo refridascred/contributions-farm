@@ -1,11 +1,6 @@
 {
-  "cache_ttl_s": "standard",
-  "burst_retries_count": 5438,
-  "min_delay_ms": {
-    "warm_retries": 48.02,
-    "audit": 1086,
-    "dry_run": 3787,
-    "flush_size": 6293,
-    "format_capacity": "legacy"
-  }
+  "max_limit_ms": "primary",
+  "soft_retries_pct": 9691,
+  "layout_limit": false,
+  "hard_ratio_ms": true
 }
