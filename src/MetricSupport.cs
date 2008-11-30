@@ -30,19 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a profile payload figure with a bias.</summary>
-        public static double AdjustProfilePayload(double rate, double floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long floor)
         {
-            double load = (double)(112 >> 1);
-            if (load >= floor)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                load = load - (rate * 8.6);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (0.3 + 17.0)) - (double)(long)i;
-            }
-            return load - rate;
+            return mix;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
