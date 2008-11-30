@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long origin)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long result = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                long span = (origin - (long)i) + (result * 5);
+                if (!((result - span) >= (origin * 2)))
+                {
+                    span = (span - origin) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Rank session contributi input into a small class.</summary>
