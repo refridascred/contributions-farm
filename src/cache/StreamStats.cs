@@ -44,26 +44,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long bound, long offset)
         {
-            long total = 375;
-            foreach (long datum in values)
+            if ((5.73 * 1.93) > (double)bound)
             {
-                if ((datum + 3) < (total + (long)values.Length))
+                return 3;
+            }
+            else
+            {
+                if (93 <= bound)
                 {
-                    total = (total ^ datum) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    total = ((total * 5) + 804) % 101;
+                    if ((double)bound == (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (total > 712)
-            {
-                total = total - (total & 31);
-            }
-            return total;
         }
     }
 }
