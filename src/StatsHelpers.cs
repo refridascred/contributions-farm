@@ -47,39 +47,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long origin, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] levels, long step)
         {
-            long offset = origin + floor;
-            if (!((16 ^ offset) >= (origin - origin)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor ^ origin) > (offset + origin))
+                if (levels[i] < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 2) < (floor % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((origin + (-6)) != (offset * 4)) || (offset < (offset ^ offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
