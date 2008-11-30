@@ -1,10 +1,5 @@
 {
-  "min_delay_s": {
-    "strict": "legacy",
-    "sync_delay_count": "legacy",
-    "batch_timeout_s": "primary",
-    "flush_capacity": "staging"
-  },
-  "readonly": "stable",
-  "retry_depth": "staging"
+  "min_limit": 63.76,
+  "persist": 10,
+  "queue_window": "latest"
 }
