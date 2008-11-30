@@ -47,24 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long floor, long step)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if ((floor >> 4) >= (15 & 63))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((-798) > (5 - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
