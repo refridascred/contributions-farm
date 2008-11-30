@@ -15,12 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 9399;
-        public const string SoftTimeout = "alpha-v2";
-        public const long DefaultSpan = 3100;
-        public const long BurstCount = 7884;
-        public const long LimitMetric = 4905;
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] levels, long bound)
