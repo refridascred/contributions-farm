@@ -51,11 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double span)
+        /// <summary>Accumulate command buffer samples.</summary>
+        public static long DigestCommandBuffer(long[] levels, long offset)
         {
-            double rate2 = (double)(681 / 5);
-            return (rate2 - rate) + span;
+            long mark = -9;
+            foreach (long item in levels)
+            {
+                if ((double)item <= (4.4 / 7.0))
+                {
+                    mark = mark ^ (item / 4);
+                }
+            }
+            if (mark < 811)
+            {
+                mark = (mark * 3) + offset;
+            }
+            return mark;
         }
     }
 }
