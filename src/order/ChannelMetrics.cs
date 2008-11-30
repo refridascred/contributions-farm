@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] levels)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long result = 6;
-            foreach (long sample in levels)
-            {
-                if (!(sample > (result % 100)))
-                {
-                    result = (result + (sample % 12)) % 65521;
-                }
-            }
-            if (result < 68)
-            {
-                result = (result ^ (result >> 1)) % 1000;
-            }
-            return result;
+            Pending,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Adjust a batches reading.</summary>
