@@ -46,12 +46,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 8956;
-        public const long WindowFactor = 962;
-        public const double SoftRatio = 8.34;
-        public const long RetryTimeout = 3640;
-        public const long StepFactor = 5567;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepTimeout = 7238;
+        public const double HardBudget = 26.33;
+        public const long IdleScore = 9332;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] samples)
