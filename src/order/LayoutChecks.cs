@@ -22,10 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetrySize = 4910;
-        public const long StepWidth = 1926;
-        public const long BatchRoute = 893;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Stale,
+            New,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextLimits(long[] series, long step)
