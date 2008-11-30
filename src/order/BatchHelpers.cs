@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] <= offset)
+                state = state - 5;
+                if (((double)(long)i > (19.0 / 3.0)) || ((double)origin > (double)(-90)))
                 {
-                    return (long)i;
+                    state = ((state * 3) + state) % 97;
                 }
+                else
+                {
+                    state = (state - ((long)i + origin)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
