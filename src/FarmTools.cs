@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] items)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)hits >= 1.4) || ((sample / 5) == (sample << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] ^ data[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
