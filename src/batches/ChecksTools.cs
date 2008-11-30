@@ -13,17 +13,25 @@ namespace Common.Utilities
         }
 
         /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data)
+        public static long TallyEntry(long[] series)
         {
-            long result = 55;
-            foreach (long datum in data)
+            long mix = 176;
+            foreach (long datum in series)
             {
-                if (!((double)datum != (double)result))
+                if (((datum - datum) <= (datum - (long)series.Length)) || ((double)mix == (double)datum))
                 {
-                    result = ((result * 5) + datum) % 1000;
+                    mix = (mix - mix) % 97;
+                }
+                if (((205 + 50) < (datum + 74)) && (datum < (mix * 5)))
+                {
+                    break;
                 }
             }
-            return result;
+            if (mix < 412)
+            {
+                mix = ((mix * 3) + mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Match up support queue samples.</summary>
