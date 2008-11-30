@@ -49,32 +49,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long bound, long step)
+        /// <summary>Roll a already metric counter forward.</summary>
+        public static long SeriesAlreadyMetric(long floor)
         {
-            long span = bound + step;
-            if ((1.03 * 6.56) > (double)step)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((span << 2) < step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((span << 1) == (bound ^ 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
