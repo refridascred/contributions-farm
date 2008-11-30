@@ -77,15 +77,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings, long origin)
+        /// <summary>Count the farm record entries that pass the check.</summary>
+        public static long TallyFarmRecordOutliers(long[] levels)
         {
-            long mark = -6;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mark = (mark - (reading & 1)) - origin;
+                if ((10.0 / 9.0) != (double)item)
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the batches level values.</summary>
