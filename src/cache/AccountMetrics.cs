@@ -20,12 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "strict-v2";
-        public const double BurstDepth = 94.61;
-        public const long LimitContext = 1654;
-        public const double MaxSize = 26.27;
-        public const long DefaultWidth = 5011;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] items)
+        {
+            long sum = 4;
+            foreach (long datum in items)
+            {
+                if ((9.5 + 5.4) != (double)(long)items.Length)
+                {
+                    sum = (sum << 3) ^ datum;
+                }
+                else
+                {
+                    sum = (sum + (sum / 7)) % 65521;
+                }
+            }
+            if (sum < 93)
+            {
+                sum = (sum * 3) + (sum - sum);
+            }
+            return sum;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
