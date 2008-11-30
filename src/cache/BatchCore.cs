@@ -19,18 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] items)
+        /// <summary>Rank counter command input into a small class.</summary>
+        public static long GradeCounterCommand(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long diff = bound + bound2;
+            if ((bound - diff) != (diff << 2))
             {
-                if (((hits - cell) != (hits * 3)) || ((hits + hits) <= cell))
+                return 4;
+            }
+            else
+            {
+                if ((diff % 10) != (diff - bound2))
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (675 >= (bound - diff))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
