@@ -71,18 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] data)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double drift = 0.8 + (double)263;
+            if (drift <= drift)
             {
-                if ((matches & 255) == (matches + 83))
-                {
-                    matches = (matches + 1) + reading;
-                }
+                drift = (drift - scale) + bias;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 7.9) + (double)(long)i;
+            }
+            return drift + scale;
         }
     }
 }
