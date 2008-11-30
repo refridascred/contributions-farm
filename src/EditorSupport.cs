@@ -76,11 +76,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 2356;
-        public const string StepChecks = "legacy-v2";
-        public const long BatchRatio = 485;
-        public const long BaseSize = 5396;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Pending,
+            Stale,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
