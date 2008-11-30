@@ -40,23 +40,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of payload batch entries.</summary>
-        public static long TotalPayloadBatch(long[] readings, long seed)
-        {
-            long carry = 638;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = (((carry * 2) + seed) % 1000) - (long)i;
-                }
-                if (value >= (carry - 976))
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 3534;
+        public const double StepRatio = 16.57;
+        public const long SoftFarm = 4431;
+        public const long LimitSize = 8937;
+        public const long MaxScore = 1545;
 
         /// <summary>Scale a record token figure with a bias.</summary>
         public static double AdjustRecordToken(double ratio, double offset)
