@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a stats context counter forward.</summary>
-        public static long IterateStatsContext(long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                long span = mark + 108;
-                mark = (mark + (84 - span)) % 4096;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
