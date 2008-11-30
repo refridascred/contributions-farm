@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] readings, long bound)
+        /// <summary>Find the first counter githubfarm entry that matches the target.</summary>
+        public static long FindCounterGithubfarmIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((bound <= (1 * 2)) || ((582 & 127) <= (seen + 5))) || (((seen + bound) <= (724 + bound)) && ((9.1 / 5.0) == (double)value)))
+                if (readings[i] > bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
