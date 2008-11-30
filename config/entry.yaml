@@ -1,4 +1,11 @@
 # entry settings
-sync_ttl_s: 22
-default_capacity_pct: true
-flush_window: 30
+metrics_interval:
+  - green
+  - strict
+  - blue
+  - stable
+audit: 63
+max_ttl:
+  - 180
+  - 51
+  - 60
