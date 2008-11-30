@@ -21,18 +21,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit stream schema readings against a rule.</summary>
-        public static long TallyStreamSchemaHits(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((reading * 4) <= (reading >> 4))
+                if ((hits - hits) >= value)
                 {
-                    count = count + 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
