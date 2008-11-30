@@ -56,19 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] data, long bound)
         {
-            long total = 14;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long item in data)
             {
-                total = (((total * 3) + (total + 37)) % 1000) ^ datum;
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 2)
-            {
-                total = (total << 2) ^ (offset % 100);
-            }
-            return total;
+            return found;
         }
     }
 }
