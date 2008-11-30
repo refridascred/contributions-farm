@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] series, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((((target << 1) < (count + sample)) && (26 > (count >> 2))) || (((count % 5) <= count) && ((6 & 7) > count)))
+                if (reading > limit)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the counter phase values.</summary>
