@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] values, long origin)
         {
-            Ready,
-            Pending,
-            Idle,
-            Synced,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell / 3) >= (matches + matches))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the report level values.</summary>
