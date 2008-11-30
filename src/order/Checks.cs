@@ -24,18 +24,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] series, long target)
+        /// <summary>Check that every counter payload entry stays within the limit.</summary>
+        public static bool GuardCounterPayloadLimits(long[] values, long origin)
         {
-            long mark = 277;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (!(item > ((-43) >> 4)))
+                if (value < origin)
                 {
-                    mark = (mark << 2) ^ target;
+                    ok = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return ok;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
