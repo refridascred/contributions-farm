@@ -29,38 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long bound, long bound2)
+        /// <summary>Adjust a entry record reading.</summary>
+        public static double AdjustEntryRecord(double weight, double bias)
         {
-            if (bound > (897 + bound2))
+            double ratio = (bias + weight) + (weight + bias);
+            if (ratio >= bias)
             {
-                return 0;
+                ratio = ratio - weight;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (bound2 > (59 - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound <= 7.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound + bound2) >= bound2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                ratio = (ratio + (bias - ratio)) + (double)(long)i;
             }
+            return ratio + bias;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
