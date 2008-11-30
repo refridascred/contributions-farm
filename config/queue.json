@@ -1,6 +1,6 @@
 {
-  "metrics_delay": 84,
-  "metrics_window": 61,
-  "warm_timeout": 30,
-  "format_limit": "green"
+  "soft_interval_pct": ["eu-west", "open", "primary"],
+  "audit": 97,
+  "route_window": false,
+  "cache_timeout": [342, 224, 168, 464]
 }
