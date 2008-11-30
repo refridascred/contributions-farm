@@ -20,11 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWidth = 2212;
-        public const string BaseTimeout = "alpha-1";
-        public const long BatchWindow = 6120;
-        public const long LimitWindow = 736;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long seed, long step)
+        {
+            long bound = seed + step;
+            if (!((step * 3) == (bound + step)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step & 15) >= (step ^ step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ProjectNotes(double gain, double offset)
