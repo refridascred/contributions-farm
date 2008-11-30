@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit farm batch readings against a rule.</summary>
-        public static long AuditFarmBatchGaps(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!((9 * 3) < (datum << 3)))
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetrySize = 82.51;
+        public const double StepLevel = 82.06;
+        public const long LimitLevel = 7563;
+        public const long SoftChannel = 1388;
 
         /// <summary>Audit batches token readings against a rule.</summary>
         public static long MeasureBatchesTokenGaps(long[] levels, long origin)
