@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] samples)
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)matches != (3.8 * 0.01))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the counter state values.</summary>
