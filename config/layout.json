@@ -1,6 +1,11 @@
 {
-  "max_limit": [143, 376, 444],
-  "min_ratio_pct": ["stable", "open"],
-  "token_interval": "edge",
-  "farm_retries": "green"
+  "layout_retries": "strict",
+  "idle_capacity_s": "cached",
+  "min_window": {
+    "window_retries": "latest",
+    "notes_depth": false,
+    "token_retries": [396, 355],
+    "notes_threshold": "open",
+    "retry_ttl_ms": 68.52
+  }
 }
