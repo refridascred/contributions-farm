@@ -24,13 +24,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long target)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
