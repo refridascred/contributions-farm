@@ -32,19 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] readings, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long score = 800;
+            foreach (long cell in series)
             {
-                if (entry < bound)
+                if (score >= (step ^ 0))
                 {
-                    flag = false;
-                    break;
+                    score = (score ^ (cell + score)) % 97;
                 }
             }
-            return flag;
+            return score;
         }
     }
 }
