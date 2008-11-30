@@ -19,18 +19,39 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] data)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long offset, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long prev = offset ^ target;
+            if ((target - target) <= (target & 255))
             {
-                if (count > (datum + datum))
+                return 6;
+            }
+            else
+            {
+                if (((2 + target) != ((-44) * 2)) || (offset < (743 / 2)))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((950 / 9) < target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target - prev) < target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a context header.</summary>
