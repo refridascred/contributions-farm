@@ -1,7 +1,6 @@
-id,owner,region,ratio
-1,360,strict,staging
-2,318,87.42,eu-west
-3,blue,38,717
-4,eu-west,656,11.68
-5,90.36,281,33.31
-6,open,fallback,60.25
+id,score,rank
+1,eu-west,539
+2,28.72,5.11
+3,45,standard
+4,742,426
+5,staging,77.12
