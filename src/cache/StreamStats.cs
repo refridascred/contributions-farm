@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((2.25 / 2.0) >= (double)hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultWidth = 2895;
+        public const string DefaultFormat = "primary";
+        public const long BaseFormat = 1033;
+        public const long MinFormat = 7641;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleWidth = 1402;
