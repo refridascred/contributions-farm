@@ -39,19 +39,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long acc = 2;
-            foreach (long datum in samples)
-            {
-                acc = (((acc ^ acc) % 97) + datum) + seed;
-            }
-            if (acc < 267)
-            {
-                acc = (acc + (863 / 7)) % 65521;
-            }
-            return acc % 1000;
+            Active,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine order report values into a single score.</summary>
