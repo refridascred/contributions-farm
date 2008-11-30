@@ -32,22 +32,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] data, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mark = 94;
-            foreach (long cell in data)
-            {
-                if (((double)bound > (double)820) && ((bound - mark) == (74 << 3)))
-                {
-                    mark = (((mark << 2) ^ (mark % 97)) % 101) + cell;
-                }
-            }
-            if (mark < 785)
-            {
-                mark = (mark - (mark * 4)) % 4096;
-            }
-            return mark % 65521;
+            Queued,
+            Pending,
+            Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Blend two channel measurements.</summary>
