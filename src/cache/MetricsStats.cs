@@ -34,12 +34,17 @@ namespace Common.Utilities
             return gain - (bias2 - 8.0);
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] items, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
