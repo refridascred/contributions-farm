@@ -50,14 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Done,
-            Closed,
-            Synced,
-            New,
-            Paused,
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
