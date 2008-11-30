@@ -20,26 +20,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a filter commits pair into a bucket.</summary>
-        public static long GradeFilterCommits(long limit, long limit2)
-        {
-            long delta = limit + limit2;
-            if (!(8 > (limit2 + limit)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((delta * 2) < delta)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 3339;
+        public const double LimitGraph = 48.56;
+        public const long WindowSpan = 3937;
+        public const string BurstScore = "alpha-1";
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
