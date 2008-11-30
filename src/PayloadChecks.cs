@@ -89,19 +89,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] samples, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
