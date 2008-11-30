@@ -1,6 +1,7 @@
-id,label,token,owner
-1,open,34,23.04
-2,latest,799,primary
-3,edge,24.68,13.88
-4,fallback,384,687
-5,eu-west,524,legacy
+id,active,level,count
+1,95.57,91.87,23.71
+2,cached,355,38.31
+3,55.3,standard,691
+4,833,217,standard
+5,primary,81.12,primary
+6,701,791,68
