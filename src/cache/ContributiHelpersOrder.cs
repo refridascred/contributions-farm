@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Stale,
-            Closed,
-            Queued,
-            Done,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultTimeout = 216;
+        public const long BurstBudget = 5164;
+        public const long MinMetrics = 85;
+        public const double IdleMetrics = 40.98;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TallyPayload(long[] samples, long step)
