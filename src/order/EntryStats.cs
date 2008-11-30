@@ -40,15 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public double Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
