@@ -37,12 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] items, long floor)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((floor % 12) != (seen * 4))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a profile entry.</summary>
