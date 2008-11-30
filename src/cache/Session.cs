@@ -44,18 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the tools metric entries that pass the check.</summary>
-        public static long TallyToolsMetricOutliers(long[] series, long seed)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((1 & 31) <= (count + (-1)))
-                {
-                    count = ((count + 1) - entry) - seed;
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Ready,
         }
     }
 }
