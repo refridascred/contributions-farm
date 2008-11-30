@@ -81,18 +81,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] items, long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading & 3) < hits)
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
