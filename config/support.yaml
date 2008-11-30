@@ -1,9 +1,4 @@
 # support settings
-warm_delay_pct: strict
-verbose:
-  - blue
-  - open
-  - standard
-counter_delay: 71.4
-compress: false
-enabled: 14.76
+warm_interval_s: open
+readonly: true
+flush_interval_s: true
