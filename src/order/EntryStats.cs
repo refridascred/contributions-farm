@@ -40,11 +40,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftLevel = 91.76;
-        public const long SoftChannel = 4844;
-        public const double CacheChannel = 4.19;
-        public const string BaseChannel = "fallback-1";
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
