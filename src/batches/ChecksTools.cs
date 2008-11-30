@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Paused,
-            New,
-            Ready,
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
