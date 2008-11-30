@@ -71,9 +71,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleTimeout = "stable-edge";
-        public const long HardCount = 8996;
-        public const long MaxSupport = 5456;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
