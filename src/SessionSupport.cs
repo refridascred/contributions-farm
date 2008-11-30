@@ -35,26 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] data, long offset)
         {
-            long carry = 441;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry - entry) >= carry)
+                if ((data[i] >= offset) && ((data[i] % 5) != 0))
                 {
-                    carry = (carry + carry) % 1000;
-                }
-                if ((carry - carry) > ((-20) + carry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 56)
-            {
-                carry = carry - carry;
-            }
-            return carry % 1000;
+            return -1;
         }
     }
 }
