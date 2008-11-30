@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Ready,
             Idle,
-            Retry,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Match up buffer samples.</summary>
