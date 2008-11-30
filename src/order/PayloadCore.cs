@@ -23,12 +23,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long floor)
         {
-            Ready,
-            Synced,
-            Idle,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up stats samples.</summary>
