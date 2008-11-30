@@ -22,26 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support schema readings.</summary>
-        public static long TotalSupportSchema(long[] readings)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] levels)
         {
-            long total = 115;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (total > (sample << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total - total) % 255;
-                }
-                else
-                {
-                    total = ((total * 2) + total) % 4096;
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < (-9))
-            {
-                total = (total + (total + total)) % 101;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
