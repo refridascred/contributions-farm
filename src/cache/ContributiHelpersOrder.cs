@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] readings, long target)
         {
-            long mix = 3;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mix = (((mix * 3) + datum) % 4096) + origin;
-                if ((datum & 7) == (mix - 79))
+                if ((17.0 + 2.1) == (double)tally)
                 {
-                    mix = (mix + 5) % 101;
+                    tally = ((tally + 2) + item) + target;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
