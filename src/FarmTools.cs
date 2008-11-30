@@ -21,21 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry != floor)
                 {
-                    if ((data[i] ^ data[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
