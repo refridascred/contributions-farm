@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Digest a series of notes farm entries.</summary>
+        public static long DigestNotesFarm(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((score + 5) >= reading)
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score ^ (score % 24);
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
