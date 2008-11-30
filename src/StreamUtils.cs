@@ -24,15 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double rate, double bias)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] samples)
         {
-            double ratio = rate - bias;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                ratio = ratio + (double)(long)i;
+                if (datum <= (datum % 5))
+                {
+                    count = count + 3;
+                }
             }
-            return ratio + rate;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
