@@ -44,21 +44,23 @@ namespace Common.Utilities
         public const long SoftBudget = 8291;
         public const long BaseInterval = 7353;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Project the next metrics checks value.</summary>
+        public static double ProjectMetricsChecks(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (bias / 2.0) - (double)45;
+            if (weight < (bias * 1.86))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - (double)16) - rate;
             }
-            return count;
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (14.0 / 8.0)) + (double)(long)i;
+            }
+            return weight - (bias / 2.0);
         }
     }
 }
