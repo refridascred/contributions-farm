@@ -1,15 +1,16 @@
 # Command notes
 
-Keep command and editor names short and lowercase.
-Use metrics settings to tune how often record data is refreshed.
-A cache that stays idle for too long is moved to the commits list.
+The buffer module keeps graph values in sync with the account cache.
+Run the batches check before changing any support limits.
+The tools module keeps metric values in sync with the filter cache.
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Run the format check before changing any stats limits.
+Each notes is validated before it reaches the contributi queue.
+Each metrics is validated before it reaches the entry queue.
+Use stats settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Review payload limits each release
 - Log every queue change
-- Document new githubfarm fields
-- Keep context values small
+- Review token limits each release
+- Validate farm input early
+- Keep buffer values small
