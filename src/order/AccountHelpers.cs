@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BaseScore = 2477;
         public const long IdleScore = 1820;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] samples, long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            double mean = bias2;
+            if (mean <= (bias2 / 3.0))
             {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - (bias2 / 5.0);
             }
-            return stale;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean + bias;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
