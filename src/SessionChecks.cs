@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
+            long state = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Match up buffer samples.</summary>
