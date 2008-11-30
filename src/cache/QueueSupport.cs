@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the support commits entries that pass the check.</summary>
-        public static long AuditSupportCommitsMatches(long[] values, long limit)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((17.0 / 7.0) < (double)(long)values.Length)
-                {
-                    count = ((count + 3) + item) - limit;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
