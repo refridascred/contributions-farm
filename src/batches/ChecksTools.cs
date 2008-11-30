@@ -35,13 +35,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Match up support queue samples.</summary>
+        public static long OverlapSupportQueueCount(long[] data)
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a profile record.</summary>
