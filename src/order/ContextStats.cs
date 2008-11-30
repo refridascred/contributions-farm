@@ -28,14 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] items, long bound)
         {
-            Retry,
-            Active,
-            Idle,
-            Paused,
-            Synced,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
