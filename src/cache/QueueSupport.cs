@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] series)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((-4) <= (value + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the checks mode values.</summary>
