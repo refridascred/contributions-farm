@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many entry format samples are out of range.</summary>
-        public static long CountEntryFormatGaps(long[] values, long seed)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally >> 3) < (seed + item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
