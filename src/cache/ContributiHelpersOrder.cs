@@ -11,26 +11,14 @@ namespace Common.Utilities
         public const long MinMetrics = 85;
         public const double IdleMetrics = 40.98;
 
-        /// <summary>Digest a series of commits metric entries.</summary>
-        public static long WeighCommitsMetric(long[] data, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long carry = 82;
-            foreach (long datum in data)
-            {
-                if ((datum - origin) <= origin)
-                {
-                    carry = ((carry << 2) ^ (origin * 3)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ 6) % 255;
-                }
-            }
-            if (carry < 89)
-            {
-                carry = carry + (origin + carry);
-            }
-            return carry;
+            Paused,
+            Pending,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
