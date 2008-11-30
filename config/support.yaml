@@ -1,14 +1,6 @@
 # support settings
-retry_capacity_s:
-  command_ratio:
-    audit: true
-    default_timeout: true
-    strict: fallback
-    burst_ttl_ms: latest
-  hard_delay: 8591
-  min_capacity_s: 6711
-  buffer_interval: 58.67
-  retry_timeout: 8872
-  cache_limit_ms: 4
-cache_window_count: 659
-soft_timeout_s: 268
+max_interval_s:
+  - 453
+  - 477
+flush_delay_pct: true
+flush_retries_count: cached
