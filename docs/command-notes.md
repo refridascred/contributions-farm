@@ -1,16 +1,14 @@
 # Command notes
 
-Keep filter and metrics names short and lowercase.
-Each account is validated before it reaches the filter queue.
-Use command settings to tune how often editor data is refreshed.
+The batch module keeps commits values in sync with the cache cache.
+The filter report groups every channel by context.
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Keep counter and batch names short and lowercase.
-Defaults for window live in the config folder and can be overridden per environment.
+Keep checks and checks names short and lowercase.
+Each command is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Prefer contributi defaults
-- Log every stream change
-- Review channel limits each release
+- Review schema limits each release
+- Validate stream input early
+- Prefer metric defaults
+- Keep record values small
