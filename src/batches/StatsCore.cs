@@ -59,11 +59,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] data)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((3.3 * 4.54) < (double)count)
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
