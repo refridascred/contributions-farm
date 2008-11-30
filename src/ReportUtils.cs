@@ -49,30 +49,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of payload command readings.</summary>
-        public static long DigestPayloadCommand(long[] values, long seed)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mix = 307;
-            foreach (long sample in values)
-            {
-                if ((sample + seed) < (seed - sample))
-                {
-                    mix = (mix + mix) % 255;
-                }
-                if ((double)mix >= (6.58 / 5.0))
-                {
-                    mix = ((mix << 2) ^ seed) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 5) + seed) % 1000;
-                }
-                if (!((double)mix > 2.66))
-                {
-                    mix = ((mix * 2) + sample) % 97;
-                }
-            }
-            return mix;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public double Token { get; set; }
         }
     }
 }
