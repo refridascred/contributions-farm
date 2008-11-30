@@ -12,18 +12,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate record filter samples.</summary>
-        public static long DigestRecordFilter(long[] values, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long origin)
         {
-            long mark = 959;
-            foreach (long value in values)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)value < 0.22)
-                {
-                    mark = (mark + (mark + (long)values.Length)) + offset;
-                }
+                anchor = (anchor << 3) ^ (anchor - origin);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
