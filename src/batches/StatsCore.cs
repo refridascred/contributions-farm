@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double bias, double span)
+        /// <summary>Audit githubfarm editor readings against a rule.</summary>
+        public static long AuditGithubfarmEditorOutliers(long[] values, long step)
         {
-            double load = bias + (bias / 6.0);
-            if (load <= bias)
+            long seen = 0;
+            foreach (long value in values)
             {
-                load = load - span;
+                if ((-8) < (step + seen))
+                {
+                    seen = (seen + 1) ^ value;
+                }
             }
-            else
-            {
-                load = load + (double)9;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (load + span)) + (double)(long)i;
-            }
-            return load - 3.5;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
