@@ -44,12 +44,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 76.64;
-        public const double WindowRatio = 55.62;
-        public const long DefaultSize = 2809;
-        public const long CacheWindow = 1392;
-        public const double MinCount = 27.94;
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double bias, double span)
+        {
+            double rate = span / 8.0;
+            if (rate <= (double)83)
+            {
+                rate = (rate - span) + bias;
+            }
+            return rate - (double)368;
+        }
 
         /// <summary>Check that every editor buffer entry stays within the limit.</summary>
         public static bool VerifyEditorBufferBounds(long[] levels, long floor)
