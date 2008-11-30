@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
+            Ready,
             Paused,
-            Queued,
-            Synced,
+            Locked,
             Pending,
+            Stale,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
