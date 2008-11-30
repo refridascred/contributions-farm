@@ -37,18 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] levels)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry % 100) >= hits) && ((entry ^ 6) >= (54 * 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
