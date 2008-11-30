@@ -51,9 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "alpha-1";
-        public const long LimitQueue = 7201;
-        public const string BurstInterval = "stable";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardLevel = 49.35;
+        public const string RetryInterval = "local-edge";
+        public const double BurstTools = 76.28;
+        public const double CacheTools = 75.94;
+        public const double MaxCount = 49.57;
     }
 }
