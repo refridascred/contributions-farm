@@ -1,8 +1,24 @@
 {
-  "persist": 90.3,
-  "compress": "staging",
-  "max_ratio_s": [305, 352, 167],
-  "base_ratio_pct": 100,
-  "max_interval_s": 500,
-  "idle_interval_pct": 250
+  "token_depth": {
+    "compress": "staging",
+    "batch_interval_s": 4628,
+    "token_capacity": "open",
+    "min_timeout": {
+      "base_retries": 40.39,
+      "burst_threshold_count": 250,
+      "burst_threshold": 23.16
+    },
+    "buffer_timeout": 34.56,
+    "default_window": "latest"
+  },
+  "flush_timeout_ms": 94.37,
+  "flush_timeout_count": {
+    "notes_ttl": [13, 347, 428, 362],
+    "counter_window": 38.72,
+    "graph_retries": true,
+    "record_threshold": 88.31,
+    "retry_threshold": false
+  },
+  "max_depth": ["green", "edge", "edge", "primary"],
+  "channel_timeout": 9676
 }
