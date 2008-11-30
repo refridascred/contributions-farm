@@ -43,19 +43,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of batch record entries.</summary>
-        public static long FoldBatchRecord(long[] series)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double gain, double bias)
         {
-            long anchor = 9;
-            foreach (long datum in series)
-            {
-                anchor = anchor - (anchor - anchor);
-                if (0.9 < (double)datum)
-                {
-                    anchor = ((anchor * 5) + datum) % 4096;
-                }
-            }
-            return anchor;
+            double weight = gain;
+            return (weight - (double)874) + bias;
         }
     }
 }
