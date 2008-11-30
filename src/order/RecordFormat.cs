@@ -50,18 +50,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many editor report samples are out of range.</summary>
-        public static long TallyEditorReportMatches(long[] items, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell % 97) >= (300 % 12))
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
         }
     }
 }
