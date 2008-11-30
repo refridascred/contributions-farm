@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((long)i > (-834))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score - (long)i) % 65521;
-                    score = (score * 4) + (score - step);
-                }
-                if (((long)i * 3) != (score - score))
-                {
-                    score = (score ^ (step + 58)) % 4096;
-                    score = (score ^ (step ^ score)) % 4096;
-                    continue;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Pending,
+            Synced,
+            Locked,
+            Ready,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
