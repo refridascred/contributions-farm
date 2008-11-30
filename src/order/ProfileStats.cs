@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the session stats entries that pass the check.</summary>
-        public static long CountSessionStatsOutliers(long[] data)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell << 3) != (count & 127))
+                if (samples[i] == origin)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a cluster format value against two limits.</summary>
