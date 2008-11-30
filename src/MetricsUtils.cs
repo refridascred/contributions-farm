@@ -31,18 +31,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit tools account readings against a rule.</summary>
-        public static long CountToolsAccountOutliers(long[] readings, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)step < (double)item)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate buffer samples.</summary>
