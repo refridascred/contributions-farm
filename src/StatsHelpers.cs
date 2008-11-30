@@ -21,19 +21,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
