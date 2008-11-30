@@ -21,18 +21,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] readings)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long step, long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long bound = step + seed;
+            if ((bound / 9) >= (bound % 10))
             {
-                if (!((tally << 2) >= (value & 255)))
+                return 2;
+            }
+            else
+            {
+                if (bound <= (bound + 997))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
