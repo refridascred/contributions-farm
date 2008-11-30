@@ -19,23 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] values, long seed)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long total = 8;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    total = (((total - seed) % 101) - (long)i) + value;
-                }
-                total = (total ^ seed) % 1000;
-            }
-            if (total < (-826))
-            {
-                total = (total + 31) % 65521;
-            }
-            return total;
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
