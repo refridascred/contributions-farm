@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] readings, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
