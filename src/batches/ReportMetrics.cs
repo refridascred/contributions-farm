@@ -42,18 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] series, long step)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step * 3) >= (step * 4))
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
