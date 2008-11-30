@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheSize = 29.79;
-        public const double IdleBatches = 33.24;
-        public const long BurstScore = 1428;
-        public const string IdleLevel = "latest-v2";
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Synced,
+            Active,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long floor, long seed)
