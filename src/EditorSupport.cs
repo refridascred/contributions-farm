@@ -78,14 +78,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double rate, double offset)
         {
-            Done,
-            Paused,
-            Closed,
-            Dropped,
-            Stale,
+            double scale = rate;
+            if (scale > (scale - rate))
+            {
+                scale = (scale - rate) + offset;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
