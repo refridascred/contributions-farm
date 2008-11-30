@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 3;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = (((mix * 3) + datum) % 4096) + origin;
+                if ((datum & 7) == (mix - 79))
                 {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + 5) % 101;
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
