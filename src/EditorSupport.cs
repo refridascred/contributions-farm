@@ -41,18 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] data, long offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((reading >> 4) <= (offset << 1)) && ((5 + reading) <= count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Combine format values into a single score.</summary>
