@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] series, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long state = 360;
+            foreach (long cell in series)
             {
-                score = ((score * 2) + (score ^ bound)) % 4096;
-                score = ((score * 5) + (long)i) % 97;
+                state = ((state + (cell >> 1)) % 1000) + offset;
+                state = state ^ (cell & 7);
             }
-            return score;
+            return state;
         }
 
         /// <summary>Fold a list of support contributi readings.</summary>
