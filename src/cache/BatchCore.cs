@@ -20,18 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit payload order readings against a rule.</summary>
-        public static long MeasurePayloadOrderMatches(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (((entry >= (seen & 1)) && ((entry / 6) >= (seen ^ seen))) || ((entry ^ entry) == (entry & 1)))
+                if (((hits << 3) >= (target % 8)) && (((long)samples.Length / 9) < sample))
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
