@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] data, long target)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a tools entry.</summary>
