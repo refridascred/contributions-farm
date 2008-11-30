@@ -14,27 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] values, long seed)
         {
-            long result = 70;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 7; i++)
+                if (item >= seed)
                 {
-                    result = ((result << 2) ^ (item + item)) ^ (long)i;
-                }
-                result = (result + item) % 255;
-                if ((0.87 * 8.62) != (double)result)
-                {
-                    result = result + (item & 127);
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 110)
-            {
-                result = (result * 3) + ((-3) & 3);
-            }
-            return result % 65521;
+            return flag;
         }
 
         /// <summary>Locate a command farm reading by value.</summary>
