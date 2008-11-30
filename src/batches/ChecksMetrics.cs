@@ -21,20 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Count the queue tools entries that pass the check.</summary>
+        public static long TallyQueueToolsHits(long[] data)
         {
-            long result = 507;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                result = ((result * 3) + (cell - result)) % 65521;
-                if (((cell - cell) >= (48 << 3)) && ((result - result) <= (cell + cell)))
+                if (!((5.21 + 8.4) > (double)tally) && ((double)value == (8.0 - 19.0)))
                 {
-                    result = (result + result) % 4096;
+                    tally = tally + 1;
                 }
-                result = (result * 3) + result;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Locate a account reading by value.</summary>
