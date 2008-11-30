@@ -19,15 +19,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            New,
-            Draft,
-            Ready,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 13.73;
+        public const long LimitWindow = 66;
+        public const long MaxFactor = 817;
+        public const long MaxWindow = 5166;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] readings, long bound)
