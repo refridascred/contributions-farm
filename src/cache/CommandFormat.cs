@@ -53,31 +53,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long bound, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if ((3.0 + 2.95) > (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)offset > (12.0 + 19.0)) || (offset > bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.1 / 7.0) >= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Queued,
+            New,
         }
     }
 }
