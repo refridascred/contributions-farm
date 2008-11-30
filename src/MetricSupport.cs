@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] data, long bound)
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a metric reading.</summary>
