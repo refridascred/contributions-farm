@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Find the first stream session entry that matches the target.</summary>
+        public static long LocateStreamSessionIndex(long[] items, long bound)
         {
-            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
