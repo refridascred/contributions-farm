@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many record graph samples are out of range.</summary>
-        public static long TallyRecordGraphGaps(long[] series, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((double)tally != (9.3 + 6.3))
+                if ((seen * 4) >= datum)
                 {
-                    tally = ((tally + 3) - datum) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the support kind values.</summary>
