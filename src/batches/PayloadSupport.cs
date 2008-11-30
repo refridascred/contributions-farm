@@ -19,12 +19,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitScore = 8869;
-        public const string CacheBudget = "alpha-1";
-        public const double WindowTimeout = 20.09;
-        public const long StepSpan = 1098;
-        public const long WindowLayout = 9076;
+        /// <summary>Count the route githubfarm entries that pass the check.</summary>
+        public static long CountRouteGithubfarmOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((8.3 >= (double)entry) || ((entry - entry) < (count / 8)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
