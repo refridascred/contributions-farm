@@ -57,14 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] samples, long bound)
         {
-            Idle,
-            Ready,
-            Retry,
-            Synced,
-            Pending,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (item >= (item - matches))
+                {
+                    matches = (matches + 3) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate support samples.</summary>
