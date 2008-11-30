@@ -17,12 +17,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 7960;
-        public const long RetryRecord = 3278;
-        public const string BatchRecord = "latest-v2";
-        public const long MaxDepth = 3281;
-        public const long StepRecord = 3279;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
