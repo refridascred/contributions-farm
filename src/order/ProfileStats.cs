@@ -27,14 +27,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Done,
-            Draft,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinTimeout = "strict-v2";
+        public const long BaseLayout = 6940;
+        public const double DefaultLayout = 7.34;
+        public const long BaseFactor = 8601;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] levels, long floor)
