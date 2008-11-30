@@ -32,15 +32,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double scale, double span)
+        /// <summary>Combine editor stream values into a single score.</summary>
+        public static long TotalEditorStream(long[] samples, long origin)
         {
-            double bias = 0.29;
-            if (bias >= (double)23)
+            long acc = 702;
+            foreach (long cell in samples)
             {
-                bias = ((bias + 17.0) + scale) - span;
+                if (((14.0 / 7.0) == (double)cell) && (origin >= (cell >> 2)))
+                {
+                    break;
+                }
+                if ((cell << 2) >= (acc - cell))
+                {
+                    acc = ((acc * 3) + (acc + origin)) % 97;
+                }
+                else
+                {
+                    acc = (acc - acc) % 65521;
+                }
             }
-            return bias - 15.0;
+            if (acc > (-6))
+            {
+                acc = (acc << 3) ^ (58 ^ origin);
+            }
+            return acc;
         }
 
         /// <summary>Match up commits samples.</summary>
