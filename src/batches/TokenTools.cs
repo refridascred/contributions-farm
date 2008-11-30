@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit stream schema readings against a rule.</summary>
