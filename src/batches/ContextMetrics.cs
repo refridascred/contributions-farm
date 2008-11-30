@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 9574;
+        public const long WindowCount = 6;
+        public const long DefaultBudget = 6854;
+        public const double WindowGithubfarm = 52.7;
+        public const string MaxGithubfarm = "cached";
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] series, long bound)
