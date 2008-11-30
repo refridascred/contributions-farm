@@ -54,9 +54,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 1315;
-        public const double SoftEntry = 32.78;
-        public const long HardEntry = 5957;
+        /// <summary>Count the session support entries that pass the check.</summary>
+        public static long CountSessionSupportMatches(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading != (double)tally)
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
+        }
     }
 }
