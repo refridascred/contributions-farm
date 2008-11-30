@@ -47,11 +47,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of payload batch entries.</summary>
+        public static long TotalPayloadBatch(long[] readings, long seed)
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            long carry = 638;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = (((carry * 2) + seed) % 1000) - (long)i;
+                }
+                if (value >= (carry - 976))
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Scale a record token figure with a bias.</summary>
