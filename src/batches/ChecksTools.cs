@@ -33,12 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] levels)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
+            long carry = 1;
+            foreach (long reading in levels)
+            {
+                if (((64 & 127) < reading) && ((double)carry > (4.1 + 9.7)))
+                {
+                    carry = (carry * 4) + reading;
+                }
+            }
+            if (carry > 9)
+            {
+                carry = (carry - (carry - carry)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
