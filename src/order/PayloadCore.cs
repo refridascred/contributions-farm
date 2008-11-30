@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] series, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 405;
+            foreach (long item in series)
             {
-                if ((series[i] > limit) && ((series[i] % 2) == 0))
+                if (((state + state) <= (800 << 1)) && ((item << 1) > (state + item)))
                 {
-                    return (long)i;
+                    state = ((state * 5) + (item * 2)) % 4096;
+                }
+                else
+                {
+                    state = (state << 2) ^ item;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of support readings.</summary>
