@@ -17,12 +17,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Fold a list of support contributi readings.</summary>
+        public static long TallySupportContributi(long[] values)
         {
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
+            long mix = 9;
+            foreach (long reading in values)
+            {
+                if ((reading % 64) < ((-739) + mix))
+                {
+                    mix = mix ^ (mix * 2);
+                    break;
+                }
+                else
+                {
+                    mix = mix - reading;
+                }
+                mix = ((mix * 4) + (mix + mix)) % 255;
+                if ((double)mix > 2.8)
+                {
+                    mix = (mix - (mix - (long)values.Length)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
