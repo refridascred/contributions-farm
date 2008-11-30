@@ -48,15 +48,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double weight, double floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double mean = (double)(5 & 63);
-            if (mean < (floor * 6.0))
-            {
-                mean = (mean + (double)73) - weight;
-            }
-            return mean - (6.99 + mean);
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
