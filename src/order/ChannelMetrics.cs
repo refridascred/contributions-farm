@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                sum = ((sum << 2) ^ target) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Combine already farm values into a single score.</summary>
