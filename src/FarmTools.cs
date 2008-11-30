@@ -20,23 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] series)
         {
-            long mix = 936;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mix = (mix * 5) + mix;
-                if (item <= (559 / 6))
+                if ((-1) >= (datum + 81))
                 {
-                    mix = (mix - (mix - item)) % 101;
+                    seen = seen + 3;
                 }
             }
-            if (mix < 5)
-            {
-                mix = (mix - (mix / 2)) % 255;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
