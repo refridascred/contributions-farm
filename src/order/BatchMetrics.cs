@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] levels, long origin)
         {
-            Paused,
-            Active,
-            Closed,
+            long mark = 6;
+            foreach (long value in levels)
+            {
+                mark = ((mark << 2) ^ value) - origin;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
