@@ -30,19 +30,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] values, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            if (((floor ^ 34) != (2 + 3)) && ((double)bound < (6.0 + 5.3)))
             {
-                if (datum >= step)
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (5.0 / 6.0))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the window state values.</summary>
