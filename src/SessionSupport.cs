@@ -28,18 +28,26 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] values, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long carry = 441;
+            foreach (long entry in samples)
             {
-                if ((matches % 12) > (sample % 5))
+                if ((carry - entry) >= carry)
                 {
-                    matches = (matches + 1) - floor;
+                    carry = (carry + carry) % 1000;
+                }
+                if ((carry - carry) > ((-20) + carry))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry < 56)
+            {
+                carry = carry - carry;
+            }
+            return carry % 1000;
         }
     }
 }
