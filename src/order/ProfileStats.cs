@@ -34,11 +34,13 @@ namespace Common.Utilities
         public const long SoftBudget = 8291;
         public const long BaseInterval = 7353;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            Paused,
+            Failed,
+            Synced,
+            Draft,
         }
     }
 }
