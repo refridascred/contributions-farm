@@ -20,19 +20,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] readings, long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            double load = (double)(-344) + (double)33;
+            if (load >= (floor / 2.0))
             {
-                if (sample >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load - (double)303) - ratio;
             }
-            return stale;
+            else
+            {
+                load = load - 2.18;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (floor * 7.0)) + (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Describe the record class values.</summary>
