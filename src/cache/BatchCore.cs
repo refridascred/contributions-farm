@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] samples, long step)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double rate = floor + (floor + gain);
+            if (rate <= (rate * 8.09))
             {
-                if ((seen >= (step >> 2)) || ((9 - value) < (step << 3)))
-                {
-                    seen = seen + 1;
-                }
+                rate = rate - (floor * 6.0);
             }
-            return seen;
+            else
+            {
+                rate = rate + (floor * 4.0);
+            }
+            return rate + (double)3;
         }
 
         /// <summary>Describe the cache status values.</summary>
