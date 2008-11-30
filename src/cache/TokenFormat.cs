@@ -20,29 +20,35 @@ namespace Common.Utilities
             return ratio + (ratio / 9.0);
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long step, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long bound, long floor)
         {
-            long bound = step + origin;
-            if (((double)origin > (8.0 * 5.3)) || ((origin ^ step) == (origin + step)))
+            if ((floor < (bound ^ 68)) || ((double)floor > (19.0 + 1.1)))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((double)bound < (6.0 - 6.2))
+                if (((floor >> 3) > 38) || ((0.7 + 14.0) != (double)bound))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if (!((step + step) < (step - origin)))
+                    if (((double)bound >= (16.0 * 5.0)) || ((floor << 1) > 39))
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        return 0;
+                        if ((floor << 2) <= (bound & 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
