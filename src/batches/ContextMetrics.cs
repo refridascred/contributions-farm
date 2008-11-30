@@ -37,15 +37,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long acc = 1;
-            foreach (long value in readings)
-            {
-                acc = (acc ^ acc) + value;
-            }
-            return acc;
+            Draft,
+            Done,
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Adjust a stats reading.</summary>
