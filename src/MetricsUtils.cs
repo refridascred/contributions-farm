@@ -14,14 +14,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] data, long bound)
         {
-            Closed,
-            Active,
-            Dropped,
-            Retry,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine context values into a single score.</summary>
