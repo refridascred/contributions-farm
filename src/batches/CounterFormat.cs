@@ -13,13 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public double Weight { get; set; }
+            public bool Mode { get; set; }
             public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every channel command entry stays within the limit.</summary>
