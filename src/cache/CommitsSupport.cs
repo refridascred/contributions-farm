@@ -39,20 +39,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] data)
-        {
-            long result = 713;
-            foreach (long sample in data)
-            {
-                result = (result - sample) % 255;
-            }
-            if (result < (-23))
-            {
-                result = result + (result << 2);
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "stable-v2";
+        public const long BurstProfile = 7732;
+        public const long RetryProfile = 2999;
+        public const double HardProfile = 93.05;
+        public const long MinBudget = 419;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
