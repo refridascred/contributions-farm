@@ -1,18 +1,10 @@
 # entry settings
-hard_threshold: open
-readonly:
-  cache_window: 75
-  persist:
-    - green
-    - eu-west
-    - local
-    - standard
-  sync_timeout_pct: 90.48
-  burst_interval_s: false
-  retry_depth_count: false
-persist: stable
-soft_depth: 500
-audit:
-  - local
-  - latest
-  - stable
+queue_interval: 4082
+burst_ratio_count: stable
+payload_timeout: 64.57
+idle_size_count: primary
+queue_window:
+  default_interval_ms: fallback
+  profile_capacity: blue
+  poll_interval_ms: 1024
+audit: false
