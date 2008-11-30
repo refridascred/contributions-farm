@@ -1,13 +1,12 @@
 {
-  "strict": 6633,
-  "readonly": "strict",
-  "githubfarm_depth": "strict",
-  "tools_threshold": "green",
-  "hard_window": {
-    "retry_delay_pct": "local",
-    "record_window": "local",
-    "command_ttl": 98.95,
-    "layout_delay": true
+  "commits_ratio": 500,
+  "default_limit_ms": {
+    "batches_ttl": ["strict", "staging", "eu-west", "open"],
+    "hard_capacity": "strict",
+    "batch_threshold": 91.82,
+    "hard_depth_pct": 3.36,
+    "cache_timeout_pct": 22.43
   },
-  "poll_threshold": "strict"
+  "enabled": ["blue", "open", "stable", "latest"],
+  "cache_retries": "legacy"
 }
