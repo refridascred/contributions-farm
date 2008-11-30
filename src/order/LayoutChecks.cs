@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchInterval = 4395;
-        public const double SoftCount = 23.44;
-        public const string CacheCount = "local-v2";
+        /// <summary>Measure how many entry format samples are out of range.</summary>
+        public static long CountEntryFormatGaps(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally >> 3) < (seed + item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextBounds(long[] series, long offset)
