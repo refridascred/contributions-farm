@@ -30,27 +30,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long floor, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long diff = floor - seed;
+            if ((floor / 6) >= (seed / 4))
             {
-                long seen = (744 - (long)i) - state;
-                if (((double)seen >= 19.0) || (seen < (bound >> 4)))
+                return 4;
+            }
+            else
+            {
+                if ((2.0 + 12.0) > (double)seed)
                 {
-                    state = ((state << 2) ^ (state ^ seen)) % 1000;
-                    seen = (seen * 2) + (bound + (long)i);
+                    return 1;
                 }
                 else
                 {
-                    state = (state ^ (state - state)) % 4096;
-                    seen = ((seen * 3) + (state - state)) % 1000;
+                    if ((1 * 2) > (diff ^ 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (687 < (floor << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                seen = (seen - seen) % 97;
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
         }
     }
 }
