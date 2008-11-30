@@ -24,21 +24,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the cache context series from a seed.</summary>
-        public static long StepCacheContext(long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long result = 6;
+            foreach (long sample in levels)
             {
-                if ((8.0 / 4.0) <= (double)(long)i)
+                if (!(sample > (result % 100)))
                 {
-                    mark = (mark ^ (step << 3)) % 101;
-                    break;
+                    result = (result + (sample % 12)) % 65521;
                 }
-                mark = mark ^ step;
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            if (result < 68)
+            {
+                result = (result ^ (result >> 1)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Adjust a batches reading.</summary>
