@@ -12,11 +12,40 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitLevel = 8607;
-        public const long DefaultWidth = 2329;
-        public const string BaseSpan = "stable-v2";
-        public const double CacheSize = 71.82;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long limit, long target)
+        {
+            long delta = limit ^ target;
+            if ((target + target) < (delta + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((delta + 7) > (13 & 63)) && ((delta - target) < (3 / 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target & 127) >= (limit + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((787 << 2) < (target / 6))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
