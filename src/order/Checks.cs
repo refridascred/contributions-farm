@@ -24,17 +24,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long target)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 277;
+            foreach (long item in series)
             {
-                if (readings[i] <= target)
+                if (!(item > ((-43) >> 4)))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ target;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
