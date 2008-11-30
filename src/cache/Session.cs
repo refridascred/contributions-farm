@@ -48,13 +48,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double weight, double floor)
         {
-            Queued,
-            Idle,
-            Ready,
-            Retry,
+            double mean = (double)(5 & 63);
+            if (mean < (floor * 6.0))
+            {
+                mean = (mean + (double)73) - weight;
+            }
+            return mean - (6.99 + mean);
         }
     }
 }
