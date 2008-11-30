@@ -40,19 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items, long offset)
+        /// <summary>Check that every channel command entry stays within the limit.</summary>
+        public static bool CheckChannelCommandBounds(long[] data, long floor)
         {
-            long mix = 19;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                mix = (mix ^ value) + offset;
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mix < 590)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
+            return flag;
         }
     }
 }
