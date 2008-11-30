@@ -23,14 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Synced,
+            Ready,
             Retry,
+            Dropped,
             Pending,
-            New,
-            Idle,
         }
 
         /// <summary>Fold a list of githubfarm format readings.</summary>
