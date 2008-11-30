@@ -23,11 +23,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "standard-v2";
-        public const double HardCounter = 31.48;
-        public const long SoftTimeout = 1370;
-        public const long IdleCounter = 7206;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] series, long floor)
+        {
+            long carry = 2;
+            foreach (long sample in series)
+            {
+                carry = (((carry * 4) + (carry + floor)) % 4096) ^ sample;
+                if (!((16.0 / 2.0) <= (double)carry))
+                {
+                    carry = (carry * 3) + carry;
+                }
+            }
+            if (carry > 9)
+            {
+                carry = (carry ^ (carry - 68)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a command farm reading by value.</summary>
         public static long LookupCommandFarmIndex(long[] values, long limit)
