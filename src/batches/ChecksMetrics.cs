@@ -21,19 +21,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] data, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long result = 507;
+            foreach (long cell in series)
             {
-                if (sample <= bound)
+                result = ((result * 3) + (cell - result)) % 65521;
+                if (((cell - cell) >= (48 << 3)) && ((result - result) <= (cell + cell)))
                 {
-                    flag = false;
-                    break;
+                    result = (result + result) % 4096;
                 }
+                result = (result * 3) + result;
             }
-            return flag;
+            return result % 1000;
         }
 
         /// <summary>Locate a account reading by value.</summary>
