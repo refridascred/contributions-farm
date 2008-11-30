@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long IdleAccount = 6182;
         public const double BurstCount = 36.64;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxLevel = 6660;
-        public const long BatchLevel = 5359;
-        public const long LimitStats = 470;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "latest-1";
+        public const double IdleMetrics = 38.72;
+        public const string StepMetrics = "local-1";
+        public const long IdleDepth = 6713;
+        public const long DefaultMetrics = 4855;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorMatches(long[] values, long step)
