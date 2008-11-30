@@ -39,12 +39,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "stable-v2";
-        public const long BurstProfile = 7732;
-        public const long RetryProfile = 2999;
-        public const double HardProfile = 93.05;
-        public const long MinBudget = 419;
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
