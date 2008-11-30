@@ -25,19 +25,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double weight, double floor)
         {
-            long anchor = -340;
-            foreach (long datum in series)
+            double gain = 5.4;
+            if (gain < 6.3)
             {
-                anchor = ((anchor - anchor) % 97) ^ datum;
+                gain = (gain - 9.4) - floor;
             }
-            if (anchor < 0)
+            for (int i = 0; i < 3; i++)
             {
-                anchor = (anchor << 3) ^ (anchor % 64);
+                gain = (gain + (gain + weight)) - (double)(long)i;
             }
-            return anchor;
+            return gain + (weight + weight);
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
