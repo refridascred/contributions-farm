@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Scale a context entry figure with a bias.</summary>
+        public static double SmoothContextEntry(double ratio, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            double ratio2 = offset;
+            if (ratio2 < offset)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (((state * 3) + (origin >> 3)) % 1000) - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                ratio2 = ratio2 + (ratio2 + offset);
             }
-            return state;
+            return ratio2 + (ratio * 0.5);
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
