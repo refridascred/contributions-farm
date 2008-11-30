@@ -76,18 +76,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            long total = 586;
+            foreach (long entry in values)
             {
-                long slot = (limit + limit) >> 4;
-                slot = slot + mark;
-                mark = (mark << 3) ^ (mark + slot);
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((total - total) < (total << 2))
+                {
+                    total = ((total << 2) ^ entry) % 65521;
+                }
             }
-            return mark;
+            if (total < 125)
+            {
+                total = ((total << 3) ^ ((-7) / 5)) % 1000;
+            }
+            return total;
         }
     }
 }
