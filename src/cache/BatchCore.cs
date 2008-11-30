@@ -36,20 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardGraph = 5.98;
+        public const long DefaultScore = 418;
+        public const long RetryGraph = 1743;
+        public const string CacheBudget = "alpha-1";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchLevel = 1776;
