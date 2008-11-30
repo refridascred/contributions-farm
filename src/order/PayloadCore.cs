@@ -26,22 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] levels, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] samples, long target)
         {
-            long score = 31;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((score >> 4) != (sample % 5))
+                if (item > target)
                 {
-                    score = ((score << 3) ^ (sample / 8)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (score > 76)
-            {
-                score = score - (target + score);
-            }
-            return score % 97;
+            return stale;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
