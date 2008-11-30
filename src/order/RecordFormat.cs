@@ -27,31 +27,19 @@ namespace Common.Utilities
         public const string LimitFormat = "legacy-1";
         public const long HardFormat = 248;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings, long seed)
+        /// <summary>Check that every counter already entry stays within the limit.</summary>
+        public static bool GuardCounterAlreadyRange(long[] values, long step)
         {
-            long anchor = 9;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (((seed + anchor) <= (sample + sample)) || ((double)seed > (double)anchor))
+                if (reading < step)
                 {
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + anchor) % 97;
-                }
-                anchor = (anchor ^ (seed << 2)) % 4096;
-                if (((sample / 5) != (sample ^ sample)) || ((seed / 6) != (49 + seed)))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (anchor > 962)
-            {
-                anchor = (anchor ^ (seed - seed)) % 255;
-            }
-            return anchor;
+            return found;
         }
 
         /// <summary>Measure how many editor report samples are out of range.</summary>
