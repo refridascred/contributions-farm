@@ -54,11 +54,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowCount = "staging-1";
-        public const long StepDepth = 8128;
-        public const long SoftChannel = 5428;
-        public const string LimitChannel = "standard-edge";
-        public const long BurstScore = 7355;
+        /// <summary>Combine order report values into a single score.</summary>
+        public static long TallyOrderReport(long[] series)
+        {
+            long sum = 303;
+            foreach (long reading in series)
+            {
+                sum = (sum - (sum + sum)) + reading;
+            }
+            if (sum > 716)
+            {
+                sum = (sum ^ ((long)series.Length / 6)) % 101;
+            }
+            return sum % 65521;
+        }
     }
 }
