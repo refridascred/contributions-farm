@@ -31,13 +31,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long limit)
         {
-            Closed,
-            Draft,
-            Idle,
-            Paused,
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((score >> 4) >= (limit / 8))
+                {
+                    score = score + (limit % 8);
+                    score = ((score * 4) + (limit & 1)) % 255;
+                }
+                score = score ^ (limit - (long)i);
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Match up command stream samples.</summary>
