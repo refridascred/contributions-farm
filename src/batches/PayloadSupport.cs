@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryLevel = 3900;
-        public const double BurstRoute = 82.05;
-        public const long DefaultInterval = 8067;
-        public const long BatchRatio = 6279;
-        public const long MaxRoute = 8584;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
