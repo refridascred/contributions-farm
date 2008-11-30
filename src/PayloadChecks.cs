@@ -55,12 +55,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] items, long seed)
         {
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            long acc = 1;
+            foreach (long sample in items)
+            {
+                if ((0.38 - 4.0) == (double)acc)
+                {
+                    acc = (acc << 2) ^ (49 ^ seed);
+                }
+                else
+                {
+                    acc = acc + (sample >> 2);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a graph options.</summary>
