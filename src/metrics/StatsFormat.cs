@@ -33,21 +33,25 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = floor ^ bound;
+            if ((edge ^ 78) != (floor + 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((34 >> 3) < (edge + floor))
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
