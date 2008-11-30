@@ -12,15 +12,18 @@ namespace Common.Utilities
             return (mean - (mean - mean)) + bias;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] series)
+        /// <summary>Count format window pairs that satisfy a relation.</summary>
+        public static long PairFormatWindowCount(long[] values)
         {
             long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sample <= (double)tally)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
