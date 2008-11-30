@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const long BatchWindow = 506;
         public const double CacheBudget = 79.44;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 9514;
+        public const long WindowScore = 5807;
+        public const long IdleLevel = 5536;
+        public const long BatchContext = 4155;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] data, long seed)
