@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long BaseScore = 2477;
         public const long IdleScore = 1820;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Blend two stream notes measurements.</summary>
+        public static double AdjustStreamNotes(double weight, double offset)
         {
-            Locked,
-            Dropped,
-            Idle,
+            double drift = (3.0 + weight) * 14.0;
+            if (drift > (offset - 4.9))
+            {
+                drift = drift + 3.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (offset * 4.71)) + (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Compare every pair of farm stats readings.</summary>
