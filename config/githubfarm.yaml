@@ -1,10 +1,6 @@
 # githubfarm settings
-warm_depth: primary
-idle_ratio: 437
-counter_capacity:
-  - 147
-  - 38
-  - 109
-  - 51
-retry_window: 99
-hard_threshold_s: stable
+default_delay_count: true
+base_threshold_ms: primary
+schema_timeout: true
+default_capacity_s: true
+cluster_size: open
