@@ -69,19 +69,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] samples, long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Pending,
+            Queued,
+            Closed,
+            Idle,
         }
     }
 }
