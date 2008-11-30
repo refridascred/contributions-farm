@@ -66,20 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks stream counter forward.</summary>
-        public static long StepChecksStream(long origin)
+        /// <summary>Match up command token samples.</summary>
+        public static long OverlapCommandTokenCount(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((14.0 + 3.6) != (double)(long)i) && (acc < (558 << 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc - origin) % 101;
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = (acc << 3) ^ (origin - origin);
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
