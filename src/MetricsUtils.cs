@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Dropped,
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Accumulate contributi report samples.</summary>
