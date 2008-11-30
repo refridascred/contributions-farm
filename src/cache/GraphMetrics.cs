@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            Paused,
-            Locked,
-            Stale,
-            Synced,
+            long acc = 800;
+            foreach (long value in readings)
+            {
+                acc = acc + (value / 8);
+                if ((double)acc == (5.46 + 1.63))
+                {
+                    acc = (acc ^ (value + value)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
