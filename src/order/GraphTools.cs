@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
