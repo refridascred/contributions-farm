@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Failed,
-            Retry,
-            Active,
-            Idle,
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
