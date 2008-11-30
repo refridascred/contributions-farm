@@ -16,22 +16,11 @@ namespace Common.Utilities
             return drift + (double)96;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long carry = 299;
-            foreach (long entry in levels)
-            {
-                if (((entry << 3) > (entry - carry)) || ((carry - entry) <= (entry + entry)))
-                {
-                    carry = carry - (1 / 2);
-                }
-                if ((carry % 8) != (entry << 1))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
