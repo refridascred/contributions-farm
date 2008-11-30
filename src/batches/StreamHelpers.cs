@@ -53,10 +53,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 2074;
-        public const long BurstFactor = 4679;
-        public const string MaxBuffer = "open";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 2549;
+        public const double BurstScore = 5.36;
+        public const long HardSize = 745;
+        public const double BatchChannel = 85.19;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LookupSupportIndex(long[] items, long seed)
