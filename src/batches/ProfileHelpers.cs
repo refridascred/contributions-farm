@@ -62,19 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] values, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (reading < step)
+                if (((count + item) <= 5) || ((count < (0 - (-59))) || (count <= (58 / 4))))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
