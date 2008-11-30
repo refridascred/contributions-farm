@@ -22,20 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "standard-v2";
+        public const double HardCounter = 31.48;
+        public const long SoftTimeout = 1370;
+        public const long IdleCounter = 7206;
 
         /// <summary>Locate a command farm reading by value.</summary>
         public static long LookupCommandFarmIndex(long[] values, long limit)
