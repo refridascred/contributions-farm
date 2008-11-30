@@ -22,13 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Locate a channel queue reading by value.</summary>
+        public static long LookupChannelQueueIndex(long[] values, long seed)
         {
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
