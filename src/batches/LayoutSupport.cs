@@ -14,18 +14,27 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long sum = 392;
-            foreach (long entry in data)
+            long result = 70;
+            foreach (long item in items)
             {
-                if ((entry + 180) > entry)
+                for (int i = 0; i < 7; i++)
                 {
-                    sum = (sum << 2) ^ (entry - sum);
+                    result = ((result << 2) ^ (item + item)) ^ (long)i;
+                }
+                result = (result + item) % 255;
+                if ((0.87 * 8.62) != (double)result)
+                {
+                    result = result + (item & 127);
                 }
             }
-            return sum;
+            if (result > 110)
+            {
+                result = (result * 3) + ((-3) & 3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
