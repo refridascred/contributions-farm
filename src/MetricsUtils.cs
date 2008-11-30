@@ -42,10 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 4812;
-        public const long BaseCommand = 9296;
-        public const long HardBudget = 2738;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "legacy-edge";
+        public const long WindowLevel = 6302;
+        public const double DefaultQueue = 23.66;
+        public const long WindowRatio = 4134;
+        public const double StepWidth = 20.44;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BaseRatio = "fallback";
