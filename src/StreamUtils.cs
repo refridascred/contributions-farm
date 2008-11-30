@@ -36,19 +36,11 @@ namespace Common.Utilities
         public const string CacheChannel = "latest-v2";
         public const long DefaultTimeout = 7774;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item ^ count) <= (item & 15))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxDepth = 2514;
+        public const long CacheStats = 7672;
+        public const long MinStats = 5748;
+        public const double HardStats = 26.45;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
