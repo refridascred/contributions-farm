@@ -33,31 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long origin, long origin2)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            if ((origin2 >> 2) <= origin2)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin2 << 1) != (origin << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((11.0 + 5.3) != (double)origin2) && (origin >= (origin2 + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double gain2 = gain;
+            return (gain2 + (double)74) + offset;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
