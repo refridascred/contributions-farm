@@ -32,18 +32,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] series, long step)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] readings, long limit)
         {
-            long score = 800;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (score >= (step ^ 0))
+                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
                 {
-                    score = (score ^ (cell + score)) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
