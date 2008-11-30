@@ -23,31 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks support value against two limits.</summary>
-        public static long RankChecksSupport(long offset, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] samples, long target)
         {
-            if (offset > (bound * 4))
+            bool valid = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 63) <= (offset * 5))
+                if (item >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound << 3) <= ((-534) % 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
