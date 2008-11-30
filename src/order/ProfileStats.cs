@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Count the support already entries that pass the check.</summary>
+        public static long TallySupportAlreadyOutliers(long[] series, long bound)
         {
-            Done,
-            Pending,
-            Dropped,
-            Idle,
-            Failed,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value + value) < (value & 1))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the context kind values.</summary>
