@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] samples)
         {
-            long mix = 7;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix + (mix + 36)) ^ item) + step;
+                if ((3.49 - 2.0) == (double)count)
+                {
+                    count = (count + 3) ^ datum;
+                }
             }
-            if (mix < 987)
-            {
-                mix = (mix * 2) + (mix + mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Match up counter samples.</summary>
