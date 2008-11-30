@@ -38,19 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate context session readings against a bound.</summary>
-        public static bool GuardContextSessionBounds(long[] levels, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
