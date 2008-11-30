@@ -15,24 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long limit, long limit2)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            if (((limit2 * 4) >= (778 + limit2)) && ((limit * 3) >= limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit << 2) == (limit ^ limit2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Rank record input into a small class.</summary>
