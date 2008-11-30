@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=317
-log "limit is ${COMMAND_LIMIT}"
+for item in green edge; do
+    log "checking ${item}"
+done
 
-mode="${1:-open}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
