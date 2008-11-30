@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxDepth = 5778;
-        public const long DefaultBatches = 1496;
-        public const long BatchWidth = 4961;
+        /// <summary>Fold a list of stream command readings.</summary>
+        public static long DigestStreamCommand(long[] samples)
+        {
+            long state = 950;
+            foreach (long cell in samples)
+            {
+                state = ((state * 2) + (cell + cell)) % 65521;
+                state = ((state * 2) + state) % 1000;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheLimits(long[] values, long floor)
