@@ -55,21 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading < step)
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
