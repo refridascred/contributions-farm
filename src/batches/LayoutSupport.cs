@@ -51,13 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] values)
         {
-            Pending,
-            Synced,
-            Locked,
-            Draft,
+            long mark = 72;
+            foreach (long value in values)
+            {
+                mark = ((mark << 3) ^ value) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
