@@ -1,13 +1,6 @@
 {
-  "enabled": "legacy",
-  "compress": 60,
-  "cache_ttl_ms": 8600,
-  "burst_depth": {
-    "strict": "open",
-    "default_size_ms": false,
-    "burst_threshold_ms": [277, 145, 205, 329],
-    "poll_ttl": true
-  },
-  "sync_ttl_pct": false,
-  "batch_depth_ms": 87
+  "max_limit": [143, 376, 444],
+  "min_ratio_pct": ["stable", "open"],
+  "token_interval": "edge",
+  "farm_retries": "green"
 }
