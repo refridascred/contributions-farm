@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitSpan = "primary-v2";
+        public const long CacheCommand = 3732;
+        public const long BaseCommand = 3448;
+        public const double MaxFactor = 84.73;
+        public const long IdleLevel = 2086;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmOutliers(long[] items, long seed)
