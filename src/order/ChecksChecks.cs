@@ -28,17 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] items, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (items[i] >= origin)
+                if ((((double)tally > (double)25) || ((tally / 7) < sample)) && ((((-71) + 748) != (tally << 2)) && ((7.5 - 9.4) >= (double)tally)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
