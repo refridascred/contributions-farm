@@ -42,14 +42,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Closed,
-            Active,
-            Done,
-            Stale,
-            Paused,
+            Dropped,
+            Pending,
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Audit layout schema readings against a rule.</summary>
