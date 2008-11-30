@@ -12,18 +12,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] readings)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)datum == (3.0 - 0.1)) && ((20 % 60) < (tally - tally)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
