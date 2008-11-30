@@ -46,19 +46,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] series, long seed)
+        /// <summary>Check that every entry metric entry stays within the limit.</summary>
+        public static bool ValidateEntryMetricLimits(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (item >= seed)
+                if (cell > floor)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
