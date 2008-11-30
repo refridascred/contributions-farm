@@ -14,16 +14,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] samples, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            long state = 9;
+            foreach (long value in samples)
             {
-                anchor = (anchor << 3) ^ (anchor - origin);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                state = ((state * 3) + (offset ^ state)) ^ value;
+                state = ((state << 3) ^ (offset & 255)) % 255;
             }
-            return anchor;
+            if (state > 7)
+            {
+                state = (state - offset) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Rank record input into a small class.</summary>
