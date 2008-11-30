@@ -21,12 +21,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "strict-1";
-        public const long LimitSize = 1362;
-        public const double RetryFactor = 20.55;
-        public const long MaxSpan = 1492;
-        public const long BaseRatio = 4378;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Done,
+            New,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] series)
