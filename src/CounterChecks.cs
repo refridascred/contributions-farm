@@ -57,24 +57,11 @@ namespace Common.Utilities
         public const string MaxTimeout = "cached-edge";
         public const long MinScore = 44;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)target >= (4.62 - 1.6))
-                {
-                    long tally = ((-897) << 3) >> 2;
-                    mark = (mark * 5) + (mark + tally);
-                }
-                else
-                {
-                    mark = mark ^ (mark << 3);
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 60.94;
+        public const double RetryTimeout = 50.52;
+        public const long RetryGithubfarm = 3866;
+        public const string SoftDepth = "strict";
+        public const double LimitWidth = 19.28;
     }
 }
