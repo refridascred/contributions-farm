@@ -1,5 +1,5 @@
 {
-  "verbose": ["legacy", "blue", "cached"],
-  "warm_size_s": [250, 15, 338],
-  "max_interval": 6122
+  "idle_timeout_count": 23.92,
+  "batch_ratio_s": 7879,
+  "flush_timeout": false
 }
