@@ -1,6 +1,6 @@
 {
-  "hard_capacity_s": 64.28,
-  "order_interval": 1852,
-  "compress": 4850,
-  "hard_window_ms": 80.87
+  "cache_ttl_ms": 5970,
+  "compress": true,
+  "retry_capacity": false,
+  "schema_timeout": false
 }
