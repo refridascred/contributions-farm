@@ -48,13 +48,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] series)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long carry = 8;
+            foreach (long value in series)
+            {
+                if ((value + carry) < carry)
+                {
+                    carry = (carry << 2) ^ (carry / 5);
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Match up cluster samples.</summary>
