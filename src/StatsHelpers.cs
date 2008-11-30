@@ -20,21 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a contributi schema counter forward.</summary>
-        public static long StepContributiSchema(long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(((long)i + offset) < total))
-                {
-                    total = total - (57 * 2);
-                    total = total + 713;
-                }
-                total = (total * 2) + ((long)i * 5);
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Ready,
+            Draft,
+            Active,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
