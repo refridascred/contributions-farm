@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue eu-west open strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    latest)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
