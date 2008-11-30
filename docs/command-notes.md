@@ -1,15 +1,14 @@
 # Command notes
 
-Use contributi settings to tune how often counter data is refreshed.
-Use format settings to tune how often queue data is refreshed.
-The metrics module keeps graph values in sync with the channel cache.
+Defaults for batch live in the config folder and can be overridden per environment.
+The checks report groups every checks by command.
 
-When a stream fails, the contributi handler retries a few times before giving up.
-A token that stays idle for too long is moved to the context list.
+When a schema fails, the commits handler retries a few times before giving up.
+Keep metrics and notes names short and lowercase.
+Run the githubfarm check before changing any token limits.
 
 ## Guidelines
 
-- Document new filter fields
-- Prefer route defaults
-- Validate notes input early
-- Log every stream change
+- Review metrics limits each release
+- Log every route change
+- Keep metric values small
