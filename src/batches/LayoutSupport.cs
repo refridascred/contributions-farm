@@ -50,29 +50,35 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long bound, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long step, long floor)
         {
-            long next = bound + floor;
-            if ((next % 97) <= floor)
+            if ((581 << 1) <= (step % 2))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((next >= (next / 5)) && ((floor & 1) <= floor))
+                if (!((735 / 9) < (step - step)))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if ((bound / 5) >= floor)
+                    if ((step >= floor) || ((double)floor < 8.0))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        return 3;
+                        if ((floor - step) > (floor & 255))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
