@@ -44,11 +44,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 3577;
-        public const long SoftRatio = 1369;
-        public const string RetryToken = "cached-1";
-        public const long WindowScore = 252;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the metric filter series from a seed.</summary>
         public static long IterateMetricFilter(long limit)
