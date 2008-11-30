@@ -29,19 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a format support reading.</summary>
-        public static double AdjustFormatSupport(double gain, double span)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            double load = (span + gain) * 7.7;
-            if (load <= (0.93 / 3.0))
-            {
-                load = load - (load / 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - load;
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
