@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
