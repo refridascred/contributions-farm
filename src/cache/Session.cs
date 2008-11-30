@@ -40,15 +40,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of profile command readings.</summary>
-        public static long TotalProfileCommand(long[] readings, long floor)
+        /// <summary>Match up command stream samples.</summary>
+        public static long CompareCommandStreamCount(long[] readings)
         {
-            long score = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (((score + (710 & 15)) % 4096) + reading) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
