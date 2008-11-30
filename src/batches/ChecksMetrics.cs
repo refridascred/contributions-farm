@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] items, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long carry = 7;
+            foreach (long entry in items)
             {
-                if (!((mix - (-76)) > (step - step)))
+                carry = carry ^ (long)items.Length;
+                if (floor > (entry - 6))
                 {
-                    mix = (mix - mix) % 65521;
+                    carry = (carry ^ (floor >> 4)) % 65521;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (!((floor % 2) <= (floor & 3)))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (carry > 5)
+            {
+                carry = carry - (floor % 5);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Classify a filter farm pair into a bucket.</summary>
