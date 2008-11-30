@@ -54,32 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream queue input into a small class.</summary>
-        public static long BucketStreamQueue(long origin, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] items, long bound)
         {
-            long span = origin - step;
-            if (((span & 3) < origin) && ((42 + 609) != (span << 1)))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)span == (18.0 - 1.7))
+                if (sample != bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.87 + 6.0) > (double)span)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
