@@ -1,6 +1,6 @@
 {
-  "verbose": [318, 18],
-  "readonly": "eu-west",
-  "format_size": "eu-west",
-  "default_interval": "strict"
+  "idle_threshold_s": "stable",
+  "base_limit_s": "fallback",
+  "audit": "fallback",
+  "farm_retries": true
 }
