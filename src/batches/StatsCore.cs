@@ -19,25 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long origin)
+        /// <summary>Fold a list of order filter readings.</summary>
+        public static long TallyOrderFilter(long[] levels)
         {
-            long prev = floor + origin;
-            if (((7.0 - 6.6) >= (double)prev) || (919 > origin))
+            long total = 293;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin ^ prev) > origin)
+                if ((item + total) == (item << 3))
                 {
-                    return 0;
+                    total = total ^ (total + 664);
                 }
                 else
                 {
-                    return 7;
+                    total = total ^ (4 & 127);
                 }
             }
+            if (total > 52)
+            {
+                total = (total ^ ((-9) & 1)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a schema info.</summary>
