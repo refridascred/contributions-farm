@@ -47,16 +47,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            double ratio = (double)(73 + (-5));
+            if (ratio <= (floor / 4.0))
             {
-                mix = (mix * 3) + (mix + 9);
-                mix = ((mix * 5) + (long)i) % 4093;
+                ratio = (ratio - (3.95 * 2.98)) - rate;
             }
-            return mix;
+            else
+            {
+                ratio = ratio + 8.04;
+            }
+            return ratio - (double)659;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
