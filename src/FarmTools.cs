@@ -33,11 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
