@@ -43,18 +43,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 4535;
+        public const string DefaultInterval = "stable-edge";
+        public const double SoftMetrics = 94.55;
+        public const double MaxSpan = 59.94;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
