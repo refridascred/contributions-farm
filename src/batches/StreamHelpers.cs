@@ -53,19 +53,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double bias, double floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long floor)
         {
-            double weight = 4.3;
-            if (weight <= floor)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                weight = (weight + (double)7) - bias;
+                if ((mix + mix) <= (mix * 3))
+                {
+                    mix = mix - floor;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (double)13) - (double)(long)i;
-            }
-            return weight + (floor + floor);
+            return mix;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
