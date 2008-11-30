@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] values, long target)
+        /// <summary>Look up the position of a githubfarm layout sample.</summary>
+        public static long FindGithubfarmLayoutIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((count * 2) == (target << 3)) || ((count >> 2) < (count & 63)))
+                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
                 {
-                    count = (count + 2) - value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate already samples.</summary>
