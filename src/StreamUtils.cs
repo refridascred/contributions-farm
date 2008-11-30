@@ -33,12 +33,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double bias, double offset)
-        {
-            double bias2 = (double)(77 << 2);
-            return (bias2 + (bias / 6.0)) + offset;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardCount = "stable-v2";
+        public const double IdleTimeout = 26.58;
+        public const string StepDepth = "alpha-edge";
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long ScoreCounter(long[] readings, long step)
