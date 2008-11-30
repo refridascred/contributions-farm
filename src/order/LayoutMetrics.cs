@@ -29,39 +29,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long target, long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] levels, long bound)
         {
-            long bound = target ^ limit;
-            if (!(839 >= (bound + target)))
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)target < (double)bound))
+                if (sample != bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ target) >= 14)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)bound >= (double)limit) || ((985 + limit) <= (bound ^ limit)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
