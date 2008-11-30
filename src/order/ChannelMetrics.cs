@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] values, long offset)
         {
-            if (((2.83 + 7.11) != (double)floor) || (20.0 < (double)offset))
+            long result = 9;
+            foreach (long cell in values)
             {
-                return 8;
+                result = (((result * 2) + (offset % 24)) % 65521) ^ cell;
             }
-            else
-            {
-                if ((offset - offset) > floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result % 97;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
