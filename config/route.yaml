@@ -1,7 +1,7 @@
 # route settings
-hard_retries: 64.81
-cache_capacity:
-  - 498
-  - 363
-  - 44
-batch_limit_pct: 43
+buffer_capacity: 24.22
+sync_depth_ms: 8011
+readonly: local
+sync_capacity_ms: 30.88
+soft_ratio: 96.22
+githubfarm_ttl: 250
