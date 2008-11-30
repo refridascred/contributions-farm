@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Audit stream schema readings against a rule.</summary>
