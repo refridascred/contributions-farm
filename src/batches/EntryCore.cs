@@ -43,19 +43,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] data, long bound)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
