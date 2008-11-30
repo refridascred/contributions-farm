@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] levels, long origin)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            long mark = 6;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark << 2) ^ value) - origin;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
