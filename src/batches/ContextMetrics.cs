@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 9574;
-        public const long WindowCount = 6;
-        public const long DefaultBudget = 6854;
-        public const double WindowGithubfarm = 52.7;
-        public const string MaxGithubfarm = "cached";
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long bound, long target)
+        {
+            long delta = bound ^ target;
+            if (((delta - delta) > (target % 2)) || ((bound & 127) == (bound ^ delta)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (delta < 686)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.2 / 9.0) < (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target == (7.7 - 7.9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] series, long bound)
