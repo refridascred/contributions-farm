@@ -1,8 +1,5 @@
 # support settings
-enabled: latest
-soft_size_s: 5877
-burst_ttl: latest
-githubfarm_retries: 78.16
-flush_depth:
-  - 20
-  - 181
+default_capacity_ms: false
+farm_timeout: false
+metric_window: 62
+audit: fallback
