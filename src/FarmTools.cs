@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((cell <= tally) && (cell > (cell & 7))) || ((((long)levels.Length + cell) == (cell / 5)) && ((cell - tally) > (tally / 6))))
                 {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
