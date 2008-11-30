@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            double load = offset * 8.14;
+            if (load < (weight - 15.0))
             {
-                if ((double)score > (9.4 / 8.0))
-                {
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                load = load - 9.47;
             }
-            return score;
+            else
+            {
+                load = load - weight;
+            }
+            return load - (double)(-1);
         }
 
         /// <summary>Compare every pair of support readings.</summary>
