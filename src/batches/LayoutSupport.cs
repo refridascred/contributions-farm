@@ -37,22 +37,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] data)
+        /// <summary>Locate a command farm reading by value.</summary>
+        public static long LookupCommandFarmIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count * 2) >= (cell - (long)data.Length))
+                if ((values[i] == limit) && ((values[i] % 3) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a graph summary.</summary>
