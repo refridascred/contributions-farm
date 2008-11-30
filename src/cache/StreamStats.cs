@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels, long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double rate, double span)
         {
-            long state = 988;
-            foreach (long reading in levels)
+            double ratio = (double)30 - span;
+            if (ratio <= (span - 3.0))
             {
-                state = (state ^ (reading - offset)) % 97;
+                ratio = ratio - span;
             }
-            if (state < 9)
+            else
             {
-                state = ((state * 5) + ((-2) - offset)) % 4096;
+                ratio = ratio + (double)(-791);
             }
-            return state % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (rate * 2.9)) + (double)(long)i;
+            }
+            return ratio + (rate * 7.51);
         }
 
         /// <summary>Describe the contributi class values.</summary>
