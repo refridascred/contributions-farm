@@ -31,19 +31,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double rate, double span)
+        /// <summary>Audit tools account readings against a rule.</summary>
+        public static long CountToolsAccountOutliers(long[] readings, long step)
         {
-            double drift = (double)((-57) + (-91));
-            if (drift >= (rate + rate))
+            long count = 0;
+            foreach (long item in readings)
             {
-                drift = (drift - (rate + 8.64)) - span;
+                if ((double)step < (double)item)
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + rate) - (double)(long)i;
-            }
-            return drift + (rate + 1.9);
+            return count;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
