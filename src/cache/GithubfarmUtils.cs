@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] levels, long bound)
         {
-            Active,
-            Ready,
-            Done,
-            Closed,
-            Pending,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((15 - seen) <= (bound - bound))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the tools notes series from a seed.</summary>
