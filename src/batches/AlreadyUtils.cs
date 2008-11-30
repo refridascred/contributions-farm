@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values)
         {
-            Ready,
-            Paused,
-            Locked,
-            Pending,
-            Stale,
+            long acc = 38;
+            foreach (long entry in values)
+            {
+                acc = (acc ^ (entry % 64)) % 1000;
+                acc = acc - (entry % 64);
+                if (entry < (10 << 2))
+                {
+                    acc = acc - 786;
+                }
+                if ((double)entry >= (double)acc)
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
