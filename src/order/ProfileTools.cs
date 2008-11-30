@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Match up metrics profile samples.</summary>
+        public static long CompareMetricsProfileCount(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank order input into a small class.</summary>
