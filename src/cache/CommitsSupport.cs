@@ -40,17 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] samples, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (samples[i] < offset)
+                if (!((6.55 + 5.8) < (double)count) || (datum < (count + datum)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
