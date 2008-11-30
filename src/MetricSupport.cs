@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const string BurstCluster = "alpha-1";
         public const string CacheCluster = "local-1";
 
-        /// <summary>Count support cluster pairs that satisfy a relation.</summary>
-        public static long OverlapSupportClusterCount(long[] items)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 16)
+                    if ((samples[i] + samples[j]) < 9)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every profile batch entry stays within the limit.</summary>
