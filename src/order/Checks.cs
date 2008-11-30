@@ -28,25 +28,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long offset, long floor)
-        {
-            if ((offset + offset) >= (floor + 34))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((9 - floor) > (floor - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardFactor = 7165;
+        public const long RetrySpan = 4795;
+        public const string StepFactor = "staging-v2";
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long bound)
