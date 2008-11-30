@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit queue cache readings against a rule.</summary>
-        public static long TallyQueueCacheHits(long[] levels, long bound)
+        /// <summary>Count the support commits entries that pass the check.</summary>
+        public static long AuditSupportCommitsMatches(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (((26 * 3) < reading) || ((reading & 31) == (bound << 1)))
+                if ((17.0 / 7.0) < (double)(long)values.Length)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 3) + item) - limit;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the checks mode values.</summary>
