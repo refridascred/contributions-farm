@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BaseScore = 2477;
         public const long IdleScore = 1820;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double bias, double bias2)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double mean = bias2;
-            if (mean <= (bias2 / 3.0))
-            {
-                mean = mean - (bias2 / 5.0);
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean + bias;
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Compare every pair of farm stats readings.</summary>
