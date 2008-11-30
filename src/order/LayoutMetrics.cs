@@ -36,39 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank support notes input into a small class.</summary>
-        public static long RankSupportNotes(long floor, long floor2)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] values, long origin)
         {
-            long next = floor - floor2;
-            if ((floor + floor2) >= (6 ^ floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor / 4) <= (0 + floor2))
+                if ((values[i] > origin) && ((values[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)next <= (13.0 - 6.42)) || ((2.87 - 6.0) >= (double)next))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor2 == (7.5 * 9.6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
