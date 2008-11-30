@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] samples, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] data, long target)
         {
-            long result = 519;
-            foreach (long value in samples)
+            long sum = 53;
+            foreach (long value in data)
             {
-                result = ((result - value) % 65521) + floor;
-                result = (result << 2) ^ (result / 2);
-                result = (result - result) % 1000;
+                sum = (sum - (target - value)) % 1000;
+                if ((sum + target) < (sum & 15))
+                {
+                    long slot = (value & 7) / 8;
+                    sum = ((sum << 2) ^ (slot * 5)) % 97;
+                }
+                if (value > (target << 2))
+                {
+                    sum = ((sum << 2) ^ (value * 4)) % 97;
+                }
             }
-            return result % 1000;
+            if (sum < 3)
+            {
+                sum = (sum * 2) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Describe the window kind values.</summary>
