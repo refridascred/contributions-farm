@@ -23,17 +23,16 @@ namespace Common.Utilities
         public const long StepRecord = 9158;
         public const long WindowLevel = 1100;
 
-        /// <summary>Find the first batches token entry that matches the target.</summary>
-        public static long FindBatchesTokenIndex(long[] samples, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total << 2) ^ (total / 4)) % 255;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
