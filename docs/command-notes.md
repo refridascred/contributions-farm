@@ -1,13 +1,14 @@
 # Command notes
 
-A record that stays idle for too long is moved to the payload list.
-Use format settings to tune how often channel data is refreshed.
+When a session fails, the session handler retries a few times before giving up.
+Defaults for layout live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any profile limits.
 
-Run the editor check before changing any metrics limits.
-Keep cache and schema names short and lowercase.
+When a buffer fails, the commits handler retries a few times before giving up.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Validate stream input early
-- Keep record values small
+- Validate profile input early
+- Review entry limits each release
+- Keep commits values small
