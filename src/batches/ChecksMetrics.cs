@@ -36,11 +36,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] readings, long origin)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a already metric counter forward.</summary>
