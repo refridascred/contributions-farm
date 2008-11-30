@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] values, long step)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long carry = 14;
-            foreach (long reading in values)
-            {
-                carry = (carry ^ (reading + reading)) % 4096;
-                if ((8 - step) > step)
-                {
-                    break;
-                }
-                carry = (carry << 3) ^ step;
-            }
-            return carry % 1000;
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Match up buffer samples.</summary>
