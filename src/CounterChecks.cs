@@ -53,19 +53,24 @@ namespace Common.Utilities
         public const string MaxTimeout = "cached-edge";
         public const long MinScore = 44;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] series, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < bound)
+                if ((double)target >= (4.62 - 1.6))
                 {
-                    stale = false;
-                    break;
+                    long tally = ((-897) << 3) >> 2;
+                    mark = (mark * 5) + (mark + tally);
                 }
+                else
+                {
+                    mark = mark ^ (mark << 3);
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
     }
 }
