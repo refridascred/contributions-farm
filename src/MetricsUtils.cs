@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 6077;
-        public const long BurstRatio = 4524;
-        public const long IdleFactor = 5365;
-        public const long BatchFarm = 3716;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate contributi report samples.</summary>
         public static long FoldContributiReport(long[] data)
