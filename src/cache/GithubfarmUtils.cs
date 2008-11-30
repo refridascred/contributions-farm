@@ -34,10 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseWidth = 4291;
-        public const string DefaultSpan = "strict";
-        public const string BurstBatches = "fallback-1";
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordOutliers(long[] series, long seed)
