@@ -1,20 +1,10 @@
 {
-  "warm_limit_count": [395, 103],
-  "default_timeout_count": {
-    "idle_ttl": 60,
-    "poll_interval_ms": {
-      "strict": "open",
-      "counter_interval": "primary",
-      "flush_ratio": 1024,
-      "account_delay": "fallback",
-      "base_retries": 95.04
-    },
-    "sync_ttl_s": false,
-    "min_window": "staging",
-    "hard_limit": 100,
-    "cluster_depth": 30
-  },
-  "verbose": false,
-  "audit": false,
-  "account_ttl": true
+  "base_delay_s": "strict",
+  "base_interval": ["staging", "staging", "staging", "open"],
+  "max_retries": [225, 443],
+  "token_size": {
+    "poll_delay_s": 6.54,
+    "support_window": 68.01,
+    "window_size": [34, 69, 433, 196]
+  }
 }
