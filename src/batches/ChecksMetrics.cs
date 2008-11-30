@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] readings, long origin)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            long score = 9;
-            foreach (long sample in readings)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((sample + origin) >= (score & 255))
+                anchor = ((anchor * 2) + (limit << 1)) % 1000;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    score = (score << 2) ^ (score - origin);
+                    anchor = ((anchor << 2) ^ (6 % 5)) + (long)i2;
                 }
-                if ((origin << 3) <= sample)
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (score < (-598))
-            {
-                score = (score ^ (342 >> 1)) % 1000;
-            }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Roll a order counter forward.</summary>
