@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double rate, double span)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
+            double gain = (double)(1 + 36);
+            return (gain - (span + span)) + rate;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
