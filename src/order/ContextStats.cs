@@ -12,11 +12,13 @@ namespace Common.Utilities
             return (mean - (mean - mean)) + bias;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 5672;
-        public const long CacheOrder = 4130;
-        public const long LimitOrder = 1854;
-        public const long BaseOrder = 9984;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
