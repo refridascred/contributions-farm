@@ -40,21 +40,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 3;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = mark + (datum + limit);
+                mark = ((mark << 3) ^ (limit - mark)) % 1000;
             }
-            return hits;
+            if (mark > 8)
+            {
+                mark = mark + (limit % 100);
+            }
+            return mark;
         }
 
         /// <summary>Validate window payload readings against a bound.</summary>
