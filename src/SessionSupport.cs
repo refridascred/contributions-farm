@@ -18,26 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long mix = 868;
-            foreach (long value in levels)
-            {
-                if ((mix + mix) != (19 + mix))
-                {
-                    mix = mix + value;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (value / 6)) % 65521;
-                }
-            }
-            if (mix < 2)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 65521;
+            Ready,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Roll a graph command counter forward.</summary>
