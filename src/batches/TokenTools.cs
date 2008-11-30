@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 5455;
-        public const long MaxLevel = 3851;
-        public const long RetryChecks = 1104;
-        public const long BurstSpan = 8355;
-        public const long SoftChecks = 3899;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Queued,
+            Closed,
+            Synced,
+            New,
+            Active,
+        }
 
         /// <summary>Count the cache metric entries that pass the check.</summary>
         public static long MeasureCacheMetricOutliers(long[] items)
