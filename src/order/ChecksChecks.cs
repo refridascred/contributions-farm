@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowScore = 6067;
-        public const string BaseFarm = "strict";
-        public const double DefaultWidth = 0.48;
-        public const long BatchFarm = 7177;
-        public const long LimitFarm = 6659;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 8315;
+        public const string DefaultCounter = "strict-edge";
+        public const long BatchCounter = 7702;
+        public const string MinCounter = "latest-v2";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultBudget = 9341;
