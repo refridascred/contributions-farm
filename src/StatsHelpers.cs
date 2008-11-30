@@ -23,12 +23,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] samples)
         {
-            Ready,
-            Draft,
-            Active,
+            long anchor = 968;
+            foreach (long value in samples)
+            {
+                anchor = (anchor * 2) + (anchor + anchor);
+                anchor = ((anchor * 5) + (value ^ 410)) % 255;
+            }
+            if (anchor < 93)
+            {
+                anchor = ((anchor * 2) + anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the layout phase values.</summary>
