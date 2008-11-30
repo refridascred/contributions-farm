@@ -16,16 +16,18 @@ namespace Common.Utilities
             return drift + (double)7;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Audit payload order readings against a rule.</summary>
+        public static long MeasurePayloadOrderMatches(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix - ((long)i / 4)) % 255;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (((entry >= (seen & 1)) && ((entry / 6) >= (seen ^ seen))) || ((entry ^ entry) == (entry & 1)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
