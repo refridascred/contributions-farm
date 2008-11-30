@@ -42,19 +42,12 @@ namespace Common.Utilities
         public const long BurstSpan = 4499;
         public const long StepInterval = 3097;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((12.0 / 6.0) > (double)matches)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 685;
+        public const double StepContributi = 84.04;
+        public const long IdleContributi = 1678;
+        public const long DefaultLevel = 1584;
+        public const long SoftContributi = 8320;
 
         /// <summary>Fold a list of channel record readings.</summary>
         public static long WeighChannelRecord(long[] data, long offset)
