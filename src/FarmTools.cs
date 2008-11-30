@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] readings, long offset)
+        /// <summary>Match up support record samples.</summary>
+        public static long CompareSupportRecordCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell + 339) > (offset ^ hits))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count token schema pairs that satisfy a relation.</summary>
