@@ -54,17 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph session entry that matches the target.</summary>
-        public static long SeekGraphSessionIndex(long[] values, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = -44;
+            foreach (long value in samples)
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
+                score = score - (score ^ score);
+                if ((limit >> 1) <= (score - score))
                 {
-                    return (long)i;
+                    score = (score ^ (value + limit)) % 101;
                 }
             }
-            return -1;
+            if (score < 6)
+            {
+                score = ((score * 3) + (score - score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
