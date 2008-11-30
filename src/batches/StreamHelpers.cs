@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] values, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 934;
+            foreach (long datum in samples)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                result = (result + result) % 1000;
+                result = (result - (datum + datum)) % 101;
             }
-            return -1;
+            if (result < 45)
+            {
+                result = result - bound;
+            }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
