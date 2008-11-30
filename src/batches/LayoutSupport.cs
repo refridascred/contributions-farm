@@ -55,25 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((5.4 > (double)score) && ((88 - floor) <= floor))
-                {
-                    score = (score - (floor & 63)) % 1000;
-                }
-                if (!((2.01 * 4.4) < (double)score))
-                {
-                    score = (score * 4) + (score * 5);
-                    score = ((score << 2) ^ (score + floor)) % 1000;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Pending,
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
