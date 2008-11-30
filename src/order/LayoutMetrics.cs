@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first counter githubfarm entry that matches the target.</summary>
-        public static long FindCounterGithubfarmIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 8808;
+        public const long WindowFormat = 3025;
+        public const double DefaultFormat = 14.8;
+        public const long CacheFormat = 266;
 
         /// <summary>Combine metrics checks values into a single score.</summary>
         public static long DigestMetricsChecks(long[] series, long offset)
