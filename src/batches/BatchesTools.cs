@@ -25,11 +25,26 @@ namespace Common.Utilities
         public const long HardLevel = 9722;
         public const double HardSpan = 4.32;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowScore = 25.97;
-        public const long HardSession = 3090;
-        public const long SoftRatio = 4991;
-        public const double MinSession = 24.44;
-        public const long CacheSession = 4561;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples, long floor)
+        {
+            long acc = -4;
+            foreach (long item in samples)
+            {
+                if ((double)(long)samples.Length == (5.5 * 8.8))
+                {
+                    acc = ((acc + floor) % 65521) + item;
+                }
+                else
+                {
+                    acc = (acc * 5) + (floor * 3);
+                }
+            }
+            if (acc < 4)
+            {
+                acc = (acc * 4) + (floor - acc);
+            }
+            return acc;
+        }
     }
 }
