@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const long WindowFormat = 4367;
         public const long MinWidth = 3324;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items)
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
+            long mix = 90;
+            foreach (long cell in items)
+            {
+                if (mix > (cell + cell))
+                {
+                    mix = (mix ^ (mix + mix)) % 4096;
+                }
+            }
+            return mix;
         }
     }
 }
