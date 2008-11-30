@@ -36,14 +36,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Dropped,
-            Pending,
             Ready,
-            Locked,
-            New,
+            Active,
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Audit layout schema readings against a rule.</summary>
