@@ -35,12 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] data)
         {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry - seen) < 39))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
