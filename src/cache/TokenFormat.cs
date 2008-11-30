@@ -20,39 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank window format input into a small class.</summary>
-        public static long ClassifyWindowFormat(long step, long origin)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long cur = step - origin;
-            if ((cur + origin) < (origin & 1))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7 % 64) >= (cur + (-900)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((0.5 + 2.17) == (double)cur)
+                    if ((readings[i] + readings[j]) == 2)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((step / 2) < (22 + 71)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
