@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up profile tools samples.</summary>
-        public static long MatchProfileToolsCount(long[] items)
+        /// <summary>Measure how many channel notes samples are out of range.</summary>
+        public static long MeasureChannelNotesOutliers(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)cell > (18.0 / 7.0))
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) + seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
