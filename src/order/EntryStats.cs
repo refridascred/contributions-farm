@@ -53,13 +53,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Synced,
-            Draft,
-            Paused,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "stable-1";
+        public const long CacheBatch = 7449;
+        public const long HardDepth = 5038;
+        public const long RetryBatch = 7871;
+        public const long BaseBatch = 8210;
     }
 }
