@@ -32,19 +32,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every report entry entry stays within the limit.</summary>
-        public static bool ValidateReportEntryRange(long[] readings, long floor)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long seed, long step)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            if (!((9.0 * 1.9) >= (double)seed))
             {
-                if (reading <= floor)
+                return 8;
+            }
+            else
+            {
+                if (step >= (seed - seed))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((step - seed) > seed) || ((seed >> 3) < (step & 255)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step < (step - step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
