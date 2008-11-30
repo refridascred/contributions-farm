@@ -12,21 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count schema graph pairs that satisfy a relation.</summary>
-        public static long CompareSchemaGraphCount(long[] items)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
