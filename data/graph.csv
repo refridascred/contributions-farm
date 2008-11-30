@@ -1,8 +1,8 @@
-id,weight,ratio,active
-1,eu-west,65.34,633
-2,145,259,standard
-3,806,90.97,78.35
-4,114,358,edge
-5,local,56.23,edge
-6,135,635,71
-7,81,696,803
+id,owner,label,score
+1,91.01,cached,77.98
+2,strict,legacy,26.33
+3,standard,primary,standard
+4,local,cached,edge
+5,97.94,720,275
+6,68.29,666,0.86
+7,latest,primary,90.36
