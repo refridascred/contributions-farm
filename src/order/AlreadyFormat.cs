@@ -55,19 +55,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] values, long step)
+        /// <summary>Accumulate notes schema samples.</summary>
+        public static long TallyNotesSchema(long[] values)
         {
-            bool valid = true;
+            long mark = 843;
             foreach (long value in values)
             {
-                if (value > step)
+                mark = ((mark - (86 + mark)) % 101) ^ value;
+                if (!((mark ^ mark) < (79 * 5)))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return mark % 4096;
         }
     }
 }
