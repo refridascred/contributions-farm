@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] values)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading ^ reading) > (hits / 9))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Rank record input into a small class.</summary>
