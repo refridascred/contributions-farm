@@ -19,12 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Grade a cluster format value against two limits.</summary>
+        public static long SortClusterFormat(long limit, long bound)
         {
-            New,
-            Paused,
-            Ready,
+            if (!((9.56 / 2.0) >= (double)limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) >= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
