@@ -28,17 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload editor counter forward.</summary>
-        public static long DerivePayloadEditor(long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long total = 5;
+            foreach (long value in series)
             {
-                sum = (sum ^ ((long)i - sum)) % 97;
-                sum = sum ^ offset;
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((value * 2) <= origin)
+                {
+                    total = total ^ value;
+                }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Derive the next context counter value from a seed.</summary>
