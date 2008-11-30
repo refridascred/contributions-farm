@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                mark = (mark << 3) ^ (mark >> 1);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
