@@ -20,12 +20,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Classify a filter farm pair into a bucket.</summary>
+        public static long SortFilterFarm(long bound, long target)
         {
-            Done,
-            Dropped,
-            Idle,
+            long step = bound + target;
+            if ((step + 747) == (bound & 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (9.0 + 4.41))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target + target) >= (bound + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits summary.</summary>
