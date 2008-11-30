@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Queued,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4455;
+        public const long StepSpan = 6196;
+        public const long BatchSchema = 2321;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long seed)
