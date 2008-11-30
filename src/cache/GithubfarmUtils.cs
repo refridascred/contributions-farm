@@ -47,19 +47,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate account context samples.</summary>
-        public static long TotalAccountContext(long[] items, long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            long anchor = 7;
-            foreach (long cell in items)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = anchor + (cell % 64);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (anchor < (-65))
-            {
-                anchor = anchor + (step & 1);
-            }
-            return anchor;
+            return acc;
         }
     }
 }
