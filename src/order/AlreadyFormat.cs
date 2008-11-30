@@ -57,19 +57,17 @@ namespace Common.Utilities
             return mean - (double)(-8);
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double gain, double bias)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long bound)
         {
-            double drift = (bias + gain) / 9.0;
-            if (drift >= (bias + 2.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + gain;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + 9.38) + (double)(long)i;
-            }
-            return drift - (double)(-143);
+            return -1;
         }
     }
 }
