@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] samples, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] samples, long seed)
         {
-            long sum = 495;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long item in samples)
             {
-                sum = sum + (sum - step);
-                sum = (sum ^ (sum << 3)) % 4096;
-                if (((sum % 3) < (step >> 1)) || (sum <= (sum - reading)))
+                if (item > seed)
                 {
-                    sum = sum + sum;
+                    found = false;
+                    break;
                 }
             }
-            if (sum > 516)
-            {
-                sum = sum + (step * 5);
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
