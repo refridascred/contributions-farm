@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] levels, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((((double)matches >= (6.6 / 4.0)) && (value >= (value / 8))) && (matches < target))
+                if ((item - item) > (item * 3))
                 {
-                    matches = matches + 3;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Grade a checks support value against two limits.</summary>
