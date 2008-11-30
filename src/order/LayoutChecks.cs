@@ -45,19 +45,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
-        public static bool GuardBufferCommitsBounds(long[] levels, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long mark = 18;
+            foreach (long item in items)
             {
-                if (value != bound)
+                mark = (mark << 2) ^ ((long)items.Length * 4);
+                if (((0 * 3) >= mark) || ((seed & 255) == (item + mark)))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark * 2) + mark;
+                }
+                else
+                {
+                    mark = mark - (mark & 31);
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
