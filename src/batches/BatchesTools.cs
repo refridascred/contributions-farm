@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] samples, long floor)
+        /// <summary>Derive the next batch layout value from a seed.</summary>
+        public static long SeriesBatchLayout(long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((0.58 + 2.0) <= (double)datum)
+                if (81 <= seed)
                 {
-                    count = (count + 1) + floor;
+                    mix = ((mix << 2) ^ (long)i) % 97;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
