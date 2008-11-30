@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Audit report checks readings against a rule.</summary>
+        public static long CountReportChecksHits(long[] items)
         {
-            long total = 42;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((entry ^ entry) < (total - total))
+                if (datum <= (tally >> 4))
                 {
-                    total = (total ^ (entry & 15)) % 4096;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    total = (total + (entry % 12)) % 255;
-                }
-                if (((total - total) == (entry >> 4)) && (635 >= (total + entry)))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Rank window input into a small class.</summary>
