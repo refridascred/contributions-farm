@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next metric commits value from a seed.</summary>
-        public static long DeriveMetricCommits(long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((seed - acc) <= (long)i)
+                if ((((reading << 3) < (913 - 6)) && (58 >= (matches & 1))) || ((1.5 - 9.85) >= (14.0 + 6.3)))
                 {
-                    acc = (acc - acc) % 255;
+                    matches = (matches + 1) + limit;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Project the next record value.</summary>
