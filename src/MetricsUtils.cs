@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double weight, double span)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] items)
         {
-            double load = span;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                load = ((load + (load + span)) + (double)(long)i) + weight;
+                if ((matches & 31) <= (25 + matches))
+                {
+                    matches = (matches + 1) + datum;
+                }
             }
-            return load - (span * 2.8);
+            return matches;
         }
 
         /// <summary>Describe the record class values.</summary>
