@@ -24,15 +24,19 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] series, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] items)
         {
-            long total = 13;
-            foreach (long entry in series)
+            long mix = 270;
+            foreach (long item in items)
             {
-                total = ((((total << 2) ^ (total % 64)) % 4096) + entry) - floor;
+                mix = mix + mix;
+                if (((3.0 / 4.0) > (double)item) || ((mix & 31) >= (item + (long)items.Length)))
+                {
+                    mix = (mix - (3 + item)) % 4096;
+                }
             }
-            return total % 97;
+            return mix % 65521;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
