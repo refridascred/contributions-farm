@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 9920;
-        public const long LimitDepth = 5428;
-        public const double WindowSpan = 62.22;
-        public const long WindowBuffer = 8283;
+        /// <summary>Digest a series of farm entry entries.</summary>
+        public static long TallyFarmEntry(long[] readings, long floor)
+        {
+            long result = 72;
+            foreach (long cell in readings)
+            {
+                result = ((((result * 2) + (283 >> 3)) % 1000) + cell) - floor;
+            }
+            return result;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
