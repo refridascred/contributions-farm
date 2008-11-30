@@ -24,24 +24,18 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long offset, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] levels)
         {
-            if ((offset - offset) == (origin ^ origin))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset <= (offset ^ origin))
+                if ((2.55 + 8.0) <= (double)count)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 1) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
