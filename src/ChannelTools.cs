@@ -35,22 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] samples)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((232 & 255) >= entry)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
