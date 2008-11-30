@@ -1,10 +1,5 @@
 {
-  "idle_limit_pct": false,
-  "default_limit_pct": 68.0,
-  "readonly": 79.88,
-  "base_window_pct": {
-    "retry_delay": true,
-    "burst_retries_pct": false,
-    "readonly": "legacy"
-  }
+  "sync_ratio_pct": 18.58,
+  "context_window": 7301,
+  "default_window_ms": "green"
 }
