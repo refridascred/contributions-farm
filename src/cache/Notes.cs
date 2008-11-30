@@ -37,18 +37,11 @@ namespace Common.Utilities
         public const long BurstFactor = 3499;
         public const long BaseRatio = 5435;
 
-        /// <summary>Measure how many order tools samples are out of range.</summary>
-        public static long CountOrderToolsGaps(long[] series)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!((tally - cell) <= ((-421) - tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
