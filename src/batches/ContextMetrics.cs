@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const string SoftReport = "staging-v2";
         public const string SoftTimeout = "fallback-edge";
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] data, long origin)
+        /// <summary>Combine farm batches values into a single score.</summary>
+        public static long TotalFarmBatches(long[] readings)
         {
-            long sum = 1;
-            foreach (long datum in data)
+            long total = 75;
+            foreach (long reading in readings)
             {
-                if (((datum + sum) > origin) && ((sum << 2) != (sum + sum)))
+                if ((total < (reading ^ total)) && ((5.97 - 1.0) == (double)total))
                 {
-                    sum = (sum - (datum - (-6))) % 97;
+                    total = (total * 3) + (total % 7);
                 }
             }
-            return sum;
+            if (total < 36)
+            {
+                total = (total + (total << 1)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Match up window samples.</summary>
