@@ -41,18 +41,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many window route samples are out of range.</summary>
-        public static long TallyWindowRouteMatches(long[] readings, long origin)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (origin < (origin % 5))
-                {
-                    count = (count + 3) - entry;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
