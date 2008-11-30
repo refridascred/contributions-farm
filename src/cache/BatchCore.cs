@@ -41,11 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Audit graph tools readings against a rule.</summary>
+        public static long TallyGraphToolsHits(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((tally - tally) != (tally + 339)) || ((bound % 12) == (sample ^ bound)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
