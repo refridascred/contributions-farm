@@ -26,22 +26,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank tools farm input into a small class.</summary>
-        public static long ClassifyToolsFarm(long seed, long seed2)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long limit)
         {
-            if ((double)seed > (7.0 + 3.38))
+            long bound = target + limit;
+            if (((target & 7) != (limit - bound)) && (target > (bound + limit)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (!(seed2 >= (seed2 + 410)))
+                if ((839 - limit) > bound)
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    if ((double)limit < (12.0 / 6.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
