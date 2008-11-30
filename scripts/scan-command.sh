@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+for item in fallback strict stable; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=403
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-cached}"
 case "${mode}" in
-    local)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in cached standard; do
-    log "checking ${item}"
-done
