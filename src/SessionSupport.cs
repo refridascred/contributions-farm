@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long floor, long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long delta = floor - origin;
-            if (floor <= (origin << 2))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin - 3) > (floor - delta)) || (delta >= (delta - floor)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
