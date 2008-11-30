@@ -30,15 +30,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series, long floor)
+        /// <summary>Validate order record readings against a bound.</summary>
+        public static bool CheckOrderRecordRange(long[] items, long limit)
         {
-            long anchor = 1;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long item in items)
             {
-                anchor = ((anchor ^ (entry % 97)) % 97) - floor;
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
