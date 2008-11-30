@@ -46,18 +46,15 @@ namespace Common.Utilities
         public const long StepCache = 6084;
         public const long BaseSpan = 2693;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long target)
         {
-            long anchor = 5;
-            foreach (long item in items)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((anchor ^ item) >= (item << 3))
-                {
-                    anchor = (anchor - 3) % 101;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
