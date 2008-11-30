@@ -34,17 +34,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] data, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long target, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = target - offset;
+            if (((double)span >= 7.9) || (offset <= (818 / 2)))
             {
-                if (data[i] < step)
+                return 7;
+            }
+            else
+            {
+                if ((span * 4) != (span - offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((target << 1) <= span) && (5.7 <= (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
