@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of order filter readings.</summary>
