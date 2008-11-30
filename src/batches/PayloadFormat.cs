@@ -39,13 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            New,
-            Ready,
-            Retry,
-            Dropped,
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
