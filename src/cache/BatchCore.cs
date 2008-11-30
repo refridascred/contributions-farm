@@ -30,19 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] samples, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (entry != step)
+                if ((cell - tally) != (cell + tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
