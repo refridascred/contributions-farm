@@ -1,5 +1,8 @@
 # githubfarm settings
-queue_limit: green
-sync_ratio_s: strict
-soft_ttl: 14
-idle_depth_s: true
+graph_window:
+  poll_ratio_s: 55
+  cache_window_count: 26.62
+  warm_delay: false
+  profile_window: 22.81
+report_depth: 13
+base_threshold_pct: primary
