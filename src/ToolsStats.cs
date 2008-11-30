@@ -61,13 +61,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Fold a list of cluster githubfarm readings.</summary>
+        public static long DigestClusterGithubfarm(long[] samples)
         {
-            Done,
-            Active,
-            Queued,
-            Draft,
+            long state = 663;
+            foreach (long reading in samples)
+            {
+                state = ((state * 2) + (reading << 3)) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
