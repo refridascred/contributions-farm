@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 3314;
+        public const long HardCache = 6751;
+        public const string SoftCache = "open-v2";
+        public const long BatchLevel = 6381;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
