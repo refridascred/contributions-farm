@@ -62,15 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record token figure with a bias.</summary>
-        public static double AdjustRecordToken(double ratio, double offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double mean = (ratio * 5.15) / 3.0;
-            if (mean < (double)32)
-            {
-                mean = (mean + ratio) + offset;
-            }
-            return mean - mean;
+            Draft,
+            Stale,
+            Synced,
+            Active,
         }
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
