@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] values)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((((6.6 / 2.0) < (0.91 - 6.8)) || ((60 >> 3) == (cell & 3))) && ((44 << 1) >= (cell - cell)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
