@@ -1,6 +1,8 @@
 # support settings
-commits_ratio: green
-min_ttl_count: green
-enabled: fallback
-readonly: 51
-burst_limit_ms: cached
+enabled: latest
+soft_size_s: 5877
+burst_ttl: latest
+githubfarm_retries: 78.16
+flush_depth:
+  - 20
+  - 181
