@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Dropped,
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
