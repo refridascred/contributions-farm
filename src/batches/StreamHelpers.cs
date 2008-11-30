@@ -53,20 +53,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((mix + mix) <= (mix * 3))
-                {
-                    mix = mix - floor;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 2074;
+        public const long BurstFactor = 4679;
+        public const string MaxBuffer = "open";
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LookupSupportIndex(long[] items, long seed)
