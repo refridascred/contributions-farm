@@ -31,22 +31,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric command samples are out of range.</summary>
-        public static long AuditMetricCommandMatches(long[] samples)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if (bound > (897 + bound2))
             {
-                if (((value / 8) < (38 / 4)) && !((4.23 * 5.0) < (5.48 - 0.98)))
+                return 0;
+            }
+            else
+            {
+                if (bound2 > (59 - bound))
                 {
-                    tally = tally + 3;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)bound <= 7.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound + bound2) >= bound2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
