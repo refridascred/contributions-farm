@@ -36,12 +36,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double ratio, double offset)
         {
-            Done,
-            Draft,
-            Failed,
+            double weight = (double)(174 / 6);
+            if (weight <= (ratio + offset))
+            {
+                weight = weight - (double)6;
+            }
+            else
+            {
+                weight = weight - (weight + offset);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (weight + offset)) + (double)(long)i;
+            }
+            return weight + 9.68;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
