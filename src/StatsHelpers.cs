@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of filter contributi entries.</summary>
-        public static long DigestFilterContributi(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] samples, long seed)
         {
-            long mix = -766;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (!((573 + mix) == (item << 3)))
+                if (value > seed)
                 {
-                    mix = (mix ^ ((-3) / 5)) % 97;
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix >> 3);
-                }
-                if (((8 % 64) != (mix - item)) || ((7 << 2) <= (item - 127)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (mix < 163)
-            {
-                mix = mix - (mix >> 4);
-            }
-            return mix % 4096;
+            return stale;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
