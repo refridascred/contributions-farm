@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] items)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((matches & 31) <= (25 + matches))
+                if (value < origin)
                 {
-                    matches = (matches + 1) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Adjust a payload reading.</summary>
