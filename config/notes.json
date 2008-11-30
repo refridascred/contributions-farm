@@ -1,7 +1,7 @@
 {
-  "poll_limit": false,
-  "default_timeout_s": 60,
-  "contributi_retries": "local",
-  "token_delay": 1024,
-  "base_timeout": "green"
+  "poll_depth_ms": 100,
+  "idle_delay_ms": 46,
+  "default_limit_pct": true,
+  "min_depth_pct": 10,
+  "queue_limit": "fallback"
 }
