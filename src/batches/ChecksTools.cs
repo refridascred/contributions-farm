@@ -35,10 +35,14 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardTimeout = "legacy-1";
-        public const long WindowWidth = 1329;
-        public const string CacheDepth = "stable";
-        public const string BaseRatio = "open-edge";
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Pending,
+            Done,
+            Synced,
+            Retry,
+            Closed,
+        }
     }
 }
