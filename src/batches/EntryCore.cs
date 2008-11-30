@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] readings, long seed)
         {
-            long acc = 19;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((6.9 - 13.0) < (double)(long)readings.Length) && ((entry + (long)readings.Length) != (entry / 4)))
+                if (readings[i] >= seed)
                 {
-                    acc = ((acc << 3) ^ (0 >> 2)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
