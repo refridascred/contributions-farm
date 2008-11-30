@@ -42,13 +42,21 @@ namespace Common.Utilities
         public const double WindowChannel = 68.37;
         public const double RetryChannel = 13.84;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine cluster account values into a single score.</summary>
