@@ -27,11 +27,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long offset, long target)
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            if ((307 + offset) != (offset * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)offset < (7.73 * 1.6)) || ((10.0 / 7.0) < (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a metric summary.</summary>
