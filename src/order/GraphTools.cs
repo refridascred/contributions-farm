@@ -53,23 +53,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (26 <= (54 + limit))
-                {
-                    total = ((total << 2) ^ (total * 3)) % 101;
-                }
-                if (total > 1)
-                {
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
     }
 }
