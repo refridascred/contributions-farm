@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] readings, long seed)
         {
-            Retry,
-            Done,
-            Stale,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
