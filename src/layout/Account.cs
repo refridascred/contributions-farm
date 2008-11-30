@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryFactor = 7237;
-        public const string SoftTools = "primary-edge";
-        public const long IdleSpan = 3616;
-        public const long IdleTools = 8188;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Idle,
+            Failed,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Combine tools batch values into a single score.</summary>
         public static long DigestToolsBatch(long[] data, long offset)
