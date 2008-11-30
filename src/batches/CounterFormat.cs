@@ -26,12 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            Done,
+            Dropped,
+            Closed,
         }
     }
 }
