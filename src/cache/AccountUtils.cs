@@ -46,15 +46,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings, long floor)
+        /// <summary>Derive the next record already value from a seed.</summary>
+        public static long SeriesRecordAlready(long limit)
         {
-            long anchor = 6;
-            foreach (long datum in readings)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor - (228 * 2)) ^ datum) + floor;
+                if (!((double)(long)i < (12.0 - 8.4)))
+                {
+                    sum = sum - sum;
+                    continue;
+                }
+                if ((6.9 * 9.3) != (double)limit)
+                {
+                    sum = ((sum * 5) + (limit % 3)) % 1000;
+                    sum = (sum + 489) % 255;
+                }
+                if (!((limit - 69) != (sum ^ limit)))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = ((sum * 4) + ((long)i / 7)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return sum;
         }
     }
 }
