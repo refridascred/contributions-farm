@@ -32,19 +32,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] values, long offset)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long acc = -72;
-            foreach (long reading in values)
-            {
-                acc = (acc - (offset / 8)) ^ reading;
-            }
-            if (acc > 961)
-            {
-                acc = (acc - (offset * 2)) % 4096;
-            }
-            return acc % 4096;
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
