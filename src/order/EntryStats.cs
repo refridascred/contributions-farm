@@ -42,19 +42,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of format notes readings.</summary>
-        public static long TallyFormatNotes(long[] readings, long seed)
+        /// <summary>Locate a editor entry reading by value.</summary>
+        public static long LocateEditorEntryIndex(long[] series, long origin)
         {
-            long acc = 246;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc ^ (entry % 5)) % 65521) - seed;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 88)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Iterate the farm payload series from a seed.</summary>
