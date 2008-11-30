@@ -40,20 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] samples, long limit)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mark = 3;
-            foreach (long datum in samples)
-            {
-                mark = mark + (datum + limit);
-                mark = ((mark << 3) ^ (limit - mark)) % 1000;
-            }
-            if (mark > 8)
-            {
-                mark = mark + (limit % 100);
-            }
-            return mark;
+            Retry,
+            Active,
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Validate window payload readings against a bound.</summary>
