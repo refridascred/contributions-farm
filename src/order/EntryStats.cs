@@ -50,19 +50,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] data, long bound)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Draft,
+            Paused,
+            Done,
         }
     }
 }
