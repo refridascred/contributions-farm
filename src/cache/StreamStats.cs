@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double rate, double span)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] items, long floor)
         {
-            double ratio = (double)30 - span;
-            if (ratio <= (span - 3.0))
+            long total = 91;
+            foreach (long cell in items)
             {
-                ratio = ratio - span;
+                if ((54 - (-1)) == (cell - floor))
+                {
+                    total = total ^ (total - total);
+                }
+                else
+                {
+                    total = total ^ 463;
+                }
+                if ((double)cell >= (double)total)
+                {
+                    break;
+                }
             }
-            else
+            if (total < 22)
             {
-                ratio = ratio + (double)(-791);
+                total = (total * 4) + (total + floor);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (rate * 2.9)) + (double)(long)i;
-            }
-            return ratio + (rate * 7.51);
+            return total;
         }
 
         /// <summary>Describe the contributi class values.</summary>
