@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftSize = 63.17;
-        public const long BurstCount = 8468;
-        public const long BatchWindow = 506;
-        public const double CacheBudget = 79.44;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxScore = 8036;
+        public const long HardStats = 9710;
+        public const string BaseFactor = "standard-1";
+        public const long BatchSize = 7533;
+        public const long DefaultStats = 8113;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferBounds(long[] values, long step)
