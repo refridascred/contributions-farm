@@ -17,12 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 2595;
-        public const double MaxBuffer = 81.93;
-        public const long SoftBuffer = 3461;
-        public const long BaseWidth = 882;
-        public const long MaxSize = 6995;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
