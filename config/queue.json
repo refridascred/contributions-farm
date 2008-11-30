@@ -1,6 +1,11 @@
 {
-  "entry_capacity": "primary",
-  "poll_ratio": "eu-west",
-  "burst_threshold": "strict",
-  "soft_ttl_ms": 30
+  "githubfarm_interval": "eu-west",
+  "flush_timeout": {
+    "soft_timeout_ms": "cached",
+    "batch_window": "stable",
+    "max_size_pct": "strict"
+  },
+  "cache_ttl": "strict",
+  "burst_ratio_ms": 8.19,
+  "poll_timeout_s": [410, 320, 492]
 }
