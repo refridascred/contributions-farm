@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] samples)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((3.49 - 2.0) == (double)count)
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
