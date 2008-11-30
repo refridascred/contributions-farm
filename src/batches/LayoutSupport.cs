@@ -46,19 +46,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every layout tools entry stays within the limit.</summary>
-        public static bool ValidateLayoutToolsBounds(long[] values, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Pending,
+            Ready,
         }
     }
 }
