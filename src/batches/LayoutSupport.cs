@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Accumulate metric commits samples.</summary>
+        public static long ScoreMetricCommits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 685;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((entry + carry) > (438 / 5)) || (23 < (carry % 3)))
                 {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry - 83) % 65521;
                 }
             }
-            return matches;
+            if (carry > 72)
+            {
+                carry = ((carry * 4) + carry) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
