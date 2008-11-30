@@ -49,18 +49,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Grade a payload channel value against two limits.</summary>
+        public static long SortPayloadChannel(long floor, long offset)
         {
-            long anchor = 5;
-            foreach (long sample in levels)
+            if ((floor << 3) <= (floor + offset))
             {
-                if ((sample << 1) > anchor)
+                return 2;
+            }
+            else
+            {
+                if (floor > (197 + floor))
                 {
-                    anchor = (anchor + anchor) % 101;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Iterate the entry batch series from a seed.</summary>
