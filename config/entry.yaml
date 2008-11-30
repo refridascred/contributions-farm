@@ -1,36 +1,4 @@
 # entry settings
-warm_retries_s: 2209
-batch_interval_count:
-  poll_ttl_pct: open
-  warm_window:
-    - 479
-    - 86
-    - 258
-    - 359
-  buffer_threshold:
-    verbose:
-      - fallback
-      - latest
-      - legacy
-    poll_ratio_pct:
-      - latest
-      - standard
-      - strict
-      - open
-    burst_capacity_ms: 59
-    flush_ratio_ms: local
-    base_retries_ms:
-      - eu-west
-      - staging
-  editor_timeout: standard
-default_delay:
-  - local
-  - legacy
-  - blue
-  - blue
-persist:
-  - 232
-  - 332
-  - 448
-  - 172
-retry_capacity: strict
+sync_ttl_s: 22
+default_capacity_pct: true
+flush_window: 30
