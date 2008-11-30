@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] levels, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long mark = 650;
+            foreach (long datum in series)
             {
-                if (sample < seed)
+                if (((mark & 127) == (18 % 7)) && ((datum << 2) > (mark % 2)))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark * 3) + mark) % 1000;
                 }
             }
-            return ok;
+            return mark % 4096;
         }
 
         /// <summary>Hold a session stats.</summary>
