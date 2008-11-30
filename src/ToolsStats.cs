@@ -29,22 +29,11 @@ namespace Common.Utilities
         public const long RetryChecks = 1845;
         public const long HardDepth = 6690;
 
-        /// <summary>Audit editor profile readings against a rule.</summary>
-        public static long MeasureEditorProfileOutliers(long[] series, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((7.9 + 9.2) > (double)offset) && ((1.0 - 3.1) != (double)value))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate context readings against a bound.</summary>
