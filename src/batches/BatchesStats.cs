@@ -12,18 +12,12 @@ namespace Common.Utilities
             return (mean - mean) + gain;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] data, long floor)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((167 * 4) >= (floor << 3)) || (floor >= (42 & 255)))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
