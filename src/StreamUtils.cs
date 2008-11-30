@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long sum = -768;
-            foreach (long cell in samples)
-            {
-                sum = sum + (sum + 88);
-                if (sum >= (cell & 63))
-                {
-                    sum = (sum + (sum & 127)) % 97;
-                }
-            }
-            if (sum < 426)
-            {
-                sum = (sum + (sum + sum)) % 4096;
-            }
-            return sum;
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
