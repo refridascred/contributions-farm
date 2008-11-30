@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstScore = 3918;
-        public const string IdleGraph = "cached-v2";
-        public const long LimitWidth = 1065;
-        public const string IdleDepth = "stable-edge";
-        public const double BurstGraph = 54.76;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Ready,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
