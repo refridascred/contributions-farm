@@ -38,19 +38,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics counter readings against a bound.</summary>
-        public static bool VerifyMetricsCounterBounds(long[] levels, long origin)
+        /// <summary>Rank githubfarm already input into a small class.</summary>
+        public static long BucketGithubfarmAlready(long limit, long step)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            if (step < (limit >> 3))
             {
-                if (value < origin)
+                return 8;
+            }
+            else
+            {
+                if ((limit * 3) == (step - limit))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit & 255) >= (limit % 64))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.6 - 3.54) != (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
