@@ -75,27 +75,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] data, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long carry = 7;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)carry <= (double)step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((item * 5) == (step & 7))
-                {
-                    carry = carry ^ (step % 60);
-                }
-                else
-                {
-                    carry = carry - item;
-                }
-                carry = (carry + (step - item)) % 97;
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
