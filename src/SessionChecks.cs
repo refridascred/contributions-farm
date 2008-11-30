@@ -12,17 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] samples, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (samples[i] > origin)
+                if (value <= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Validate tools buffer readings against a bound.</summary>
