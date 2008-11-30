@@ -29,22 +29,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] data)
         {
-            long mix = 77;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (!((55 + entry) < mix))
+                if (((long)data.Length / 3) <= (cell ^ seen))
                 {
-                    mix = ((mix * 3) + (mix ^ entry)) % 4096;
-                }
-                if ((52 >> 4) >= (mix - mix))
-                {
-                    mix = (mix + (mix % 3)) % 65521;
+                    seen = seen + 2;
                 }
             }
-            return mix % 1000;
+            return seen;
         }
     }
 }
