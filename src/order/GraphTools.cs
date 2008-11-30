@@ -63,11 +63,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 8825;
-        public const long CacheEditor = 6044;
-        public const long MinWidth = 9574;
-        public const long HardEditor = 4066;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] series, long step)
