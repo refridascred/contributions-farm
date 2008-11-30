@@ -20,35 +20,34 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long floor, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long target, long limit)
         {
-            long span = floor + seed;
-            if ((double)seed != (double)span)
+            if (980 >= (limit + limit))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((-19) >= span)
+                if (((double)target <= 5.88) && ((target - limit) <= (target ^ limit)))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)seed < (3.44 * 18.0))
+                    if ((target - limit) != (limit * 4))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if ((8 + (-36)) != (floor + span))
+                        if (limit > (limit + target))
                         {
                             return 5;
                         }
                         else
                         {
-                            return 1;
+                            return 0;
                         }
                     }
                 }
