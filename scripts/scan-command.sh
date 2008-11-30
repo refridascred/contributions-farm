@@ -6,10 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=335
-log "limit is ${COMMAND_LIMIT}"
+for item in blue primary; do
+    log "checking ${item}"
+done
 
-mode="${1:-stable}"
+mode="${1:-fallback}"
 case "${mode}" in
     fallback)
         log "fast path"
@@ -18,3 +19,9 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
