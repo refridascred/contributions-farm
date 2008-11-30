@@ -27,11 +27,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 2832;
-        public const long IdleRoute = 1367;
-        public const string RetryRoute = "primary-edge";
-        public const string WindowDepth = "staging-v2";
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] levels, long floor)
