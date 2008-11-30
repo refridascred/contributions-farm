@@ -1,5 +1,7 @@
 # githubfarm settings
-retry_timeout: 64.05
-buffer_interval: local
-hard_window: 75.09
-base_size_ms: false
+enabled: green
+githubfarm_ttl: 60
+entry_interval: true
+max_size_s:
+  - staging
+  - open
