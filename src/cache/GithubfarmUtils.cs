@@ -39,22 +39,18 @@ namespace Common.Utilities
         public const string DefaultSpan = "strict";
         public const string BurstBatches = "fallback-1";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] data, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((matches ^ matches) >= seed)
+                if (((seen >> 3) >= seed) || ((cell >> 4) >= (seed - seen)))
                 {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
