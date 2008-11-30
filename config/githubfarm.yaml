@@ -1,26 +1,6 @@
 # githubfarm settings
-batch_delay_ms:
-  soft_depth: 64.33
-  dry_run: 98.87
-  warm_ratio_pct:
-    - 217
-    - 183
-  farm_interval: 93
-  max_window_s:
-    dry_run: 9515
-    flush_size_s:
-      - strict
-      - cached
-      - edge
-    record_interval: 8.7
-    sync_size_s: false
-    verbose: 4102
-    batch_timeout_count: 69.39
-  payload_window: stable
-idle_interval_s: false
-idle_retries_s: 78.93
-profile_retries: green
-window_ttl:
-  batch_timeout_ms: true
-  min_retries_ms: local
-  flush_size_count: open
+batch_ttl_ms: 91
+batch_timeout_pct:
+  - local
+  - green
+filter_threshold: stable
