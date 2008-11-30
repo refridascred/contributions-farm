@@ -84,21 +84,11 @@ namespace Common.Utilities
         public const long IdleEntry = 542;
         public const long MinEntry = 7962;
 
-        /// <summary>Match up buffer contributi samples.</summary>
-        public static long OverlapBufferContributiCount(long[] data)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
