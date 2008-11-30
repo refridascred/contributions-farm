@@ -26,11 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] series, long limit)
         {
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
