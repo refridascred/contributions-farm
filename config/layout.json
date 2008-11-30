@@ -1,8 +1,8 @@
 {
-  "compress": [188, 263],
-  "dry_run": "eu-west",
-  "soft_retries_count": 68.95,
-  "audit": "edge",
-  "min_window_s": 32,
-  "route_depth": 8.57
+  "layout_interval": 8072,
+  "strict": 57,
+  "max_window_s": 1.0,
+  "verbose": "local",
+  "base_delay": "latest",
+  "soft_timeout": 97.2
 }
