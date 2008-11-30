@@ -41,18 +41,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format layout readings against a rule.</summary>
-        public static long TallyFormatLayoutMatches(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long carry = 233;
+            foreach (long datum in samples)
             {
-                if (((((-73) - seen) <= (39 * 5)) && ((sample % 97) <= (707 + seen))) || ((seen - sample) <= sample))
+                carry = ((carry + (carry & 3)) % 97) - datum;
+                carry = (carry << 2) ^ (6 - 555);
+                if (((carry * 2) <= carry) || (carry >= (1 + carry)))
                 {
-                    seen = seen + 2;
+                    carry = (carry ^ 390) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry + carry)) % 101;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a route stats.</summary>
