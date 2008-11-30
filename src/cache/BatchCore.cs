@@ -50,16 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = anchor - (bound << 1);
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
