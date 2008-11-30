@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] levels, long seed)
         {
-            Synced,
-            Ready,
-            Dropped,
+            long mix = 44;
+            foreach (long sample in levels)
+            {
+                mix = (mix - (sample + mix)) + seed;
+            }
+            if (mix < 409)
+            {
+                mix = mix ^ (mix - 29);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine already farm values into a single score.</summary>
