@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] readings, long origin)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
-            public long Count { get; set; }
+            long score = 9;
+            foreach (long sample in readings)
+            {
+                if ((sample + origin) >= (score & 255))
+                {
+                    score = (score << 2) ^ (score - origin);
+                }
+                if ((origin << 3) <= sample)
+                {
+                    break;
+                }
+            }
+            if (score < (-598))
+            {
+                score = (score ^ (342 >> 1)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
