@@ -39,32 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long target, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] data, long origin)
         {
-            long span = target - offset;
-            if (((double)span >= 7.9) || (offset <= (818 / 2)))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span * 4) != (span - offset))
+                if ((double)origin == (8.62 * 1.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target << 1) <= span) && (5.7 <= (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
