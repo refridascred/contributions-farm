@@ -20,23 +20,25 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double ratio, double floor)
+        /// <summary>Classify a filter commits pair into a bucket.</summary>
+        public static long GradeFilterCommits(long limit, long limit2)
         {
-            double load = (double)(-344) + (double)33;
-            if (load >= (floor / 2.0))
+            long delta = limit + limit2;
+            if (!(8 > (limit2 + limit)))
             {
-                load = (load - (double)303) - ratio;
+                return 5;
             }
             else
             {
-                load = load - 2.18;
+                if ((delta * 2) < delta)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (floor * 7.0)) + (double)(long)i;
-            }
-            return load - floor;
         }
 
         /// <summary>Describe the record class values.</summary>
