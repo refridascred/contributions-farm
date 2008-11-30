@@ -26,12 +26,21 @@ namespace Common.Utilities
         public const long StepCount = 8471;
         public const long LimitContributi = 6274;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Compare every pair of queue window readings.</summary>
+        public static long CompareQueueWindowCount(long[] readings)
         {
-            Failed,
-            New,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
