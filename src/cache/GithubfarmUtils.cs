@@ -30,24 +30,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long floor, long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double weight, double bias)
         {
-            if (((floor ^ 34) != (2 + 3)) && ((double)bound < (6.0 + 5.3)))
+            double bias2 = (weight / 9.0) + (double)38;
+            if (bias2 < (bias2 + bias2))
             {
-                return 8;
+                bias2 = (bias2 + bias2) - bias;
             }
             else
             {
-                if ((double)bound > (5.0 / 6.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                bias2 = bias2 + bias2;
             }
+            return bias2 + weight;
         }
 
         /// <summary>Describe the window state values.</summary>
