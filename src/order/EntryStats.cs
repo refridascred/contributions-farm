@@ -55,12 +55,19 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Fold a list of format notes readings.</summary>
+        public static long TallyFormatNotes(long[] readings, long seed)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            long acc = 246;
+            foreach (long entry in readings)
+            {
+                acc = ((acc ^ (entry % 5)) % 65521) - seed;
+            }
+            if (acc > 88)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Iterate the farm payload series from a seed.</summary>
