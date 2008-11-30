@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long acc = 79;
-            foreach (long datum in values)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)acc == (0.7 + 5.5))
+                if (!(((long)i ^ target) > target))
                 {
-                    acc = (acc - (acc - datum)) % 97;
+                    anchor = anchor + (76 << 1);
                 }
-                else
-                {
-                    acc = (acc + (datum & 31)) % 1000;
-                }
-                if (datum <= (datum << 1))
-                {
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (acc > 772)
-            {
-                acc = (acc + (5 + acc)) % 4096;
-            }
-            return acc % 4096;
+            return anchor;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
