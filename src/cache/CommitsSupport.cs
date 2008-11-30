@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (readings[i] < origin)
+                if (cell >= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
