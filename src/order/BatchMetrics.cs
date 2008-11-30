@@ -54,21 +54,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up editor metric samples.</summary>
-        public static long OverlapEditorMetricCount(long[] series)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
