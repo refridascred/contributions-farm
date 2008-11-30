@@ -46,21 +46,12 @@ namespace Common.Utilities
         public const long StepCache = 6084;
         public const long BaseSpan = 2693;
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Find the first session metrics entry that matches the target.</summary>
