@@ -31,22 +31,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine already farm values into a single score.</summary>
-        public static long TallyAlreadyFarm(long[] samples)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long sum = -51;
-            foreach (long sample in samples)
-            {
-                if ((13 << 1) == (sum * 3))
-                {
-                    sum = ((sum << 2) ^ (sample - sum)) % 97;
-                }
-                if (!((sum >> 4) < ((long)samples.Length - sample)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
