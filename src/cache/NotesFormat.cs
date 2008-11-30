@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long total = 210;
-            foreach (long datum in items)
-            {
-                total = ((total - (datum / 6)) % 65521) - offset;
-                total = total - ((-75) + datum);
-                if ((double)total > (8.14 + 9.43))
-                {
-                    break;
-                }
-            }
-            return total;
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Scale a buffer window figure with a bias.</summary>
