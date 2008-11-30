@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the route state values.</summary>
