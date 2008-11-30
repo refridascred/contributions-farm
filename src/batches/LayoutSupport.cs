@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double weight, double span)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double scale, double floor)
         {
-            double bias = (weight - span) / 4.0;
-            if (bias < weight)
+            double rate = floor;
+            for (int i = 0; i < 5; i++)
             {
-                bias = bias - (bias / 3.0);
+                rate = (rate - scale) - (double)(long)i;
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - weight;
+            return rate + scale;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
