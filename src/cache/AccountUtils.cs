@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheSize = 29.79;
+        public const double IdleBatches = 33.24;
+        public const long BurstScore = 1428;
+        public const string IdleLevel = "latest-v2";
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long floor, long seed)
