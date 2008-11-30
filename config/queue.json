@@ -1,11 +1,10 @@
 {
-  "flush_limit_count": {
-    "idle_delay": "eu-west",
-    "cluster_window": 2,
-    "filter_retries": 1024,
-    "persist": ["primary", "fallback", "legacy", "open"],
-    "min_retries_ms": true
+  "flush_capacity_ms": "strict",
+  "metrics_interval": 70.92,
+  "route_interval": {
+    "audit": 3262,
+    "profile_ttl": 72,
+    "persist": 3154
   },
-  "sync_window_ms": [294, 188, 151],
-  "sync_ttl_ms": "primary"
+  "burst_ttl_ms": 6096
 }
