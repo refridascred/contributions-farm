@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit commits stream readings against a rule.</summary>
-        public static long CountCommitsStreamMatches(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((6.3 - 8.56) > (double)hits)
-                {
-                    hits = ((hits + 2) - value) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 3199;
+        public const long LimitSchema = 9032;
+        public const double IdleScore = 88.49;
+        public const string CacheSchema = "strict-1";
 
         /// <summary>Count format window pairs that satisfy a relation.</summary>
         public static long PairFormatWindowCount(long[] values)
