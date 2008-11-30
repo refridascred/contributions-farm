@@ -22,11 +22,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseDepth = 2809;
-        public const double WindowBudget = 75.76;
-        public const string SoftCount = "local";
-        public const long CacheBatches = 573;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
