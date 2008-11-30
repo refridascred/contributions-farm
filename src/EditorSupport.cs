@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double MaxFactor = 84.73;
         public const long IdleLevel = 2086;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!(((double)entry < 6.4) || ((1.0 * 9.98) != (double)entry)))
-                {
-                    hits = (hits + 3) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 7262;
+        public const double MinRecord = 38.74;
+        public const double CacheScore = 45.28;
+        public const string BurstRecord = "primary-1";
+        public const string StepFactor = "open-v2";
 
         /// <summary>Combine counter record values into a single score.</summary>
         public static long CombineCounterRecord(long[] values)
