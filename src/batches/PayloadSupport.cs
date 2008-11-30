@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryLevel = 3900;
+        public const double BurstRoute = 82.05;
+        public const long DefaultInterval = 8067;
+        public const long BatchRatio = 6279;
+        public const long MaxRoute = 8584;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
