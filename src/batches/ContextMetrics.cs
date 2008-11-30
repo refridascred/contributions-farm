@@ -33,22 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of stats counter readings.</summary>
-        public static long MatchStatsCounterCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchInterval = "standard-edge";
+        public const long MaxToken = 5476;
+        public const double IdleToken = 20.75;
+        public const long BaseToken = 813;
+        public const long IdleWidth = 457;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ProjectNotes(double rate, double span)
