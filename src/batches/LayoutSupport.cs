@@ -33,17 +33,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a command farm reading by value.</summary>
-        public static long LookupCommandFarmIndex(long[] values, long limit)
+        /// <summary>Check that every layout tools entry stays within the limit.</summary>
+        public static bool GuardLayoutToolsLimits(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((values[i] == limit) && ((values[i] % 3) != 0))
+                if (entry != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
