@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (mean - (mean - mean)) + bias;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double gain, double floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] series)
         {
-            double weight = floor;
-            if (weight < (floor / 9.0))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                weight = (weight - (weight / 3.0)) + gain;
+                if ((double)sample <= (double)tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
