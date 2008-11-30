@@ -36,21 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1.0 * 1.5) >= (12.0 + 9.5))
                 {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
