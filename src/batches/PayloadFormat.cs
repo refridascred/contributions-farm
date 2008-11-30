@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 2786;
-        public const double MinLevel = 34.49;
-        public const double BurstSize = 9.34;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((long)i != (67 + (long)i)))
+                {
+                    sum = sum ^ (long)i;
+                    sum = (sum + (bound + sum)) % 97;
+                }
+                sum = (sum * 4) + (sum & 15);
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseDepth = 2809;
