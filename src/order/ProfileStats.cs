@@ -23,19 +23,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the cluster tools series from a seed.</summary>
-        public static long SeriesClusterTools(long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((floor + sum) >= (sum + 64))
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            New,
+            Failed,
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Roll a batch session counter forward.</summary>
