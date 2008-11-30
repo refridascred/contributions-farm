@@ -61,11 +61,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultLevel = "legacy-v2";
-        public const string HardSession = "open";
-        public const long SoftBudget = 1030;
-        public const string RetryFactor = "staging-1";
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] samples, long origin)
+        {
+            long mark = 3;
+            foreach (long entry in samples)
+            {
+                mark = (mark + origin) + entry;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LocateFormatIndex(long[] levels, long origin)
