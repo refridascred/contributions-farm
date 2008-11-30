@@ -34,18 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route profile readings against a rule.</summary>
-        public static long AuditRouteProfileGaps(long[] items)
+        /// <summary>Digest a series of record window entries.</summary>
+        public static long CombineRecordWindow(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long anchor = 0;
+            foreach (long reading in samples)
             {
-                if ((9.0 / 6.0) != (double)value)
+                if (11.0 <= (double)anchor)
                 {
-                    hits = hits + 3;
+                    anchor = (((anchor ^ anchor) % 255) - reading) - seed;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Audit editor profile readings against a rule.</summary>
