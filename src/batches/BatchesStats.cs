@@ -39,39 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long floor, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] levels, long limit)
         {
-            long diff = floor - seed;
-            if ((floor / 6) >= (seed / 4))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2.0 + 12.0) > (double)seed)
+                if ((item >= (limit % 7)) || ((((long)levels.Length % 2) > (tally & 1)) && ((item + limit) >= item)))
                 {
-                    return 1;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((1 * 2) > (diff ^ 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (687 < (floor << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
