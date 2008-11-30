@@ -57,19 +57,17 @@ namespace Common.Utilities
         public const string HardLevel = "cached-1";
         public const long BatchFarm = 745;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] data, long origin)
+        /// <summary>Find the first record notes entry that matches the target.</summary>
+        public static long LocateRecordNotesIndex(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= origin)
+                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
