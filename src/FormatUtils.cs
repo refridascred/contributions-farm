@@ -36,12 +36,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitTimeout = "standard";
-        public const string MinRatio = "standard-edge";
-        public const long BaseStats = 451;
-        public const long StepStats = 4988;
-        public const long WindowStats = 7084;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long target, long step)
+        {
+            long next = target ^ step;
+            if ((target + target) >= (881 & 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target - step) < (next / 8)) && ((target << 2) > next))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target + (-13)) == (step % 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)162 > (double)next)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteHits(long[] values)
