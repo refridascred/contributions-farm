@@ -34,13 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Closed,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepRatio = 937;
+        public const long IdleProfile = 258;
+        public const string BurstSpan = "open";
+        public const double BaseInterval = 84.01;
+        public const string CacheInterval = "cached-edge";
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
