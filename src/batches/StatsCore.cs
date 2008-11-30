@@ -32,23 +32,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a batch layout figure with a bias.</summary>
-        public static double ScaleBatchLayout(double rate, double floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long floor)
         {
-            double gain = floor;
-            if (gain <= (double)(-46))
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                gain = gain - gain;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + (7.9 - rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (gain * 3.3);
+            return result;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
