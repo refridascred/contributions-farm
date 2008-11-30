@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const double IdleScore = 88.49;
         public const string CacheSchema = "strict-1";
 
-        /// <summary>Count format window pairs that satisfy a relation.</summary>
-        public static long PairFormatWindowCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 2815;
+        public const long MaxSession = 3604;
+        public const long StepSession = 835;
+        public const long SoftSession = 7000;
+        public const string MinSize = "cached-v2";
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsBounds(long[] items, long bound)
