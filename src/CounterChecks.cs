@@ -43,11 +43,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 4070;
-        public const double CacheAccount = 79.47;
-        public const string MaxTimeout = "cached-edge";
-        public const long MinScore = 44;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double BaseGithubfarm = 60.94;
