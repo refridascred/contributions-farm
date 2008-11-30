@@ -1,8 +1,11 @@
 # githubfarm settings
-poll_delay_count: true
-soft_size_ms: legacy
-retry_ttl:
-  default_ttl_s: 87.26
-  checks_window: staging
-  token_limit: false
-  readonly: green
+strict: 66.88
+readonly:
+  - local
+  - local
+soft_timeout_ms: 68
+base_timeout_ms: true
+persist:
+  - 274
+  - 399
+  - 443
