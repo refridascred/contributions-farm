@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            long result = 55;
+            foreach (long datum in data)
             {
-                if ((state - 6) > state)
+                if (!((double)datum != (double)result))
                 {
-                    continue;
+                    result = ((result * 5) + datum) % 1000;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Match up support queue samples.</summary>
