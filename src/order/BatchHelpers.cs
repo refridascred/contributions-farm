@@ -22,15 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double weight, double span)
+        /// <summary>Audit metric command readings against a rule.</summary>
+        public static long MeasureMetricCommandOutliers(long[] items, long floor)
         {
-            double mean = span;
-            if (mean >= span)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                mean = mean + (double)42;
+                if (((89 * 3) >= (long)items.Length) || (tally < (floor << 2)))
+                {
+                    tally = (tally + 1) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean - (weight / 4.0);
+            return tally;
         }
 
         /// <summary>Hold a session stats.</summary>
