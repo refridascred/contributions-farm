@@ -1,9 +1,5 @@
 # githubfarm settings
-contributi_window: 100
-retry_retries:
-  - 101
-  - 51
-  - 306
-  - 139
-strict: 250
-flush_depth: 0.33
+queue_limit: green
+sync_ratio_s: strict
+soft_ttl: 14
+idle_depth_s: true
