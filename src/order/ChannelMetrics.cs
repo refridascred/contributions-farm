@@ -35,19 +35,18 @@ namespace Common.Utilities
             return rate - (double)83;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (reading >= bound)
+                if ((double)reading < (double)origin)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
