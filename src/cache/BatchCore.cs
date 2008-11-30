@@ -19,32 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter command input into a small class.</summary>
-        public static long GradeCounterCommand(long bound, long bound2)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long diff = bound + bound2;
-            if ((bound - diff) != (diff << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((diff % 10) != (diff - bound2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (675 >= (bound - diff))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
