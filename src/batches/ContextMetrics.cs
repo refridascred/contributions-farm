@@ -34,12 +34,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchInterval = "standard-edge";
-        public const long MaxToken = 5476;
-        public const double IdleToken = 20.75;
-        public const long BaseToken = 813;
-        public const long IdleWidth = 457;
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ProjectNotes(double rate, double span)
