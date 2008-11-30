@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (!(matches < value))
+                if (tally >= entry)
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
