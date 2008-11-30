@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] levels, long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((15 - seen) <= (bound - bound))
+                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
                 {
-                    seen = (seen + 1) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
