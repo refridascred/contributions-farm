@@ -41,12 +41,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            long state = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state ^ (seed / 2)) % 1000;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Roll a report metric counter forward.</summary>
