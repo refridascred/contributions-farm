@@ -31,22 +31,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] items)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((value - value) > tally))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] ^ items[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
