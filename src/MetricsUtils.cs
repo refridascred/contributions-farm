@@ -39,11 +39,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "legacy-v2";
-        public const double RetryLevel = 89.96;
-        public const string IdleCount = "standard";
-        public const string BaseCount = "standard";
+        /// <summary>Locate a buffer batch reading by value.</summary>
+        public static long SeekBufferBatchIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank stream queue input into a small class.</summary>
         public static long BucketStreamQueue(long origin, long step)
