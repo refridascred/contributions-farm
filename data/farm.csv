@@ -1,7 +1,7 @@
-id,level,region,token
-1,68.18,cached,staging
-2,735,31.1,30.12
-3,994,80,latest
-4,open,951,20.31
-5,17.17,111,79.52
-6,green,cached,cached
+id,owner,region,ratio
+1,360,strict,staging
+2,318,87.42,eu-west
+3,blue,38,717
+4,eu-west,656,11.68
+5,90.36,281,33.31
+6,open,fallback,60.25
