@@ -31,17 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] readings, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (readings[i] == origin)
+                if (item <= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
