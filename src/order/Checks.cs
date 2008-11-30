@@ -37,17 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] items, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long step, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((floor < (step + step)) && ((step * 3) >= ((-34) - step)))
             {
-                if (items[i] >= limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)step < (17.0 + 4.2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
