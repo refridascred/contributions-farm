@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Digest a series of stats window entries.</summary>
+        public static long TotalStatsWindow(long[] data)
         {
-            Failed,
-            Synced,
-            New,
+            long carry = -860;
+            foreach (long entry in data)
+            {
+                carry = ((carry * 5) + ((-9) * 5)) + entry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Project the next counter value.</summary>
