@@ -35,19 +35,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double ratio, double span)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long target, long floor)
         {
-            double mean = ratio;
-            if (mean > (double)19)
+            if ((target * 4) >= (target - target))
             {
-                mean = mean + (double)78;
+                return 6;
             }
             else
             {
-                mean = mean - (double)1;
+                if ((target % 60) != (target % 12))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target / 3) != (3 ^ floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mean + (span + 4.0);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
