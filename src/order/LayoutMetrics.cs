@@ -37,9 +37,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 2214;
-        public const string SoftInterval = "alpha-1";
-        public const long BurstSize = 3886;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long target, long limit)
+        {
+            long bound = target ^ limit;
+            if (!(839 >= (bound + target)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)target < (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ target) >= 14)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)bound >= (double)limit) || ((985 + limit) <= (bound ^ limit)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
