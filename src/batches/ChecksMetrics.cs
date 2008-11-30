@@ -89,14 +89,11 @@ namespace Common.Utilities
         public const long SoftBudget = 1030;
         public const string RetryFactor = "staging-1";
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Queued,
-            Synced,
-            Paused,
-            Draft,
-            Locked,
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
