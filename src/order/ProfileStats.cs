@@ -33,12 +33,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheScore = 3967;
-        public const string SoftBudget = "stable-v2";
-        public const double CacheSpan = 27.64;
-        public const string MaxLevel = "latest-1";
-        public const long BurstQueue = 5113;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Measure how many window route samples are out of range.</summary>
         public static long TallyWindowRouteMatches(long[] readings, long origin)
