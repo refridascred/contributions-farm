@@ -14,38 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long target, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            if (980 >= (limit + limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)target <= 5.88) && ((target - limit) <= (target ^ limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - limit) != (limit * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit > (limit + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Derive the next record already value from a seed.</summary>
