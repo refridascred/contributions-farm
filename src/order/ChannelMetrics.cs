@@ -34,22 +34,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] data)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= (tally + datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
