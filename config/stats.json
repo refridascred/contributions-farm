@@ -1,7 +1,5 @@
 {
-  "githubfarm_ttl": "blue",
-  "verbose": 68.35,
-  "context_retries": 50,
-  "stats_limit": "primary",
-  "min_capacity_count": "standard"
+  "default_window_pct": 250,
+  "default_interval": "eu-west",
+  "layout_delay": ["blue", "staging", "latest"]
 }
