@@ -31,16 +31,32 @@ namespace Common.Utilities
             return rate - (double)83;
         }
 
-        /// <summary>Iterate the context buffer series from a seed.</summary>
-        public static long DeriveContextBuffer(long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long seed, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long slot = seed ^ floor;
+            if ((double)seed >= 6.4)
             {
-                mix = ((mix * 5) + ((long)i - 702)) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((seed <= (428 ^ 4)) && ((seed >> 1) > 213))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 7) <= (slot ^ seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
