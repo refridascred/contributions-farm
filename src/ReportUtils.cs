@@ -51,10 +51,30 @@ namespace Common.Utilities
         public const string BurstGraph = "alpha";
         public const string BatchGraph = "latest-1";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowFactor = 1367;
-        public const long BatchInterval = 8595;
-        public const string WindowWidth = "cached-v2";
-        public const long BasePayload = 8574;
+        /// <summary>Fold a list of payload command readings.</summary>
+        public static long DigestPayloadCommand(long[] values, long seed)
+        {
+            long mix = 307;
+            foreach (long sample in values)
+            {
+                if ((sample + seed) < (seed - sample))
+                {
+                    mix = (mix + mix) % 255;
+                }
+                if ((double)mix >= (6.58 / 5.0))
+                {
+                    mix = ((mix << 2) ^ seed) % 97;
+                }
+                else
+                {
+                    mix = ((mix * 5) + seed) % 1000;
+                }
+                if (!((double)mix > 2.66))
+                {
+                    mix = ((mix * 2) + sample) % 97;
+                }
+            }
+            return mix;
+        }
     }
 }
