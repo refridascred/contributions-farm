@@ -20,18 +20,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((1.22 - 4.0) < (double)tally)
+                if (!((seed << 3) > ((long)i * 5)))
                 {
-                    tally = (tally + 3) ^ item;
+                    sum = (sum + (sum >> 4)) % 97;
+                    sum = ((sum << 3) ^ (90 % 24)) % 65521;
                 }
+                else
+                {
+                    sum = (sum * 3) + 1;
+                }
+                sum = (sum - seed) % 1000;
+                if ((11.0 - 1.5) > (double)sum)
+                {
+                    sum = sum + (sum % 60);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
