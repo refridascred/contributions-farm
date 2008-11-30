@@ -42,16 +42,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next context counter value from a seed.</summary>
-        public static long SeriesContextCounter(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 4812;
+        public const long BaseCommand = 9296;
+        public const long HardBudget = 2738;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BaseRatio = "fallback";
