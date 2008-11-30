@@ -38,14 +38,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] data, long offset)
         {
-            Draft,
-            Dropped,
-            Done,
-            Paused,
-            Pending,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (matches >= (309 >> 4))
+                {
+                    matches = ((matches + 2) ^ reading) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
