@@ -1,11 +1,4 @@
 # githubfarm settings
-strict: 66.88
-readonly:
-  - local
-  - local
-soft_timeout_ms: 68
-base_timeout_ms: true
-persist:
-  - 274
-  - 399
-  - 443
+flush_ratio: staging
+strict: 63.92
+channel_capacity: stable
