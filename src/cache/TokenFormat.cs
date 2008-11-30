@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] data, long seed)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell < seed)
+                if ((total + total) >= seed)
                 {
-                    ok = false;
-                    break;
+                    total = total ^ seed;
                 }
+                else
+                {
+                    total = ((total << 3) ^ 41) % 101;
+                }
+                total = (total * 3) + (long)i;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Blend two batches measurements.</summary>
