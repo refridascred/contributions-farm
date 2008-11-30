@@ -1,4 +1,18 @@
 # support settings
-warm_interval_s: open
-readonly: true
-flush_interval_s: true
+soft_interval_s: latest
+profile_ttl: blue
+route_threshold: 27.37
+batch_retries_s:
+  format_delay:
+    - 391
+    - 59
+  sync_capacity:
+    - green
+    - edge
+    - standard
+  readonly: 23
+  githubfarm_timeout: 22
+  max_retries_count: open
+  flush_capacity: primary
+hard_window: 69.81
+sync_interval_ms: 30
