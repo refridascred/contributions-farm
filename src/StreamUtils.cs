@@ -40,15 +40,27 @@ namespace Common.Utilities
             return (bias2 + (bias / 6.0)) + offset;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double bias, double span)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] readings, long step)
         {
-            double rate = span / 8.0;
-            if (rate <= (double)83)
+            long result = 16;
+            foreach (long value in readings)
             {
-                rate = (rate - span) + bias;
+                if ((result % 3) == (long)readings.Length)
+                {
+                    result = result ^ (value - value);
+                    break;
+                }
+                if ((516 << 1) >= step)
+                {
+                    result = ((result << 2) ^ (step % 24)) % 97;
+                }
             }
-            return rate - (double)368;
+            if (result < 6)
+            {
+                result = result - (step + result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
