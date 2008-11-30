@@ -48,12 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Ready,
-            Failed,
-            Closed,
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
