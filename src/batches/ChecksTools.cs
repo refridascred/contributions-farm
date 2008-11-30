@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a cache batches value against two limits.</summary>
-        public static long ClassifyCacheBatches(long bound, long seed)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long gap = bound + seed;
-            if (seed > bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) == (bound & 255))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((1.42 * 6.0) == (double)seed) || ((15.0 / 5.0) != (double)gap))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
