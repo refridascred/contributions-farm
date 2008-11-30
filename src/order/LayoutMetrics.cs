@@ -33,13 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] items, long bound)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Pending,
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
