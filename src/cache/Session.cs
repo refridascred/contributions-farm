@@ -48,11 +48,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Count the tools metric entries that pass the check.</summary>
+        public static long TallyToolsMetricOutliers(long[] series, long seed)
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((1 & 31) <= (count + (-1)))
+                {
+                    count = ((count + 1) - entry) - seed;
+                }
+            }
+            return count;
         }
     }
 }
