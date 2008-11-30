@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] readings, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long offset, long seed)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long slot = offset ^ seed;
+            if (seed <= (8 >> 5))
             {
-                if (datum <= limit)
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) > (seed / 4))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)slot > (5.21 * 12.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (slot > (seed - 79))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
