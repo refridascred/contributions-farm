@@ -1,7 +1,8 @@
 {
-  "poll_retries_pct": false,
-  "burst_interval_pct": [26, 419, 23, 363],
-  "cache_delay": "open",
-  "tools_limit": 55.83,
-  "readonly": 7807
+  "compress": [188, 263],
+  "dry_run": "eu-west",
+  "soft_retries_count": 68.95,
+  "audit": "edge",
+  "min_window_s": 32,
+  "route_depth": 8.57
 }
