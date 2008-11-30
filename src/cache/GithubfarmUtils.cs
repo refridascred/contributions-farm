@@ -54,12 +54,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Idle,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowCount = "staging-1";
+        public const long StepDepth = 8128;
+        public const long SoftChannel = 5428;
+        public const string LimitChannel = "standard-edge";
+        public const long BurstScore = 7355;
     }
 }
