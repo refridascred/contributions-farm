@@ -32,13 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Active,
-            Draft,
             Failed,
+            Idle,
+            New,
             Stale,
+            Locked,
         }
 
         /// <summary>Check that every profile batch entry stays within the limit.</summary>
