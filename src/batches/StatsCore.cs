@@ -19,36 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session format input into a small class.</summary>
-        public static long RankSessionFormat(long target, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long floor, long origin)
         {
-            if (!((7.0 / 2.0) >= (double)target))
+            long prev = floor + origin;
+            if (((7.0 - 6.6) >= (double)prev) || (919 > origin))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((double)offset <= (6.14 / 3.0))
+                if ((origin ^ prev) > origin)
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (offset <= (target & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.0 / 2.0) > (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
