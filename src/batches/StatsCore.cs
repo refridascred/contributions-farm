@@ -78,22 +78,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items)
-        {
-            long acc = 8;
-            foreach (long entry in items)
-            {
-                if ((double)entry == (7.32 + 13.0))
-                {
-                    acc = (acc - (acc * 3)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 3) + acc) % 101;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 80.47;
+        public const double BatchReport = 14.75;
+        public const long WindowCount = 7278;
     }
 }
