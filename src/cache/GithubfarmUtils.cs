@@ -47,18 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] series, long seed)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((seen >> 3) >= seed) || ((cell >> 4) >= (seed - seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Draft,
         }
     }
 }
