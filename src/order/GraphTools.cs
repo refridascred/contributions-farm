@@ -38,19 +38,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long target)
+        /// <summary>Rank session contributi input into a small class.</summary>
+        public static long GradeSessionContributi(long offset, long limit)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long prev = offset + limit;
+            if ((76 / 6) > (prev >> 5))
             {
-                if (datum <= target)
+                return 0;
+            }
+            else
+            {
+                if ((prev + prev) == (8 & 127))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Blend two metric measurements.</summary>
