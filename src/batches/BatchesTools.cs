@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] data, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long step, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long edge = step + limit;
+            if (((double)edge >= (16.0 - 0.98)) && ((step % 5) > (limit + step)))
             {
-                if (step <= (-38))
+                return 2;
+            }
+            else
+            {
+                if (!((9 + edge) < (limit + edge)))
                 {
-                    seen = (seen + 2) - sample;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
