@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const double BurstBudget = 72.06;
         public const long MaxCache = 4184;
 
-        /// <summary>Blend two graph route measurements.</summary>
-        public static double ProjectGraphRoute(double rate, double span)
+        /// <summary>Compare every pair of filter session readings.</summary>
+        public static long OverlapFilterSessionCount(long[] values)
         {
-            double weight = span;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = ((weight - (span - 7.52)) - (double)(long)i) - rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - span;
+            return tally;
         }
 
         /// <summary>Match up metrics samples.</summary>
