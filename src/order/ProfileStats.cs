@@ -23,14 +23,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] values)
         {
-            New,
-            Failed,
-            Retry,
-            Queued,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((1.84 <= (double)seen) || ((sample + seen) > (seen & 7)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a schema header.</summary>
