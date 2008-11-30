@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultTimeout = 216;
-        public const long BurstBudget = 5164;
-        public const long MinMetrics = 85;
-        public const double IdleMetrics = 40.98;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
