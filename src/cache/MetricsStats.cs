@@ -33,21 +33,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)((-533) + 1);
+            if (bias < offset)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - bias;
             }
-            return seen;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias + (weight / 4.0);
         }
 
         /// <summary>Project the next stats account value.</summary>
