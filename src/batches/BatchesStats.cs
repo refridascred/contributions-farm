@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long seed, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long span = seed ^ floor;
+            if ((1.6 + 4.64) != (double)floor)
             {
-                mix = (mix ^ (mix + mix)) % 255;
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((span % 5) != (68 * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((span / 2) >= span)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((span + span) == (seed / 3)) && ((span & 31) >= (seed / 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
