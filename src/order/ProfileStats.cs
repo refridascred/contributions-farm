@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] samples)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)matches != (3.8 * 0.01))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            Done,
+            Pending,
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the context kind values.</summary>
