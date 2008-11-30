@@ -1,6 +1,11 @@
 {
-  "idle_threshold_s": "stable",
-  "base_limit_s": "fallback",
-  "audit": "fallback",
-  "farm_retries": true
+  "cache_ttl_s": "standard",
+  "burst_retries_count": 5438,
+  "min_delay_ms": {
+    "warm_retries": 48.02,
+    "audit": 1086,
+    "dry_run": 3787,
+    "flush_size": 6293,
+    "format_capacity": "legacy"
+  }
 }
