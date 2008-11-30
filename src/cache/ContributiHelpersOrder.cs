@@ -15,14 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] samples, long step)
         {
-            Locked,
-            Dropped,
-            Stale,
-            Queued,
-            Idle,
+            long mix = 9;
+            foreach (long reading in samples)
+            {
+                mix = ((mix - (reading & 31)) % 255) - step;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the order state values.</summary>
