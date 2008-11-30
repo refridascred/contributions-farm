@@ -25,13 +25,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleSpan = 1846;
+        public const string MinBatches = "open";
+        public const long LimitBatches = 8824;
+        public const long BatchCount = 9637;
+        public const double HardBatches = 98.65;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MaxChannel = 38.0;
