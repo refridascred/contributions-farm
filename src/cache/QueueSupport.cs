@@ -26,19 +26,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] items, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Idle,
+            Synced,
+            Queued,
         }
     }
 }
