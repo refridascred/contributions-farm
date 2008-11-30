@@ -1,7 +1,7 @@
 # entry settings
-default_size: true
-dry_run:
-  - green
-  - strict
-  - staging
-already_limit: 93.99
+editor_ttl: primary
+dry_run: primary
+buffer_size:
+  - 387
+  - 124
+  - 154
