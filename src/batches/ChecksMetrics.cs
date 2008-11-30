@@ -14,33 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a filter farm pair into a bucket.</summary>
-        public static long SortFilterFarm(long bound, long target)
-        {
-            long step = bound + target;
-            if ((step + 747) == (bound & 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > (9.0 + 4.41))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + target) >= (bound + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 121;
+        public const string DefaultInterval = "stable-v2";
+        public const string StepBudget = "open";
+        public const string SoftFormat = "alpha-v2";
+        public const string BatchWidth = "legacy-edge";
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
