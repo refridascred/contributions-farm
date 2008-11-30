@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long step, long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long edge = step + limit;
-            if (((double)edge >= (16.0 - 0.98)) && ((step % 5) > (limit + step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((9 + edge) < (limit + edge)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Retry,
+            Pending,
+            Idle,
+            Paused,
         }
 
         /// <summary>Project the next order value.</summary>
