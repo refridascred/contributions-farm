@@ -28,19 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] series, long floor)
+        /// <summary>Count the command filter entries that pass the check.</summary>
+        public static long AuditCommandFilterOutliers(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (reading != floor)
+                if ((((offset ^ seen) < (value + value)) || ((offset - value) != (1 << 1))) || (((9.82 - 0.3) > (double)offset) && (seen > (value ^ 10))))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of batch record entries.</summary>
