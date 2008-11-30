@@ -24,24 +24,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((((long)i - result) <= (target - target)) || ((3.0 + 2.69) == (double)target))
-                {
-                    result = (result ^ result) % 97;
-                    break;
-                }
-                if (!((((long)i % 8) >= result) || (5.1 <= (double)target)))
-                {
-                    result = result ^ (target + target);
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
