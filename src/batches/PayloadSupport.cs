@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of notes farm entries.</summary>
-        public static long DigestNotesFarm(long[] readings)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double ratio, double floor)
         {
-            long score = 0;
-            foreach (long reading in readings)
+            double scale = (double)((-743) ^ 565);
+            if (scale > 3.21)
             {
-                if ((score + 5) >= reading)
-                {
-                    score = score ^ (score % 24);
-                }
+                scale = (scale + ratio) + floor;
             }
-            return score % 97;
+            return scale + (double)62;
         }
 
         /// <summary>Hold a route info.</summary>
