@@ -18,25 +18,18 @@ namespace Common.Utilities
         public const long MaxSchema = 4464;
         public const long LimitSchema = 7;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long floor, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] readings)
         {
-            long next = floor - seed;
-            if ((floor + seed) != (next + floor))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed >= (floor ^ seed))
+                if (!((tally << 2) >= (value & 255)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
