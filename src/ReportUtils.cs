@@ -50,17 +50,10 @@ namespace Common.Utilities
         public const double BatchFactor = 34.17;
         public const long IdleSpan = 9389;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowFactor = 1367;
+        public const long BatchInterval = 8595;
+        public const string WindowWidth = "cached-v2";
+        public const long BasePayload = 8574;
     }
 }
