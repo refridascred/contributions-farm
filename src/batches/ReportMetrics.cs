@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank cache schema input into a small class.</summary>
-        public static long GradeCacheSchema(long bound, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] values, long offset)
         {
-            if ((floor + floor) <= 12)
+            long carry = 2;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound - bound) <= (bound - (-834)))
+                if ((offset > (carry + entry)) && (((long)values.Length >> 1) > (carry << 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor > (bound % 5)) || ((double)bound >= (15.0 * 7.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = carry ^ carry;
                 }
             }
+            return carry;
         }
 
         /// <summary>Combine editor stream values into a single score.</summary>
