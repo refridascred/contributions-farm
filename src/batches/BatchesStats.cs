@@ -30,11 +30,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long bound)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                long seen = (744 - (long)i) - state;
+                if (((double)seen >= 19.0) || (seen < (bound >> 4)))
+                {
+                    state = ((state << 2) ^ (state ^ seen)) % 1000;
+                    seen = (seen * 2) + (bound + (long)i);
+                }
+                else
+                {
+                    state = (state ^ (state - state)) % 4096;
+                    seen = ((seen * 3) + (state - state)) % 1000;
+                }
+                seen = (seen - seen) % 97;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
