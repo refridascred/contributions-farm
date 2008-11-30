@@ -54,17 +54,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first session metrics entry that matches the target.</summary>
-        public static long LookupSessionMetricsIndex(long[] values, long bound)
+        /// <summary>Match up editor metric samples.</summary>
+        public static long OverlapEditorMetricCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
