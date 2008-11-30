@@ -25,11 +25,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Failed,
+            Paused,
+            Dropped,
+            Retry,
         }
     }
 }
