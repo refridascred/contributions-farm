@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((2.25 / 2.0) >= (double)hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
