@@ -1,8 +1,21 @@
 {
+  "flush_interval": ["legacy", "green", "blue"],
+  "layout_capacity": ["fallback", "green", "standard", "cached"],
+  "farm_window": {
+    "cache_retries": {
+      "sync_ttl": [228, 298, 188],
+      "entry_depth": 11,
+      "enabled": 1024
+    },
+    "commits_ratio": 100,
+    "checks_depth": 11.79,
+    "hard_capacity": 594
+  },
   "persist": true,
-  "dry_run": ["eu-west", "open"],
-  "metrics_ratio": 250,
-  "readonly": false,
-  "hard_threshold": "fallback",
-  "commits_delay": "latest"
+  "min_ratio_s": {
+    "poll_timeout_count": 18,
+    "sync_size": "strict",
+    "default_retries_pct": 86.17,
+    "flush_capacity": 9308
+  }
 }
