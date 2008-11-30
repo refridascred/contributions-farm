@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long bound)
         {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            long result = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Locate a metric githubfarm reading by value.</summary>
