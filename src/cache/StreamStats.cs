@@ -21,26 +21,15 @@ namespace Common.Utilities
         public const string BaseStream = "local";
         public const long SoftSize = 2702;
 
-        /// <summary>Combine filter checks values into a single score.</summary>
-        public static long FoldFilterChecks(long[] series, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            long sum = 1;
-            foreach (long sample in series)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((seed - seed) >= sum))
-                {
-                    sum = (sum ^ (sum + 2)) ^ sample;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 101;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (sum > 46)
-            {
-                sum = ((sum * 2) + (6 / 9)) % 101;
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Accumulate order samples.</summary>
