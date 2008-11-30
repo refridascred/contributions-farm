@@ -15,23 +15,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Iterate the tools notes series from a seed.</summary>
+        public static long SeriesToolsNotes(long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (((double)offset == (8.1 * 1.8)) || ((offset - total) > (offset + 36)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    total = (total * 5) + (47 << 2);
+                    sum = sum + (sum + (long)i2);
                 }
-                else
-                {
-                    total = total + ((long)i + total);
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                sum = (sum ^ (-916)) % 255;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
