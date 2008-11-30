@@ -1,12 +1,14 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the githubfarm list.
-Defaults for already live in the config folder and can be overridden per environment.
-Use support settings to tune how often window data is refreshed.
+Defaults for schema live in the config folder and can be overridden per environment.
+The cache report groups every metrics by stream.
+
+Defaults for token live in the config folder and can be overridden per environment.
+When a entry fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review route limits each release
-- Log every counter change
-- Prefer buffer defaults
-- Validate metric input early
+- Review stream limits each release
+- Document new token fields
+- Prefer layout defaults
+- Log every support change
