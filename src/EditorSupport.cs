@@ -50,22 +50,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] values, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = -926;
+            foreach (long datum in values)
             {
-                if (3.6 > (double)matches)
-                {
-                    matches = ((matches + 2) ^ value) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = anchor - anchor;
+                anchor = ((anchor * 3) + (917 - datum)) % 97;
             }
-            return matches;
+            if (anchor > 4)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a context batch figure with a bias.</summary>
