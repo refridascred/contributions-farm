@@ -39,11 +39,22 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long CountChannelBatchHits(long[] readings)
         {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (matches < (42 / 5))
+                {
+                    matches = (matches + 3) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
