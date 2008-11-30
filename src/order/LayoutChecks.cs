@@ -58,19 +58,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] levels, long target)
+        /// <summary>Measure how many stream checks samples are out of range.</summary>
+        public static long CountStreamChecksOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (reading > target)
+                if ((706 <= (sample >> 5)) || ((((long)levels.Length + sample) < (sample - hits)) && ((sample * 5) > ((-195) % 5))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
