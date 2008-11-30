@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate session payload readings against a bound.</summary>
-        public static bool GuardSessionPayloadBounds(long[] data, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (datum >= bound)
+                if (item <= origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Roll a window counter forward.</summary>
