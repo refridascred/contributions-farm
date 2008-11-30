@@ -97,11 +97,17 @@ namespace Common.Utilities
         public const long SoftBudget = 1030;
         public const string RetryFactor = "staging-1";
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] levels, long origin)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
