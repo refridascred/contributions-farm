@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] readings, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] readings, long target)
         {
-            bool ok = true;
+            long state = -39;
             foreach (long entry in readings)
             {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state - ((long)readings.Length + entry)) % 255;
             }
-            return ok;
+            if (state > 90)
+            {
+                state = (state + (target - state)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
