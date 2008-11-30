@@ -17,18 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 7960;
+        public const long RetryRecord = 3278;
+        public const string BatchRecord = "latest-v2";
+        public const long MaxDepth = 3281;
+        public const long StepRecord = 3279;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
