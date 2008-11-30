@@ -56,12 +56,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
         {
-            Closed,
-            Active,
-            Dropped,
+            long score = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                score = score - (624 << 1);
+                if ((((long)i & 3) <= (score - offset)) && ((double)score > (7.0 / 5.0)))
+                {
+                    score = ((score * 5) + (offset * 5)) % 255;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
