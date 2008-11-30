@@ -14,14 +14,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long origin, long target)
         {
-            Failed,
-            Locked,
-            Paused,
-            Closed,
-            Dropped,
+            if ((double)target != (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((target % 24) <= (origin + target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.6 - 0.9) <= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next record already value from a seed.</summary>
