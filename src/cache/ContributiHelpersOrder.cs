@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] items, long target)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
