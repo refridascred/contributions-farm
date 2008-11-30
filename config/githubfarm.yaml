@@ -1,12 +1,6 @@
 # githubfarm settings
-strict: primary
-persist:
-  - 489
-  - 65
-  - 152
-default_retries_pct: strict
-default_capacity_count: 500
-idle_retries_pct:
-  - 214
-  - 14
-  - 310
+strict: 5551
+base_ratio_s: stable
+min_ratio_s:
+  - stable
+  - green
