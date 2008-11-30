@@ -1,8 +1,8 @@
-id,token,count
-1,879,stable
-2,24.4,93.37
-3,959,68.78
-4,blue,633
-5,118,87.08
-6,73.42,staging
-7,480,83.52
+id,count,owner,rank
+1,217,legacy,881
+2,fallback,66.88,952
+3,91.99,37.93,221
+4,52,365,510
+5,250,414,open
+6,862,latest,primary
+7,stable,latest,258
