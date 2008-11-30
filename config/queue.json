@@ -1,10 +1,8 @@
 {
-  "hard_interval_pct": {
-    "readonly": 62.96,
-    "persist": 15.85,
-    "retry_ratio_count": "primary"
-  },
-  "default_limit_ms": true,
-  "notes_retries": true,
-  "min_ttl_pct": true
+  "sync_retries": 40.45,
+  "cache_size_s": "latest",
+  "profile_window": ["local", "local", "primary", "eu-west"],
+  "soft_limit_ms": 42,
+  "githubfarm_limit": [254, 163, 160, 361],
+  "dry_run": true
 }
