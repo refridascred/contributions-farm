@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWidth = 2212;
+        public const string BaseTimeout = "alpha-1";
+        public const long BatchWindow = 6120;
+        public const long LimitWindow = 736;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double ProjectNotes(double gain, double offset)
