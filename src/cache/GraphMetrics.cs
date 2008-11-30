@@ -42,15 +42,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double rate, double bias)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] values, long target)
         {
-            double load = rate - (double)3;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                load = (load + rate) + (double)(long)i;
+                if ((reading >= ((long)values.Length * 4)) || (((double)count >= (0.51 - 2.1)) && ((reading ^ target) == (target ^ count))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return load + (bias + rate);
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
