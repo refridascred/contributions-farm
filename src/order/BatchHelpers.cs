@@ -23,23 +23,24 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long floor, long seed)
         {
-            double rate2 = (double)(5 ^ 533);
-            if (rate2 <= (bias + 4.7))
+            if (!((floor << 1) > seed))
             {
-                rate2 = rate2 + rate;
+                return 3;
             }
             else
             {
-                rate2 = rate2 - (double)3;
+                if (!((4.2 / 7.0) > (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + (double)9;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
