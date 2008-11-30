@@ -31,15 +31,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Scale a already notes figure with a bias.</summary>
-        public static double AdjustAlreadyNotes(double scale, double floor)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double weight = 1.7;
-            if (weight <= scale)
-            {
-                weight = (weight - (double)64) - floor;
-            }
-            return weight - scale;
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
