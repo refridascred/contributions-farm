@@ -36,40 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long target, long step)
-        {
-            long next = target ^ step;
-            if ((target + target) >= (881 & 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((target - step) < (next / 8)) && ((target << 2) > next))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + (-13)) == (step % 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)162 > (double)next)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "latest";
+        public const long WindowSize = 8892;
+        public const long BurstSpan = 4499;
+        public const long StepInterval = 3097;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteHits(long[] values)
