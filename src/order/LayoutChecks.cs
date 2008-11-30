@@ -49,12 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 3534;
-        public const double StepRatio = 16.57;
-        public const long SoftFarm = 4431;
-        public const long LimitSize = 8937;
-        public const long MaxScore = 1545;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a record token figure with a bias.</summary>
         public static double AdjustRecordToken(double ratio, double offset)
