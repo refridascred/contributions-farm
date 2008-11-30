@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] items)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum > (hits << 3)) || ((datum >= hits) || ((51 >> 3) < (hits + datum))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Draft,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
