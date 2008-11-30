@@ -47,21 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics context value from a seed.</summary>
-        public static long DeriveMetricsContext(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (offset >= (carry + (long)i))
-                {
-                    carry = (carry * 2) + (offset << 3);
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryTimeout = 5784;
+        public const string BaseCache = "alpha-1";
+        public const long CacheCount = 2980;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long RollBatches(long seed)
