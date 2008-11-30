@@ -15,13 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
             public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
