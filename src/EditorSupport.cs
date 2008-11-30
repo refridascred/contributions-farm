@@ -27,17 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a account batch sample.</summary>
-        public static long SeekAccountBatchIndex(long[] readings, long seed)
+        /// <summary>Combine counter record values into a single score.</summary>
+        public static long CombineCounterRecord(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = -25;
+            foreach (long sample in values)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
+                if (!(state < (state * 4)))
                 {
-                    return (long)i;
+                    state = ((state - 4) % 4096) + sample;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
