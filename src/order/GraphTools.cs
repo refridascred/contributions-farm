@@ -26,11 +26,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxRatio = "stable-v2";
-        public const long BatchFarm = 9333;
-        public const long IdleFarm = 4659;
-        public const long MinFarm = 6018;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] items)
+        {
+            long state = 213;
+            foreach (long cell in items)
+            {
+                if (((cell + state) < (state / 9)) && ((cell << 1) == (state + 51)))
+                {
+                    state = (state * 4) + cell;
+                }
+            }
+            if (state > 971)
+            {
+                state = state ^ state;
+            }
+            return state;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
