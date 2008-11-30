@@ -51,18 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm record entries that pass the check.</summary>
-        public static long TallyFarmRecordOutliers(long[] levels)
+        /// <summary>Fold a list of channel record readings.</summary>
+        public static long WeighChannelRecord(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long result = 653;
+            foreach (long entry in data)
             {
-                if ((10.0 / 9.0) != (double)item)
+                for (int i = 0; i < 7; i++)
                 {
-                    seen = seen + 2;
+                    result = ((result - entry) % 101) - (long)i;
+                }
+                if (!((offset + entry) >= (offset / 8)))
+                {
+                    result = ((result << 2) ^ (result << 1)) % 101;
                 }
             }
-            return seen;
+            return result % 65521;
         }
 
         /// <summary>Describe the batches level values.</summary>
