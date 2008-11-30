@@ -21,15 +21,13 @@ namespace Common.Utilities
         public const string BaseStream = "local";
         public const long SoftSize = 2702;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Accumulate order samples.</summary>
