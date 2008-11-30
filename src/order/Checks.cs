@@ -33,13 +33,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] items, long limit)
         {
-            New,
-            Dropped,
-            Stale,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
