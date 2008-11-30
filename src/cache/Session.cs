@@ -41,12 +41,9 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Queued,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepCount = 79.13;
+        public const long MaxFarm = 4426;
+        public const long BaseDepth = 4913;
     }
 }
