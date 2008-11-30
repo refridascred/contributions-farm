@@ -38,12 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
             Active,
-            Failed,
-            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Locate a account reading by value.</summary>
