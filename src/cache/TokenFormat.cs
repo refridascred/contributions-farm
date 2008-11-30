@@ -43,24 +43,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long seed, long origin)
-        {
-            if (27 <= (seed / 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin > (5.0 + 17.0)) && (origin > (origin * 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 1418;
+        public const double MinBudget = 63.47;
+        public const long RetryFilter = 5675;
+        public const long HardCount = 1564;
     }
 }
