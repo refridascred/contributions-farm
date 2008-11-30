@@ -29,19 +29,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] series, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell > floor)
+                if ((548 % 60) < (origin & 31))
                 {
-                    flag = false;
-                    break;
+                    state = (state + state) % 255;
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Accumulate already samples.</summary>
