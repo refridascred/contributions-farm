@@ -38,11 +38,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchFactor = 7675;
-        public const long BaseBuffer = 4507;
-        public const long SoftBudget = 8291;
-        public const long BaseInterval = 7353;
+        /// <summary>Roll a batch session counter forward.</summary>
+        public static long StepBatchSession(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((mix >= (long)i) || ((-28) >= floor))
+                {
+                    mix = mix - (floor + (long)i);
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many window route samples are out of range.</summary>
         public static long TallyWindowRouteMatches(long[] readings, long origin)
