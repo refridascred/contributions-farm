@@ -19,19 +19,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] readings, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long total = 253;
+            foreach (long item in levels)
             {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total ^ step) + item;
             }
-            return ready;
+            return total % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
