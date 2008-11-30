@@ -35,22 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long carry = 1;
-            foreach (long reading in levels)
-            {
-                if (((64 & 127) < reading) && ((double)carry > (4.1 + 9.7)))
-                {
-                    carry = (carry * 4) + reading;
-                }
-            }
-            if (carry > 9)
-            {
-                carry = (carry - (carry - carry)) % 101;
-            }
-            return carry % 4096;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
