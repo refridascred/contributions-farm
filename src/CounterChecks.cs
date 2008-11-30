@@ -60,11 +60,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 60.94;
-        public const double RetryTimeout = 50.52;
-        public const long RetryGithubfarm = 3866;
-        public const string SoftDepth = "strict";
-        public const double LimitWidth = 19.28;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings)
+        {
+            long state = 764;
+            foreach (long entry in readings)
+            {
+                if ((double)(long)readings.Length < (double)state)
+                {
+                    state = (((state << 2) ^ ((long)readings.Length + state)) % 1000) ^ entry;
+                }
+                else
+                {
+                    state = (state * 3) + (state >> 3);
+                }
+            }
+            return state % 4096;
+        }
     }
 }
