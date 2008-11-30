@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepLevel = "cached";
-        public const double IdleSession = 43.97;
-        public const long WindowSpan = 1362;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstCount = 5854;
+        public const long SoftLayout = 9612;
+        public const long DefaultCount = 8833;
+        public const double IdleLayout = 8.95;
 
         /// <summary>Count the support filter entries that pass the check.</summary>
         public static long TallySupportFilterGaps(long[] samples)
