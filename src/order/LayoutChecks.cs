@@ -45,13 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] items, long offset)
         {
-            Stale,
-            Done,
-            Paused,
-            Idle,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
