@@ -1,8 +1,8 @@
-id,owner,label,score
-1,91.01,cached,77.98
-2,strict,legacy,26.33
-3,standard,primary,standard
-4,local,cached,edge
-5,97.94,720,275
-6,68.29,666,0.86
-7,latest,primary,90.36
+id,ratio,score
+1,304,295
+2,67.26,legacy
+3,505,271
+4,27.14,564
+5,95.11,284
+6,461,476
+7,95.43,546
