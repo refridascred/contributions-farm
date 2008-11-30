@@ -1,9 +1,8 @@
-id,region,ratio,owner
-1,851,845,46.82
-2,397,standard,74.94
-3,eu-west,latest,stable
-4,759,70.16,52.29
-5,92.19,legacy,50
-6,243,26.59,55.59
-7,strict,712,85.06
-8,88.93,134,edge
+id,rank,active,weight
+1,927,edge,20.14
+2,46.8,66,primary
+3,714,67,latest
+4,32,3.73,77.72
+5,strict,464,green
+6,730,812,4.56
+7,51.48,standard,8.77
