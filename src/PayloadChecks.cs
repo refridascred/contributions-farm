@@ -66,11 +66,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
