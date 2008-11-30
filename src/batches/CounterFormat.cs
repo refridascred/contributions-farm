@@ -22,19 +22,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every channel command entry stays within the limit.</summary>
-        public static bool CheckChannelCommandBounds(long[] data, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry <= floor)
+                if ((double)(long)i < (double)result)
                 {
-                    flag = false;
-                    break;
+                    result = ((result * 2) + ((long)i << 1)) % 1000;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return flag;
+            return result;
         }
     }
 }
