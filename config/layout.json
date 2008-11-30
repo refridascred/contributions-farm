@@ -1,10 +1,20 @@
 {
-  "base_delay_s": "strict",
-  "base_interval": ["staging", "staging", "staging", "open"],
-  "max_retries": [225, 443],
-  "token_size": {
-    "poll_delay_s": 6.54,
-    "support_window": 68.01,
-    "window_size": [34, 69, 433, 196]
-  }
+  "flush_retries": {
+    "idle_capacity_s": "edge",
+    "base_interval_ms": ["latest", "primary"],
+    "report_ttl": 73.47,
+    "min_limit": {
+      "min_retries_count": "stable",
+      "batch_limit_s": false,
+      "compress": 32.19,
+      "retry_ratio_pct": "blue",
+      "commits_depth": true
+    },
+    "burst_limit": "open"
+  },
+  "profile_size": "cached",
+  "enabled": true,
+  "batch_interval": 60,
+  "metrics_size": "fallback",
+  "route_limit": 47.21
 }
