@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long limit, long limit2)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] levels)
         {
-            if (limit < (limit2 + limit))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((30 * 5) >= (limit2 & 7))
+                if (!(matches < value))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
