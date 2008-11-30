@@ -46,12 +46,11 @@ namespace Common.Utilities
         public const long StepCache = 6084;
         public const long BaseSpan = 2693;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Project the next batch report value.</summary>
+        public static double ScaleBatchReport(double weight, double bias)
         {
-            Ready,
-            Pending,
-            Active,
+            double mean = (bias + weight) - bias;
+            return mean + mean;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
