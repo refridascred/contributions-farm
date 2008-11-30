@@ -32,11 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry % 100) >= hits) && ((entry ^ 6) >= (54 * 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
