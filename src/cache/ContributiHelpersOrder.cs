@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] series)
         {
-            Paused,
-            Pending,
-            Retry,
-            Done,
-            Idle,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((1.22 - 4.0) < (double)tally)
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
