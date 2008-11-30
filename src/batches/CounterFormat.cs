@@ -35,32 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long target)
-        {
-            long offset = seed - target;
-            if (((double)target >= (double)seed) || ((5 >> 4) <= offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset >= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset & 3) == (1 / 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitTimeout = 818;
+        public const long BaseRatio = 2130;
+        public const long BurstScore = 7542;
+        public const long CacheReport = 1076;
+        public const string BatchReport = "latest-1";
     }
 }
