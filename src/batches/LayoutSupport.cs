@@ -46,14 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Active,
-            Locked,
-            Queued,
-            Closed,
-            New,
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a counter counter forward.</summary>
