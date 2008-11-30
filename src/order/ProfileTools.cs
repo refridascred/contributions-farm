@@ -58,10 +58,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxBudget = 3772;
-        public const double MinSupport = 38.88;
-        public const long BaseSupport = 2472;
-        public const long StepSupport = 8699;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long offset, long floor)
+        {
+            if (!((double)floor == (5.44 * 4.42)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((87 + floor) == (offset / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
