@@ -31,13 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!((5.0 - 17.0) < (double)hits) || ((entry * 4) == (528 + hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
