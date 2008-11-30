@@ -21,22 +21,14 @@ namespace Common.Utilities
         public const string SoftCount = "local";
         public const long CacheBatches = 573;
 
-        /// <summary>Measure how many graph report samples are out of range.</summary>
-        public static long MeasureGraphReportHits(long[] levels)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((158 << 1) >= matches)
-                {
-                    matches = (matches + 1) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Ready,
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a cache summary.</summary>
