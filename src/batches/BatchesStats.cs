@@ -20,14 +20,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] items)
         {
-            Retry,
-            Synced,
-            Active,
-            Done,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (reading <= 18)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
