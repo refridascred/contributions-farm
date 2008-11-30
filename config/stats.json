@@ -1,5 +1,12 @@
 {
-  "default_window_pct": 250,
-  "default_interval": "eu-west",
-  "layout_delay": ["blue", "staging", "latest"]
+  "cache_window_pct": "staging",
+  "dry_run": false,
+  "batch_ttl_count": "edge",
+  "verbose": {
+    "retry_retries_ms": "edge",
+    "default_ttl_s": "cached",
+    "notes_threshold": ["latest", "latest", "standard", "fallback"]
+  },
+  "tools_threshold": "blue",
+  "batch_retries": [419, 48, 74, 288]
 }
