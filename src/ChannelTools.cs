@@ -12,19 +12,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] levels, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Describe the session status values.</summary>
