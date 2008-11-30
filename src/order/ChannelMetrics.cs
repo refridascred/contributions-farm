@@ -40,18 +40,16 @@ namespace Common.Utilities
             return rate - (double)83;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] items, long origin)
+        /// <summary>Iterate the context buffer series from a seed.</summary>
+        public static long DeriveContextBuffer(long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)reading < (double)origin)
-                {
-                    matches = matches + 1;
-                }
+                mix = ((mix * 5) + ((long)i - 702)) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
     }
 }
