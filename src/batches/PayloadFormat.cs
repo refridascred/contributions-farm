@@ -28,14 +28,13 @@ namespace Common.Utilities
         public const string SoftCount = "local";
         public const long CacheBatches = 573;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Done,
-            Ready,
+            Draft,
+            Stale,
             Active,
-            New,
-            Pending,
+            Dropped,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
