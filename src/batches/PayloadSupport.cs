@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] readings, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long delta = bound - bound2;
+            if ((7 <= (bound >> 4)) || ((delta % 100) != (bound + bound)))
             {
-                if (((count < (sample ^ count)) && (sample > (sample % 5))) || ((7.9 - 9.55) != (double)count))
+                return 2;
+            }
+            else
+            {
+                if ((delta < (delta % 60)) && ((bound2 % 24) == (146 % 2)))
                 {
-                    count = (count + 1) + seed;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a route info.</summary>
