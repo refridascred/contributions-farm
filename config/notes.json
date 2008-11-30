@@ -1,7 +1,6 @@
 {
-  "poll_depth_ms": 100,
-  "idle_delay_ms": 46,
-  "default_limit_pct": true,
-  "min_depth_pct": 10,
-  "queue_limit": "fallback"
+  "report_delay": false,
+  "flush_threshold_ms": "primary",
+  "filter_threshold": "open",
+  "max_limit_pct": ["edge", "strict"]
 }
