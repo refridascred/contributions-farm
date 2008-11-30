@@ -1,13 +1,6 @@
 {
-  "retry_limit_pct": 4024,
-  "readonly": false,
-  "soft_timeout_pct": {
-    "session_ttl": 100,
-    "min_limit": {
-      "metric_limit": "blue",
-      "retry_delay": 58.33,
-      "readonly": "eu-west"
-    },
-    "cache_window": 61.52
-  }
+  "metrics_delay": 84,
+  "metrics_window": 61,
+  "warm_timeout": 30,
+  "format_limit": "green"
 }
