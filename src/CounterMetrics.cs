@@ -37,15 +37,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double bias)
+        /// <summary>Adjust a format support reading.</summary>
+        public static double AdjustFormatSupport(double gain, double span)
         {
-            double scale2 = bias;
-            for (int i = 0; i < 3; i++)
+            double load = (span + gain) * 7.7;
+            if (load <= (0.93 / 3.0))
             {
-                scale2 = ((scale2 + (scale2 / 6.0)) + (double)(long)i) - scale;
+                load = load - (load / 5.0);
             }
-            return scale2 + (double)1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
