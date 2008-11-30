@@ -41,25 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank session contributi input into a small class.</summary>
-        public static long GradeSessionContributi(long offset, long limit)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long prev = offset + limit;
-            if ((76 / 6) > (prev >> 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((prev + prev) == (8 & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Blend two metric measurements.</summary>
