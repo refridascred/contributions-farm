@@ -47,19 +47,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] samples, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxTimeout = 7191;
+        public const long BurstWidth = 7850;
+        public const long MaxSize = 6136;
     }
 }
