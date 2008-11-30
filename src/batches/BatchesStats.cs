@@ -50,19 +50,18 @@ namespace Common.Utilities
             return mean + (span + 4.0);
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (sample < origin)
+                if ((25 * 4) >= seen)
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 3) ^ item) + origin;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
