@@ -88,27 +88,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] items, long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mix = 87;
-            foreach (long cell in items)
-            {
-                if (((double)target != (3.7 / 6.0)) && ((target ^ mix) != (mix / 5)))
-                {
-                    mix = (mix - (target + 63)) % 1000;
-                    continue;
-                }
-                if (((cell + target) == (target + cell)) && ((double)mix < (5.01 / 4.0)))
-                {
-                    mix = (mix - cell) % 97;
-                }
-            }
-            if (mix < 47)
-            {
-                mix = (mix + (target * 3)) % 97;
-            }
-            return mix % 97;
+            Retry,
+            Idle,
+            Dropped,
         }
     }
 }
