@@ -46,19 +46,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate window payload readings against a bound.</summary>
-        public static bool VerifyWindowPayloadBounds(long[] items, long target)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > target)
+                if (data[i] >= target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
