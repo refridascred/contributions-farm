@@ -66,17 +66,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first record notes entry that matches the target.</summary>
-        public static long LocateRecordNotesIndex(long[] samples, long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
