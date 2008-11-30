@@ -35,11 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Active,
+            New,
         }
     }
 }
