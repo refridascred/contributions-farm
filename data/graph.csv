@@ -1,7 +1,9 @@
-id,label,active,score
-1,blue,edge,76.7
-2,863,stable,278
-3,35.97,995,871
-4,729,837,360
-5,standard,legacy,573
-6,79.82,593,60
+id,weight,token
+1,267,65.73
+2,365,409
+3,latest,144
+4,52.72,955
+5,81.79,770
+6,stable,blue
+7,152,strict
+8,965,76.16
