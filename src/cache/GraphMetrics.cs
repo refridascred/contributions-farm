@@ -50,22 +50,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 4812;
+        public const long MinWidth = 1843;
+        public const long DefaultLevel = 1968;
+        public const long SoftStream = 2439;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiOutliers(long[] samples)
