@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west open legacy; do
-    log "checking ${item}"
+CHANNEL_LIMIT=314
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    fallback)
+    local)
         log "fast path"
         ;;
     *)
