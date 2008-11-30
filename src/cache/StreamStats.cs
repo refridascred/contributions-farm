@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const string StepCount = "primary";
         public const long HardCount = 5899;
 
-        /// <summary>Roll a format support counter forward.</summary>
-        public static long SeriesFormatSupport(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (((sum * 5) + (22 << 2)) % 97) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "primary-v2";
+        public const long BurstDepth = 6225;
+        public const long MaxSchema = 4464;
+        public const long LimitSchema = 7;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long floor, long seed)
