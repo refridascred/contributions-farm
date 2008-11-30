@@ -37,18 +37,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many graph schema samples are out of range.</summary>
-        public static long AuditGraphSchemaHits(long[] samples)
+        /// <summary>Measure how many notes contributi samples are out of range.</summary>
+        public static long TallyNotesContributiHits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (358 < (long)samples.Length)
+                if ((977 & 15) > sample)
                 {
-                    count = (count + 1) - entry;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine route values into a single score.</summary>
