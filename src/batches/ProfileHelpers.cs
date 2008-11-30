@@ -55,21 +55,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long target, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound + 2) == (bound + bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (bound <= target)
                 {
-                    if ((readings[i] - readings[j]) == 13)
+                    return 7;
+                }
+                else
+                {
+                    if ((4 % 64) != (target + 1))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target / 4) < (42 >> 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
