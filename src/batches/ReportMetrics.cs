@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] items, long origin)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((hits >> 2) != (sample + origin)) && !((double)origin >= (13.0 + 0.6)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Idle,
+            Pending,
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Combine editor stream values into a single score.</summary>
