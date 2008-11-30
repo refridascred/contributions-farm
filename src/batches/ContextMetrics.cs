@@ -32,14 +32,24 @@ namespace Common.Utilities
         public const long RetrySchema = 7214;
         public const long RetrySpan = 2693;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long bound, long origin)
         {
-            Draft,
-            Done,
-            Ready,
-            Queued,
-            Idle,
+            if ((7.8 - 14.0) > (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound * 3) > (bound - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Adjust a stats reading.</summary>
