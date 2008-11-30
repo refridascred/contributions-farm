@@ -1,24 +1,11 @@
 {
-  "token_depth": {
-    "compress": "staging",
-    "batch_interval_s": 4628,
-    "token_capacity": "open",
-    "min_timeout": {
-      "base_retries": 40.39,
-      "burst_threshold_count": 250,
-      "burst_threshold": 23.16
-    },
-    "buffer_timeout": 34.56,
-    "default_window": "latest"
+  "verbose": ["blue", "latest"],
+  "buffer_delay": "eu-west",
+  "strict": {
+    "sync_timeout": 89.44,
+    "token_interval": "blue",
+    "hard_threshold_ms": 47.63
   },
-  "flush_timeout_ms": 94.37,
-  "flush_timeout_count": {
-    "notes_ttl": [13, 347, 428, 362],
-    "counter_window": 38.72,
-    "graph_retries": true,
-    "record_threshold": 88.31,
-    "retry_threshold": false
-  },
-  "max_depth": ["green", "edge", "edge", "primary"],
-  "channel_timeout": 9676
+  "sync_window": true,
+  "route_ratio": 250
 }
