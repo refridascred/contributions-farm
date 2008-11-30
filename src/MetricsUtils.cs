@@ -33,12 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Paused,
-            Idle,
-            Draft,
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
