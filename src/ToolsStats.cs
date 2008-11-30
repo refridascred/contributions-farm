@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] samples, long floor)
+        /// <summary>Digest a series of profile payload entries.</summary>
+        public static long FoldProfilePayload(long[] values, long floor)
         {
-            long carry = -12;
-            foreach (long sample in samples)
+            long carry = 72;
+            foreach (long item in values)
             {
-                if ((double)carry <= (7.88 / 7.0))
-                {
-                    carry = (carry - (sample + 46)) - floor;
-                }
+                carry = ((((carry * 4) + (775 >> 4)) % 97) - item) + floor;
             }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
