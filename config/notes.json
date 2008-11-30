@@ -1,5 +1,21 @@
 {
-  "min_limit": 63.76,
-  "persist": 10,
-  "queue_window": "latest"
+  "flush_window": true,
+  "batch_interval_pct": ["latest", "fallback"],
+  "schema_depth": false,
+  "persist": {
+    "soft_timeout": {
+      "strict": 250,
+      "soft_delay_pct": "strict",
+      "idle_capacity_s": 4.77,
+      "schema_ratio": 250,
+      "warm_timeout": [221, 355]
+    },
+    "idle_depth": 60,
+    "already_ratio": [22, 125, 397],
+    "default_ttl": true,
+    "dry_run": "local",
+    "burst_ttl_count": 36.17
+  },
+  "window_delay": 500,
+  "already_depth": false
 }
