@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double IdleSession = 43.97;
         public const long WindowSpan = 1362;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 1190;
-        public const long SoftFactor = 4952;
-        public const long IdleGithubfarm = 5223;
-        public const long HardSpan = 9011;
-        public const long DefaultGithubfarm = 9676;
+        /// <summary>Count the support filter entries that pass the check.</summary>
+        public static long TallySupportFilterGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((count + count) != (value / 6)) || ((24 & 127) > (value / 6)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
