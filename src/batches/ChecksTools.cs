@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleWindow = "local";
+        public const long DefaultSize = 287;
+        public const string BaseLevel = "primary-edge";
+        public const long BaseWindow = 5170;
+        public const long HardLevel = 3725;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long bound)
