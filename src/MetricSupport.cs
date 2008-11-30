@@ -33,19 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every profile batch entry stays within the limit.</summary>
-        public static bool VerifyProfileBatchBounds(long[] readings, long bound)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
