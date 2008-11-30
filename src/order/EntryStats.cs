@@ -36,21 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = 4.6;
+            if (scale2 < 3.1)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale2 = (scale2 + (scale2 / 7.0)) + bias;
             }
-            return hits;
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Hold a format entry.</summary>
