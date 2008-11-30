@@ -47,18 +47,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] values)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (reading <= (reading * 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Synced,
         }
     }
 }
