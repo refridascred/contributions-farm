@@ -29,11 +29,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            Closed,
+            Queued,
+            Stale,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
