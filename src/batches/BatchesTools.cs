@@ -15,11 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowSize = 2073;
-        public const long BurstOrder = 975;
-        public const long HardLevel = 9722;
-        public const double HardSpan = 4.32;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Measure how many support buffer samples are out of range.</summary>
         public static long MeasureSupportBufferGaps(long[] items, long limit)
