@@ -40,22 +40,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 95.96;
+        public const string StepTimeout = "strict-1";
+        public const long StepContext = 7425;
+        public const string MaxContext = "alpha";
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] items)
