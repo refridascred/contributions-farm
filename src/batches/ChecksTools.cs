@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] levels)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((seen ^ item) > (seen - seen))
+                if ((state - 6) > state)
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Digest a series of context entries.</summary>
