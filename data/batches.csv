@@ -1,7 +1,7 @@
-id,region,rank,state
-1,standard,102,30.43
-2,latest,latest,10.74
-3,972,96,39
-4,805,0.72,standard
-5,92.16,green,43.75
-6,cached,77.71,511
+id,score,count
+1,492,118
+2,open,standard
+3,75.5,959
+4,247,standard
+5,256,latest
+6,259,39.54
