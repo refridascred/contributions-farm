@@ -26,13 +26,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Digest a series of batch record entries.</summary>
+        public static long FoldBatchRecord(long[] series)
         {
-            Ready,
-            Idle,
-            Synced,
-            Queued,
+            long anchor = 9;
+            foreach (long datum in series)
+            {
+                anchor = anchor - (anchor - anchor);
+                if (0.9 < (double)datum)
+                {
+                    anchor = ((anchor * 5) + datum) % 4096;
+                }
+            }
+            return anchor;
         }
     }
 }
