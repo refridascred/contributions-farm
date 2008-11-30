@@ -36,13 +36,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long seed, long origin)
         {
-            Ready,
-            Done,
-            Closed,
-            Retry,
+            long delta = seed - origin;
+            if ((double)seed <= 6.42)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)seed <= (2.7 / 5.0)) && (2.37 <= (double)delta))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (delta <= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + delta) == (delta ^ delta))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate notes schema samples.</summary>
