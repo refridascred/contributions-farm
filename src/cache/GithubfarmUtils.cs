@@ -23,21 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools notes series from a seed.</summary>
-        public static long SeriesToolsNotes(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = sum + (sum + (long)i2);
-                }
-                sum = (sum ^ (-916)) % 255;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftSize = 63.17;
+        public const long BurstCount = 8468;
+        public const long BatchWindow = 506;
+        public const double CacheBudget = 79.44;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] items, long offset)
