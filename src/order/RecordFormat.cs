@@ -31,16 +31,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 91.48;
+        public const long HardLevel = 9228;
+        public const string LimitFormat = "legacy-1";
+        public const long HardFormat = 248;
 
         /// <summary>Audit channel batch readings against a rule.</summary>
         public static long CountChannelBatchHits(long[] readings)
