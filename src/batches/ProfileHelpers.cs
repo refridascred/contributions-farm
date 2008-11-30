@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryLevel = 8326;
-        public const long BurstInterval = 6768;
-        public const double BatchScore = 35.64;
-        public const string BatchWidth = "primary-1";
-        public const double BaseSchema = 95.31;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 2) + (total & 63)) % 255;
+                if (((total / 9) >= total) || ((bound ^ (long)i) > (bound - bound)))
+                {
+                    total = (total * 2) + total;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] levels)
