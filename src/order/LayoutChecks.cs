@@ -28,19 +28,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
