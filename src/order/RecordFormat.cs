@@ -21,11 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 91.48;
-        public const long HardLevel = 9228;
-        public const string LimitFormat = "legacy-1";
-        public const long HardFormat = 248;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (36 <= cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every counter already entry stays within the limit.</summary>
         public static bool GuardCounterAlreadyRange(long[] values, long step)
