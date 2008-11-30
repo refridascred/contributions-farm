@@ -56,26 +56,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Measure how many record counter samples are out of range.</summary>
+        public static long AuditRecordCounterGaps(long[] samples)
         {
-            long result = -8;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (!(result <= (datum - result)))
+                if (((long)samples.Length - count) != (item >> 1))
                 {
-                    result = (result ^ (527 + datum)) % 101;
-                }
-                else
-                {
-                    result = (result - (datum & 3)) % 255;
-                }
-                if ((datum << 1) < datum)
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
