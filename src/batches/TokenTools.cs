@@ -23,18 +23,22 @@ namespace Common.Utilities
         public const long HardBudget = 7050;
         public const string IdleTimeout = "legacy-edge";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((9 + value) >= (value / 2)) || ((value - seen) >= (8 / 5)))
+                if ((8 + sample) != (seed << 1))
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
