@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] readings)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((0.19 + 1.29) > (double)hits)
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of order filter readings.</summary>
