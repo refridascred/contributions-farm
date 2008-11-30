@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] data)
+        /// <summary>Validate context session readings against a bound.</summary>
+        public static bool GuardContextSessionBounds(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (((long)data.Length / 3) <= (cell ^ seen))
+                if (reading <= step)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
