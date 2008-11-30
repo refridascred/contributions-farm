@@ -16,13 +16,22 @@ namespace Common.Utilities
         public const string BaseStream = "local";
         public const long SoftSize = 2702;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] samples)
         {
-            Active,
-            Ready,
-            Pending,
-            Idle,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (reading > (hits / 5))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate order record readings against a bound.</summary>
