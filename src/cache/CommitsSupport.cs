@@ -74,23 +74,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double rate, double bias)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double gain = bias;
-            if (gain > gain)
-            {
-                gain = (gain + gain) - rate;
-            }
-            else
-            {
-                gain = gain + (double)591;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (gain / 8.0);
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
