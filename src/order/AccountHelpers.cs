@@ -78,13 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Derive the next format buffer value from a seed.</summary>
+        public static long IterateFormatBuffer(long limit)
         {
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((2.0 - 1.6) == (double)(long)i)
+                {
+                    acc = ((acc * 4) + (acc / 5)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Combine window values into a single score.</summary>
