@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long limit, long target)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] items, long floor)
         {
-            if (((double)target > 9.74) || (limit < (target << 3)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit < 785)
+                if (items[i] >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((target - target) <= target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the contributi class values.</summary>
