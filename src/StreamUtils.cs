@@ -22,23 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double weight, double offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double rate, double bias)
         {
-            double scale = offset;
-            if (scale > 13.0)
+            double ratio = rate - bias;
+            for (int i = 0; i < 5; i++)
             {
-                scale = scale + (weight / 7.0);
+                ratio = ratio + (double)(long)i;
             }
-            else
-            {
-                scale = scale - (double)4;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (offset + 8.88)) + (double)(long)i;
-            }
-            return scale + weight;
+            return ratio + rate;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
