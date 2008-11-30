@@ -48,13 +48,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long floor, long step)
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            long slot = floor ^ step;
+            if ((slot + slot) >= step)
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor >= ((-58) >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)floor != (double)step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step < 928)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
