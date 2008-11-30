@@ -33,20 +33,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a batch session counter forward.</summary>
-        public static long StepBatchSession(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((mix >= (long)i) || ((-28) >= floor))
-                {
-                    mix = mix - (floor + (long)i);
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheScore = 3967;
+        public const string SoftBudget = "stable-v2";
+        public const double CacheSpan = 27.64;
+        public const string MaxLevel = "latest-1";
+        public const long BurstQueue = 5113;
 
         /// <summary>Measure how many window route samples are out of range.</summary>
         public static long TallyWindowRouteMatches(long[] readings, long origin)
