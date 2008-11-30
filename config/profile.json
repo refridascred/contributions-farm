@@ -1,6 +1,11 @@
 {
-  "hard_limit_ms": false,
-  "verbose": [170, 189, 310, 329],
-  "soft_size": 436,
-  "persist": 77.55
+  "max_delay_ms": "staging",
+  "sync_size_ms": "green",
+  "strict": {
+    "batch_window_count": 39,
+    "batch_window_pct": ["eu-west", "staging", "staging"],
+    "min_ratio": "local",
+    "enabled": 100
+  },
+  "audit": 78.38
 }
