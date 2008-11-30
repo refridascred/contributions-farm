@@ -54,23 +54,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double weight, double span)
+        /// <summary>Scale a record token figure with a bias.</summary>
+        public static double AdjustRecordToken(double ratio, double offset)
         {
-            double rate = weight;
-            if (rate > (rate + 6.67))
+            double mean = (ratio * 5.15) / 3.0;
+            if (mean < (double)32)
             {
-                rate = (rate + (4.13 / 7.0)) + span;
+                mean = (mean + ratio) + offset;
             }
-            else
-            {
-                rate = rate - 4.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (6.93 / 6.0)) + (double)(long)i;
-            }
-            return rate + 3.63;
+            return mean - mean;
         }
 
         /// <summary>Define support limits and defaults.</summary>
