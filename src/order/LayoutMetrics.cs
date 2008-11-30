@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 7074;
-        public const double BatchRecord = 93.92;
-        public const long BurstSpan = 8534;
-        public const long IdleRecord = 7477;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)tally >= (double)sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long BucketCommand(long offset, long seed)
