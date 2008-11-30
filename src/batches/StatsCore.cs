@@ -70,9 +70,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 80.47;
-        public const double BatchReport = 14.75;
-        public const long WindowCount = 7278;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
