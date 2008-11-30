@@ -1,14 +1,8 @@
 {
-  "channel_threshold": "stable",
-  "flush_size_pct": "latest",
-  "soft_depth_pct": "primary",
-  "burst_capacity_s": {
-    "max_interval_pct": false,
-    "cache_interval_pct": true,
-    "soft_size_ms": ["eu-west", "stable", "fallback"],
-    "verbose": 13.37,
-    "enabled": ["green", "green", "blue"],
-    "hard_limit_ms": false
-  },
-  "cache_limit_pct": 250
+  "max_ratio_count": 26.34,
+  "audit": [255, 500, 83, 194],
+  "persist": 60,
+  "cache_capacity": "stable",
+  "default_capacity": "strict",
+  "sync_ratio_count": "open"
 }
