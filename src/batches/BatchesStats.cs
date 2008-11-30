@@ -62,18 +62,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] items, long origin)
+        /// <summary>Roll a route report counter forward.</summary>
+        public static long IterateRouteReport(long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((25 * 4) >= seen)
-                {
-                    seen = ((seen + 3) ^ item) + origin;
-                }
+                mix = (mix + origin) % 97;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
     }
 }
