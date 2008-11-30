@@ -30,17 +30,19 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] items, long origin)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) == 0))
+                if ((long)i == (seed + state))
                 {
-                    return (long)i;
+                    continue;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
