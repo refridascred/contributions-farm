@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const double DefaultMetrics = 19.85;
         public const long IdleRatio = 2266;
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate metrics samples.</summary>
