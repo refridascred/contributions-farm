@@ -29,20 +29,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry record reading.</summary>
-        public static double AdjustEntryRecord(double weight, double bias)
-        {
-            double ratio = (bias + weight) + (weight + bias);
-            if (ratio >= bias)
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (bias - ratio)) + (double)(long)i;
-            }
-            return ratio + bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxInterval = 5994;
+        public const double WindowDepth = 23.14;
+        public const double CacheSize = 5.86;
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long CompareChannelCount(long[] values)
