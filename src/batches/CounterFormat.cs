@@ -27,18 +27,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] values, long seed)
         {
-            long sum = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((entry + entry) < (entry - entry))
+                if ((cell & 63) > (tally * 5))
                 {
-                    sum = (sum * 4) + (55 & 255);
+                    tally = (tally + 3) + seed;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
