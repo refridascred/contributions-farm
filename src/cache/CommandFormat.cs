@@ -12,13 +12,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Closed,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 9414;
+        public const string BurstCommand = "open-edge";
+        public const long BurstTimeout = 8226;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] samples, long bound)
