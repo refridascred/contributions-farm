@@ -1,8 +1,9 @@
-id,ratio,score,level,region
-1,fallback,edge,green,357
-2,18.32,33.0,legacy,87
-3,529,green,staging,870
-4,577,fallback,staging,834
-5,819,60,green,401
-6,open,blue,60.88,blue
-7,883,92.35,cached,eu-west
+id,region,ratio,owner
+1,851,845,46.82
+2,397,standard,74.94
+3,eu-west,latest,stable
+4,759,70.16,52.29
+5,92.19,legacy,50
+6,243,26.59,55.59
+7,strict,712,85.06
+8,88.93,134,edge
