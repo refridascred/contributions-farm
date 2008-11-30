@@ -20,12 +20,10 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 2815;
-        public const long MaxSession = 3604;
-        public const long StepSession = 835;
-        public const long SoftSession = 7000;
-        public const string MinSize = "cached-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCluster = "primary-edge";
+        public const long DefaultSize = 564;
+        public const double RetrySpan = 54.92;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsBounds(long[] items, long bound)
