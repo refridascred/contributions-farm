@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next queue entry value from a seed.</summary>
-        public static long SeriesQueueEntry(long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] values, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            long carry = 14;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                carry = (carry ^ (reading + reading)) % 4096;
+                if ((8 - step) > step)
+                {
+                    break;
+                }
+                carry = (carry << 3) ^ step;
             }
-            return anchor;
+            return carry % 1000;
         }
 
         /// <summary>Match up buffer samples.</summary>
