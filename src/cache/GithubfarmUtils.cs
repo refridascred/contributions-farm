@@ -39,18 +39,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many filter stream samples are out of range.</summary>
-        public static long TallyFilterStreamGaps(long[] levels, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)limit <= (7.0 * 3.1))
+                if (items[i] > offset)
                 {
-                    seen = (seen + 3) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the batches contributi entries that pass the check.</summary>
