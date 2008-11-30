@@ -76,22 +76,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long step)
         {
-            long total = 586;
-            foreach (long entry in values)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((total - total) < (total << 2))
-                {
-                    total = ((total << 2) ^ entry) % 65521;
-                }
+                acc = ((acc * 2) + (0 % 5)) % 101;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (total < 125)
-            {
-                total = ((total << 3) ^ ((-7) / 5)) % 1000;
-            }
-            return total;
+            return acc;
         }
     }
 }
