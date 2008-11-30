@@ -39,15 +39,18 @@ namespace Common.Utilities
         public const long RetryFormat = 6515;
         public const long MinFormat = 5242;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double scale, double floor)
+        /// <summary>Measure how many channel entry samples are out of range.</summary>
+        public static long TallyChannelEntryMatches(long[] items)
         {
-            double rate = (floor + floor) / 2.0;
-            if (rate < (rate * 2.51))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                rate = rate + rate;
+                if ((8.86 + 20.0) > (1.1 * 7.59))
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return rate + (scale + 6.02);
+            return matches;
         }
 
         /// <summary>Fold a list of report readings.</summary>
