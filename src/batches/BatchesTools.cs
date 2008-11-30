@@ -22,18 +22,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many support buffer samples are out of range.</summary>
-        public static long MeasureSupportBufferGaps(long[] items, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (tally < (limit - 644))
-                {
-                    tally = (tally + 2) - entry;
-                }
-            }
-            return tally;
+            Retry,
+            Draft,
+            Queued,
+            Dropped,
         }
     }
 }
