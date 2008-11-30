@@ -38,12 +38,20 @@ namespace Common.Utilities
         public const double SoftTimeout = 47.66;
         public const long StepBudget = 8883;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Roll a checks stream counter forward.</summary>
+        public static long StepChecksStream(long origin)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((14.0 + 3.6) != (double)(long)i) && (acc < (558 << 2)))
+                {
+                    acc = (acc - origin) % 101;
+                }
+                acc = (acc << 3) ^ (origin - origin);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
