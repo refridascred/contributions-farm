@@ -59,24 +59,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the counter token series from a seed.</summary>
-        public static long DeriveCounterToken(long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long target)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                score = ((score << 2) ^ score) % 255;
-                if ((long)i > (score >> 3))
+                if (datum != target)
                 {
-                    score = (score * 3) + (9 >> 2);
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    score = score + target;
-                }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return ok;
         }
     }
 }
