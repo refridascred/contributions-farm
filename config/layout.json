@@ -1,20 +1,14 @@
 {
-  "flush_retries": {
-    "idle_capacity_s": "edge",
-    "base_interval_ms": ["latest", "primary"],
-    "report_ttl": 73.47,
-    "min_limit": {
-      "min_retries_count": "stable",
-      "batch_limit_s": false,
-      "compress": 32.19,
-      "retry_ratio_pct": "blue",
-      "commits_depth": true
-    },
-    "burst_limit": "open"
-  },
-  "profile_size": "cached",
-  "enabled": true,
-  "batch_interval": 60,
-  "metrics_size": "fallback",
-  "route_limit": 47.21
+  "compress": 9.99,
+  "readonly": "strict",
+  "warm_limit_ms": 60,
+  "max_depth_ms": "fallback",
+  "record_ratio": {
+    "default_ttl_count": 12.92,
+    "batch_interval_ms": 7532,
+    "poll_delay": [452, 338, 381],
+    "checks_window": 30,
+    "default_capacity_count": [123, 246, 337],
+    "sync_delay_count": 62
+  }
 }
