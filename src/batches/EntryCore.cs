@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a cache filter figure with a bias.</summary>
-        public static double AdjustCacheFilter(double gain, double floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            double mean = (double)((-7) % 12);
-            if (mean <= (floor - gain))
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                mean = mean + (double)0;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - floor;
+            return anchor;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
