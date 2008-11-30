@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 1660;
-        public const double WindowTimeout = 63.9;
-        public const long DefaultAccount = 4752;
-        public const long HardFactor = 2389;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string WindowLevel = "strict-v2";
