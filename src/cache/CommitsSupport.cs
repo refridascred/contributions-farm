@@ -63,18 +63,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many record counter samples are out of range.</summary>
-        public static long AuditRecordCounterGaps(long[] samples)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double gain = bias;
+            if (gain > gain)
             {
-                if (((long)samples.Length - count) != (item >> 1))
-                {
-                    count = count + 2;
-                }
+                gain = (gain + gain) - rate;
             }
-            return count;
+            else
+            {
+                gain = gain + (double)591;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (gain / 8.0);
         }
     }
 }
