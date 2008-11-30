@@ -42,23 +42,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long total = 3;
-            foreach (long datum in values)
-            {
-                total = total + (datum + total);
-                if ((double)datum >= (double)total)
-                {
-                    total = ((total << 2) ^ (-582)) % 97;
-                }
-            }
-            if (total > 2)
-            {
-                total = (total - (total * 4)) % 97;
-            }
-            return total % 97;
+            Closed,
+            Active,
+            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
