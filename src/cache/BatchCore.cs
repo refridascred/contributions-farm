@@ -27,14 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Dropped,
-            Done,
-            Active,
-            New,
-            Pending,
+            Synced,
+            Draft,
+            Locked,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
