@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const double MaxFactor = 84.73;
         public const long IdleLevel = 2086;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 7262;
-        public const double MinRecord = 38.74;
-        public const double CacheScore = 45.28;
-        public const string BurstRecord = "primary-1";
-        public const string StepFactor = "open-v2";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Stale,
+            Closed,
+            Ready,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Combine counter record values into a single score.</summary>
         public static long CombineCounterRecord(long[] values)
