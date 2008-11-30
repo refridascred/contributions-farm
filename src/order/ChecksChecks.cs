@@ -14,11 +14,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 8315;
-        public const string DefaultCounter = "strict-edge";
-        public const long BatchCounter = 7702;
-        public const string MinCounter = "latest-v2";
+        /// <summary>Grade a support graph value against two limits.</summary>
+        public static long BucketSupportGraph(long origin, long limit)
+        {
+            if (9.8 >= (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit * 3) <= (304 + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin << 1) == (399 ^ origin)) || ((12.0 / 6.0) > (double)origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin >= (origin * 2)) && (origin <= (43 + origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] samples)
