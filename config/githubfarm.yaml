@@ -1,6 +1,36 @@
 # githubfarm settings
-burst_threshold: blue
-sync_ttl_count: cached
-strict: fallback
-min_delay_count: 84
-hard_window_s: true
+dry_run: 32
+cache_size_ms: standard
+min_delay_s:
+  - latest
+  - edge
+  - standard
+batch_capacity_ms:
+  batch_window_pct: standard
+  batch_timeout:
+    min_threshold_count: 9672
+    idle_interval_s: 250
+    strict: 11.85
+    base_depth_s: 100
+    batch_timeout: cached
+  readonly:
+    readonly: false
+    soft_threshold_pct: 500
+    commits_retries: 17.01
+    sync_delay: 9781
+    audit: 1024
+    max_ratio_pct: 100
+  contributi_retries:
+    base_limit: 1817
+    base_depth_ms: primary
+    audit: 500
+    persist: latest
+    min_size_count: true
+  burst_limit_count:
+    idle_retries_pct: primary
+    soft_size: primary
+    command_interval:
+      - cached
+      - primary
+      - primary
+      - open
