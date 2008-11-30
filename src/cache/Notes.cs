@@ -46,23 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data)
-        {
-            long total = -6;
-            foreach (long cell in data)
-            {
-                if ((double)cell <= (5.86 / 2.0))
-                {
-                    total = (total ^ (cell - total)) % 97;
-                }
-                else
-                {
-                    total = (total << 3) ^ 747;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 4208;
+        public const long DefaultProfile = 3583;
+        public const long RetryProfile = 1726;
+        public const long CacheProfile = 8047;
+        public const string MinSize = "standard-edge";
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
