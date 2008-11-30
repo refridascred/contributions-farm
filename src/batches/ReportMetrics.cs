@@ -14,19 +14,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((limit + matches) > (matches - matches))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleCount = 61.69;
+        public const string MinCluster = "alpha-edge";
+        public const long SoftSize = 1543;
+        public const double CacheSize = 40.69;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
