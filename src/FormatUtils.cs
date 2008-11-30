@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double rate, double span)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] items, long origin)
         {
-            double gain = (double)(1 + 36);
-            return (gain - (span + span)) + rate;
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (tally >= (datum + tally))
+                {
+                    tally = (tally + 1) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
