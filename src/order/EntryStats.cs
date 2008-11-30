@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count buffer command pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCommandCount(long[] readings)
+        /// <summary>Audit batches token readings against a rule.</summary>
+        public static long MeasureBatchesTokenGaps(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (matches < (origin - matches))
                 {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
