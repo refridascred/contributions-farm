@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 3314;
-        public const long HardCache = 6751;
-        public const string SoftCache = "open-v2";
-        public const long BatchLevel = 6381;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
