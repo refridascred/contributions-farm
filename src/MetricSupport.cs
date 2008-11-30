@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Queued,
+            Draft,
+            Ready,
             Pending,
-            Paused,
-            Done,
         }
 
         /// <summary>Check that every profile batch entry stays within the limit.</summary>
