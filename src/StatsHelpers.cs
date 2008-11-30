@@ -20,20 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Validate cache layout readings against a bound.</summary>
+        public static bool CheckCacheLayoutLimits(long[] items, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (sample >= floor)
                 {
-                    state = (state ^ ((long)i + 613)) % 97;
-                    state = (state << 3) ^ ((long)i2 + (long)i2);
+                    found = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
