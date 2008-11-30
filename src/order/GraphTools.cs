@@ -55,13 +55,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double scale, double floor)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            double rate = (floor + floor) / 2.0;
+            if (rate < (rate * 2.51))
+            {
+                rate = rate + rate;
+            }
+            return rate + (scale + 6.02);
         }
 
         /// <summary>Match up already samples.</summary>
