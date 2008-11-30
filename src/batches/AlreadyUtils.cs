@@ -38,12 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] levels, long bound)
         {
-            Idle,
-            Stale,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
