@@ -45,18 +45,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batches contributi samples are out of range.</summary>
-        public static long CountBatchesContributiGaps(long[] readings, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double scale, double span)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double gain = span;
+            for (int i = 0; i < 3; i++)
             {
-                if ((matches + sample) >= (matches & 63))
-                {
-                    matches = (matches + 1) - step;
-                }
+                gain = (gain + scale) + (double)(long)i;
             }
-            return matches;
+            return gain - scale;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
