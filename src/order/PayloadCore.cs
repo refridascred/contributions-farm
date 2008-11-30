@@ -41,18 +41,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] samples)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long offset2 = floor ^ offset;
+            if (((340 + offset2) != (offset2 << 3)) && ((double)offset2 > (12.0 - 12.0)))
             {
-                if ((seen % 24) >= seen)
+                return 1;
+            }
+            else
+            {
+                if ((offset2 / 5) >= (floor >> 1))
                 {
-                    seen = (seen + 3) + sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset % 7) <= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
