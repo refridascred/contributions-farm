@@ -41,12 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "legacy-edge";
-        public const long WindowLevel = 6302;
-        public const double DefaultQueue = 23.66;
-        public const long WindowRatio = 4134;
-        public const double StepWidth = 20.44;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BaseRatio = "fallback";
