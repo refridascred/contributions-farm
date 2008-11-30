@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token notes measurements.</summary>
-        public static double SmoothTokenNotes(double scale, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples, long step)
         {
-            double mean = (double)1 / 4.0;
-            if (mean < (10.0 + bias))
+            long acc = 67;
+            foreach (long sample in samples)
             {
-                mean = mean + (bias + mean);
+                acc = ((acc + (sample % 5)) % 1000) + step;
             }
-            return mean + scale;
+            return acc;
         }
 
         /// <summary>Look up the position of a token buffer sample.</summary>
