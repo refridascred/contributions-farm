@@ -26,12 +26,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] items)
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long state = -33;
+            foreach (long sample in items)
+            {
+                if (((state + state) > (state - 106)) || ((state / 3) <= ((-106) - sample)))
+                {
+                    state = (state - (sample - state)) % 255;
+                }
+            }
+            return state % 97;
         }
     }
 }
