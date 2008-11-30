@@ -11,30 +11,13 @@ namespace Common.Utilities
         public const long CacheLevel = 8310;
         public const string IdleFactor = "alpha-1";
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] items, long floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long anchor = 5;
-            foreach (long cell in items)
-            {
-                if (((cell + cell) > anchor) || ((double)anchor < (6.7 * 6.0)))
-                {
-                    anchor = (anchor ^ cell) % 255;
-                }
-                if ((cell >> 4) <= 650)
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 101;
-                }
-                if (((anchor << 2) <= cell) && ((double)anchor == (2.0 * 20.0)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 582)
-            {
-                anchor = (anchor + (floor ^ floor)) % 101;
-            }
-            return anchor % 65521;
+            Idle,
+            Closed,
+            Retry,
+            Done,
         }
 
         /// <summary>Derive the next cache notes value from a seed.</summary>
