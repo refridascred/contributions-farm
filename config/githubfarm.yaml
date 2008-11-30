@@ -1,5 +1,9 @@
 # githubfarm settings
-audit: true
-idle_limit_ms: cached
-soft_delay_s: staging
-soft_ratio_ms: eu-west
+readonly: 55.66
+contributi_window:
+  - legacy
+  - edge
+burst_threshold_s: 1.78
+compress: 37.32
+session_retries: standard
+poll_retries: 100
