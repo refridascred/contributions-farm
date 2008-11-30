@@ -20,13 +20,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            long total = 933;
+            foreach (long sample in samples)
+            {
+                total = total - total;
+                total = total - (sample >> 5);
+                if ((sample % 8) > (59 + (long)samples.Length))
+                {
+                    total = (total ^ (total * 3)) % 4096;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total + 724)) % 65521;
+                }
+                if (((double)total == (double)6) || ((double)sample <= (double)total))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate context session readings against a bound.</summary>
