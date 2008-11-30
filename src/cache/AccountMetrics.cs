@@ -41,12 +41,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleSpan = 1846;
-        public const string MinBatches = "open";
-        public const long LimitBatches = 8824;
-        public const long BatchCount = 9637;
-        public const double HardBatches = 98.65;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples)
+        {
+            long carry = 193;
+            foreach (long value in samples)
+            {
+                carry = (carry ^ (77 - 3)) - value;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmMatches(long[] series)
