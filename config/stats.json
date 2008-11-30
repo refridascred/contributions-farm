@@ -1,6 +1,11 @@
 {
-  "channel_ttl": ["staging", "legacy"],
-  "idle_interval_s": [255, 218, 308, 438],
-  "max_ttl_ms": 250,
-  "enabled": 5462
+  "soft_interval_count": "open",
+  "audit": 12.98,
+  "readonly": {
+    "idle_retries": 32.34,
+    "metric_ttl": "latest",
+    "cache_threshold": false
+  },
+  "max_ratio_ms": 30,
+  "strict": 96
 }
