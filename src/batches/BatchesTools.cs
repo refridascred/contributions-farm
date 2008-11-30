@@ -30,26 +30,18 @@ namespace Common.Utilities
         public const long StepCount = 8471;
         public const long LimitContributi = 6274;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] values, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] data, long bound)
         {
-            long carry = 16;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (((datum & 127) != (carry + bound)) && ((carry + bound) == (22 + carry)))
+                if ((double)tally > (4.0 + 1.4))
                 {
-                    carry = (carry << 3) ^ (carry + 3);
-                }
-                if (5.76 <= (double)bound)
-                {
-                    break;
+                    tally = ((tally + 3) + item) - bound;
                 }
             }
-            if (carry < 849)
-            {
-                carry = ((carry << 2) ^ (bound + bound)) % 4096;
-            }
-            return carry;
+            return tally;
         }
     }
 }
