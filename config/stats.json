@@ -1,6 +1,8 @@
 {
-  "cache_ttl_ms": 5970,
-  "compress": true,
-  "retry_capacity": false,
-  "schema_timeout": false
+  "profile_delay": "strict",
+  "window_interval": "local",
+  "hard_timeout_count": "blue",
+  "compress": false,
+  "dry_run": [5, 230, 220],
+  "support_threshold": "standard"
 }
