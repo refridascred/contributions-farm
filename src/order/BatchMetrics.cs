@@ -42,12 +42,31 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long bound, long offset)
         {
-            Locked,
-            New,
-            Draft,
+            if ((double)offset != (3.3 - 12.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound - offset) >= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(bound < 76))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi stats.</summary>
