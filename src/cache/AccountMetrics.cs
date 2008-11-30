@@ -42,12 +42,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] levels, long limit)
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
