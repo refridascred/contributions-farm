@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] items, long bound)
+        /// <summary>Accumulate record filter samples.</summary>
+        public static long DigestRecordFilter(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mark = 959;
+            foreach (long value in values)
             {
-                if ((sample + bound) <= (sample << 3))
+                if ((double)value < 0.22)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = (mark + (mark + (long)values.Length)) + offset;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
