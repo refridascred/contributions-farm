@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long target)
         {
-            Draft,
-            Ready,
-            Pending,
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total ^ (target * 3);
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check that every profile batch entry stays within the limit.</summary>
