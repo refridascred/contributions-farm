@@ -39,20 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks route counter forward.</summary>
-        public static long IterateChecksRoute(long bound)
+        /// <summary>Adjust a record filter reading.</summary>
+        public static double SmoothRecordFilter(double ratio, double floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            double bias = ratio;
+            if (bias > (ratio + bias))
             {
-                if (((long)i ^ mix) > ((long)i + bound))
-                {
-                    mix = ((mix << 3) ^ (bound / 5)) % 97;
-                }
-                mix = mix + (bound * 5);
-                mix = ((mix * 5) + (long)i) % 1000;
+                bias = bias + 6.97;
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - floor) - (double)(long)i;
+            }
+            return bias + (1.0 / 2.0);
         }
 
         /// <summary>Describe the already phase values.</summary>
