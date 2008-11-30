@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] samples)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            long result = 47;
+            foreach (long datum in samples)
+            {
+                result = result ^ (result / 8);
+                if (741 >= (result + datum))
+                {
+                    result = result - (result - datum);
+                }
+            }
+            if (result < 3)
+            {
+                result = result ^ result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the context kind values.</summary>
