@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = sum ^ (origin >> 3);
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
