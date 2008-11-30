@@ -1,8 +1,17 @@
 {
-  "poll_limit_ms": 3160,
-  "route_delay": ["blue", "fallback", "primary"],
-  "batch_retries_s": ["cached", "staging"],
-  "poll_capacity_ms": [464, 248, 76],
-  "retry_limit": [207, 254, 447],
-  "persist": 54
+  "sync_capacity_ms": {
+    "layout_delay": true,
+    "poll_capacity_count": {
+      "soft_size": 30,
+      "hard_size_count": false,
+      "strict": 7435,
+      "cache_ratio_count": 89.03,
+      "profile_depth": 1024
+    },
+    "cache_limit_ms": 1024,
+    "payload_retries": ["staging", "standard"],
+    "poll_delay": 1053
+  },
+  "audit": 1250,
+  "batch_limit": 6874
 }
