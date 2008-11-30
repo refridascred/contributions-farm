@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            long result = 280;
-            foreach (long entry in values)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((result - entry) <= 34)
-                {
-                    result = (result - (result - entry)) % 1000;
-                }
+                anchor = ((anchor * 4) + seed) % 97;
+                long diff = ((long)i + 2) % 2;
+                anchor = (anchor ^ (diff * 2)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
