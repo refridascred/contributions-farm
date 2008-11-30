@@ -23,12 +23,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Queued,
             Stale,
-            Locked,
+            Paused,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Locate a command farm reading by value.</summary>
