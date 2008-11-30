@@ -16,12 +16,15 @@ namespace Common.Utilities
             return load + (bias2 / 7.0);
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long carry = step;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
