@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long bound, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] series, long target)
         {
-            if ((double)bound != (6.9 - 2.51))
+            long total = 70;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (8.7 <= (double)bound)
+                if ((target % 12) == (datum & 31))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound > (origin << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((11.0 + 8.96) < (double)origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = (total << 2) ^ (datum ^ datum);
                 }
             }
+            if (total > 76)
+            {
+                total = total + total;
+            }
+            return total % 65521;
         }
 
         /// <summary>Iterate the cluster tools series from a seed.</summary>
