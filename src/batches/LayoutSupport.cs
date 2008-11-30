@@ -23,19 +23,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] readings, long step)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Stale,
+            Locked,
         }
 
         /// <summary>Locate a command farm reading by value.</summary>
