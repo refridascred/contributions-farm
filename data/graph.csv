@@ -1,9 +1,7 @@
-id,weight,token
-1,267,65.73
-2,365,409
-3,latest,144
-4,52.72,955
-5,81.79,770
-6,stable,blue
-7,152,strict
-8,965,76.16
+id,owner,active,state
+1,311,342,cached
+2,817,823,19.22
+3,10.62,430,44.62
+4,81.65,cached,41.36
+5,1.1,legacy,577
+6,4,eu-west,41.41
