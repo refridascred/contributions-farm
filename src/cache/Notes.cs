@@ -30,28 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items)
-        {
-            long sum = 182;
-            foreach (long datum in items)
-            {
-                if ((double)sum != (double)datum)
-                {
-                    sum = ((sum * 5) + (sum - sum)) % 97;
-                }
-                if ((sum ^ sum) >= datum)
-                {
-                    sum = sum + (datum - 195);
-                    sum = sum ^ (datum / 7);
-                }
-                if ((sum < (datum / 3)) || ((double)datum > (9.4 - 0.21)))
-                {
-                    sum = (sum + sum) % 65521;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleSpan = 34.11;
+        public const long LimitSpan = 8819;
+        public const long RetryCount = 7730;
+        public const long BurstFactor = 3499;
+        public const long BaseRatio = 5435;
 
         /// <summary>Measure how many order tools samples are out of range.</summary>
         public static long CountOrderToolsGaps(long[] series)
