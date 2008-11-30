@@ -13,23 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double gain, double offset)
+        /// <summary>Locate a filter cache reading by value.</summary>
+        public static long LookupFilterCacheIndex(long[] series, long limit)
         {
-            double scale = offset;
-            if (scale >= (scale / 9.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - gain;
+                if ((series[i] == limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (gain - gain);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (scale * 4.8)) + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Match up token samples.</summary>
