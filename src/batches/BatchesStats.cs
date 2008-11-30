@@ -69,19 +69,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster githubfarm readings against a bound.</summary>
-        public static bool GuardClusterGithubfarmBounds(long[] samples, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long step)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return ok;
+            return sum;
         }
     }
 }
