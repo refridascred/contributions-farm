@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Combine metrics checks values into a single score.</summary>
+        public static long DigestMetricsChecks(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 17;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (((sum << 2) ^ offset) % 255) + entry;
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
