@@ -46,12 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] samples, long limit)
         {
-            Locked,
-            Synced,
-            Paused,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
