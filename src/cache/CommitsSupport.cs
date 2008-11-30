@@ -38,21 +38,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 6;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((8 ^ item) >= (sum % 8))
                 {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum ^ (sum << 3);
                 }
             }
-            return matches;
+            if (sum > 0)
+            {
+                sum = (sum ^ (sum % 10)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
