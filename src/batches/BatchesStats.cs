@@ -46,19 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Validate cluster githubfarm readings against a bound.</summary>
+        public static bool GuardClusterGithubfarmBounds(long[] samples, long seed)
         {
-            long carry = 842;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                carry = carry - (reading + carry);
+                if (sample < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (carry < 4)
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 1000;
+            return ok;
         }
     }
 }
