@@ -20,11 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
