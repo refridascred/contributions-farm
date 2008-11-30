@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 71.74;
-        public const string DefaultSize = "latest-edge";
-        public const long IdleSession = 2148;
-        public const long BatchSession = 7517;
-        public const string RetrySession = "local-v2";
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Combine editor stream values into a single score.</summary>
         public static long TotalEditorStream(long[] samples, long origin)
