@@ -40,19 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double gain, double bias)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            double scale = (double)(994 - 861);
-            if (scale <= (double)955)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale + bias) - gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + bias;
+            return hits;
         }
 
         /// <summary>Validate window payload readings against a bound.</summary>
