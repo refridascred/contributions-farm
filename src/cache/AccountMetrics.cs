@@ -27,15 +27,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long carry = 193;
-            foreach (long value in samples)
-            {
-                carry = (carry ^ (77 - 3)) - value;
-            }
-            return carry % 65521;
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
