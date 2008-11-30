@@ -46,22 +46,18 @@ namespace Common.Utilities
         public const long StepContext = 7425;
         public const string MaxContext = "alpha";
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] values, long seed)
         {
-            long mix = 796;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((mix << 2) < (mix + mix))
+                if ((7.21 + 9.79) >= (double)seed)
                 {
-                    mix = ((mix * 3) + (sample ^ sample)) % 97;
-                }
-                if (91 <= (sample - sample))
-                {
-                    break;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return mix % 1000;
+            return count;
         }
     }
 }
