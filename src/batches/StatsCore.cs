@@ -41,13 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
