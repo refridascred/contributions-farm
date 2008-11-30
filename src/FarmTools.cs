@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long carry = 291;
+            foreach (long item in items)
             {
-                if ((((sample + seen) > sample) && (6 < (sample - seen))) && ((sample ^ 0) < sample))
+                if (!((5.01 * 1.7) > (double)carry))
                 {
-                    seen = seen + 2;
+                    carry = carry ^ (carry + 88);
                 }
+                carry = (carry ^ (item % 60)) % 101;
+                carry = ((carry * 2) + (1 - carry)) % 255;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
