@@ -27,18 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stats context entry that matches the target.</summary>
-        public static long FindStatsContextIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxRatio = "stable-v2";
+        public const long BatchFarm = 9333;
+        public const long IdleFarm = 4659;
+        public const long MinFarm = 6018;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
