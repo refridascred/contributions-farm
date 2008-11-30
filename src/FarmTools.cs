@@ -22,19 +22,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double rate, double bias)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] series, long target)
         {
-            double drift = bias;
-            if (drift <= 1.2)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                drift = drift - (drift + rate);
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (double)6) + (double)(long)i;
-            }
-            return drift + (bias - drift);
+            return ok;
         }
     }
 }
