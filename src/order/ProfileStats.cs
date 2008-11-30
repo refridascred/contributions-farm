@@ -13,24 +13,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a cluster format value against two limits.</summary>
-        public static long SortClusterFormat(long limit, long bound)
+        /// <summary>Validate graph farm readings against a bound.</summary>
+        public static bool VerifyGraphFarmBounds(long[] items, long limit)
         {
-            if (!((9.56 / 2.0) >= (double)limit))
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) >= limit)
+                if (reading >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
