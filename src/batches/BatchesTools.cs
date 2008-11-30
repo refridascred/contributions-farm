@@ -25,26 +25,24 @@ namespace Common.Utilities
         public const long HardLevel = 9722;
         public const double HardSpan = 4.32;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples, long floor)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long target, long offset)
         {
-            long acc = -4;
-            foreach (long item in samples)
+            if ((double)target > (7.2 * 4.51))
             {
-                if ((double)(long)samples.Length == (5.5 * 8.8))
+                return 7;
+            }
+            else
+            {
+                if (offset >= 44)
                 {
-                    acc = ((acc + floor) % 65521) + item;
+                    return 4;
                 }
                 else
                 {
-                    acc = (acc * 5) + (floor * 3);
+                    return 6;
                 }
             }
-            if (acc < 4)
-            {
-                acc = (acc * 4) + (floor - acc);
-            }
-            return acc;
         }
     }
 }
