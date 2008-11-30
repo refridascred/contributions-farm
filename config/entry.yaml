@@ -1,22 +1,7 @@
 # entry settings
-min_interval_count: latest
-default_retries: 22.68
-warm_capacity_count: fallback
-persist: 32.58
-verbose:
-  poll_interval:
-    batch_delay:
-      - 165
-      - 307
-      - 284
-    base_delay:
-      - 124
-      - 367
-      - 43
-      - 140
-    cache_ttl_ms:
-      - 407
-      - 16
-  persist: 3
-  poll_retries_count: legacy
-  support_limit: 8802
+base_delay_pct: true
+min_size_count: 13
+cache_delay: strict
+verbose: false
+poll_threshold_s: 100
+cluster_timeout: 500
