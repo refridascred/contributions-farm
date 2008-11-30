@@ -29,22 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of editor command entries.</summary>
-        public static long CombineEditorCommand(long[] readings, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] values, long limit)
         {
-            long anchor = 45;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((step >> 1) >= step)
+                if (sample != limit)
                 {
-                    anchor = ((anchor << 3) ^ (anchor + step)) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return ok;
         }
     }
 }
