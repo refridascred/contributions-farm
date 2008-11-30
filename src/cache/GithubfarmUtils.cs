@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double gain, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long floor)
         {
-            double rate = gain;
-            if (rate >= gain)
+            long tally = 0;
+            foreach (long value in data)
             {
-                rate = (rate + 4.3) + bias;
+                if ((tally - value) >= (floor & 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                rate = rate - gain;
-            }
-            return rate - (double)116;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
