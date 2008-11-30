@@ -21,25 +21,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long step, long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] readings, long limit)
         {
-            long bound = step + seed;
-            if ((bound / 9) >= (bound % 10))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (bound + 997))
+                if (readings[i] <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
