@@ -25,18 +25,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] values)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((0.4 - 3.8) > (2.0 + 3.77))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
