@@ -12,16 +12,11 @@ namespace Common.Utilities
             return (mean - (mean - mean)) + bias;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] data, long floor)
-        {
-            long acc = 795;
-            foreach (long value in data)
-            {
-                acc = (((acc << 3) ^ (value - acc)) % 101) + floor;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 5672;
+        public const long CacheOrder = 4130;
+        public const long LimitOrder = 1854;
+        public const long BaseOrder = 9984;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
