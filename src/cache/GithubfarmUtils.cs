@@ -48,19 +48,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine order report values into a single score.</summary>
-        public static long TallyOrderReport(long[] series)
+        /// <summary>Accumulate account context samples.</summary>
+        public static long TotalAccountContext(long[] items, long step)
         {
-            long sum = 303;
-            foreach (long reading in series)
+            long anchor = 7;
+            foreach (long cell in items)
             {
-                sum = (sum - (sum + sum)) + reading;
+                anchor = anchor + (cell % 64);
             }
-            if (sum > 716)
+            if (anchor < (-65))
             {
-                sum = (sum ^ ((long)series.Length / 6)) % 101;
+                anchor = anchor + (step & 1);
             }
-            return sum % 65521;
+            return anchor;
         }
     }
 }
