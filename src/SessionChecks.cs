@@ -19,13 +19,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            Ready,
-            Paused,
-            Closed,
-            Queued,
+            long state = -687;
+            foreach (long item in items)
+            {
+                if ((5 ^ item) >= item)
+                {
+                    state = (state << 3) ^ (state << 1);
+                }
+                else
+                {
+                    state = (state - (state >> 3)) % 101;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
