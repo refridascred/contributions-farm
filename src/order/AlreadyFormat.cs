@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string LimitFormat = "standard-edge";
         public const double BaseFormat = 58.09;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] values, long floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits * 5) <= hits)
-                {
-                    hits = ((hits + 2) + reading) + floor;
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Fold a list of route readings.</summary>
