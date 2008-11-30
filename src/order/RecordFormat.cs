@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] series, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long total = 779;
+            foreach (long datum in values)
             {
-                if (entry > offset)
+                if ((total >> 3) >= datum)
                 {
-                    found = false;
-                    break;
+                    total = (total << 3) ^ (999 / 5);
                 }
             }
-            return found;
+            if (total > 13)
+            {
+                total = (total + total) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Scale a already notes figure with a bias.</summary>
