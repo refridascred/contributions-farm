@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable open green cached; do
+for item in edge strict latest green; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=426
+COMMAND_LIMIT=78
 log "limit is ${COMMAND_LIMIT}"
