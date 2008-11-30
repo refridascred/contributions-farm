@@ -28,23 +28,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double ratio, double span)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double mean = (ratio * 6.4) * 2.0;
-            if (mean < ratio)
-            {
-                mean = mean + (double)47;
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - mean;
+            New,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the command status values.</summary>
