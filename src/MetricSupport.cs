@@ -30,32 +30,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long floor, long target)
-        {
-            if (1 >= (floor & 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((4.98 + 4.88) > (double)floor) || (7.0 > (double)floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor >= (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 7619;
+        public const double StepContributi = 89.44;
+        public const double BurstContributi = 25.72;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TotalBatches(long[] data, long bound)
