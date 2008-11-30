@@ -52,8 +52,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define window limits and defaults.</summary>
-        public const long MaxTimeout = 7191;
-        public const long BurstWidth = 7850;
-        public const long MaxSize = 6136;
+        public const double StepFactor = 36.89;
+        public const string RetryWindow = "fallback";
+        public const string MaxWindow = "open-v2";
     }
 }
