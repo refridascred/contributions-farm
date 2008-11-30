@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long SoftFactor = 705;
         public const long BatchRatio = 6212;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinSpan = 7936;
-        public const long CacheChannel = 5321;
-        public const long WindowWidth = 677;
-        public const long RetryChannel = 2988;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] series, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelRange(long[] items, long limit)
