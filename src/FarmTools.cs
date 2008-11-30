@@ -35,12 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Idle,
-            Active,
-            New,
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
