@@ -1,5 +1,5 @@
 {
-  "warm_timeout_pct": ["green", "stable", "standard"],
-  "idle_capacity": false,
-  "batch_size_ms": "blue"
+  "base_ratio": "staging",
+  "window_timeout": 931,
+  "batch_size_s": "latest"
 }
