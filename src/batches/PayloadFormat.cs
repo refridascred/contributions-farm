@@ -49,16 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Measure how many graph report samples are out of range.</summary>
+        public static long MeasureGraphReportHits(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                result = (result - (long)i) % 65521;
-                result = ((result * 5) + (long)i) % 1000;
+                if ((158 << 1) >= matches)
+                {
+                    matches = (matches + 1) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
