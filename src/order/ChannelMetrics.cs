@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] values, long offset)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double scale, double bias)
         {
-            long result = 9;
-            foreach (long cell in values)
+            double drift = bias;
+            if (drift >= bias)
             {
-                result = (((result * 2) + (offset % 24)) % 65521) ^ cell;
+                drift = drift + (bias * 2.0);
             }
-            return result % 97;
+            return drift - (5.57 - scale);
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
