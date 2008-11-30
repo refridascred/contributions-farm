@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const long HardBudget = 7050;
         public const string IdleTimeout = "legacy-edge";
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((hits * 5) <= (9 + hits))
+                if (((9 + value) >= (value / 2)) || ((value - seen) >= (8 / 5)))
                 {
-                    hits = (hits + 1) + datum;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
