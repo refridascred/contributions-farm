@@ -12,5 +12,15 @@ for i in $(seq 1 10); do
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=422
+CHANNEL_LIMIT=20
 log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-green}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
