@@ -1,5 +1,23 @@
 {
-  "max_depth": "cached",
-  "hard_threshold_count": false,
-  "strict": false
+  "githubfarm_size": {
+    "base_delay": 19.91,
+    "strict": 500,
+    "enabled": 5347,
+    "report_ratio": "staging",
+    "batch_capacity_ms": 250,
+    "min_delay_s": 2537
+  },
+  "context_delay": "strict",
+  "hard_depth": {
+    "verbose": "green",
+    "metric_threshold": true,
+    "dry_run": {
+      "retry_timeout_count": [290, 219],
+      "batch_timeout": 60,
+      "base_timeout": [421, 42, 214],
+      "flush_timeout_s": 250,
+      "enabled": 28.28
+    }
+  },
+  "hard_threshold": "strict"
 }
