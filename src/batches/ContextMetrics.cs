@@ -26,19 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((value & 255) != (step - step)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBatch = "staging-1";
+        public const long IdleBatch = 8678;
+        public const long HardBatch = 3649;
+        public const string StepBatch = "fallback-edge";
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
