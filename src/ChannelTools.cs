@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] levels, long seed)
+        /// <summary>Digest a series of layout checks entries.</summary>
+        public static long DigestLayoutChecks(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mark = 12;
+            foreach (long datum in values)
             {
-                if (datum > (736 + seen))
+                if (((double)mark >= (3.1 - 6.6)) && (mark <= (mark - 87)))
                 {
-                    seen = (seen + 2) + seed;
+                    mark = ((mark * 3) + (8 % 16)) - datum;
                 }
-                else
+                if ((15.0 / 4.0) <= (double)mark)
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (mark < 160)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
