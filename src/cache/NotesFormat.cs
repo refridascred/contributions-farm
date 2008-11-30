@@ -32,17 +32,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinRatio = "staging-edge";
+        public const double HardAccount = 4.4;
+        public const long MinBudget = 9532;
+        public const string IdleBudget = "latest-edge";
     }
 }
