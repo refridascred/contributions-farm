@@ -19,14 +19,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Retry,
-            Queued,
-            Active,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "latest-v2";
+        public const long BaseFormat = 7679;
+        public const double MaxScore = 68.35;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
