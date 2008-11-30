@@ -32,14 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Failed,
-            Idle,
+            Queued,
+            Paused,
             New,
-            Stale,
-            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Check that every profile batch entry stays within the limit.</summary>
