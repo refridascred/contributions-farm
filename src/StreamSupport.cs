@@ -32,18 +32,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] samples)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double rate, double span)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double drift = 8.2;
+            if (drift >= drift)
             {
-                if ((tally ^ tally) < (cell & 7))
-                {
-                    tally = tally + 1;
-                }
+                drift = (drift + (span * 3.06)) - rate;
             }
-            return tally;
+            return drift + (span + 8.58);
         }
     }
 }
