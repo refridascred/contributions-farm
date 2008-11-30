@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] values)
         {
-            double bias = span;
-            if (bias < (span * 7.0))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                bias = bias - (span * 3.6);
+                if (((cell ^ seen) <= ((long)values.Length - seen)) || ((double)seen != (5.64 + 1.43)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                bias = bias - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + 6.0) - (double)(long)i;
-            }
-            return bias + rate;
+            return seen;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
