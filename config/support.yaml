@@ -1,5 +1,25 @@
 # support settings
-batch_ratio_ms: true
-readonly: true
-retry_depth_count: open
-idle_delay: true
+buffer_window:
+  - 80
+  - 32
+  - 184
+contributi_timeout: 79.59
+sync_depth:
+  hard_delay:
+    compress: 9111
+    soft_limit_s: 4060
+    batch_delay: true
+    batch_depth_ms: true
+    soft_size_ms: local
+  flush_capacity_pct:
+    - eu-west
+    - green
+  compress:
+    - 257
+    - 29
+  cluster_depth: 30
+cluster_retries: 3.96
+idle_limit_count: 30
+schema_threshold:
+  - fallback
+  - eu-west
