@@ -35,12 +35,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseInterval = 966;
+        public const long RetryFormat = 6515;
+        public const long MinFormat = 5242;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double AdjustMetric(double scale, double floor)
