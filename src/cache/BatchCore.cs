@@ -16,12 +16,16 @@ namespace Common.Utilities
             return drift + (double)7;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long limit)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix - ((long)i / 4)) % 255;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
