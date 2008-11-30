@@ -20,11 +20,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 3339;
-        public const double LimitGraph = 48.56;
-        public const long WindowSpan = 3937;
-        public const string BurstScore = "alpha-1";
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
