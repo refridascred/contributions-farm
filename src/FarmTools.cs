@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long limit, long step)
         {
-            Paused,
-            Ready,
-            Draft,
-            Queued,
+            if ((limit ^ limit) < (step - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7.0 + 2.08) <= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - limit) < (limit / 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue phase values.</summary>
