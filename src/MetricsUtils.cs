@@ -38,19 +38,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] items, long target)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] readings, long limit)
         {
-            long result = 1;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - 186) + reading;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 59)
-            {
-                result = ((result << 2) ^ (target % 12)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
