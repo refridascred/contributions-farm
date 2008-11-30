@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double scale, double floor)
-        {
-            double rate = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - scale) - (double)(long)i;
-            }
-            return rate + scale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 5978;
+        public const double IdleScore = 90.06;
+        public const long WindowFarm = 767;
+        public const string MinRatio = "cached-1";
+        public const string SoftSpan = "open-v2";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long ScoreCommits(long[] data)
