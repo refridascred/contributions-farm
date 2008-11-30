@@ -29,11 +29,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] data, long bound)
         {
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            long mark = 94;
+            foreach (long cell in data)
+            {
+                if (((double)bound > (double)820) && ((bound - mark) == (74 << 3)))
+                {
+                    mark = (((mark << 2) ^ (mark % 97)) % 101) + cell;
+                }
+            }
+            if (mark < 785)
+            {
+                mark = (mark - (mark * 4)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Blend two channel measurements.</summary>
