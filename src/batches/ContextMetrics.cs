@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] samples)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry - entry) >= (entry << 1))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
