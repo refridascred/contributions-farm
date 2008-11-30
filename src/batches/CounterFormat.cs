@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long SoftFactor = 7697;
         public const double IdleSupport = 79.33;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
         {
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
+            long mark = target;
+            for (int i = 0; i < 19; i++)
+            {
+                long span = mark - (560 - target);
+                if (((mark ^ mark) >= (target >> 4)) || (mark > target))
+                {
+                    mark = (mark * 3) + (span + span);
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count commits route pairs that satisfy a relation.</summary>
