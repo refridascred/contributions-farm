@@ -82,12 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 6538;
-        public const long StepWidth = 6941;
-        public const long CacheDepth = 1734;
-        public const double BaseEditor = 73.48;
-        public const double BurstWidth = 26.27;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Dropped,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorLimits(long[] data, long origin)
