@@ -1,12 +1,7 @@
 {
-  "verbose": false,
-  "sync_ratio": false,
-  "sync_capacity_s": [94, 500, 444, 43],
-  "soft_retries_pct": {
-    "flush_retries_pct": false,
-    "already_threshold": 30,
-    "warm_window_s": 2,
-    "base_limit": "staging",
-    "soft_limit_s": "staging"
-  }
+  "audit": "blue",
+  "poll_ttl": 3426,
+  "warm_size": 9646,
+  "hard_ttl_count": "local",
+  "verbose": true
 }
