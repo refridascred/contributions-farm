@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] series)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((-4) <= (value + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks mode values.</summary>
