@@ -23,23 +23,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] series, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] readings, long step)
         {
-            long carry = 2;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                carry = (((carry * 4) + (carry + floor)) % 4096) ^ sample;
-                if (!((16.0 / 2.0) <= (double)carry))
+                if (value <= step)
                 {
-                    carry = (carry * 3) + carry;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 9)
-            {
-                carry = (carry ^ (carry - 68)) % 4096;
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Locate a command farm reading by value.</summary>
