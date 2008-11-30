@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Paused,
-            Idle,
-            Stale,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseSpan = 16.91;
+        public const long StepDepth = 8507;
+        public const double BatchSize = 5.24;
+        public const long SoftMetrics = 568;
+        public const long RetrySpan = 986;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheGaps(long[] values)
