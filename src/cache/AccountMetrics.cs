@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up cache farm samples.</summary>
-        public static long MatchCacheFarmCount(long[] values)
+        /// <summary>Validate queue payload readings against a bound.</summary>
+        public static bool CheckQueuePayloadRange(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading >= origin)
                 {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a already record.</summary>
