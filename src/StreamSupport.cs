@@ -37,12 +37,12 @@ namespace Common.Utilities
             return scale + 5.0;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Active,
-            Draft,
-            Idle,
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
