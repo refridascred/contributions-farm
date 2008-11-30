@@ -1,7 +1,31 @@
 # githubfarm settings
-sync_limit_ms: 5.64
-report_interval: 500
-metric_capacity: 8294
-checks_ttl: legacy
-cache_timeout: green
-min_timeout_ms: strict
+base_ttl_s: true
+max_limit_ms:
+  verbose:
+    strict: 250
+    compress: edge
+    soft_ratio_count: 30
+    soft_delay: 1519
+  warm_timeout_pct:
+    filter_depth: 80.84
+    burst_window_count: 30
+    hard_retries: 34
+    sync_limit: 72.25
+    max_size_pct:
+      - latest
+      - latest
+      - edge
+      - standard
+    batch_size_pct: 10.49
+  batch_window: 30
+  hard_timeout_ms: 6.67
+  hard_delay: 24.64
+  already_delay: strict
+enabled: 1024
+min_delay_count:
+  - 424
+  - 48
+  - 91
+  - 215
+soft_ttl: local
+record_ratio: true
