@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long acc = 19;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (((6.9 - 13.0) < (double)(long)readings.Length) && ((entry + (long)readings.Length) != (entry / 4)))
+                {
+                    acc = ((acc << 3) ^ (0 >> 2)) % 101;
+                }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
