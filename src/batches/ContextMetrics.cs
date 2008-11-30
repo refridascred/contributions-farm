@@ -13,11 +13,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "standard-1";
-        public const string MaxWindow = "open";
-        public const string WindowWidth = "primary-1";
-        public const string WindowFactor = "latest";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardCount = 6491;
+        public const long IdleSpan = 8304;
+        public const long BaseReport = 1556;
+        public const string SoftReport = "staging-v2";
+        public const string SoftTimeout = "fallback-edge";
 
         /// <summary>Accumulate checks samples.</summary>
         public static long ScoreChecks(long[] data, long origin)
