@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor tools entries that pass the check.</summary>
-        public static long TallyEditorToolsGaps(long[] levels)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading >> 2) >= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Fold a list of command readings.</summary>
