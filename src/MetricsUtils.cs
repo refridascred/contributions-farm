@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine account filter values into a single score.</summary>
-        public static long FoldAccountFilter(long[] levels, long bound)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long acc = 54;
-            foreach (long entry in levels)
-            {
-                acc = (acc - (bound - acc)) + entry;
-            }
-            return acc % 4096;
+            public bool Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
