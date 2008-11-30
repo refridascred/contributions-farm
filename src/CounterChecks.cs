@@ -58,22 +58,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings)
-        {
-            long state = 764;
-            foreach (long entry in readings)
-            {
-                if ((double)(long)readings.Length < (double)state)
-                {
-                    state = (((state << 2) ^ ((long)readings.Length + state)) % 1000) ^ entry;
-                }
-                else
-                {
-                    state = (state * 3) + (state >> 3);
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "fallback-v2";
+        public const string HardRatio = "fallback-edge";
+        public const long LimitSize = 123;
     }
 }
