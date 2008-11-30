@@ -40,22 +40,32 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long bound, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long gap = bound ^ target;
+            if (((target + bound) != (target - target)) || ((double)bound <= (7.09 + 7.5)))
             {
-                if ((seen & 7) > datum)
+                return 4;
+            }
+            else
+            {
+                if ((bound ^ gap) >= bound)
                 {
-                    seen = seen + 1;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target & 7) != (target - target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a checks stream counter forward.</summary>
