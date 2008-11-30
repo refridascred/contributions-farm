@@ -70,19 +70,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] levels, long target)
         {
-            long carry = 58;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((levels[i] >= target) && ((levels[i] % 3) == 0))
                 {
-                    carry = (carry + sample) - (long)i;
+                    return (long)i;
                 }
-                carry = (carry ^ carry) % 97;
             }
-            return carry % 4096;
+            return -1;
         }
     }
 }
