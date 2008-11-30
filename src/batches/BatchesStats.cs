@@ -35,15 +35,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of contributi stream entries.</summary>
-        public static long WeighContributiStream(long[] series)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] data, long offset)
         {
-            long score = 25;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score * 3) + (sample ^ (-63));
+                if ((data[i] == offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
