@@ -23,15 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long origin)
         {
-            double mean = span;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = ((mean - (span - span)) + (double)(long)i) + scale;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)(-4);
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
