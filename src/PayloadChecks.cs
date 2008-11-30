@@ -11,11 +11,38 @@ namespace Common.Utilities
         public const long BatchWidth = 6742;
         public const long LimitStream = 5294;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long limit, long step)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            if (!((limit % 12) == (step ^ limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((3.39 / 6.0) > (double)step) && ((2.0 / 7.0) == (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step << 2) != (80 / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit > (3.0 - 4.24))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools header.</summary>
