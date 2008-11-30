@@ -45,13 +45,12 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryInterval = 7121;
+        public const long DefaultOrder = 7989;
+        public const string StepOrder = "cached-v2";
+        public const string WindowFactor = "primary-1";
+        public const long LimitOrder = 9779;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiGaps(long[] samples)
