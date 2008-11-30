@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long target)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
