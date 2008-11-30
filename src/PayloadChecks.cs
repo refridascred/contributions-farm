@@ -23,17 +23,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster session sample.</summary>
-        public static long LookupClusterSessionIndex(long[] samples, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (samples[i] <= target)
+                if (cell <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
