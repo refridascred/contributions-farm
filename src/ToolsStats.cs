@@ -49,17 +49,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Synced,
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
