@@ -48,19 +48,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] levels, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Find the first session metrics entry that matches the target.</summary>
