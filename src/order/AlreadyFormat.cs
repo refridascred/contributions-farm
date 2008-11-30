@@ -33,22 +33,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 3940;
+        public const double MaxScore = 80.57;
+        public const double HardCluster = 14.44;
+        public const double RetryCluster = 13.13;
+        public const string DefaultCluster = "alpha";
 
         /// <summary>Combine cluster account values into a single score.</summary>
         public static long TallyClusterAccount(long[] samples, long bound)
