@@ -44,23 +44,18 @@ namespace Common.Utilities
         public const long SoftBudget = 8291;
         public const long BaseInterval = 7353;
 
-        /// <summary>Project the next metrics checks value.</summary>
-        public static double ProjectMetricsChecks(double rate, double bias)
+        /// <summary>Measure how many window route samples are out of range.</summary>
+        public static long TallyWindowRouteMatches(long[] readings, long origin)
         {
-            double weight = (bias / 2.0) - (double)45;
-            if (weight < (bias * 1.86))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                weight = (weight - (double)16) - rate;
+                if (origin < (origin % 5))
+                {
+                    count = (count + 3) - entry;
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (14.0 / 8.0)) + (double)(long)i;
-            }
-            return weight - (bias / 2.0);
+            return count;
         }
     }
 }
