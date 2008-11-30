@@ -64,38 +64,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long offset, long offset2)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            if ((double)offset2 <= (1.5 * 10.0))
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset2 > (offset - offset2))
+                if ((7.6 * 6.27) <= (double)limit)
                 {
-                    return 0;
+                    acc = acc ^ (acc % 10);
+                    break;
                 }
                 else
                 {
-                    if ((8.59 < (double)offset2) || (56 <= offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)offset <= (0.5 / 9.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = (acc - limit) % 1000;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
