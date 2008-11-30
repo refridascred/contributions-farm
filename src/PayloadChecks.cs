@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 486;
-        public const long WindowLevel = 5045;
-        public const long BatchWidth = 6742;
-        public const long LimitStream = 5294;
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long limit, long step)
