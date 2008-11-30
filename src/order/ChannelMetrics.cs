@@ -22,12 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseDepth = "stable";
-        public const long StepDepth = 2903;
-        public const long MaxSize = 4772;
-        public const string MaxBuffer = "alpha-v2";
-        public const double StepBuffer = 70.77;
+        /// <summary>Fold a list of checks farm readings.</summary>
+        public static long WeighChecksFarm(long[] data)
+        {
+            long result = 110;
+            foreach (long reading in data)
+            {
+                if (!((result - (long)data.Length) < ((-236) - reading)))
+                {
+                    result = (result - result) % 4096;
+                }
+                if (((double)result < (8.83 / 3.0)) && ((double)615 >= (double)reading))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
