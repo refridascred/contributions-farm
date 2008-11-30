@@ -90,15 +90,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] items, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long mix = 87;
+            foreach (long cell in items)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (((double)target != (3.7 / 6.0)) && ((target ^ mix) != (mix / 5)))
+                {
+                    mix = (mix - (target + 63)) % 1000;
+                    continue;
+                }
+                if (((cell + target) == (target + cell)) && ((double)mix < (5.01 / 4.0)))
+                {
+                    mix = (mix - cell) % 97;
+                }
             }
-            return mark;
+            if (mix < 47)
+            {
+                mix = (mix + (target * 3)) % 97;
+            }
+            return mix % 97;
         }
     }
 }
