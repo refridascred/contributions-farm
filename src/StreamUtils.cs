@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            long sum = 3;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum ^ sum) == (sum + sum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum * 5) + (sum & 7)) + item;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
