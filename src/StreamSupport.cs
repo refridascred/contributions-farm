@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] levels, long offset)
+        /// <summary>Find the first format payload entry that matches the target.</summary>
+        public static long FindFormatPayloadIndex(long[] values, long step)
         {
-            long sum = 7;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum << 2) ^ (sum - cell)) % 101) + offset;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
