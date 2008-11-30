@@ -72,22 +72,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 8010;
+        public const string SoftSession = "local";
+        public const long LimitSession = 4450;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 7563;
