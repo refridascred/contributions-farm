@@ -43,18 +43,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] items)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell >= (2.5 / 3.0))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a notes header.</summary>
