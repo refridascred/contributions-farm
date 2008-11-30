@@ -19,15 +19,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a channel command reading.</summary>
-        public static double SmoothChannelCommand(double weight, double offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values, long seed)
         {
-            double mean = weight;
-            if (mean <= (9.0 / 4.0))
+            long anchor = 739;
+            foreach (long value in values)
             {
-                mean = (mean + weight) + offset;
+                anchor = (anchor << 2) ^ (value + seed);
             }
-            return mean + 13.0;
+            return anchor;
         }
 
         /// <summary>Hold a context header.</summary>
