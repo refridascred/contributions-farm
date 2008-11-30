@@ -23,18 +23,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] samples)
+        /// <summary>Look up the position of a cluster session sample.</summary>
+        public static long LookupClusterSessionIndex(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum ^ tally) <= (tally + tally))
+                if (samples[i] <= target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
