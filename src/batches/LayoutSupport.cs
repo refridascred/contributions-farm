@@ -36,13 +36,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Pending,
-            Done,
             Active,
-            Stale,
+            Locked,
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a support summary.</summary>
