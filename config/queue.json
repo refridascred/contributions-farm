@@ -1,6 +1,13 @@
 {
-  "min_size_ms": false,
-  "flush_ratio": "staging",
-  "soft_window_s": 19,
-  "retry_ratio_ms": 63.89
+  "retry_limit_pct": 4024,
+  "readonly": false,
+  "soft_timeout_pct": {
+    "session_ttl": 100,
+    "min_limit": {
+      "metric_limit": "blue",
+      "retry_delay": 58.33,
+      "readonly": "eu-west"
+    },
+    "cache_window": 61.52
+  }
 }
