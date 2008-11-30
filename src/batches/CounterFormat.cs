@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank batch layout input into a small class.</summary>
-        public static long SortBatchLayout(long origin, long limit)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long next = origin ^ limit;
-            if (!((95 + limit) >= (origin ^ origin)))
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(limit > origin))
+                if (!((bound - 11) < ((long)i + bound)))
                 {
-                    return 0;
+                    carry = (carry ^ (284 ^ (-617))) % 4096;
+                }
+                if ((bound >> 3) <= (carry + carry))
+                {
+                    carry = ((carry * 2) + (bound - 51)) % 255;
                 }
                 else
                 {
-                    if (((40 / 4) <= origin) && ((origin + origin) != (origin - next)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin ^ limit) >= (next << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    carry = (carry ^ carry) % 4096;
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Accumulate commits samples.</summary>
