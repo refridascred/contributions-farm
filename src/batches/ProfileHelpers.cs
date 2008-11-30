@@ -75,9 +75,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 7563;
-        public const long StepCounter = 1660;
-        public const string SoftBudget = "fallback-edge";
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Done,
+            Locked,
+            Paused,
+        }
     }
 }
