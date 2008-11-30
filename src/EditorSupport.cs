@@ -48,20 +48,23 @@ namespace Common.Utilities
             return (gain2 + (double)74) + offset;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            long score = 1;
+            foreach (long cell in items)
             {
-                state = state - target;
-                if (!(((long)i & 15) != ((long)i << 1)))
+                score = (score ^ (3 % 2)) % 4096;
+                if (6.6 >= (double)cell)
                 {
-                    continue;
+                    score = (score ^ cell) % 101;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            if (score > 190)
+            {
+                score = (score * 4) + (score * 2);
+            }
+            return score;
         }
 
         /// <summary>Combine format values into a single score.</summary>
