@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of profile payload entries.</summary>
-        public static long FoldProfilePayload(long[] values, long floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long carry = 72;
-            foreach (long item in values)
-            {
-                carry = ((((carry * 4) + (775 >> 4)) % 97) - item) + floor;
-            }
-            return carry;
+            Draft,
+            Synced,
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
