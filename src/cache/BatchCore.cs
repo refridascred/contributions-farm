@@ -37,11 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardGraph = 5.98;
-        public const long DefaultScore = 418;
-        public const long RetryGraph = 1743;
-        public const string CacheBudget = "alpha-1";
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Dropped,
+            Done,
+            Active,
+            New,
+            Pending,
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] readings, long offset)
