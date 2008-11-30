@@ -1,12 +1,14 @@
 # Command notes
 
-Run the stream check before changing any commits limits.
-The token helpers are pure functions, so they are safe to call from any thread.
-Keep session and window names short and lowercase.
+A format that stays idle for too long is moved to the metric list.
+Defaults for layout live in the config folder and can be overridden per environment.
+
+Defaults for profile live in the config folder and can be overridden per environment.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new already fields
-- Log every farm change
-- Validate batch input early
-- Review githubfarm limits each release
+- Log every cache change
+- Review batches limits each release
+- Document new stats fields
+- Prefer tools defaults
