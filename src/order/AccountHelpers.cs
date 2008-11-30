@@ -25,19 +25,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double weight, double floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double gain = 5.4;
-            if (gain < 6.3)
-            {
-                gain = (gain - 9.4) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (gain + weight)) - (double)(long)i;
-            }
-            return gain + (weight + weight);
+            Pending,
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
