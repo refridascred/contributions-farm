@@ -31,18 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] values)
+        /// <summary>Look up the position of a account batch sample.</summary>
+        public static long SeekAccountBatchIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits >> 2) >= (hits + hits))
+                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
                 {
-                    hits = (hits + 2) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
