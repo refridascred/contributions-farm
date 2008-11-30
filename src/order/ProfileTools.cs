@@ -48,32 +48,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a command profile value against two limits.</summary>
-        public static long GradeCommandProfile(long bound, long target)
+        /// <summary>Locate a metric payload reading by value.</summary>
+        public static long LookupMetricPayloadIndex(long[] values, long floor)
         {
-            long offset = bound ^ target;
-            if (offset <= (bound + bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (target >= (offset - 3))
+                if (values[i] < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (107 >= (target * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
