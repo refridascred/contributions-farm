@@ -33,19 +33,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] samples, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long bound)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long lane = step - bound;
+            if (((649 & 63) > bound) || (bound < lane))
             {
-                if (item <= origin)
+                return 2;
+            }
+            else
+            {
+                if ((lane / 2) == (bound - bound))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
     }
 }
