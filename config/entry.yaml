@@ -1,8 +1,10 @@
 # entry settings
-retry_limit_pct: local
-idle_ratio_s:
-  - 84
-  - 368
-  - 81
-cache_limit_pct: primary
-cache_capacity_pct: true
+batch_ttl: 14
+batch_threshold_count:
+  - cached
+  - legacy
+warm_threshold_count:
+  - 143
+  - 321
+warm_depth_s: 94.75
+compress: strict
