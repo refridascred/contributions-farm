@@ -73,10 +73,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 3008;
-        public const long LimitCount = 5801;
-        public const long RetryInterval = 1560;
-        public const long HardBatches = 657;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
