@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two command tools measurements.</summary>
-        public static double AdjustCommandTools(double weight, double bias)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double weight, double floor)
         {
-            double mean = weight;
-            return (mean - (mean - mean)) + bias;
+            double weight2 = weight + weight;
+            if (weight2 <= floor)
+            {
+                weight2 = weight2 - (weight2 + floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + floor) + (double)(long)i;
+            }
+            return weight2 + (double)832;
         }
 
         /// <summary>Count format window pairs that satisfy a relation.</summary>
