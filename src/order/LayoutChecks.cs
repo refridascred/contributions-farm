@@ -43,23 +43,10 @@ namespace Common.Utilities
         public const double SoftMetrics = 94.55;
         public const double MaxSpan = 59.94;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items, long floor)
-        {
-            long mix = 1;
-            foreach (long reading in items)
-            {
-                if (!((double)mix <= (13.0 + 7.87)))
-                {
-                    mix = (mix * 3) + (reading + reading);
-                }
-            }
-            if (mix > 9)
-            {
-                mix = (mix * 4) + floor;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "local";
+        public const string MinAccount = "cached-v2";
+        public const long SoftWidth = 1655;
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
         public static long CountStreamChecksOutliers(long[] levels)
