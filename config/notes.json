@@ -1,8 +1,10 @@
 {
-  "persist": 79,
-  "batch_ratio": true,
-  "burst_ttl_pct": "latest",
-  "verbose": "fallback",
-  "sync_limit": true,
-  "already_timeout": true
+  "min_delay_s": {
+    "strict": "legacy",
+    "sync_delay_count": "legacy",
+    "batch_timeout_s": "primary",
+    "flush_capacity": "staging"
+  },
+  "readonly": "stable",
+  "retry_depth": "staging"
 }
