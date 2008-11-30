@@ -1,15 +1,6 @@
 # githubfarm settings
-layout_depth: cached
-strict: true
-readonly: 500
-stream_delay:
-  burst_window:
-    - 196
-    - 474
-    - 96
-  idle_capacity: primary
-  max_window_ms: 1024
-enabled:
-  - strict
-  - cached
-  - open
+burst_threshold: blue
+sync_ttl_count: cached
+strict: fallback
+min_delay_count: 84
+hard_window_s: true
