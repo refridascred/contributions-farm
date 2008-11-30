@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Queued,
-            Draft,
-            Active,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 2721;
+        public const long BurstCount = 2674;
+        public const double CacheCommand = 18.22;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long bound)
