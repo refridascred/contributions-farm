@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long bound, long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if ((double)bound != (1.0 - 0.82))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0.6 * 4.0) <= (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ target) < (bound ^ 14))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a route options.</summary>
