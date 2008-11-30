@@ -37,21 +37,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count cache batch pairs that satisfy a relation.</summary>
-        public static long PairCacheBatchCount(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (acc >= (acc + 680))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc - step;
                 }
+                if ((double)acc == (double)325)
+                {
+                    acc = acc - (acc + (long)i);
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Combine route values into a single score.</summary>
