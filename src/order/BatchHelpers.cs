@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Idle,
-            Closed,
-            Retry,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 2487;
+        public const long BurstSpan = 5818;
+        public const string WindowSupport = "strict-edge";
 
         /// <summary>Look up the position of a token buffer sample.</summary>
         public static long SeekTokenBufferIndex(long[] levels, long target)
