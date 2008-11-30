@@ -13,21 +13,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
