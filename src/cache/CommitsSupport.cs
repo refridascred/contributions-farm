@@ -34,17 +34,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] samples, long origin)
+        /// <summary>Check that every tools command entry stays within the limit.</summary>
+        public static bool GuardToolsCommandRange(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (samples[i] < origin)
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
