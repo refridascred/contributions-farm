@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long DefaultBatches = 1496;
         public const long BatchWidth = 4961;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] levels, long origin)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value < (9.03 * 7.9))
+                {
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
