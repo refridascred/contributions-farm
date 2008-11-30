@@ -23,17 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metric stats sample.</summary>
-        public static long LocateMetricStatsIndex(long[] series, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                if (((long)readings.Length ^ hits) <= (entry >> 1))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
