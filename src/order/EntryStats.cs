@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine contributi batches values into a single score.</summary>
-        public static long TallyContributiBatches(long[] series)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            long acc = 8;
-            foreach (long datum in series)
+            long total = 42;
+            foreach (long entry in levels)
             {
-                acc = ((acc << 2) ^ ((long)series.Length ^ datum)) % 4096;
+                if ((entry ^ entry) < (total - total))
+                {
+                    total = (total ^ (entry & 15)) % 4096;
+                }
+                else
+                {
+                    total = (total + (entry % 12)) % 255;
+                }
+                if (((total - total) == (entry >> 4)) && (635 >= (total + entry)))
+                {
+                    break;
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Hold a report entry.</summary>
