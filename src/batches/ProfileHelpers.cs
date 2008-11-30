@@ -58,10 +58,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 8010;
-        public const string SoftSession = "local";
-        public const long LimitSession = 4450;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 7563;
