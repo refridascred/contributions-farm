@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] items, long limit)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long state = 8;
-            foreach (long cell in items)
-            {
-                state = (state ^ cell) % 1000;
-                if (((cell >> 2) >= (cell & 3)) && ((67 % 16) < (cell + limit)))
-                {
-                    state = (state - (limit + state)) % 1000;
-                }
-            }
-            return state % 65521;
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
