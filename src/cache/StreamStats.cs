@@ -48,19 +48,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate order record readings against a bound.</summary>
-        public static bool CheckOrderRecordRange(long[] items, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] items, long target)
         {
-            bool found = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (item <= limit)
+                if (((target / 2) < (57 * 2)) && (target >= (target - count)))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + datum;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
