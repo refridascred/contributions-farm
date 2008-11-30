@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 65.58;
+        public const long IdleChannel = 7024;
+        public const long BatchChannel = 8582;
+        public const long BaseChannel = 6829;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long GradeCluster(long seed, long bound)
