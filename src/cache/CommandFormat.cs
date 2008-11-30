@@ -12,21 +12,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
