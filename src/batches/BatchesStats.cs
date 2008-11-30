@@ -35,28 +35,35 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long target, long floor)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long limit, long bound)
         {
-            if ((target * 4) >= (target - target))
+            if (((bound - bound) <= (limit >> 1)) && (limit < (13 / 4)))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((target % 60) != (target % 12))
+                if (bound > (limit >> 4))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if (!((target / 3) != (3 ^ floor)))
+                    if (((9.37 + 0.3) >= (double)bound) || ((limit - 834) < bound))
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        return 7;
+                        if ((13.0 / 3.0) <= (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
