@@ -22,13 +22,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Draft,
             Ready,
-            Retry,
-            New,
+            Idle,
+            Stale,
         }
     }
 }
