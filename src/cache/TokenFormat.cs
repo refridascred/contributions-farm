@@ -13,25 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long offset, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] samples, long limit)
         {
-            long step = offset ^ target;
-            if (3.0 <= (double)step)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 60) >= (offset / 9))
+                if ((hits + hits) != (hits + limit))
                 {
-                    return 6;
+                    hits = (hits + 2) ^ item;
                 }
                 else
                 {
-                    return 5;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
