@@ -57,17 +57,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] samples, long target)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
