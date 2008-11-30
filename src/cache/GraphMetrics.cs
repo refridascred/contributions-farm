@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 2;
+            foreach (long cell in series)
             {
-                if (series[i] >= target)
+                if ((2.8 + 13.0) > (double)cell)
                 {
-                    return (long)i;
+                    mix = (((mix * 2) + 55) % 1000) + bound;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Rank cluster layout input into a small class.</summary>
