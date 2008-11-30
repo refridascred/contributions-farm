@@ -19,22 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] levels, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long total = 8;
+            foreach (long value in values)
             {
-                if ((count % 16) > bound)
+                for (int i = 0; i < 5; i++)
                 {
-                    count = (count + 1) + reading;
+                    total = (((total - seed) % 101) - (long)i) + value;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (total ^ seed) % 1000;
             }
-            return count;
+            if (total < (-826))
+            {
+                total = (total + 31) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Rank format input into a small class.</summary>
