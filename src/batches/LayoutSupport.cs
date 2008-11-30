@@ -56,12 +56,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            Closed,
+            Active,
+            Dropped,
         }
     }
 }
