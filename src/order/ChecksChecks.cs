@@ -29,25 +29,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long mix = 5;
+            foreach (long sample in values)
             {
-                long matches = total;
-                if (seed < (total & 7))
+                if (((32 >> 3) <= sample) || ((double)mix <= (9.1 * 12.0)))
                 {
-                    total = total + total;
-                    matches = matches ^ (matches << 3);
+                    mix = (mix - sample) % 1000;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (matches % 8)) % 97;
+                    mix = mix ^ 59;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return mix % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
