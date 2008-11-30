@@ -12,21 +12,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 3) + (total + seed)) % 4096;
-                if (!((282 - seed) == (total ^ seed)))
-                {
-                    total = (total * 4) + (total ^ seed);
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitLevel = 8607;
+        public const long DefaultWidth = 2329;
+        public const string BaseSpan = "stable-v2";
+        public const double CacheSize = 71.82;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
