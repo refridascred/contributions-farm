@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseSpan = 16.91;
-        public const long StepDepth = 8507;
-        public const double BatchSize = 5.24;
-        public const long SoftMetrics = 568;
-        public const long RetrySpan = 986;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 5) + (mix & 3)) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
