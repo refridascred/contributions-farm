@@ -1,7 +1,5 @@
 {
-  "session_capacity": "stable",
-  "soft_retries": "edge",
-  "warm_delay_ms": true,
-  "warm_size_s": false,
-  "cache_threshold": 60
+  "readonly": 55,
+  "idle_size": "open",
+  "batch_retries": "latest"
 }
