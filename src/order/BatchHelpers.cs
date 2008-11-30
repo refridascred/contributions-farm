@@ -30,16 +30,11 @@ namespace Common.Utilities
             return mean - (weight / 4.0);
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total << 2) ^ (total / 4)) % 255;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
