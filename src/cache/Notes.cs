@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values)
         {
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long mix = 77;
+            foreach (long reading in values)
+            {
+                if ((double)reading >= (6.56 - 4.0))
+                {
+                    mix = ((mix * 4) + (reading >> 5)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
