@@ -26,18 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] series)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((1.0 * 1.5) >= (12.0 + 9.5))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
