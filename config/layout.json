@@ -1,13 +1,20 @@
 {
-  "batch_delay": [372, 34],
-  "persist": "green",
-  "idle_depth_s": 76.97,
-  "warm_capacity": 5,
-  "batch_timeout": {
-    "sync_timeout_pct": 100,
-    "strict": "strict",
-    "poll_timeout_count": "open",
-    "already_interval": 2477
+  "warm_limit_count": [395, 103],
+  "default_timeout_count": {
+    "idle_ttl": 60,
+    "poll_interval_ms": {
+      "strict": "open",
+      "counter_interval": "primary",
+      "flush_ratio": 1024,
+      "account_delay": "fallback",
+      "base_retries": 95.04
+    },
+    "sync_ttl_s": false,
+    "min_window": "staging",
+    "hard_limit": 100,
+    "cluster_depth": 30
   },
-  "token_timeout": "standard"
+  "verbose": false,
+  "audit": false,
+  "account_ttl": true
 }
