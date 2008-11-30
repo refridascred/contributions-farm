@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitScore = 8869;
+        public const string CacheBudget = "alpha-1";
+        public const double WindowTimeout = 20.09;
+        public const long StepSpan = 1098;
+        public const long WindowLayout = 9076;
 
         /// <summary>Iterate the entry command series from a seed.</summary>
         public static long DeriveEntryCommand(long step)
