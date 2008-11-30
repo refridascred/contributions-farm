@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const long DefaultCount = 8833;
         public const double IdleLayout = 8.95;
 
-        /// <summary>Count the support filter entries that pass the check.</summary>
-        public static long TallySupportFilterGaps(long[] samples)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long floor, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if (floor >= (bound & 63))
             {
-                if (((count + count) != (value / 6)) || ((24 & 127) > (value / 6)))
+                return 1;
+            }
+            else
+            {
+                if ((86 + floor) <= (83 & 1))
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound != (2.0 + 19.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the report class values.</summary>
