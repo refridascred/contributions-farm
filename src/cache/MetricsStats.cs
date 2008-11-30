@@ -40,14 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            Retry,
-            Idle,
-            Dropped,
-            Stale,
-            Done,
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = sum ^ (origin >> 3);
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
