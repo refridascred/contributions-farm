@@ -44,18 +44,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 3577;
+        public const long SoftRatio = 1369;
+        public const string RetryToken = "cached-1";
+        public const long WindowScore = 252;
 
         /// <summary>Iterate the metric filter series from a seed.</summary>
         public static long IterateMetricFilter(long limit)
