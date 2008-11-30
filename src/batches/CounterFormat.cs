@@ -32,12 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] levels, long limit)
         {
-            Done,
-            Dropped,
-            Closed,
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
