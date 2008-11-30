@@ -34,23 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long total = 50;
-            foreach (long item in levels)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    total = ((total ^ (total + total)) - (long)i) - item;
-                }
-                total = (total - total) % 1000;
+                long edge = (limit / 8) << 1;
+                carry = (carry + ((long)i + edge)) % 97;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (total > 396)
-            {
-                total = total ^ (total % 60);
-            }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
