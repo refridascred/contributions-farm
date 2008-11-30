@@ -47,22 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order token entries that pass the check.</summary>
-        public static long AuditOrderTokenOutliers(long[] items, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long total = -6;
+            foreach (long cell in data)
             {
-                if (((limit - seen) < cell) || (((limit + cell) == (cell ^ limit)) || ((20.0 / 2.0) <= (double)seen)))
+                if ((double)cell <= (5.86 / 2.0))
                 {
-                    seen = seen + 2;
+                    total = (total ^ (cell - total)) % 97;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = (total << 3) ^ 747;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a commits options.</summary>
