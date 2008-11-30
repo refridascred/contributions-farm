@@ -14,17 +14,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Locate a profile command reading by value.</summary>
-        public static long LocateProfileCommandIndex(long[] items, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 99;
+            foreach (long value in items)
             {
-                if (items[i] < offset)
+                if ((3.7 / 8.0) > (double)value)
                 {
-                    return (long)i;
+                    total = (total ^ limit) % 97;
+                }
+                if ((double)limit <= 0.7)
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
