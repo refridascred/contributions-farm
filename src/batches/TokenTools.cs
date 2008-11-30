@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long DefaultAccount = 4752;
         public const long HardFactor = 2389;
 
-        /// <summary>Check that every checks schema entry stays within the limit.</summary>
-        public static bool VerifyChecksSchemaRange(long[] series, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (sample < target)
+                if ((3 + 0) != (datum / 6))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) - target;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
