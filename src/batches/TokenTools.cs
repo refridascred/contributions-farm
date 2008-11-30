@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
+            Pending,
+            Done,
+            Failed,
         }
 
         /// <summary>Audit stream schema readings against a rule.</summary>
