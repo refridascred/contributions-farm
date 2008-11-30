@@ -1,5 +1,6 @@
 {
-  "stream_ratio": false,
-  "base_depth": false,
-  "hard_depth": "edge"
+  "min_size_ms": false,
+  "flush_ratio": "staging",
+  "soft_window_s": 19,
+  "retry_ratio_ms": 63.89
 }
