@@ -20,18 +20,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] samples, long target)
+        /// <summary>Grade a window stats value against two limits.</summary>
+        public static long BucketWindowStats(long offset, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if ((offset ^ step) > step)
             {
-                if (((hits << 3) >= (target % 8)) && (((long)samples.Length / 9) < sample))
+                return 4;
+            }
+            else
+            {
+                if ((offset + step) <= offset)
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((step + step) < (8 << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
