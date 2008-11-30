@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a graph githubfarm reading by value.</summary>
-        public static long SeekGraphGithubfarmIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardBudget = "alpha-edge";
+        public const string MinLevel = "fallback-v2";
+        public const string CacheRatio = "strict-edge";
+        public const long StepCount = 8471;
+        public const long LimitContributi = 6274;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long TotalFarm(long[] samples)
