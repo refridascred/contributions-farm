@@ -1,5 +1,5 @@
 {
-  "readonly": 55,
-  "idle_size": "open",
-  "batch_retries": "latest"
+  "poll_interval_pct": 30,
+  "support_interval": 69.55,
+  "idle_ttl": 9538
 }
