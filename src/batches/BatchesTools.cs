@@ -36,10 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "staging";
-        public const long DefaultCommand = 6524;
-        public const long WindowCount = 9744;
-        public const double BatchCommand = 86.99;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] samples)
+        {
+            long state = -674;
+            foreach (long datum in samples)
+            {
+                state = (((state << 2) ^ (324 / 9)) % 1000) + datum;
+            }
+            return state;
+        }
     }
 }
