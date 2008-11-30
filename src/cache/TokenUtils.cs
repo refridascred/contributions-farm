@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 592;
-        public const double BurstBudget = 72.06;
-        public const long MaxCache = 4184;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of filter session readings.</summary>
         public static long OverlapFilterSessionCount(long[] values)
