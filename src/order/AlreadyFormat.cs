@@ -13,23 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            double rate = (double)(250 / 4);
-            if (rate < (double)36)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                rate = (rate + (double)98) - span;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (7.0 - bias)) - (double)(long)i;
-            }
-            return rate - rate;
+            return mark;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
