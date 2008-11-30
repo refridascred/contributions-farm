@@ -13,38 +13,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long bound, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] readings, long step)
         {
-            if ((origin + origin) > (origin * 5))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin % 2) < origin) || ((bound / 8) < bound))
+                if (((step << 2) <= step) || (8 > (step + step)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (673 + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + 3) != ((-3) + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 2) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first stats context entry that matches the target.</summary>
