@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of token githubfarm readings.</summary>
-        public static long DigestTokenGithubfarm(long[] readings, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long state = 33;
-            foreach (long sample in readings)
-            {
-                state = ((state * 4) + (state << 3)) - sample;
-                if (((double)state < (5.7 + 8.2)) || ((double)state == (6.99 - 7.2)))
-                {
-                    state = ((state << 3) ^ (origin - origin)) % 4096;
-                }
-                else
-                {
-                    state = (state - origin) % 1000;
-                }
-            }
-            return state;
+            Stale,
+            Draft,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
