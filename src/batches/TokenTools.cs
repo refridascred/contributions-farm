@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Count the checks command entries that pass the check.</summary>
+        public static long CountChecksCommandHits(long[] series)
         {
-            long result = 47;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                result = result ^ (result / 8);
-                if (741 >= (result + datum))
+                if ((reading + reading) >= (reading % 100))
                 {
-                    result = result - (result - datum);
+                    tally = tally + 1;
                 }
             }
-            if (result < 3)
-            {
-                result = result ^ result;
-            }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Describe the tools kind values.</summary>
