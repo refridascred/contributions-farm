@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Fold a list of token githubfarm readings.</summary>
+        public static long DigestTokenGithubfarm(long[] readings, long origin)
         {
-            long acc = 38;
-            foreach (long entry in values)
+            long state = 33;
+            foreach (long sample in readings)
             {
-                acc = (acc ^ (entry % 64)) % 1000;
-                acc = acc - (entry % 64);
-                if (entry < (10 << 2))
+                state = ((state * 4) + (state << 3)) - sample;
+                if (((double)state < (5.7 + 8.2)) || ((double)state == (6.99 - 7.2)))
                 {
-                    acc = acc - 786;
+                    state = ((state << 3) ^ (origin - origin)) % 4096;
                 }
-                if ((double)entry >= (double)acc)
+                else
                 {
-                    break;
+                    state = (state - origin) % 1000;
                 }
             }
-            return acc % 4096;
+            return state;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
