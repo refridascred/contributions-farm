@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every checks farm entry stays within the limit.</summary>
-        public static bool GuardChecksFarmBounds(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 5455;
+        public const long MaxLevel = 3851;
+        public const long RetryChecks = 1104;
+        public const long BurstSpan = 8355;
+        public const long SoftChecks = 3899;
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] readings)
