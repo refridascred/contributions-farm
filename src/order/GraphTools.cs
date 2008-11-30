@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] data, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum == (2.1 * 1.48))
+                {
+                    count = (count + 1) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
