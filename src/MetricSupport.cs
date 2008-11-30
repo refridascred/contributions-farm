@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                total = total ^ (target * 3);
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
