@@ -41,22 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + matches) != (reading & 1))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double rate2 = (double)(681 / 5);
+            return (rate2 - rate) + span;
         }
     }
 }
