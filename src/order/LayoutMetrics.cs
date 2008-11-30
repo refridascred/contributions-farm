@@ -18,19 +18,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] items, long bound)
+        /// <summary>Rank support notes input into a small class.</summary>
+        public static long RankSupportNotes(long floor, long floor2)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long next = floor - floor2;
+            if ((floor + floor2) >= (6 ^ floor))
             {
-                if (cell >= bound)
+                return 3;
+            }
+            else
+            {
+                if ((floor / 4) <= (0 + floor2))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)next <= (13.0 - 6.42)) || ((2.87 - 6.0) >= (double)next))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor2 == (7.5 * 9.6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
