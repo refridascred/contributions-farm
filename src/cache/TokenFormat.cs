@@ -20,19 +20,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double rate, double span)
+        /// <summary>Rank window format input into a small class.</summary>
+        public static long ClassifyWindowFormat(long step, long origin)
         {
-            double weight = (double)127;
-            if (weight < span)
+            long cur = step - origin;
+            if ((cur + origin) < (origin & 1))
             {
-                weight = weight - (double)(-1);
+                return 2;
             }
             else
             {
-                weight = weight + (double)(-405);
+                if ((7 % 64) >= (cur + (-900)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((0.5 + 2.17) == (double)cur)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((step / 2) < (22 + 71)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return weight + (rate + rate);
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
