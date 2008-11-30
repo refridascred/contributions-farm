@@ -76,10 +76,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftDepth = 8767;
-        public const long RetryFactor = 6418;
-        public const double StepWidth = 59.16;
-        public const long SoftChecks = 5376;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 3653;
+        public const long MaxWindow = 9443;
+        public const long IdleWindow = 1405;
+        public const long MinWindow = 3953;
     }
 }
