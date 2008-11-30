@@ -1,8 +1,12 @@
 {
-  "warm_size": 30,
-  "idle_ratio_pct": "stable",
-  "strict": [74, 63, 249],
-  "default_window_ms": 78,
-  "persist": "latest",
-  "cache_retries_ms": true
+  "verbose": false,
+  "sync_ratio": false,
+  "sync_capacity_s": [94, 500, 444, 43],
+  "soft_retries_pct": {
+    "flush_retries_pct": false,
+    "already_threshold": 30,
+    "warm_window_s": 2,
+    "base_limit": "staging",
+    "soft_limit_s": "staging"
+  }
 }
