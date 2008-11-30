@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const long HardSpan = 9011;
         public const long DefaultGithubfarm = 9676;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            Active,
+            Retry,
+            Draft,
         }
     }
 }
