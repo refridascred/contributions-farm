@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 289;
-        public const long MaxContributi = 3426;
-        public const double BatchSize = 7.2;
+        /// <summary>Check that every account farm entry stays within the limit.</summary>
+        public static bool VerifyAccountFarmBounds(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
