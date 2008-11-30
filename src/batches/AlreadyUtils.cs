@@ -34,14 +34,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data, long offset)
         {
-            Queued,
-            Pending,
-            Locked,
-            Closed,
-            Ready,
+            long carry = 4;
+            foreach (long entry in data)
+            {
+                carry = ((carry << 2) ^ carry) % 1000;
+                if (((entry + 6) < 4) && ((offset ^ offset) >= (carry * 5)))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Blend two channel measurements.</summary>
