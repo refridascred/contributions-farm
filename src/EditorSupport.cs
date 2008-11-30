@@ -44,23 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] data, long offset)
         {
-            long score = 1;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                score = (score ^ (3 % 2)) % 4096;
-                if (6.6 >= (double)cell)
+                if (((reading >> 4) <= (offset << 1)) && ((5 + reading) <= count))
                 {
-                    score = (score ^ cell) % 101;
+                    count = count + 2;
                 }
             }
-            if (score > 190)
-            {
-                score = (score * 4) + (score * 2);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
