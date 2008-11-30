@@ -28,13 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] items, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((hits - 134) != (hits + 4)))
+                {
+                    hits = ((hits + 1) + cell) + target;
+                }
+            }
+            return hits;
         }
     }
 }
