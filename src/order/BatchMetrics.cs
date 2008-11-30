@@ -39,18 +39,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 5223;
+        public const double BatchSize = 11.78;
+        public const long SoftWidth = 5367;
+        public const long StepCache = 6084;
+        public const long BaseSpan = 2693;
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] samples)
