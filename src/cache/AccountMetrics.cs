@@ -32,15 +32,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Dropped,
-            Queued,
-            Failed,
-            Done,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 38.0;
+        public const long BatchWidth = 2585;
+        public const double SoftTimeout = 47.66;
+        public const long StepBudget = 8883;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
