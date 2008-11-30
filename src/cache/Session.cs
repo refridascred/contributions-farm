@@ -27,18 +27,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double ratio, double span)
         {
-            long result = 393;
-            foreach (long sample in data)
+            double mean = (ratio + span) - (ratio + span);
+            for (int i = 0; i < 9; i++)
             {
-                if ((1 + 88) != (result & 31))
-                {
-                    result = (result ^ ((long)data.Length - sample)) % 101;
-                }
+                mean = mean + (double)(long)i;
             }
-            return result % 1000;
+            return mean - ratio;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
