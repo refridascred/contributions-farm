@@ -23,12 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Find the first githubfarm record entry that matches the target.</summary>
+        public static long LookupGithubfarmRecordIndex(long[] levels, long floor)
         {
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
