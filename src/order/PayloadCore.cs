@@ -23,10 +23,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseBudget = "local-v2";
-        public const long StepScore = 8875;
-        public const string BurstTimeout = "open-1";
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Ready,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmOutliers(long[] items)
