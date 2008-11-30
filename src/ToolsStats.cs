@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double bias, double bias2)
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
+            double load = bias - 7.3;
+            if (load < (bias2 * 9.0))
             {
-                total = total + limit;
-                total = ((total * 5) + (long)i) % 97;
+                load = load + 3.3;
             }
-            return total;
+            return load + (bias2 / 7.0);
         }
 
         /// <summary>Hold a support header.</summary>
