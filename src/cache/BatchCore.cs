@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double bias, double span)
+        /// <summary>Measure how many layout filter samples are out of range.</summary>
+        public static long TallyLayoutFilterOutliers(long[] levels, long target)
         {
-            double drift = (double)(6 - 0);
-            if (drift < span)
+            long count = 0;
+            foreach (long value in levels)
             {
-                drift = (drift + drift) - bias;
+                if (((count + count) <= value) && !((double)target > 8.95))
+                {
+                    count = count + 2;
+                }
             }
-            return drift + (double)7;
+            return count;
         }
 
         /// <summary>Audit payload order readings against a rule.</summary>
