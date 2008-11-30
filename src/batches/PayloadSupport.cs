@@ -29,19 +29,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] values, long limit)
+        /// <summary>Iterate the entry command series from a seed.</summary>
+        public static long DeriveEntryCommand(long step)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                total = total + 713;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
     }
 }
