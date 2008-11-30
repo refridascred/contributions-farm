@@ -22,24 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a format support counter forward.</summary>
-        public static long SeriesFormatSupport(long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long state = 66;
+            foreach (long reading in levels)
             {
-                if (84 >= (anchor % 2))
+                for (int i = 0; i < 11; i++)
                 {
-                    anchor = anchor + (6 >> 3);
-                    anchor = anchor - ((long)i + floor);
+                    state = ((state - (state << 2)) % 65521) + (long)i;
                 }
-                if (((long)i > floor) && ((floor - anchor) < (floor + anchor)))
+                if ((3.7 - 8.2) == (double)reading)
                 {
-                    anchor = ((anchor << 3) ^ (floor * 5)) % 65521;
+                    state = state + (91 ^ reading);
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                state = (state << 3) ^ (reading + reading);
             }
-            return anchor;
+            return state % 65521;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
