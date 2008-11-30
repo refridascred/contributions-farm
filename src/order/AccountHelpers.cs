@@ -25,21 +25,17 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Compare every pair of farm stats readings.</summary>
-        public static long PairFarmStatsCount(long[] readings)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] <= offset)
                 {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
