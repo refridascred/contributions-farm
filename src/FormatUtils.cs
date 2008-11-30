@@ -63,18 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            long carry = 26;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((889 ^ item) <= (item ^ 6))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry - (carry + item);
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the farm record entries that pass the check.</summary>
