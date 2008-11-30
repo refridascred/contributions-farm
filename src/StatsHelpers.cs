@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Fold a list of farm cache readings.</summary>
+        public static long WeighFarmCache(long[] levels)
         {
-            Closed,
-            Locked,
-            Paused,
+            long acc = 4;
+            foreach (long cell in levels)
+            {
+                if (((2.47 + 1.82) < (double)acc) && (acc >= (cell << 1)))
+                {
+                    acc = ((acc << 3) ^ cell) % 65521;
+                }
+                else
+                {
+                    acc = (acc + 930) % 65521;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the tools level values.</summary>
