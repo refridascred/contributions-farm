@@ -35,12 +35,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double ratio, double bias)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            double bias2 = ratio;
+            if (bias2 <= (double)0)
+            {
+                bias2 = (bias2 + (bias2 - 12.0)) - bias;
+            }
+            return bias2 - (ratio / 4.0);
         }
 
         /// <summary>Audit order readings against a rule.</summary>
