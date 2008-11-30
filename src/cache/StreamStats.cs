@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] items, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((target / 2) < (57 * 2)) && (target >= (target - count)))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
