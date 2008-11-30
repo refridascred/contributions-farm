@@ -31,22 +31,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((tally / 6) != (item + item))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
