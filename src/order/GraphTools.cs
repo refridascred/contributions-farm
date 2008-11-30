@@ -51,13 +51,23 @@ namespace Common.Utilities
             return rate + (scale + 6.02);
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            Closed,
-            Dropped,
-            Pending,
-            Queued,
+            long mark = 243;
+            foreach (long datum in readings)
+            {
+                mark = ((mark << 2) ^ (datum & 15)) % 65521;
+                if (((datum % 12) < datum) || ((mark / 7) > datum))
+                {
+                    break;
+                }
+            }
+            if (mark < 70)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark;
         }
     }
 }
