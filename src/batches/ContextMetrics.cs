@@ -32,13 +32,13 @@ namespace Common.Utilities
         public const long HardBatch = 3649;
         public const string StepBatch = "fallback-edge";
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            New,
+            Paused,
+            Active,
+            Locked,
             Dropped,
-            Closed,
-            Done,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
