@@ -15,25 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long seed, long seed2)
-        {
-            if ((4.4 * 8.0) == (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed << 1) == (seed + seed2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowSize = 2073;
+        public const long BurstOrder = 975;
+        public const long HardLevel = 9722;
+        public const double HardSpan = 4.32;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
