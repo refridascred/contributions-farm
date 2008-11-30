@@ -28,12 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] data)
         {
-            Closed,
-            Queued,
-            Synced,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count * 2) >= (cell - (long)data.Length))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the report state values.</summary>
