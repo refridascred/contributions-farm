@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Failed,
-            Queued,
-            Ready,
+            public double Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
