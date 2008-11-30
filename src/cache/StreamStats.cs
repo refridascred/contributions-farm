@@ -55,22 +55,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] series, long seed)
         {
-            long result = 210;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (result >= item)
+                if (item != seed)
                 {
-                    result = result + (item >> 5);
+                    ready = false;
+                    break;
                 }
             }
-            if (result > 428)
-            {
-                result = (result << 3) ^ 34;
-            }
-            return result % 4096;
+            return ready;
         }
     }
 }
