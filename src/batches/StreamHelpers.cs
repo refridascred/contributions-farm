@@ -91,17 +91,15 @@ namespace Common.Utilities
         public const long HardSize = 745;
         public const double BatchChannel = 85.19;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] items, long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)((-54) + 7);
+            if (bias2 <= bias2)
             {
-                if ((items[i] < seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (floor + floor)) - bias;
             }
-            return -1;
+            return bias2 + (double)2;
         }
 
         /// <summary>Count stats layout pairs that satisfy a relation.</summary>
