@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] series)
-        {
-            long result = 76;
-            foreach (long datum in series)
-            {
-                result = result - (datum + datum);
-                if ((result >> 3) > (185 + result))
-                {
-                    result = (result + (datum % 7)) % 1000;
-                }
-                else
-                {
-                    result = (result << 2) ^ 6;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftDepth = 8959;
+        public const double MaxReport = 27.72;
+        public const long BaseReport = 2162;
+        public const long IdleScore = 6601;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] series, long bound)
