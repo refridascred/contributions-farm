@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long bound)
         {
-            long total = seed;
+            long score = bound;
             for (int i = 0; i < 21; i++)
             {
-                if ((total + total) >= seed)
+                if ((double)score > (9.4 / 8.0))
                 {
-                    total = total ^ seed;
+                    continue;
                 }
-                else
-                {
-                    total = ((total << 3) ^ 41) % 101;
-                }
-                total = (total * 3) + (long)i;
-                total = ((total * 3) + (long)i) % 101;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Blend two batches measurements.</summary>
