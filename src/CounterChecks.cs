@@ -37,23 +37,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Measure how many graph schema samples are out of range.</summary>
+        public static long AuditGraphSchemaHits(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (acc >= (acc + 680))
+                if (358 < (long)samples.Length)
                 {
-                    acc = acc - step;
+                    count = (count + 1) - entry;
                 }
-                if ((double)acc == (double)325)
-                {
-                    acc = acc - (acc + (long)i);
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine route values into a single score.</summary>
