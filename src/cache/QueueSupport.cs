@@ -28,10 +28,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 67.45;
-        public const string WindowAlready = "open";
-        public const string IdleAlready = "standard-edge";
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series, long step)
+        {
+            long carry = 96;
+            foreach (long cell in series)
+            {
+                carry = ((carry - step) % 1000) + cell;
+                if (((934 - carry) != (carry & 31)) || (carry > (48 * 5)))
+                {
+                    carry = carry + (carry - 9);
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Digest a series of batch record entries.</summary>
         public static long FoldBatchRecord(long[] series)
