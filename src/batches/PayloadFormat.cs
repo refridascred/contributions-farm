@@ -43,19 +43,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 2150;
+        public const double IdleBudget = 61.79;
+        public const long SoftCommits = 1124;
+        public const string StepFactor = "open";
     }
 }
