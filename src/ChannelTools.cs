@@ -19,14 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            Draft,
-            Active,
-            Pending,
-            Closed,
-            Done,
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 3) + (total + seed)) % 4096;
+                if (!((282 - seed) == (total ^ seed)))
+                {
+                    total = (total * 4) + (total ^ seed);
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
