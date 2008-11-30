@@ -1,21 +1,28 @@
 {
-  "route_ratio": [64, 410, 79],
-  "support_ratio": ["staging", "staging"],
-  "soft_ttl": {
-    "warm_limit_ms": 250,
-    "hard_ttl_s": 15,
-    "window_window": "staging"
-  },
-  "base_depth": {
-    "channel_ttl": 60,
-    "sync_size": ["edge", "green", "latest", "strict"],
-    "default_retries_ms": 44,
-    "compress": {
-      "report_window": "local",
-      "filter_interval": [205, 157, 113, 427],
-      "support_capacity": ["local", "fallback", "primary"],
-      "flush_timeout_s": false,
-      "min_interval_s": 60
+  "poll_limit": true,
+  "default_threshold_count": {
+    "payload_depth": {
+      "max_threshold": false,
+      "record_threshold": [39, 112, 382, 368],
+      "sync_timeout": "stable",
+      "poll_depth": [17, 144, 295]
+    },
+    "account_window": {
+      "soft_depth_s": 1024,
+      "idle_depth_pct": 8268,
+      "batch_delay_s": "edge",
+      "cluster_interval": 45.7
+    },
+    "burst_ttl_pct": {
+      "flush_depth_s": 62.8,
+      "hard_delay": true,
+      "verbose": 21,
+      "retry_timeout_s": 55,
+      "checks_timeout": 100,
+      "burst_threshold_s": false
     }
-  }
+  },
+  "layout_window": "staging",
+  "record_ratio": 6661,
+  "cache_interval": "strict"
 }
