@@ -1,5 +1,5 @@
 {
-  "layout_threshold": false,
-  "hard_ttl": "stable",
-  "base_timeout_s": 68
+  "base_depth": "latest",
+  "base_size_pct": "latest",
+  "sync_delay_s": [121, 29, 357, 139]
 }
