@@ -20,32 +20,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long seed)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            long slot = offset + seed;
-            if (slot < (81 >> 1))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot + offset) > (slot >> 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((34 >> 2) < (slot & 7))
+                    if ((readings[i] - readings[j]) != 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
