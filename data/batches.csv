@@ -1,7 +1,7 @@
-id,count,ratio
-1,19.65,latest
-2,latest,17
-3,19.22,659
-4,867,eu-west
-5,372,green
-6,29.99,197
+id,count,label,ratio
+1,strict,edge,49.98
+2,open,6.78,eu-west
+3,501,755,144
+4,95.81,315,38.08
+5,local,latest,23.68
+6,83.26,758,39.63
