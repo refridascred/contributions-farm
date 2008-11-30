@@ -23,12 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Pending,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 5151;
+        public const long StepSize = 5812;
+        public const long CacheTimeout = 8507;
+        public const long IdleInterval = 8289;
+        public const long DefaultChecks = 7817;
     }
 }
