@@ -1,6 +1,8 @@
 {
-  "session_limit": [471, 311],
-  "base_window": "cached",
-  "burst_retries_count": true,
-  "batch_capacity_count": "strict"
+  "cache_ratio": 20.86,
+  "retry_retries_ms": 84.14,
+  "compress": 57.0,
+  "notes_size": 73,
+  "hard_timeout": "latest",
+  "entry_timeout": false
 }
