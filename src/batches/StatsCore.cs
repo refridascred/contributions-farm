@@ -61,15 +61,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Paused,
+            New,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
