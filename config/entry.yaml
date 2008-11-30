@@ -1,10 +1,14 @@
 # entry settings
-retry_ttl:
-  queue_limit: 4172
-  flush_ratio_ms: 500
-  base_depth_s:
-    - stable
-    - local
-  warm_ttl_count: open
-cache_threshold_pct: 7916
-dry_run: false
+default_depth_count: 82.54
+default_size_ms:
+  enabled: 56.62
+  burst_interval:
+    - 85
+    - 67
+    - 432
+  context_timeout: 250
+  flush_capacity_pct: 1024
+filter_ratio: 13
+cache_depth_pct: edge
+audit: false
+hard_interval_pct: true
