@@ -45,15 +45,12 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of batch graph readings.</summary>
