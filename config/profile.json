@@ -1,17 +1,14 @@
 {
-  "max_ratio_ms": {
-    "min_threshold": "local",
-    "editor_depth": {
-      "record_threshold": 97.32,
-      "min_size": true,
-      "retry_limit_s": 4937,
-      "base_interval": 8755
-    },
-    "persist": false
+  "batch_depth": 24.75,
+  "hard_limit_pct": {
+    "poll_interval_count": false,
+    "batch_ratio_pct": "cached",
+    "soft_ttl_s": "local",
+    "sync_ratio_count": "eu-west",
+    "readonly": 1024
   },
-  "hard_timeout_count": "strict",
-  "soft_ttl_ms": 1312,
-  "context_threshold": [468, 50, 112],
-  "verbose": 76,
-  "batch_timeout_s": 1024
+  "audit": 60,
+  "readonly": "cached",
+  "poll_interval_pct": false,
+  "max_limit_pct": "cached"
 }
