@@ -1,6 +1,12 @@
 {
-  "schema_retries": "latest",
-  "poll_delay": false,
-  "batch_limit": "edge",
-  "idle_capacity_ms": ["fallback", "blue"]
+  "strict": {
+    "channel_retries": "staging",
+    "cache_retries_s": 2382,
+    "retry_limit_ms": [361, 492],
+    "hard_delay": 100,
+    "stats_depth": 62.0
+  },
+  "base_interval_ms": 60,
+  "audit": 9590,
+  "checks_ratio": "eu-west"
 }
