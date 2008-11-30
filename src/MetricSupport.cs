@@ -32,14 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
             Queued,
+            Pending,
             Paused,
-            New,
-            Synced,
-            Ready,
+            Done,
         }
 
         /// <summary>Check that every profile batch entry stays within the limit.</summary>
