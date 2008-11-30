@@ -18,14 +18,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Draft,
+            Locked,
             Idle,
-            Stale,
-            Pending,
-            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
