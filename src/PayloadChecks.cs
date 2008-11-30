@@ -16,38 +16,22 @@ namespace Common.Utilities
             return drift + (double)96;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long origin, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            if ((seed <= origin) || ((origin - origin) >= (origin ^ origin)))
+            long carry = 299;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed - origin) <= (seed & 63)) && ((5 - seed) == (seed + origin)))
+                if (((entry << 3) > (entry - carry)) || ((carry - entry) <= (entry + entry)))
                 {
-                    return 5;
+                    carry = carry - (1 / 2);
                 }
-                else
+                if ((carry % 8) != (entry << 1))
                 {
-                    if (!(4.1 >= (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((3 * 4) != (seed - origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
