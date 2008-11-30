@@ -35,26 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long acc = 83;
-            foreach (long value in levels)
-            {
-                if (!(acc < (value / 6)))
-                {
-                    acc = acc ^ (acc << 1);
-                }
-                else
-                {
-                    acc = acc - (37 & 127);
-                }
-            }
-            if (acc < 5)
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
