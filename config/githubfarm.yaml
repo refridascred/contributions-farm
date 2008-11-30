@@ -1,18 +1,6 @@
 # githubfarm settings
-support_ratio:
-  base_size_pct:
-    - stable
-    - staging
-  enabled: blue
-  soft_retries:
-    - 75
-    - 170
-    - 410
-    - 486
-min_ttl:
-  window_limit: cached
-  commits_limit: true
-  readonly: blue
-  cache_interval_count: 66
-  burst_retries_count: 60
-readonly: 79.01
+burst_threshold_s: true
+sync_ttl_s: 250
+persist: false
+verbose: legacy
+burst_window_count: strict
