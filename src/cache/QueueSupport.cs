@@ -23,17 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first githubfarm record entry that matches the target.</summary>
-        public static long LookupGithubfarmRecordIndex(long[] levels, long floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the entry state values.</summary>
