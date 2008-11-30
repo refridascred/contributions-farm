@@ -13,36 +13,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long bound, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long offset, long target)
         {
-            if ((floor < (bound ^ 68)) || ((double)floor > (19.0 + 1.1)))
+            long step = offset ^ target;
+            if (3.0 <= (double)step)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (((floor >> 3) > 38) || ((0.7 + 14.0) != (double)bound))
+                if ((offset % 60) >= (offset / 9))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (((double)bound >= (16.0 * 5.0)) || ((floor << 1) > 39))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor << 2) <= (bound & 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
