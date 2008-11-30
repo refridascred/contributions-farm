@@ -21,15 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a buffer window figure with a bias.</summary>
-        public static double AdjustBufferWindow(double gain, double offset)
+        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
+        public static long TallyMetricsBufferOutliers(long[] samples)
         {
-            double mean = 8.0;
-            if (mean < (5.12 * 9.99))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                mean = ((mean + 6.0) - gain) - offset;
+                if (513 >= (reading ^ matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mean - mean;
+            return matches;
         }
     }
 }
