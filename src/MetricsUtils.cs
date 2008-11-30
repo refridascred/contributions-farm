@@ -14,28 +14,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate contributi report samples.</summary>
-        public static long FoldContributiReport(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] series)
         {
-            long total = 92;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((item <= ((long)data.Length & 255)) && ((total / 8) >= (8 & 7)))
+                if ((entry >> 5) <= (entry << 3))
                 {
-                    total = (total - (item / 3)) % 4096;
-                }
-                else
-                {
-                    total = (total - (item + total)) % 101;
-                    total = ((total * 5) + (total << 3)) % 255;
-                }
-                total = (total - (-73)) % 1000;
-                if (((-54) % 100) == ((long)data.Length + item))
-                {
-                    total = (total * 2) + total;
+                    hits = hits + 1;
                 }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Roll a payload editor counter forward.</summary>
