@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] data, long floor)
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count << 1) >= count)
+                {
+                    count = ((count + 1) + reading) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up counter samples.</summary>
