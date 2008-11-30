@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the editor tools entries that pass the check.</summary>
+        public static long TallyEditorToolsGaps(long[] levels)
         {
-            Ready,
-            Idle,
-            Queued,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading >> 2) >= count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
