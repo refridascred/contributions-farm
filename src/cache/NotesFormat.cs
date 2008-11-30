@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long DefaultBatches = 1496;
         public const long BatchWidth = 4961;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] levels, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((double)value < (9.03 * 7.9))
+                if (datum >= floor)
                 {
-                    matches = (matches + 2) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
