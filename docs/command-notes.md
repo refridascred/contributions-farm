@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-The checks report groups every checks by command.
+Run the commits check before changing any channel limits.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-When a schema fails, the commits handler retries a few times before giving up.
-Keep metrics and notes names short and lowercase.
-Run the githubfarm check before changing any token limits.
+Each context is validated before it reaches the layout queue.
+Use format settings to tune how often format data is refreshed.
+Run the channel check before changing any profile limits.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Log every route change
-- Keep metric values small
+- Log every record change
+- Validate support input early
+- Keep schema values small
+- Prefer entry defaults
