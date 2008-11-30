@@ -27,12 +27,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 121;
-        public const string DefaultInterval = "stable-v2";
-        public const string StepBudget = "open";
-        public const string SoftFormat = "alpha-v2";
-        public const string BatchWidth = "legacy-edge";
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((double)limit >= (double)anchor))
+                {
+                    anchor = (anchor + anchor) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
