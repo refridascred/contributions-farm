@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Draft,
-            Pending,
-            Idle,
-            Done,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheSpan = 5658;
+        public const long MinCommits = 9336;
+        public const double BatchBudget = 45.38;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseDepth = 2809;
