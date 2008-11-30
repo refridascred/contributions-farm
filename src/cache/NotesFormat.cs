@@ -13,19 +13,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] values, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long total = 210;
+            foreach (long datum in items)
             {
-                if (datum >= floor)
+                total = ((total - (datum / 6)) % 65521) - offset;
+                total = total - ((-75) + datum);
+                if ((double)total > (8.14 + 9.43))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Scale a buffer window figure with a bias.</summary>
