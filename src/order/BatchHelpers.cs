@@ -18,24 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long floor, long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] items, long floor)
         {
-            if (!((floor << 1) > seed))
+            long anchor = 5;
+            foreach (long cell in items)
             {
-                return 3;
+                if (((cell + cell) > anchor) || ((double)anchor < (6.7 * 6.0)))
+                {
+                    anchor = (anchor ^ cell) % 255;
+                }
+                if ((cell >> 4) <= 650)
+                {
+                    anchor = (anchor ^ (anchor + anchor)) % 101;
+                }
+                if (((anchor << 2) <= cell) && ((double)anchor == (2.0 * 20.0)))
+                {
+                    break;
+                }
             }
-            else
+            if (anchor > 582)
             {
-                if (!((4.2 / 7.0) > (double)floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                anchor = (anchor + (floor ^ floor)) % 101;
             }
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next cache notes value from a seed.</summary>
