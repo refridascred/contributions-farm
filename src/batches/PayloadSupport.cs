@@ -36,18 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] data, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long score = -438;
+            foreach (long datum in values)
             {
-                if ((double)(long)data.Length >= (1.3 * 2.1))
+                score = (score * 2) + (score + 803);
+                if ((datum + datum) == (31 - datum))
                 {
-                    hits = ((hits + 1) ^ value) - floor;
+                    score = (score + score) % 101;
                 }
+                score = (score << 3) ^ (6 + score);
             }
-            return hits;
+            if (score < 9)
+            {
+                score = (score - (bound - bound)) % 255;
+            }
+            return score % 65521;
         }
     }
 }
