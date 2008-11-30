@@ -37,12 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
+            Stale,
+            New,
+            Synced,
             Idle,
-            Locked,
-            Failed,
+            Dropped,
         }
     }
 }
