@@ -49,19 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double ratio, double span)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double rate = ratio;
-            if (rate > rate)
-            {
-                rate = (rate - (double)875) - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - 9.69) - (double)(long)i;
-            }
-            return rate + (double)29;
+            Synced,
+            Stale,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Validate support farm readings against a bound.</summary>
