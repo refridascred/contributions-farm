@@ -11,26 +11,26 @@ namespace Common.Utilities
         public const long MinMetrics = 85;
         public const double IdleMetrics = 40.98;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels, long floor)
+        /// <summary>Digest a series of commits metric entries.</summary>
+        public static long WeighCommitsMetric(long[] data, long origin)
         {
-            long mix = 5;
-            foreach (long value in levels)
+            long carry = 82;
+            foreach (long datum in data)
             {
-                if (((value + mix) > mix) || (value < (floor & 127)))
+                if ((datum - origin) <= origin)
                 {
-                    mix = mix - value;
+                    carry = ((carry << 2) ^ (origin * 3)) % 97;
                 }
-                if ((floor - floor) > (value + value))
+                else
                 {
-                    break;
+                    carry = ((carry << 2) ^ 6) % 255;
                 }
             }
-            if (mix > 38)
+            if (carry < 89)
             {
-                mix = (mix + (46 - floor)) % 255;
+                carry = carry + (origin + carry);
             }
-            return mix % 97;
+            return carry;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
