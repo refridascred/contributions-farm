@@ -37,17 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] items, long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Done,
+            Stale,
+            Queued,
         }
     }
 }
