@@ -1,5 +1,5 @@
 {
-  "graph_capacity": ["fallback", "standard", "staging"],
-  "compress": "fallback",
-  "dry_run": [346, 60, 495]
+  "cache_ratio_count": 28.11,
+  "hard_limit_pct": "standard",
+  "poll_ttl_pct": true
 }
