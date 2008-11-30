@@ -15,21 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 443;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (((mix << 3) ^ (seed + 266)) % 101) - sample;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
