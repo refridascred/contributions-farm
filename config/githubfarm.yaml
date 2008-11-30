@@ -1,6 +1,21 @@
 # githubfarm settings
-checks_ratio: fallback
-account_capacity: 74
-sync_threshold_count: 250
-warm_ttl: green
-min_capacity_s: false
+strict:
+  - blue
+  - eu-west
+  - cached
+  - fallback
+cache_threshold:
+  buffer_delay:
+    - 68
+    - 393
+  soft_ttl:
+    - 468
+    - 169
+  base_depth_ms: false
+  enabled: false
+  sync_ratio: latest
+  min_delay: 52.93
+batch_depth: 33.1
+hard_window: 94
+burst_depth_ms: eu-west
+flush_delay_pct: 500
