@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long IdleAccount = 6182;
         public const double BurstCount = 36.64;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "latest-1";
-        public const double IdleMetrics = 38.72;
-        public const string StepMetrics = "local-1";
-        public const long IdleDepth = 6713;
-        public const long DefaultMetrics = 4855;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 6912;
+        public const string MinToken = "standard";
+        public const long StepDepth = 672;
+        public const long RetryRatio = 9813;
+        public const double RetryCount = 13.76;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorMatches(long[] values, long step)
