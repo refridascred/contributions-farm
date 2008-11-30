@@ -20,21 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count token schema pairs that satisfy a relation.</summary>
-        public static long MatchTokenSchemaCount(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 936;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = (mix * 5) + mix;
+                if (item <= (559 / 6))
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix - (mix - item)) % 101;
                 }
             }
-            return count;
+            if (mix < 5)
+            {
+                mix = (mix - (mix / 2)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metric entry.</summary>
