@@ -1,19 +1,13 @@
 {
-  "default_timeout": 19,
-  "soft_size_pct": {
-    "poll_threshold_pct": 250,
-    "verbose": "blue",
-    "min_window_pct": "staging",
-    "warm_timeout_pct": [74, 84],
-    "default_ratio_count": false,
-    "command_retries": 1024
+  "enabled": "legacy",
+  "compress": 60,
+  "cache_ttl_ms": 8600,
+  "burst_depth": {
+    "strict": "open",
+    "default_size_ms": false,
+    "burst_threshold_ms": [277, 145, 205, 329],
+    "poll_ttl": true
   },
-  "entry_capacity": {
-    "verbose": [194, 287],
-    "retry_delay_count": 51,
-    "hard_capacity": false,
-    "default_delay": "eu-west"
-  },
-  "readonly": false,
-  "verbose": "strict"
+  "sync_ttl_pct": false,
+  "batch_depth_ms": 87
 }
