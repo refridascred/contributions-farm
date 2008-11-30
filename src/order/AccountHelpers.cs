@@ -81,10 +81,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 8248;
-        public const long SoftReport = 6216;
-        public const long RetryReport = 2484;
-        public const long MaxReport = 3933;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] levels)
+        {
+            long mix = -64;
+            foreach (long cell in levels)
+            {
+                if (9 >= (mix - cell))
+                {
+                    mix = (mix << 3) ^ (mix / 3);
+                }
+            }
+            if (mix > 4)
+            {
+                mix = ((mix * 5) + (mix - mix)) % 101;
+            }
+            return mix;
+        }
     }
 }
