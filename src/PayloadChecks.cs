@@ -20,19 +20,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] items, long seed)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
