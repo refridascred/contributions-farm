@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)bound < (double)65)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate graph farm readings against a bound.</summary>
