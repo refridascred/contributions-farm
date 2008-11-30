@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
