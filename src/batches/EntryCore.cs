@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const long WindowSpan = 3937;
         public const string BurstScore = "alpha-1";
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Synced,
+            Locked,
+            Queued,
+            Done,
             Active,
-            Idle,
+            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
