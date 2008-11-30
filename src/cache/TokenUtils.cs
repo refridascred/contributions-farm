@@ -14,22 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the githubfarm report entries that pass the check.</summary>
-        public static long AuditGithubfarmReportGaps(long[] data)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((47 - matches) >= 5))
+                if (readings[i] < floor)
                 {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
