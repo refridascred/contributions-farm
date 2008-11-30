@@ -22,19 +22,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc * 4) + (-24)) + (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
