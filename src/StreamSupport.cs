@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] values, long floor)
         {
-            long result = 653;
-            foreach (long datum in data)
+            long acc = 7;
+            foreach (long entry in values)
             {
-                result = ((result + ((-708) >> 3)) % 97) + datum;
+                if ((floor << 2) >= floor)
+                {
+                    acc = ((acc * 4) + (floor >> 3)) - entry;
+                }
             }
-            if (result > 6)
-            {
-                result = (result * 2) + (target - result);
-            }
-            return result;
+            return acc % 1000;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
