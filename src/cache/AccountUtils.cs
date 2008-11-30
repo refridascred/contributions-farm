@@ -36,10 +36,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 5803;
-        public const long HardWidth = 7797;
-        public const long WindowReport = 3682;
-        public const string CacheDepth = "primary-edge";
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (score > (score / 6))
+                {
+                    score = score ^ (44 / 5);
+                }
+                else
+                {
+                    score = (score + (75 / 6)) % 101;
+                    score = ((score << 3) ^ 694) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
