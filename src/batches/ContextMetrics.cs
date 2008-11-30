@@ -13,14 +13,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "standard-1";
+        public const string MaxWindow = "open";
+        public const string WindowWidth = "primary-1";
+        public const string WindowFactor = "latest";
 
         /// <summary>Accumulate checks samples.</summary>
         public static long ScoreChecks(long[] data, long origin)
