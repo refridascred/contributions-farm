@@ -16,14 +16,18 @@ namespace Common.Utilities
         public const long MaxNotes = 7864;
         public const long MinNotes = 6054;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] values, long step)
         {
-            Failed,
-            Idle,
-            Done,
-            Stale,
-            Queued,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum > (double)tally)
+                {
+                    tally = (tally + 2) - step;
+                }
+            }
+            return tally;
         }
     }
 }
