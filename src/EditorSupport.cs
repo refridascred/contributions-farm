@@ -83,12 +83,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
+            Failed,
             Active,
-            Dropped,
-            New,
+            Queued,
+            Synced,
         }
     }
 }
