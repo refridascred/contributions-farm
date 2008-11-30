@@ -16,18 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine session record values into a single score.</summary>
-        public static long FoldSessionRecord(long[] levels, long limit)
+        /// <summary>Match up queue channel samples.</summary>
+        public static long CompareQueueChannelCount(long[] items)
         {
-            long result = -98;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)limit == (9.8 / 5.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + entry) % 1000;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
