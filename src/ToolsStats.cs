@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double bias, double bias2)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double load = bias - 7.3;
-            if (load < (bias2 * 9.0))
-            {
-                load = load + 3.3;
-            }
-            return load + (bias2 / 7.0);
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a tools counter forward.</summary>
