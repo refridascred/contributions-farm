@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 4900;
+        public const double LimitGraph = 89.17;
+        public const long MaxBudget = 4605;
+        public const long StepScore = 1055;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
