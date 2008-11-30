@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long BaseBatch = 6283;
         public const string MinBatch = "stable-v2";
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
