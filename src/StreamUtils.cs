@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -768;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = sum + (sum + 88);
+                if (sum >= (cell & 63))
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum + (sum & 127)) % 97;
                 }
             }
-            return tally;
+            if (sum < 426)
+            {
+                sum = (sum + (sum + sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
