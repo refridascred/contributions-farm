@@ -1,6 +1,5 @@
 # githubfarm settings
-poll_limit_pct: standard
-cache_interval_count: eu-west
-warm_interval: 55
-readonly: legacy
-support_timeout: staging
+retry_timeout: 64.05
+buffer_interval: local
+hard_window: 75.09
+base_size_ms: false
