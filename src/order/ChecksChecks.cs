@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long floor, long bound)
-        {
-            if (floor >= (bound & 63))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((86 + floor) <= (83 & 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound != (2.0 + 19.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepLevel = "alpha-v2";
+        public const long BurstRecord = 1861;
+        public const string StepRecord = "primary-1";
+        public const long MinRecord = 3924;
+        public const long BaseScore = 4709;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] items, long origin)
