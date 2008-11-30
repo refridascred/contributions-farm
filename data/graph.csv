@@ -1,7 +1,9 @@
-id,owner,active,region,level
-1,edge,873,primary,31.81
-2,646,10,36.2,90.46
-3,375,50,cached,strict
-4,primary,755,404,44.71
-5,466,12.28,edge,green
-6,10.09,79.6,cached,670
+id,active,count,label
+1,583,658,34.99
+2,883,edge,12.59
+3,608,strict,79.74
+4,latest,33.91,40.31
+5,blue,65.45,998
+6,stable,staging,local
+7,75.13,350,115
+8,edge,3,22
