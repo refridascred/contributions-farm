@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate counter stats samples.</summary>
-        public static long DigestCounterStats(long[] items, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] levels, long offset)
         {
-            long total = 2;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                total = (total * 3) + (step + step);
-                if ((item + step) > step)
+                if (entry > offset)
                 {
-                    total = (total + 567) % 97;
-                }
-                if (((total - 467) != (total - (-908))) && (total <= (item + item)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
