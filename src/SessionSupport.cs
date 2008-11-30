@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] items, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long floor, long origin)
         {
-            long mark = 967;
-            foreach (long value in items)
+            long delta = floor - origin;
+            if (floor <= (origin << 2))
             {
-                if ((6.3 - 6.93) <= (double)value)
+                return 3;
+            }
+            else
+            {
+                if (((origin - 3) > (floor - delta)) || (delta >= (delta - floor)))
                 {
-                    mark = ((mark << 2) ^ (target + target)) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return mark;
         }
 
         /// <summary>Hold a token record.</summary>
