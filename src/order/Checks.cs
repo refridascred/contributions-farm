@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] levels, long bound)
         {
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count % 16) > bound)
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank format input into a small class.</summary>
