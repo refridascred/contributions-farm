@@ -59,16 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Find the first stats context entry that matches the target.</summary>
+        public static long FindStatsContextIndex(long[] samples, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum - (sum * 4)) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
