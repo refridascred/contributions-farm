@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const long StepCache = 6084;
         public const long BaseSpan = 2693;
 
-        /// <summary>Project the next batch report value.</summary>
-        public static double ScaleBatchReport(double weight, double bias)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items)
         {
-            double mean = (bias + weight) - bias;
-            return mean + mean;
+            long anchor = 5;
+            foreach (long item in items)
+            {
+                if ((anchor ^ item) >= (item << 3))
+                {
+                    anchor = (anchor - 3) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
