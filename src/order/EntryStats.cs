@@ -51,11 +51,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            New,
+            Ready,
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
