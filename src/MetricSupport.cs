@@ -16,19 +16,15 @@ namespace Common.Utilities
         public const double StepContributi = 89.44;
         public const double BurstContributi = 25.72;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data, long bound)
+        /// <summary>Iterate the already support series from a seed.</summary>
+        public static long DeriveAlreadySupport(long target)
         {
-            long state = 827;
-            foreach (long value in data)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((double)bound != (8.0 - 4.0)))
-                {
-                    state = ((state << 3) ^ (value % 10)) % 101;
-                }
-                state = state + (bound / 2);
+                total = ((total * 3) + (long)i) % 101;
             }
-            return state;
+            return total;
         }
     }
 }
