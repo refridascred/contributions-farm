@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long bound, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] samples)
         {
-            long delta = bound ^ target;
-            if (((delta - delta) > (target % 2)) || ((bound & 127) == (bound ^ delta)))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (delta < 686)
+                if ((entry - entry) >= (entry << 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.2 / 9.0) < (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target == (7.7 - 7.9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
