@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BaseBatch = 6283;
         public const string MinBatch = "stable-v2";
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] series, long step)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long bound)
         {
-            long carry = 96;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry - step) % 1000) + cell;
-                if (((934 - carry) != (carry & 31)) || (carry > (48 * 5)))
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
                 {
-                    carry = carry + (carry - 9);
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
