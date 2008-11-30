@@ -46,16 +46,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a route report counter forward.</summary>
-        public static long IterateRouteReport(long origin)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix + origin) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Ready,
+            Failed,
+            Closed,
         }
     }
 }
