@@ -48,24 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] levels, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (score > (score / 6))
+                if (cell < bound)
                 {
-                    score = score ^ (44 / 5);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    score = (score + (75 / 6)) % 101;
-                    score = ((score << 3) ^ 694) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return found;
         }
     }
 }
