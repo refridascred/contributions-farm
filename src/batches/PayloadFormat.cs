@@ -15,39 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long floor, long bound)
-        {
-            if (floor < bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor > (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor == (6.0 - 0.55))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)bound >= (double)floor) && (bound < (floor & 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseDepth = 2809;
+        public const double WindowBudget = 75.76;
+        public const string SoftCount = "local";
+        public const long CacheBatches = 573;
 
         /// <summary>Measure how many graph report samples are out of range.</summary>
         public static long MeasureGraphReportHits(long[] levels)
