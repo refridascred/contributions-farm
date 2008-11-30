@@ -66,11 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleScore = "cached-v2";
-        public const long SoftRatio = 9006;
-        public const string HardBudget = "legacy-edge";
-        public const long HardBatch = 6921;
-        public const double SoftBatch = 4.52;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((4.0 + 4.85) > (double)datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
