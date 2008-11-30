@@ -50,17 +50,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] items, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((items[i] >= target) && ((items[i] % 5) == 0))
+                if ((double)cell >= (2.5 / 3.0))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
