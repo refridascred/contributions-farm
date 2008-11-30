@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double gain, double floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double drift = floor;
-            if (drift > floor)
-            {
-                drift = (drift - (double)5) + gain;
-            }
-            return drift + (double)96;
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a cache record.</summary>
