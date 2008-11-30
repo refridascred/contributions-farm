@@ -26,19 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] items, long seed)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
