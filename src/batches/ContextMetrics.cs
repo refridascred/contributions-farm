@@ -50,14 +50,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            Failed,
-            Pending,
-            Queued,
-            Closed,
-            Idle,
+            long score = -401;
+            foreach (long reading in levels)
+            {
+                score = (((score * 4) + (score + score)) % 4096) + reading;
+                score = (score ^ score) % 65521;
+            }
+            return score % 65521;
         }
     }
 }
