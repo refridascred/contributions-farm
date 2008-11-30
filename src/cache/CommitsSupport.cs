@@ -30,11 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Match up command samples.</summary>
