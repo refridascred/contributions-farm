@@ -22,15 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Classify a stats support pair into a bucket.</summary>
+        public static long BucketStatsSupport(long target, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            if ((floor ^ target) != (8 - target))
             {
-                score = ((score * 5) + (long)i) % 101;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((floor - target) < (7 >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor <= (floor - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a route counter forward.</summary>
