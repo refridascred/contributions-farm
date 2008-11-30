@@ -12,39 +12,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long limit, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] levels, long limit)
         {
-            long delta = limit ^ target;
-            if ((target + target) < (delta + target))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((delta + 7) > (13 & 63)) && ((delta - target) < (3 / 3)))
+                if (reading <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target & 127) >= (limit + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((787 << 2) < (target / 6))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the session status values.</summary>
