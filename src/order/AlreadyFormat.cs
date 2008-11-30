@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 57.6;
+        public const long IdleEditor = 229;
+        public const long SoftFactor = 323;
+        public const double HardCount = 86.89;
+        public const string BurstEditor = "standard-v2";
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] samples, long floor)
