@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 9845;
-        public const string MaxLevel = "local-v2";
-        public const string MaxWidth = "stable";
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
