@@ -37,11 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long limit)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
