@@ -23,16 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            long state = 43;
-            foreach (long item in items)
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                state = (state * 5) + (837 >> 3);
-                state = state ^ (item - 8);
+                if (!((double)limit > 20.0))
+                {
+                    carry = ((carry << 2) ^ carry) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Describe the filter phase values.</summary>
