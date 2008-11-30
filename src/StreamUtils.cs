@@ -19,15 +19,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
