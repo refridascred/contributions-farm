@@ -34,22 +34,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] samples, long origin)
         {
-            long sum = 6;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8 ^ item) >= (sum % 8))
+                if (samples[i] < origin)
                 {
-                    sum = sum ^ (sum << 3);
+                    return (long)i;
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum ^ (sum % 10)) % 255;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
