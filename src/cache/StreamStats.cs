@@ -20,12 +20,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleSize = "latest-1";
-        public const long CacheProfile = 2466;
-        public const long DefaultProfile = 442;
-        public const long SoftSpan = 8045;
-        public const string BaseSpan = "standard-1";
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Ready,
+            Pending,
+            Active,
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long origin)
