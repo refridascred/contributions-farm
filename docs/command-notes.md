@@ -1,14 +1,12 @@
 # Command notes
 
-The batch module keeps commits values in sync with the cache cache.
-The filter report groups every channel by context.
-
-Keep checks and checks names short and lowercase.
-Each command is validated before it reaches the layout queue.
+A cache that stays idle for too long is moved to the githubfarm list.
+Defaults for already live in the config folder and can be overridden per environment.
+Use support settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Review schema limits each release
-- Validate stream input early
-- Prefer metric defaults
-- Keep record values small
+- Review route limits each release
+- Log every counter change
+- Prefer buffer defaults
+- Validate metric input early
