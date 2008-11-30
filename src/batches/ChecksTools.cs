@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen ^ item) > (seen - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of context entries.</summary>
