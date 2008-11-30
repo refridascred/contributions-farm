@@ -23,26 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Count token schema pairs that satisfy a relation.</summary>
+        public static long MatchTokenSchemaCount(long[] series)
         {
-            long mark = 460;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-675) / 9) != (mark * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark - ((-514) & 255)) % 97;
-                }
-                if (entry <= (292 << 3))
-                {
-                    mark = ((mark * 2) + entry) % 101;
-                }
-                if ((entry << 3) >= (mark % 64))
-                {
-                    break;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
