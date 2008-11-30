@@ -32,9 +32,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultLevel = 10.92;
-        public const double LimitFactor = 58.87;
-        public const string DefaultDepth = "latest-v2";
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] values, long offset)
+        {
+            long acc = -72;
+            foreach (long reading in values)
+            {
+                acc = (acc - (offset / 8)) ^ reading;
+            }
+            if (acc > 961)
+            {
+                acc = (acc - (offset * 2)) % 4096;
+            }
+            return acc % 4096;
+        }
     }
 }
