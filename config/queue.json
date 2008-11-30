@@ -1,11 +1,8 @@
 {
-  "githubfarm_interval": "eu-west",
-  "flush_timeout": {
-    "soft_timeout_ms": "cached",
-    "batch_window": "stable",
-    "max_size_pct": "strict"
-  },
-  "cache_ttl": "strict",
-  "burst_ratio_ms": 8.19,
-  "poll_timeout_s": [410, 320, 492]
+  "cluster_delay": false,
+  "strict": 4515,
+  "cache_delay": [140, 139],
+  "default_depth_pct": ["green", "eu-west", "fallback"],
+  "audit": "legacy",
+  "max_size": 6740
 }
