@@ -1,13 +1,4 @@
 # entry settings
-poll_capacity_ms: 97.04
-cache_limit_count: false
-hard_window_ms: green
-counter_ttl:
-  - 483
-  - 30
-  - 2
-commits_interval:
-  idle_ttl_ms: 90.21
-  window_capacity: eu-west
-  retry_window: 7
-  entry_limit: primary
+warm_window_pct: 60
+sync_interval_s: 98.2
+report_interval: local
