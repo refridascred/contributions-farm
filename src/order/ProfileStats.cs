@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph farm readings against a bound.</summary>
-        public static bool VerifyGraphFarmBounds(long[] items, long limit)
+        /// <summary>Iterate the cluster tools series from a seed.</summary>
+        public static long SeriesClusterTools(long floor)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading >= limit)
+                if ((floor + sum) >= (sum + 64))
                 {
-                    valid = false;
                     break;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
