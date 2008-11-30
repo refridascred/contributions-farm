@@ -54,23 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] samples, long limit)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long score = -44;
-            foreach (long value in samples)
-            {
-                score = score - (score ^ score);
-                if ((limit >> 1) <= (score - score))
-                {
-                    score = (score ^ (value + limit)) % 101;
-                }
-            }
-            if (score < 6)
-            {
-                score = ((score * 3) + (score - score)) % 255;
-            }
-            return score;
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
