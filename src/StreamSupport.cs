@@ -35,19 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next token filter value from a seed.</summary>
-        public static long SeriesTokenFilter(long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] levels, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)i >> 3) >= (step * 5))
+                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
                 {
-                    total = ((total * 2) + (total & 15)) % 101;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
     }
 }
