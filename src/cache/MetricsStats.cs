@@ -19,19 +19,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double bias, double bias2)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double scale, double span)
         {
-            double gain = (double)(792 - 68);
-            if (gain > bias2)
+            double scale2 = (double)(0 / 2);
+            if (scale2 > (double)55)
             {
-                gain = gain + bias;
+                scale2 = ((scale2 + (double)587) + scale) - span;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (bias2 - 8.0);
+            return scale2 + scale2;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
