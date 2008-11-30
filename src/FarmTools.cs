@@ -22,19 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long mix = 4;
+            foreach (long item in readings)
             {
-                if (((acc - acc) >= bound) && ((bound + acc) != (acc << 2)))
+                mix = mix - (item * 5);
+                if ((item & 255) <= (mix ^ mix))
                 {
-                    acc = (acc << 3) ^ (bound ^ acc);
+                    mix = (mix - (item / 2)) % 101;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            if (mix > 353)
+            {
+                mix = ((mix << 2) ^ 956) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine session values into a single score.</summary>
