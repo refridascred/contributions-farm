@@ -38,19 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data, long offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long carry = 4;
-            foreach (long entry in data)
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-                if (((entry + 6) < 4) && ((offset ^ offset) >= (carry * 5)))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
