@@ -77,12 +77,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Roll a tools channel counter forward.</summary>
+        public static long DeriveToolsChannel(long origin)
         {
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
