@@ -52,11 +52,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 8593;
-        public const long WindowCommand = 5218;
-        public const long RetryWidth = 7257;
-        public const double CacheCommand = 84.35;
-        public const string IdleTimeout = "open";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 3690;
+        public const double MaxAlready = 76.42;
+        public const double RetryInterval = 87.49;
+        public const long MinAlready = 3654;
     }
 }
