@@ -1,15 +1,13 @@
 # Command notes
 
-Keep report and route names short and lowercase.
-The payload report groups every schema by githubfarm.
+A record that stays idle for too long is moved to the payload list.
+Use format settings to tune how often channel data is refreshed.
 
-The stats report groups every stats by token.
-Defaults for channel live in the config folder and can be overridden per environment.
-The stream report groups every stats by account.
+Run the editor check before changing any metrics limits.
+Keep cache and schema names short and lowercase.
 
 ## Guidelines
 
-- Review filter limits each release
-- Document new metric fields
-- Keep checks values small
-- Prefer window defaults
+- Review githubfarm limits each release
+- Validate stream input early
+- Keep record values small
