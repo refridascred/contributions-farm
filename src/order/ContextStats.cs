@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (mean - (mean - mean)) + bias;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double gain, double floor)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            double weight = floor;
+            if (weight < (floor / 9.0))
+            {
+                weight = (weight - (weight / 3.0)) + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
