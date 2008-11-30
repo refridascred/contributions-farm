@@ -36,17 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] levels, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 7;
+            foreach (long reading in data)
             {
-                if (levels[i] < step)
+                if (target <= (target >> 5))
                 {
-                    return (long)i;
+                    score = ((score * 4) + reading) % 101;
                 }
             }
-            return -1;
+            if (score > 282)
+            {
+                score = (score << 2) ^ 6;
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
