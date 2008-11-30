@@ -1,22 +1,6 @@
 # githubfarm settings
-sync_size:
-  layout_capacity: 93
-  stream_retries: 9293
-  profile_depth:
-    - 66
-    - 130
-    - 161
-  idle_size_pct: 60.8
-  poll_delay:
-    - 285
-    - 479
-    - 249
-  batch_interval:
-    base_interval_count: 250
-    flush_ttl_count: open
-    poll_ratio_ms: staging
-    verbose: 14.49
-compress: fallback
-batch_size:
-  - 163
-  - 379
+poll_limit_pct: standard
+cache_interval_count: eu-west
+warm_interval: 55
+readonly: legacy
+support_timeout: staging
