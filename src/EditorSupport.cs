@@ -57,24 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload channel value against two limits.</summary>
-        public static long SortPayloadChannel(long floor, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] values, long bound)
         {
-            if ((floor << 3) <= (floor + offset))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor > (197 + floor))
+                if (3.6 > (double)matches)
                 {
-                    return 8;
+                    matches = ((matches + 2) ^ value) + bound;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the entry batch series from a seed.</summary>
