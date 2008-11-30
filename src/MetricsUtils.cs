@@ -48,10 +48,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "open-edge";
-        public const long MinBuffer = 351;
-        public const string LimitTimeout = "primary-v2";
+        /// <summary>Derive the next context counter value from a seed.</summary>
+        public static long SeriesContextCounter(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsBounds(long[] items, long bound)
