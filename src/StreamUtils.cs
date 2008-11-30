@@ -24,15 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] samples)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
             long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= (datum % 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
