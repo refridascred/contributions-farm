@@ -13,18 +13,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm layout sample.</summary>
-        public static long FindGithubfarmLayoutIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "fallback";
+        public const string BurstInterval = "local-1";
+        public const string SoftFarm = "open-edge";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepRatio = 937;
