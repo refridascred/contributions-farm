@@ -35,18 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] data)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry - seen) < 39))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
