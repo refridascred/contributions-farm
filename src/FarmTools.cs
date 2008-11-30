@@ -54,19 +54,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] series, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (sample < target)
+                if (reading <= bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
