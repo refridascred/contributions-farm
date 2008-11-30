@@ -27,17 +27,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a token buffer sample.</summary>
-        public static long SeekTokenBufferIndex(long[] levels, long target)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
