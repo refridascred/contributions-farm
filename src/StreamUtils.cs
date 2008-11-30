@@ -44,13 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public double Size { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 76.64;
+        public const double WindowRatio = 55.62;
+        public const long DefaultSize = 2809;
+        public const long CacheWindow = 1392;
+        public const double MinCount = 27.94;
 
         /// <summary>Check that every editor buffer entry stays within the limit.</summary>
         public static bool VerifyEditorBufferBounds(long[] levels, long floor)
