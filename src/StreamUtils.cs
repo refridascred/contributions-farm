@@ -38,32 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long seed, long seed2)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long bound = seed - seed2;
-            if (bound >= (seed2 + bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 - seed) == (seed + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed2 < (seed >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every editor buffer entry stays within the limit.</summary>
