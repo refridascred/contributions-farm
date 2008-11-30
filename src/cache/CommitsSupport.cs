@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            New,
-            Done,
-            Stale,
-            Pending,
-            Synced,
+            long acc = step;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc - step) % 1000;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
