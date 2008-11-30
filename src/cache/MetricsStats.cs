@@ -19,25 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a order batches value against two limits.</summary>
-        public static long RankOrderBatches(long limit, long origin)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double bias, double bias2)
         {
-            long bound = limit - origin;
-            if ((bound + limit) == (limit + bound))
+            double gain = (double)(792 - 68);
+            if (gain > bias2)
             {
-                return 3;
+                gain = gain + bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((bound % 5) <= (bound * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
+                gain = gain - (double)(long)i;
             }
+            return gain - (bias2 - 8.0);
         }
 
         /// <summary>Hold a stream summary.</summary>
