@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] values, long offset)
-        {
-            long carry = 2;
-            foreach (long entry in values)
-            {
-                if ((offset > (carry + entry)) && (((long)values.Length >> 1) > (carry << 2)))
-                {
-                    carry = carry ^ carry;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 71.74;
+        public const string DefaultSize = "latest-edge";
+        public const long IdleSession = 2148;
+        public const long BatchSession = 7517;
+        public const string RetrySession = "local-v2";
 
         /// <summary>Combine editor stream values into a single score.</summary>
         public static long TotalEditorStream(long[] samples, long origin)
