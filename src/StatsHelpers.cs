@@ -51,11 +51,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 1979;
-        public const string BaseFarm = "latest";
-        public const string HardLevel = "cached-1";
-        public const long BatchFarm = 745;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first record notes entry that matches the target.</summary>
         public static long LocateRecordNotesIndex(long[] samples, long seed)
