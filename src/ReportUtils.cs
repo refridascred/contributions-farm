@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseWidth = "standard";
-        public const long CacheEntry = 7272;
-        public const long WindowEntry = 295;
-        public const long RetryDepth = 2710;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Ready,
+            Locked,
+            Active,
+            Draft,
+        }
 
         /// <summary>Locate a channel queue reading by value.</summary>
         public static long LookupChannelQueueIndex(long[] values, long seed)
