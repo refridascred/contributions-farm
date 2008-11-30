@@ -34,21 +34,19 @@ namespace Common.Utilities
         public const long SoftBudget = 8291;
         public const long BaseInterval = 7353;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Validate support tools readings against a bound.</summary>
+        public static bool ValidateSupportToolsBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != floor)
                 {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
