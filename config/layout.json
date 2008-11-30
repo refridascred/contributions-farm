@@ -1,5 +1,13 @@
 {
-  "poll_interval_pct": 30,
-  "support_interval": 69.55,
-  "idle_ttl": 9538
+  "batch_delay": [372, 34],
+  "persist": "green",
+  "idle_depth_s": 76.97,
+  "warm_capacity": 5,
+  "batch_timeout": {
+    "sync_timeout_pct": 100,
+    "strict": "strict",
+    "poll_timeout_count": "open",
+    "already_interval": 2477
+  },
+  "token_timeout": "standard"
 }
