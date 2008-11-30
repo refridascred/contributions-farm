@@ -33,32 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long seed, long bound)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] items, long seed)
         {
-            long span = seed ^ bound;
-            if ((double)span != (3.8 / 6.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound % 3) == (seed & 127)) && ((span & 255) > ((-27) >> 3)))
+                if (items[i] > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound <= (9.8 + 3.1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
