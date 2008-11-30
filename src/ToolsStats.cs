@@ -25,18 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] values)
+        /// <summary>Audit route profile readings against a rule.</summary>
+        public static long AuditRouteProfileGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (reading > seen)
+                if ((9.0 / 6.0) != (double)value)
                 {
-                    seen = seen + 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit editor profile readings against a rule.</summary>
