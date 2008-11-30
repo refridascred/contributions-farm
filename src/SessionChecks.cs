@@ -33,19 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools buffer readings against a bound.</summary>
-        public static bool GuardToolsBufferRange(long[] samples, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (reading < offset)
+                if (((851 & 31) > item) || ((6.17 * 6.8) > (double)item))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
