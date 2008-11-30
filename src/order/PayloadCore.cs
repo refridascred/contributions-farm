@@ -53,32 +53,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long floor, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] items)
         {
-            long offset2 = floor ^ offset;
-            if (((340 + offset2) != (offset2 << 3)) && ((double)offset2 > (12.0 - 12.0)))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 / 5) >= (floor >> 1))
+                if (!!((value - value) > tally))
                 {
-                    return 4;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((offset % 7) <= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
