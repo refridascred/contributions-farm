@@ -23,18 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] readings, long step)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((offset ^ offset) >= (offset + offset))
             {
-                if (((step << 2) <= step) || (8 > (step + step)))
+                return 1;
+            }
+            else
+            {
+                if ((1.78 * 15.0) >= (double)floor)
                 {
-                    seen = (seen + 2) + cell;
+                    return 2;
+                }
+                else
+                {
+                    if ((4.22 * 6.1) > (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
