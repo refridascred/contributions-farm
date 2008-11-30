@@ -1,11 +1,12 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Each profile is validated before it reaches the batches queue.
+A format that stays idle for too long is moved to the session list.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Run the stream check before changing any batches limits.
 
 ## Guidelines
 
-- Review schema limits each release
-- Prefer session defaults
-- Validate route input early
-- Keep queue values small
+- Keep format values small
+- Validate schema input early
+- Review command limits each release
+- Document new token fields
