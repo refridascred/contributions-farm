@@ -29,14 +29,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] series, long floor)
         {
-            Queued,
-            Idle,
-            Done,
-            Dropped,
-            New,
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate already samples.</summary>
