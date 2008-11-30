@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 6824;
-        public const long BurstMetric = 5622;
-        public const long StepTimeout = 170;
-        public const long RetryLevel = 7046;
-        public const string SoftFactor = "cached-1";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Paused,
+            Idle,
+            Stale,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheGaps(long[] values)
