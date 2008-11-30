@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Synced,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Combine already farm values into a single score.</summary>
