@@ -1,9 +1,6 @@
 {
-  "sync_ratio_pct": 72.89,
-  "base_ratio": "local",
-  "enabled": {
-    "hard_retries_s": 30,
-    "warm_ratio_pct": 6.95,
-    "warm_size_pct": false
-  }
+  "hard_capacity_s": 64.28,
+  "order_interval": 1852,
+  "compress": 4850,
+  "hard_window_ms": 80.87
 }
