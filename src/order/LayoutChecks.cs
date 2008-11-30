@@ -28,22 +28,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] data, long origin)
+        /// <summary>Compare every pair of window cache readings.</summary>
+        public static long PairWindowCacheCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count * 4) != (61 ^ count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 3) + item) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every buffer commits entry stays within the limit.</summary>
