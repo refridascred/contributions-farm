@@ -1,10 +1,8 @@
 {
-  "flush_capacity_ms": "strict",
-  "metrics_interval": 70.92,
-  "route_interval": {
-    "audit": 3262,
-    "profile_ttl": 72,
-    "persist": 3154
-  },
-  "burst_ttl_ms": 6096
+  "retry_capacity_s": "staging",
+  "hard_size_count": 79.45,
+  "default_ttl_count": 60,
+  "sync_size_ms": "green",
+  "window_size": "edge",
+  "enabled": "latest"
 }
