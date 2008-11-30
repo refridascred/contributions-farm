@@ -67,22 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] series)
+        /// <summary>Measure how many editor report samples are out of range.</summary>
+        public static long TallyEditorReportMatches(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((hits ^ hits) > (value % 7))
+                if ((cell % 97) >= (300 % 12))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) + bound;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
