@@ -20,12 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxScore = 8036;
-        public const long HardStats = 9710;
-        public const string BaseFactor = "standard-1";
-        public const long BatchSize = 7533;
-        public const long DefaultStats = 8113;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Done,
+            Idle,
+            Dropped,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferBounds(long[] values, long step)
