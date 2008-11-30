@@ -1,26 +1,5 @@
 # support settings
-hard_timeout_count:
-  max_threshold: 9453
-  notes_delay: 53.89
-  hard_interval_count:
-    strict: strict
-    entry_size: false
-    farm_window: true
-    poll_ratio:
-      - edge
-      - standard
-      - latest
-  readonly: eu-west
-enabled: true
-audit: 6814
-max_delay_s: 250
-hard_limit_pct:
-  account_ratio:
-    - 457
-    - 104
-  report_capacity: 4518
-  sync_limit_s: 26
-report_timeout:
-  - blue
-  - cached
-  - eu-west
+batch_ratio_ms: true
+readonly: true
+retry_depth_count: open
+idle_delay: true
