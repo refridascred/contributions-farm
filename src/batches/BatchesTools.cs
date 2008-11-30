@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long HardLevel = 9722;
         public const double HardSpan = 4.32;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] items)
         {
-            Pending,
-            Failed,
-            Retry,
-            Done,
+            long total = 7;
+            foreach (long reading in items)
+            {
+                if ((double)total < 8.5)
+                {
+                    total = ((total << 2) ^ reading) % 97;
+                }
+            }
+            return total % 97;
         }
     }
 }
