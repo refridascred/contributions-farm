@@ -14,39 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long seed, long seed2)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long step = seed - seed2;
-            if (seed2 < (seed << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((10.0 / 8.0) == (double)seed2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)seed2 != (double)step) || ((4.6 - 8.5) <= (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed2 >= (seed2 * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
