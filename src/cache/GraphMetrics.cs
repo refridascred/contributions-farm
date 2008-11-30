@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = carry ^ ((long)i << 1);
-                if ((carry + carry) > seed)
-                {
-                    carry = ((carry * 2) + ((long)i * 5)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (seed >> 3)) % 255;
-                    carry = ((carry << 2) ^ (seed & 1)) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a batch record.</summary>
