@@ -67,25 +67,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] series, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i + origin) != (origin - sum))
+                if (series[i] == target)
                 {
-                    sum = ((sum * 5) + (6 % 5)) % 65521;
-                    sum = (sum + (sum - origin)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum * 2) + 26;
-                }
-                sum = sum ^ (sum & 127);
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
     }
 }
