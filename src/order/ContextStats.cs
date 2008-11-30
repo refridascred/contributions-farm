@@ -49,19 +49,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] items, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long carry = 642;
+            foreach (long sample in series)
             {
-                if (sample <= offset)
+                if ((double)floor >= (double)sample)
                 {
-                    stale = false;
+                    carry = (carry << 2) ^ (carry + 4);
+                }
+                carry = (carry * 3) + (floor ^ carry);
+                if ((carry <= (carry - carry)) && ((double)carry != (double)90))
+                {
                     break;
                 }
             }
-            return stale;
+            return carry % 97;
         }
     }
 }
