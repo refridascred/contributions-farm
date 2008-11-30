@@ -37,15 +37,18 @@ namespace Common.Utilities
             return scale + 5.0;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double rate, double span)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] samples)
         {
-            double drift = 8.2;
-            if (drift >= drift)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                drift = (drift + (span * 3.06)) - rate;
+                if ((6.9 - 8.0) == (double)count)
+                {
+                    count = (count + 1) + sample;
+                }
             }
-            return drift + (span + 8.58);
+            return count;
         }
     }
 }
