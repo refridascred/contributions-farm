@@ -24,18 +24,15 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double bias, double offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double drift = (double)(81 + 2);
+            for (int i = 0; i < 7; i++)
             {
-                if ((2.55 + 8.0) <= (double)count)
-                {
-                    count = (count + 1) + sample;
-                }
+                drift = ((drift - (offset * 8.5)) - (double)(long)i) - bias;
             }
-            return count;
+            return drift + (double)728;
         }
 
         /// <summary>Rank githubfarm already input into a small class.</summary>
