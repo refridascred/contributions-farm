@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
