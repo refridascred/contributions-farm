@@ -23,19 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] samples, long target)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
