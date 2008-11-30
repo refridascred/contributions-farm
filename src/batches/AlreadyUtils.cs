@@ -35,12 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepLevel = 9977;
-        public const long MinChecks = 254;
-        public const double MaxScore = 9.83;
-        public const long BatchChecks = 3526;
-        public const long HardBudget = 1990;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long target, long seed)
+        {
+            if ((9.3 - 6.8) <= (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed & 63) > seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed <= (3.0 + 9.6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiOutliers(long[] samples, long origin)
