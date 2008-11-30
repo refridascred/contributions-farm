@@ -1,8 +1,13 @@
 {
-  "profile_delay": "strict",
-  "window_interval": "local",
-  "hard_timeout_count": "blue",
-  "compress": false,
-  "dry_run": [5, 230, 220],
-  "support_threshold": "standard"
+  "idle_size": true,
+  "layout_delay": 2323,
+  "soft_capacity": "primary",
+  "sync_timeout": {
+    "hard_size_ms": "eu-west",
+    "retry_limit": "eu-west",
+    "burst_depth_count": "open",
+    "flush_ttl_pct": ["latest", "staging", "open", "open"],
+    "hard_interval_ms": "edge"
+  },
+  "window_depth": "primary"
 }
