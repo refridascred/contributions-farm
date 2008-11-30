@@ -1,7 +1,7 @@
-id,active,label,ratio,score
-1,0.6,858,876,staging
-2,38.69,69.25,primary,468
-3,fallback,20,458,27.28
-4,green,49.5,31.03,25
-5,legacy,22.0,stable,local
-6,61.63,0.58,20.5,987
+id,label,level
+1,207,424
+2,45.81,open
+3,217,primary
+4,876,166
+5,1.54,497
+6,462,primary
