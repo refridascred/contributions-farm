@@ -63,21 +63,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftDepth = 8767;
+        public const long RetryFactor = 6418;
+        public const double StepWidth = 59.16;
+        public const long SoftChecks = 5376;
     }
 }
