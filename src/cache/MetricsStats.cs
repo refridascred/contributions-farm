@@ -27,24 +27,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] levels, long seed)
         {
-            if (((1.0 * 1.8) >= (double)floor) || ((double)floor == (5.8 + 6.76)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.06 * 9.0) == (double)floor)
+                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
