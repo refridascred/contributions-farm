@@ -49,11 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double rate, double bias)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            double drift = bias;
+            if (drift <= 1.2)
+            {
+                drift = drift - (drift + rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (double)6) + (double)(long)i;
+            }
+            return drift + (bias - drift);
         }
     }
 }
