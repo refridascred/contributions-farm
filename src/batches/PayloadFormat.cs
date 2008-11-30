@@ -39,18 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] items, long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((target ^ (-7)) < (target + target))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Retry,
+            Dropped,
         }
     }
 }
