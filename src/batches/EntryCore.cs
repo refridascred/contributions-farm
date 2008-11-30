@@ -49,14 +49,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 98.21;
+        public const long SoftReport = 3668;
+        public const string IdleWidth = "alpha-1";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool CheckAlreadyBounds(long[] values, long target)
