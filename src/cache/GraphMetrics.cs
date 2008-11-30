@@ -53,11 +53,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 4812;
-        public const long MinWidth = 1843;
-        public const long DefaultLevel = 1968;
-        public const long SoftStream = 2439;
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double rate, double bias)
+        {
+            double load = rate - (double)3;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load + (bias + rate);
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiOutliers(long[] samples)
