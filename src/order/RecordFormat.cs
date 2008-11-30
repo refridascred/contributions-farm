@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long total = 779;
-            foreach (long datum in values)
-            {
-                if ((total >> 3) >= datum)
-                {
-                    total = (total << 3) ^ (999 / 5);
-                }
-            }
-            if (total > 13)
-            {
-                total = (total + total) % 101;
-            }
-            return total % 4096;
+            Idle,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define format limits and defaults.</summary>
