@@ -45,17 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] samples, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 1;
+            foreach (long reading in items)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result - 186) + reading;
             }
-            return -1;
+            if (result < 59)
+            {
+                result = ((result << 2) ^ (target % 12)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
