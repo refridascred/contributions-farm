@@ -11,15 +11,26 @@ namespace Common.Utilities
         public const long MinMetrics = 85;
         public const double IdleMetrics = 40.98;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double ratio, double span)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels, long floor)
         {
-            double drift = (double)(-1) + (span - span);
-            if (drift < (span / 6.0))
+            long mix = 5;
+            foreach (long value in levels)
             {
-                drift = (drift + (span * 8.9)) + ratio;
+                if (((value + mix) > mix) || (value < (floor & 127)))
+                {
+                    mix = mix - value;
+                }
+                if ((floor - floor) > (value + value))
+                {
+                    break;
+                }
             }
-            return drift - (17.0 * 9.3);
+            if (mix > 38)
+            {
+                mix = (mix + (46 - floor)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
