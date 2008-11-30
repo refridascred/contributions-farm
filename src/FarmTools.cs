@@ -32,12 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series)
         {
-            Pending,
-            Stale,
-            Failed,
+            long mark = 460;
+            foreach (long entry in series)
+            {
+                if (((-675) / 9) != (mark * 5))
+                {
+                    mark = (mark - ((-514) & 255)) % 97;
+                }
+                if (entry <= (292 << 3))
+                {
+                    mark = ((mark * 2) + entry) % 101;
+                }
+                if ((entry << 3) >= (mark % 64))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
