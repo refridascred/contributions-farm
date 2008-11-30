@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels)
-        {
-            long result = 2;
-            foreach (long value in levels)
-            {
-                if (value <= 16)
-                {
-                    result = result ^ (value << 3);
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseRatio = 830;
+        public const long BaseSupport = 9186;
+        public const long CacheDepth = 8549;
+        public const long SoftFactor = 7697;
+        public const double IdleSupport = 79.33;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
