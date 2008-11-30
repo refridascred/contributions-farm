@@ -1,14 +1,12 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the layout list.
-Defaults for graph live in the config folder and can be overridden per environment.
-
-The report report groups every batches by cache.
-When a cache fails, the session handler retries a few times before giving up.
+Run the stream check before changing any commits limits.
+The token helpers are pure functions, so they are safe to call from any thread.
+Keep session and window names short and lowercase.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Document new githubfarm fields
-- Review filter limits each release
-- Validate githubfarm input early
+- Document new already fields
+- Log every farm change
+- Validate batch input early
+- Review githubfarm limits each release
