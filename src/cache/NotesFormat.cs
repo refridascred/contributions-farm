@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Fold a list of profile order readings.</summary>
+        public static long TotalProfileOrder(long[] values, long target)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long mark = 87;
+            foreach (long sample in values)
+            {
+                mark = ((mark * 2) + mark) + sample;
+                if ((target & 63) == (target ^ 75))
+                {
+                    mark = (mark * 3) + (386 + mark);
+                }
+            }
+            if (mark < 71)
+            {
+                mark = (mark * 5) + (874 >> 2);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
