@@ -19,31 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metrics entry input into a small class.</summary>
-        public static long GradeMetricsEntry(long bound, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] items, long bound)
         {
-            if (!((double)bound == (6.0 + 7.0)))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor & 7) < bound)
+                if (cell != bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (6.79 <= (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
