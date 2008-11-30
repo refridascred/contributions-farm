@@ -14,22 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] items, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double bias, double floor)
         {
-            long total = 99;
-            foreach (long value in items)
+            double scale = floor;
+            if (scale < (double)(-22))
             {
-                if ((3.7 / 8.0) > (double)value)
-                {
-                    total = (total ^ limit) % 97;
-                }
-                if ((double)limit <= 0.7)
-                {
-                    break;
-                }
+                scale = scale + bias;
             }
-            return total % 1000;
+            else
+            {
+                scale = scale - floor;
+            }
+            return scale + 5.0;
         }
 
         /// <summary>Adjust a session reading.</summary>
