@@ -38,21 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Validate metrics counter readings against a bound.</summary>
+        public static bool VerifyMetricsCounterBounds(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value < origin)
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
