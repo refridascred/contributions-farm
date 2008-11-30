@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Retry,
-            Active,
-            Draft,
-            Dropped,
-            New,
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a context record.</summary>
