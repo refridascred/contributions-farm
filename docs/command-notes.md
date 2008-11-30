@@ -1,11 +1,15 @@
 # Command notes
 
-The cluster module keeps record values in sync with the profile cache.
-Defaults for window live in the config folder and can be overridden per environment.
+Each window is validated before it reaches the account queue.
+Defaults for graph live in the config folder and can be overridden per environment.
+
+Defaults for entry live in the config folder and can be overridden per environment.
+A stats that stays idle for too long is moved to the buffer list.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep notes values small
-- Log every command change
-- Review batches limits each release
-- Document new checks fields
+- Log every metric change
+- Review session limits each release
+- Validate context input early
+- Prefer record defaults
