@@ -29,10 +29,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFarm = 29.77;
-        public const double MinWidth = 5.32;
-        public const long DefaultFarm = 6914;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double gain, double bias)
+        {
+            double scale = (double)(994 - 861);
+            if (scale <= (double)955)
+            {
+                scale = (scale + bias) - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + bias;
+        }
 
         /// <summary>Validate window payload readings against a bound.</summary>
         public static bool VerifyWindowPayloadBounds(long[] items, long target)
