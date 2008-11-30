@@ -31,15 +31,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double rate, double floor)
+        /// <summary>Grade a filter token value against two limits.</summary>
+        public static long SortFilterToken(long step, long target)
         {
-            double load = (double)(4 ^ 869);
-            if (load < rate)
+            long prev = step + target;
+            if (55 >= (target ^ target))
             {
-                load = load - floor;
+                return 4;
             }
-            return load + load;
+            else
+            {
+                if ((1.0 / 5.0) == (double)prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
