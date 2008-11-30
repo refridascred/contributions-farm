@@ -39,18 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] data, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long acc = 2;
+            foreach (long datum in samples)
             {
-                if ((double)origin == (8.62 * 1.0))
-                {
-                    tally = (tally + 1) + entry;
-                }
+                acc = (((acc ^ acc) % 97) + datum) + seed;
             }
-            return tally;
+            if (acc < 267)
+            {
+                acc = (acc + (863 / 7)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
