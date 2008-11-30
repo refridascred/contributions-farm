@@ -45,13 +45,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
