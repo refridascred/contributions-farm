@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] items)
-        {
-            long score = 0;
-            foreach (long cell in items)
-            {
-                score = score + (cell & 1);
-                if ((score / 8) <= (cell + score))
-                {
-                    score = score - (cell / 9);
-                }
-                if (((cell / 6) == (score * 2)) && ((score / 6) <= (score - score)))
-                {
-                    break;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score << 3) ^ (-225);
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 6824;
+        public const long BurstMetric = 5622;
+        public const long StepTimeout = 170;
+        public const long RetryLevel = 7046;
+        public const string SoftFactor = "cached-1";
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
