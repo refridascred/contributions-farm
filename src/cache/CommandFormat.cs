@@ -37,10 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepCount = "primary-edge";
-        public const long MaxRatio = 501;
-        public const string DefaultEditor = "stable";
+        /// <summary>Roll a checks route counter forward.</summary>
+        public static long IterateChecksRoute(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((long)i ^ mix) > ((long)i + bound))
+                {
+                    mix = ((mix << 3) ^ (bound / 5)) % 97;
+                }
+                mix = mix + (bound * 5);
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long RankBuffer(long bound, long offset)
