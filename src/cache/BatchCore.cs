@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Idle,
-            Dropped,
-            Active,
-            Ready,
-            Paused,
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
