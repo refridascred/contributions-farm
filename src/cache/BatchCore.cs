@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length ^ hits) <= (entry >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinInterval = 62.06;
+        public const long CacheScore = 4314;
+        public const long MinDepth = 6980;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseBuffer = 1204;
