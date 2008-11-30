@@ -1,11 +1,11 @@
 # Command notes
 
-The graph report groups every schema by session.
-When a command fails, the token handler retries a few times before giving up.
-Use token settings to tune how often record data is refreshed.
+The cluster module keeps record values in sync with the profile cache.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new format fields
-- Review stream limits each release
-- Validate window input early
+- Keep notes values small
+- Log every command change
+- Review batches limits each release
+- Document new checks fields
