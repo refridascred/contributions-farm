@@ -6,12 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local blue fallback latest; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=384
+log "limit is ${BUFFER_LIMIT}"
