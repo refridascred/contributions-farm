@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long MaxBudget = 4605;
         public const long StepScore = 1055;
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
+            Stale,
+            New,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the route class values.</summary>
