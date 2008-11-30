@@ -27,13 +27,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] samples, long origin)
         {
-            Failed,
-            Dropped,
-            Idle,
-            Queued,
+            long total = 820;
+            foreach (long datum in samples)
+            {
+                if ((datum / 3) < (total & 31))
+                {
+                    total = ((total - (total / 6)) % 97) - origin;
+                }
+            }
+            if (total > 20)
+            {
+                total = (total - (total + total)) % 97;
+            }
+            return total % 1000;
         }
     }
 }
