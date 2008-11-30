@@ -24,10 +24,19 @@ namespace Common.Utilities
         public const long BatchCounter = 7702;
         public const string MinCounter = "latest-v2";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultBudget = 9341;
-        public const long CacheInterval = 7148;
-        public const double HardWidth = 14.71;
-        public const long IdleCount = 3618;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] samples)
+        {
+            long state = 6;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) != ((-71) - 91))
+                {
+                    state = (state + (sample / 4)) % 255;
+                }
+                state = ((state << 3) ^ (sample + state)) % 255;
+            }
+            return state;
+        }
     }
 }
