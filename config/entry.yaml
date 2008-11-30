@@ -1,10 +1,9 @@
 # entry settings
-batch_ttl: 14
-batch_threshold_count:
-  - cached
-  - legacy
-warm_threshold_count:
-  - 143
-  - 321
-warm_depth_s: 94.75
-compress: strict
+max_capacity_pct: eu-west
+sync_ttl_s:
+  - 227
+  - 249
+  - 147
+buffer_timeout: 250
+batch_size_ms: 92.95
+retry_ttl: 30
