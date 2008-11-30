@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6 ^ 40) != (hits / 9))
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit metric command readings against a rule.</summary>
