@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] values)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long carry = 327;
+            foreach (long cell in items)
             {
-                if ((15 / 2) < (count + cell))
+                if ((cell + (-3)) < (cell - cell))
                 {
-                    count = count + 1;
+                    carry = carry - 6;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (cell * 2)) % 4096;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
