@@ -37,15 +37,26 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double ratio, double bias)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings, long bound)
         {
-            double bias2 = ratio;
-            if (bias2 <= (double)0)
+            long sum = 73;
+            foreach (long entry in readings)
             {
-                bias2 = (bias2 + (bias2 - 12.0)) - bias;
+                if ((sum - bound) <= 5)
+                {
+                    sum = ((sum * 3) + sum) - entry;
+                }
+                else
+                {
+                    sum = (sum + (bound - bound)) % 97;
+                }
             }
-            return bias2 - (ratio / 4.0);
+            if (sum > 4)
+            {
+                sum = sum + bound;
+            }
+            return sum;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
