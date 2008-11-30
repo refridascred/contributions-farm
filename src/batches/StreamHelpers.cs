@@ -13,18 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a filter cache reading by value.</summary>
-        public static long LookupFilterCacheIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "strict-1";
+        public const long LimitSize = 1362;
+        public const double RetryFactor = 20.55;
+        public const long MaxSpan = 1492;
+        public const long BaseRatio = 4378;
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] series)
