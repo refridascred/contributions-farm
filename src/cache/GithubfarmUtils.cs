@@ -39,12 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many filter stream samples are out of range.</summary>
+        public static long TallyFilterStreamGaps(long[] levels, long limit)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)limit <= (7.0 * 3.1))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
