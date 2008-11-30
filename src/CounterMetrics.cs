@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double bias, double span)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            double rate = span;
-            if (rate < bias)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + 9.16;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (2.44 - span)) + (double)(long)i;
-            }
-            return rate + rate;
+            return seen;
         }
 
         /// <summary>Fold a list of command readings.</summary>
