@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine format schema values into a single score.</summary>
-        public static long DigestFormatSchema(long[] samples, long target)
+        /// <summary>Validate tools session readings against a bound.</summary>
+        public static bool CheckToolsSessionRange(long[] samples, long origin)
         {
-            long total = -74;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in samples)
             {
-                total = (total + (target >> 2)) ^ reading;
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Match up queue channel samples.</summary>
