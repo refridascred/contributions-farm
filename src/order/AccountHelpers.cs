@@ -76,18 +76,10 @@ namespace Common.Utilities
         public const string WindowFactor = "primary-1";
         public const long LimitOrder = 9779;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry <= 6.06)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 8248;
+        public const long SoftReport = 6216;
+        public const long RetryReport = 2484;
+        public const long MaxReport = 3933;
     }
 }
