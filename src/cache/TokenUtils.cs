@@ -16,32 +16,18 @@ namespace Common.Utilities
             return mean + (bias + 8.7);
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long seed, long floor)
+        /// <summary>Combine session record values into a single score.</summary>
+        public static long FoldSessionRecord(long[] levels, long limit)
         {
-            long lane = seed + floor;
-            if ((floor & 1) <= (floor / 3))
+            long result = -98;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - 9) < (-31))
+                if ((double)limit == (9.8 / 5.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)lane != (double)758))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = (result + entry) % 1000;
                 }
             }
+            return result;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
