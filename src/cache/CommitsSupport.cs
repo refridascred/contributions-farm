@@ -72,21 +72,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up token already samples.</summary>
-        public static long MatchTokenAlreadyCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepInterval = 9424;
+        public const string LimitWidth = "open-edge";
+        public const long MinChannel = 2684;
+        public const long BurstChannel = 8944;
+        public const long MinFactor = 6960;
     }
 }
