@@ -1,6 +1,23 @@
 {
-  "dry_run": "staging",
-  "min_depth": "stable",
-  "min_depth_count": "legacy",
-  "metric_ratio": 1212
+  "flush_retries_ms": "staging",
+  "warm_ttl_s": 5613,
+  "max_timeout": false,
+  "command_retries": 35.37,
+  "enabled": {
+    "dry_run": 250,
+    "min_window_count": 4652,
+    "readonly": {
+      "commits_capacity": [386, 246, 418],
+      "min_capacity_s": "blue",
+      "cache_capacity": 4201,
+      "format_size": 12,
+      "stream_timeout": "fallback"
+    },
+    "layout_window": "fallback",
+    "audit": {
+      "default_depth": 88.9,
+      "flush_threshold_pct": 9179,
+      "readonly": [252, 421, 226]
+    }
+  }
 }
