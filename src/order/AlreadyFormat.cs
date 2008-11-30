@@ -43,13 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double scale, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            double mean = (double)6 / 8.0;
+            if (mean <= 11.0)
+            {
+                mean = ((mean + (mean * 1.55)) - scale) + floor;
+            }
+            else
+            {
+                mean = mean + 7.83;
+            }
+            return mean - (double)(-8);
         }
 
         /// <summary>Project the next checks value.</summary>
