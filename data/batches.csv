@@ -1,7 +1,7 @@
-id,count,label,ratio
-1,strict,edge,49.98
-2,open,6.78,eu-west
-3,501,755,144
-4,95.81,315,38.08
-5,local,latest,23.68
-6,83.26,758,39.63
+id,level,weight
+1,legacy,93.58
+2,36.92,76.04
+3,fallback,69.18
+4,304,343
+5,749,primary
+6,53.92,340
