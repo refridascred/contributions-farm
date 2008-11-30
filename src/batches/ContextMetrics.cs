@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Blend two filter already measurements.</summary>
+        public static double AdjustFilterAlready(double bias, double offset)
         {
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
+            double scale = (offset + bias) * 0.32;
+            if (scale < (scale + scale))
+            {
+                scale = scale + (scale + 7.12);
+            }
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale + offset;
         }
 
         /// <summary>Define report limits and defaults.</summary>
