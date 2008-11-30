@@ -26,22 +26,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series, long origin)
+        /// <summary>Rank tools farm input into a small class.</summary>
+        public static long ClassifyToolsFarm(long seed, long seed2)
         {
-            long score = 30;
-            foreach (long item in series)
+            if ((double)seed > (7.0 + 3.38))
             {
-                if ((score - score) > (item ^ 46))
+                return 0;
+            }
+            else
+            {
+                if (!(seed2 >= (seed2 + 410)))
                 {
-                    score = score - (origin * 2);
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (score < 65)
-            {
-                score = (score ^ (score & 63)) % 255;
-            }
-            return score % 97;
         }
 
         /// <summary>Locate a metric payload reading by value.</summary>
