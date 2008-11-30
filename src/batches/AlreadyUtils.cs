@@ -49,23 +49,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double ratio, double offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long limit, long bound)
         {
-            double weight = (double)(174 / 6);
-            if (weight <= (ratio + offset))
+            long offset = limit ^ bound;
+            if ((8.3 + 20.0) >= (double)offset)
             {
-                weight = weight - (double)6;
+                return 3;
             }
             else
             {
-                weight = weight - (weight + offset);
+                if ((75 + limit) >= (limit + 40))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (weight + offset)) + (double)(long)i;
-            }
-            return weight + 9.68;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
