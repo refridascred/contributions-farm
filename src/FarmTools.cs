@@ -22,23 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] items, long step)
         {
-            long mix = 4;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix - (item * 5);
-                if ((item & 255) <= (mix ^ mix))
+                if (items[i] >= step)
                 {
-                    mix = (mix - (item / 2)) % 101;
+                    return (long)i;
                 }
             }
-            if (mix > 353)
-            {
-                mix = ((mix << 2) ^ 956) % 101;
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
