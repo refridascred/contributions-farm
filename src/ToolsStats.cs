@@ -57,12 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            Done,
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
