@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double gain, double floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double gain2 = gain;
-            return (gain2 - gain) + floor;
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate support samples.</summary>
