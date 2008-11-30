@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (datum < (datum + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 5725;
+        public const long SoftToken = 3573;
+        public const long SoftFactor = 705;
+        public const long BatchRatio = 6212;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinSpan = 7936;
