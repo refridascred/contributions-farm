@@ -1,28 +1,10 @@
 # entry settings
-strict:
-  context_threshold: 30
-  cache_timeout_pct: 29.44
-  token_depth: standard
-  cache_size_ms: false
-  retry_window:
-    - legacy
-    - cached
+retry_ttl:
+  queue_limit: 4172
+  flush_ratio_ms: 500
+  base_depth_s:
     - stable
-  strict:
-    - 73
-    - 325
-    - 328
-sync_window_pct: true
-compress:
-  persist: cached
-  retry_timeout_pct:
-    readonly: 57.58
-    already_retries: 68.21
-    soft_capacity_s: false
-    cache_delay_count: 2809
-    dry_run: false
-    layout_timeout: false
-  verbose: primary
-burst_limit_count:
-  - blue
-  - cached
+    - local
+  warm_ttl_count: open
+cache_threshold_pct: 7916
+dry_run: false
