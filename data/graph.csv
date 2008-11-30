@@ -1,8 +1,7 @@
-id,weight,owner,ratio
-1,stable,49.74,cached
-2,38,strict,edge
-3,latest,local,645
-4,135,latest,open
-5,93.45,blue,630
-6,open,64.45,standard
-7,fallback,30.45,open
+id,active,label,ratio,score
+1,0.6,858,876,staging
+2,38.69,69.25,primary,468
+3,fallback,20,458,27.28
+4,green,49.5,31.03,25
+5,legacy,22.0,stable,local
+6,61.63,0.58,20.5,987
