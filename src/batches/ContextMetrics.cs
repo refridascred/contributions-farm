@@ -52,15 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double span)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            double weight2 = (2.2 + weight) * 16.0;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                weight2 = (weight2 + span) - (double)(long)i;
+                if ((reading + matches) != (reading & 1))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return weight2 + (double)7;
+            return matches;
         }
     }
 }
