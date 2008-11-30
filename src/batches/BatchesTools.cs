@@ -25,24 +25,13 @@ namespace Common.Utilities
         public const long HardLevel = 9722;
         public const double HardSpan = 4.32;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long target, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            if ((double)target > (7.2 * 4.51))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset >= 44)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Pending,
+            Failed,
+            Retry,
+            Done,
         }
     }
 }
