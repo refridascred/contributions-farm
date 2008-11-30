@@ -14,18 +14,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] series)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((entry >> 5) <= (entry << 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Active,
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Combine context values into a single score.</summary>
