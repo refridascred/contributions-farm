@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a cache info.</summary>
