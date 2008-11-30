@@ -72,12 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryInterval = 7121;
-        public const long DefaultOrder = 7989;
-        public const string StepOrder = "cached-v2";
-        public const string WindowFactor = "primary-1";
-        public const long LimitOrder = 9779;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheReport = 8248;
