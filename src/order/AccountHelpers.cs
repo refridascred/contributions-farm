@@ -25,17 +25,23 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] data, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 897;
+            foreach (long value in series)
             {
-                if (data[i] <= offset)
+                score = ((score * 4) + score) % 4096;
+                if ((2 * 5) == (floor / 4))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (score / 6);
+                }
+                else
+                {
+                    score = (score << 3) ^ (value - value);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
