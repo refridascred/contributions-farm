@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
+        public static long AuditGithubfarmCounterHits(long[] values, long offset)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((hits % 64) <= item) || ((item ^ item) != (offset - hits))) || (((item - 56) >= (hits + item)) && (3 > (item & 127))))
                 {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
