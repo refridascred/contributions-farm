@@ -1,5 +1,18 @@
 # entry settings
-default_depth_s: 30
-sync_depth_s: 40.59
-sync_limit: 78
-batches_capacity: 1024
+audit:
+  enabled: 3594
+  compress: standard
+  batch_window_s: 1
+  sync_window:
+    - 222
+    - 420
+payload_ratio: 8238
+commits_threshold:
+  - stable
+  - strict
+flush_size:
+  - open
+  - cached
+  - strict
+  - latest
+persist: 57.51
