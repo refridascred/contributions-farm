@@ -38,11 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
