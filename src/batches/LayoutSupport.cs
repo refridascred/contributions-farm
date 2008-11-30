@@ -45,12 +45,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Closed,
-            Pending,
-            Ready,
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
