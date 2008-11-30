@@ -80,13 +80,12 @@ namespace Common.Utilities
         public const long StepTimeout = 4405;
         public const string BatchSchema = "local";
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Pending,
-            Paused,
-            Idle,
-            New,
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
