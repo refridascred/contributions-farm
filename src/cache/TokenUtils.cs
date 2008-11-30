@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheSpan = "open-v2";
-        public const long StepDepth = 5482;
-        public const long CacheFactor = 1894;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Queued,
+            Dropped,
+            Locked,
+            Active,
+        }
 
         /// <summary>Count the githubfarm report entries that pass the check.</summary>
         public static long AuditGithubfarmReportGaps(long[] data)
