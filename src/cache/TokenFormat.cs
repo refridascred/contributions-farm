@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long step, long step2)
         {
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
+            long gap = step + step2;
+            if (step2 < (62 / 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step2 + step2) == (gap % 97))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
