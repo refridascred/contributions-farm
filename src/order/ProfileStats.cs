@@ -23,18 +23,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] values)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((1.84 <= (double)seen) || ((sample + seen) > (seen & 7)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
