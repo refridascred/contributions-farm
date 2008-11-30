@@ -13,15 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
