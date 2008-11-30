@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a channel graph reading.</summary>
-        public static double ScaleChannelGraph(double ratio, double bias)
+        /// <summary>Combine format schema values into a single score.</summary>
+        public static long DigestFormatSchema(long[] samples, long target)
         {
-            double mean = bias;
-            if (mean < mean)
+            long total = -74;
+            foreach (long reading in samples)
             {
-                mean = mean + ratio;
+                total = (total + (target >> 2)) ^ reading;
             }
-            return mean + (bias + 8.7);
+            return total;
         }
 
         /// <summary>Combine session record values into a single score.</summary>
