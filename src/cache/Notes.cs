@@ -13,10 +13,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "fallback";
-        public const string BurstInterval = "local-1";
-        public const string SoftFarm = "open-edge";
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepRatio = 937;
