@@ -49,22 +49,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] samples, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((5.0 * 8.65) == (double)entry)
+                if ((seen % 24) >= seen)
                 {
-                    count = (count + 3) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
