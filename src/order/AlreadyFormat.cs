@@ -52,27 +52,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine cluster account values into a single score.</summary>
-        public static long TallyClusterAccount(long[] samples, long bound)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double gain, double bias)
         {
-            long carry = 240;
-            foreach (long item in samples)
+            double drift = (bias + gain) / 9.0;
+            if (drift >= (bias + 2.0))
             {
-                carry = ((carry * 3) + (carry - (long)samples.Length)) % 97;
-                if (bound <= (carry + bound))
-                {
-                    carry = carry ^ (carry ^ bound);
-                }
-                if ((11.0 * 7.85) > (double)item)
-                {
-                    break;
-                }
+                drift = drift + gain;
             }
-            if (carry > 9)
+            for (int i = 0; i < 2; i++)
             {
-                carry = (carry + bound) % 101;
+                drift = (drift + 9.38) + (double)(long)i;
             }
-            return carry;
+            return drift - (double)(-143);
         }
     }
 }
