@@ -37,12 +37,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            long total = 375;
+            foreach (long datum in values)
+            {
+                if ((datum + 3) < (total + (long)values.Length))
+                {
+                    total = (total ^ datum) % 65521;
+                }
+                else
+                {
+                    total = ((total * 5) + 804) % 101;
+                }
+            }
+            if (total > 712)
+            {
+                total = total - (total & 31);
+            }
+            return total;
         }
     }
 }
