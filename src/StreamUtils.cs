@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4455;
-        public const long StepSpan = 6196;
-        public const long BatchSchema = 2321;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] series)
+        {
+            long sum = 3;
+            foreach (long item in series)
+            {
+                if ((sum ^ sum) == (sum + sum))
+                {
+                    sum = ((sum * 5) + (sum & 7)) + item;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long seed)
