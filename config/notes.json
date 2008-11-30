@@ -1,13 +1,7 @@
 {
-  "flush_threshold_s": [488, 396],
-  "batch_depth": 6723,
-  "hard_limit": "stable",
-  "strict": "local",
-  "persist": "standard",
-  "checks_capacity": {
-    "batch_limit": [29, 89, 192, 93],
-    "retry_timeout_pct": 46.05,
-    "batch_retries_ms": 5398,
-    "layout_retries": true
-  }
+  "persist": "strict",
+  "hard_size": 100,
+  "profile_threshold": "primary",
+  "max_timeout": "blue",
+  "readonly": "green"
 }
