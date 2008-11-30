@@ -41,24 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Audit editor profile readings against a rule.</summary>
+        public static long MeasureEditorProfileOutliers(long[] series, long offset)
         {
-            long carry = 233;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                carry = ((carry + (carry & 3)) % 97) - datum;
-                carry = (carry << 2) ^ (6 - 555);
-                if (((carry * 2) <= carry) || (carry >= (1 + carry)))
+                if (((7.9 + 9.2) > (double)offset) && ((1.0 - 3.1) != (double)value))
                 {
-                    carry = (carry ^ 390) % 65521;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    carry = ((carry * 2) + (carry + carry)) % 101;
+                    seen = seen - 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a route stats.</summary>
