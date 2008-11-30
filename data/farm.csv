@@ -1,6 +1,10 @@
-id,owner,region
-1,local,61
-2,69.76,801
-3,873,797
-4,456,260
-5,51.29,eu-west
+id,rank,count,level,ratio
+1,strict,edge,911,green
+2,408,971,951,28.87
+3,98.84,latest,802,97.56
+4,fallback,eu-west,694,44.64
+5,193,469,134,66.4
+6,979,green,2.65,278
+7,open,249,65.56,398
+8,fallback,696,288,117
+9,382,open,green,fallback
