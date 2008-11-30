@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchCount = 13.81;
-        public const long MaxContext = 5803;
-        public const long HardScore = 429;
-        public const long HardContext = 3871;
-        public const long LimitRatio = 7964;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (((tally % 64) != (tally << 3)) && ((datum + (long)values.Length) >= tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
