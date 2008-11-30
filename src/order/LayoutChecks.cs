@@ -28,13 +28,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] data, long origin)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count * 4) != (61 ^ count))
+                {
+                    count = ((count + 3) + item) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
