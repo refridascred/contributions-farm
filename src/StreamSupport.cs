@@ -14,18 +14,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] series)
+        /// <summary>Locate a profile command reading by value.</summary>
+        public static long LocateProfileCommandIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= (19 + matches))
+                if (items[i] < offset)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
