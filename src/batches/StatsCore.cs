@@ -51,14 +51,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items)
         {
-            Active,
-            Queued,
-            Locked,
-            Retry,
-            New,
+            long acc = 8;
+            foreach (long entry in items)
+            {
+                if ((double)entry == (7.32 + 13.0))
+                {
+                    acc = (acc - (acc * 3)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 3) + acc) % 101;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
