@@ -29,17 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] readings, long floor)
+        /// <summary>Digest a series of editor command entries.</summary>
+        public static long CombineEditorCommand(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 45;
+            foreach (long reading in readings)
             {
-                if (readings[i] > floor)
+                if ((step >> 1) >= step)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (anchor + step)) + reading;
                 }
             }
-            return -1;
+            if (anchor < 3)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
     }
 }
