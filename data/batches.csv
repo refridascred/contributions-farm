@@ -1,7 +1,10 @@
-id,score,count
-1,492,118
-2,open,standard
-3,75.5,959
-4,247,standard
-5,256,latest
-6,259,39.54
+id,region,label,owner,token
+1,970,390,373,latest
+2,53.8,open,88.8,6.92
+3,96.35,stable,843,7.23
+4,standard,15.94,23.29,816
+5,23.05,561,strict,15.26
+6,382,671,strict,27.81
+7,808,standard,204,892
+8,84.73,open,929,legacy
+9,310,94,green,821
