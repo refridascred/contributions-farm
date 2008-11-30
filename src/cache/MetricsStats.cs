@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] items, long bound)
         {
-            long state = 73;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value <= 17.0)
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
                 {
-                    state = (state * 3) + (state / 5);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Adjust a metric reading.</summary>
