@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const string LimitFormat = "standard-edge";
         public const double BaseFormat = 58.09;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Active,
-            Retry,
-            Closed,
-            Draft,
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
