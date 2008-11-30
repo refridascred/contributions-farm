@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const long BaseScore = 2477;
         public const long IdleScore = 1820;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] samples, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                anchor = (anchor ^ bound) % 101;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (datum < limit)
                 {
-                    anchor = ((anchor ^ ((long)i + (long)i)) % 1000) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 5; i3++)
-                {
-                    anchor = (((anchor << 3) ^ (bound - bound)) % 101) ^ (long)i3;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
