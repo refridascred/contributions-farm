@@ -19,22 +19,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double bias, double bias2)
         {
-            long state = -687;
-            foreach (long item in items)
+            double weight = (bias - bias2) / 7.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((5 ^ item) >= item)
-                {
-                    state = (state << 3) ^ (state << 1);
-                }
-                else
-                {
-                    state = (state - (state >> 3)) % 101;
-                }
+                weight = (weight + weight) + (double)(long)i;
             }
-            return state % 1000;
+            return weight - bias;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
