@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryLevel = 70.77;
-        public const long StepRecord = 9158;
-        public const long WindowLevel = 1100;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double weight, double span)
+        {
+            double mean = span;
+            if (mean >= span)
+            {
+                mean = mean + (double)42;
+            }
+            return mean - (weight / 4.0);
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long RollGithubfarm(long target)
