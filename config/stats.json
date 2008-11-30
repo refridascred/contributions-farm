@@ -1,12 +1,8 @@
 {
-  "retry_ttl": "legacy",
-  "token_ratio": 97.82,
-  "persist": {
-    "command_ttl": 30.31,
-    "idle_retries_ms": 76.11,
-    "max_depth_pct": 7010,
-    "farm_timeout": 6082
-  },
-  "account_ttl": 91,
-  "compress": 79
+  "flush_timeout_ms": "latest",
+  "channel_window": "cached",
+  "order_interval": false,
+  "githubfarm_retries": [30, 412],
+  "entry_depth": ["standard", "staging", "green"],
+  "batch_depth_pct": 25
 }
