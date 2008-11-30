@@ -12,28 +12,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Count the order metrics entries that pass the check.</summary>
+        public static long TallyOrderMetricsMatches(long[] values, long limit)
         {
-            long total = 933;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                total = total - total;
-                total = total - (sample >> 5);
-                if ((sample % 8) > (59 + (long)samples.Length))
+                if ((double)hits < (double)datum)
                 {
-                    total = (total ^ (total * 3)) % 4096;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total + 724)) % 65521;
-                }
-                if (((double)total == (double)6) || ((double)sample <= (double)total))
-                {
-                    break;
+                    hits = (hits + 3) - limit;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
