@@ -23,12 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 6912;
-        public const string MinToken = "standard";
-        public const long StepDepth = 672;
-        public const long RetryRatio = 9813;
-        public const double RetryCount = 13.76;
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double bias)
+        {
+            double ratio2 = ratio - bias;
+            if (ratio2 >= ratio2)
+            {
+                ratio2 = ratio2 - (12.0 - ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - 0.87) + (double)(long)i;
+            }
+            return ratio2 - ratio;
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] items)
