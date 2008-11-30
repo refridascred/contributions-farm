@@ -61,15 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster githubfarm readings.</summary>
-        public static long DigestClusterGithubfarm(long[] samples)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] readings, long limit)
         {
-            long state = 663;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                state = ((state * 2) + (reading << 3)) % 97;
+                if (cell != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
