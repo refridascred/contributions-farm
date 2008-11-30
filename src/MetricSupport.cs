@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const string BurstCluster = "alpha-1";
         public const string CacheCluster = "local-1";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 7619;
-        public const double StepContributi = 89.44;
-        public const double BurstContributi = 25.72;
+        /// <summary>Count support cluster pairs that satisfy a relation.</summary>
+        public static long OverlapSupportClusterCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the already support series from a seed.</summary>
         public static long DeriveAlreadySupport(long target)
