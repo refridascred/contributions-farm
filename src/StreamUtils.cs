@@ -57,18 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] levels, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((value + value) != (seed + 5)) && (((value ^ value) != (802 - tally)) && ((double)tally != (8.18 * 3.5))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next window value.</summary>
