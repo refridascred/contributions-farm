@@ -23,18 +23,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] readings, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] items)
         {
-            long acc = 9;
-            foreach (long entry in readings)
+            long state = 43;
+            foreach (long item in items)
             {
-                if ((entry % 2) <= (acc << 3))
-                {
-                    acc = (acc + bound) % 1000;
-                }
+                state = (state * 5) + (837 >> 3);
+                state = state ^ (item - 8);
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the filter phase values.</summary>
