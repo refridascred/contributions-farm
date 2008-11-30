@@ -1,7 +1,22 @@
 # support settings
-strict:
-  session_depth: 66.16
-  soft_capacity_pct: true
-  readonly: primary
-checks_depth: 3353
-idle_window_count: true
+verbose:
+  - strict
+  - open
+  - latest
+already_delay:
+  soft_interval_count: 39.88
+  max_size_count:
+    - staging
+    - legacy
+  retry_capacity_s:
+    - 88
+    - 76
+    - 23
+    - 89
+retry_capacity_count: true
+max_limit:
+  - 181
+  - 151
+  - 59
+persist: stable
+batch_threshold_count: stable
