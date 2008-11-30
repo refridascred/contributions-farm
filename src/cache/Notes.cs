@@ -33,10 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 3779;
-        public const string MinRatio = "standard-v2";
-        public const long BaseInterval = 3007;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((count * 2) == (target << 3)) || ((count >> 2) < (count & 63)))
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the order token entries that pass the check.</summary>
         public static long AuditOrderTokenOutliers(long[] items, long limit)
