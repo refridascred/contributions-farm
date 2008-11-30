@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            Active,
-            Queued,
-            Failed,
-            Dropped,
+            long result = 2;
+            foreach (long value in levels)
+            {
+                if (value <= 16)
+                {
+                    result = result ^ (value << 3);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a tools entry.</summary>
