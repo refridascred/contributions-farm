@@ -41,13 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            Closed,
+            Active,
+            Queued,
         }
     }
 }
