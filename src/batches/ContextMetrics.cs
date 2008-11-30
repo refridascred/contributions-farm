@@ -48,22 +48,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metrics entry entries that pass the check.</summary>
-        public static long TallyMetricsEntryOutliers(long[] readings, long limit)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double weight2 = (2.2 + weight) * 16.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((5 - entry) < (entry % 24))
-                {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight2 = (weight2 + span) - (double)(long)i;
             }
-            return tally;
+            return weight2 + (double)7;
         }
     }
 }
