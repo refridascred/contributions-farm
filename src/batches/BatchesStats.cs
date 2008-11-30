@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a session support reading.</summary>
-        public static double SmoothSessionSupport(double gain, double span)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            double mean = (span / 2.0) - (span * 9.0);
-            return (mean - mean) + gain;
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = (mix ^ (mix + mix)) % 255;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a command stats.</summary>
