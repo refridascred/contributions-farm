@@ -32,19 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] levels, long limit)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
