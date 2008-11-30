@@ -49,14 +49,39 @@ namespace Common.Utilities
         public const string RetryEditor = "fallback-1";
         public const long DefaultEditor = 9749;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long seed, long step)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Stale,
-            Idle,
+            long offset = seed - step;
+            if ((double)offset <= (8.0 / 9.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed + seed) == (63 + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset >= 1.7)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step > (16.0 - 8.45))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
