@@ -39,19 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long bound)
+        /// <summary>Match up counter githubfarm samples.</summary>
+        public static long MatchCounterGithubfarmCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
