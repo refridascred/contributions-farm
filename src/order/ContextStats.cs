@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double weight, double floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double gain = weight;
-            if (gain > 4.37)
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + 5.37) + (double)(long)i;
-            }
-            return gain - (double)5;
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
