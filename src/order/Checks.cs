@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] readings, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double drift = 11.0 + (double)(-743);
+            if (drift > (drift * 17.0))
             {
-                if ((hits + hits) >= (target % 64))
-                {
-                    hits = (hits + 3) + item;
-                }
+                drift = drift + (drift / 6.0);
             }
-            return hits;
+            else
+            {
+                drift = drift + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (offset + 19.0)) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Hold a route record.</summary>
