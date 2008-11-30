@@ -1,17 +1,4 @@
 # githubfarm settings
-sync_limit_ms:
-  - edge
-  - strict
-  - local
-base_interval: 54.45
-cache_ttl: 8313
-default_delay:
-  - 375
-  - 312
-  - 193
-batch_capacity_pct:
-  default_delay_ms: false
-  soft_ttl: true
-  soft_ratio_pct: standard
-  retry_window_pct: stable
-already_ratio: 29.91
+enabled: 2209
+burst_limit_count: false
+format_interval: 6786
