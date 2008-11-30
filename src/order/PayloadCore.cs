@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long state = 405;
-            foreach (long item in series)
-            {
-                if (((state + state) <= (800 << 1)) && ((item << 1) > (state + item)))
-                {
-                    state = ((state * 5) + (item * 2)) % 4096;
-                }
-                else
-                {
-                    state = (state << 2) ^ item;
-                }
-            }
-            return state % 1000;
+            New,
+            Failed,
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Fold a list of support readings.</summary>
