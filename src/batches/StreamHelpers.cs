@@ -63,19 +63,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate support farm readings against a bound.</summary>
-        public static bool ValidateSupportFarmBounds(long[] series, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long seed)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
