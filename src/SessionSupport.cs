@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 967;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.3 - 6.93) <= (double)value)
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 2) ^ (target + target)) % 1000;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the stats status values.</summary>
