@@ -37,19 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long anchor = 390;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor + ((long)readings.Length * 3)) % 97) - value;
-            }
-            if (anchor < 330)
-            {
-                anchor = (anchor - (anchor + 5)) % 255;
-            }
-            return anchor;
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Locate a account reading by value.</summary>
