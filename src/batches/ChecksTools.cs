@@ -51,12 +51,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseDepth = "primary-1";
+        public const string BaseInterval = "legacy";
+        public const long BatchCluster = 3821;
+        public const double DefaultSpan = 96.32;
     }
 }
