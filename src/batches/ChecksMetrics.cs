@@ -83,11 +83,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 28.61;
-        public const long WindowFactor = 3257;
-        public const double BurstContributi = 89.22;
-        public const long CacheSpan = 3660;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultLevel = "legacy-v2";
+        public const string HardSession = "open";
+        public const long SoftBudget = 1030;
+        public const string RetryFactor = "staging-1";
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
