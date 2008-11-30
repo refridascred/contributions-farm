@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long step)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long next = offset ^ step;
-            if (offset >= (94 + 81))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step >> 4) == (next + offset)) || (8 >= (step - 8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            New,
+            Done,
+            Stale,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
