@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit farm batch readings against a rule.</summary>
+        public static long AuditFarmBatchGaps(long[] items, long offset)
         {
-            Done,
-            Paused,
-            Idle,
-            New,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!((9 * 3) < (datum << 3)))
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count buffer command pairs that satisfy a relation.</summary>
