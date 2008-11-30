@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((offset ^ offset) == (mix - offset)))
-                {
-                    mix = (mix + offset) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (long)i) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleSpan = 51.43;
+        public const string RetryCount = "legacy-1";
+        public const double LimitScore = 88.01;
+        public const long BaseQueue = 1669;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
