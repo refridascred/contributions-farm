@@ -1,6 +1,15 @@
 # githubfarm settings
-strict: 5551
-base_ratio_s: stable
-min_ratio_s:
-  - stable
-  - green
+layout_depth: cached
+strict: true
+readonly: 500
+stream_delay:
+  burst_window:
+    - 196
+    - 474
+    - 96
+  idle_capacity: primary
+  max_window_ms: 1024
+enabled:
+  - strict
+  - cached
+  - open
