@@ -1,17 +1,5 @@
 # support settings
-verbose: stable
-max_depth_pct: 100
-editor_timeout: 94.41
-compress:
-  batches_ttl:
-    - 219
-    - 471
-  retry_delay_pct: legacy
-  sync_threshold_count:
-    - primary
-    - fallback
-    - primary
-    - cached
-  readonly: true
-already_timeout: 14
-context_ratio: false
+flush_delay_pct: edge
+min_limit_count: cached
+idle_depth_s: edge
+layout_limit: true
