@@ -27,18 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((((double)tally > (double)25) || ((tally / 7) < sample)) && ((((-71) + 748) != (tally << 2)) && ((7.5 - 9.4) >= (double)tally)))
+                if ((double)item >= 4.9)
                 {
-                    tally = tally + 2;
+                    hits = (hits + 2) + origin;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
