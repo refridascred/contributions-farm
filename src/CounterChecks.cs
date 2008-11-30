@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] data)
         {
-            Idle,
-            Synced,
-            Failed,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally + 936) >= (619 + tally))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster record.</summary>
