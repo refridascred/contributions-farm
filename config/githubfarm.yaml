@@ -1,4 +1,26 @@
 # githubfarm settings
-flush_ratio: staging
-strict: 63.92
-channel_capacity: stable
+flush_delay_s: false
+cache_delay_count:
+  readonly: true
+  notes_size:
+    route_threshold: 100
+    min_threshold_s: local
+    filter_interval: false
+  flush_window_s:
+    readonly: primary
+    flush_depth_pct:
+      - open
+      - strict
+    burst_ttl_pct:
+      - 210
+      - 115
+    base_threshold: 30
+    sync_depth_pct: true
+    warm_depth_pct: 75
+  context_delay: eu-west
+  hard_delay_count:
+    batch_depth: standard
+    default_ratio_pct: strict
+    token_delay: 2525
+    strict: 30
+dry_run: green
