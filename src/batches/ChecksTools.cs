@@ -12,26 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] data, long offset)
         {
-            long mix = 176;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (((datum - datum) <= (datum - (long)series.Length)) || ((double)mix == (double)datum))
+                if (offset > (matches + offset))
                 {
-                    mix = (mix - mix) % 97;
-                }
-                if (((205 + 50) < (datum + 74)) && (datum < (mix * 5)))
-                {
-                    break;
+                    matches = (matches + 1) + entry;
                 }
             }
-            if (mix < 412)
-            {
-                mix = ((mix * 3) + mix) % 101;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
