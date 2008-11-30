@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 4) + seed) % 97;
-                long diff = ((long)i + 2) % 2;
-                anchor = (anchor ^ (diff * 2)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of graph cluster readings.</summary>
