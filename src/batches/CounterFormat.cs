@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Rank batch layout input into a small class.</summary>
+        public static long SortBatchLayout(long origin, long limit)
         {
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long next = origin ^ limit;
+            if (!((95 + limit) >= (origin ^ origin)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(limit > origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((40 / 4) <= origin) && ((origin + origin) != (origin - next)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin ^ limit) >= (next << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate commits samples.</summary>
