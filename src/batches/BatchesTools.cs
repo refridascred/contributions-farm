@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long HardLevel = 9722;
         public const double HardSpan = 4.32;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Measure how many support buffer samples are out of range.</summary>
+        public static long MeasureSupportBufferGaps(long[] items, long limit)
         {
-            long total = 7;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((double)total < 8.5)
+                if (tally < (limit - 644))
                 {
-                    total = ((total << 2) ^ reading) % 97;
+                    tally = (tally + 2) - entry;
                 }
             }
-            return total % 97;
+            return tally;
         }
     }
 }
