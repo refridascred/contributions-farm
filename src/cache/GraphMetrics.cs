@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long acc = 800;
-            foreach (long value in readings)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                acc = acc + (value / 8);
-                if ((double)acc == (5.46 + 1.63))
+                carry = carry ^ ((long)i << 1);
+                if ((carry + carry) > seed)
                 {
-                    acc = (acc ^ (value + value)) % 4096;
+                    carry = ((carry * 2) + ((long)i * 5)) % 255;
                 }
+                else
+                {
+                    carry = ((carry * 2) + (seed >> 3)) % 255;
+                    carry = ((carry << 2) ^ (seed & 1)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
