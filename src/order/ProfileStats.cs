@@ -51,11 +51,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardLevel = 49.35;
-        public const string RetryInterval = "local-edge";
-        public const double BurstTools = 76.28;
-        public const double CacheTools = 75.94;
-        public const double MaxCount = 49.57;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinSize = 8220;
+        public const double DefaultCommand = 88.14;
+        public const long SoftCommand = 8206;
+        public const double IdleCommand = 29.34;
     }
 }
