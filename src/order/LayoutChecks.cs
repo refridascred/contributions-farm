@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double SoftCount = 23.44;
         public const string CacheCount = "local-v2";
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] series, long offset)
         {
-            Stale,
-            New,
-            Dropped,
-            Pending,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
