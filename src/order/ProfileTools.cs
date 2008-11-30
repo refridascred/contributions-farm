@@ -37,19 +37,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long anchor = -15;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = ((mark + mark) % 4096) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                anchor = (((anchor - ((long)data.Length ^ anchor)) % 97) ^ sample) - target;
             }
-            return mark;
+            if (anchor > 186)
+            {
+                anchor = (anchor * 3) + (anchor + 45);
+            }
+            return anchor;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
