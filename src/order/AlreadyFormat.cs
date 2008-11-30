@@ -39,19 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double scale, double floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double mean = (double)6 / 8.0;
-            if (mean <= 11.0)
-            {
-                mean = ((mean + (mean * 1.55)) - scale) + floor;
-            }
-            else
-            {
-                mean = mean + 7.83;
-            }
-            return mean - (double)(-8);
+            Ready,
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
