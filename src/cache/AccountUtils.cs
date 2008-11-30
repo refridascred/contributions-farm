@@ -36,10 +36,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "stable";
-        public const long RetryInterval = 6446;
-        public const long BatchRatio = 8044;
-        public const long MaxTimeout = 5567;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 5803;
+        public const long HardWidth = 7797;
+        public const long WindowReport = 3682;
+        public const string CacheDepth = "primary-edge";
     }
 }
