@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstCount = 5854;
-        public const long SoftLayout = 9612;
-        public const long DefaultCount = 8833;
-        public const double IdleLayout = 8.95;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] samples, long step)
+        {
+            long sum = 495;
+            foreach (long reading in samples)
+            {
+                sum = sum + (sum - step);
+                sum = (sum ^ (sum << 3)) % 4096;
+                if (((sum % 3) < (step >> 1)) || (sum <= (sum - reading)))
+                {
+                    sum = sum + sum;
+                }
+            }
+            if (sum > 516)
+            {
+                sum = sum + (step * 5);
+            }
+            return sum;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long floor, long bound)
