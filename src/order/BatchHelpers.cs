@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Count the command format entries that pass the check.</summary>
+        public static long CountCommandFormatMatches(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                mark = (mark << 3) ^ (mark >> 1);
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((count / 8) != (count - value))
+                {
+                    count = count + 2;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
