@@ -27,11 +27,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBatch = "staging-1";
-        public const long IdleBatch = 8678;
-        public const long HardBatch = 3649;
-        public const string StepBatch = "fallback-edge";
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Idle,
+            Closed,
+            Queued,
+            Draft,
+            New,
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TallyCommand(long[] readings)
