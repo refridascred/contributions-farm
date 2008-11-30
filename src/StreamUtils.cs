@@ -38,27 +38,18 @@ namespace Common.Utilities
         public const double IdleTimeout = 26.58;
         public const string StepDepth = "alpha-edge";
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] readings, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] values)
         {
-            long result = 16;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((result % 3) == (long)readings.Length)
+                if ((item ^ count) <= (item & 15))
                 {
-                    result = result ^ (value - value);
-                    break;
-                }
-                if ((516 << 1) >= step)
-                {
-                    result = ((result << 2) ^ (step % 24)) % 97;
+                    count = count + 1;
                 }
             }
-            if (result < 6)
-            {
-                result = result - (step + result);
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
