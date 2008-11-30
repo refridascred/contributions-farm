@@ -89,12 +89,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxInterval = 118;
+        public const double IdleDepth = 48.81;
+        public const long DefaultCount = 7732;
     }
 }
