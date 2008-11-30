@@ -1,11 +1,18 @@
 # entry settings
-metrics_interval:
-  - green
-  - strict
-  - blue
+hard_threshold: open
+readonly:
+  cache_window: 75
+  persist:
+    - green
+    - eu-west
+    - local
+    - standard
+  sync_timeout_pct: 90.48
+  burst_interval_s: false
+  retry_depth_count: false
+persist: stable
+soft_depth: 500
+audit:
+  - local
+  - latest
   - stable
-audit: 63
-max_ttl:
-  - 180
-  - 51
-  - 60
