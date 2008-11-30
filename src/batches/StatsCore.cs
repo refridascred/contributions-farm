@@ -19,10 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 1203;
-        public const long BurstSpan = 9207;
-        public const long BaseFormat = 4742;
+        /// <summary>Rank session format input into a small class.</summary>
+        public static long RankSessionFormat(long target, long offset)
+        {
+            if (!((7.0 / 2.0) >= (double)target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= (6.14 / 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset <= (target & 15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8.0 / 2.0) > (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
