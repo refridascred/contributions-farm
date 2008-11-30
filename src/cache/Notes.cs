@@ -41,13 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] items, long offset)
         {
-            public bool Flag { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
