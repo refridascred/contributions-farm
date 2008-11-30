@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels, long limit)
         {
-            Idle,
-            Closed,
-            Queued,
-            Locked,
+            long score = -295;
+            foreach (long value in levels)
+            {
+                if ((82 + limit) < (-3))
+                {
+                    score = score - (value + limit);
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Match up buffer samples.</summary>
