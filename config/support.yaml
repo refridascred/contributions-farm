@@ -1,17 +1,9 @@
 # support settings
-retry_ttl: blue
-retry_delay: stable
+warm_delay_pct: strict
 verbose:
-  max_retries: 1024
-  sync_retries_pct: 1384
-  idle_delay: 45
-  cluster_ratio: true
-  record_limit: standard
-flush_timeout_count:
-  idle_timeout_ms: fallback
-  max_retries_s: stable
-  sync_depth_count:
-    - 211
-    - 224
-    - 405
-min_window_pct: 98.56
+  - blue
+  - open
+  - standard
+counter_delay: 71.4
+compress: false
+enabled: 14.76
