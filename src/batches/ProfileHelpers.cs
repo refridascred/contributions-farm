@@ -69,38 +69,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long target, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] data, long step)
         {
-            if ((bound + 2) == (bound + bound))
+            long carry = 7;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound <= target)
+                if (!((double)carry <= (double)step))
                 {
-                    return 7;
+                    continue;
+                }
+                if ((item * 5) == (step & 7))
+                {
+                    carry = carry ^ (step % 60);
                 }
                 else
                 {
-                    if ((4 % 64) != (target + 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target / 4) < (42 >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    carry = carry - item;
                 }
+                carry = (carry + (step - item)) % 97;
             }
+            return carry % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
