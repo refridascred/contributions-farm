@@ -38,15 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] series)
         {
             long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 19)
+                    if ((series[i] ^ series[j]) != 4)
                     {
                         count = count + 1;
                     }
