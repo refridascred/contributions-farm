@@ -48,11 +48,23 @@ namespace Common.Utilities
         public const long BatchCount = 9637;
         public const double HardBatches = 98.65;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 38.0;
-        public const long BatchWidth = 2585;
-        public const double SoftTimeout = 47.66;
-        public const long StepBudget = 8883;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen & 7) > datum)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a checks stream counter forward.</summary>
         public static long StepChecksStream(long origin)
