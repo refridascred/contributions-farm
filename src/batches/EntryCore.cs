@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] items, long limit)
         {
-            long mix = 65;
-            foreach (long datum in readings)
+            long state = 8;
+            foreach (long cell in items)
             {
-                mix = ((mix << 2) ^ mix) % 1000;
-                if (((double)datum > 5.2) || ((datum << 3) < (mix << 1)))
+                state = (state ^ cell) % 1000;
+                if (((cell >> 2) >= (cell & 3)) && ((67 % 16) < (cell + limit)))
                 {
-                    break;
+                    state = (state - (limit + state)) % 1000;
                 }
             }
-            return mix % 97;
+            return state % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
