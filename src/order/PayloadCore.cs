@@ -32,14 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Closed,
-            Queued,
-            Stale,
-            Failed,
-            Idle,
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
