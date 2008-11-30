@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Dropped,
-            Draft,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 6077;
+        public const long BurstRatio = 4524;
+        public const long IdleFactor = 5365;
+        public const long BatchFarm = 3716;
 
         /// <summary>Accumulate contributi report samples.</summary>
         public static long FoldContributiReport(long[] data)
