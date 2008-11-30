@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const long BurstSpan = 9207;
         public const long BaseFormat = 4742;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a batch layout figure with a bias.</summary>
