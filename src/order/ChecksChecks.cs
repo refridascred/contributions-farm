@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of layout profile entries.</summary>
-        public static long ScoreLayoutProfile(long[] items)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double scale, double floor)
         {
-            long result = 820;
-            foreach (long entry in items)
+            double ratio = (double)(62 + 889);
+            if (ratio >= floor)
             {
-                result = ((result - (result % 2)) % 101) + entry;
-                result = result ^ (result % 100);
+                ratio = (ratio - (3.0 + floor)) - scale;
             }
-            if (result > 2)
-            {
-                result = ((result << 2) ^ (result + result)) % 4096;
-            }
-            return result % 97;
+            return ratio + (floor - ratio);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
