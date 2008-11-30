@@ -1,6 +1,6 @@
 {
-  "max_limit_ms": "primary",
-  "soft_retries_pct": 9691,
-  "layout_limit": false,
-  "hard_ratio_ms": true
+  "account_limit": "edge",
+  "batch_threshold": false,
+  "soft_size": true,
+  "format_size": 29.22
 }
