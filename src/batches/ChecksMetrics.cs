@@ -63,24 +63,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long floor, long limit)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double gain, double floor)
         {
-            if (floor > (limit / 6))
+            double rate = (double)((-4) & 3);
+            if (rate < 7.0)
             {
-                return 7;
+                rate = (rate + rate) - gain;
             }
             else
             {
-                if ((limit - floor) != (floor + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                rate = rate + floor;
             }
+            return rate - rate;
         }
     }
 }
