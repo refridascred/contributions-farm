@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Scale a cache filter figure with a bias.</summary>
+        public static double AdjustCacheFilter(double gain, double floor)
         {
-            Pending,
-            New,
-            Stale,
+            double mean = (double)((-7) % 12);
+            if (mean <= (floor - gain))
+            {
+                mean = mean + (double)0;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - floor;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
