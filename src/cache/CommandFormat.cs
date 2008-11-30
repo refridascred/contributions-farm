@@ -16,17 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a metric githubfarm reading by value.</summary>
-        public static long LookupMetricGithubfarmIndex(long[] values, long limit)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] >= limit) && ((values[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
