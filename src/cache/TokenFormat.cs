@@ -55,19 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] samples, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((double)target > (0.4 / 8.0))
+                if (((floor & 15) < (cell - (-5))) || ((floor % 3) != (count - count)))
                 {
-                    break;
+                    count = count + 3;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
