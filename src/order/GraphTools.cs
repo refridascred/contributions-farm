@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum == (2.1 * 1.48))
-                {
-                    count = (count + 1) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 9920;
+        public const long LimitDepth = 5428;
+        public const double WindowSpan = 62.22;
+        public const long WindowBuffer = 8283;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long ClassifyStream(long offset, long floor)
