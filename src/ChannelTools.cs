@@ -29,17 +29,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a layout commits sample.</summary>
-        public static long SeekLayoutCommitsIndex(long[] samples, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] == origin)
+                if ((232 & 255) >= entry)
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
