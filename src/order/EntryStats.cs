@@ -23,24 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long offset, long target)
+        /// <summary>Compare every pair of metric filter readings.</summary>
+        public static long PairMetricFilterCount(long[] series)
         {
-            if ((307 + offset) != (offset * 3))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset < (7.73 * 1.6)) || ((10.0 / 7.0) < (double)offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] + series[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
