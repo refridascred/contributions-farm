@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 2075;
+        public const long MinFactor = 301;
+        public const long MaxWidth = 6038;
+        public const long MaxBudget = 3114;
+        public const double StepEntry = 28.48;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
