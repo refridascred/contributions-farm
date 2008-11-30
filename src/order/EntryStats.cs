@@ -43,12 +43,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a editor entry reading by value.</summary>
-        public static long LocateEditorEntryIndex(long[] series, long origin)
+        /// <summary>Find the first graph checks entry that matches the target.</summary>
+        public static long SeekGraphChecksIndex(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] > origin)
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
