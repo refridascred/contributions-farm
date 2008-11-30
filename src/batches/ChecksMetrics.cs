@@ -13,22 +13,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the queue tools entries that pass the check.</summary>
-        public static long TallyQueueToolsHits(long[] data)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if ((bound << 2) < (bound + bound))
             {
-                if (!((5.21 + 8.4) > (double)tally) && ((double)value == (8.0 - 19.0)))
+                return 0;
+            }
+            else
+            {
+                if ((823 / 8) != (seed * 4))
                 {
-                    tally = tally + 1;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a account reading by value.</summary>
