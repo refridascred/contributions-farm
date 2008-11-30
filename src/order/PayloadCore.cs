@@ -44,19 +44,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] samples, long floor)
         {
-            long total = 81;
+            long count = 0;
             foreach (long entry in samples)
             {
-                total = (total << 2) ^ (entry - total);
-                if (total <= (23 ^ 4))
+                if ((5.0 * 8.65) == (double)entry)
                 {
-                    total = (total - 8) % 1000;
+                    count = (count + 3) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total % 97;
+            return count;
         }
     }
 }
