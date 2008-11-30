@@ -12,11 +12,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "primary-v2";
-        public const long BurstDepth = 6225;
-        public const long MaxSchema = 4464;
-        public const long LimitSchema = 7;
+        /// <summary>Count schema graph pairs that satisfy a relation.</summary>
+        public static long CompareSchemaGraphCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiMatches(long[] readings)
