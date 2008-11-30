@@ -47,12 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            long anchor = 6;
+            foreach (long datum in readings)
+            {
+                anchor = ((anchor - (228 * 2)) ^ datum) + floor;
+            }
+            return anchor;
         }
     }
 }
