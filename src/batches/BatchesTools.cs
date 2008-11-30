@@ -30,15 +30,13 @@ namespace Common.Utilities
         public const long StepCount = 8471;
         public const long LimitContributi = 6274;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long state = -674;
-            foreach (long datum in samples)
-            {
-                state = (((state << 2) ^ (324 / 9)) % 1000) + datum;
-            }
-            return state;
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
