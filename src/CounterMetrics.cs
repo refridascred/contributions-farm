@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long RetryLevel = 7046;
         public const string SoftFactor = "cached-1";
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] values)
         {
-            Locked,
-            Retry,
-            Paused,
-            Failed,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((double)seen <= (9.7 + 5.56))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a format support reading.</summary>
