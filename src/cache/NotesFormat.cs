@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
