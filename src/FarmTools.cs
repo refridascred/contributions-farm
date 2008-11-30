@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] items)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] levels, long target)
         {
-            long carry = 291;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((5.01 * 1.7) > (double)carry))
+                if ((levels[i] == target) && ((levels[i] % 5) != 0))
                 {
-                    carry = carry ^ (carry + 88);
+                    return (long)i;
                 }
-                carry = (carry ^ (item % 60)) % 101;
-                carry = ((carry * 2) + (1 - carry)) % 255;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
