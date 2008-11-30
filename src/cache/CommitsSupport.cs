@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc - step) % 1000;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
