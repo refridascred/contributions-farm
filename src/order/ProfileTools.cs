@@ -14,20 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] samples, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] values)
         {
-            long state = 9;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                state = ((state * 3) + (offset ^ state)) ^ value;
-                state = ((state << 3) ^ (offset & 255)) % 255;
+                if ((reading ^ reading) > (hits / 9))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (state > 7)
-            {
-                state = (state - offset) % 1000;
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Rank record input into a small class.</summary>
