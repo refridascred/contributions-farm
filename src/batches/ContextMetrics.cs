@@ -30,11 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 1773;
-        public const string LimitInterval = "stable-v2";
-        public const long RetrySchema = 7214;
-        public const long RetrySpan = 2693;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc * 4) + (-24)) + (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long ClassifyStats(long bound, long origin)
