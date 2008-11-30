@@ -1,6 +1,8 @@
-id,level,ratio,state,active
-1,965,eu-west,47.02,814
-2,536,868,819,green
-3,open,legacy,legacy,142
-4,green,primary,793,57
-5,64.78,767,49.66,870
+id,token,count
+1,879,stable
+2,24.4,93.37
+3,959,68.78
+4,blue,633
+5,118,87.08
+6,73.42,staging
+7,480,83.52
