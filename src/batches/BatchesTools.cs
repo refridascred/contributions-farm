@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] series)
         {
-            Synced,
-            Retry,
-            Pending,
-            Idle,
-            Paused,
+            long carry = 53;
+            foreach (long datum in series)
+            {
+                if ((((-29) + carry) <= (184 & 127)) && (datum <= (carry ^ datum)))
+                {
+                    carry = carry ^ (datum - carry);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
