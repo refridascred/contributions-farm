@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepLevel = "alpha-v2";
-        public const long BurstRecord = 1861;
-        public const string StepRecord = "primary-1";
-        public const long MinRecord = 3924;
-        public const long BaseScore = 4709;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Draft,
+            Idle,
+            Stale,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] items, long origin)
