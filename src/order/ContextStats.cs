@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double weight, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] values, long seed)
         {
-            double weight2 = weight + weight;
-            if (weight2 <= floor)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                weight2 = weight2 - (weight2 + floor);
+                if ((hits ^ hits) <= (0 + (-799)))
+                {
+                    hits = ((hits + 2) + entry) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + floor) + (double)(long)i;
-            }
-            return weight2 + (double)832;
+            return hits;
         }
 
         /// <summary>Count format window pairs that satisfy a relation.</summary>
