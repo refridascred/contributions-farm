@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 3199;
-        public const long LimitSchema = 9032;
-        public const double IdleScore = 88.49;
-        public const string CacheSchema = "strict-1";
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series, long origin)
+        {
+            long acc = 6;
+            foreach (long sample in series)
+            {
+                if ((sample & 15) >= acc)
+                {
+                    acc = (acc + (origin & 1)) % 4096;
+                }
+                else
+                {
+                    acc = (acc + (22 + sample)) % 97;
+                }
+                if ((double)acc == (double)11)
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitSession = 2815;
