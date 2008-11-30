@@ -26,17 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] items, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                long edge = (limit / 8) << 1;
-                carry = (carry + ((long)i + edge)) % 97;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
