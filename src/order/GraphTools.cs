@@ -41,12 +41,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Closed,
-            Stale,
-            Dropped,
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two metric measurements.</summary>
