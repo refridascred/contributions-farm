@@ -1,6 +1,8 @@
 {
-  "default_capacity": false,
-  "hard_threshold_pct": "green",
-  "soft_size": ["local", "local"],
-  "format_ratio": "latest"
+  "burst_interval_ms": "cached",
+  "cache_size_pct": 30,
+  "commits_threshold": false,
+  "min_retries_ms": 18.89,
+  "counter_capacity": "blue",
+  "sync_capacity_count": "local"
 }
