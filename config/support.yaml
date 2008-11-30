@@ -1,6 +1,5 @@
 # support settings
-burst_retries: 18.97
-burst_capacity_count: blue
-githubfarm_threshold: 147
-poll_depth_s: 2.79
-max_window_pct: 60
+cache_threshold: true
+base_ratio_ms: true
+notes_size: open
+soft_window_count: 6687
