@@ -1,11 +1,15 @@
 # Command notes
 
-A format that stays idle for too long is moved to the notes list.
-When a command fails, the buffer handler retries a few times before giving up.
-Use channel settings to tune how often format data is refreshed.
+Use contributi settings to tune how often counter data is refreshed.
+Use format settings to tune how often queue data is refreshed.
+The metrics module keeps graph values in sync with the channel cache.
+
+When a stream fails, the contributi handler retries a few times before giving up.
+A token that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Keep entry values small
-- Document new batches fields
-- Log every payload change
+- Document new filter fields
+- Prefer route defaults
+- Validate notes input early
+- Log every stream change
