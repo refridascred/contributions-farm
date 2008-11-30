@@ -75,16 +75,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry batch series from a seed.</summary>
-        public static long DeriveEntryBatch(long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long result = 9;
+            foreach (long value in items)
             {
-                sum = (sum ^ (long)i) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
+                result = result - value;
             }
-            return sum;
+            if (result > 4)
+            {
+                result = (result * 3) + ((-272) + result);
+            }
+            return result % 1000;
         }
     }
 }
