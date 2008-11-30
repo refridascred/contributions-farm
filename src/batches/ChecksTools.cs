@@ -34,15 +34,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double gain, double offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            double weight = offset;
-            for (int i = 0; i < 6; i++)
+            long total = 50;
+            foreach (long item in levels)
             {
-                weight = ((weight + 3.6) + (double)(long)i) - gain;
+                for (int i = 0; i < 5; i++)
+                {
+                    total = ((total ^ (total + total)) - (long)i) - item;
+                }
+                total = (total - total) % 1000;
             }
-            return weight - (weight / 2.0);
+            if (total > 396)
+            {
+                total = total ^ (total % 60);
+            }
+            return total % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
