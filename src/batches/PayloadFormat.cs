@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((long)i != (67 + (long)i)))
-                {
-                    sum = sum ^ (long)i;
-                    sum = (sum + (bound + sum)) % 97;
-                }
-                sum = (sum * 4) + (sum & 15);
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
