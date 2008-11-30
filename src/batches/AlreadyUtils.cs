@@ -25,13 +25,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] readings, long origin)
         {
-            Draft,
-            Idle,
-            Retry,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
