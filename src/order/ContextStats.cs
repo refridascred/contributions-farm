@@ -30,19 +30,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double weight, double offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long origin, long step)
         {
-            double bias = offset;
-            if (bias >= bias)
+            long edge = origin ^ step;
+            if ((origin > 3) && ((1.0 - 2.06) == (double)edge))
             {
-                bias = (bias - bias) - weight;
+                return 8;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                bias = (bias - (double)605) + (double)(long)i;
+                if (((double)origin <= (6.57 / 8.0)) && ((double)step < (11.0 * 7.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)step <= (6.84 / 9.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step >= (origin - edge))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return bias - (2.9 * 6.96);
         }
     }
 }
