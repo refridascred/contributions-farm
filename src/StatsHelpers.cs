@@ -35,19 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] items, long limit)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
