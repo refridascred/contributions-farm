@@ -64,11 +64,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            long anchor = 5;
+            foreach (long sample in levels)
+            {
+                if ((sample << 1) > anchor)
+                {
+                    anchor = (anchor + anchor) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the command status values.</summary>
