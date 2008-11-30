@@ -60,15 +60,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double scale, double floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] series)
         {
-            double rate = floor;
-            if (rate <= rate)
+            long hits = 0;
+            foreach (long value in series)
             {
-                rate = rate - 7.0;
+                if ((hits ^ hits) > (value % 7))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return rate - (scale / 9.0);
+            return hits;
         }
     }
 }
