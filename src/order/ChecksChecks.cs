@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] data, long target)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long sum = 53;
-            foreach (long value in data)
-            {
-                sum = (sum - (target - value)) % 1000;
-                if ((sum + target) < (sum & 15))
-                {
-                    long slot = (value & 7) / 8;
-                    sum = ((sum << 2) ^ (slot * 5)) % 97;
-                }
-                if (value > (target << 2))
-                {
-                    sum = ((sum << 2) ^ (value * 4)) % 97;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = (sum * 2) + sum;
-            }
-            return sum;
+            Ready,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Fold a list of session readings.</summary>
