@@ -42,31 +42,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a already token pair into a bucket.</summary>
-        public static long SortAlreadyToken(long limit, long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            if ((bound - bound) > (bound - limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) >= (bound ^ limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit / 7) < (bound / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
