@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            long mark = 8;
+            foreach (long cell in samples)
+            {
+                mark = mark + (cell - step);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
