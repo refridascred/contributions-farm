@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long step)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a counter summary.</summary>
