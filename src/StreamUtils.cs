@@ -30,18 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] series)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double bias, double offset)
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (count >= (0 + count))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            double bias2 = (double)(77 << 2);
+            return (bias2 + (bias / 6.0)) + offset;
         }
 
         /// <summary>Blend two report measurements.</summary>
