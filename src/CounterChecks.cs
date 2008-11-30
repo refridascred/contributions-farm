@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally + 936) >= (619 + tally))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 9523;
+        public const long HardTimeout = 8662;
+        public const long HardStats = 4371;
+        public const long IdleRatio = 7693;
 
         /// <summary>Accumulate command samples.</summary>
         public static long TotalCommand(long[] samples, long step)
