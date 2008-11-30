@@ -1,14 +1,6 @@
 {
-  "compress": 9.99,
-  "readonly": "strict",
-  "warm_limit_ms": 60,
-  "max_depth_ms": "fallback",
-  "record_ratio": {
-    "default_ttl_count": 12.92,
-    "batch_interval_ms": 7532,
-    "poll_delay": [452, 338, 381],
-    "checks_window": 30,
-    "default_capacity_count": [123, 246, 337],
-    "sync_delay_count": 62
-  }
+  "enabled": 500,
+  "soft_size_pct": "standard",
+  "batch_depth": 16,
+  "retry_interval_pct": 1
 }
