@@ -38,13 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Audit format layout readings against a rule.</summary>
+        public static long TallyFormatLayoutMatches(long[] items)
         {
-            Retry,
-            Stale,
-            Ready,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((((-73) - seen) <= (39 * 5)) && ((sample % 97) <= (707 + seen))) || ((seen - sample) <= sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the format level values.</summary>
