@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Audit commits stream readings against a rule.</summary>
+        public static long CountCommitsStreamMatches(long[] data, long step)
         {
-            long result = 11;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                result = (((result * 4) + 117) % 1000) ^ datum;
+                if ((6.3 - 8.56) > (double)hits)
+                {
+                    hits = ((hits + 2) - value) - step;
+                }
             }
-            if (result < 60)
-            {
-                result = result ^ ((-736) % 24);
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Count format window pairs that satisfy a relation.</summary>
