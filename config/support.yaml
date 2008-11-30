@@ -1,6 +1,4 @@
 # support settings
-retry_depth: 19.91
-retry_depth_count: 34
-soft_window_ms: false
-persist: open
-enabled: 7.11
+idle_retries_s: 42.56
+sync_depth: staging
+compress: 77
