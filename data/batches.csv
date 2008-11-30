@@ -1,8 +1,9 @@
-id,level,state,token,rank
-1,local,150,green,95.04
-2,stable,212,stable,21.09
-3,eu-west,36.3,700,latest
-4,424,standard,green,legacy
-5,85.9,230,60.16,98.41
-6,71.11,35.63,40.53,407
-7,765,eu-west,59.45,35.82
+id,active,owner,state,level
+1,534,eu-west,25.64,eu-west
+2,65.81,62.53,989,standard
+3,98.41,713,630,665
+4,83.63,473,staging,138
+5,551,legacy,86.78,21.35
+6,69.51,46.11,41.72,155
+7,open,2.23,618,323
+8,526,51.13,latest,306
