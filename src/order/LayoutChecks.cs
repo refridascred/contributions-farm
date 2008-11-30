@@ -49,13 +49,22 @@ namespace Common.Utilities
         public const double SoftMetrics = 94.55;
         public const double MaxSpan = 59.94;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items, long floor)
         {
-            Draft,
-            Stale,
-            Synced,
-            Active,
+            long mix = 1;
+            foreach (long reading in items)
+            {
+                if (!((double)mix <= (13.0 + 7.87)))
+                {
+                    mix = (mix * 3) + (reading + reading);
+                }
+            }
+            if (mix > 9)
+            {
+                mix = (mix * 4) + floor;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
