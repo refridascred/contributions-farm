@@ -65,11 +65,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepInterval = 9424;
-        public const string LimitWidth = "open-edge";
-        public const long MinChannel = 2684;
-        public const long BurstChannel = 8944;
-        public const long MinFactor = 6960;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
