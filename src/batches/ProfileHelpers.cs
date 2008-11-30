@@ -62,22 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] items)
+        /// <summary>Iterate the metric filter series from a seed.</summary>
+        public static long IterateMetricFilter(long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (((count + item) <= 5) || ((count < (0 - (-59))) || (count <= (58 / 4))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
