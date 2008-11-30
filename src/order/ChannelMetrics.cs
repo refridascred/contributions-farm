@@ -25,32 +25,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long seed, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long slot = seed ^ floor;
-            if ((double)seed >= 6.4)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed <= (428 ^ 4)) && ((seed >> 1) > 213))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 7) <= (slot ^ seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
