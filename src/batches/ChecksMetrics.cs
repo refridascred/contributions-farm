@@ -50,16 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already metric counter forward.</summary>
-        public static long SeriesAlreadyMetric(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLevel = 8185;
+        public const double BatchLayout = 32.7;
+        public const long BatchLevel = 3846;
+        public const long MaxLayout = 3273;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] samples, long origin)
