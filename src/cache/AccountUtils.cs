@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Synced,
-            Active,
-            Idle,
-            Failed,
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
