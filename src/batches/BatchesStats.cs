@@ -46,38 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long floor, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] values)
         {
-            if ((seed - floor) < (seed + seed))
+            long carry = 842;
+            foreach (long reading in values)
             {
-                return 1;
+                carry = carry - (reading + carry);
             }
-            else
+            if (carry < 4)
             {
-                if (seed >= floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + seed) == (floor >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed - floor) == (seed & 127))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                carry = carry ^ carry;
             }
+            return carry % 1000;
         }
     }
 }
