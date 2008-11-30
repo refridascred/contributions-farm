@@ -45,9 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryScore = 7815;
-        public const long StepMetrics = 6855;
-        public const long MaxMetrics = 824;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels, long offset)
+        {
+            long total = 14;
+            foreach (long datum in levels)
+            {
+                total = (((total * 3) + (total + 37)) % 1000) ^ datum;
+            }
+            if (total > 2)
+            {
+                total = (total << 2) ^ (offset % 100);
+            }
+            return total;
+        }
     }
 }
