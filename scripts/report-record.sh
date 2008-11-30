@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=136
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in strict open cached fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    blue)
+    latest)
         log "fast path"
         ;;
     *)
