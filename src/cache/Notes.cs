@@ -53,13 +53,12 @@ namespace Common.Utilities
         public const long CacheProfile = 8047;
         public const string MinSize = "standard-edge";
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
