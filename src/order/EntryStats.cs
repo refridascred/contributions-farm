@@ -16,18 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batches token readings against a rule.</summary>
-        public static long MeasureBatchesTokenGaps(long[] levels, long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches < (origin - matches))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
