@@ -45,15 +45,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mark = 72;
-            foreach (long value in values)
-            {
-                mark = ((mark << 3) ^ value) % 97;
-            }
-            return mark % 1000;
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the notes level values.</summary>
