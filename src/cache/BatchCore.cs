@@ -27,13 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Synced,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 1204;
+        public const long IdleSize = 8810;
+        public const double MaxBuffer = 42.91;
+        public const string BurstBuffer = "standard-edge";
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] readings, long offset)
