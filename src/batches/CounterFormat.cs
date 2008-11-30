@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double ratio, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            double scale = offset;
+            if (scale > (double)34)
             {
-                if (!((bound - 11) < ((long)i + bound)))
-                {
-                    carry = (carry ^ (284 ^ (-617))) % 4096;
-                }
-                if ((bound >> 3) <= (carry + carry))
-                {
-                    carry = ((carry * 2) + (bound - 51)) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                scale = scale + 2.56;
             }
-            return carry;
+            else
+            {
+                scale = scale - (ratio - 7.06);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (offset - scale)) + (double)(long)i;
+            }
+            return scale - 18.0;
         }
 
         /// <summary>Accumulate commits samples.</summary>
