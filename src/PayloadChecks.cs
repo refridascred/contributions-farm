@@ -67,13 +67,19 @@ namespace Common.Utilities
         public const double BurstInterval = 62.09;
         public const string MaxFilter = "fallback";
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] samples, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
