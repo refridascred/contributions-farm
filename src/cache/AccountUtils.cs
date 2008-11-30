@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine commits metrics values into a single score.</summary>
-        public static long ScoreCommitsMetrics(long[] values)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long score = 989;
-            foreach (long item in values)
-            {
-                score = (((score << 2) ^ 9) % 101) ^ item;
-                if (4.21 >= (double)score)
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Synced,
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
