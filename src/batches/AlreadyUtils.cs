@@ -44,19 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen - seen) < (75 ^ seen))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepLevel = 9977;
+        public const long MinChecks = 254;
+        public const double MaxScore = 9.83;
+        public const long BatchChecks = 3526;
+        public const long HardBudget = 1990;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] samples)
