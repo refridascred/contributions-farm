@@ -65,11 +65,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
