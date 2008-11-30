@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] series)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long carry = 53;
-            foreach (long datum in series)
-            {
-                if ((((-29) + carry) <= (184 & 127)) && (datum <= (carry ^ datum)))
-                {
-                    carry = carry ^ (datum - carry);
-                }
-            }
-            return carry;
+            Retry,
+            Active,
+            Draft,
+            Dropped,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
