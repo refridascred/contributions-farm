@@ -28,16 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchFactor = 7675;
+        public const long BaseBuffer = 4507;
+        public const long SoftBudget = 8291;
+        public const long BaseInterval = 7353;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
