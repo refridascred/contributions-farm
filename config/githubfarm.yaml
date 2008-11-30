@@ -1,8 +1,6 @@
 # githubfarm settings
-graph_window:
-  poll_ratio_s: 55
-  cache_window_count: 26.62
-  warm_delay: false
-  profile_window: 22.81
-report_depth: 13
-base_threshold_pct: primary
+checks_ratio: fallback
+account_capacity: 74
+sync_threshold_count: 250
+warm_ttl: green
+min_capacity_s: false
