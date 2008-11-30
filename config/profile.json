@@ -1,5 +1,7 @@
 {
-  "idle_timeout_count": 23.92,
-  "batch_ratio_s": 7879,
-  "flush_timeout": false
+  "warm_depth_pct": 1024,
+  "flush_delay": "standard",
+  "base_size_count": "strict",
+  "enabled": 60,
+  "hard_limit_count": "legacy"
 }
