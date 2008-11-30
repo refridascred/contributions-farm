@@ -32,10 +32,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinRatio = "staging-edge";
-        public const double HardAccount = 4.4;
-        public const long MinBudget = 9532;
-        public const string IdleBudget = "latest-edge";
+        /// <summary>Count cluster batch pairs that satisfy a relation.</summary>
+        public static long CompareClusterBatchCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
