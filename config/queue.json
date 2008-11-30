@@ -1,23 +1,5 @@
 {
-  "compress": {
-    "default_ttl_ms": {
-      "audit": "legacy",
-      "cache_depth": "local",
-      "poll_window": 55.6,
-      "layout_capacity": 1024
-    },
-    "retry_capacity_s": {
-      "editor_interval": 76,
-      "queue_delay": 500,
-      "strict": false,
-      "sync_ttl_pct": 89.51,
-      "idle_threshold_pct": "stable"
-    },
-    "batch_interval_ms": 82.4,
-    "hard_retries_pct": "fallback",
-    "base_delay_pct": 20.43,
-    "strict": true
-  },
-  "warm_timeout": 82,
-  "channel_limit": 22
+  "batch_ratio_count": "green",
+  "cache_depth_count": "standard",
+  "max_depth_ms": [136, 387, 329]
 }
