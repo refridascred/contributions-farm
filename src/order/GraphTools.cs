@@ -37,12 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long target)
         {
-            Locked,
-            Paused,
-            Failed,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two metric measurements.</summary>
