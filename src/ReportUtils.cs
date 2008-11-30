@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] data, long step)
         {
-            Synced,
-            Closed,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((6.85 - 12.0) < (double)step)
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a channel queue reading by value.</summary>
