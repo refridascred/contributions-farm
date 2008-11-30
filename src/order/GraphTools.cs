@@ -34,10 +34,40 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseInterval = 966;
-        public const long RetryFormat = 6515;
-        public const long MinFormat = 5242;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long target, long floor)
+        {
+            long delta = target + floor;
+            if ((19.0 > (double)target) || ((delta * 3) < 61))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor % 97) >= (delta + delta))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((target << 1) > delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((delta + target) != (delta % 5)) && ((14.0 - 7.0) >= (double)delta))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long RollCache(long target)
