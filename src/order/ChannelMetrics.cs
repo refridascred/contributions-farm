@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] levels, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if (((2.83 + 7.11) != (double)floor) || (20.0 < (double)offset))
             {
-                if (entry > offset)
+                return 8;
+            }
+            else
+            {
+                if ((offset - offset) > floor)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
