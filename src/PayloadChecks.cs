@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = floor;
+            if (drift > floor)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - (double)5) + gain;
             }
-            return hits;
+            return drift + (double)96;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
