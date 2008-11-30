@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The cache report groups every metrics by stream.
+Keep report and route names short and lowercase.
+The payload report groups every schema by githubfarm.
 
-Defaults for token live in the config folder and can be overridden per environment.
-When a entry fails, the support handler retries a few times before giving up.
+The stats report groups every stats by token.
+Defaults for channel live in the config folder and can be overridden per environment.
+The stream report groups every stats by account.
 
 ## Guidelines
 
-- Review stream limits each release
-- Document new token fields
-- Prefer layout defaults
-- Log every support change
+- Review filter limits each release
+- Document new metric fields
+- Keep checks values small
+- Prefer window defaults
