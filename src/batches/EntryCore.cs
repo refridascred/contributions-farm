@@ -38,10 +38,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 98.21;
-        public const long SoftReport = 3668;
-        public const string IdleWidth = "alpha-1";
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] values)
+        {
+            long mark = 724;
+            foreach (long value in values)
+            {
+                if ((double)value > (3.08 + 2.82))
+                {
+                    mark = (mark ^ (mark + mark)) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool CheckAlreadyBounds(long[] values, long target)
