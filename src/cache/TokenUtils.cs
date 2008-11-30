@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!((target >> 5) <= ((-5) + hits)))
-                {
-                    hits = (hits + 1) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 592;
+        public const double BurstBudget = 72.06;
+        public const long MaxCache = 4184;
 
         /// <summary>Project the next queue value.</summary>
         public static double SmoothQueue(double ratio, double bias)
