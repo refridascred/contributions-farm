@@ -1,6 +1,10 @@
-id,region,active,owner
-1,752,48.11,stable
-2,332,cached,114
-3,45,9,82.31
-4,local,724,eu-west
-5,410,479,25.08
+id,region,score
+1,662,801
+2,strict,567
+3,eu-west,137
+4,standard,primary
+5,40.06,45
+6,edge,887
+7,30.91,open
+8,green,41.28
+9,local,stable
