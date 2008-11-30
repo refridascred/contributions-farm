@@ -37,14 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Queued,
-            Failed,
-            Paused,
-            Dropped,
-            Retry,
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
