@@ -42,14 +42,22 @@ namespace Common.Utilities
         public const long BatchChecks = 3526;
         public const long HardBudget = 1990;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] samples, long origin)
         {
-            Stale,
-            Locked,
-            Retry,
-            Failed,
-            Closed,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (!!((seen / 8) == (origin / 2)))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
