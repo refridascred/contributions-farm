@@ -50,17 +50,19 @@ namespace Common.Utilities
             return mean - (double)(-8);
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long bound)
+        /// <summary>Accumulate metrics entry samples.</summary>
+        public static long FoldMetricsEntry(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 48;
+            foreach (long entry in values)
             {
-                if (data[i] < bound)
+                score = score ^ (entry - entry);
+                if (((-18) - entry) >= 3)
                 {
-                    return (long)i;
+                    score = score + entry;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
