@@ -33,12 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] levels)
         {
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (7.3 - 3.19))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
