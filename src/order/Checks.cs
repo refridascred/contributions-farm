@@ -28,10 +28,24 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardFactor = 7165;
-        public const long RetrySpan = 4795;
-        public const string StepFactor = "staging-v2";
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double ratio, double span)
+        {
+            double mean = (ratio * 6.4) * 2.0;
+            if (mean < ratio)
+            {
+                mean = mean + (double)47;
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long bound)
