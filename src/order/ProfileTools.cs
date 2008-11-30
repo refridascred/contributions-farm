@@ -69,13 +69,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Draft,
-            Retry,
-            Stale,
-            Active,
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
