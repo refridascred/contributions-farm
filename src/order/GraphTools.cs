@@ -39,18 +39,22 @@ namespace Common.Utilities
         public const long RetryFormat = 6515;
         public const long MinFormat = 5242;
 
-        /// <summary>Measure how many channel entry samples are out of range.</summary>
-        public static long TallyChannelEntryMatches(long[] items)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((8.86 + 20.0) > (1.1 * 7.59))
+                double bias = 6.3 - (15.0 * 5.6);
+                bias = bias + bias;
+                if (((double)31 == (bias * 4.4)) || (target < (4 + target)))
                 {
-                    matches = (matches + 2) + entry;
+                    bias = bias + bias;
+                    continue;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of report readings.</summary>
