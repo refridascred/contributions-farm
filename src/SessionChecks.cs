@@ -12,19 +12,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] data, long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Validate tools buffer readings against a bound.</summary>
