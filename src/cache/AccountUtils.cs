@@ -32,38 +32,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long seed, long step)
-        {
-            if (!((9.0 * 1.9) >= (double)seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step >= (seed - seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step - seed) > seed) || ((seed >> 3) < (step & 255)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step < (step - step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "stable";
+        public const long RetryInterval = 6446;
+        public const long BatchRatio = 8044;
+        public const long MaxTimeout = 5567;
     }
 }
