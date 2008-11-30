@@ -1,14 +1,7 @@
 {
-  "batch_depth": 24.75,
-  "hard_limit_pct": {
-    "poll_interval_count": false,
-    "batch_ratio_pct": "cached",
-    "soft_ttl_s": "local",
-    "sync_ratio_count": "eu-west",
-    "readonly": 1024
-  },
-  "audit": 60,
-  "readonly": "cached",
-  "poll_interval_pct": false,
-  "max_limit_pct": "cached"
+  "poll_retries_s": "green",
+  "cache_delay": ["open", "primary"],
+  "flush_ttl_count": false,
+  "flush_timeout_count": [10, 364, 369, 20],
+  "poll_threshold_ms": "eu-west"
 }
