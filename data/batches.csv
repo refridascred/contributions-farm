@@ -1,7 +1,10 @@
-id,state,weight,active,score
-1,976,legacy,primary,cached
-2,975,standard,77.55,39.57
-3,84.9,188,493,91.65
-4,0.46,762,50.63,597
-5,58.79,green,68.28,blue
-6,587,371,97,433
+id,label,region,owner
+1,322,open,stable
+2,634,97,94.37
+3,standard,536,stable
+4,432,blue,278
+5,standard,green,green
+6,270,33.08,13.73
+7,744,36.74,525
+8,919,318,standard
+9,32.42,689,standard
