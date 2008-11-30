@@ -46,10 +46,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepTimeout = 7238;
-        public const double HardBudget = 26.33;
-        public const long IdleScore = 9332;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen - seen) < (75 ^ seen))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] samples)
