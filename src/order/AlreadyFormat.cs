@@ -33,12 +33,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 3940;
-        public const double MaxScore = 80.57;
-        public const double HardCluster = 14.44;
-        public const double RetryCluster = 13.13;
-        public const string DefaultCluster = "alpha";
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Combine cluster account values into a single score.</summary>
         public static long TallyClusterAccount(long[] samples, long bound)
