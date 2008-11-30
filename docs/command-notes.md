@@ -1,12 +1,14 @@
 # Command notes
 
-A format that stays idle for too long is moved to the session list.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Run the stream check before changing any batches limits.
+Each stats is validated before it reaches the filter queue.
+The metric report groups every report by cache.
+
+Use profile settings to tune how often profile data is refreshed.
+When a route fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep format values small
 - Validate schema input early
-- Review command limits each release
-- Document new token fields
+- Log every cache change
+- Document new githubfarm fields
+- Prefer support defaults
