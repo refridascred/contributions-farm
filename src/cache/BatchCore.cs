@@ -28,17 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] data, long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (data[i] < floor)
+                if (entry != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Audit graph tools readings against a rule.</summary>
