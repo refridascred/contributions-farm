@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the batch format entries that pass the check.</summary>
+        public static long MeasureBatchFormatMatches(long[] values, long limit)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!(reading > (96 << 2)))
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of support schema readings.</summary>
