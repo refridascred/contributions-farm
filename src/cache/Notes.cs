@@ -30,12 +30,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleSpan = 34.11;
-        public const long LimitSpan = 8819;
-        public const long RetryCount = 7730;
-        public const long BurstFactor = 3499;
-        public const long BaseRatio = 5435;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
