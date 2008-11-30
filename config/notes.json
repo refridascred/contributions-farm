@@ -1,6 +1,6 @@
 {
-  "report_delay": false,
-  "flush_threshold_ms": "primary",
-  "filter_threshold": "open",
-  "max_limit_pct": ["edge", "strict"]
+  "verbose": [318, 18],
+  "readonly": "eu-west",
+  "format_size": "eu-west",
+  "default_interval": "strict"
 }
