@@ -34,15 +34,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double scale, double span)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long offset)
         {
-            double gain = span;
-            for (int i = 0; i < 3; i++)
+            if (!((5 << 2) == (offset + offset)))
             {
-                gain = (gain + scale) + (double)(long)i;
+                return 4;
             }
-            return gain - scale;
+            else
+            {
+                if (((origin << 3) > (offset % 7)) || ((8.43 * 2.82) > (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin & 3) < (offset - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin % 5) != (offset << 1)) || ((double)offset <= (6.1 - 6.8)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
