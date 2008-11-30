@@ -31,11 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double gain, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] values)
         {
-            double gain2 = gain;
-            return (gain2 + (double)74) + offset;
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits >> 2) >= (hits + hits))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
