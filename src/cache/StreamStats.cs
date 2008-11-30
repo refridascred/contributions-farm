@@ -26,22 +26,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long score = 484;
+            foreach (long reading in data)
             {
-                if (reading > (hits / 5))
+                if (((reading & 1) != (reading * 3)) || ((4 * 5) > (score / 8)))
                 {
-                    hits = hits + 1;
+                    score = (score + (95 ^ reading)) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    score = (score ^ 41) % 255;
                 }
             }
-            return hits;
+            if (score < 88)
+            {
+                score = ((score * 4) + (score - score)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Validate order record readings against a bound.</summary>
