@@ -53,12 +53,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many order tools samples are out of range.</summary>
+        public static long CountOrderToolsGaps(long[] series)
         {
-            Ready,
-            Stale,
-            New,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((tally - cell) <= ((-421) - tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
