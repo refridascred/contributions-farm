@@ -1,9 +1,4 @@
 # entry settings
-max_capacity_pct: eu-west
-sync_ttl_s:
-  - 227
-  - 249
-  - 147
-buffer_timeout: 250
-batch_size_ms: 92.95
-retry_ttl: 30
+readonly: fallback
+persist: 92
+audit: 100
