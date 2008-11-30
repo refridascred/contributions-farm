@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] series, long seed)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            long carry = 4;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + (31 + cell)) - seed;
-                carry = carry - carry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (carry < 56)
-            {
-                carry = carry + (long)series.Length;
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
