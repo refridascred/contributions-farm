@@ -25,11 +25,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            Draft,
+            Idle,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the format state values.</summary>
