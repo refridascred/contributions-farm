@@ -23,15 +23,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many account stream samples are out of range.</summary>
-        public static long AuditAccountStreamHits(long[] readings, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] levels, long limit)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            foreach (long datum in levels)
             {
-                if (7 < (seen + cell))
+                if (datum <= (datum >> 3))
                 {
-                    seen = (seen + 1) - bound;
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
