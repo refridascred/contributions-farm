@@ -38,22 +38,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] samples, long origin)
-        {
-            long total = 820;
-            foreach (long datum in samples)
-            {
-                if ((datum / 3) < (total & 31))
-                {
-                    total = ((total - (total / 6)) % 97) - origin;
-                }
-            }
-            if (total > 20)
-            {
-                total = (total - (total + total)) % 97;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowRatio = 7283;
+        public const string BatchToken = "staging-1";
+        public const string MinToken = "staging-1";
+        public const long MaxToken = 1092;
+        public const long CacheInterval = 9283;
     }
 }
