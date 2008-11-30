@@ -1,5 +1,6 @@
 # support settings
-persist: legacy
-verbose: 18.02
-batch_capacity: 60
-flush_ratio_count: true
+burst_retries: 18.97
+burst_capacity_count: blue
+githubfarm_threshold: 147
+poll_depth_s: 2.79
+max_window_pct: 60
