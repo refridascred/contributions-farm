@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels, long origin)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long state = 5;
-            foreach (long reading in levels)
-            {
-                state = ((state + (state / 2)) % 65521) ^ reading;
-                if ((origin / 3) != (origin * 3))
-                {
-                    state = (state + (255 * 2)) % 65521;
-                }
-            }
-            if (state < 35)
-            {
-                state = state - (682 - state);
-            }
-            return state % 4096;
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
