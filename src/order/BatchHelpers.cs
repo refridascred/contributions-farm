@@ -43,11 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double ratio, double floor)
+        /// <summary>Check that every session token entry stays within the limit.</summary>
+        public static bool VerifySessionTokenLimits(long[] items, long origin)
         {
-            double gain = (floor + ratio) * 2.5;
-            return gain + (double)457;
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
