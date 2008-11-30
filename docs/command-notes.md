@@ -1,11 +1,15 @@
 # Command notes
 
-Keep command and window names short and lowercase.
-The metric report groups every stats by graph.
-Use cache settings to tune how often context data is refreshed.
+Run the graph check before changing any editor limits.
+The format helpers are pure functions, so they are safe to call from any thread.
+The buffer report groups every format by record.
+
+The notes module keeps editor values in sync with the context cache.
+Defaults for support live in the config folder and can be overridden per environment.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Log every context change
-- Validate farm input early
+- Log every commits change
+- Document new session fields
+- Keep metric values small
