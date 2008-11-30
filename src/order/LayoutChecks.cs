@@ -45,19 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] readings, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define account limits and defaults.</summary>
