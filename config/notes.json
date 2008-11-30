@@ -1,6 +1,5 @@
 {
-  "account_limit": "edge",
-  "batch_threshold": false,
-  "soft_size": true,
-  "format_size": 29.22
+  "layout_threshold": false,
+  "hard_ttl": "stable",
+  "base_timeout_s": 68
 }
