@@ -35,18 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] data)
+        /// <summary>Derive the next token filter value from a seed.</summary>
+        public static long SeriesTokenFilter(long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count & 255) >= (sample - sample))
+                if (((long)i >> 3) >= (step * 5))
                 {
-                    count = count + 2;
+                    total = ((total * 2) + (total & 15)) % 101;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
     }
 }
