@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] levels, long bound)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if ((double)bound != (6.9 - 2.51))
             {
-                if ((double)bound < (double)65)
+                return 8;
+            }
+            else
+            {
+                if (8.7 <= (double)bound)
                 {
-                    hits = (hits + 1) + reading;
+                    return 4;
+                }
+                else
+                {
+                    if (bound > (origin << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((11.0 + 8.96) < (double)origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate graph farm readings against a bound.</summary>
