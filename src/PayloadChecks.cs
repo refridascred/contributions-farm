@@ -38,24 +38,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.6 * 6.27) <= (double)limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = acc ^ (acc % 10);
-                    break;
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc - limit) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a contributi stats.</summary>
