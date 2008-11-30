@@ -34,11 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 5151;
-        public const long StepSize = 5812;
-        public const long CacheTimeout = 8507;
-        public const long IdleInterval = 8289;
-        public const long DefaultChecks = 7817;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
