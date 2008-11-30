@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of profile layout readings.</summary>
-        public static long CompareProfileLayoutCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseWidth = "standard";
+        public const long CacheEntry = 7272;
+        public const long WindowEntry = 295;
+        public const long RetryDepth = 2710;
 
         /// <summary>Locate a channel queue reading by value.</summary>
         public static long LookupChannelQueueIndex(long[] values, long seed)
