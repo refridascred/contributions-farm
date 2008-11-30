@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long HardLevel = 9722;
         public const double HardSpan = 4.32;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowScore = 25.97;
+        public const long HardSession = 3090;
+        public const long SoftRatio = 4991;
+        public const double MinSession = 24.44;
+        public const long CacheSession = 4561;
     }
 }
