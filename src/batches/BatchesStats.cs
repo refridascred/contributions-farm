@@ -17,25 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] data, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                long bound = ((long)i << 1) ^ ((long)i >> 1);
-                if ((bound - bound) <= bound)
+                if (value >= offset)
                 {
-                    long diff = bound;
-                    acc = ((acc * 2) + (3 - diff)) % 255;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    acc = ((acc * 5) + (long)i) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
