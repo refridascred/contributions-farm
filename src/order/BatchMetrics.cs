@@ -42,31 +42,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long bound, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] levels, long bound)
         {
-            if ((double)offset != (3.3 - 12.0))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound - offset) >= bound)
+                if (cell != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(bound < 76))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a contributi stats.</summary>
