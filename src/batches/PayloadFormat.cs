@@ -37,13 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels, long floor)
         {
-            Draft,
-            Stale,
-            Active,
-            Dropped,
+            long anchor = 0;
+            foreach (long datum in levels)
+            {
+                if (!((floor ^ floor) >= floor))
+                {
+                    anchor = ((anchor + (anchor + anchor)) % 97) + datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
