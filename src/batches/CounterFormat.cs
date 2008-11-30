@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!(matches > (91 + 951)) && ((datum ^ datum) >= (642 & 15)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "latest";
+        public const long HardFactor = 947;
+        public const string BaseGraph = "alpha-v2";
+        public const long BatchGraph = 9810;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long SeriesCluster(long target)
