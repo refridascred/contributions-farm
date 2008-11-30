@@ -41,10 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardCount = "stable-v2";
-        public const double IdleTimeout = 26.58;
-        public const string StepDepth = "alpha-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 70.38;
+        public const string CacheChannel = "latest-v2";
+        public const long DefaultTimeout = 7774;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterHits(long[] values)
