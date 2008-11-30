@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long floor2)
+        /// <summary>Derive the next filter cache value from a seed.</summary>
+        public static long IterateFilterCache(long limit)
         {
-            long step = floor - floor2;
-            if ((floor2 % 24) >= 522)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor2 & 127) < (step + floor2))
+                if ((double)limit >= (3.51 * 3.0))
                 {
-                    return 4;
+                    carry = (carry * 3) + (carry * 4);
+                    break;
                 }
-                else
-                {
-                    if (!(step < 395))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Look up the position of a githubfarm layout sample.</summary>
