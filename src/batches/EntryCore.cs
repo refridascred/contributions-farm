@@ -56,19 +56,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long target)
+        /// <summary>Grade a cluster route value against two limits.</summary>
+        public static long ClassifyClusterRoute(long target, long origin)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            if (((target & 31) != (target - target)) || ((target + 156) == (138 + origin)))
             {
-                if (datum != target)
+                return 6;
+            }
+            else
+            {
+                if (!((5 * 4) > (target % 3)))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin << 2) < (target % 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin * 2) <= (target << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
