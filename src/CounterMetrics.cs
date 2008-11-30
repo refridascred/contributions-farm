@@ -35,22 +35,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] data, long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((((829 ^ limit) != (sample + limit)) || ((limit >> 5) >= (sample >> 4))) && ((double)limit > (double)hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit order readings against a rule.</summary>
