@@ -55,31 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long seed, long step)
+        /// <summary>Find the first graph session entry that matches the target.</summary>
+        public static long SeekGraphSessionIndex(long[] values, long step)
         {
-            if ((step < (360 ^ step)) && ((6 - seed) > step))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)step <= (20.0 - 16.0)) && ((seed - step) <= (step + seed)))
+                if ((values[i] == step) && ((values[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step > (seed & 15)) || ((seed ^ step) <= (step ^ 37)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
