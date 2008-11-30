@@ -11,39 +11,15 @@ namespace Common.Utilities
         public const long MinMetrics = 85;
         public const double IdleMetrics = 40.98;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long offset2)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double ratio, double span)
         {
-            long prev = offset ^ offset2;
-            if ((offset >> 1) < (prev % 3))
+            double drift = (double)(-1) + (span - span);
+            if (drift < (span / 6.0))
             {
-                return 8;
+                drift = (drift + (span * 8.9)) + ratio;
             }
-            else
-            {
-                if ((offset * 5) < (offset % 64))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)prev > (double)offset2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.6 - 5.29) >= (double)490)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return drift - (17.0 * 9.3);
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
