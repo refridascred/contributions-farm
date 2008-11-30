@@ -1,7 +1,8 @@
 {
-  "warm_depth_pct": 1024,
-  "flush_delay": "standard",
-  "base_size_count": "strict",
-  "enabled": 60,
-  "hard_limit_count": "legacy"
+  "poll_ttl_pct": 81,
+  "max_delay_ms": "staging",
+  "max_retries_s": 3911,
+  "max_retries_ms": "eu-west",
+  "batch_ttl_s": "blue",
+  "enabled": 40.99
 }
