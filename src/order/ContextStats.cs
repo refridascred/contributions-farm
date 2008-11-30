@@ -28,18 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next tools buffer value from a seed.</summary>
-        public static long RollToolsBuffer(long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 5) + (carry + step)) % 65521;
-                carry = ((carry * 2) + ((long)i >> 4)) % 97;
-                carry = (carry + (carry + step)) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            New,
+            Done,
+            Paused,
         }
     }
 }
