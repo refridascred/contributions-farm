@@ -34,20 +34,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every counter already entry stays within the limit.</summary>
-        public static bool GuardCounterAlreadyRange(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardSize = 8465;
+        public const long WindowFormat = 4367;
+        public const long MinWidth = 3324;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
