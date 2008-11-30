@@ -28,23 +28,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command filter entries that pass the check.</summary>
-        public static long AuditCommandFilterOutliers(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((((offset ^ seen) < (value + value)) || ((offset - value) != (1 << 1))) || (((9.82 - 0.3) > (double)offset) && (seen > (value ^ 10))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 67.45;
+        public const string WindowAlready = "open";
+        public const string IdleAlready = "standard-edge";
 
         /// <summary>Digest a series of batch record entries.</summary>
         public static long FoldBatchRecord(long[] series)
