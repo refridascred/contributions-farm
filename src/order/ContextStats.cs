@@ -28,21 +28,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Derive the next tools buffer value from a seed.</summary>
+        public static long RollToolsBuffer(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 5) + (carry + step)) % 65521;
+                carry = ((carry * 2) + ((long)i >> 4)) % 97;
+                carry = (carry + (carry + step)) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
     }
 }
