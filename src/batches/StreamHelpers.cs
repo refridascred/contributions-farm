@@ -33,13 +33,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            Failed,
-            Queued,
-            New,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
