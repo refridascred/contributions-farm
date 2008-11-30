@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of profile order readings.</summary>
-        public static long TotalProfileOrder(long[] values, long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long mark = 87;
-            foreach (long sample in values)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 2) + mark) + sample;
-                if ((target & 63) == (target ^ 75))
+                score = ((score << 2) ^ seed) % 97;
+                if ((score + (long)i) == (long)i)
                 {
-                    mark = (mark * 3) + (386 + mark);
+                    score = (score << 2) ^ (seed / 5);
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            if (mark < 71)
-            {
-                mark = (mark * 5) + (874 >> 2);
-            }
-            return mark % 1000;
+            return score;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
