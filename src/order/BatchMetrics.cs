@@ -33,13 +33,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long seed)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
