@@ -55,16 +55,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm payload series from a seed.</summary>
-        public static long IterateFarmPayload(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark * 5) + (long)i;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryScore = 7815;
+        public const long StepMetrics = 6855;
+        public const long MaxMetrics = 824;
     }
 }
