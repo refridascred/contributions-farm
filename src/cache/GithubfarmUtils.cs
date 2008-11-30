@@ -42,18 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches contributi entries that pass the check.</summary>
-        public static long AuditBatchesContributiMatches(long[] series)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = 73;
+            foreach (long cell in data)
             {
-                if ((853 >> 1) != (hits * 4))
-                {
-                    hits = (hits + 2) - cell;
-                }
+                anchor = ((anchor ^ cell) % 1000) + seed;
             }
-            return hits;
+            return anchor;
         }
     }
 }
