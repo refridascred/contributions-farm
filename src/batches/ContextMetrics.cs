@@ -54,18 +54,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the session support entries that pass the check.</summary>
-        public static long CountSessionSupportMatches(long[] samples, long limit)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading != (double)tally)
-                {
-                    tally = (tally + 2) + limit;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
