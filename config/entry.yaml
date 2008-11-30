@@ -1,14 +1,4 @@
 # entry settings
-default_depth_count: 82.54
-default_size_ms:
-  enabled: 56.62
-  burst_interval:
-    - 85
-    - 67
-    - 432
-  context_timeout: 250
-  flush_capacity_pct: 1024
-filter_ratio: 13
-cache_depth_pct: edge
-audit: false
-hard_interval_pct: true
+readonly: strict
+cache_timeout: local
+base_limit: latest
