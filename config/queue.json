@@ -1,8 +1,5 @@
 {
-  "soft_capacity": "blue",
-  "soft_depth": 7700,
-  "retry_timeout_pct": 100,
-  "flush_timeout_count": 77.67,
-  "window_depth": 17,
-  "command_ratio": true
+  "stream_ratio": false,
+  "base_depth": false,
+  "hard_depth": "edge"
 }
