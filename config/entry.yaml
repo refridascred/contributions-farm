@@ -1,13 +1,5 @@
 # entry settings
-default_window: 44.72
-graph_limit:
-  warm_retries_ms: strict
-  enabled: 1023
-  order_timeout:
-    warm_retries: 50
-    verbose: strict
-    max_capacity_s: false
-  retry_retries_ms: 98.03
-  commits_retries: true
-default_threshold: false
-poll_interval_pct: local
+batch_ttl_count: false
+soft_delay: cached
+payload_delay: 82
+verbose: stable
