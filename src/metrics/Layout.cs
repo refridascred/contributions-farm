@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] data)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((item << 3) > 66)
+                if (datum >= floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Adjust a layout reading.</summary>
