@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 5978;
-        public const double IdleScore = 90.06;
-        public const long WindowFarm = 767;
-        public const string MinRatio = "cached-1";
-        public const string SoftSpan = "open-v2";
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long ScoreCommits(long[] data)
