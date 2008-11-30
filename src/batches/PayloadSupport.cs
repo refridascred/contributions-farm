@@ -40,27 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long total = 378;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    long prev = total;
-                    total = ((total ^ prev) % 65521) ^ (long)i;
-                }
-                if ((7.04 - 2.0) == (double)total)
-                {
-                    total = (total * 3) + item;
-                }
-            }
-            if (total < 73)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total;
+            Draft,
+            Paused,
+            Active,
+            Failed,
         }
     }
 }
