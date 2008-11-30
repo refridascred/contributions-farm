@@ -19,19 +19,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            long score = 866;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                score = ((score * 3) + (score * 4)) % 255;
+                if ((cell << 3) > (cell * 3))
                 {
-                    result = result ^ ((long)i + (long)i2);
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            if (score > 259)
+            {
+                score = ((score * 2) + (score + score)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
