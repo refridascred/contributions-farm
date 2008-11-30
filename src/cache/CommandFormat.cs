@@ -36,13 +36,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            Dropped,
-            Failed,
-            Queued,
-            New,
+            double gain = span;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain - (gain - 3.9)) - (double)(long)i) + scale;
+            }
+            return gain - span;
         }
     }
 }
