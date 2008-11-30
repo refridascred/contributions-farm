@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 2) + (limit << 1)) % 1000;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor << 2) ^ (6 % 5)) + (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the queue tools entries that pass the check.</summary>
