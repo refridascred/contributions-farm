@@ -76,10 +76,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 3653;
-        public const long MaxWindow = 9443;
-        public const long IdleWindow = 1405;
-        public const long MinWindow = 3953;
+        /// <summary>Audit entry buffer readings against a rule.</summary>
+        public static long MeasureEntryBufferMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((((value + 65) < (tally & 15)) && ((17.0 * 7.0) > (double)tally)) || ((value - 8) < (value ^ tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
