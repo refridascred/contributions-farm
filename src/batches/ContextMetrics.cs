@@ -54,18 +54,9 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics notes samples are out of range.</summary>
-        public static long MeasureMetricsNotesOutliers(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)seed >= 3.7)
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 1315;
+        public const double SoftEntry = 32.78;
+        public const long HardEntry = 5957;
     }
 }
