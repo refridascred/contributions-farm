@@ -1,4 +1,11 @@
 # support settings
-max_ttl_pct: 27
-max_window_s: 47.15
-counter_retries: 100
+verbose: standard
+warm_limit_count: 60
+min_size_s:
+  burst_ttl: 30
+  max_limit_pct: 78
+  poll_size: 7643
+  sync_ratio_count: 33.73
+  warm_depth_ms: 87.3
+  layout_depth: 45
+audit: strict
