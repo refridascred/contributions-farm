@@ -1,5 +1,30 @@
 # support settings
-cache_threshold: true
-base_ratio_ms: true
-notes_size: open
-soft_window_count: 6687
+base_depth_ms:
+  - local
+  - local
+filter_timeout: 44.47
+default_ratio_s:
+  graph_ttl:
+    idle_depth: eu-west
+    readonly: primary
+    contributi_threshold: false
+    strict: 3155
+    batch_delay_s: 9789
+    min_window_pct: 6198
+  compress:
+    - 10
+    - 322
+    - 119
+  report_interval: 20.2
+  flush_capacity_s: edge
+  strict: stable
+buffer_size:
+  - 317
+  - 134
+  - 355
+  - 149
+commits_ttl:
+  - 302
+  - 333
+  - 97
+strict: 83.34
