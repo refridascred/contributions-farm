@@ -39,13 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long floor, long step)
         {
-            Paused,
-            Idle,
-            Synced,
-            Stale,
+            if ((floor >> 4) >= (15 & 63))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((-798) > (5 - step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
