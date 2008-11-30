@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchWidth = "local-v2";
-        public const double CacheFactor = 6.18;
-        public const long LimitMetrics = 4214;
-        public const double DefaultMetrics = 94.8;
-        public const long CacheMetrics = 7912;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Paused,
+            Active,
+            Closed,
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long StepChecks(long target)
