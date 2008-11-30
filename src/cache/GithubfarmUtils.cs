@@ -39,13 +39,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Active,
-            Paused,
-            Dropped,
-            Ready,
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate account context samples.</summary>
