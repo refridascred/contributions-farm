@@ -1,7 +1,8 @@
 {
-  "verbose": "local",
-  "idle_capacity_s": "green",
-  "strict": [238, 137, 212],
-  "sync_interval": 7481,
-  "warm_ratio_pct": 60
+  "persist": 79,
+  "batch_ratio": true,
+  "burst_ttl_pct": "latest",
+  "verbose": "fallback",
+  "sync_limit": true,
+  "already_timeout": true
 }
