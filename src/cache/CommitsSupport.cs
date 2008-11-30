@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] levels, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (cell >= seed)
+                if (((reading / 8) != ((-4) + origin)) || (((reading - origin) >= (tally - 2)) && ((origin * 3) != (7 * 4))))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
