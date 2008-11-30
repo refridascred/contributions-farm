@@ -37,21 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up counter githubfarm samples.</summary>
-        public static long MatchCounterGithubfarmCount(long[] items)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
