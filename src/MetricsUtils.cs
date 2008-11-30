@@ -52,19 +52,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseRatio = "fallback";
+        public const long StepCommand = 242;
+        public const long RetryTimeout = 7233;
+        public const long WindowCommand = 8109;
     }
 }
