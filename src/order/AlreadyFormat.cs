@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                score = score ^ (score << 3);
-                score = (score - ((long)i ^ origin)) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Measure how many graph route samples are out of range.</summary>
