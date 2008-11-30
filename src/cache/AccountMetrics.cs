@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] series, long offset)
+        /// <summary>Match up cache farm samples.</summary>
+        public static long MatchCacheFarmCount(long[] values)
         {
-            long state = 360;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state + (cell >> 1)) % 1000) + offset;
-                state = state ^ (cell & 7);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a already record.</summary>
