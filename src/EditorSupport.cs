@@ -41,12 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] items)
         {
-            Closed,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)seen <= (double)value)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a payload channel value against two limits.</summary>
