@@ -26,17 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] >= floor)
+                if (((entry << 3) >= (count + count)) || ((count << 1) <= entry))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the entry state values.</summary>
