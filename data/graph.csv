@@ -1,7 +1,10 @@
-id,owner,active,state
-1,311,342,cached
-2,817,823,19.22
-3,10.62,430,44.62
-4,81.65,cached,41.36
-5,1.1,legacy,577
-6,4,eu-west,41.41
+id,rank,score
+1,367,640
+2,primary,486
+3,edge,43.13
+4,eu-west,245
+5,edge,15.35
+6,627,edge
+7,blue,standard
+8,292,833
+9,34.98,590
