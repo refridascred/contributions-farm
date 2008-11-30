@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long limit, long limit2)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            if ((82 & 15) < (limit2 + limit2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((limit2 & 127) >= (120 & 31)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
