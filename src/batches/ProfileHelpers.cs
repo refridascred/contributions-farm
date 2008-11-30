@@ -21,20 +21,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Fold a list of support schema readings.</summary>
+        public static long TotalSupportSchema(long[] readings)
         {
-            long score = 83;
-            foreach (long item in levels)
+            long total = 115;
+            foreach (long sample in readings)
             {
-                score = score - item;
-                score = (score - (score + score)) % 65521;
+                if (total > (sample << 3))
+                {
+                    total = (total - total) % 255;
+                }
+                else
+                {
+                    total = ((total * 2) + total) % 4096;
+                }
             }
-            if (score < 9)
+            if (total < (-9))
             {
-                score = (score + (score * 2)) % 97;
+                total = (total + (total + total)) % 101;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Classify a token stats pair into a bucket.</summary>
