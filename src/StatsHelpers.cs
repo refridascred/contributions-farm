@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] samples, long seed)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the tools level values.</summary>
