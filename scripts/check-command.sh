@@ -12,9 +12,16 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=156
-log "limit is ${COMMAND_LIMIT}"
-
-for item in stable local; do
+for item in staging standard local edge; do
     log "checking ${item}"
 done
+
+mode="${1:-cached}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
