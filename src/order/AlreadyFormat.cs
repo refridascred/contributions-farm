@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up batches buffer samples.</summary>
-        public static long OverlapBatchesBufferCount(long[] samples)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 19)
+                    if ((readings[i] + readings[j]) > 14)
                     {
                         count = count + 1;
                     }
