@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] levels, long seed)
         {
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (datum > (736 + seen))
+                {
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
