@@ -16,13 +16,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] samples)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (61 <= (matches + cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metric state values.</summary>
