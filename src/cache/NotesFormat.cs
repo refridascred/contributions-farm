@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Draft,
-            Done,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxDepth = 5778;
+        public const long DefaultBatches = 1496;
+        public const long BatchWidth = 4961;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
