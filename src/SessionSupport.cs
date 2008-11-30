@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Pending,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)581 >= (double)count)
+                {
+                    count = (count + 1) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of githubfarm format readings.</summary>
