@@ -30,15 +30,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long floor, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            if (1 >= (floor & 7))
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (((4.98 + 4.88) > (double)floor) || (7.0 > (double)floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor >= (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
