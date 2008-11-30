@@ -1,11 +1,16 @@
 {
-  "max_delay_ms": "staging",
-  "sync_size_ms": "green",
-  "strict": {
-    "batch_window_count": 39,
-    "batch_window_pct": ["eu-west", "staging", "staging"],
-    "min_ratio": "local",
-    "enabled": 100
-  },
-  "audit": 78.38
+  "context_capacity": 66,
+  "commits_timeout": 58,
+  "dry_run": {
+    "default_size": {
+      "compress": 79.14,
+      "strict": 1328,
+      "cache_size": "legacy",
+      "payload_capacity": ["cached", "primary", "standard"],
+      "enabled": 9368
+    },
+    "flush_retries": 92.2,
+    "poll_limit_count": true,
+    "max_ratio": "cached"
+  }
 }
