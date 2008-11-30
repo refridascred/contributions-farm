@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((hits - cell) != (hits * 3)) || ((hits + hits) <= cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
