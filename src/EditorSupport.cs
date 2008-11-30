@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftDepth = 8959;
-        public const double MaxReport = 27.72;
-        public const long BaseReport = 2162;
-        public const long IdleScore = 6601;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] series, long bound)
