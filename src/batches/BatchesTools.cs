@@ -15,23 +15,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double weight, double bias)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long seed, long seed2)
         {
-            double bias2 = (double)(395 - 362);
-            if (bias2 > (bias2 + weight))
+            if ((4.4 * 8.0) == (double)seed)
             {
-                bias2 = bias2 - (7.1 * 6.0);
+                return 0;
             }
             else
             {
-                bias2 = bias2 + 9.82;
+                if ((seed << 1) == (seed + seed2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - weight) + (double)(long)i;
-            }
-            return bias2 - (bias - 20.0);
         }
 
         /// <summary>Hold a notes header.</summary>
