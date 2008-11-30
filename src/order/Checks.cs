@@ -60,10 +60,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 3690;
-        public const double MaxAlready = 76.42;
-        public const double RetryInterval = 87.49;
-        public const long MinAlready = 3654;
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples)
+        {
+            long sum = 545;
+            foreach (long cell in samples)
+            {
+                sum = sum + (cell & 1);
+            }
+            if (sum > (-747))
+            {
+                sum = (sum * 3) + (sum ^ sum);
+            }
+            return sum;
+        }
     }
 }
