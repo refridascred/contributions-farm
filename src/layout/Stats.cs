@@ -51,32 +51,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long floor, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            long step = floor + seed;
-            if (seed <= (seed - step))
+            long state = 8;
+            foreach (long item in levels)
             {
-                return 4;
+                state = (state ^ (item * 3)) % 1000;
             }
-            else
-            {
-                if ((seed ^ seed) != (floor & 63))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed == (14.0 / 6.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
