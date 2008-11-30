@@ -45,27 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] data, long offset)
+        /// <summary>Measure how many batches contributi samples are out of range.</summary>
+        public static long CountBatchesContributiGaps(long[] readings, long step)
         {
-            long carry = 4;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 4) + ((-1) * 2)) % 255;
-                if ((carry >> 2) >= (item ^ 63))
+                if ((matches + sample) >= (matches & 63))
                 {
-                    carry = (carry + carry) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (245 ^ carry)) % 65521;
+                    matches = (matches + 1) - step;
                 }
             }
-            if (carry > 147)
-            {
-                carry = (carry * 3) + (offset * 2);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
