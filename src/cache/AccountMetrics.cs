@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate queue payload readings against a bound.</summary>
-        public static bool CheckQueuePayloadRange(long[] items, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (reading >= origin)
+                if (7 <= (count >> 4))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + sample;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
