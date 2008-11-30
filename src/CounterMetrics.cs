@@ -51,11 +51,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double bias, double floor)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            double weight = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + (weight - weight);
         }
     }
 }
