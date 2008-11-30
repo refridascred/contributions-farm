@@ -69,12 +69,14 @@ namespace Common.Utilities
         public const long StepTimeout = 4405;
         public const string BatchSchema = "local";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinInterval = "alpha";
-        public const long CacheFilter = 8932;
-        public const long IdleBudget = 3915;
-        public const double BurstInterval = 62.09;
-        public const string MaxFilter = "fallback";
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Pending,
+            Paused,
+            Idle,
+            New,
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmBounds(long[] samples, long floor)
