@@ -5,28 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values, long origin)
         {
-            long result = 820;
-            foreach (long reading in series)
+            long result = -653;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    result = (result - (result + result)) ^ (long)i;
+                    result = ((result << 3) ^ (entry + entry)) ^ (long)i;
+                    result = (result * 2) + (origin << 3);
                 }
-                for (int i2 = 0; i2 < 5; i2++)
+                result = result - (origin << 3);
+                if (origin < (entry / 5))
                 {
-                    result = (((result * 2) + reading) % 255) + (long)i2;
+                    result = ((result << 2) ^ (origin + result)) % 1000;
                 }
-                if ((double)result < (double)(long)series.Length)
-                {
-                    result = result - result;
-                }
-                else
-                {
-                    result = (result - (result + 329)) % 1000;
-                }
+            }
+            if (result < 8)
+            {
+                result = (result - (-7)) % 97;
             }
             return result;
         }
