@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] items, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (value >= seed)
+                if (((origin ^ 24) == (anchor + origin)) || (anchor > ((long)i >> 2)))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor + ((long)i ^ origin)) % 4096;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Describe the order class values.</summary>
