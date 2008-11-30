@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double ratio, double offset)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double scale = offset;
-            if (scale > (double)34)
-            {
-                scale = scale + 2.56;
-            }
-            else
-            {
-                scale = scale - (ratio - 7.06);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (offset - scale)) + (double)(long)i;
-            }
-            return scale - 18.0;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate commits samples.</summary>
