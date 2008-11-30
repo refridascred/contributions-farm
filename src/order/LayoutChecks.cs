@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public double Total { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetrySize = 4910;
+        public const long StepWidth = 1926;
+        public const long BatchRoute = 893;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextLimits(long[] series, long step)
