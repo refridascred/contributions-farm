@@ -14,18 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultSpan = "open-v2";
+        public const string WindowNotes = "open-1";
+        public const long MaxNotes = 7864;
+        public const long MinNotes = 6054;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
