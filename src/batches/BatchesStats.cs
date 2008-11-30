@@ -35,38 +35,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long limit, long bound)
+        /// <summary>Digest a series of contributi stream entries.</summary>
+        public static long WeighContributiStream(long[] series)
         {
-            if (((bound - bound) <= (limit >> 1)) && (limit < (13 / 4)))
+            long score = 25;
+            foreach (long sample in series)
             {
-                return 5;
+                score = (score * 3) + (sample ^ (-63));
             }
-            else
-            {
-                if (bound > (limit >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((9.37 + 0.3) >= (double)bound) || ((limit - 834) < bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((13.0 / 3.0) <= (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return score % 97;
         }
 
         /// <summary>Roll a route report counter forward.</summary>
