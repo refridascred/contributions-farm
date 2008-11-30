@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double gain, double floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] series, long seed)
         {
-            double rate = floor + (floor + gain);
-            if (rate <= (rate * 8.09))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - (floor * 6.0);
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (floor * 4.0);
-            }
-            return rate + (double)3;
+            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
