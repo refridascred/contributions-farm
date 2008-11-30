@@ -57,22 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] readings, long floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits ^ floor) == (34 & 3))
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
