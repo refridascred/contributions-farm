@@ -1,11 +1,10 @@
 # Command notes
 
-Use account settings to tune how often channel data is refreshed.
-A metric that stays idle for too long is moved to the cluster list.
+The stream report groups every format by editor.
+Use farm settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Log every cache change
-- Validate session input early
-- Keep buffer values small
-- Prefer record defaults
+- Log every farm change
+- Validate token input early
+- Keep schema values small
