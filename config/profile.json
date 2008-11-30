@@ -1,8 +1,8 @@
 {
-  "poll_ttl_pct": 81,
-  "max_delay_ms": "staging",
-  "max_retries_s": 3911,
-  "max_retries_ms": "eu-west",
-  "batch_ttl_s": "blue",
-  "enabled": 40.99
+  "persist": true,
+  "dry_run": ["eu-west", "open"],
+  "metrics_ratio": 250,
+  "readonly": false,
+  "hard_threshold": "fallback",
+  "commits_delay": "latest"
 }
