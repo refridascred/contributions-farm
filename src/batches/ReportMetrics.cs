@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] items, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if (((hits >> 2) != (sample + origin)) && !((double)origin >= (13.0 + 0.6)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine editor stream values into a single score.</summary>
