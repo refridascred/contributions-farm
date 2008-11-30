@@ -1,16 +1,16 @@
 # Command notes
 
-The buffer module keeps graph values in sync with the account cache.
-Run the batches check before changing any support limits.
-The tools module keeps metric values in sync with the filter cache.
+Keep filter and metrics names short and lowercase.
+Each account is validated before it reaches the filter queue.
+Use command settings to tune how often editor data is refreshed.
 
-Each notes is validated before it reaches the contributi queue.
-Each metrics is validated before it reaches the entry queue.
-Use stats settings to tune how often channel data is refreshed.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Keep counter and batch names short and lowercase.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every queue change
-- Review token limits each release
-- Validate farm input early
-- Keep buffer values small
+- Validate githubfarm input early
+- Prefer contributi defaults
+- Log every stream change
+- Review channel limits each release
