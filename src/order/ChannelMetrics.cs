@@ -28,17 +28,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] items, long seed)
+        /// <summary>Count the metrics entry entries that pass the check.</summary>
+        public static long AuditMetricsEntryMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((items[i] == seed) && ((items[i] % 5) == 0))
+                if (!((((long)levels.Length - item) <= (item - (long)levels.Length)) && ((50 ^ item) >= item)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
