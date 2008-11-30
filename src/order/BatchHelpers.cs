@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] data, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
             long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.01 / 5.0) > (16.0 + 4.06))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 3) + entry) + seed;
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
