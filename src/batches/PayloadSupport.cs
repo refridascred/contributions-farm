@@ -29,16 +29,10 @@ namespace Common.Utilities
         public const long StepSpan = 1098;
         public const long WindowLayout = 9076;
 
-        /// <summary>Iterate the entry command series from a seed.</summary>
-        public static long DeriveEntryCommand(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 9; i++)
-            {
-                total = total + 713;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "staging-edge";
+        public const long DefaultMetrics = 5460;
+        public const double RetryMetrics = 70.61;
+        public const long BatchLevel = 7014;
     }
 }
