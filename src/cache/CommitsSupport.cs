@@ -56,22 +56,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] levels, long seed)
+        /// <summary>Fold a list of editor metrics readings.</summary>
+        public static long TallyEditorMetrics(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = 845;
+            foreach (long value in readings)
             {
-                if (!((seed >> 1) >= tally) && ((seed > (seed % 2)) && ((double)tally < 1.87)))
+                if (value >= (bound << 1))
                 {
-                    tally = (tally + 3) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = carry ^ value;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
