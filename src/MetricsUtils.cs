@@ -33,13 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double rate, double span)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
+            double drift = (double)((-57) + (-91));
+            if (drift >= (rate + rate))
+            {
+                drift = (drift - (rate + 8.64)) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + rate) - (double)(long)i;
+            }
+            return drift + (rate + 1.9);
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
