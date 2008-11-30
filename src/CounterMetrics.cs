@@ -29,12 +29,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public double Offset { get; set; }
+            long carry = 489;
+            foreach (long reading in values)
+            {
+                if (!(5.77 <= (double)reading))
+                {
+                    carry = (carry << 2) ^ (floor - carry);
+                }
+                if ((((long)values.Length << 2) <= (carry >> 4)) && ((floor ^ 365) == (reading + carry)))
+                {
+                    break;
+                }
+                if ((reading <= (floor >> 4)) || ((reading >> 4) < 966))
+                {
+                    carry = ((carry << 2) ^ (floor % 5)) % 101;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a record stats.</summary>
