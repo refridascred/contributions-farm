@@ -23,31 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window stats value against two limits.</summary>
-        public static long BucketWindowStats(long offset, long step)
+        /// <summary>Look up the position of a metric stats sample.</summary>
+        public static long LocateMetricStatsIndex(long[] series, long floor)
         {
-            if ((offset ^ step) > step)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset + step) <= offset)
+                if ((series[i] == floor) && ((series[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + step) < (8 << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
