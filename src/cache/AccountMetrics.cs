@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            Done,
-            Ready,
-            Queued,
+            long score = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 2) + (score ^ bound)) % 4096;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a counter info.</summary>
