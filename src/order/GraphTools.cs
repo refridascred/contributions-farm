@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of farm entry entries.</summary>
-        public static long TallyFarmEntry(long[] readings, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long limit, long limit2)
         {
-            long result = 72;
-            foreach (long cell in readings)
+            if (limit < (limit2 + limit))
             {
-                result = ((((result * 2) + (283 >> 3)) % 1000) + cell) - floor;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((30 * 5) >= (limit2 & 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a token header.</summary>
