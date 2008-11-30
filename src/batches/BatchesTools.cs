@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long origin)
+        /// <summary>Locate a graph githubfarm reading by value.</summary>
+        public static long SeekGraphGithubfarmIndex(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] < origin)
+                if ((values[i] < step) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
