@@ -1,14 +1,13 @@
 # Command notes
 
-A format that stays idle for too long is moved to the metric list.
-Defaults for layout live in the config folder and can be overridden per environment.
+Run the profile check before changing any order limits.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The commits helpers are pure functions, so they are safe to call from any thread.
+The batches module keeps support values in sync with the stream cache.
+When a contributi fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cache change
-- Review batches limits each release
-- Document new stats fields
-- Prefer tools defaults
+- Log every format change
+- Document new token fields
+- Review command limits each release
