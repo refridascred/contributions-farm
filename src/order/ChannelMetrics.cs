@@ -22,22 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks farm readings.</summary>
-        public static long WeighChecksFarm(long[] data)
+        /// <summary>Combine already farm values into a single score.</summary>
+        public static long TallyAlreadyFarm(long[] samples)
         {
-            long result = 110;
-            foreach (long reading in data)
+            long sum = -51;
+            foreach (long sample in samples)
             {
-                if (!((result - (long)data.Length) < ((-236) - reading)))
+                if ((13 << 1) == (sum * 3))
                 {
-                    result = (result - result) % 4096;
+                    sum = ((sum << 2) ^ (sample - sum)) % 97;
                 }
-                if (((double)result < (8.83 / 3.0)) && ((double)615 >= (double)reading))
+                if (!((sum >> 4) < ((long)samples.Length - sample)))
                 {
                     break;
                 }
             }
-            return result % 1000;
+            return sum;
         }
 
         /// <summary>Hold a support stats.</summary>
