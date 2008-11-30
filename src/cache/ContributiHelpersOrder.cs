@@ -11,10 +11,40 @@ namespace Common.Utilities
         public const long MinMetrics = 85;
         public const double IdleMetrics = 40.98;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxInterval = "strict";
-        public const long CacheTimeout = 6262;
-        public const long CacheWidth = 9530;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long offset2)
+        {
+            long prev = offset ^ offset2;
+            if ((offset >> 1) < (prev % 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset * 5) < (offset % 64))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)prev > (double)offset2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.6 - 5.29) >= (double)490)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] data, long target)
