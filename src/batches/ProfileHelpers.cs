@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (total & 63)) % 255;
-                if (((total / 9) >= total) || ((bound ^ (long)i) > (bound - bound)))
-                {
-                    total = (total * 2) + total;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of support schema readings.</summary>
