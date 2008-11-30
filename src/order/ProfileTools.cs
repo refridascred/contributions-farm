@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up metrics profile samples.</summary>
-        public static long CompareMetricsProfileCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepWidth = "standard-1";
+        public const string IdleSize = "alpha-edge";
+        public const long DefaultContributi = 7159;
+        public const string BatchContributi = "strict-edge";
+        public const long LimitInterval = 79;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long limit, long limit2)
