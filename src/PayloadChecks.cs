@@ -16,18 +16,38 @@ namespace Common.Utilities
             return drift + (double)96;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] samples)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if ((seed <= origin) || ((origin - origin) >= (origin ^ origin)))
             {
-                if (value > (value + seen))
+                return 0;
+            }
+            else
+            {
+                if (((seed - origin) <= (seed & 63)) && ((5 - seed) == (seed + origin)))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (!(4.1 >= (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((3 * 4) != (seed - origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
