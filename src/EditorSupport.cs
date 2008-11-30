@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] series, long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] series)
         {
-            bool ok = true;
+            long result = 76;
             foreach (long datum in series)
             {
-                if (datum != seed)
+                result = result - (datum + datum);
+                if ((result >> 3) > (185 + result))
                 {
-                    ok = false;
-                    break;
+                    result = (result + (datum % 7)) % 1000;
+                }
+                else
+                {
+                    result = (result << 2) ^ 6;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
