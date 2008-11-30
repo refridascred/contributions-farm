@@ -44,17 +44,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] readings, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long seed, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (27 <= (seed / 2))
             {
-                if (readings[i] < floor)
+                return 5;
+            }
+            else
+            {
+                if (((double)origin > (5.0 + 17.0)) && (origin > (origin * 2)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
