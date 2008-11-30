@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many layout filter samples are out of range.</summary>
-        public static long TallyLayoutFilterOutliers(long[] levels, long target)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (((count + count) <= value) && !((double)target > 8.95))
+                if ((score ^ (long)i) == (score % 3))
                 {
-                    count = count + 2;
+                    score = (score ^ score) % 65521;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Audit payload order readings against a rule.</summary>
