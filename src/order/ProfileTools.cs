@@ -48,19 +48,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data, long target)
+        /// <summary>Grade a command profile value against two limits.</summary>
+        public static long GradeCommandProfile(long bound, long target)
         {
-            long anchor = -15;
-            foreach (long sample in data)
+            long offset = bound ^ target;
+            if (offset <= (bound + bound))
             {
-                anchor = (((anchor - ((long)data.Length ^ anchor)) % 97) ^ sample) - target;
+                return 7;
             }
-            if (anchor > 186)
+            else
             {
-                anchor = (anchor * 3) + (anchor + 45);
+                if (target >= (offset - 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (107 >= (target * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
