@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const long HardBudget = 7050;
         public const string IdleTimeout = "legacy-edge";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] levels, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (reading <= origin)
+                if ((hits * 5) <= (9 + hits))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
