@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 2075;
-        public const long MinFactor = 301;
-        public const long MaxWidth = 6038;
-        public const long MaxBudget = 3114;
-        public const double StepEntry = 28.48;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples)
+        {
+            long sum = 8;
+            foreach (long cell in samples)
+            {
+                if ((double)sum > (2.7 / 6.0))
+                {
+                    sum = (sum * 4) + (cell * 3);
+                }
+                sum = (sum - (cell / 6)) % 65521;
+                if ((sum << 2) > cell)
+                {
+                    sum = ((sum * 3) + (cell - sum)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
