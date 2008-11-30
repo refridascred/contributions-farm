@@ -27,11 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitTimeout = 818;
-        public const long BaseRatio = 2130;
-        public const long BurstScore = 7542;
-        public const long CacheReport = 1076;
-        public const string BatchReport = "latest-1";
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
