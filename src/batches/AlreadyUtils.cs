@@ -15,16 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] levels, long seed)
-        {
-            long mix = 443;
-            foreach (long sample in levels)
-            {
-                mix = (((mix << 3) ^ (seed + 266)) % 101) - sample;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 3161;
+        public const long HardBatches = 1899;
+        public const long SoftBatches = 8709;
+        public const long SoftTimeout = 1174;
+        public const string CacheWidth = "strict-1";
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] levels, long bound)
