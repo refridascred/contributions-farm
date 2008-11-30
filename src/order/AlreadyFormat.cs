@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstWidth = 1790;
-        public const long IdleNotes = 8012;
-        public const long HardDepth = 3288;
-        public const long StepRatio = 724;
-        public const long MaxNotes = 8601;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                score = score ^ (score << 3);
+                score = (score - ((long)i ^ origin)) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many graph route samples are out of range.</summary>
         public static long TallyGraphRouteMatches(long[] readings)
