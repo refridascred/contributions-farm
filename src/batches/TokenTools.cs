@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] items, long floor)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit stream schema readings against a rule.</summary>
