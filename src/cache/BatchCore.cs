@@ -68,18 +68,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!!((item / 4) >= (item - item)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchLevel = 1776;
+        public const long BurstEntry = 9464;
+        public const string SoftRatio = "standard-1";
+        public const string HardEntry = "cached-1";
+        public const double MaxEntry = 7.91;
     }
 }
