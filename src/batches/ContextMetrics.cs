@@ -48,16 +48,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Count the metrics entry entries that pass the check.</summary>
+        public static long TallyMetricsEntryOutliers(long[] readings, long limit)
         {
-            long score = -401;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                score = (((score * 4) + (score + score)) % 4096) + reading;
-                score = (score ^ score) % 65521;
+                if ((5 - entry) < (entry % 24))
+                {
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score % 65521;
+            return tally;
         }
     }
 }
