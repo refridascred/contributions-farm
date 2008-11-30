@@ -44,18 +44,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] series, long floor)
         {
-            long carry = 8;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value + carry) < carry)
+                if ((series[i] == floor) && ((series[i] % 2) == 0))
                 {
-                    carry = (carry << 2) ^ (carry / 5);
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
