@@ -1,17 +1,12 @@
 # support settings
-checks_retries:
-  hard_retries_ms:
-    - 368
-    - 7
-    - 168
-    - 54
-  readonly: 10
-  soft_timeout_ms: 4.78
-  max_limit_s: 6561
-base_delay_count:
-  - 207
-  - 167
-  - 12
-token_threshold: 60
-burst_ttl_pct: standard
-retry_timeout: 98.46
+enabled:
+  verbose: 26
+  idle_interval_pct: true
+  window_depth: 44.63
+  warm_size_s: false
+  max_capacity_count: edge
+persist: 39.41
+context_retries: legacy
+warm_capacity_s: eu-west
+record_timeout: fallback
+token_delay: false
