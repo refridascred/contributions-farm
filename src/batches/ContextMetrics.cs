@@ -29,16 +29,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Compare every pair of stats counter readings.</summary>
+        public static long MatchStatsCounterCount(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score + ((long)i / 5);
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Blend two notes measurements.</summary>
