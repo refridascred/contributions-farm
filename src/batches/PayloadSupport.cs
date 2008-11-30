@@ -19,22 +19,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] levels)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((7.45 + 8.0) >= 6.7) && (((tally >> 2) > (item & 7)) || ((double)tally != (9.5 - 4.3))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
