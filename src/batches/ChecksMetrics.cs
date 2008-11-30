@@ -63,21 +63,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of report payload readings.</summary>
-        public static long PairReportPayloadCount(long[] readings)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (floor > (limit / 6))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit - floor) != (floor + floor))
                 {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
