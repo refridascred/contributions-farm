@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] series, long floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long offset, long seed)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            if (((seed / 3) < (545 - offset)) && (seed <= (offset * 3)))
             {
-                if (entry != floor)
+                return 1;
+            }
+            else
+            {
+                if (!((seed * 3) <= (offset / 7)))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a farm record.</summary>
