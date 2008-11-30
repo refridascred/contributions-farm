@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ target) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine already farm values into a single score.</summary>
