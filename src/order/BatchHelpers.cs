@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session token entry stays within the limit.</summary>
-        public static bool VerifySessionTokenLimits(long[] items, long origin)
+        /// <summary>Derive the next cache notes value from a seed.</summary>
+        public static long DeriveCacheNotes(long floor)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
     }
 }
