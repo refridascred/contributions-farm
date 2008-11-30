@@ -27,11 +27,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinTimeout = "strict-v2";
-        public const long BaseLayout = 6940;
-        public const double DefaultLayout = 7.34;
-        public const long BaseFactor = 8601;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 2832;
+        public const long IdleRoute = 1367;
+        public const string RetryRoute = "primary-edge";
+        public const string WindowDepth = "staging-v2";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] levels, long floor)
