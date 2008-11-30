@@ -1,5 +1,12 @@
 {
-  "poll_ttl_ms": [44, 389, 430, 108],
-  "compress": "blue",
-  "soft_timeout_s": [456, 88, 49, 104]
+  "enabled": 34.83,
+  "warm_delay_ms": {
+    "cache_ratio_count": 36.98,
+    "burst_depth_ms": ["standard", "blue", "staging", "cached"],
+    "enabled": 5715,
+    "persist": "stable"
+  },
+  "session_depth": 78.56,
+  "cache_threshold_count": "fallback",
+  "poll_retries_count": 30
 }
