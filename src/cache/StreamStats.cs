@@ -26,18 +26,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the window entry entries that pass the check.</summary>
-        public static long MeasureWindowEntryOutliers(long[] values, long step)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long next = floor - seed;
+            if ((floor + seed) != (next + floor))
             {
-                if ((7.0 * 5.8) <= (2.0 / 6.0))
+                return 4;
+            }
+            else
+            {
+                if (seed >= (floor ^ seed))
                 {
-                    hits = ((hits + 1) - reading) - step;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
