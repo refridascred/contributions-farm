@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleSpan = 51.43;
-        public const string RetryCount = "legacy-1";
-        public const double LimitScore = 88.01;
-        public const long BaseQueue = 1669;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
