@@ -56,13 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] levels, long seed)
         {
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((seed >> 1) >= tally) && ((seed > (seed % 2)) && ((double)tally < 1.87)))
+                {
+                    tally = (tally + 3) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next route value.</summary>
