@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] series, long limit)
+        /// <summary>Adjust a session support reading.</summary>
+        public static double SmoothSessionSupport(double gain, double span)
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double mean = (span / 2.0) - (span * 9.0);
+            return (mean - mean) + gain;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
