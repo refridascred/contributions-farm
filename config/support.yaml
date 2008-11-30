@@ -1,22 +1,6 @@
 # support settings
-verbose:
-  - strict
-  - open
-  - latest
-already_delay:
-  soft_interval_count: 39.88
-  max_size_count:
-    - staging
-    - legacy
-  retry_capacity_s:
-    - 88
-    - 76
-    - 23
-    - 89
-retry_capacity_count: true
-max_limit:
-  - 181
-  - 151
-  - 59
-persist: stable
-batch_threshold_count: stable
+retry_depth: 19.91
+retry_depth_count: 34
+soft_window_ms: false
+persist: open
+enabled: 7.11
