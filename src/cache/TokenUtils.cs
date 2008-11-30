@@ -21,18 +21,21 @@ namespace Common.Utilities
         public const long RetryRatio = 9813;
         public const double RetryCount = 13.76;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] values, long step)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum > (double)tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) - step;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
