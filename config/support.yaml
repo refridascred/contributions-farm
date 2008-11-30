@@ -1,5 +1,6 @@
 # support settings
-sync_ttl_s: open
-farm_threshold: false
-warm_capacity_count: 30
-notes_delay: 19.26
+commits_ratio: green
+min_ttl_count: green
+enabled: fallback
+readonly: 51
+burst_limit_ms: cached
