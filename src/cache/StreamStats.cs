@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseRatio = 9962;
-        public const long IdleSize = 170;
-        public const string StepCount = "primary";
-        public const long HardCount = 5899;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string MinSchema = "primary-v2";
