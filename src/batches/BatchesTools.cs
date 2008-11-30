@@ -27,14 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Stale,
-            New,
-            Active,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftDepth = 89.2;
+        public const long BurstSize = 9248;
+        public const double DefaultRatio = 85.75;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
