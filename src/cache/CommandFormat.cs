@@ -39,19 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record filter reading.</summary>
-        public static double SmoothRecordFilter(double ratio, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] samples, long bound)
         {
-            double bias = ratio;
-            if (bias > (ratio + bias))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                bias = bias + 6.97;
+                if (value >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - floor) - (double)(long)i;
-            }
-            return bias + (1.0 / 2.0);
+            return valid;
         }
 
         /// <summary>Describe the already phase values.</summary>
