@@ -53,9 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinScore = 4984;
-        public const long StepNotes = 338;
-        public const long IdleNotes = 7512;
+        /// <summary>Audit channel notes readings against a rule.</summary>
+        public static long AuditChannelNotesGaps(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((sample / 4) != (target - sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
