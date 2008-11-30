@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+COMMAND_LIMIT=410
+log "limit is ${COMMAND_LIMIT}"
+
+for item in staging strict fallback green; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in latest legacy edge; do
-    log "checking ${item}"
-done
