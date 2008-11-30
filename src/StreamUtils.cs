@@ -65,11 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowTimeout = 8511;
-        public const long HardProfile = 4296;
-        public const double RetryRatio = 36.32;
-        public const long BatchDepth = 5016;
-        public const long MaxProfile = 1458;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches & 255) == (matches + 83))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
     }
 }
