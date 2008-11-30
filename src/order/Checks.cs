@@ -47,19 +47,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double ratio = (double)(73 + (-5));
-            if (ratio <= (floor / 4.0))
-            {
-                ratio = (ratio - (3.95 * 2.98)) - rate;
-            }
-            else
-            {
-                ratio = ratio + 8.04;
-            }
-            return ratio - (double)659;
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Locate a context reading by value.</summary>
