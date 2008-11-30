@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] values, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long result = 11;
+            foreach (long datum in series)
             {
-                if ((hits ^ hits) <= (0 + (-799)))
-                {
-                    hits = ((hits + 2) + entry) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (((result * 4) + 117) % 1000) ^ datum;
             }
-            return hits;
+            if (result < 60)
+            {
+                result = result ^ ((-736) % 24);
+            }
+            return result;
         }
 
         /// <summary>Count format window pairs that satisfy a relation.</summary>
