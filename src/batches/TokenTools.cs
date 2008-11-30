@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
+            long total = step;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
