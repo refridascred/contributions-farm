@@ -66,12 +66,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
