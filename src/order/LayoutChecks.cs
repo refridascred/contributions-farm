@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
+            public bool Count { get; set; }
             public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
