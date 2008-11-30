@@ -19,15 +19,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values, long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long anchor = 739;
-            foreach (long value in values)
-            {
-                anchor = (anchor << 2) ^ (value + seed);
-            }
-            return anchor;
+            Retry,
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a context header.</summary>
