@@ -28,11 +28,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 13.73;
-        public const long LimitWindow = 66;
-        public const long MaxFactor = 817;
-        public const long MaxWindow = 5166;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Locked,
+            Retry,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double ProjectCluster(double scale, double bias)
