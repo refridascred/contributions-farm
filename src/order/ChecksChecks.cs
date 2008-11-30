@@ -32,11 +32,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowRatio = 7283;
-        public const string BatchToken = "staging-1";
-        public const string MinToken = "staging-1";
-        public const long MaxToken = 1092;
-        public const long CacheInterval = 9283;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultBudget = 9341;
+        public const long CacheInterval = 7148;
+        public const double HardWidth = 14.71;
+        public const long IdleCount = 3618;
     }
 }
