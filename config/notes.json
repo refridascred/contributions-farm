@@ -1,8 +1,5 @@
 {
-  "retry_retries_ms": true,
-  "entry_threshold": 2.27,
-  "sync_ratio": "blue",
-  "queue_interval": "green",
-  "audit": false,
-  "verbose": 90.3
+  "persist": 19,
+  "min_window_s": "eu-west",
+  "compress": 12
 }
