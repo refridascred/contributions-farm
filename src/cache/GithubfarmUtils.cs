@@ -40,19 +40,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] readings, long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Draft,
+            Locked,
+            Paused,
+            Ready,
         }
     }
 }
