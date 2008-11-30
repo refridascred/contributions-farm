@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] series, long seed)
         {
-            long carry = -6;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((carry + value) <= carry)
+                if (datum != seed)
                 {
-                    carry = ((carry * 5) + (carry ^ 2)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (carry * 4)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 93)
-            {
-                carry = ((carry * 5) + (10 - carry)) % 101;
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
