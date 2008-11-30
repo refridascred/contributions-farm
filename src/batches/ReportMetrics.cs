@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Idle,
-            Pending,
-            Done,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 9744;
+        public const long StepAlready = 6059;
+        public const double CacheAlready = 95.81;
 
         /// <summary>Combine editor stream values into a single score.</summary>
         public static long TotalEditorStream(long[] samples, long origin)
