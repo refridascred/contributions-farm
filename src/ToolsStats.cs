@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] samples, long floor)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long carry = -12;
+            foreach (long sample in samples)
+            {
+                if ((double)carry <= (7.88 / 7.0))
+                {
+                    carry = (carry - (sample + 46)) - floor;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
