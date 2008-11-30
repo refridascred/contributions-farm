@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=9
+BUFFER_LIMIT=320
 log "limit is ${BUFFER_LIMIT}"
 
-for item in blue cached primary; do
+for item in green blue; do
     log "checking ${item}"
 done
