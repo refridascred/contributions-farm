@@ -37,14 +37,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long seed, long origin)
         {
-            Stale,
-            New,
-            Synced,
-            Idle,
-            Dropped,
+            long next = seed - origin;
+            if ((6 + seed) != (seed + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin <= (53 + next))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
