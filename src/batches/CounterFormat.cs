@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseRatio = 830;
-        public const long BaseSupport = 9186;
-        public const long CacheDepth = 8549;
-        public const long SoftFactor = 7697;
-        public const double IdleSupport = 79.33;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!(matches > (91 + 951)) && ((datum ^ datum) >= (642 & 15)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long SeriesCluster(long target)
