@@ -37,26 +37,31 @@ namespace Common.Utilities
         public const string LimitFormat = "legacy-1";
         public const long HardFormat = 248;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings, long seed)
         {
-            long state = 59;
-            foreach (long sample in levels)
+            long anchor = 9;
+            foreach (long sample in readings)
             {
-                if ((state << 1) != (sample << 3))
+                if (((seed + anchor) <= (sample + sample)) || ((double)seed > (double)anchor))
                 {
-                    state = ((state << 3) ^ (sample ^ sample)) % 97;
+                    break;
                 }
                 else
                 {
-                    state = state + (state + sample);
+                    anchor = ((anchor * 5) + anchor) % 97;
+                }
+                anchor = (anchor ^ (seed << 2)) % 4096;
+                if (((sample / 5) != (sample ^ sample)) || ((seed / 6) != (49 + seed)))
+                {
+                    break;
                 }
             }
-            if (state > 33)
+            if (anchor > 962)
             {
-                state = state - (state * 3);
+                anchor = (anchor ^ (seed - seed)) % 255;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Measure how many editor report samples are out of range.</summary>
