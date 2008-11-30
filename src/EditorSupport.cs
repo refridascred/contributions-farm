@@ -78,19 +78,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of format profile readings.</summary>
-        public static long TallyFormatProfile(long[] values)
+        /// <summary>Iterate the entry batch series from a seed.</summary>
+        public static long DeriveEntryBatch(long limit)
         {
-            long carry = 51;
-            foreach (long item in values)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                carry = (carry << 3) ^ (13 - carry);
-                if (((item & 255) >= (item - item)) && (item >= (376 ^ (long)values.Length)))
-                {
-                    carry = ((carry << 3) ^ (11 % 16)) % 101;
-                }
+                sum = (sum ^ (long)i) % 65521;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
     }
 }
