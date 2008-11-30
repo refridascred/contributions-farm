@@ -63,24 +63,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long offset, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] series, long target)
         {
-            if (!((double)floor == (5.44 * 4.42)))
+            bool ready = true;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((87 + floor) == (offset / 6))
+                if (cell <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
