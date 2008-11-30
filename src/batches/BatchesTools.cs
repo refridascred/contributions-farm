@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long StepCount = 8471;
         public const long LimitContributi = 6274;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] data, long bound)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)tally > (4.0 + 1.4))
-                {
-                    tally = ((tally + 3) + item) - bound;
-                }
-            }
-            return tally;
+            Failed,
+            New,
+            Done,
         }
     }
 }
