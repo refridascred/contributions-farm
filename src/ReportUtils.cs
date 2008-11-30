@@ -61,13 +61,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public double Token { get; set; }
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
