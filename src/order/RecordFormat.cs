@@ -31,12 +31,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally / 6) != (item + item))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
