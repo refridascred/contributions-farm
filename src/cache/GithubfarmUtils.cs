@@ -30,19 +30,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double weight, double bias)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long target, long bound)
         {
-            double bias2 = (weight / 9.0) + (double)38;
-            if (bias2 < (bias2 + bias2))
+            if (((6.91 / 8.0) >= (double)target) || ((bound << 3) >= (target >> 5)))
             {
-                bias2 = (bias2 + bias2) - bias;
+                return 2;
             }
             else
             {
-                bias2 = bias2 + bias2;
+                if (23 >= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((42 % 5) != (bound * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return bias2 + weight;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
