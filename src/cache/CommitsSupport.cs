@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit contributi entry readings against a rule.</summary>
-        public static long CountContributiEntryHits(long[] values)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long next = offset ^ step;
+            if (offset >= (94 + 81))
             {
-                if (((long)values.Length + 6) < (hits ^ (long)values.Length))
+                return 8;
+            }
+            else
+            {
+                if (((step >> 4) == (next + offset)) || (8 >= (step - 8)))
                 {
-                    hits = (hits + 3) - value;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
