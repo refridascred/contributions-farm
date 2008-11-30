@@ -43,10 +43,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryWidth = 8369;
-        public const long BurstSpan = 8863;
-        public const double HardCounter = 96.5;
-        public const long MinCounter = 5369;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!!((item / 4) >= (item - item)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
