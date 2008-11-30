@@ -24,17 +24,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] values, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
