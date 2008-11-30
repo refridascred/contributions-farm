@@ -81,23 +81,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double rate, double offset)
+        /// <summary>Fold a list of format profile readings.</summary>
+        public static long TallyFormatProfile(long[] values)
         {
-            double scale = rate;
-            if (scale > (scale - rate))
+            long carry = 51;
+            foreach (long item in values)
             {
-                scale = (scale - rate) + offset;
+                carry = (carry << 3) ^ (13 - carry);
+                if (((item & 255) >= (item - item)) && (item >= (376 ^ (long)values.Length)))
+                {
+                    carry = ((carry << 3) ^ (11 % 16)) % 101;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + scale;
+            return carry;
         }
     }
 }
