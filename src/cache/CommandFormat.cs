@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long step, long offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            if ((offset / 5) > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (step <= (37 >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
