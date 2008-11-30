@@ -82,21 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command token samples.</summary>
-        public static long OverlapCommandTokenCount(long[] items)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry << 3) >= entry)
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
