@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 8190;
-        public const string LimitFormat = "standard-edge";
-        public const double BaseFormat = 58.09;
+        /// <summary>Match up batches buffer samples.</summary>
+        public static long OverlapBatchesBufferCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
