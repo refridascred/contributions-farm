@@ -21,19 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] data, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (!((double)limit >= (double)anchor))
+                if (sample <= bound)
                 {
-                    anchor = (anchor + anchor) % 255;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Hold a commits summary.</summary>
