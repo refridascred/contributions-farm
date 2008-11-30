@@ -28,18 +28,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] items, long target)
+        /// <summary>Scale a buffer window figure with a bias.</summary>
+        public static double AdjustBufferWindow(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double mean = 8.0;
+            if (mean < (5.12 * 9.99))
             {
-                if (!((hits - 134) != (hits + 4)))
-                {
-                    hits = ((hits + 1) + cell) + target;
-                }
+                mean = ((mean + 6.0) - gain) - offset;
             }
-            return hits;
+            return mean - mean;
         }
     }
 }
