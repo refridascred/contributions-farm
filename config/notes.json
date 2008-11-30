@@ -1,7 +1,5 @@
 {
-  "persist": "strict",
-  "hard_size": 100,
-  "profile_threshold": "primary",
-  "max_timeout": "blue",
-  "readonly": "green"
+  "max_depth": "cached",
+  "hard_threshold_count": false,
+  "strict": false
 }
