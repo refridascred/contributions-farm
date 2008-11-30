@@ -17,15 +17,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long total = -12;
-            foreach (long value in series)
-            {
-                total = (total - (total ^ 91)) + value;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
