@@ -45,12 +45,15 @@ namespace Common.Utilities
             return bias2 + weight;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            Stale,
-            Done,
-            Draft,
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
