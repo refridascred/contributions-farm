@@ -22,28 +22,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stats support pair into a bucket.</summary>
-        public static long BucketStatsSupport(long target, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long floor, long seed)
         {
-            if ((floor ^ target) != (8 - target))
+            long span = floor + seed;
+            if ((double)seed != (double)span)
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((floor - target) < (7 >> 4))
+                if ((-19) >= span)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (floor <= (floor - floor))
+                    if ((double)seed < (3.44 * 18.0))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        return 5;
+                        if ((8 + (-36)) != (floor + span))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
