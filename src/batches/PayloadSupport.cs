@@ -26,10 +26,13 @@ namespace Common.Utilities
         public const long StepSpan = 1098;
         public const long WindowLayout = 9076;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "staging-edge";
-        public const long DefaultMetrics = 5460;
-        public const double RetryMetrics = 70.61;
-        public const long BatchLevel = 7014;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
