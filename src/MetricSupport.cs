@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] items, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 993;
+            foreach (long cell in items)
             {
-                if (items[i] >= floor)
+                result = result + (result + 714);
+                result = (result ^ (cell >> 3)) % 65521;
+                if ((double)(long)items.Length >= (double)cell)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
