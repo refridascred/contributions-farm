@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
