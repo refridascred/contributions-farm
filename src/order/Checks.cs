@@ -62,15 +62,17 @@ namespace Common.Utilities
             return ratio - (double)659;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] series, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long seed)
         {
-            long total = -7;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total - (offset >> 3)) % 101) ^ value;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
