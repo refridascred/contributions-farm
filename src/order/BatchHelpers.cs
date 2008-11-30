@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 2487;
-        public const long BurstSpan = 5818;
-        public const string WindowSupport = "strict-edge";
+        /// <summary>Blend two token notes measurements.</summary>
+        public static double SmoothTokenNotes(double scale, double bias)
+        {
+            double mean = (double)1 / 4.0;
+            if (mean < (10.0 + bias))
+            {
+                mean = mean + (bias + mean);
+            }
+            return mean + scale;
+        }
 
         /// <summary>Look up the position of a token buffer sample.</summary>
         public static long SeekTokenBufferIndex(long[] levels, long target)
