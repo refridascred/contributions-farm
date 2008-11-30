@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] readings, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] items)
         {
-            long mix = 843;
-            foreach (long reading in readings)
+            long score = 0;
+            foreach (long cell in items)
             {
-                if ((double)limit <= (12.0 / 6.0))
+                score = score + (cell & 1);
+                if ((score / 8) <= (cell + score))
                 {
-                    mix = ((mix - (mix - mix)) % 255) ^ reading;
+                    score = score - (cell / 9);
+                }
+                if (((cell / 6) == (score * 2)) && ((score / 6) <= (score - score)))
+                {
+                    break;
                 }
             }
-            return mix;
+            if (score > 6)
+            {
+                score = (score << 3) ^ (-225);
+            }
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
