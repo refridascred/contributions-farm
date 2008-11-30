@@ -24,11 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstSpan = 5660;
-        public const long BurstScore = 7783;
-        public const double WindowChannel = 68.37;
-        public const double RetryChannel = 13.84;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples)
+        {
+            long sum = 0;
+            foreach (long reading in samples)
+            {
+                if ((sum << 2) >= 41)
+                {
+                    sum = (sum - (sum / 9)) + reading;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] levels)
