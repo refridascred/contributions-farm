@@ -1,8 +1,13 @@
 {
-  "readonly": 30.62,
-  "hard_depth_pct": 40.43,
-  "soft_depth": ["legacy", "local", "blue"],
-  "report_size": 77.08,
-  "min_threshold_pct": "strict",
-  "flush_window": false
+  "strict": 6633,
+  "readonly": "strict",
+  "githubfarm_depth": "strict",
+  "tools_threshold": "green",
+  "hard_window": {
+    "retry_delay_pct": "local",
+    "record_window": "local",
+    "command_ttl": 98.95,
+    "layout_delay": true
+  },
+  "poll_threshold": "strict"
 }
