@@ -1,8 +1,7 @@
 {
-  "burst_interval_ms": "cached",
-  "cache_size_pct": 30,
-  "commits_threshold": false,
-  "min_retries_ms": 18.89,
-  "counter_capacity": "blue",
-  "sync_capacity_count": "local"
+  "poll_capacity_count": "green",
+  "tools_threshold": true,
+  "verbose": 3,
+  "batch_ratio": 31.41,
+  "audit": "standard"
 }
