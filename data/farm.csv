@@ -1,6 +1,7 @@
-id,score,label,level,weight
-1,608,301,42.8,primary
-2,open,406,10.82,primary
-3,green,182,eu-west,66
-4,512,406,80.06,739
-5,38.57,standard,8.2,stable
+id,label,ratio
+1,702,eu-west
+2,16.72,90.58
+3,277,745
+4,14.59,464
+5,94.72,56.84
+6,61.58,54.48
