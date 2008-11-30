@@ -1,9 +1,7 @@
-id,weight,active,rank
-1,943,50.72,315
-2,63.96,560,eu-west
-3,483,cached,69.95
-4,30.13,88.06,staging
-5,600,37.21,13.9
-6,legacy,168,136
-7,987,primary,66.87
-8,398,standard,primary
+id,label,state
+1,22.49,strict
+2,standard,503
+3,994,902
+4,blue,632
+5,407,71.17
+6,418,27.39
