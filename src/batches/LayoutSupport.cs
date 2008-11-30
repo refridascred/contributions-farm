@@ -46,14 +46,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Check that every layout tools entry stays within the limit.</summary>
+        public static bool ValidateLayoutToolsBounds(long[] values, long bound)
         {
-            Done,
-            Ready,
-            Pending,
-            Queued,
-            Active,
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
