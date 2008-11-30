@@ -1,7 +1,8 @@
-id,active,level,count
-1,95.57,91.87,23.71
-2,cached,355,38.31
-3,55.3,standard,691
-4,833,217,standard
-5,primary,81.12,primary
-6,701,791,68
+id,weight,ratio,active
+1,eu-west,65.34,633
+2,145,259,standard
+3,806,90.97,78.35
+4,114,358,edge
+5,local,56.23,edge
+6,135,635,71
+7,81,696,803
