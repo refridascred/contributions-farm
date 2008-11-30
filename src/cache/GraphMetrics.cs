@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] levels)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((3 % 2) >= seen))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch record.</summary>
