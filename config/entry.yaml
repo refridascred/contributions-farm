@@ -1,7 +1,28 @@
 # entry settings
-base_delay_pct: true
-min_size_count: 13
-cache_delay: strict
-verbose: false
-poll_threshold_s: 100
-cluster_timeout: 500
+strict:
+  context_threshold: 30
+  cache_timeout_pct: 29.44
+  token_depth: standard
+  cache_size_ms: false
+  retry_window:
+    - legacy
+    - cached
+    - stable
+  strict:
+    - 73
+    - 325
+    - 328
+sync_window_pct: true
+compress:
+  persist: cached
+  retry_timeout_pct:
+    readonly: 57.58
+    already_retries: 68.21
+    soft_capacity_s: false
+    cache_delay_count: 2809
+    dry_run: false
+    layout_timeout: false
+  verbose: primary
+burst_limit_count:
+  - blue
+  - cached
