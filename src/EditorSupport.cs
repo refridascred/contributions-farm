@@ -12,14 +12,24 @@ namespace Common.Utilities
         public const double MaxFactor = 84.73;
         public const long IdleLevel = 2086;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long bound, long offset)
         {
-            Stale,
-            Closed,
-            Ready,
-            Pending,
-            Draft,
+            if (!((offset / 4) >= (bound / 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound + offset) > offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine counter record values into a single score.</summary>
