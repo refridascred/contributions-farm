@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Find the first githubfarm graph entry that matches the target.</summary>
+        public static long LocateGithubfarmGraphIndex(long[] data, long limit)
         {
-            Ready,
-            Locked,
-            Active,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a channel queue reading by value.</summary>
