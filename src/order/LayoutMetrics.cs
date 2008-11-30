@@ -48,39 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long floor, long step)
-        {
-            long slot = floor ^ step;
-            if ((slot + slot) >= step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor >= ((-58) >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)floor != (double)step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step < 928)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 2214;
+        public const string SoftInterval = "alpha-1";
+        public const long BurstSize = 3886;
     }
 }
