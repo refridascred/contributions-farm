@@ -1,6 +1,22 @@
 {
-  "soft_depth": 45.61,
-  "default_delay_pct": 500,
-  "readonly": 93,
-  "enabled": "open"
+  "profile_ratio": {
+    "compress": [84, 316],
+    "hard_timeout_pct": 500,
+    "layout_threshold": "standard",
+    "flush_ttl": ["primary", "edge"],
+    "min_interval": 5642,
+    "readonly": {
+      "hard_ratio_pct": true,
+      "compress": true,
+      "dry_run": 9404,
+      "payload_depth": 71,
+      "base_capacity_s": "strict",
+      "payload_size": 5787
+    }
+  },
+  "window_depth": 250,
+  "cache_delay_s": 6505,
+  "base_size_s": false,
+  "batches_size": 500,
+  "poll_size_s": false
 }
