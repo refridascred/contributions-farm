@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] values, long offset)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
