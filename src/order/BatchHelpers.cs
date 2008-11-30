@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Failed,
-            Dropped,
-            Done,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryLevel = 70.77;
+        public const long StepRecord = 9158;
+        public const long WindowLevel = 1100;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
