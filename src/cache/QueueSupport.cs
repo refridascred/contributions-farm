@@ -12,19 +12,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double rate, double span)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double gain = rate;
-            if (gain < (5.6 + gain))
-            {
-                gain = gain - span;
-            }
-            else
-            {
-                gain = gain - (rate * 10.0);
-            }
-            return gain + 0.3;
+            New,
+            Locked,
+            Synced,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the filter kind values.</summary>
