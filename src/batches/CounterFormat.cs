@@ -13,19 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] levels, long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every channel command entry stays within the limit.</summary>
