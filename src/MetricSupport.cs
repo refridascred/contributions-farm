@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            long result = 993;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result + (result + 714);
-                result = (result ^ (cell >> 3)) % 65521;
-                if ((double)(long)items.Length >= (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
