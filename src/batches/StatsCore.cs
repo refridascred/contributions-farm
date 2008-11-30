@@ -64,18 +64,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit queue stream readings against a rule.</summary>
-        public static long MeasureQueueStreamHits(long[] series, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!((step + sample) < sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Queued,
+            Locked,
+            Retry,
+            New,
         }
     }
 }
