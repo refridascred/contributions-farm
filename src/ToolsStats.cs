@@ -25,19 +25,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] data, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (datum > bound)
+                if (reading > seen)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the account mode values.</summary>
