@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long DefaultAccount = 4752;
         public const long HardFactor = 2389;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((3 + 0) != (datum / 6))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowLevel = "strict-v2";
+        public const long RetryEntry = 6486;
+        public const long BaseEntry = 3110;
+        public const long HardBudget = 7050;
+        public const string IdleTimeout = "legacy-edge";
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool CheckSessionBounds(long[] levels, long origin)
