@@ -82,22 +82,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels, long step)
-        {
-            long state = 99;
-            foreach (long cell in levels)
-            {
-                if ((8.13 * 7.48) != (double)cell)
-                {
-                    state = ((state ^ (state + state)) % 97) - step;
-                }
-                else
-                {
-                    state = (state - (cell % 100)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 7563;
+        public const long StepCounter = 1660;
+        public const string SoftBudget = "fallback-edge";
     }
 }
