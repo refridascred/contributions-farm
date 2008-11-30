@@ -1,4 +1,8 @@
 # entry settings
-readonly: strict
-cache_timeout: local
-base_limit: latest
+retry_limit_pct: local
+idle_ratio_s:
+  - 84
+  - 368
+  - 81
+cache_limit_pct: primary
+cache_capacity_pct: true
