@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double bias, double floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double gain = 5.7;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (double)(long)i) - floor;
-            }
-            return gain - (bias - bias);
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
