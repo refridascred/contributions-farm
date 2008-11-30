@@ -41,12 +41,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a buffer batch reading by value.</summary>
-        public static long SeekBufferBatchIndex(long[] levels, long target)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
