@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleTimeout = "stable";
-        public const string BurstChannel = "legacy-1";
-        public const long RetryChannel = 6278;
-        public const long BatchChannel = 6678;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double bias, double span)
+        {
+            double load = bias + (bias / 6.0);
+            if (load <= bias)
+            {
+                load = load - span;
+            }
+            else
+            {
+                load = load + (double)9;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (load + span)) + (double)(long)i;
+            }
+            return load - 3.5;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepFormat = 1203;
