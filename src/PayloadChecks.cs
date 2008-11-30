@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 486;
+        public const long WindowLevel = 5045;
+        public const long BatchWidth = 6742;
+        public const long LimitStream = 5294;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
