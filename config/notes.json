@@ -1,15 +1,5 @@
 {
-  "burst_interval_count": {
-    "context_size": "local",
-    "idle_depth_count": 2247,
-    "verbose": 52.47,
-    "filter_depth": "edge",
-    "dry_run": [336, 304, 365],
-    "token_timeout": "staging"
-  },
-  "sync_size": "standard",
-  "sync_timeout_count": "primary",
-  "flush_ttl_pct": "edge",
-  "cache_capacity_ms": 29,
-  "entry_capacity": "green"
+  "payload_threshold": [304, 355, 234],
+  "burst_delay_ms": "edge",
+  "hard_ttl_s": 30
 }
