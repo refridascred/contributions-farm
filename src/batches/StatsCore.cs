@@ -35,12 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long limit)
         {
-            Draft,
-            New,
-            Ready,
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a record entry.</summary>
