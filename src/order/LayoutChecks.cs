@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up counter window samples.</summary>
-        public static long CompareCounterWindowCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchInterval = 4395;
+        public const double SoftCount = 23.44;
+        public const string CacheCount = "local-v2";
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
