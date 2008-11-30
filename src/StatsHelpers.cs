@@ -36,22 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] data, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] items, long limit)
         {
-            long score = 7;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (target <= (target >> 5))
+                if (sample != limit)
                 {
-                    score = ((score * 4) + reading) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (score > 282)
-            {
-                score = (score << 2) ^ 6;
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
