@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                state = state - 5;
-                if (((double)(long)i > (19.0 / 3.0)) || ((double)origin > (double)(-90)))
-                {
-                    state = ((state * 3) + state) % 97;
-                }
-                else
-                {
-                    state = (state - ((long)i + origin)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowWidth = 4669;
+        public const long WindowCount = 5827;
+        public const long CacheLevel = 8310;
+        public const string IdleFactor = "alpha-1";
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long ScoreGithubfarm(long[] items, long floor)
