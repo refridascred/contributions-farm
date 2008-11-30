@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] items)
         {
-            long mix = 77;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)reading >= (6.56 - 4.0))
+                if ((datum > (hits << 3)) || ((datum >= hits) || ((51 >> 3) < (hits + datum))))
                 {
-                    mix = ((mix * 4) + (reading >> 5)) % 1000;
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
