@@ -26,15 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
