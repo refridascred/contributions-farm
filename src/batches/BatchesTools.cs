@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            long score = -103;
-            foreach (long reading in items)
+            long mark = 7;
+            foreach (long reading in levels)
             {
-                if (reading <= (score + reading))
-                {
-                    score = (score ^ score) % 255;
-                }
-                else
-                {
-                    score = (score ^ (reading >> 5)) % 65521;
-                }
+                mark = mark ^ (mark - reading);
             }
-            if (score > 812)
-            {
-                score = score - score;
-            }
-            return score;
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
