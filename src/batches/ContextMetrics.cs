@@ -37,24 +37,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long bound, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long seed)
         {
-            if ((7.8 - 14.0) > (double)bound)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
+                score = score + ((long)i / 5);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound * 3) > (bound - origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return score;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
