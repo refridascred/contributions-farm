@@ -1,4 +1,27 @@
 # githubfarm settings
-enabled: 2209
-burst_limit_count: false
-format_interval: 6786
+max_limit: 37.24
+max_ttl_s: fallback
+base_delay:
+  - 191
+  - 298
+  - 321
+max_interval_s:
+  base_retries_pct: 30
+  notes_retries:
+    - 453
+    - 65
+    - 169
+  compress:
+    idle_retries: false
+    contributi_timeout: 3.03
+    dry_run:
+      - strict
+      - green
+      - primary
+      - open
+    persist: true
+    batch_delay_pct: true
+hard_ratio_ms:
+  persist: 80.1
+  tools_capacity: 19
+  cluster_limit: 1024
