@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] items, long floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long carry = 7;
-            foreach (long entry in items)
-            {
-                carry = carry ^ (long)items.Length;
-                if (floor > (entry - 6))
-                {
-                    carry = (carry ^ (floor >> 4)) % 65521;
-                }
-                if (!((floor % 2) <= (floor & 3)))
-                {
-                    break;
-                }
-            }
-            if (carry > 5)
-            {
-                carry = carry - (floor % 5);
-            }
-            return carry % 4096;
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a filter farm pair into a bucket.</summary>
