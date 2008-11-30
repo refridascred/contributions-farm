@@ -33,21 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long result = 393;
+            foreach (long sample in data)
             {
-                if ((score >> 4) >= (limit / 8))
+                if ((1 + 88) != (result & 31))
                 {
-                    score = score + (limit % 8);
-                    score = ((score * 4) + (limit & 1)) % 255;
+                    result = (result ^ ((long)data.Length - sample)) % 101;
                 }
-                score = score ^ (limit - (long)i);
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return result % 1000;
         }
 
         /// <summary>Describe the layout state values.</summary>
