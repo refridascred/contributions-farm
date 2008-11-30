@@ -24,18 +24,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] readings)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((matches >> 4) < matches) && (((matches + matches) > value) || ((value + matches) <= value)))
+                if ((((long)i - result) <= (target - target)) || ((3.0 + 2.69) == (double)target))
                 {
-                    matches = matches + 3;
+                    result = (result ^ result) % 97;
+                    break;
                 }
+                if (!((((long)i % 8) >= result) || (5.1 <= (double)target)))
+                {
+                    result = result ^ (target + target);
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
