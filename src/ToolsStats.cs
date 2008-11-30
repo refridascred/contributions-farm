@@ -62,16 +62,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long step)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 2) + (0 % 5)) % 101;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
