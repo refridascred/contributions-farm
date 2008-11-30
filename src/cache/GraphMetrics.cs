@@ -46,21 +46,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Audit layout schema readings against a rule.</summary>
+        public static long CountLayoutSchemaOutliers(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((floor / 9) != (308 - floor)) && ((4.5 * 9.8) <= (double)count))
                 {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) ^ datum;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
