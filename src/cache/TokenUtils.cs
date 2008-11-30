@@ -16,11 +16,33 @@ namespace Common.Utilities
             return mean + (bias + 8.7);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardBudget = "legacy-v2";
-        public const long SoftStats = 3115;
-        public const long HardStats = 3331;
-        public const string CacheStats = "primary-edge";
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long seed, long floor)
+        {
+            long lane = seed + floor;
+            if ((floor & 1) <= (floor / 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - 9) < (-31))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)lane != (double)758))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long ClassifyTools(long seed, long bound)
