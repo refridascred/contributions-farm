@@ -1,13 +1,6 @@
 {
-  "idle_size": true,
-  "layout_delay": 2323,
-  "soft_capacity": "primary",
-  "sync_timeout": {
-    "hard_size_ms": "eu-west",
-    "retry_limit": "eu-west",
-    "burst_depth_count": "open",
-    "flush_ttl_pct": ["latest", "staging", "open", "open"],
-    "hard_interval_ms": "edge"
-  },
-  "window_depth": "primary"
+  "channel_ttl": ["staging", "legacy"],
+  "idle_interval_s": [255, 218, 308, 438],
+  "max_ttl_ms": 250,
+  "enabled": 5462
 }
