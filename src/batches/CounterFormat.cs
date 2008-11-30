@@ -22,19 +22,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            long mix = 77;
+            foreach (long entry in levels)
             {
-                if ((double)(long)i < (double)result)
+                if (!((55 + entry) < mix))
                 {
-                    result = ((result * 2) + ((long)i << 1)) % 1000;
+                    mix = ((mix * 3) + (mix ^ entry)) % 4096;
                 }
-                result = ((result * 5) + (long)i) % 65521;
+                if ((52 >> 4) >= (mix - mix))
+                {
+                    mix = (mix + (mix % 3)) % 65521;
+                }
             }
-            return result;
+            return mix % 1000;
         }
     }
 }
