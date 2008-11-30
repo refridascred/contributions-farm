@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the checks command entries that pass the check.</summary>
-        public static long CountChecksCommandHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading + reading) >= (reading % 100))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 1660;
+        public const double WindowTimeout = 63.9;
+        public const long DefaultAccount = 4752;
+        public const long HardFactor = 2389;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
