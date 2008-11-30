@@ -55,14 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] values, long floor)
         {
-            Stale,
-            Synced,
-            Retry,
-            Active,
-            Paused,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
