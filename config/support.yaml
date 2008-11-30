@@ -1,18 +1,4 @@
 # support settings
-soft_interval_s: latest
-profile_ttl: blue
-route_threshold: 27.37
-batch_retries_s:
-  format_delay:
-    - 391
-    - 59
-  sync_capacity:
-    - green
-    - edge
-    - standard
-  readonly: 23
-  githubfarm_timeout: 22
-  max_retries_count: open
-  flush_capacity: primary
-hard_window: 69.81
-sync_interval_ms: 30
+max_ttl_pct: 27
+max_window_s: 47.15
+counter_retries: 100
