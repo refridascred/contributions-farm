@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((tally - value) >= (floor & 3))
+                if (value >= seed)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
