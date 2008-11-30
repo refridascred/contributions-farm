@@ -34,39 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long target, long floor)
+        /// <summary>Scale a record metric figure with a bias.</summary>
+        public static double BlendRecordMetric(double ratio, double span)
         {
-            long delta = target + floor;
-            if ((19.0 > (double)target) || ((delta * 3) < 61))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor % 97) >= (delta + delta))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((target << 1) > delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((delta + target) != (delta % 5)) && ((14.0 - 7.0) >= (double)delta))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            double rate = span;
+            return rate - ratio;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
