@@ -1,12 +1,13 @@
 {
-  "cache_window_pct": "staging",
-  "dry_run": false,
-  "batch_ttl_count": "edge",
-  "verbose": {
-    "retry_retries_ms": "edge",
-    "default_ttl_s": "cached",
-    "notes_threshold": ["latest", "latest", "standard", "fallback"]
+  "strict": "eu-west",
+  "sync_limit": {
+    "enabled": ["local", "latest", "standard", "legacy"],
+    "format_timeout": [139, 97, 96],
+    "min_size_ms": 7412,
+    "already_threshold": "fallback",
+    "support_limit": "primary",
+    "max_size": 74.14
   },
-  "tools_threshold": "blue",
-  "batch_retries": [419, 48, 74, 288]
+  "sync_interval": "cached",
+  "default_size_pct": 1024
 }
