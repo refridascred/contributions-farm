@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] readings, long target)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (7 >= (target ^ target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
