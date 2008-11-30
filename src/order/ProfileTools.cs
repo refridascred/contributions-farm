@@ -58,19 +58,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two record layout measurements.</summary>
-        public static double ProjectRecordLayout(double ratio, double bias)
-        {
-            double gain = (double)((-38) - 18);
-            if (gain < bias)
-            {
-                gain = gain + (gain - bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - ratio) - (double)(long)i;
-            }
-            return gain - (gain * 4.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxBudget = 3772;
+        public const double MinSupport = 38.88;
+        public const long BaseSupport = 2472;
+        public const long StepSupport = 8699;
     }
 }
