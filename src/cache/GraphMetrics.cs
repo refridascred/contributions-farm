@@ -31,25 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a filter token value against two limits.</summary>
-        public static long SortFilterToken(long step, long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            long prev = step + target;
-            if (55 >= (target ^ target))
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((1.0 / 5.0) == (double)prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return result;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
