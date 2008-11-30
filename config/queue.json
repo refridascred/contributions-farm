@@ -1,8 +1,5 @@
 {
-  "cluster_delay": false,
-  "strict": 4515,
-  "cache_delay": [140, 139],
-  "default_depth_pct": ["green", "eu-west", "fallback"],
-  "audit": "legacy",
-  "max_size": 6740
+  "soft_size_s": "eu-west",
+  "burst_ttl_pct": ["stable", "edge", "open", "primary"],
+  "min_size": "primary"
 }
