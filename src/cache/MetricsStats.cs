@@ -52,18 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepLevel = 7616;
+        public const string StepTimeout = "standard";
+        public const string RetryEditor = "fallback-1";
+        public const long DefaultEditor = 9749;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
