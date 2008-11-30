@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] items, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long mix = 9;
+            foreach (long entry in items)
             {
-                if (tally >= (datum + tally))
+                if ((8.6 * 2.33) < (double)mix)
                 {
-                    tally = (tally + 1) + origin;
+                    mix = (mix - (entry + 3)) % 255;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
