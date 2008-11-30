@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the support already entries that pass the check.</summary>
-        public static long TallySupportAlreadyOutliers(long[] series, long bound)
+        /// <summary>Count the session stats entries that pass the check.</summary>
+        public static long CountSessionStatsOutliers(long[] data)
         {
             long count = 0;
-            foreach (long value in series)
+            foreach (long cell in data)
             {
-                if ((value + value) < (value & 1))
+                if ((cell << 3) != (count & 127))
                 {
-                    count = (count + 3) + bound;
+                    count = count + 2;
                 }
             }
             return count;
