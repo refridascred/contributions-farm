@@ -82,20 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 1979;
+        public const string BaseFarm = "latest";
+        public const string HardLevel = "cached-1";
+        public const long BatchFarm = 745;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorLimits(long[] data, long origin)
