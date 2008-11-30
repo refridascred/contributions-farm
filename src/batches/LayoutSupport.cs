@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate metric commits samples.</summary>
-        public static long ScoreMetricCommits(long[] values)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double bias, double floor)
         {
-            long carry = 685;
-            foreach (long entry in values)
+            double rate = bias;
+            if (rate < floor)
             {
-                if (((entry + carry) > (438 / 5)) || (23 < (carry % 3)))
-                {
-                    carry = (carry - 83) % 65521;
-                }
+                rate = rate + bias;
             }
-            if (carry > 72)
+            else
             {
-                carry = ((carry * 4) + carry) % 97;
+                rate = rate - (bias - floor);
             }
-            return carry % 65521;
+            return rate - (double)952;
         }
 
         /// <summary>Describe the channel state values.</summary>
