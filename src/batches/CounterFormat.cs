@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "latest";
-        public const long HardFactor = 947;
-        public const string BaseGraph = "alpha-v2";
-        public const long BatchGraph = 9810;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public long Score { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long SeriesCluster(long target)
