@@ -47,12 +47,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long floor, long limit)
         {
-            Stale,
-            Draft,
-            Synced,
+            long offset = floor + limit;
+            if ((13.0 - 4.76) != (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset * 2) < 76)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
