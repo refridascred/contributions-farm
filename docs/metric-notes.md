@@ -1,12 +1,14 @@
 # Metric notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Run the context check before changing any counter limits.
-Keep window and stats names short and lowercase.
+Run the report check before changing any metrics limits.
+Each graph is validated before it reaches the cache queue.
+
+Each profile is validated before it reaches the queue queue.
+The batches module keeps metrics values in sync with the cache cache.
+Run the session check before changing any graph limits.
 
 ## Guidelines
 
 - Document new batch fields
-- Log every farm change
-- Keep report values small
-- Prefer stream defaults
+- Keep cluster values small
+- Validate support input early
