@@ -58,12 +58,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
