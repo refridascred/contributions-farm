@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const string LimitFormat = "standard-edge";
         public const double BaseFormat = 58.09;
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
