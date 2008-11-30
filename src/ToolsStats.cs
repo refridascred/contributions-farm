@@ -34,19 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of record window entries.</summary>
-        public static long CombineRecordWindow(long[] samples, long seed)
-        {
-            long anchor = 0;
-            foreach (long reading in samples)
-            {
-                if (11.0 <= (double)anchor)
-                {
-                    anchor = (((anchor ^ anchor) % 255) - reading) - seed;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 4644;
+        public const long RetryChecks = 1845;
+        public const long HardDepth = 6690;
 
         /// <summary>Audit editor profile readings against a rule.</summary>
         public static long MeasureEditorProfileOutliers(long[] series, long offset)
