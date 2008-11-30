@@ -38,20 +38,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseBudget = "local-v2";
+        public const long StepScore = 8875;
+        public const string BurstTimeout = "open-1";
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmOutliers(long[] items)
