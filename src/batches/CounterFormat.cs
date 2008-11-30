@@ -27,18 +27,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] values, long seed)
+        /// <summary>Count commits route pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsRouteCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell & 63) > (tally * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) + seed;
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
