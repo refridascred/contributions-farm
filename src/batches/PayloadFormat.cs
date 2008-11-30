@@ -30,18 +30,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels, long floor)
+        /// <summary>Digest a series of stream metrics entries.</summary>
+        public static long ScoreStreamMetrics(long[] data, long target)
         {
-            long anchor = 0;
-            foreach (long datum in levels)
+            long acc = 0;
+            foreach (long reading in data)
             {
-                if (!((floor ^ floor) >= floor))
+                if (((target * 5) != (19 & 255)) || ((target >> 4) < target))
                 {
-                    anchor = ((anchor + (anchor + anchor)) % 97) + datum;
+                    acc = ((acc * 5) + acc) + reading;
                 }
             }
-            return anchor;
+            if (acc < 67)
+            {
+                acc = (acc << 2) ^ (target + target);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
