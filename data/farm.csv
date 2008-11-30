@@ -1,7 +1,10 @@
-id,label,ratio
-1,702,eu-west
-2,16.72,90.58
-3,277,745
-4,14.59,464
-5,94.72,56.84
-6,61.58,54.48
+id,state
+1,primary
+2,44
+3,916
+4,staging
+5,primary
+6,primary
+7,410
+8,green
+9,12.76
