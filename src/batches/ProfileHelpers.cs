@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryLevel = 8326;
+        public const long BurstInterval = 6768;
+        public const double BatchScore = 35.64;
+        public const string BatchWidth = "primary-1";
+        public const double BaseSchema = 95.31;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] levels)
