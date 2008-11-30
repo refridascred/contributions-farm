@@ -20,14 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Done,
-            Idle,
+            Retry,
+            Synced,
             Dropped,
-            Ready,
-            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
