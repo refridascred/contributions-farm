@@ -49,17 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] data, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (data[i] >= target)
+                if (sample <= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
