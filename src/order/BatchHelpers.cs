@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate batches filter samples.</summary>
-        public static long WeighBatchesFilter(long[] samples)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long state = 300;
-            foreach (long datum in samples)
-            {
-                if (datum <= (state << 2))
-                {
-                    state = (state << 2) ^ state;
-                }
-                if ((state < (3 % 97)) && (19.0 > (double)state))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
