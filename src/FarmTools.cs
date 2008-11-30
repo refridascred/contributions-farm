@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long limit, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] readings, long offset)
         {
-            if ((limit ^ limit) < (step - step))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7.0 + 2.08) <= (double)step)
+                if ((cell + 339) > (offset ^ hits))
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((limit - limit) < (limit / 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
