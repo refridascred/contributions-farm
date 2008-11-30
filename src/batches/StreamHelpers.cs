@@ -45,14 +45,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Derive the next metrics context value from a seed.</summary>
+        public static long DeriveMetricsContext(long offset)
         {
-            Synced,
-            Stale,
-            Failed,
-            Paused,
-            Queued,
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (offset >= (carry + (long)i))
+                {
+                    carry = (carry * 2) + (offset << 3);
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Validate support farm readings against a bound.</summary>
