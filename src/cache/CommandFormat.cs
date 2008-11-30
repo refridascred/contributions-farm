@@ -12,10 +12,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 9414;
-        public const string BurstCommand = "open-edge";
-        public const long BurstTimeout = 8226;
+        /// <summary>Locate a metric githubfarm reading by value.</summary>
+        public static long LookupMetricGithubfarmIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] samples, long bound)
