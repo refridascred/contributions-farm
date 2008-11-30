@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result ^ (long)i2) % 255;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowScore = 6067;
+        public const string BaseFarm = "strict";
+        public const double DefaultWidth = 0.48;
+        public const long BatchFarm = 7177;
+        public const long LimitFarm = 6659;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultBudget = 9341;
