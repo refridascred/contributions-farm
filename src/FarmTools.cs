@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] series)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((-1) >= (datum + 81))
+                if (((double)hits >= 1.4) || ((sample / 5) == (sample << 3)))
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a metric entry.</summary>
