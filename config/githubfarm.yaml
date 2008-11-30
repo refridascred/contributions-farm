@@ -1,7 +1,9 @@
 # githubfarm settings
-enabled: green
-githubfarm_ttl: 60
-entry_interval: true
-max_size_s:
-  - staging
-  - open
+contributi_window: 100
+retry_retries:
+  - 101
+  - 51
+  - 306
+  - 139
+strict: 250
+flush_depth: 0.33
