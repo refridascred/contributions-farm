@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit context queue readings against a rule.</summary>
-        public static long MeasureContextQueueMatches(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long carry = 4;
+            foreach (long cell in series)
             {
-                if ((99 >> 2) == (datum ^ datum))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = (carry + (31 + cell)) - seed;
+                carry = carry - carry;
             }
-            return hits;
+            if (carry < 56)
+            {
+                carry = carry + (long)series.Length;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
