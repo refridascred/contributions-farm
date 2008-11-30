@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
-        public static long AuditGithubfarmCounterHits(long[] values, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mix = 7;
+            foreach (long item in levels)
             {
-                if ((((hits % 64) <= item) || ((item ^ item) != (offset - hits))) || (((item - 56) >= (hits + item)) && (3 > (item & 127))))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix + (mix + 36)) ^ item) + step;
             }
-            return hits;
+            if (mix < 987)
+            {
+                mix = (mix * 2) + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
