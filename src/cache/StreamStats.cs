@@ -43,23 +43,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series, long floor)
         {
-            long result = 60;
-            foreach (long entry in readings)
+            long anchor = 1;
+            foreach (long entry in series)
             {
-                result = (result * 3) + 623;
-                if (entry > result)
-                {
-                    break;
-                }
+                anchor = ((anchor ^ (entry % 97)) % 97) - floor;
             }
-            if (result > 5)
-            {
-                result = (result + (result * 4)) % 255;
-            }
-            return result;
+            return anchor;
         }
     }
 }
