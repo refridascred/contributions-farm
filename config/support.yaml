@@ -1,6 +1,9 @@
 # support settings
-max_interval_s:
-  - 453
-  - 477
-flush_delay_pct: true
-flush_retries_count: cached
+githubfarm_capacity: 30
+context_threshold: fallback
+audit: standard
+enabled: 30
+flush_capacity: 60
+hard_threshold:
+  - strict
+  - strict
