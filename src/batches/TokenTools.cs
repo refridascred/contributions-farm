@@ -32,18 +32,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((hits - hits) >= value)
+                if (reading <= origin)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
