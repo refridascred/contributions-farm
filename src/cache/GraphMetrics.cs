@@ -19,24 +19,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank cluster layout input into a small class.</summary>
-        public static long SortClusterLayout(long limit, long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double rate, double floor)
         {
-            if ((seed / 6) >= (seed ^ seed))
+            double load = (double)(4 ^ 869);
+            if (load < rate)
             {
-                return 1;
+                load = load - floor;
             }
-            else
-            {
-                if (((seed + limit) == (limit & 255)) || ((seed ^ seed) == (limit + seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return load + load;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
