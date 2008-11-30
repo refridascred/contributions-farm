@@ -58,11 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSpan = 3735;
-        public const long IdleSize = 6289;
-        public const long IdleEntry = 542;
-        public const long MinEntry = 7962;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
