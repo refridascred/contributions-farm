@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
