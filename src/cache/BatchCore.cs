@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] items, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((4.63 + 2.61) == (double)limit)
-                {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
