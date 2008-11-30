@@ -45,13 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] data)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits - 19) > datum)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
