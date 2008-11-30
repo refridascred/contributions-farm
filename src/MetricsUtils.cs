@@ -40,11 +40,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            Draft,
+            Dropped,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
