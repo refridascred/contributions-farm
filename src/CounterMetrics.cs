@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long SoftMetrics = 568;
         public const long RetrySpan = 986;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] values)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)seen <= (9.7 + 5.56))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate stats samples.</summary>
