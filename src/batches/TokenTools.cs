@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long DefaultAccount = 4752;
         public const long HardFactor = 2389;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Check that every checks schema entry stays within the limit.</summary>
+        public static bool VerifyChecksSchemaRange(long[] series, long target)
         {
-            Synced,
-            Locked,
-            Pending,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
