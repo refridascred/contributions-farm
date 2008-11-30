@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Rank cache schema input into a small class.</summary>
+        public static long GradeCacheSchema(long bound, long floor)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            if ((floor + floor) <= 12)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound - bound) <= (bound - (-834)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor > (bound % 5)) || ((double)bound >= (15.0 * 7.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
