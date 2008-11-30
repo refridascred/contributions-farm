@@ -35,11 +35,19 @@ namespace Common.Utilities
             return rate - (double)83;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] readings, long bound)
         {
-            double load = (floor * 8.7) * 9.1;
-            return (load + load) + rate;
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
