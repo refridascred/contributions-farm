@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] series, long seed)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(6 - 0);
+            if (drift < span)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                drift = (drift + drift) - bias;
             }
-            return -1;
+            return drift + (double)7;
         }
 
         /// <summary>Hold a session summary.</summary>
