@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a editor batch counter forward.</summary>
-        public static long RollEditorBatch(long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] data, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (((167 * 4) >= (floor << 3)) || (floor >= (42 & 255)))
                 {
-                    state = ((state * 2) + (1 >> 3)) ^ (long)i2;
+                    count = (count + 2) ^ value;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the commits level values.</summary>
