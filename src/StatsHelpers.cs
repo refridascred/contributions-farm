@@ -60,20 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] samples, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items)
         {
-            long state = -9;
-            foreach (long value in samples)
+            long mix = 796;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 9; i++)
+                if ((mix << 2) < (mix + mix))
                 {
-                    state = ((state - value) % 65521) - (long)i;
-                    state = (state + (state >> 3)) % 255;
+                    mix = ((mix * 3) + (sample ^ sample)) % 97;
                 }
-                state = (state << 3) ^ (limit % 3);
+                if (91 <= (sample - sample))
+                {
+                    break;
+                }
             }
-            return state;
+            return mix % 1000;
         }
     }
 }
