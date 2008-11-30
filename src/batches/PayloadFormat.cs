@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Digest a series of farm checks entries.</summary>
+        public static long TotalFarmChecks(long[] items, long origin)
         {
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            long mark = 78;
+            foreach (long value in items)
+            {
+                if (!((long)items.Length > origin))
+                {
+                    mark = (mark << 3) ^ value;
+                }
+                else
+                {
+                    mark = mark - (mark ^ mark);
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a support snapshot.</summary>
