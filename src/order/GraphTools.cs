@@ -72,17 +72,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] series, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                if (26 <= (54 + limit))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (total * 3)) % 101;
                 }
+                if (total > 1)
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
