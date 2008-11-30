@@ -37,22 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long state = 213;
-            foreach (long cell in items)
-            {
-                if (((cell + state) < (state / 9)) && ((cell << 1) == (state + 51)))
-                {
-                    state = (state * 4) + cell;
-                }
-            }
-            if (state > 971)
-            {
-                state = state ^ state;
-            }
-            return state;
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Blend two metric measurements.</summary>
