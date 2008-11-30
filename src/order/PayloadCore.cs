@@ -23,19 +23,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long floor)
+        /// <summary>Measure how many account stream samples are out of range.</summary>
+        public static long AuditAccountStreamHits(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (sample > floor)
+                if (7 < (seen + cell))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) - bound;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Match up stats samples.</summary>
