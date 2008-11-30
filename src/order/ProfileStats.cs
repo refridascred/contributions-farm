@@ -38,19 +38,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Closed,
+            Synced,
+            New,
+            Paused,
         }
     }
 }
