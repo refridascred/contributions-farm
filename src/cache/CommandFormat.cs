@@ -42,10 +42,31 @@ namespace Common.Utilities
         public const long MaxRatio = 501;
         public const string DefaultEditor = "stable";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseFactor = 1508;
-        public const long DefaultQueue = 4034;
-        public const long BurstSpan = 2064;
-        public const double IdleTimeout = 54.39;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long bound, long offset)
+        {
+            if ((3.0 + 2.95) > (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)offset > (12.0 + 19.0)) || (offset > bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.1 / 7.0) >= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
