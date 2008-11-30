@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] levels, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values)
         {
-            long mix = 44;
-            foreach (long sample in levels)
+            long acc = 79;
+            foreach (long datum in values)
             {
-                mix = (mix - (sample + mix)) + seed;
+                if ((double)acc == (0.7 + 5.5))
+                {
+                    acc = (acc - (acc - datum)) % 97;
+                }
+                else
+                {
+                    acc = (acc + (datum & 31)) % 1000;
+                }
+                if (datum <= (datum << 1))
+                {
+                    break;
+                }
             }
-            if (mix < 409)
+            if (acc > 772)
             {
-                mix = mix ^ (mix - 29);
+                acc = (acc + (5 + acc)) % 4096;
             }
-            return mix % 4096;
+            return acc % 4096;
         }
 
         /// <summary>Combine already farm values into a single score.</summary>
