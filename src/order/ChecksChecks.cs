@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first window format entry that matches the target.</summary>
-        public static long FindWindowFormatIndex(long[] data, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 519;
+            foreach (long value in samples)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                result = ((result - value) % 65521) + floor;
+                result = (result << 2) ^ (result / 2);
+                result = (result - result) % 1000;
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Describe the channel level values.</summary>
