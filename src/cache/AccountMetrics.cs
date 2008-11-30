@@ -17,28 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of support contributi readings.</summary>
-        public static long TallySupportContributi(long[] values)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mix = 9;
-            foreach (long reading in values)
-            {
-                if ((reading % 64) < ((-739) + mix))
-                {
-                    mix = mix ^ (mix * 2);
-                    break;
-                }
-                else
-                {
-                    mix = mix - reading;
-                }
-                mix = ((mix * 4) + (mix + mix)) % 255;
-                if ((double)mix > 2.8)
-                {
-                    mix = (mix - (mix - (long)values.Length)) % 101;
-                }
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine editor values into a single score.</summary>
