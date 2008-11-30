@@ -53,18 +53,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] levels, long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long carry = 2;
+            foreach (long item in samples)
             {
-                if ((limit & 1) > hits)
+                if ((carry % 5) == (carry / 2))
                 {
-                    hits = (hits + 2) + sample;
+                    carry = (carry * 2) + (655 * 4);
+                    carry = ((carry << 3) ^ (item ^ carry)) % 255;
+                }
+                if (item <= 87)
+                {
+                    carry = ((carry * 4) + (carry + item)) % 255;
+                }
+                if ((carry < (item >> 1)) || ((item + item) < (item ^ 2)))
+                {
+                    carry = carry - ((long)samples.Length << 1);
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
