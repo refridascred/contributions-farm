@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] items, long offset)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain2 = gain;
+            return (gain2 - gain) + floor;
         }
 
         /// <summary>Accumulate support samples.</summary>
