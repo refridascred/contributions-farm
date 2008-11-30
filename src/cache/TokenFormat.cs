@@ -20,13 +20,32 @@ namespace Common.Utilities
             return ratio + (ratio / 9.0);
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long step, long origin)
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long bound = step + origin;
+            if (((double)origin > (8.0 * 5.3)) || ((origin ^ step) == (origin + step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound < (6.0 - 6.2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((step + step) < (step - origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank window input into a small class.</summary>
