@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next filter cache value from a seed.</summary>
-        public static long IterateFilterCache(long limit)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)limit >= (3.51 * 3.0))
-                {
-                    carry = (carry * 3) + (carry * 4);
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm layout sample.</summary>
