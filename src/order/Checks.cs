@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "stable-edge";
-        public const long SoftProfile = 3924;
-        public const string BurstWidth = "cached-v2";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((((6.6 / 2.0) < (0.91 - 6.8)) || ((60 >> 3) == (cell & 3))) && ((44 << 1) >= (cell - cell)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long BucketFormat(long offset, long floor)
