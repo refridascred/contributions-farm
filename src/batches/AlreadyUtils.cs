@@ -32,18 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "staging-1";
+        public const double CacheFarm = 45.24;
+        public const long DefaultTimeout = 6777;
+        public const long HardTimeout = 6297;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long RankWindow(long target, long seed)
