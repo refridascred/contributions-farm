@@ -1,39 +1,17 @@
 # support settings
-support_interval:
-  soft_interval_pct:
-    persist:
-      - 232
-      - 454
-      - 271
-      - 486
-    account_ratio: 12.47
-    stream_ttl: eu-west
-    poll_size: 12.37
-    enabled: 1108
-    max_capacity_ms: standard
-  counter_interval:
-    base_limit_s: 88.49
-    farm_timeout:
-      - eu-west
-      - primary
-      - local
-      - stable
-    strict: 8026
-    sync_ratio:
-      - 394
-      - 23
-      - 379
-  flush_ratio: blue
-  readonly: legacy
-  burst_size_s: 39
-  batch_interval_s: 6311
-flush_ratio_ms: true
-retry_window: false
-base_capacity_count:
-  retry_ratio_s: primary
-  flush_ttl: true
-  max_interval:
-    - fallback
-    - staging
-  counter_capacity: primary
-  max_timeout_pct: true
+checks_retries:
+  hard_retries_ms:
+    - 368
+    - 7
+    - 168
+    - 54
+  readonly: 10
+  soft_timeout_ms: 4.78
+  max_limit_s: 6561
+base_delay_count:
+  - 207
+  - 167
+  - 12
+token_threshold: 60
+burst_ttl_pct: standard
+retry_timeout: 98.46
