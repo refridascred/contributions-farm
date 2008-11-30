@@ -1,9 +1,22 @@
 # entry settings
-enabled: 60
-buffer_capacity: stable
-audit: 4658
+min_interval_count: latest
+default_retries: 22.68
+warm_capacity_count: fallback
+persist: 32.58
 verbose:
-  - strict
-  - edge
-  - strict
-  - edge
+  poll_interval:
+    batch_delay:
+      - 165
+      - 307
+      - 284
+    base_delay:
+      - 124
+      - 367
+      - 43
+      - 140
+    cache_ttl_ms:
+      - 407
+      - 16
+  persist: 3
+  poll_retries_count: legacy
+  support_limit: 8802
