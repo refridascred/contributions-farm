@@ -24,14 +24,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Iterate the cache context series from a seed.</summary>
+        public static long StepCacheContext(long step)
         {
-            Dropped,
-            Locked,
-            Queued,
-            Draft,
-            Closed,
+            long mark = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((8.0 / 4.0) <= (double)(long)i)
+                {
+                    mark = (mark ^ (step << 3)) % 101;
+                    break;
+                }
+                mark = mark ^ step;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry info.</summary>
