@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many tools commits samples are out of range.</summary>
-        public static long TallyToolsCommitsOutliers(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = 65;
+            foreach (long datum in readings)
             {
-                if ((double)cell > (1.2 + 6.9))
+                mix = ((mix << 2) ^ mix) % 1000;
+                if (((double)datum > 5.2) || ((datum << 3) < (mix << 1)))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Describe the tools status values.</summary>
