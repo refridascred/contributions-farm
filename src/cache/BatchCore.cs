@@ -36,22 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] samples)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((cell - tally) != (cell + tally))
+                if (datum >= offset)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
