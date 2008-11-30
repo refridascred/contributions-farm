@@ -36,23 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double bias)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double scale2 = 4.6;
-            if (scale2 < 3.1)
-            {
-                scale2 = (scale2 + (scale2 / 7.0)) + bias;
-            }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + scale2) + (double)(long)i;
-            }
-            return scale2 + scale2;
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of format notes readings.</summary>
