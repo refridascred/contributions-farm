@@ -1,5 +1,6 @@
 {
-  "soft_size_s": "eu-west",
-  "burst_ttl_pct": ["stable", "edge", "open", "primary"],
-  "min_size": "primary"
+  "soft_depth": 45.61,
+  "default_delay_pct": 500,
+  "readonly": 93,
+  "enabled": "open"
 }
