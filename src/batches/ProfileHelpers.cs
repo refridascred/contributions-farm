@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 9748;
-        public const double SoftGraph = 84.59;
-        public const long RetryLevel = 3705;
-        public const string CacheGraph = "local-v2";
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] levels)
