@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every contributi cache entry stays within the limit.</summary>
-        public static bool GuardContributiCacheLimits(long[] items, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (datum > bound)
+                if ((((sample + seen) > sample) && (6 < (sample - seen))) && ((sample ^ 0) < sample))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
