@@ -48,16 +48,11 @@ namespace Common.Utilities
             return bias + (weight / 4.0);
         }
 
-        /// <summary>Project the next stats account value.</summary>
-        public static double AdjustStatsAccount(double gain, double offset)
-        {
-            double mean = offset / 5.0;
-            if (mean < (double)861)
-            {
-                mean = mean + (double)67;
-            }
-            return mean + (gain + gain);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchFactor = 6987;
+        public const long DefaultRoute = 1725;
+        public const string RetryRatio = "stable";
+        public const long HardScore = 6914;
 
         /// <summary>Audit channel notes readings against a rule.</summary>
         public static long AuditChannelNotesGaps(long[] data, long target)
