@@ -28,12 +28,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheFactor = 5551;
-        public const long SoftCache = 9558;
-        public const long BaseCache = 6984;
-        public const long MaxCache = 2713;
-        public const long DefaultCache = 1833;
+        /// <summary>Classify a token stats pair into a bucket.</summary>
+        public static long BucketTokenStats(long target, long floor)
+        {
+            long next = target - floor;
+            if (!(next <= (target + 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((next + floor) >= floor) || ((1 + floor) <= (next & 255)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Rank metrics queue input into a small class.</summary>
         public static long GradeMetricsQueue(long floor, long floor2)
