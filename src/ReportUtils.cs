@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Active,
-            Pending,
-            Stale,
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
