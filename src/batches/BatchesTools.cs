@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next batch layout value from a seed.</summary>
-        public static long SeriesBatchLayout(long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] data, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (81 <= seed)
+                if (step <= (-38))
                 {
-                    mix = ((mix << 2) ^ (long)i) % 97;
+                    seen = (seen + 2) - sample;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
