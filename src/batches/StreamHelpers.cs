@@ -42,10 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryTimeout = 5784;
-        public const string BaseCache = "alpha-1";
-        public const long CacheCount = 2980;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((4.75 * 3.0) >= (double)reading)
+                {
+                    matches = (matches + 2) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long RollBatches(long seed)
