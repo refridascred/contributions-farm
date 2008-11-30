@@ -24,15 +24,31 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double bias, double offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long offset, long seed)
         {
-            double drift = (double)(81 + 2);
-            for (int i = 0; i < 7; i++)
+            if ((6.0 / 7.0) >= (double)seed)
             {
-                drift = ((drift - (offset * 8.5)) - (double)(long)i) - bias;
+                return 1;
             }
-            return drift + (double)728;
+            else
+            {
+                if ((288 * 4) > offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset << 1) <= (seed + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank githubfarm already input into a small class.</summary>
