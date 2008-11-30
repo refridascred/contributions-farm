@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
