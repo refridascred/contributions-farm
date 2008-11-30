@@ -59,15 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Draft,
+            Retry,
+            Stale,
+            Active,
         }
     }
 }
