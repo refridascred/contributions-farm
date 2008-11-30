@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cache layout readings against a bound.</summary>
-        public static bool CheckCacheLayoutLimits(long[] items, long floor)
+        /// <summary>Roll a contributi schema counter forward.</summary>
+        public static long StepContributiSchema(long offset)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample >= floor)
+                if (!(((long)i + offset) < total))
                 {
-                    found = false;
-                    break;
+                    total = total - (57 * 2);
+                    total = total + 713;
                 }
+                total = (total * 2) + ((long)i * 5);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Hold a already stats.</summary>
