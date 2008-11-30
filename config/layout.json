@@ -1,17 +1,5 @@
 {
-  "flush_ratio_count": true,
-  "poll_delay_s": ["strict", "fallback", "primary", "stable"],
-  "retry_interval_ms": {
-    "sync_delay_ms": "eu-west",
-    "hard_limit_s": "eu-west",
-    "context_interval": {
-      "record_interval": 83.16,
-      "sync_retries_s": 61,
-      "layout_interval": 6412,
-      "queue_ttl": true,
-      "readonly": 32.17
-    }
-  },
-  "poll_interval_s": true,
-  "dry_run": true
+  "warm_timeout_pct": ["green", "stable", "standard"],
+  "idle_capacity": false,
+  "batch_size_ms": "blue"
 }
