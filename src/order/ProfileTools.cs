@@ -36,28 +36,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long score = 30;
+            foreach (long item in series)
             {
-                if ((double)offset >= (6.94 * 16.0))
+                if ((score - score) > (item ^ 46))
                 {
-                    score = (score * 2) + ((long)i << 1);
+                    score = score - (origin * 2);
                 }
-                score = score + (score - score);
-                if ((((long)i / 6) > (offset & 7)) && ((score + 33) >= ((long)i / 8)))
-                {
-                    score = (score ^ offset) % 65521;
-                }
-                else
-                {
-                    score = score - 177;
-                }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            if (score < 65)
+            {
+                score = (score ^ (score & 63)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Locate a metric payload reading by value.</summary>
