@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up support record samples.</summary>
-        public static long CompareSupportRecordCount(long[] levels)
+        /// <summary>Check that every contributi cache entry stays within the limit.</summary>
+        public static bool GuardContributiCacheLimits(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum > bound)
                 {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Count token schema pairs that satisfy a relation.</summary>
