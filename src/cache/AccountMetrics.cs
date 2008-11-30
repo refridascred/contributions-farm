@@ -21,15 +21,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] values)
         {
-            long total = -956;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                total = ((total << 3) ^ (39 * 2)) ^ entry;
+                if ((0.4 - 3.8) > (2.0 + 3.77))
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
