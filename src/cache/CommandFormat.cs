@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
             public double Region { get; set; }
-            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
