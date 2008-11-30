@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Match up counter window samples.</summary>
+        public static long CompareCounterWindowCount(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ ((long)i + (long)i)) % 97;
-                if ((score ^ (long)i) == (limit - limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 3) ^ (limit * 4)) % 4096;
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (!((limit * 2) != ((long)i + score)))
-                {
-                    score = (score ^ (limit * 3)) % 97;
-                }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a command stats.</summary>
