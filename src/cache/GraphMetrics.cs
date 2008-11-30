@@ -37,15 +37,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] values, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            long total = 85;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total - total) % 4096) + cell) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Describe the layout status values.</summary>
