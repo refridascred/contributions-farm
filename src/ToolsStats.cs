@@ -72,14 +72,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                mark = mark - (seed + seed);
-                mark = (mark << 2) ^ (seed >> 2);
+                long slot = (limit + limit) >> 4;
+                slot = slot + mark;
+                mark = (mark << 3) ^ (mark + slot);
                 mark = ((mark * 2) + (long)i) % 97;
             }
             return mark;
