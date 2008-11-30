@@ -1,8 +1,14 @@
 {
-  "window_window": 6700,
-  "persist": "strict",
-  "dry_run": false,
-  "soft_ratio_s": 74.04,
-  "cache_retries_pct": "staging",
-  "account_limit": true
+  "channel_threshold": "stable",
+  "flush_size_pct": "latest",
+  "soft_depth_pct": "primary",
+  "burst_capacity_s": {
+    "max_interval_pct": false,
+    "cache_interval_pct": true,
+    "soft_size_ms": ["eu-west", "stable", "fallback"],
+    "verbose": 13.37,
+    "enabled": ["green", "green", "blue"],
+    "hard_limit_ms": false
+  },
+  "cache_limit_pct": 250
 }
