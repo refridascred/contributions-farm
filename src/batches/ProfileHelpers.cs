@@ -34,25 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a token stats pair into a bucket.</summary>
-        public static long BucketTokenStats(long target, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] values, long limit)
         {
-            long next = target - floor;
-            if (!(next <= (target + 2)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((next + floor) >= floor) || ((1 + floor) <= (next & 255)))
+                if (values[i] >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the metric filter series from a seed.</summary>
