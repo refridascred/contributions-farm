@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long bound, long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if ((bound - bound) > bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed & 1) <= (seed + 12)) && ((seed - bound) < bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
