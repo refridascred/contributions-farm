@@ -22,13 +22,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] data, long target)
         {
-            Dropped,
-            Stale,
-            Queued,
-            Synced,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell * 2) >= (count / 2))
+                {
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
