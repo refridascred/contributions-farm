@@ -57,19 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] series, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
     }
 }
