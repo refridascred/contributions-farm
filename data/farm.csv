@@ -1,10 +1,6 @@
-id,state
-1,primary
-2,44
-3,916
-4,staging
-5,primary
-6,primary
-7,410
-8,green
-9,12.76
+id,owner,score
+1,663,927
+2,82.14,111
+3,666,248
+4,edge,796
+5,66.21,45.58
