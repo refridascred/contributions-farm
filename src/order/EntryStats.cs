@@ -47,14 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftLevel = 91.76;
+        public const long SoftChannel = 4844;
+        public const double CacheChannel = 4.19;
+        public const string BaseChannel = "fallback-1";
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
