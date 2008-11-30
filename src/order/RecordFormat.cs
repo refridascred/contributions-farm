@@ -13,13 +13,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Idle,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 289;
+        public const long MaxContributi = 3426;
+        public const double BatchSize = 7.2;
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
