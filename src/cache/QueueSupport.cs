@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 5725;
-        public const long SoftToken = 3573;
-        public const long SoftFactor = 705;
-        public const long BatchRatio = 6212;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data)
+        {
+            long carry = 306;
+            foreach (long reading in data)
+            {
+                carry = carry - (carry + carry);
+                if ((double)43 == (double)(long)data.Length)
+                {
+                    carry = (carry << 3) ^ (reading % 16);
+                }
+                if (reading <= 91)
+                {
+                    break;
+                }
+            }
+            if (carry > 96)
+            {
+                carry = carry - carry;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportRange(long[] series, long floor)
