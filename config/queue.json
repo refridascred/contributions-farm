@@ -1,23 +1,5 @@
 {
-  "contributi_interval": "eu-west",
-  "cache_interval_count": 8345,
-  "burst_capacity": {
-    "audit": 60,
-    "readonly": 49.18,
-    "batch_ttl": 83.05,
-    "poll_capacity": "stable",
-    "batch_ratio": "strict"
-  },
-  "cache_window_s": true,
-  "cache_ttl": [319, 373, 257],
-  "persist": {
-    "verbose": {
-      "enabled": 88,
-      "checks_threshold": 100,
-      "batch_capacity_count": "fallback"
-    },
-    "cluster_delay": "eu-west",
-    "soft_window": 48.1,
-    "order_ratio": 81
-  }
+  "sync_retries": 60,
+  "persist": false,
+  "max_window_count": 250
 }
