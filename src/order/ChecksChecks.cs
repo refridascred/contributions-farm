@@ -29,13 +29,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            Locked,
-            Idle,
-            Synced,
-            Closed,
+            long total = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                long matches = total;
+                if (seed < (total & 7))
+                {
+                    total = total + total;
+                    matches = matches ^ (matches << 3);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (matches % 8)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define token limits and defaults.</summary>
