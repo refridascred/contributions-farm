@@ -57,11 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] samples, long origin)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
