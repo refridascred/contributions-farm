@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long BurstCount = 2674;
         public const double CacheCommand = 18.22;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Compare every pair of tools session readings.</summary>
+        public static long OverlapToolsSessionCount(long[] values)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc ^ acc) - (long)i2;
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
