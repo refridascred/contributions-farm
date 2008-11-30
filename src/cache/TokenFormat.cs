@@ -20,21 +20,13 @@ namespace Common.Utilities
             return load - (double)(-1);
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
