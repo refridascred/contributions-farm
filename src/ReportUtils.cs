@@ -45,11 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "strict-v2";
-        public const long CacheGraph = 1114;
-        public const string BurstGraph = "alpha";
-        public const string BatchGraph = "latest-1";
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Locked,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Fold a list of payload command readings.</summary>
         public static long DigestPayloadCommand(long[] values, long seed)
