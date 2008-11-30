@@ -5,28 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long bound, long target)
         {
-            long result = -653;
-            foreach (long entry in values)
+            if ((double)bound != (1.0 - 0.82))
             {
-                for (int i = 0; i < 10; i++)
+                return 8;
+            }
+            else
+            {
+                if ((0.6 * 4.0) <= (double)bound)
                 {
-                    result = ((result << 3) ^ (entry + entry)) ^ (long)i;
-                    result = (result * 2) + (origin << 3);
+                    return 5;
                 }
-                result = result - (origin << 3);
-                if (origin < (entry / 5))
+                else
                 {
-                    result = ((result << 2) ^ (origin + result)) % 1000;
+                    if ((bound ^ target) < (bound ^ 14))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (result < 8)
-            {
-                result = (result - (-7)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Describe the cache status values.</summary>
