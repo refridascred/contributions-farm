@@ -50,15 +50,19 @@ namespace Common.Utilities
             return mean + (span + 4.0);
         }
 
-        /// <summary>Adjust a order farm reading.</summary>
-        public static double BlendOrderFarm(double gain, double floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] samples, long origin)
         {
-            double gain2 = gain;
-            if (gain2 > 4.64)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                gain2 = (gain2 + (gain2 * 1.0)) - floor;
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain2 + (double)490;
+            return found;
         }
     }
 }
