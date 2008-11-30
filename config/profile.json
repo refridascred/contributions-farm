@@ -1,7 +1,14 @@
 {
-  "poll_retries_s": "green",
-  "cache_delay": ["open", "primary"],
-  "flush_ttl_count": false,
-  "flush_timeout_count": [10, 364, 369, 20],
-  "poll_threshold_ms": "eu-west"
+  "base_size_pct": "legacy",
+  "audit": 250,
+  "already_window": 7868,
+  "context_timeout": "fallback",
+  "command_retries": {
+    "editor_size": 15.16,
+    "persist": 1024,
+    "layout_size": "blue",
+    "metrics_interval": 64.0,
+    "strict": ["open", "legacy", "fallback", "standard"]
+  },
+  "poll_threshold_count": false
 }
