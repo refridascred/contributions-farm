@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] readings)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double rate = gain;
+            if (rate >= gain)
             {
-                if (((double)hits != (9.3 - 6.0)) || (reading <= (hits + 509)))
-                {
-                    hits = hits + 2;
-                }
+                rate = (rate + 4.3) + bias;
             }
-            return hits;
+            else
+            {
+                rate = rate - gain;
+            }
+            return rate - (double)116;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
