@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Compare every pair of profile layout readings.</summary>
+        public static long CompareProfileLayoutCount(long[] samples)
         {
-            long result = 332;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (((result * 3) + ((-82) - item)) % 97) + (long)i;
-                }
-                result = (result ^ item) % 1000;
-                if (((double)result > (7.0 / 8.0)) || ((result ^ (-637)) > (item + (-95))))
-                {
-                    result = (result + (item >> 4)) % 101;
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Describe the counter level values.</summary>
