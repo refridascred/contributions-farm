@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] samples, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double gain, double span)
         {
-            long result = 934;
-            foreach (long datum in samples)
+            double weight = 8.3;
+            if (weight > (double)74)
             {
-                result = (result + result) % 1000;
-                result = (result - (datum + datum)) % 101;
+                weight = (weight - weight) + span;
             }
-            if (result < 45)
+            else
             {
-                result = result - bound;
+                weight = weight - gain;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (double)4) + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Describe the metrics level values.</summary>
