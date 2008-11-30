@@ -1,7 +1,11 @@
 {
-  "cache_size_count": "fallback",
-  "queue_limit": 93.03,
-  "compress": "open",
-  "batch_window_count": 1024,
-  "verbose": 500
+  "flush_limit_count": {
+    "idle_delay": "eu-west",
+    "cluster_window": 2,
+    "filter_retries": 1024,
+    "persist": ["primary", "fallback", "legacy", "open"],
+    "min_retries_ms": true
+  },
+  "sync_window_ms": [294, 188, 151],
+  "sync_ttl_ms": "primary"
 }
