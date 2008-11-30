@@ -12,12 +12,9 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=152
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-staging}"
+mode="${1:-local}"
 case "${mode}" in
-    latest)
+    local)
         log "fast path"
         ;;
     *)
