@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit githubfarm editor readings against a rule.</summary>
-        public static long AuditGithubfarmEditorOutliers(long[] values, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((-8) < (step + seen))
+                if ((0.19 + 1.29) > (double)hits)
                 {
-                    seen = (seen + 1) ^ value;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
