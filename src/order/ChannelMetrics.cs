@@ -41,12 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double floor)
         {
-            Closed,
-            Active,
-            Queued,
+            double load = (floor * 8.7) * 9.1;
+            return (load + load) + rate;
         }
     }
 }
