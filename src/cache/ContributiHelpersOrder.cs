@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] levels, long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (item != origin)
+                if (!((offset ^ offset) == (mix - offset)))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix + offset) % 1000;
                 }
+                else
+                {
+                    mix = ((mix << 3) ^ (long)i) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Describe the commits state values.</summary>
