@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long BurstSpan = 8355;
         public const long SoftChecks = 3899;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Count the cache metric entries that pass the check.</summary>
+        public static long MeasureCacheMetricOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item >= (count * 5))
                 {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
