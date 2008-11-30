@@ -37,12 +37,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Retry,
-            New,
             Idle,
+            Ready,
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
