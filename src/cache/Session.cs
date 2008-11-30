@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((seen * 4) >= datum)
+                if (((reading - tally) >= reading) && ((4.6 + 3.0) == (double)reading))
                 {
-                    seen = seen + 3;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the editor tools entries that pass the check.</summary>
