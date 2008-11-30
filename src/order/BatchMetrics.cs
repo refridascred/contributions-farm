@@ -24,19 +24,19 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] data, long step)
         {
-            long mix = 270;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in data)
             {
-                mix = mix + mix;
-                if (((3.0 / 4.0) > (double)item) || ((mix & 31) >= (item + (long)items.Length)))
+                if (item > step)
                 {
-                    mix = (mix - (3 + item)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return found;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
