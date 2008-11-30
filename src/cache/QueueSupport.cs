@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data)
-        {
-            long carry = 306;
-            foreach (long reading in data)
-            {
-                carry = carry - (carry + carry);
-                if ((double)43 == (double)(long)data.Length)
-                {
-                    carry = (carry << 3) ^ (reading % 16);
-                }
-                if (reading <= 91)
-                {
-                    break;
-                }
-            }
-            if (carry > 96)
-            {
-                carry = carry - carry;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultLevel = 5884;
+        public const long HardScore = 596;
+        public const string MaxCount = "staging-edge";
+        public const long BaseBatch = 6283;
+        public const string MinBatch = "stable-v2";
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TotalSession(long[] series, long step)
