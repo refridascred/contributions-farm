@@ -45,23 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] items, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] readings, long floor)
         {
-            long mark = 18;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                mark = (mark << 2) ^ ((long)items.Length * 4);
-                if (((0 * 3) >= mark) || ((seed & 255) == (item + mark)))
+                if (datum <= floor)
                 {
-                    mark = (mark * 2) + mark;
-                }
-                else
-                {
-                    mark = mark - (mark & 31);
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
