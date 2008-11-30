@@ -1,15 +1,11 @@
 # Command notes
 
-Each window is validated before it reaches the account queue.
-Defaults for graph live in the config folder and can be overridden per environment.
-
-Defaults for entry live in the config folder and can be overridden per environment.
-A stats that stays idle for too long is moved to the buffer list.
-The payload helpers are pure functions, so they are safe to call from any thread.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Keep githubfarm and cluster names short and lowercase.
+When a order fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every metric change
-- Review session limits each release
-- Validate context input early
-- Prefer record defaults
+- Log every context change
+- Keep tools values small
+- Prefer queue defaults
