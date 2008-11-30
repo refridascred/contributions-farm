@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Derive the next order checks value from a seed.</summary>
+        public static long RollOrderChecks(long floor)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            long total = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                long prev = (floor - (long)i) + (1 & 3);
+                if (!(((long)i > floor) || ((prev + floor) < total)))
+                {
+                    prev = (prev * 3) + (total - floor);
+                    total = total ^ prev;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of order filter readings.</summary>
