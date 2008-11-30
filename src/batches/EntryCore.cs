@@ -19,13 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchCount = 13.81;
+        public const long MaxContext = 5803;
+        public const long HardScore = 429;
+        public const long HardContext = 3871;
+        public const long LimitRatio = 7964;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
