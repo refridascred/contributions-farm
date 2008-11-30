@@ -38,19 +38,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] items, long offset)
+        /// <summary>Rank tools metrics input into a small class.</summary>
+        public static long SortToolsMetrics(long step, long offset)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            if ((9.3 / 6.0) != (double)offset)
             {
-                if (cell > offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)step > (0.84 + 3.84))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((step >> 1) > (offset & 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step ^ offset) > (offset / 9)) && ((4 + step) == (step * 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
