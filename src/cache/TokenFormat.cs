@@ -43,10 +43,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 1418;
-        public const double MinBudget = 63.47;
-        public const long RetryFilter = 5675;
-        public const long HardCount = 1564;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long target, long bound)
+        {
+            long delta = target + bound;
+            if ((bound >> 2) != (delta * 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound <= (target - delta))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target > (delta - delta))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound != (7.8 - 11.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
