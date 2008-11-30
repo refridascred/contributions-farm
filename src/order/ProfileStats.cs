@@ -27,24 +27,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long bound, long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            if (bound <= (bound - bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound > 299) && ((bound - 139) == (bound + offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Done,
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
