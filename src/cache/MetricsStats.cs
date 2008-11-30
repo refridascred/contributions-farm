@@ -30,19 +30,24 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            if (((1.0 * 1.8) >= (double)floor) || ((double)floor == (5.8 + 6.76)))
             {
-                if ((long)i == (seed + state))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((9.06 * 9.0) == (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
