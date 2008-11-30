@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Check that every checks farm entry stays within the limit.</summary>
+        public static bool GuardChecksFarmBounds(long[] levels, long step)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Match up metrics samples.</summary>
