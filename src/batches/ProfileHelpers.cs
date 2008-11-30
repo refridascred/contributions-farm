@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long RetryLevel = 3705;
         public const string CacheGraph = "local-v2";
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
