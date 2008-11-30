@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] samples, long step)
         {
             long seen = 0;
-            foreach (long item in readings)
+            foreach (long value in samples)
             {
-                if ((item - item) > (item * 3))
+                if ((seen >= (step >> 2)) || ((9 - value) < (step << 3)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
