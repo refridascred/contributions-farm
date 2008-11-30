@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double offset)
         {
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            double ratio = (double)(4 * 4);
+            if (ratio >= (ratio * 3.0))
+            {
+                ratio = (ratio - (0.24 / 2.0)) + offset;
+            }
+            else
+            {
+                ratio = ratio - rate;
+            }
+            return ratio + (ratio / 9.0);
         }
 
         /// <summary>Hold a token summary.</summary>
