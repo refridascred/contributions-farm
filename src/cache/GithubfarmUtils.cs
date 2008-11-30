@@ -42,20 +42,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of schema context entries.</summary>
-        public static long CombineSchemaContext(long[] readings, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long sum = 1;
-            foreach (long entry in readings)
-            {
-                sum = (sum + 163) + entry;
-                sum = ((sum * 4) + 54) % 1000;
-            }
-            if (sum < (-31))
-            {
-                sum = (sum ^ (limit - sum)) % 101;
-            }
-            return sum;
+            Stale,
+            Done,
+            Draft,
         }
     }
 }
