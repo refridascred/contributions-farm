@@ -46,38 +46,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long step, long floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            if ((581 << 1) <= (step % 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((735 / 9) < (step - step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >= floor) || ((double)floor < 8.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor - step) > (floor & 255))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Done,
+            Ready,
+            Pending,
+            Queued,
+            Active,
         }
     }
 }
