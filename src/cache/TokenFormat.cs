@@ -26,13 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
