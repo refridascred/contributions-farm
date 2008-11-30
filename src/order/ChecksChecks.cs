@@ -27,18 +27,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] data, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((double)item >= 4.9)
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
+            Failed,
+            Dropped,
+            Idle,
+            Queued,
         }
     }
 }
