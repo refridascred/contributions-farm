@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
