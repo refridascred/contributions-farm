@@ -24,31 +24,18 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] data, long limit)
         {
-            if ((6.0 / 7.0) >= (double)seed)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((288 * 4) > offset)
+                if (((589 + entry) >= ((-49) ^ limit)) && (((limit << 3) <= (limit & 1)) || ((limit + seen) > limit)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset << 1) <= (seed + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank githubfarm already input into a small class.</summary>
