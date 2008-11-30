@@ -55,39 +55,18 @@ namespace Common.Utilities
         public const string RetryEditor = "fallback-1";
         public const long DefaultEditor = 9749;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long seed, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] levels, long limit)
         {
-            long offset = seed - step;
-            if ((double)offset <= (8.0 / 9.0))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + seed) == (63 + seed))
+                if ((limit & 1) > hits)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset >= 1.7)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step > (16.0 - 8.45))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
+            return hits;
         }
     }
 }
