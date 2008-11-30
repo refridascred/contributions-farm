@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of stream command readings.</summary>
-        public static long DigestStreamCommand(long[] samples)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] items, long bound)
         {
-            long state = 950;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 2) + (cell + cell)) % 65521;
-                state = ((state * 2) + state) % 1000;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
