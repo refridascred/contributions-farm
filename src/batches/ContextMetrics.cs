@@ -26,15 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Idle,
-            Closed,
-            Queued,
-            Draft,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 1773;
+        public const string LimitInterval = "stable-v2";
+        public const long RetrySchema = 7214;
+        public const long RetrySpan = 2693;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
