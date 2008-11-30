@@ -43,21 +43,18 @@ namespace Common.Utilities
         public const long StepStats = 4988;
         public const long WindowStats = 7084;
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((12.0 / 6.0) > (double)matches)
                 {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of channel record readings.</summary>
