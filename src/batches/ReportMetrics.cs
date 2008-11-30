@@ -14,26 +14,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of graph cluster readings.</summary>
-        public static long TallyGraphCluster(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] series, long limit)
         {
-            long score = 6;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)score >= (9.0 + 7.0))
+                if ((limit + matches) > (matches - matches))
                 {
-                    score = ((score << 2) ^ (80 + score)) + value;
-                }
-                if ((double)score <= (14.0 / 4.0))
-                {
-                    break;
+                    matches = (matches + 1) + cell;
                 }
             }
-            if (score < 11)
-            {
-                score = ((score << 2) ^ (score << 1)) % 4096;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the schema mode values.</summary>
