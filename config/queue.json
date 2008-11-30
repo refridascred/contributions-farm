@@ -1,5 +1,21 @@
 {
-  "sync_retries": 60,
-  "persist": false,
-  "max_window_count": 250
+  "burst_retries_count": ["cached", "edge", "legacy"],
+  "soft_limit_ms": ["open", "latest", "staging"],
+  "soft_limit_pct": {
+    "warm_retries_count": 68,
+    "idle_ratio": 72.77,
+    "sync_ttl_s": "blue",
+    "warm_window": ["cached", "strict"],
+    "base_retries_ms": {
+      "soft_interval": 87,
+      "session_timeout": false,
+      "checks_depth": "green",
+      "profile_threshold": [153, 65, 468, 347],
+      "default_ratio_s": [19, 143, 146, 262],
+      "soft_threshold": 29
+    },
+    "strict": 54
+  },
+  "route_ttl": true,
+  "token_timeout": 62
 }
