@@ -51,14 +51,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            New,
             Ready,
-            Closed,
-            Failed,
-            Idle,
+            Done,
+            Stale,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
