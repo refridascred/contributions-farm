@@ -1,6 +1,6 @@
-id,score,rank
-1,eu-west,539
-2,28.72,5.11
-3,45,standard
-4,742,426
-5,staging,77.12
+id,score,label,level,weight
+1,608,301,42.8,primary
+2,open,406,10.82,primary
+3,green,182,eu-west,66
+4,512,406,80.06,739
+5,38.57,standard,8.2,stable
