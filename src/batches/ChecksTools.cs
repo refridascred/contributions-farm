@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheSpan = "open";
-        public const long WindowLevel = 7950;
-        public const long BurstDepth = 6762;
-        public const long BatchMetrics = 3611;
+        /// <summary>Validate session payload readings against a bound.</summary>
+        public static bool GuardSessionPayloadBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] readings, long floor)
