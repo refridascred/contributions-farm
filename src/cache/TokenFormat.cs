@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long bound)
         {
-            double load = offset * 8.14;
-            if (load < (weight - 15.0))
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                load = load - 9.47;
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                load = load - weight;
-            }
-            return load - (double)(-1);
+            return state;
         }
 
         /// <summary>Hold a token summary.</summary>
