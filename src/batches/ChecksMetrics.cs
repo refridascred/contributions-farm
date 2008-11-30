@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long BatchChannel = 8582;
         public const long BaseChannel = 6829;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long seed, long bound)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            if ((bound << 2) < (bound + bound))
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((823 / 8) != (seed * 4))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 7;
+                    result = (result * 4) + ((long)i2 * 4);
                 }
-                else
-                {
-                    return 3;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
