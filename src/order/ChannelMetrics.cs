@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double scale, double floor)
         {
-            Pending,
-            Closed,
-            Retry,
-            Stale,
+            double rate = (floor - floor) / 3.0;
+            if (rate < (rate - floor))
+            {
+                rate = (rate - (double)(-2)) - scale;
+            }
+            else
+            {
+                rate = rate + (double)89;
+            }
+            return rate - (double)83;
         }
 
         /// <summary>Adjust a batches reading.</summary>
