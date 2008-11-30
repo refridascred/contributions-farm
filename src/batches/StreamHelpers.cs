@@ -42,18 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] data, long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double weight = 4.3;
+            if (weight <= floor)
             {
-                if ((4.75 * 3.0) >= (double)reading)
-                {
-                    matches = (matches + 2) - offset;
-                }
+                weight = (weight + (double)7) - bias;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (double)13) - (double)(long)i;
+            }
+            return weight + (floor + floor);
         }
 
         /// <summary>Roll a batches counter forward.</summary>
