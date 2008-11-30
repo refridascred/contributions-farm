@@ -65,13 +65,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] samples, long limit)
         {
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
+            long state = -9;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    state = ((state - value) % 65521) - (long)i;
+                    state = (state + (state >> 3)) % 255;
+                }
+                state = (state << 3) ^ (limit % 3);
+            }
+            return state;
         }
     }
 }
