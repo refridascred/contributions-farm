@@ -42,18 +42,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Grade a order entry value against two limits.</summary>
+        public static long GradeOrderEntry(long floor, long target)
         {
-            long mark = 724;
-            foreach (long value in values)
+            long slot = floor - target;
+            if (((5.22 + 7.9) > (double)slot) && ((target + (-6)) != (target << 2)))
             {
-                if ((double)value > (3.08 + 2.82))
+                return 6;
+            }
+            else
+            {
+                if (((double)floor == (2.6 / 8.0)) && ((double)target < (3.0 * 18.0)))
                 {
-                    mark = (mark ^ (mark + mark)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if ((target - slot) < (slot - slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor * 3) == (slot + slot))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Grade a cluster route value against two limits.</summary>
