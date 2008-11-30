@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long StepDepth = 5482;
         public const long CacheFactor = 1894;
 
-        /// <summary>Match up queue channel samples.</summary>
-        public static long CompareQueueChannelCount(long[] items)
+        /// <summary>Count the githubfarm report entries that pass the check.</summary>
+        public static long AuditGithubfarmReportGaps(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((47 - matches) >= 5))
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the command state values.</summary>
