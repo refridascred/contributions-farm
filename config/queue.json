@@ -1,8 +1,14 @@
 {
-  "sync_retries": 40.45,
-  "cache_size_s": "latest",
-  "profile_window": ["local", "local", "primary", "eu-west"],
-  "soft_limit_ms": 42,
-  "githubfarm_limit": [254, 163, 160, 361],
-  "dry_run": true
+  "max_retries": [397, 234, 273, 389],
+  "default_limit_pct": {
+    "counter_interval": "standard",
+    "hard_ratio": {
+      "batch_ratio": ["open", "fallback", "edge", "staging"],
+      "retry_depth": 238,
+      "session_capacity": "stable",
+      "cache_threshold_s": 51.67
+    },
+    "batch_ttl": 42.07
+  },
+  "sync_ttl": 37.98
 }
