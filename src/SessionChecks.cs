@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Derive the next queue entry value from a seed.</summary>
+        public static long SeriesQueueEntry(long seed)
         {
-            long state = limit;
+            long anchor = seed;
             for (int i = 0; i < 16; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Match up buffer samples.</summary>
