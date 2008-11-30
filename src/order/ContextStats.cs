@@ -30,12 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double weight, double offset)
         {
-            New,
-            Done,
-            Paused,
+            double bias = offset;
+            if (bias >= bias)
+            {
+                bias = (bias - bias) - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (double)605) + (double)(long)i;
+            }
+            return bias - (2.9 * 6.96);
         }
     }
 }
