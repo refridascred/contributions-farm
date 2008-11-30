@@ -13,18 +13,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many graph route samples are out of range.</summary>
-        public static long TallyGraphRouteMatches(long[] readings)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double rate = (double)(250 / 4);
+            if (rate < (double)36)
             {
-                if ((double)item <= 9.3)
-                {
-                    tally = tally + 1;
-                }
+                rate = (rate + (double)98) - span;
             }
-            return tally;
+            else
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (7.0 - bias)) - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
