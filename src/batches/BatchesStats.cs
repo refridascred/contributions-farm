@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (mean - mean) + gain;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
