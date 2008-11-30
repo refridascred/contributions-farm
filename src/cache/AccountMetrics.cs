@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "strict-v2";
+        public const double BurstDepth = 94.61;
+        public const long LimitContext = 1654;
+        public const double MaxSize = 26.27;
+        public const long DefaultWidth = 5011;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
