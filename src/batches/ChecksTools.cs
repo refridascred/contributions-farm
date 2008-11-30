@@ -34,21 +34,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up support queue samples.</summary>
-        public static long OverlapSupportQueueCount(long[] data)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)((-413) - 96);
+            if (weight >= (3.42 + ratio))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight - (double)324) - span;
             }
-            return tally;
+            else
+            {
+                weight = weight + (ratio + ratio);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (ratio / 6.0)) + (double)(long)i;
+            }
+            return weight + 17.0;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
