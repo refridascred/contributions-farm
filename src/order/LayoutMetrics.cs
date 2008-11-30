@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account cluster readings against a bound.</summary>
-        public static bool ValidateAccountClusterBounds(long[] values, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
