@@ -11,31 +11,11 @@ namespace Common.Utilities
         public const double WindowSpan = 62.22;
         public const long WindowBuffer = 8283;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long offset, long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            if ((offset ^ offset) >= (offset + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.78 * 15.0) >= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.22 * 6.1) > (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank session contributi input into a small class.</summary>
