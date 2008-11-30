@@ -22,13 +22,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Retry,
-            Draft,
-            Queued,
-            Dropped,
+            Idle,
+            New,
+            Failed,
+            Ready,
         }
     }
 }
