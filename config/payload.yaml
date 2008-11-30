@@ -1,8 +1,26 @@
 # payload settings
-flush_ttl: true
-account_timeout: 98
-persist: fallback
-idle_ttl_ms:
-  - staging
-  - stable
-soft_threshold: 278
+order_ttl: 83
+cluster_window: 67.89
+sync_timeout: 14
+sync_depth_count:
+  schema_retries: 9980
+  cluster_timeout:
+    sync_ttl: latest
+    soft_limit: false
+    base_limit: 85
+    flush_limit_ms: 63.78
+    readonly: 100
+    retry_window: legacy
+  persist: 25.73
+  batch_ttl: 20.55
+dry_run:
+  strict: 9170
+  burst_interval_s: 30
+  persist:
+    - 114
+    - 440
+    - 120
+  default_delay_s: 8314
+  max_depth: false
+  poll_capacity: local
+audit: 33.66
