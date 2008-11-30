@@ -25,11 +25,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Roll a graph command counter forward.</summary>
+        public static long DeriveGraphCommand(long step)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((result << 2) < (step + result))
+                {
+                    result = (result << 3) ^ step;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
