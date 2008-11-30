@@ -16,19 +16,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double scale, double floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double rate = (floor - floor) / 3.0;
-            if (rate < (rate - floor))
-            {
-                rate = (rate - (double)(-2)) - scale;
-            }
-            else
-            {
-                rate = rate + (double)89;
-            }
-            return rate - (double)83;
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank batches input into a small class.</summary>
