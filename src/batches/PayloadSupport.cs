@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] series, long target)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long sample in series)
             {
-                if (((4.0 * 2.7) == (double)count) && !(3 >= (cell - cell)))
+                if ((((target << 1) < (count + sample)) && (26 > (count >> 2))) || (((count % 5) <= count) && ((6 & 7) > count)))
                 {
-                    count = count + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
