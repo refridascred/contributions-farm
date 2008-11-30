@@ -60,15 +60,12 @@ namespace Common.Utilities
         public const long StepTimeout = 4405;
         public const string BatchSchema = "local";
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Dropped,
-            Synced,
-            Stale,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinInterval = "alpha";
+        public const long CacheFilter = 8932;
+        public const long IdleBudget = 3915;
+        public const double BurstInterval = 62.09;
+        public const string MaxFilter = "fallback";
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
