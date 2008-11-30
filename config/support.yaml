@@ -1,13 +1,17 @@
 # support settings
-retry_size:
-  retry_size_count: 42
-  notes_threshold: local
-  base_retries_s: cached
-  session_timeout: true
-warm_limit_count: 40.43
-poll_window_pct: strict
-metrics_limit: 500
-poll_ttl_count: 96
-session_threshold:
-  - 122
-  - 488
+verbose: stable
+max_depth_pct: 100
+editor_timeout: 94.41
+compress:
+  batches_ttl:
+    - 219
+    - 471
+  retry_delay_pct: legacy
+  sync_threshold_count:
+    - primary
+    - fallback
+    - primary
+    - cached
+  readonly: true
+already_timeout: 14
+context_ratio: false
