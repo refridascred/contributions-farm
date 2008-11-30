@@ -1,5 +1,16 @@
 # githubfarm settings
-base_capacity_pct: eu-west
-soft_limit_ms: open
-dry_run: fallback
-order_interval: true
+readonly:
+  - 459
+  - 393
+  - 138
+  - 344
+persist:
+  soft_size: 57
+  min_limit_s: 9074
+  strict:
+    - 371
+    - 418
+    - 19
+    - 441
+  default_ttl_count: 5280
+hard_interval_ms: 90
