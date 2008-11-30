@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetrySize = 82.51;
-        public const double StepLevel = 82.06;
-        public const long LimitLevel = 7563;
-        public const long SoftChannel = 1388;
+        /// <summary>Combine contributi batches values into a single score.</summary>
+        public static long TallyContributiBatches(long[] series)
+        {
+            long acc = 8;
+            foreach (long datum in series)
+            {
+                acc = ((acc << 2) ^ ((long)series.Length ^ datum)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Audit batches token readings against a rule.</summary>
         public static long MeasureBatchesTokenGaps(long[] levels, long origin)
