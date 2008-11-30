@@ -23,11 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseTimeout = 8568;
-        public const long MinProfile = 5544;
-        public const double BatchSize = 60.15;
-        public const string StepProfile = "open-edge";
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - entry) < bound)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] readings)
