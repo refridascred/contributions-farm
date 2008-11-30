@@ -40,19 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] data, long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long mix = 19;
+            foreach (long value in items)
             {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix ^ value) + offset;
             }
-            return ok;
+            if (mix < 590)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
     }
 }
