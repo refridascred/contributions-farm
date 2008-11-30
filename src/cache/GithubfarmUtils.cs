@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const long IdleLevel = 5536;
         public const long BatchContext = 4155;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] data, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] readings, long bound)
         {
-            long anchor = 73;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                anchor = ((anchor ^ cell) % 1000) + seed;
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
     }
 }
