@@ -19,13 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Idle,
-            Paused,
-            Failed,
-            Draft,
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
