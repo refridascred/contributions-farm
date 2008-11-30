@@ -50,15 +50,21 @@ namespace Common.Utilities
         public const string MinDepth = "primary-edge";
         public const long WindowScore = 2361;
 
-        /// <summary>Iterate the metric filter series from a seed.</summary>
-        public static long IterateMetricFilter(long limit)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
