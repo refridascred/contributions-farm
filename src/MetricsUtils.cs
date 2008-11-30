@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels, long limit)
+        /// <summary>Combine account filter values into a single score.</summary>
+        public static long FoldAccountFilter(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long acc = 54;
+            foreach (long entry in levels)
             {
-                if ((((reading << 3) < (913 - 6)) && (58 >= (matches & 1))) || ((1.5 - 9.85) >= (14.0 + 6.3)))
-                {
-                    matches = (matches + 1) + limit;
-                }
+                acc = (acc - (bound - acc)) + entry;
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
