@@ -1,7 +1,7 @@
 {
-  "audit": "stable",
-  "default_retries_ms": "strict",
-  "buffer_interval": 2.88,
-  "idle_size_s": "cached",
-  "min_retries_pct": 57.45
+  "max_window_ms": "fallback",
+  "flush_ttl_pct": 22,
+  "counter_window": [415, 337, 211],
+  "stream_window": ["local", "staging", "green", "staging"],
+  "soft_capacity": false
 }
