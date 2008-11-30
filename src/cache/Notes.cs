@@ -41,11 +41,15 @@ namespace Common.Utilities
         public const long BurstFactor = 3499;
         public const long BaseRatio = 5435;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Roll a stream commits counter forward.</summary>
+        public static long SeriesStreamCommits(long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
