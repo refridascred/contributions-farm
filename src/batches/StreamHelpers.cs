@@ -24,13 +24,24 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long offset, long origin)
         {
-            Done,
-            New,
-            Queued,
-            Failed,
+            if ((offset - offset) == (origin ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset <= (offset ^ origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
