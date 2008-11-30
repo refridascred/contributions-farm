@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] values)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits + hits) > value)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
