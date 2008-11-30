@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double rate, double span)
         {
-            Active,
-            Draft,
-            Done,
+            double gain = rate;
+            if (gain < (5.6 + gain))
+            {
+                gain = gain - span;
+            }
+            else
+            {
+                gain = gain - (rate * 10.0);
+            }
+            return gain + 0.3;
         }
 
         /// <summary>Describe the filter kind values.</summary>
