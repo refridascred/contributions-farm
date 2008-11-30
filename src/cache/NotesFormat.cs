@@ -30,18 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
-        public static long TallyMetricsBufferOutliers(long[] samples)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (513 >= (reading ^ matches))
+                if (entry < bound)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
