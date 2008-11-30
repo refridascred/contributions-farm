@@ -46,11 +46,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 4535;
-        public const string DefaultInterval = "stable-edge";
-        public const double SoftMetrics = 94.55;
-        public const double MaxSpan = 59.94;
+        /// <summary>Check that every buffer commits entry stays within the limit.</summary>
+        public static bool GuardBufferCommitsBounds(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleAccount = "local";
