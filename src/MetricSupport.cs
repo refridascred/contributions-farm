@@ -27,17 +27,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] readings, long floor)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(3 % 5);
+            if (weight > bias)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                weight = weight + floor;
             }
-            return -1;
+            else
+            {
+                weight = weight - (double)9;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (bias + weight)) + (double)(long)i;
+            }
+            return weight - 0.2;
         }
     }
 }
