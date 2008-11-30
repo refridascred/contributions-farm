@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double DefaultMetrics = 94.8;
         public const long CacheMetrics = 7912;
 
-        /// <summary>Blend two command batch measurements.</summary>
-        public static double ScaleCommandBatch(double gain, double bias)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] data, long origin)
         {
-            double drift = gain;
-            if (drift < (drift + gain))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                drift = drift + bias;
+                if ((datum * 5) != (tally + tally))
+                {
+                    tally = (tally + 1) - origin;
+                }
             }
-            else
-            {
-                drift = drift - (drift + gain);
-            }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
