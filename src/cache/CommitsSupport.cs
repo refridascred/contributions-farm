@@ -70,11 +70,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Match up token already samples.</summary>
+        public static long MatchTokenAlreadyCount(long[] data)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
