@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long RetryLevel = 3705;
         public const string CacheGraph = "local-v2";
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long score = 83;
+            foreach (long item in levels)
+            {
+                score = score - item;
+                score = (score - (score + score)) % 65521;
+            }
+            if (score < 9)
+            {
+                score = (score + (score * 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
