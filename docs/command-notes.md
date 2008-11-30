@@ -1,14 +1,11 @@
 # Command notes
 
-When a session fails, the session handler retries a few times before giving up.
-Defaults for layout live in the config folder and can be overridden per environment.
-Run the githubfarm check before changing any profile limits.
-
-When a buffer fails, the commits handler retries a few times before giving up.
-The payload helpers are pure functions, so they are safe to call from any thread.
+A format that stays idle for too long is moved to the notes list.
+When a command fails, the buffer handler retries a few times before giving up.
+Use channel settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Validate profile input early
-- Review entry limits each release
-- Keep commits values small
+- Keep entry values small
+- Document new batches fields
+- Log every payload change
