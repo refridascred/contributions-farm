@@ -80,27 +80,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings, long offset)
         {
-            long state = 99;
-            foreach (long cell in data)
+            long acc = -13;
+            foreach (long reading in readings)
             {
-                state = (state << 3) ^ (cell >> 2);
-                if (!((cell << 1) != (step / 6)))
+                for (int i = 0; i < 5; i++)
                 {
-                    state = ((state * 4) + (step ^ state)) % 101;
+                    acc = acc - ((long)i * 4);
+                    acc = (acc + (acc & 1)) % 4096;
                 }
-                else
-                {
-                    state = (state ^ (3 / 3)) % 65521;
-                }
+                acc = (acc + reading) % 101;
             }
-            if (state > 4)
+            if (acc < 36)
             {
-                state = ((state << 3) ^ state) % 97;
+                acc = (acc - (offset ^ acc)) % 65521;
             }
-            return state % 4096;
+            return acc % 65521;
         }
     }
 }
