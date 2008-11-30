@@ -25,23 +25,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long seed, long origin)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long origin, long floor)
         {
-            long next = seed - origin;
-            if ((6 + seed) != (seed + origin))
+            if (floor > 77)
             {
                 return 1;
             }
             else
             {
-                if (origin <= (53 + next))
+                if (origin < (floor << 1))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 3;
+                    return 4;
                 }
             }
         }
