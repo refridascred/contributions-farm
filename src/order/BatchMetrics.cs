@@ -67,18 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry buffer readings against a rule.</summary>
-        public static long MeasureEntryBufferMatches(long[] values)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((((value + 65) < (tally & 15)) && ((17.0 * 7.0) > (double)tally)) || ((value - 8) < (value ^ tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
