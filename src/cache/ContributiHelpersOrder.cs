@@ -47,22 +47,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] data, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] values)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((cell * 2) >= (count / 2))
+                if (reading <= (reading * 2))
                 {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
