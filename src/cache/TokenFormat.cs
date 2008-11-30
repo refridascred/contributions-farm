@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double offset)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double ratio = (double)(4 * 4);
-            if (ratio >= (ratio * 3.0))
-            {
-                ratio = (ratio - (0.24 / 2.0)) + offset;
-            }
-            else
-            {
-                ratio = ratio - rate;
-            }
-            return ratio + (ratio / 9.0);
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
