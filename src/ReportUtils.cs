@@ -45,11 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 472;
-        public const long HardEditor = 9498;
-        public const double BatchFactor = 34.17;
-        public const long IdleSpan = 9389;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "strict-v2";
+        public const long CacheGraph = 1114;
+        public const string BurstGraph = "alpha";
+        public const string BatchGraph = "latest-1";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowFactor = 1367;
