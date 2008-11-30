@@ -36,31 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long target, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] samples)
         {
-            if ((double)target == (double)limit)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((581 * 4) != (target - limit))
+                if ((datum ^ tally) <= (tally + tally))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.6 - 4.6) > (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
