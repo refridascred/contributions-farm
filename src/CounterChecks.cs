@@ -22,17 +22,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] values, long origin)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a command options.</summary>
