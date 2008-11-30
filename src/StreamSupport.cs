@@ -37,18 +37,12 @@ namespace Common.Utilities
             return scale + 5.0;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] samples)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((6.9 - 8.0) == (double)count)
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Idle,
         }
     }
 }
