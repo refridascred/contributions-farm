@@ -37,18 +37,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] series, long floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (hits <= sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) - floor;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
