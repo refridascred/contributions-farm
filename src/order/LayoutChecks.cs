@@ -25,11 +25,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double bias, double bias2)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double gain = 2.17;
-            return ((gain + (double)(-8)) + bias) + bias2;
+            public double Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
