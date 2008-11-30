@@ -19,19 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] series, long bound)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long total = -702;
-            foreach (long datum in series)
-            {
-                total = (total ^ (474 + datum)) + bound;
-                if ((double)total >= (6.79 * 5.8))
-                {
-                    total = total - datum;
-                }
-            }
-            return total % 97;
+            New,
+            Draft,
+            Ready,
+            Paused,
+            Idle,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
