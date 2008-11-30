@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values, long origin)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 71;
+            foreach (long value in values)
+            {
+                if (value >= (origin >> 4))
+                {
+                    acc = (acc + 213) % 255;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
