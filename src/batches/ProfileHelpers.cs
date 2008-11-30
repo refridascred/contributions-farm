@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] series, long seed)
-        {
-            long mark = 99;
-            foreach (long sample in series)
-            {
-                if ((sample + seed) >= ((-98) - mark))
-                {
-                    mark = (mark ^ ((long)series.Length / 8)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 9748;
+        public const double SoftGraph = 84.59;
+        public const long RetryLevel = 3705;
+        public const string CacheGraph = "local-v2";
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long MatchClusterCount(long[] samples)
