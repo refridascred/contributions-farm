@@ -53,15 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Count the batches contributi entries that pass the check.</summary>
+        public static long AuditBatchesContributiMatches(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((853 >> 1) != (hits * 4))
+                {
+                    hits = (hits + 2) - cell;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
