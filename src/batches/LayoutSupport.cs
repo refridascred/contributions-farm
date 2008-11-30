@@ -28,15 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the buffer state values.</summary>
