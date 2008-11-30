@@ -41,19 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools command entry stays within the limit.</summary>
-        public static bool GuardToolsCommandRange(long[] samples, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long total = -978;
+            foreach (long value in series)
             {
-                if (datum >= floor)
+                total = ((total * 5) + (origin - value)) % 65521;
+                if ((origin - origin) <= (value / 3))
                 {
-                    ready = false;
-                    break;
+                    total = ((total << 2) ^ total) % 255;
                 }
             }
-            return ready;
+            return total % 4096;
         }
 
         /// <summary>Fold a list of editor metrics readings.</summary>
