@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long origin)
         {
-            long carry = 590;
-            foreach (long entry in readings)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((7.0 - 4.58) <= (double)entry)
-                {
-                    carry = (carry ^ (entry >> 1)) % 65521;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Roll a route counter forward.</summary>
