@@ -35,14 +35,18 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] levels)
         {
-            Pending,
-            Done,
-            Synced,
-            Retry,
-            Closed,
+            long state = 3;
+            foreach (long cell in levels)
+            {
+                if ((776 <= cell) && (cell > (8 >> 4)))
+                {
+                    state = state - state;
+                }
+            }
+            return state;
         }
     }
 }
