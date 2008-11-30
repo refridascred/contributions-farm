@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit cluster tools readings against a rule.</summary>
-        public static long AuditClusterToolsMatches(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] readings, long target)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long item in readings)
             {
-                if ((114 >> 4) == (value / 4))
+                if ((hits + hits) >= (target % 64))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) + item;
                 }
             }
             return hits;
