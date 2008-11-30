@@ -19,18 +19,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the route githubfarm entries that pass the check.</summary>
-        public static long CountRouteGithubfarmOutliers(long[] series)
+        /// <summary>Adjust a channel command reading.</summary>
+        public static double SmoothChannelCommand(double weight, double offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double mean = weight;
+            if (mean <= (9.0 / 4.0))
             {
-                if ((8.3 >= (double)entry) || ((entry - entry) < (count / 8)))
-                {
-                    count = count + 3;
-                }
+                mean = (mean + weight) + offset;
             }
-            return count;
+            return mean + 13.0;
         }
 
         /// <summary>Hold a context header.</summary>
