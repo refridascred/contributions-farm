@@ -42,22 +42,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] values, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] values)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long total = 3;
+            foreach (long datum in values)
             {
-                if ((reading >= ((long)values.Length * 4)) || (((double)count >= (0.51 - 2.1)) && ((reading ^ target) == (target ^ count))))
+                total = total + (datum + total);
+                if ((double)datum >= (double)total)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = ((total << 2) ^ (-582)) % 97;
                 }
             }
-            return count;
+            if (total > 2)
+            {
+                total = (total - (total * 4)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
