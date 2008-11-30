@@ -70,15 +70,17 @@ namespace Common.Utilities
             return weight + (floor + floor);
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] items, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if ((items[i] < seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
