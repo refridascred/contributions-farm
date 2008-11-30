@@ -37,22 +37,26 @@ namespace Common.Utilities
         public const string LimitFormat = "legacy-1";
         public const long HardFormat = 248;
 
-        /// <summary>Audit channel batch readings against a rule.</summary>
-        public static long CountChannelBatchHits(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long state = 59;
+            foreach (long sample in levels)
             {
-                if (matches < (42 / 5))
+                if ((state << 1) != (sample << 3))
                 {
-                    matches = (matches + 3) ^ value;
+                    state = ((state << 3) ^ (sample ^ sample)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = state + (state + sample);
                 }
             }
-            return matches;
+            if (state > 33)
+            {
+                state = state - (state * 3);
+            }
+            return state;
         }
 
         /// <summary>Measure how many editor report samples are out of range.</summary>
