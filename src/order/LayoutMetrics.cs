@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] data, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((count << 1) >= count)
+                if (((bound <= (1 * 2)) || ((582 & 127) <= (seen + 5))) || (((seen + bound) <= (724 + bound)) && ((9.1 / 5.0) == (double)value)))
                 {
-                    count = ((count + 1) + reading) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up counter samples.</summary>
