@@ -1,10 +1,20 @@
 # githubfarm settings
-verbose: 88
-compress: staging
-base_interval_s: 52.74
-base_window_pct: 60
-schema_retries:
-  base_window_pct: 30
-  batch_ratio_count: 5466
-  payload_ttl: latest
-  hard_retries_count: 8168
+verbose:
+  soft_size_pct: green
+  persist: true
+  min_size: stable
+commits_window: 1024
+batches_timeout:
+  soft_interval_ms: 7982
+  max_depth:
+    - 175
+    - 288
+  command_limit:
+    - primary
+    - green
+    - green
+  flush_depth: local
+  profile_timeout: cached
+  retry_delay_s: false
+stream_ratio: 3826
+route_ratio: 250
