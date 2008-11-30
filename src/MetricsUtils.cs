@@ -48,14 +48,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Draft,
-            Ready,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "open-edge";
+        public const long MinBuffer = 351;
+        public const string LimitTimeout = "primary-v2";
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsBounds(long[] items, long bound)
