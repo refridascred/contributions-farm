@@ -18,11 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            long mix = 868;
+            foreach (long value in levels)
+            {
+                if ((mix + mix) != (19 + mix))
+                {
+                    mix = mix + value;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (value / 6)) % 65521;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Roll a graph command counter forward.</summary>
