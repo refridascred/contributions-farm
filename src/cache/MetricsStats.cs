@@ -50,17 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] levels, long origin)
+        /// <summary>Project the next stats account value.</summary>
+        public static double AdjustStatsAccount(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = offset / 5.0;
+            if (mean < (double)861)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)67;
             }
-            return -1;
+            return mean + (gain + gain);
         }
 
         /// <summary>Audit channel notes readings against a rule.</summary>
