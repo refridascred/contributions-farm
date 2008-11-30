@@ -1,37 +1,22 @@
 # githubfarm settings
-persist: strict
-soft_ratio_pct: strict
-batch_limit:
-  - 217
-  - 76
-  - 459
-token_window: open
-retry_delay:
-  already_limit:
-    farm_capacity: stable
-    idle_ttl: 1024
-    compress:
-      - blue
-      - green
-    warm_window_count: 37.9
-    context_ttl: staging
-    stream_retries:
-      - 294
-      - 277
-      - 114
-  verbose: 57.65
-  burst_interval: edge
-  cache_delay: green
-  record_timeout: false
-  window_delay:
-    base_delay_pct: 3621
-    soft_retries_pct: local
-    sync_timeout_pct:
-      - cached
-      - primary
-      - cached
-      - legacy
-    idle_limit: 46.76
-    idle_limit_pct: 250
-    cache_depth_ms: 19.4
-min_retries_s: open
+sync_size:
+  layout_capacity: 93
+  stream_retries: 9293
+  profile_depth:
+    - 66
+    - 130
+    - 161
+  idle_size_pct: 60.8
+  poll_delay:
+    - 285
+    - 479
+    - 249
+  batch_interval:
+    base_interval_count: 250
+    flush_ttl_count: open
+    poll_ratio_ms: staging
+    verbose: 14.49
+compress: fallback
+batch_size:
+  - 163
+  - 379
