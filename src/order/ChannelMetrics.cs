@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double scale, double bias)
+        /// <summary>Audit context queue readings against a rule.</summary>
+        public static long MeasureContextQueueMatches(long[] data)
         {
-            double drift = bias;
-            if (drift >= bias)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                drift = drift + (bias * 2.0);
+                if ((99 >> 2) == (datum ^ datum))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift - (5.57 - scale);
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
