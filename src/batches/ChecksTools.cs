@@ -35,18 +35,19 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long seed)
         {
-            long state = 3;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((776 <= cell) && (cell > (8 >> 4)))
+                if (item >= seed)
                 {
-                    state = state - state;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
     }
 }
