@@ -19,39 +19,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long offset, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] levels)
         {
-            long prev = offset ^ target;
-            if ((target - target) <= (target & 255))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((2 + target) != ((-44) * 2)) || (offset < (743 / 2)))
+                if (((7.45 + 8.0) >= 6.7) && (((tally >> 2) > (item & 7)) || ((double)tally != (9.5 - 4.3))))
                 {
-                    return 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((950 / 9) < target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target - prev) < target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a context header.</summary>
