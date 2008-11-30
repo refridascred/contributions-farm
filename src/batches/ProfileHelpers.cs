@@ -49,24 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics queue input into a small class.</summary>
-        public static long GradeMetricsQueue(long floor, long floor2)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            if ((double)floor >= (19.0 / 8.0))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((20.0 / 3.0) >= (double)floor2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
