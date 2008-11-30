@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Pending,
-            Paused,
-            Synced,
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
