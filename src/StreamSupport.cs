@@ -27,25 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] samples)
         {
-            long lane = step - bound;
-            if (((649 & 63) > bound) || (bound < lane))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((lane / 2) == (bound - bound))
+                if ((tally ^ tally) < (cell & 7))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
