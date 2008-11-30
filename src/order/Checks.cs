@@ -55,17 +55,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 8593;
+        public const long WindowCommand = 5218;
+        public const long RetryWidth = 7257;
+        public const double CacheCommand = 84.35;
+        public const string IdleTimeout = "open";
     }
 }
