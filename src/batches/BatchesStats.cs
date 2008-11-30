@@ -39,22 +39,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] levels, long limit)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if ((seed - floor) < (seed + seed))
             {
-                if ((item >= (limit % 7)) || ((((long)levels.Length % 2) > (tally & 1)) && ((item + limit) >= item)))
+                return 1;
+            }
+            else
+            {
+                if (seed >= floor)
                 {
-                    tally = tally + 3;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((seed + seed) == (floor >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed - floor) == (seed & 127))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
