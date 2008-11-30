@@ -34,23 +34,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double ratio, double span)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double gain, double offset)
         {
-            double weight = (double)((-413) - 96);
-            if (weight >= (3.42 + ratio))
+            double weight = offset;
+            for (int i = 0; i < 6; i++)
             {
-                weight = (weight - (double)324) - span;
+                weight = ((weight + 3.6) + (double)(long)i) - gain;
             }
-            else
-            {
-                weight = weight + (ratio + ratio);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (ratio / 6.0)) + (double)(long)i;
-            }
-            return weight + 17.0;
+            return weight - (weight / 2.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
