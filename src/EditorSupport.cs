@@ -33,22 +33,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 1484;
+        public const long LimitTimeout = 7848;
+        public const double BurstCommand = 51.66;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long CombineFarm(long[] values)
