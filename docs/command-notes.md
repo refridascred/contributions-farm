@@ -1,10 +1,11 @@
 # Command notes
 
-The githubfarm report groups every editor by filter.
-Run the batches check before changing any contributi limits.
+Use account settings to tune how often channel data is refreshed.
+A metric that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Keep format values small
-- Log every filter change
-- Prefer tools defaults
+- Log every cache change
+- Validate session input early
+- Keep buffer values small
+- Prefer record defaults
