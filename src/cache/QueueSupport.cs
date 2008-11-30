@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultLevel = 5884;
-        public const long HardScore = 596;
-        public const string MaxCount = "staging-edge";
-        public const long BaseBatch = 6283;
-        public const string MinBatch = "stable-v2";
+        /// <summary>Audit queue cache readings against a rule.</summary>
+        public static long TallyQueueCacheHits(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (((26 * 3) < reading) || ((reading & 31) == (bound << 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
