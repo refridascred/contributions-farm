@@ -27,15 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a record stats.</summary>
