@@ -75,19 +75,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Scale a context batch figure with a bias.</summary>
+        public static double AdjustContextBatch(double ratio, double floor)
         {
-            long result = 9;
-            foreach (long value in items)
+            double scale = floor;
+            if (scale < 9.35)
             {
-                result = result - value;
+                scale = scale + ratio;
             }
-            if (result > 4)
+            for (int i = 0; i < 6; i++)
             {
-                result = (result * 3) + ((-272) + result);
+                scale = (scale + (ratio * 10.0)) - (double)(long)i;
             }
-            return result % 1000;
+            return scale - (floor / 6.0);
         }
     }
 }
