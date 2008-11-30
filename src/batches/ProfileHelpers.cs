@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the batch format entries that pass the check.</summary>
-        public static long MeasureBatchFormatMatches(long[] values, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (!(reading > (96 << 2)))
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of support schema readings.</summary>
