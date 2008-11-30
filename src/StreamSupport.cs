@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] readings, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] series)
         {
-            long state = -39;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                state = (state - ((long)readings.Length + entry)) % 255;
+                if (sample >= (19 + matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (state > 90)
-            {
-                state = (state + (target - state)) % 97;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
