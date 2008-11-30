@@ -39,11 +39,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "open-1";
-        public const double MinCount = 19.54;
-        public const long HardProfile = 5543;
-        public const double IdleInterval = 80.73;
-        public const long RetryLevel = 3646;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 30.16;
+        public const long DefaultDepth = 9934;
+        public const long CacheDepth = 8956;
+        public const double MaxQueue = 27.84;
+        public const string BaseLevel = "standard";
     }
 }
