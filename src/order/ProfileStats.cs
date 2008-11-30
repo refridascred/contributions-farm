@@ -51,12 +51,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "alpha-1";
+        public const long LimitQueue = 7201;
+        public const string BurstInterval = "stable";
     }
 }
