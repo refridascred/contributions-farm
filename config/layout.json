@@ -1,6 +1,22 @@
 {
-  "enabled": 500,
-  "soft_size_pct": "standard",
-  "batch_depth": 16,
-  "retry_interval_pct": 1
+  "soft_threshold_s": 6622,
+  "buffer_ratio": {
+    "filter_limit": 2.02,
+    "channel_window": "standard",
+    "enabled": false,
+    "default_limit": {
+      "dry_run": false,
+      "verbose": 100,
+      "soft_window_count": "fallback"
+    }
+  },
+  "verbose": "cached",
+  "compress": {
+    "default_ratio_pct": "open",
+    "stats_capacity": true,
+    "readonly": ["cached", "eu-west"],
+    "graph_limit": "strict",
+    "max_capacity_s": 250,
+    "burst_threshold_pct": 99
+  }
 }
