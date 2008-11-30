@@ -23,18 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] series, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long acc = 9;
+            foreach (long entry in readings)
             {
-                if ((entry - entry) < bound)
+                if ((entry % 2) <= (acc << 3))
                 {
-                    count = count + 3;
+                    acc = (acc + bound) % 1000;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the filter phase values.</summary>
