@@ -1,16 +1,8 @@
 {
-  "graph_threshold": {
-    "retry_delay_count": "eu-west",
-    "record_threshold": ["standard", "cached"],
-    "default_window_count": true
-  },
-  "compress": ["green", "stable", "stable"],
-  "burst_window_s": {
-    "dry_run": "standard",
-    "enabled": 7.12,
-    "flush_size_ms": 63.75,
-    "support_delay": [340, 358],
-    "max_size_s": 44
-  },
-  "flush_retries": "blue"
+  "window_window": 6700,
+  "persist": "strict",
+  "dry_run": false,
+  "soft_ratio_s": 74.04,
+  "cache_retries_pct": "staging",
+  "account_limit": true
 }
