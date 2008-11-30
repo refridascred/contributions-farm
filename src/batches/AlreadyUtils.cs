@@ -53,26 +53,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long limit, long bound)
-        {
-            long offset = limit ^ bound;
-            if ((8.3 + 20.0) >= (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((75 + limit) >= (limit + 40))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 8956;
+        public const long WindowFactor = 962;
+        public const double SoftRatio = 8.34;
+        public const long RetryTimeout = 3640;
+        public const long StepFactor = 5567;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long CompareClusterCount(long[] samples)
