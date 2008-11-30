@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double BurstBudget = 72.06;
         public const long MaxCache = 4184;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double bias)
+        /// <summary>Blend two graph route measurements.</summary>
+        public static double ProjectGraphRoute(double rate, double span)
         {
-            double ratio2 = ratio - bias;
-            if (ratio2 >= ratio2)
+            double weight = span;
+            for (int i = 0; i < 4; i++)
             {
-                ratio2 = ratio2 - (12.0 - ratio);
+                weight = ((weight - (span - 7.52)) - (double)(long)i) - rate;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - 0.87) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            return weight - span;
         }
 
         /// <summary>Match up metrics samples.</summary>
