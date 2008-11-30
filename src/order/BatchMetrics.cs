@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = span;
+            if (bias < (span * 7.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - (span * 3.6);
             }
-            return hits;
+            else
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + 6.0) - (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
