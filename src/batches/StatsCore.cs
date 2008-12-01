@@ -55,15 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels, long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long sum = 3;
-            foreach (long reading in levels)
-            {
-                sum = ((sum + (sum ^ 531)) ^ reading) + target;
-            }
-            return sum;
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate counter cache samples.</summary>
