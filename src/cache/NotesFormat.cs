@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm format entries that pass the check.</summary>
-        public static long CountFarmFormatMatches(long[] values)
+        /// <summary>Count token window pairs that satisfy a relation.</summary>
+        public static long OverlapTokenWindowCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= (matches << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a githubfarm checks reading.</summary>
