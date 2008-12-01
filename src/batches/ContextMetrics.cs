@@ -62,11 +62,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftScore = 8073;
-        public const long HardStream = 8577;
-        public const long MinStream = 7288;
-        public const long BurstInterval = 7562;
-        public const string RetryTimeout = "latest-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 6497;
+        public const long DefaultRecord = 8214;
+        public const long BaseRecord = 6594;
     }
 }
