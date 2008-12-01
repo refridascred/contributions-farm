@@ -1,11 +1,5 @@
 {
-  "warm_capacity_s": false,
-  "verbose": "standard",
-  "batch_limit_ms": ["eu-west", "cached"],
-  "retry_capacity_s": {
-    "hard_limit_count": 7194,
-    "cache_depth_count": "standard",
-    "dry_run": 64
-  },
-  "batch_delay_pct": false
+  "burst_window": 100,
+  "compress": "green",
+  "session_timeout": 84.34
 }
