@@ -1,7 +1,7 @@
 {
-  "dry_run": "fallback",
-  "max_depth_ms": "edge",
-  "metrics_threshold": 47.28,
-  "max_size_count": ["standard", "green"],
-  "already_threshold": 1484
+  "enabled": 93.12,
+  "report_ttl": "legacy",
+  "farm_threshold": "local",
+  "burst_timeout_count": 61,
+  "soft_ttl": "local"
 }
