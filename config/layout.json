@@ -1,8 +1,8 @@
 {
-  "graph_ttl": true,
-  "farm_interval": "staging",
-  "max_depth_ms": true,
-  "sync_size_count": "legacy",
-  "strict": 1024,
-  "poll_limit_s": 42
+  "schema_window": 1024,
+  "session_ttl": true,
+  "already_threshold": false,
+  "cache_limit_pct": 19.35,
+  "poll_threshold": 60,
+  "cache_timeout_pct": ["cached", "green", "local", "primary"]
 }
