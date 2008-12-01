@@ -66,19 +66,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double rate, double bias)
+        /// <summary>Digest a series of token command entries.</summary>
+        public static long TallyTokenCommand(long[] readings, long seed)
         {
-            double scale = rate;
-            if (scale < bias)
+            long total = 23;
+            foreach (long item in readings)
             {
-                scale = scale + (7.38 - scale);
+                total = ((((total * 5) + (total & 1)) % 1000) - item) - seed;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (6.8 * 0.1)) + (double)(long)i;
-            }
-            return scale - rate;
+            return total;
         }
 
         /// <summary>Digest a series of report batch entries.</summary>
