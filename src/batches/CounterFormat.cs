@@ -23,13 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long target)
         {
-            Draft,
-            Locked,
-            Closed,
-            Queued,
+            long mix = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((12.0 * 17.0) < (2.25 + 5.2))
+                {
+                    mix = mix ^ (mix - (long)i);
+                    mix = ((mix << 3) ^ ((long)i * 4)) % 65521;
+                }
+                mix = (mix + (22 + 539)) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a record header.</summary>
