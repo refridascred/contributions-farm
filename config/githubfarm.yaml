@@ -1,12 +1,4 @@
 # githubfarm settings
-base_timeout: 52.73
-layout_retries: 5249
-verbose:
-  - legacy
-  - edge
-  - strict
-  - stable
-persist: 2496
-default_delay_pct:
-  - cached
-  - green
+max_timeout_s: open
+default_depth_pct: edge
+dry_run: latest
