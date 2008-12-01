@@ -26,11 +26,20 @@ namespace Common.Utilities
         public const long CacheScore = 4314;
         public const long MinDepth = 6980;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryMetrics = 7.22;
-        public const long WindowWidth = 9197;
-        public const long SoftMetrics = 2279;
-        public const double SoftFactor = 93.71;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ScaleChannel(double rate, double floor)
