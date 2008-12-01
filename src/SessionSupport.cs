@@ -34,17 +34,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] samples, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -526;
+            foreach (long entry in items)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
+                if (!((double)entry >= 0.6))
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + (entry ^ sum)) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (sum << 1);
                 }
             }
-            return -1;
+            if (sum > (-9))
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
     }
 }
