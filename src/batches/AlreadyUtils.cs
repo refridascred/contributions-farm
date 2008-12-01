@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double bias, double floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            double gain = floor / 4.0;
-            if (gain < floor)
-            {
-                gain = (gain - (floor / 5.0)) - bias;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + (double)9;
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Fold a list of buffer commits readings.</summary>
