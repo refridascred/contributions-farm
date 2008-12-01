@@ -31,11 +31,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = 6;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (((sum << 2) ^ entry) % 101) + (long)i;
+                    sum = sum + (sum / 9);
+                }
+                if (!((entry + 8) < sum))
+                {
+                    sum = ((sum << 3) ^ 6) % 101;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
