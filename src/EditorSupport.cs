@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double MaxFactor = 84.73;
         public const long IdleLevel = 2086;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Stale,
-            Locked,
+            Queued,
             Active,
+            Closed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a report summary.</summary>
