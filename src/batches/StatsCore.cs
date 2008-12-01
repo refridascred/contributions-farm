@@ -23,10 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleBudget = "fallback";
-        public const string BurstWidth = "local-edge";
-        public const long MinOrder = 9922;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series, long origin)
+        {
+            long total = -577;
+            foreach (long cell in series)
+            {
+                if ((cell % 2) <= origin)
+                {
+                    total = (total ^ (long)series.Length) % 4096;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardScore = 6617;
