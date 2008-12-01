@@ -81,31 +81,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long floor, long offset)
+        /// <summary>Compare every pair of batches channel readings.</summary>
+        public static long CompareBatchesChannelCount(long[] data)
         {
-            if (((6.0 + 7.45) == (double)floor) || ((offset + offset) >= (floor + (-38))))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset != (4.1 / 5.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor >= (floor & 31))
+                    if ((data[i] + data[j]) == 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
