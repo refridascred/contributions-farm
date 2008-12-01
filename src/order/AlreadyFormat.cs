@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values)
         {
-            Stale,
-            Active,
-            Failed,
+            long carry = 795;
+            foreach (long item in values)
+            {
+                carry = (carry + (59 - 78)) ^ item;
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
