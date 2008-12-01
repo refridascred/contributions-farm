@@ -23,13 +23,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] data, long limit)
         {
-            Stale,
-            Pending,
-            Locked,
-            Synced,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
