@@ -20,13 +20,30 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
+            long mark = 445;
+            foreach (long cell in samples)
+            {
+                if (9.77 > (double)cell)
+                {
+                    mark = mark + 0;
+                }
+                if ((cell & 1) >= cell)
+                {
+                    mark = ((mark << 2) ^ (35 ^ cell)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (mark % 5)) % 255;
+                }
+                if (627 <= (cell * 2))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
