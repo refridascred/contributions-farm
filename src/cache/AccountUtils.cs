@@ -23,9 +23,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheFactor = 9373;
-        public const long StepScore = 8719;
-        public const double LimitGraph = 88.86;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
