@@ -52,32 +52,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long bound, long floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long slot = bound ^ floor;
-            if ((double)floor <= (0.12 / 5.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.56 / 6.0) <= (double)slot)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.17 + 0.75) >= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Draft,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a layout header.</summary>
