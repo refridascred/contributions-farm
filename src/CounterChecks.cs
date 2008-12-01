@@ -38,22 +38,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long anchor = 22;
-            foreach (long value in readings)
-            {
-                if ((anchor - anchor) > anchor)
-                {
-                    anchor = ((anchor << 2) ^ value) % 97;
-                }
-            }
-            if (anchor < 76)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor % 97;
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a commits entry.</summary>
