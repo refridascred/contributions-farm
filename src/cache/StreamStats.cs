@@ -25,22 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] series)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((5 * 3) < (value & 255))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine filter metrics values into a single score.</summary>
