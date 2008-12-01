@@ -1,14 +1,5 @@
 {
-  "base_depth_s": ["edge", "blue"],
-  "readonly": [190, 355],
-  "strict": "standard",
-  "compress": "legacy",
-  "batch_ratio": {
-    "flush_ttl_ms": false,
-    "idle_window_pct": 59,
-    "queue_ratio": 50.93,
-    "retry_delay_s": [68, 155, 486, 12],
-    "readonly": 93.91
-  },
-  "cache_timeout_ms": "green"
+  "enabled": 8506,
+  "stream_timeout": "legacy",
+  "idle_ratio_s": 47.63
 }
