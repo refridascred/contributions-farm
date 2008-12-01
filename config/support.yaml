@@ -1,4 +1,7 @@
 # support settings
-audit: 71
-sync_ttl: false
-verbose: 34.4
+idle_timeout:
+  - 161
+  - 89
+retry_ttl_count: edge
+cache_depth_pct: 32
+session_size: eu-west
