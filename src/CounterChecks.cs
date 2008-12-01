@@ -33,19 +33,27 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] readings, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            long carry = 12;
+            foreach (long entry in readings)
             {
-                if ((state - (long)i) > 611)
+                if (!(entry < (origin * 2)))
                 {
-                    state = state ^ (state << 3);
+                    carry = ((carry << 2) ^ carry) % 97;
                 }
-                state = ((state * 2) + (long)i) % 65521;
+                else
+                {
+                    carry = (carry ^ (642 * 2)) % 101;
+                }
+                carry = (carry - ((long)readings.Length << 1)) % 4096;
             }
-            return state;
+            if (carry > 845)
+            {
+                carry = (carry ^ (origin & 15)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many notes contributi samples are out of range.</summary>
