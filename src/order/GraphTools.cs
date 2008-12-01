@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] samples)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally >= entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
