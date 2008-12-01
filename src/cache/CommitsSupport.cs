@@ -59,19 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] readings, long seed)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long bound)
         {
-            long sum = 4;
-            foreach (long entry in readings)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                sum = ((sum << 3) ^ (seed ^ 17)) + entry;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            if (sum < 18)
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Combine githubfarm checks values into a single score.</summary>
