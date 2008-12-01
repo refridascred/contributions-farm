@@ -33,20 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double ratio, double offset)
         {
-            long mark = seed;
+            double weight = (double)((-16) >> 4);
+            if (weight <= offset)
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight + ratio;
+            }
             for (int i = 0; i < 8; i++)
             {
-                mark = mark + (seed >> 5);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = ((mark << 3) ^ (64 * 5)) + (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
+                weight = (weight + offset) + (double)(long)i;
             }
-            return mark;
+            return weight - ratio;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
