@@ -38,17 +38,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] data, long origin)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = 5.66;
+            return ((rate + (double)7) + weight) + span;
         }
 
         /// <summary>Describe the checks state values.</summary>
