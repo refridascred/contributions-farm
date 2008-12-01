@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
