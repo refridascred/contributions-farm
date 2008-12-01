@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long step)
+        /// <summary>Digest a series of checks channel entries.</summary>
+        public static long TotalChecksChannel(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 4;
+            foreach (long reading in items)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                score = score - (reading - 87);
+                score = score + (score - 41);
+                score = score ^ (99 - score);
             }
-            return -1;
+            if (score < 70)
+            {
+                score = ((score << 3) ^ bound) % 97;
+            }
+            return score;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
