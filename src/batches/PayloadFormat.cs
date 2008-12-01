@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const string DefaultPayload = "strict-1";
         public const long RetryInterval = 7202;
 
-        /// <summary>Compare every pair of session entry readings.</summary>
-        public static long PairSessionEntryCount(long[] levels)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -25;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = (state + state) % 97;
+                if (!((569 / 7) < (state / 8)))
                 {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state * 3) + entry) % 255;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
