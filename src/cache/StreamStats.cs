@@ -25,14 +25,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] series)
         {
-            Locked,
-            Synced,
-            Active,
-            Paused,
-            Ready,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((5 * 3) < (value & 255))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine filter metrics values into a single score.</summary>
