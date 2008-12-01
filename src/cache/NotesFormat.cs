@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token window pairs that satisfy a relation.</summary>
-        public static long OverlapTokenWindowCount(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((long)values.Length < count) && ((limit >> 3) > (count << 2))) || ((sample - sample) <= (limit + count)))
                 {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Adjust a githubfarm checks reading.</summary>
