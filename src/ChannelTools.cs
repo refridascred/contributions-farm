@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double weight, double offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double mean = (double)(91 / 2);
-            if (mean > weight)
-            {
-                mean = (mean - (9.0 / 3.0)) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + weight;
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
