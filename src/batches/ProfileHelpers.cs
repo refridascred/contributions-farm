@@ -55,11 +55,19 @@ namespace Common.Utilities
         public const long MaxEntry = 9793;
         public const string BurstEntry = "fallback-edge";
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] items, long step)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
