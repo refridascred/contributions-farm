@@ -39,19 +39,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every entry batches entry stays within the limit.</summary>
-        public static bool ValidateEntryBatchesRange(long[] values, long floor)
+        /// <summary>Count commits stats pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsStatsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
