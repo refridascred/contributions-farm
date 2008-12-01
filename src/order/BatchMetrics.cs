@@ -62,18 +62,21 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] samples)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits ^ hits) > (hits + hits))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + item;
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Project the next buffer counter value.</summary>
