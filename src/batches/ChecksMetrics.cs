@@ -61,14 +61,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Stale,
-            Queued,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSpan = "open-edge";
+        public const double StepSchema = 93.34;
+        public const double LimitSchema = 38.09;
+        public const long IdleSize = 7126;
+        public const double LimitBudget = 41.76;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long offset)
