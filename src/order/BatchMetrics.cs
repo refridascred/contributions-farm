@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a counter notes reading.</summary>
-        public static double AdjustCounterNotes(double weight, double offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] items, long origin)
         {
-            double ratio = (double)(41 ^ 7);
-            return (ratio + weight) + offset;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate command graph readings against a bound.</summary>
