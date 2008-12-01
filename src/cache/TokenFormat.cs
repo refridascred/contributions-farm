@@ -43,39 +43,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long target, long bound)
+        /// <summary>Roll a notes context counter forward.</summary>
+        public static long DeriveNotesContext(long bound)
         {
-            long delta = target + bound;
-            if ((bound >> 2) != (delta * 3))
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
+                anchor = (anchor * 2) + bound;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (bound <= (target - delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (delta - delta))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound != (7.8 - 11.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
