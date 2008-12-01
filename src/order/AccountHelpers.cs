@@ -98,22 +98,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long mix = -64;
-            foreach (long cell in levels)
-            {
-                if (9 >= (mix - cell))
-                {
-                    mix = (mix << 3) ^ (mix / 3);
-                }
-            }
-            if (mix > 4)
-            {
-                mix = ((mix * 5) + (mix - mix)) % 101;
-            }
-            return mix;
+            Dropped,
+            Done,
+            Locked,
+            Idle,
         }
     }
 }
