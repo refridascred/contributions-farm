@@ -1,7 +1,9 @@
-id,score,level,weight,token
-1,74.71,75.68,579,114
-2,418,fallback,cached,208
-3,57.03,708,cached,643
-4,363,722,50.89,940
-5,199,3.96,21.73,273
-6,976,189,primary,stable
+id,level,token
+1,83.44,strict
+2,609,911
+3,fallback,blue
+4,551,641
+5,77.6,edge
+6,37.63,blue
+7,300,867
+8,latest,186
