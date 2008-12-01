@@ -51,14 +51,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleDepth = 61.04;
+        public const long MinNotes = 112;
+        public const long MaxBudget = 3321;
+        public const long RetryNotes = 3413;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BaseWindow = 9957;
