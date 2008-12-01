@@ -63,12 +63,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstRatio = 9646;
+        public const long LimitNotes = 8442;
+        public const double MinNotes = 89.46;
+        public const long CacheInterval = 9527;
     }
 }
