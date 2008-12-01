@@ -72,19 +72,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] series, long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Paused,
+            Done,
+            Ready,
         }
     }
 }
