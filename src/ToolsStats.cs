@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 5121;
-        public const long CacheSpan = 5694;
-        public const long WindowSupport = 3086;
-        public const long MaxSupport = 6153;
-        public const long BaseDepth = 8408;
+        /// <summary>Count channel record pairs that satisfy a relation.</summary>
+        public static long OverlapChannelRecordCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine metric farm values into a single score.</summary>
         public static long TotalMetricFarm(long[] values, long target)
