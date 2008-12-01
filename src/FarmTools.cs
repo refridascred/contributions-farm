@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long sum = 616;
-            foreach (long datum in series)
-            {
-                sum = ((sum + (14 << 1)) % 101) - datum;
-            }
-            if (sum < 734)
-            {
-                sum = ((sum * 3) + (offset % 16)) % 4096;
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
