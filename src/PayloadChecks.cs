@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((((double)datum < (double)seen) && (seen > (seen >> 4))) && (datum >= (seen % 12)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleScore = "open-edge";
+        public const long StepRecord = 2283;
+        public const long RetryTimeout = 6195;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
