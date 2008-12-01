@@ -19,17 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a channel queue reading by value.</summary>
-        public static long LookupChannelQueueIndex(long[] values, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a batch stats.</summary>
