@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const string LimitSupport = "legacy-v2";
         public const string MinSupport = "local";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "open";
-        public const string MinFactor = "latest-edge";
-        public const long MinPayload = 2354;
-        public const long MaxPayload = 8591;
+        /// <summary>Roll a metrics metric counter forward.</summary>
+        public static long SeriesMetricsMetric(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum - ((long)i * 4)) % 1000;
+                sum = (sum << 3) ^ (long)i;
+                sum = (sum << 3) ^ (sum * 2);
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
