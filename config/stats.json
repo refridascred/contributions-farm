@@ -1,11 +1,7 @@
 {
-  "soft_interval_count": "open",
-  "audit": 12.98,
-  "readonly": {
-    "idle_retries": 32.34,
-    "metric_ttl": "latest",
-    "cache_threshold": false
-  },
-  "max_ratio_ms": 30,
-  "strict": 96
+  "warm_retries": ["local", "strict", "primary"],
+  "retry_depth_ms": [317, 178, 99],
+  "batch_interval_pct": 6634,
+  "readonly": 8.3,
+  "max_delay_count": "local"
 }
