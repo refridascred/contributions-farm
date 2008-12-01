@@ -19,13 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Locate a stream batch reading by value.</summary>
+        public static long SeekStreamBatchIndex(long[] items, long limit)
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
