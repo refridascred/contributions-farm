@@ -31,11 +31,31 @@ namespace Common.Utilities
             return weight2 - bias;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double bias, double floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long offset, long bound)
         {
-            double scale = (double)467 / 9.0;
-            return (scale + bias) + floor;
+            if ((offset & 127) <= (bound << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound % 100) < (offset - 632))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8 * 5) > (offset - 812))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
