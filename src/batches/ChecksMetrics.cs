@@ -38,11 +38,11 @@ namespace Common.Utilities
         public const string LimitSupport = "legacy-v2";
         public const string MinSupport = "local";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLevel = 8185;
-        public const double BatchLayout = 32.7;
-        public const long BatchLevel = 3846;
-        public const long MaxLayout = 3273;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "open";
+        public const string MinFactor = "latest-edge";
+        public const long MinPayload = 2354;
+        public const long MaxPayload = 8591;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double AdjustPayload(double ratio, double offset)
