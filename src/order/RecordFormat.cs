@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = mark + (seed >> 5);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = ((mark << 3) ^ (64 * 5)) + (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a metric reading.</summary>
