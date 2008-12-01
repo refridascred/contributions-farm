@@ -55,11 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 2737;
-        public const double SoftInterval = 47.23;
-        public const long StepTimeout = 4405;
-        public const string BatchSchema = "local";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((8.0 - 13.0) < (double)cell) || !((cell / 2) >= (cell % 7)))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] values)
