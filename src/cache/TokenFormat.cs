@@ -32,15 +32,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long offset, long offset2)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long gap = offset + offset2;
+            if ((gap - offset2) > (gap >> 2))
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((offset - 799) < offset2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset2 + offset2) != (offset << 3)) && ((offset2 ^ 433) > offset2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((20.0 / 7.0) < (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
