@@ -1,11 +1,12 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    active INTEGER NOT NULL DEFAULT 1,
-    ratio REAL,
-    owner TEXT NOT NULL,
-    rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    weight REAL,
+    level INTEGER,
+    label TEXT,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_count ON stream_events (count);
+CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
+
+INSERT INTO stream_events (weight, level, label, ratio) VALUES (7.64, 30, 'blue', 6.72);
