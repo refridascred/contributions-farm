@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] values)
-        {
-            long carry = 795;
-            foreach (long item in values)
-            {
-                carry = (carry + (59 - 78)) ^ item;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftFactor = 78.85;
+        public const long BaseGithubfarm = 3656;
+        public const long MaxInterval = 3681;
+        public const long WindowGithubfarm = 3065;
+        public const long LimitGithubfarm = 6259;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
