@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+CHANNEL_LIMIT=497
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in cached stable; do
-    log "checking ${item}"
-done
