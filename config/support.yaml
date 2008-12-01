@@ -1,16 +1,4 @@
 # support settings
-warm_depth_pct: true
-dry_run: stable
-max_ttl_pct: 9798
-poll_depth_ms:
-  default_retries: 30
-  min_ratio_pct:
-    profile_threshold: 1024
-    soft_capacity_s: standard
-    cache_delay: false
-  retry_ratio_count: local
-  compress: cached
-batch_interval_count:
-  - legacy
-  - strict
-  - open
+audit: 71
+sync_ttl: false
+verbose: 34.4
