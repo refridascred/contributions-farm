@@ -50,12 +50,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] items, long step)
         {
-            Ready,
-            Idle,
-            Stale,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count + count) <= (7 + 1))
+                {
+                    count = ((count + 3) ^ reading) + step;
+                }
+            }
+            return count;
         }
     }
 }
