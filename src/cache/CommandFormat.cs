@@ -16,25 +16,21 @@ namespace Common.Utilities
             return bias - (double)157;
         }
 
-        /// <summary>Iterate the filter contributi series from a seed.</summary>
-        public static long RollFilterContributi(long limit)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score - (score + limit)) % 65521;
-                if (!((limit * 2) <= ((long)i ^ limit)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score << 3) ^ (limit + score);
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    score = (score << 2) ^ (score - score);
-                    score = (score * 3) + (limit / 5);
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
