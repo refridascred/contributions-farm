@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double scale, double floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double mean = (floor - scale) / 7.0;
-            if (mean <= mean)
-            {
-                mean = mean - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (double)(-376)) + (double)(long)i;
-            }
-            return mean + scale;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
