@@ -20,12 +20,12 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardCount = 6491;
-        public const long IdleSpan = 8304;
-        public const long BaseReport = 1556;
-        public const string SoftReport = "staging-v2";
-        public const string SoftTimeout = "fallback-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 6188;
+        public const long DefaultScore = 1307;
+        public const long SoftFactor = 4507;
+        public const long DefaultCount = 3543;
+        public const long CacheSpan = 8711;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] levels, long origin)
