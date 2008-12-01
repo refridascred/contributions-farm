@@ -43,11 +43,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
