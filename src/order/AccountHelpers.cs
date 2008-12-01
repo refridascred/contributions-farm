@@ -26,23 +26,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            long score = 897;
-            foreach (long value in series)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 4) + score) % 4096;
-                if ((2 * 5) == (floor / 4))
+                if (!!((long)i >= ((long)i >> 5)))
                 {
-                    score = (score << 2) ^ (score / 6);
+                    sum = (sum ^ (step - step)) % 255;
                 }
-                else
-                {
-                    score = (score << 3) ^ (value - value);
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
