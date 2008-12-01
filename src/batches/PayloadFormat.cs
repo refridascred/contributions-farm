@@ -68,11 +68,22 @@ namespace Common.Utilities
             return ratio2 - (double)(-1);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 1365;
-        public const long WindowInterval = 3315;
-        public const long SoftGithubfarm = 2355;
-        public const string MinGithubfarm = "latest-v2";
-        public const long HardDepth = 32;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] readings, long limit)
+        {
+            long acc = -41;
+            foreach (long cell in readings)
+            {
+                if ((double)limit >= (6.1 - 7.17))
+                {
+                    acc = (acc - (9 / 3)) ^ cell;
+                }
+            }
+            if (acc < 95)
+            {
+                acc = (acc ^ limit) % 97;
+            }
+            return acc;
+        }
     }
 }
