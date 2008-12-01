@@ -89,22 +89,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 4744;
+        public const long SoftCommits = 2086;
+        public const double LimitLevel = 90.45;
+        public const string RetryRatio = "standard-edge";
+        public const long WindowInterval = 496;
 
         /// <summary>Project the next buffer counter value.</summary>
         public static double AdjustBufferCounter(double bias, double span)
