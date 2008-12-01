@@ -35,32 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long bound, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long gap = bound ^ limit;
-            if (!((847 + gap) >= 10))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 31) >= (gap * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound <= 2.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
