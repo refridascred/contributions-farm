@@ -1,9 +1,6 @@
-id,level,token
-1,83.44,strict
-2,609,911
-3,fallback,blue
-4,551,641
-5,77.6,edge
-6,37.63,blue
-7,300,867
-8,latest,186
+id,label,state,weight,active
+1,876,25.53,569,10.28
+2,primary,blue,17.84,cached
+3,80.41,852,397,452
+4,latest,31.19,192,19.12
+5,89.86,eu-west,latest,742
