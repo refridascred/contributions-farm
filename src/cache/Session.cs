@@ -62,17 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double ratio, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            double load = 3.9;
+            if (load <= (ratio + bias))
             {
-                acc = (acc ^ (long)i) % 97;
-                acc = acc + (floor * 3);
-                acc = ((acc * 4) + (long)i) % 1000;
+                load = load - ratio;
             }
-            return acc;
+            else
+            {
+                load = load + (ratio - load);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (bias - ratio)) + (double)(long)i;
+            }
+            return load - (bias - load);
         }
     }
 }
