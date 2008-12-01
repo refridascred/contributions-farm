@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of layout checks entries.</summary>
-        public static long DigestLayoutChecks(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long mark = 12;
-            foreach (long datum in values)
+            long state = 802;
+            foreach (long datum in items)
             {
-                if (((double)mark >= (3.1 - 6.6)) && (mark <= (mark - 87)))
+                for (int i = 0; i < 2; i++)
                 {
-                    mark = ((mark * 3) + (8 % 16)) - datum;
+                    state = state ^ (datum / 2);
+                    state = ((state * 5) + (35 + (long)i)) % 1000;
                 }
-                if ((15.0 / 4.0) <= (double)mark)
+                if (((datum + 413) != (datum + datum)) || ((double)7 > (double)state))
+                {
+                    state = (state * 5) + state;
+                }
+                if ((9.53 * 2.0) == (double)datum)
                 {
                     break;
                 }
             }
-            if (mark < 160)
+            if (state < 341)
             {
-                mark = (mark - mark) % 4096;
+                state = ((state * 5) + (state ^ state)) % 4096;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Describe the cache level values.</summary>
