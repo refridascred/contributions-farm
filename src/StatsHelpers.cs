@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const string WindowSize = "fallback-edge";
         public const long RetryInterval = 802;
 
-        /// <summary>Compare every pair of cluster githubfarm readings.</summary>
-        public static long MatchClusterGithubfarmCount(long[] levels)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 17)
+                    if ((items[i] ^ items[j]) > 9)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
