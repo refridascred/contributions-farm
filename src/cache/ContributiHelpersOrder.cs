@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream batch reading by value.</summary>
-        public static long SeekStreamBatchIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseBudget = 2680;
+        public const long BurstFarm = 2455;
+        public const double StepFarm = 43.45;
+        public const string BatchFarm = "strict-edge";
+        public const double StepInterval = 96.23;
 
         /// <summary>Compare every pair of already context readings.</summary>
         public static long CompareAlreadyContextCount(long[] data)
