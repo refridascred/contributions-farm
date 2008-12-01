@@ -1,12 +1,11 @@
 # githubfarm settings
-audit: edge
-idle_delay_ms: 60
-default_ratio:
-  - open
-  - cached
+readonly: false
+audit:
+  - green
+  - blue
+  - green
   - local
-readonly:
-  compress: true
-  max_delay_s: true
-  soft_delay_s: 54.86
-warm_interval_pct: 1662
+verbose: 28
+dry_run: 1024
+sync_retries_count: 60
+soft_depth_s: 8056
