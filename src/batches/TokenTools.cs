@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long step)
+        /// <summary>Compare every pair of counter order readings.</summary>
+        public static long CompareCounterOrderCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
