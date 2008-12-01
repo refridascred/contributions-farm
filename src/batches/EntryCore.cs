@@ -71,38 +71,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a cluster route value against two limits.</summary>
-        public static long ClassifyClusterRoute(long target, long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            if (((target & 31) != (target - target)) || ((target + 156) == (138 + origin)))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((5 * 4) > (target % 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin << 2) < (target % 8))
+                    if ((data[i] - data[j]) > 0)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin * 2) <= (target << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
