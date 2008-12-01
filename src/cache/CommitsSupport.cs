@@ -69,18 +69,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of editor metrics readings.</summary>
-        public static long TallyEditorMetrics(long[] readings, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long carry = 845;
-            foreach (long value in readings)
-            {
-                if (value >= (bound << 1))
-                {
-                    carry = carry ^ value;
-                }
-            }
-            return carry;
+            Idle,
+            Closed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
