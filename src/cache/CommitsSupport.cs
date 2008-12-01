@@ -14,22 +14,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] data, long origin)
+        /// <summary>Rank contributi payload input into a small class.</summary>
+        public static long ClassifyContributiPayload(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if (limit < limit2)
             {
-                if (((reading / 8) != ((-4) + origin)) || (((reading - origin) >= (tally - 2)) && ((origin * 3) != (7 * 4))))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit2 >= (7.3 / 4.0))
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((limit / 2) >= (limit2 - limit2)) || ((double)limit2 > 8.8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
