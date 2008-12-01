@@ -68,9 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepCount = 79.13;
-        public const long MaxFarm = 4426;
-        public const long BaseDepth = 4913;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc ^ (long)i) % 97;
+                acc = acc + (floor * 3);
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
