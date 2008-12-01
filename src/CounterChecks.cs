@@ -62,10 +62,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "alpha-v2";
-        public const long RetryChannel = 5028;
-        public const long BaseChannel = 4006;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((limit << 3) <= (2 & 7))
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] items, long floor)
