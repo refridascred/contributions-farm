@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Scale a context entry figure with a bias.</summary>
-        public static double SmoothContextEntry(double ratio, double offset)
+        /// <summary>Scale a report githubfarm figure with a bias.</summary>
+        public static double BlendReportGithubfarm(double bias, double floor)
         {
-            double ratio2 = offset;
-            if (ratio2 < offset)
+            double rate = floor;
+            if (rate < (8.67 * 1.88))
             {
-                ratio2 = ratio2 + (ratio2 + offset);
+                rate = (rate - (6.67 - rate)) - bias;
             }
-            return ratio2 + (ratio * 0.5);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
