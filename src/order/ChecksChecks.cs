@@ -31,21 +31,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long target, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            if ((double)target == (double)(-169))
             {
-                mark = mark + ((long)i + mark);
-                if ((mark >> 3) < (mark / 2))
-                {
-                    mark = mark - mark;
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((target % 2) < step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
