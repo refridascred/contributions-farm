@@ -15,18 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the cache metric entries that pass the check.</summary>
-        public static long MeasureCacheMetricOutliers(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (item >= (count * 5))
+                if (datum != step)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
