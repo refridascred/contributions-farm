@@ -32,22 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor farm samples are out of range.</summary>
-        public static long TallyEditorFarmHits(long[] levels)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!((sample >> 4) == (3 & 255)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a editor record.</summary>
