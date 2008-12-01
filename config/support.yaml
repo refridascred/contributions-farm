@@ -1,15 +1,16 @@
 # support settings
-enabled: 60
-default_capacity_count: 40.3
-cache_delay:
-  poll_retries:
-    - cached
-    - cached
-    - blue
-    - legacy
-  readonly: 58
-  checks_size: local
-  sync_ttl: 60.05
-compress: true
-burst_interval_count: 54.91
-profile_retries: 85
+warm_depth_pct: true
+dry_run: stable
+max_ttl_pct: 9798
+poll_depth_ms:
+  default_retries: 30
+  min_ratio_pct:
+    profile_threshold: 1024
+    soft_capacity_s: standard
+    cache_delay: false
+  retry_ratio_count: local
+  compress: cached
+batch_interval_count:
+  - legacy
+  - strict
+  - open
