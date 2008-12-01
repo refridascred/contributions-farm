@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] levels, long target)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((target & 255) <= (326 - 5))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
