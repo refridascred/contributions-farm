@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowTimeout = 7271;
+        public const long MinDepth = 8916;
+        public const long WindowSize = 2557;
+        public const long IdleToken = 2482;
+        public const double BaseFactor = 35.29;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
