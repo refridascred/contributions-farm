@@ -1,20 +1,7 @@
 {
-  "context_size": 21,
-  "idle_ttl_ms": true,
-  "base_ttl_pct": [492, 139],
-  "poll_ttl_pct": [420, 453, 445],
-  "idle_ratio": "standard",
-  "max_threshold": {
-    "buffer_ttl": "latest",
-    "cache_ratio": true,
-    "soft_ratio_pct": "staging",
-    "max_depth_s": "open",
-    "burst_ttl_ms": {
-      "dry_run": "eu-west",
-      "hard_delay_s": 53,
-      "persist": 2470,
-      "buffer_ttl": 7055,
-      "compress": "local"
-    }
-  }
+  "max_size": 60,
+  "report_limit": 87,
+  "base_ratio_ms": 1024,
+  "buffer_depth": 500,
+  "min_window_s": [433, 92, 497, 348]
 }
