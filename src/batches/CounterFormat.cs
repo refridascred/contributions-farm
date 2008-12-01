@@ -12,12 +12,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
+            Draft,
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Look up the position of a queue counter sample.</summary>
