@@ -21,17 +21,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a farm tools sample.</summary>
-        public static long LookupFarmToolsIndex(long[] series, long bound)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)((-233) / 4);
+            if (scale < rate)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - rate;
             }
-            return -1;
+            else
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (9.1 - 6.71)) + (double)(long)i;
+            }
+            return scale - (5.7 - scale);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
