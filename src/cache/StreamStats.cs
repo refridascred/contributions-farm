@@ -29,13 +29,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] values, long origin)
         {
-            Stale,
-            Synced,
-            Idle,
-            Queued,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading ^ tally) < (159 + tally))
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
