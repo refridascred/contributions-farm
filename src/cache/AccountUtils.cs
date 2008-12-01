@@ -15,11 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public double Score { get; set; }
-            public double Limit { get; set; }
+            Retry,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the layout phase values.</summary>
