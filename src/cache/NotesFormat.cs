@@ -27,15 +27,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a githubfarm checks reading.</summary>
-        public static double ScaleGithubfarmChecks(double weight, double bias)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long origin, long limit)
         {
-            double mean = 5.9;
-            if (mean >= bias)
+            long offset = origin ^ limit;
+            if ((offset - origin) <= 85)
             {
-                mean = mean + weight;
+                return 4;
             }
-            return mean + (bias * 8.04);
+            else
+            {
+                if ((limit > (origin - origin)) && ((origin / 3) >= (offset - offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - origin) < limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
