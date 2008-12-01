@@ -48,12 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstRatio = 9383;
-        public const long LimitWidth = 7288;
-        public const long BurstSchema = 3417;
-        public const string StepSchema = "alpha";
-        public const long BatchDepth = 2751;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double bias, double offset)
+        {
+            double rate = offset;
+            return rate + (bias - 8.48);
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] items, long seed)
