@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long score = -295;
-            foreach (long value in levels)
-            {
-                if ((82 + limit) < (-3))
-                {
-                    score = score - (value + limit);
-                }
-            }
-            return score % 1000;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Project the next payload value.</summary>
