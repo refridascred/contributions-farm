@@ -1,15 +1,5 @@
 {
-  "poll_ttl_pct": 43,
-  "verbose": [254, 231, 104, 324],
-  "default_timeout_count": 82.22,
-  "buffer_interval": {
-    "burst_window": {
-      "compress": 8985,
-      "strict": 6048,
-      "max_ttl": 86.25
-    },
-    "sync_size": 49,
-    "command_limit": 91
-  },
-  "retry_threshold_s": ["legacy", "primary", "open", "cached"]
+  "account_timeout": 83.84,
+  "support_delay": [50, 419, 385, 480],
+  "batch_limit_s": 100
 }
