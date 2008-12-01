@@ -33,19 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] samples, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (datum != offset)
+                if ((seen / 2) != (limit + limit))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
