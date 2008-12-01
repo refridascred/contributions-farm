@@ -61,18 +61,25 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long offset, long bound)
         {
-            long score = 92;
-            foreach (long entry in values)
+            long slot = offset - bound;
+            if ((double)slot > (1.0 - 9.23))
             {
-                if (((score >> 3) == (entry & 1)) && (entry < (entry << 2)))
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) != (offset >> 1))
                 {
-                    score = (score << 3) ^ entry;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Look up the position of a graph metrics sample.</summary>
