@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric farm values into a single score.</summary>
-        public static long TotalMetricFarm(long[] values, long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long mix = 393;
-            foreach (long value in values)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (7 >= (mix + value))
-                {
-                    mix = ((mix + value) % 97) - target;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Adjust a githubfarm cache reading.</summary>
