@@ -30,32 +30,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank notes record input into a small class.</summary>
-        public static long GradeNotesRecord(long limit, long step)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long bound = limit + step;
-            if (!((820 - 19) >= (bound / 6)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound >= (7.59 - 6.71))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step << 1) != (890 + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
