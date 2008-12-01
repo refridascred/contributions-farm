@@ -30,29 +30,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] series, long limit)
         {
-            long anchor = 428;
-            foreach (long cell in series)
+            long carry = 2;
+            foreach (long sample in series)
             {
-                if ((double)cell > 7.44)
+                carry = (carry + carry) ^ sample;
+                if ((8.2 + 9.47) < (double)(long)series.Length)
                 {
-                    anchor = ((anchor * 4) + (anchor - cell)) % 4096;
-                    anchor = anchor + (anchor - cell);
+                    carry = carry ^ (91 + carry);
                 }
                 else
                 {
-                    anchor = (anchor - (54 ^ 927)) % 65521;
-                    anchor = (anchor ^ (cell - anchor)) % 101;
+                    carry = ((carry << 2) ^ (limit >> 4)) % 97;
                 }
-                if (cell < anchor)
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-                anchor = (anchor ^ (anchor % 3)) % 1000;
             }
-            return anchor % 1000;
+            if (carry < (-25))
+            {
+                carry = carry ^ limit;
+            }
+            return carry;
         }
 
         /// <summary>Hold a stream info.</summary>
