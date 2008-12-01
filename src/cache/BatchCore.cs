@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long offset, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long slot = offset ^ seed;
-            if (seed <= (8 >> 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed) > (seed / 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)slot > (5.21 * 12.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (slot > (seed - 79))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
