@@ -1,7 +1,7 @@
-id,weight,score
-1,329,edge
-2,52,local
-3,staging,475
-4,79.94,918
-5,438,840
-6,strict,500
+id,score,level,weight,token
+1,74.71,75.68,579,114
+2,418,fallback,cached,208
+3,57.03,708,cached,643
+4,363,722,50.89,940
+5,199,3.96,21.73,273
+6,976,189,primary,stable
