@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double weight, double span)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double rate = span;
-            if (rate >= (rate - rate))
-            {
-                rate = (rate + (double)553) + weight;
-            }
-            return rate - 17.0;
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
