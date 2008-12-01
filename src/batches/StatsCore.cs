@@ -82,17 +82,25 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first githubfarm checks entry that matches the target.</summary>
-        public static long FindGithubfarmChecksIndex(long[] samples, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long bound = limit ^ floor;
+            if (((limit ^ bound) > (floor & 7)) || ((floor ^ floor) >= floor))
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if (bound < (limit << 2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
