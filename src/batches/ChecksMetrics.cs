@@ -61,13 +61,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Failed,
-            Synced,
-            Idle,
             Stale,
+            Queued,
+            Synced,
+            Paused,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
