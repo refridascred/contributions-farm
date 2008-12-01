@@ -61,9 +61,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 1160;
-        public const double SoftAccount = 29.78;
-        public const long MaxCount = 2857;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinBuffer = "alpha";
+        public const long SoftRatio = 3136;
+        public const string CacheLevel = "alpha-1";
     }
 }
