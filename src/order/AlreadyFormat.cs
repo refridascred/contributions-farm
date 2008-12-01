@@ -49,20 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples, long limit)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long mix = 274;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix << 2) ^ (entry - 94);
-                mix = (mix << 3) ^ mix;
-                if (mix <= entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (limit << 2)) % 101;
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Locate a metric tools reading by value.</summary>
