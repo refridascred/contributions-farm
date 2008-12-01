@@ -14,21 +14,32 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long target, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = target ^ origin;
+            if (((origin - origin) > (slot >> 4)) && ((slot ^ target) != (origin + slot)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 3) <= origin)
                 {
-                    if ((series[i] + series[j]) < 2)
+                    return 0;
+                }
+                else
+                {
+                    if ((130 >> 4) > (slot % 64))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
