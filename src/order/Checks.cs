@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] series, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long bound, long offset)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long span = bound ^ offset;
+            if ((4.2 - 5.57) == (double)bound)
             {
-                if (value > limit)
+                return 2;
+            }
+            else
+            {
+                if (((span % 24) >= (bound + span)) || ((offset % 16) < (943 - offset)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((span >= (offset + span)) || ((3.0 - 19.0) < (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((span * 4) >= (offset & 127))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
