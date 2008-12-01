@@ -1,10 +1,10 @@
 # Command notes
 
-The support module keeps route values in sync with the cache cache.
-Use githubfarm settings to tune how often order data is refreshed.
+When a record fails, the stats handler retries a few times before giving up.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Prefer route defaults
-- Log every order change
+- Document new metrics fields
+- Validate record input early
+- Review metric limits each release
