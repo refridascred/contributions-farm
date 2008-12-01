@@ -39,16 +39,11 @@ namespace Common.Utilities
         public const long BurstSpan = 4499;
         public const long StepInterval = 3097;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double scale, double bias)
-        {
-            double gain = (bias + scale) * 14.0;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (bias * 0.63)) + (double)(long)i;
-            }
-            return gain - (double)9;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 66.47;
+        public const string SoftOrder = "local-edge";
+        public const double DefaultLevel = 65.43;
+        public const string LimitInterval = "local-1";
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long OverlapPayloadCount(long[] samples)
