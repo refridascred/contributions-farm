@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] data)
         {
-            double mean = 1.7;
-            return ((mean + (double)41) + bias) + span;
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)item < (6.0 / 3.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
