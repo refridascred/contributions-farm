@@ -59,16 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepCount = 7872;
+        public const long BatchOrder = 5990;
+        public const string MinOrder = "standard-1";
+        public const string SoftOrder = "legacy-v2";
 
         /// <summary>Combine githubfarm checks values into a single score.</summary>
         public static long CombineGithubfarmChecks(long[] series)
