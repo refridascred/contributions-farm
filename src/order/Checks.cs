@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] series, long step)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] > step) && ((series[i] % 5) == 0))
+                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
