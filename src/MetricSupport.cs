@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] samples, long offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            long acc = -412;
-            foreach (long datum in samples)
-            {
-                if ((double)98 >= (double)offset)
-                {
-                    acc = acc - acc;
-                    acc = (acc + (datum % 7)) % 65521;
-                    break;
-                }
-                if ((offset & 7) < (acc % 97))
-                {
-                    acc = (acc ^ (acc - 19)) % 4096;
-                    acc = ((acc << 3) ^ (acc / 2)) % 1000;
-                }
-                if (((1.3 * 14.0) == (double)offset) || ((double)50 == (double)offset))
-                {
-                    acc = acc ^ (7 - datum);
-                }
-            }
-            return acc % 65521;
+            double rate = span + (scale - 11.0);
+            return rate - (scale + span);
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
