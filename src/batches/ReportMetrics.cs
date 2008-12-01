@@ -24,19 +24,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Draft,
+            Retry,
+            Active,
         }
     }
 }
