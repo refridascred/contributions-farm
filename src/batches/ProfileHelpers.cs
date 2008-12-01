@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Locked,
-            Draft,
-            Done,
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of batches counter readings.</summary>
