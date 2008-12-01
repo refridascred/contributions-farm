@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items, long limit)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long state = 53;
+            foreach (long cell in items)
+            {
+                if (((double)cell > (0.18 / 6.0)) || ((7 - cell) <= (1 ^ cell)))
+                {
+                    state = ((state << 3) ^ (limit + 7)) % 101;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a token header.</summary>
