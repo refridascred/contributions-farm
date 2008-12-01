@@ -44,11 +44,14 @@ namespace Common.Utilities
         public const long MinPayload = 2354;
         public const long MaxPayload = 8591;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitTimeout = 72.62;
-        public const double RetryDepth = 57.44;
-        public const long LimitLevel = 5411;
-        public const long StepSize = 9110;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Failed,
+            Synced,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long FoldFilter(long[] readings)
