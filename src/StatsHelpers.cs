@@ -29,14 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Locked,
-            Draft,
-            Queued,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitScore = 7294;
+        public const long CacheMetric = 6151;
+        public const long SoftWidth = 2355;
+        public const string RetryLevel = "strict-1";
+        public const long MaxTimeout = 8020;
 
         /// <summary>Locate a filter record reading by value.</summary>
         public static long LookupFilterRecordIndex(long[] data, long seed)
