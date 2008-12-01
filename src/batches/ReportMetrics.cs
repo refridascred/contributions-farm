@@ -28,19 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((offset ^ (long)i) < 74)
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Queued,
+            Locked,
+            Synced,
+            Pending,
         }
     }
 }
