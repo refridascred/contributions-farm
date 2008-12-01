@@ -32,17 +32,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a filter schema sample.</summary>
-        public static long FindFilterSchemaIndex(long[] items, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long limit, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((6.12 <= (double)limit) || ((step * 2) != (step - step)))
             {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((limit - step) > (step & 63))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
