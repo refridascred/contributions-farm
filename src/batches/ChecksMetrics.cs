@@ -67,19 +67,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double load = 11.0;
-            if (load >= (load + gain))
-            {
-                load = (load + load) - floor;
-            }
-            else
-            {
-                load = load - (8.3 * 3.46);
-            }
-            return load - 4.23;
+            Ready,
+            Dropped,
+            Paused,
+            Closed,
         }
     }
 }
