@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate notes profile samples.</summary>
-        public static long WeighNotesProfile(long[] levels)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long acc = 90;
-            foreach (long cell in levels)
-            {
-                if ((6.67 * 9.58) <= (double)acc)
-                {
-                    acc = (acc << 3) ^ (cell & 63);
-                }
-            }
-            return acc % 4096;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
