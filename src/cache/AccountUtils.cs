@@ -23,19 +23,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] readings, long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Pending,
+            Locked,
+            Synced,
         }
     }
 }
