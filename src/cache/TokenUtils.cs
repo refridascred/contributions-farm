@@ -19,37 +19,22 @@ namespace Common.Utilities
         public const long WindowCount = 2781;
         public const long MaxScore = 890;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long seed, long offset)
+        /// <summary>Rank payload editor input into a small class.</summary>
+        public static long ClassifyPayloadEditor(long seed, long origin)
         {
-            long cur = seed - offset;
-            if (seed < (offset << 2))
+            if ((1.1 - 14.0) < (double)seed)
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((double)offset > (5.5 * 1.63))
+                if (((double)origin > (17.0 + 3.04)) || ((seed % 2) >= seed))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((cur < offset) || ((double)offset >= (8.96 + 4.7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((cur + seed) <= ((-7) ^ 627))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
