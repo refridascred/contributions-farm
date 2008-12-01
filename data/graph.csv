@@ -1,8 +1,6 @@
-id,level,region
-1,staging,27.26
-2,1.27,191
-3,eu-west,64.74
-4,599,6.92
-5,297,73.94
-6,435,0.74
-7,617,947
+id,region,score
+1,1.1,primary
+2,963,37.96
+3,green,standard
+4,54.46,staging
+5,1.85,blue
