@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const string SoftTimeout = "strict-edge";
         public const long HardSize = 3758;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] levels, long origin)
+        /// <summary>Compare every pair of command metric readings.</summary>
+        public static long PairCommandMetricCount(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)cell > 6.51) && ((cell + (-2)) < (seen + origin)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine format values into a single score.</summary>
