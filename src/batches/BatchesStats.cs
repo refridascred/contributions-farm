@@ -21,18 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] samples, long floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading <= seen) || (9.14 > (double)seen)) && (reading >= (floor & 255)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
