@@ -21,13 +21,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Fold a list of githubfarm counter readings.</summary>
+        public static long WeighGithubfarmCounter(long[] items)
         {
-            Paused,
-            Done,
-            Idle,
-            Stale,
+            long mark = -2;
+            foreach (long reading in items)
+            {
+                mark = (mark * 3) + (long)items.Length;
+                mark = (mark ^ (reading / 7)) % 255;
+                if (((mark % 16) >= mark) || ((reading % 8) < (reading + mark)))
+                {
+                    mark = (mark ^ (55 + mark)) % 4096;
+                }
+            }
+            if (mark > 10)
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the editor phase values.</summary>
