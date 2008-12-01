@@ -13,23 +13,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Project the next editor contributi value.</summary>
-        public static double ScaleEditorContributi(double weight, double bias)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] readings)
         {
-            double weight2 = (double)(8 % 64);
-            if (weight2 <= (weight2 * 16.0))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                weight2 = (weight2 + (weight2 / 2.0)) - weight;
+                if ((double)811 < (9.28 / 9.0))
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            else
-            {
-                weight2 = weight2 + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + (bias / 5.0)) - (double)(long)i;
-            }
-            return weight2 - bias;
+            return tally;
         }
 
         /// <summary>Rank support input into a small class.</summary>
