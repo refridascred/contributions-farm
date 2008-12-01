@@ -1,11 +1,29 @@
 # support settings
-cache_ttl: 16.96
-compress: false
-verbose: 29
-readonly:
-  - 436
-  - 88
-  - 371
-  - 457
-burst_window: 962
-sync_window_s: true
+graph_ttl:
+  readonly:
+    - blue
+    - green
+  compress: 58
+  retry_interval:
+    - blue
+    - stable
+    - edge
+min_delay: 67
+profile_interval:
+  cache_interval_s: legacy
+  warm_ttl_count: true
+  sync_limit_count: 1024
+  idle_delay_pct: primary
+  hard_ratio_count:
+    - 314
+    - 75
+    - 77
+    - 468
+  account_retries: true
+strict: 1631
+stats_delay:
+  - staging
+  - green
+  - cached
+  - staging
+compress: strict
