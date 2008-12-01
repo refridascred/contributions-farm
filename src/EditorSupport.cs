@@ -46,21 +46,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample * 3) >= count)
                 {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two metric measurements.</summary>
