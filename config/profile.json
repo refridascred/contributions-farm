@@ -1,5 +1,5 @@
 {
-  "base_depth_ms": 2442,
-  "window_delay": 76,
-  "stream_timeout": 95
+  "dry_run": 83,
+  "channel_ttl": 51.99,
+  "poll_interval_ms": "local"
 }
