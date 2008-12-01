@@ -45,19 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] readings, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long acc = 90;
+            foreach (long sample in data)
             {
-                if (cell != limit)
+                if (2.58 >= (double)sample)
                 {
-                    ok = false;
-                    break;
+                    acc = acc ^ 68;
+                }
+                else
+                {
+                    acc = acc - (707 + sample);
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Hold a batches info.</summary>
