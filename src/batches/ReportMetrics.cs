@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            New,
-            Done,
-            Paused,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "local-1";
+        public const string StepSize = "alpha-edge";
+        public const long MinSpan = 7451;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
