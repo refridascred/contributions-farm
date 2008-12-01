@@ -32,19 +32,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] readings, long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Limit { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
