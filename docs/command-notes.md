@@ -1,12 +1,11 @@
 # Command notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-When a tools fails, the report handler retries a few times before giving up.
-The filter report groups every channel by route.
+Run the channel check before changing any tools limits.
+A tools that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Prefer report defaults
-- Keep filter values small
-- Review context limits each release
-- Log every contributi change
+- Keep farm values small
+- Prefer batch defaults
+- Review channel limits each release
+- Log every token change
