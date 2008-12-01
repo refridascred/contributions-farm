@@ -43,11 +43,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long step, long offset)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            long delta = step + offset;
+            if (((delta & 127) > (delta * 3)) && (6.77 < (double)delta))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((delta ^ (-58)) == (96 << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.16 * 5.0) == (double)delta)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
