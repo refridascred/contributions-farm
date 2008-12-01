@@ -45,19 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] items, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (cell > offset)
+                if ((reading ^ reading) == (2 >> 5))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Fold a list of batch token readings.</summary>
