@@ -1,4 +1,6 @@
 # githubfarm settings
-enabled: 90
-audit: 44.43
-min_depth_ms: 46
+batch_size_ms: true
+sync_limit_s: 250
+dry_run: 84.85
+default_capacity_pct: eu-west
+sync_interval_pct: 60
