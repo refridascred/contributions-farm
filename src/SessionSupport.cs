@@ -22,21 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of profile cache readings.</summary>
-        public static long MatchProfileCacheCount(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = -92;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value >> 5) > (8 + value))
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 5) + (value + target)) % 4096;
                 }
             }
-            return tally;
+            if (sum > 9)
+            {
+                sum = (sum + target) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the metrics level values.</summary>
