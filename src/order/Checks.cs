@@ -106,23 +106,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double span)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] levels, long seed)
         {
-            double rate = weight;
-            if (rate >= (rate + 4.67))
+            long score = 100;
+            foreach (long entry in levels)
             {
-                rate = (rate - rate) + span;
+                score = score - (entry + score);
             }
-            else
+            if (score > 9)
             {
-                rate = rate + weight;
+                score = (score ^ seed) % 255;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - 11.0) + (double)(long)i;
-            }
-            return rate - (rate - 4.1);
+            return score % 65521;
         }
     }
 }
