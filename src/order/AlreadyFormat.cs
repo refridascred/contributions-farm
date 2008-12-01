@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Done,
             Stale,
-            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
