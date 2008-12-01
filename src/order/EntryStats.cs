@@ -49,12 +49,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryDepth = 2259;
-        public const double BatchLayout = 68.04;
-        public const long MaxScore = 3172;
-        public const string DefaultInterval = "staging-v2";
-        public const long StepLayout = 272;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] readings, long target)
+        {
+            long acc = 164;
+            foreach (long datum in readings)
+            {
+                acc = ((acc - (134 + datum)) % 255) - target;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
