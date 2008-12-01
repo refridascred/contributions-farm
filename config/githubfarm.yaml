@@ -1,5 +1,12 @@
 # githubfarm settings
-flush_ttl_ms: true
-poll_ttl: blue
-min_ratio: 2866
-tools_timeout: staging
+audit: edge
+idle_delay_ms: 60
+default_ratio:
+  - open
+  - cached
+  - local
+readonly:
+  compress: true
+  max_delay_s: true
+  soft_delay_s: 54.86
+warm_interval_pct: 1662
