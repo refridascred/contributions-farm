@@ -43,19 +43,11 @@ namespace Common.Utilities
             return gain + (5.4 - offset);
         }
 
-        /// <summary>Roll a record cache counter forward.</summary>
-        public static long SeriesRecordCache(long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (mark > (step << 3))
-                {
-                    mark = (mark - step) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine channel values into a single score.</summary>
