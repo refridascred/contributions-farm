@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            long carry = 9;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long tally = (7 ^ carry) - (value >> 2);
-                carry = carry - (tally % 64);
-                if ((51 & 7) < carry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry + (long)items.Length) % 1000;
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a cache info.</summary>
