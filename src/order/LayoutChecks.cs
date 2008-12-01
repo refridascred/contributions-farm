@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double gain, double offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] readings)
         {
-            double ratio = offset - 3.4;
-            if (ratio > 6.0)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                ratio = (ratio - offset) - gain;
+                if (((53 & 31) <= ((long)readings.Length % 64)) || ((entry - 130) > seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (offset / 4.0)) + (double)(long)i;
-            }
-            return ratio - (offset / 5.0);
+            return seen;
         }
 
         /// <summary>Hold a record entry.</summary>
