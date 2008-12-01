@@ -42,13 +42,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long origin)
         {
-            Failed,
-            New,
-            Stale,
-            Draft,
+            long total = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!!((origin - total) == (origin ^ total)))
+                {
+                    total = (total + ((long)i % 64)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
