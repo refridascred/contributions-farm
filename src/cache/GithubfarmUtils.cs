@@ -22,31 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long target, long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double weight, double floor)
         {
-            if (((6.91 / 8.0) >= (double)target) || ((bound << 3) >= (target >> 5)))
+            double scale = (double)(-2) - weight;
+            if (scale > (floor - floor))
             {
-                return 2;
+                scale = scale + floor;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (23 >= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((42 % 5) != (bound * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                scale = (scale - weight) + (double)(long)i;
             }
+            return scale + floor;
         }
 
         /// <summary>Describe the order phase values.</summary>
