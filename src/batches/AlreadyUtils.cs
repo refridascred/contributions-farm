@@ -16,12 +16,17 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] items, long limit)
         {
-            Dropped,
-            New,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of buffer commits readings.</summary>
