@@ -31,13 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Ready,
-            Pending,
-            Active,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 57.53;
+        public const long BurstReport = 3818;
+        public const double WindowReport = 17.25;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long origin)
