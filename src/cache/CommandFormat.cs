@@ -16,21 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long step, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((floor ^ floor) <= floor) || ((step & 31) > floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (floor > (81 / 4))
                 {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a session header.</summary>
