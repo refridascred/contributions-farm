@@ -39,21 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                score = (score - (score + floor)) % 4096;
-                if (!((double)score == (16.0 + 5.1)))
-                {
-                    score = ((score << 2) ^ score) % 255;
-                }
-                score = (score * 5) + score;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Dropped,
+            New,
+            Active,
+            Ready,
+            Locked,
         }
     }
 }
