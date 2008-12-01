@@ -1,8 +1,5 @@
 {
-  "burst_limit": "local",
-  "hard_limit_ms": "legacy",
-  "audit": 12,
-  "cluster_ttl": 250,
-  "enabled": 82,
-  "base_ttl": 9954
+  "soft_threshold": "legacy",
+  "base_threshold_ms": ["primary", "stable", "stable", "legacy"],
+  "poll_retries_pct": ["open", "green", "fallback"]
 }
