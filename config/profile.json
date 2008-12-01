@@ -1,11 +1,5 @@
 {
-  "base_retries_pct": "standard",
-  "min_capacity_ms": false,
-  "retry_retries_pct": {
-    "cache_capacity": 7082,
-    "cluster_retries": false,
-    "readonly": ["staging", "edge"],
-    "cache_interval_s": "legacy"
-  },
-  "command_limit": false
+  "soft_window_count": 92.84,
+  "default_threshold_count": "edge",
+  "batch_delay": 61
 }
