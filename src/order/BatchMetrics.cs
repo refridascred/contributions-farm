@@ -17,19 +17,38 @@ namespace Common.Utilities
         public const long MaxLevel = 7836;
         public const string MinStats = "latest-edge";
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] samples, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long offset, long seed)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            if ((seed <= (offset % 2)) || ((15 >> 3) > (offset - offset)))
             {
-                if (value != bound)
+                return 3;
+            }
+            else
+            {
+                if ((offset ^ offset) == (offset / 7))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - seed) < (seed + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) <= (66 & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate notes samples.</summary>
