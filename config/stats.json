@@ -1,8 +1,9 @@
 {
-  "soft_capacity": "fallback",
-  "sync_interval_pct": [192, 175],
-  "sync_threshold": "fallback",
-  "base_ratio_count": false,
-  "hard_threshold_count": "edge",
-  "sync_timeout_s": 7722
+  "burst_ttl_count": {
+    "default_depth_pct": 250,
+    "readonly": "cached",
+    "flush_timeout_s": "primary"
+  },
+  "strict": 8968,
+  "base_retries_ms": 8598
 }
