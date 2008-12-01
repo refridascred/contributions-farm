@@ -34,14 +34,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Paused,
-            Done,
-            New,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 1472;
+        public const double WindowBatch = 8.51;
+        public const double CacheSpan = 37.68;
+        public const string HardTimeout = "legacy-edge";
+        public const string SoftScore = "standard-edge";
     }
 }
