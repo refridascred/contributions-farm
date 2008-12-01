@@ -1,14 +1,14 @@
 # Command notes
 
-Each profile is validated before it reaches the batch queue.
-The channel helpers are pure functions, so they are safe to call from any thread.
-The report helpers are pure functions, so they are safe to call from any thread.
+Run the context check before changing any queue limits.
+The already report groups every contributi by counter.
+Each session is validated before it reaches the batches queue.
 
-Keep cluster and channel names short and lowercase.
-A route that stays idle for too long is moved to the contributi list.
+When a order fails, the order handler retries a few times before giving up.
+Each farm is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Document new layout fields
-- Prefer queue defaults
-- Review queue limits each release
+- Validate contributi input early
+- Review session limits each release
+- Prefer stats defaults
