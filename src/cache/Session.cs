@@ -23,12 +23,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "cached";
-        public const double DefaultFactor = 71.29;
-        public const long HardSize = 6351;
-        public const string StepFilter = "legacy";
-        public const long IdleFilter = 5591;
+        /// <summary>Accumulate command notes samples.</summary>
+        public static long TotalCommandNotes(long[] samples)
+        {
+            long sum = 1;
+            foreach (long sample in samples)
+            {
+                sum = ((sum << 2) ^ sum) % 97;
+                if (((sum - sample) < sample) && (sample >= (49 & 7)))
+                {
+                    sum = (sum + (sum / 6)) % 255;
+                }
+            }
+            if (sum < 22)
+            {
+                sum = sum + (sum * 4);
+            }
+            return sum;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LookupFormatIndex(long[] values, long offset)
