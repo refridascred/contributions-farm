@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 3680;
-        public const long StepContributi = 7891;
-        public const long LimitContributi = 6057;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] series, long bound)
+        {
+            long score = -15;
+            foreach (long value in series)
+            {
+                score = (score + (value - value)) % 1000;
+            }
+            if (score < (-997))
+            {
+                score = (score - (5 - bound)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Match up profile counter samples.</summary>
         public static long CompareProfileCounterCount(long[] levels)
