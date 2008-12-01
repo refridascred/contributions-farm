@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] readings, long origin)
         {
-            Dropped,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((9 - matches) >= (362 % 100))
+                {
+                    matches = ((matches + 2) + item) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the batches farm series from a seed.</summary>
