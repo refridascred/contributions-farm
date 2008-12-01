@@ -33,13 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Synced,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitRatio = 12.16;
+        public const double DefaultWindow = 19.74;
+        public const double BurstWidth = 11.98;
+        public const long StepInterval = 3074;
+        public const long BatchScore = 8153;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
