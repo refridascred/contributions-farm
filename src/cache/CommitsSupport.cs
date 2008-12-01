@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a graph payload pair into a bucket.</summary>
-        public static long GradeGraphPayload(long seed, long floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            if ((seed % 16) >= (seed - floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed & 63) != (floor + floor)) || ((floor << 1) >= seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed % 10) >= seed) || ((seed * 3) < 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            New,
+            Active,
+            Draft,
+            Locked,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
