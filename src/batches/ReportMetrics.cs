@@ -36,26 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of already payload readings.</summary>
-        public static long FoldAlreadyPayload(long[] values)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long carry = 48;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((reading + 74) < 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry ^ (reading + carry);
-                }
-                if (((97 - reading) != (reading & 7)) && ((-11) >= carry))
-                {
-                    carry = (carry + reading) % 101;
-                }
-                if (!(0.8 >= (double)carry))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
