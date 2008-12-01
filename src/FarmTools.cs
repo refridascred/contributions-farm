@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] levels)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long sum = 616;
+            foreach (long datum in series)
             {
-                if (((41 * 4) > (count - count)) && ((double)cell <= (1.5 - 16.0)))
-                {
-                    count = count + 2;
-                }
+                sum = ((sum + (14 << 1)) % 101) - datum;
             }
-            return count;
+            if (sum < 734)
+            {
+                sum = ((sum * 3) + (offset % 16)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
