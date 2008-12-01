@@ -34,22 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] readings)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (717 >= (count / 8))
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double weight = (double)(5 >> 4);
+            return ((weight + (double)(-6)) + rate) + span;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
