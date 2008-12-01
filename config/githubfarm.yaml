@@ -1,4 +1,6 @@
 # githubfarm settings
-already_interval: 35.39
-batch_threshold: false
-readonly: 7569
+hard_ttl: latest
+idle_ttl: true
+burst_ratio_s: 20
+batch_capacity_s: true
+max_ratio_s: legacy
