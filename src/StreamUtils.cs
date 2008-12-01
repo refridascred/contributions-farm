@@ -60,19 +60,10 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double bias)
-        {
-            double drift = 0.8 + (double)263;
-            if (drift <= drift)
-            {
-                drift = (drift - scale) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 7.9) + (double)(long)i;
-            }
-            return drift + scale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseBudget = 5915;
+        public const string SoftWindow = "stable";
+        public const double SoftFactor = 58.02;
+        public const long BaseDepth = 7828;
     }
 }
