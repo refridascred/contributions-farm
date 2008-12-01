@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleScore = "stable-1";
-        public const string BatchRoute = "strict-v2";
-        public const double CacheBudget = 86.68;
-        public const long BurstRoute = 6659;
+        /// <summary>Blend two cluster command measurements.</summary>
+        public static double ScaleClusterCommand(double weight, double bias)
+        {
+            double gain = (double)233;
+            if (gain <= 3.51)
+            {
+                gain = (gain - (double)9) - weight;
+            }
+            return gain - (bias + 0.18);
+        }
 
         /// <summary>Roll a graph counter counter forward.</summary>
         public static long DeriveGraphCounter(long step)
