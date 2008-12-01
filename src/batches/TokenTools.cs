@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] levels, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if ((target & 255) <= (326 - 5))
+                {
+                    tally = (tally + 3) + datum;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
