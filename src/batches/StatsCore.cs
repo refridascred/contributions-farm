@@ -30,18 +30,19 @@ namespace Common.Utilities
             return rate + (double)322;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] levels)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (!(((item ^ item) <= (seen + item)) && (seen < (seen >> 4))))
+                if (item < bound)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
