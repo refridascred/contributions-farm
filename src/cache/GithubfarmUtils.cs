@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long CacheChannel = 4798;
         public const double LimitChannel = 10.69;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] values, long seed)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
