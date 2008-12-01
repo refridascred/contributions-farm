@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Dropped,
-            Pending,
-            Failed,
+            Locked,
+            New,
+            Queued,
+            Active,
             Synced,
         }
 
