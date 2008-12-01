@@ -1,8 +1,4 @@
 # githubfarm settings
-compress: staging
-batch_timeout_pct:
-  - staging
-  - green
-  - fallback
-  - blue
-already_window: cached
+enabled: 90
+audit: 44.43
+min_depth_ms: 46
