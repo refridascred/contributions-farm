@@ -22,24 +22,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((71 >> 4) < mark)
-                {
-                    mark = (mark - offset) % 65521;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark ^ (mark << 3)) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every entry batches entry stays within the limit.</summary>
