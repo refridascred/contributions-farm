@@ -35,16 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 4) + offset) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
