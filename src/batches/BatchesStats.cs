@@ -48,20 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] levels)
         {
-            long result = 5;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                result = (result << 2) ^ ((long)levels.Length + result);
-                result = result ^ (result % 3);
-                if ((double)sample < (10.0 - 12.0))
+                if (7.19 < (double)cell)
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
