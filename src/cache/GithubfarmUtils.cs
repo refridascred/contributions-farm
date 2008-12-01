@@ -40,12 +40,21 @@ namespace Common.Utilities
         public const double RetryRatio = 74.08;
         public const string BatchLevel = "latest-1";
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            Paused,
-            Locked,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
