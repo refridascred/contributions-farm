@@ -41,17 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxWidth = "latest-edge";
+        public const long MaxDepth = 7658;
+        public const double BaseSize = 63.97;
+        public const double RetryRatio = 35.91;
     }
 }
