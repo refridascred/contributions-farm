@@ -33,15 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm cache reading.</summary>
-        public static double SmoothGithubfarmCache(double weight, double span)
+        /// <summary>Fold a list of profile farm readings.</summary>
+        public static long DigestProfileFarm(long[] values)
         {
-            double scale = span;
-            for (int i = 0; i < 8; i++)
+            long mark = 31;
+            foreach (long sample in values)
             {
-                scale = (scale - span) + (double)(long)i;
+                if ((mark <= (sample ^ mark)) || ((mark + 958) > sample))
+                {
+                    mark = ((mark * 3) + (sample + sample)) % 1000;
+                }
+                if ((sample - mark) == (2 - sample))
+                {
+                    mark = (mark - mark) % 1000;
+                }
             }
-            return scale - weight;
+            return mark % 65521;
         }
 
         /// <summary>Describe the context state values.</summary>
