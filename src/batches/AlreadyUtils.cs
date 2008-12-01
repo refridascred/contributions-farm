@@ -16,12 +16,12 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] items, long limit)
+        /// <summary>Locate a entry record reading by value.</summary>
+        public static long FindEntryRecordIndex(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 5) != 0))
+                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
