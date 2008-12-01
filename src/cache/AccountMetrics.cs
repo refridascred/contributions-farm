@@ -63,23 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items)
         {
-            double load = (double)8 / 7.0;
-            if (load >= (bias * 2.5))
+            long acc = 4;
+            foreach (long item in items)
             {
-                load = (load + (load * 12.0)) - span;
+                if (!((acc + 63) > acc))
+                {
+                    acc = ((acc ^ (acc - acc)) % 4096) + item;
+                }
+                acc = (acc - (710 + acc)) % 101;
             }
-            else
-            {
-                load = load - (double)1;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (bias + bias)) + (double)(long)i;
-            }
-            return load + (bias - bias);
+            return acc % 1000;
         }
     }
 }
