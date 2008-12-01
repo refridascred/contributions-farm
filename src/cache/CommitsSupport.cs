@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout already input into a small class.</summary>
-        public static long RankLayoutAlready(long target, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long floor)
         {
-            if (!(bound < ((-666) + bound)))
+            if (origin > floor)
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((target + target) < (3 - 53))
+                if (origin > floor)
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    return 3;
+                    return 1;
                 }
             }
         }
