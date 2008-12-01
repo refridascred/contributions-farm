@@ -21,25 +21,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long step, long seed)
-        {
-            if ((step / 2) < (step + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed & 63) < step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "latest-1";
+        public const long MaxRecord = 5072;
+        public const long SoftDepth = 7227;
+        public const long BaseScore = 1594;
+        public const long IdleWidth = 9012;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseEditor = 2336;
