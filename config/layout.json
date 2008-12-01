@@ -1,18 +1,9 @@
 {
-  "context_window": {
-    "support_window": 68,
-    "warm_ttl_count": 61,
-    "max_ratio_count": {
-      "compress": 1024,
-      "base_size_ms": "eu-west",
-      "commits_ttl": "green",
-      "window_threshold": "standard"
-    },
-    "retry_size": 4571,
-    "support_ttl": "local"
+  "cluster_ratio": {
+    "token_timeout": "strict",
+    "hard_interval": "legacy",
+    "cache_timeout_pct": "local"
   },
-  "base_interval": "cached",
-  "compress": [234, 74],
-  "counter_interval": [406, 2],
-  "min_threshold_pct": false
+  "channel_interval": true,
+  "burst_threshold_count": "fallback"
 }
