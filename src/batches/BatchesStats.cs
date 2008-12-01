@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long StepEditor = 4964;
         public const long BatchLevel = 3090;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            Closed,
+            Pending,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
