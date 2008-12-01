@@ -42,21 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of profile counter readings.</summary>
-        public static long MatchProfileCounterCount(long[] values)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Accumulate checks window samples.</summary>
