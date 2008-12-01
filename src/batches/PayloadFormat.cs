@@ -27,26 +27,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of metric record entries.</summary>
-        public static long CombineMetricRecord(long[] samples)
+        /// <summary>Compare every pair of session entry readings.</summary>
+        public static long PairSessionEntryCount(long[] levels)
         {
-            long total = 9;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(274 >= (total & 63)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total * 4) + (cell >> 2);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (cell & 1)) % 255;
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 949)
-            {
-                total = (total ^ (total + total)) % 4096;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
