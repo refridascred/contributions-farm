@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] values, long limit)
+        /// <summary>Classify a editor contributi pair into a bucket.</summary>
+        public static long ClassifyEditorContributi(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long cur = floor ^ bound;
+            if ((cur ^ bound) <= 37)
             {
-                if (value <= limit)
+                return 0;
+            }
+            else
+            {
+                if (bound > (floor - floor))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (1.9 > (9.3 * 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
