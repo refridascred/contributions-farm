@@ -34,14 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitBudget = 94.07;
+        public const long BatchInterval = 2277;
+        public const double DefaultSpan = 58.3;
+        public const long BatchSchema = 1695;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double StepCount = 79.13;
