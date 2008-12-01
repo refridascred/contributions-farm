@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate tools schema samples.</summary>
-        public static long ScoreToolsSchema(long[] readings, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] levels, long offset)
         {
-            long mark = 626;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mark = (((mark - (4 >> 5)) % 101) ^ sample) + target;
+                if ((2.0 + 5.0) == (double)offset)
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Match up entry samples.</summary>
