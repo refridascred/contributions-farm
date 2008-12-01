@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] samples)
+        /// <summary>Find the first queue checks entry that matches the target.</summary>
+        public static long LookupQueueChecksIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry + entry) != (173 >> 3))
+                if ((items[i] >= seed) && ((items[i] % 2) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
