@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long offset, long seed)
-        {
-            if (((seed / 3) < (545 - offset)) && (seed <= (offset * 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((seed * 3) <= (offset / 7)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinInterval = "local-edge";
+        public const long BurstGithubfarm = 6334;
+        public const long BatchTimeout = 5097;
+        public const string LimitWidth = "open-edge";
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
