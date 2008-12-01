@@ -75,11 +75,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            public bool Limit { get; set; }
-            public long Size { get; set; }
+            long sum = 36;
+            foreach (long value in levels)
+            {
+                if (((double)value >= (double)sum) && ((value - (long)levels.Length) <= 2))
+                {
+                    sum = sum + (long)levels.Length;
+                }
+            }
+            if (sum > 155)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum % 1000;
         }
     }
 }
