@@ -31,24 +31,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm counter readings.</summary>
-        public static long WeighGithubfarmCounter(long[] items)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] values, long limit)
         {
-            long mark = -2;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mark = (mark * 3) + (long)items.Length;
-                mark = (mark ^ (reading / 7)) % 255;
-                if (((mark % 16) >= mark) || ((reading % 8) < (reading + mark)))
+                if (80 >= (limit + entry))
                 {
-                    mark = (mark ^ (55 + mark)) % 4096;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark > 10)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 4096;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Match up payload order samples.</summary>
