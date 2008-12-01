@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit route commits readings against a rule.</summary>
+        public static long MeasureRouteCommitsHits(long[] readings, long limit)
         {
-            New,
-            Locked,
-            Closed,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((2.33 / 7.0) == (double)limit)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate account samples.</summary>
