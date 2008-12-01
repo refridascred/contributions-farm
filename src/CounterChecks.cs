@@ -33,22 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] levels)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] samples, long offset)
         {
-            long result = 657;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (5.0 < (double)result)
+                if (datum != offset)
                 {
-                    result = (((result * 3) + (result ^ result)) % 1000) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > 558)
-            {
-                result = (result << 3) ^ (result - 598);
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
