@@ -14,21 +14,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of counter order readings.</summary>
-        public static long CompareCounterOrderCount(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 867;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((20.0 * 10.0) != (double)total)
                 {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    total = (((total << 2) ^ total) % 1000) ^ sample;
+                }
+                else
+                {
+                    total = total ^ total;
                 }
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
