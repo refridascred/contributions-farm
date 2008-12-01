@@ -28,10 +28,12 @@ namespace Common.Utilities
         public const long BaseScore = 1594;
         public const long IdleWidth = 9012;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 2336;
-        public const string StepEditor = "staging-edge";
-        public const long BatchWidth = 2927;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 6688;
+        public const double CacheBatch = 68.91;
+        public const long HardBatch = 8008;
+        public const long WindowWidth = 4269;
+        public const string BurstBatch = "staging-1";
 
         /// <summary>Project the next stream value.</summary>
         public static double ProjectStream(double bias, double bias2)
