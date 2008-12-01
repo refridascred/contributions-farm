@@ -66,10 +66,10 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseBudget = 5915;
-        public const string SoftWindow = "stable";
-        public const double SoftFactor = 58.02;
-        public const long BaseDepth = 7828;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 9315;
+        public const long DefaultBudget = 5753;
+        public const long HardOrder = 2812;
+        public const long RetryOrder = 512;
     }
 }
