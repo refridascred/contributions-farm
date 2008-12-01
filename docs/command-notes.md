@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-The layout module keeps cache values in sync with the payload cache.
+Each batch is validated before it reaches the commits queue.
+Keep counter and metric names short and lowercase.
 
-Use context settings to tune how often queue data is refreshed.
-The record report groups every stats by filter.
-Run the command check before changing any payload limits.
+When a channel fails, the counter handler retries a few times before giving up.
+Keep editor and graph names short and lowercase.
 
 ## Guidelines
 
-- Validate record input early
-- Review editor limits each release
-- Log every command change
+- Review queue limits each release
+- Prefer already defaults
+- Validate filter input early
+- Log every metric change
