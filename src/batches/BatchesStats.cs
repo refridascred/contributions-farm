@@ -26,22 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] values, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((value + 50) == (9 + value)) && ((((long)values.Length + offset) != (value % 97)) && ((count * 4) > (offset % 2))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
