@@ -23,18 +23,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((((double)seen < (6.4 / 2.0)) && ((datum + seen) < (-618))) || (402 >= (datum / 5)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
