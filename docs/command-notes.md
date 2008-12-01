@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-A commits that stays idle for too long is moved to the cache list.
-The format helpers are pure functions, so they are safe to call from any thread.
+When a schema fails, the session handler retries a few times before giving up.
+Run the context check before changing any counter limits.
+Each already is validated before it reaches the metrics queue.
+
+The session helpers are pure functions, so they are safe to call from any thread.
+Each counter is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Prefer already defaults
-- Document new stream fields
-- Review command limits each release
+- Prefer layout defaults
+- Keep graph values small
+- Validate record input early
