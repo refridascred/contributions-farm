@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long origin, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            if ((double)origin <= (2.37 + 5.64))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - origin) != (step - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
