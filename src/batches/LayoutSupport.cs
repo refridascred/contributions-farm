@@ -30,31 +30,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long bound)
+        /// <summary>Derive the next route commits value from a seed.</summary>
+        public static long DeriveRouteCommits(long seed)
         {
-            if (bound > (4 & 255))
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((2.7 * 2.0) != (double)seed) && ((9.0 / 3.0) != (double)seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed < (seed - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
