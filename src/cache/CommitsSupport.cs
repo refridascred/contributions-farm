@@ -67,26 +67,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] readings, long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long state = 121;
-            foreach (long reading in readings)
-            {
-                if ((state + state) != (reading - reading))
-                {
-                    break;
-                }
-                if ((reading % 7) == (offset ^ 6))
-                {
-                    state = (state + offset) % 65521;
-                }
-            }
-            if (state > 52)
-            {
-                state = state - state;
-            }
-            return state;
+            Synced,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
