@@ -31,17 +31,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a order editor sample.</summary>
-        public static long FindOrderEditorIndex(long[] readings, long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Pending,
+            Idle,
         }
     }
 }
