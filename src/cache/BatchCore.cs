@@ -32,18 +32,24 @@ namespace Common.Utilities
         public const long SoftMetrics = 2279;
         public const double SoftFactor = 93.71;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] readings, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            if (offset >= (offset + offset))
             {
-                if ((origin >> 1) >= (82 - sample))
+                return 4;
+            }
+            else
+            {
+                if (!((offset & 255) != (bound % 60)))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
