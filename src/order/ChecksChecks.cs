@@ -20,21 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up profile counter samples.</summary>
-        public static long CompareProfileCounterCount(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 68;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((-5) + step) == (score + score)) || ((score % 24) < (step ^ score)))
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (((score * 4) + step) % 65521) - cell;
                 }
             }
-            return matches;
+            if (score > (-94))
+            {
+                score = (score - (score & 63)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of session buffer readings.</summary>
