@@ -17,24 +17,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] series, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] items, long bound)
         {
-            long sum = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
                 {
-                    sum = ((sum - limit) % 65521) + entry;
-                    sum = (sum + (long)i) % 65521;
+                    return (long)i;
                 }
-                sum = (sum * 2) + (limit % 7);
             }
-            if (sum > (-32))
-            {
-                sum = ((sum * 2) + (44 - sum)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
