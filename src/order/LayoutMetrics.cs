@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Pending,
-            Retry,
-            Locked,
+            public string Offset { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate token readings against a bound.</summary>
