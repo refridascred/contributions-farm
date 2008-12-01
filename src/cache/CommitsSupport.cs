@@ -110,11 +110,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 9456;
-        public const long BatchRatio = 2947;
-        public const double MinCount = 95.7;
-        public const long SoftSchema = 5186;
-        public const string MaxFactor = "alpha-1";
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long step)
+        {
+            long diff = target - step;
+            if (((step / 5) > (diff / 6)) || (target > step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((90 - diff) >= (step + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((52 + target) >= target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((9.48 * 8.5) > (1.93 - 2.16)) || (target > (target / 8)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
