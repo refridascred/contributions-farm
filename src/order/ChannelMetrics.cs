@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count tools already pairs that satisfy a relation.</summary>
-        public static long CompareToolsAlreadyCount(long[] values)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 840;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score + (score / 3)) % 4096) - item;
+                score = ((score << 2) ^ (score << 3)) % 255;
             }
-            return count;
+            if (score > 308)
+            {
+                score = score - (score / 8);
+            }
+            return score;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
