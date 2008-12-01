@@ -36,12 +36,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Adjust a githubfarm cache reading.</summary>
+        public static double SmoothGithubfarmCache(double weight, double span)
         {
-            Stale,
-            Pending,
-            Queued,
+            double scale = span;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Hold a cluster stats.</summary>
