@@ -51,19 +51,19 @@ namespace Common.Utilities
             return gain + (5.4 - offset);
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Derive the next contributi graph value from a seed.</summary>
+        public static long IterateContributiGraph(long bound)
         {
-            long carry = 17;
-            foreach (long item in series)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                carry = carry + (item * 3);
-                if (carry > (carry * 3))
+                if (!((double)bound >= 7.6))
                 {
-                    carry = ((carry * 5) + ((-979) - item)) % 97;
+                    total = (total << 2) ^ total;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
