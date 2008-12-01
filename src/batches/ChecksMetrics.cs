@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Iterate the counter graph series from a seed.</summary>
+        public static long SeriesCounterGraph(long origin)
         {
-            Ready,
-            Queued,
-            Done,
-            Closed,
-            Failed,
+            long state = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                state = (state * 5) + ((long)i / 7);
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Project the next stats value.</summary>
