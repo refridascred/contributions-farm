@@ -1,4 +1,11 @@
 # entry settings
-warm_depth: 36.64
-warm_ratio_pct: true
-queue_depth: 96.09
+burst_depth_s: false
+format_retries:
+  - strict
+  - latest
+min_ratio_count: 6658
+verbose: 250
+commits_timeout:
+  batch_ratio_count: strict
+  verbose: 7641
+  idle_ratio: 2.7
