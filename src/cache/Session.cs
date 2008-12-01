@@ -62,23 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double ratio, double bias)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double load = 3.9;
-            if (load <= (ratio + bias))
-            {
-                load = load - ratio;
-            }
-            else
-            {
-                load = load + (ratio - load);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (bias - ratio)) + (double)(long)i;
-            }
-            return load - (bias - load);
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
