@@ -41,12 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstRatio = 9383;
+        public const long LimitWidth = 7288;
+        public const long BurstSchema = 3417;
+        public const string StepSchema = "alpha";
+        public const long BatchDepth = 2751;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 7338;
