@@ -1,4 +1,4 @@
 # entry settings
-base_interval: 83
-compress: 8306
-persist: 250
+warm_depth: 36.64
+warm_ratio_pct: true
+queue_depth: 96.09
