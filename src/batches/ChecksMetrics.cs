@@ -44,21 +44,15 @@ namespace Common.Utilities
         public const long BatchLevel = 3846;
         public const long MaxLayout = 3273;
 
-        /// <summary>Match up checks cache samples.</summary>
-        public static long CompareChecksCacheCount(long[] samples)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = offset;
+            if (scale > (double)5)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + (double)290) - ratio;
             }
-            return hits;
+            return scale + (offset - scale);
         }
 
         /// <summary>Describe the record state values.</summary>
