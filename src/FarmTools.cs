@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] data, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long anchor = -63;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = ((((anchor << 2) ^ (anchor >> 3)) % 4096) ^ (long)i) + seed;
-                }
-                anchor = (anchor - (reading + anchor)) % 97;
-            }
-            if (anchor > 770)
-            {
-                anchor = anchor ^ (-400);
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
