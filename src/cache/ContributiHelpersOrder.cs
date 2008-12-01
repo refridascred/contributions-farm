@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] series)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)series.Length < (16.0 - 17.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) ^ sample;
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
