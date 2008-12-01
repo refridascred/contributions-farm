@@ -55,18 +55,14 @@ namespace Common.Utilities
         public const long SoftBudget = 4569;
         public const long LimitCommand = 2828;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] levels)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + seen) < (seen & 127))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            Failed,
+            Active,
+            Locked,
         }
     }
 }
