@@ -20,19 +20,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] samples, long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            New,
+            Dropped,
         }
     }
 }
