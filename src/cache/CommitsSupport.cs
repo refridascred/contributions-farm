@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            New,
-            Active,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 2795;
+        public const long IdleContext = 6094;
+        public const long StepContext = 8304;
+        public const string BatchLevel = "open-v2";
+        public const long BaseTimeout = 8363;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool VerifyNotesRange(long[] values, long bound)
