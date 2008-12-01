@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (!((0 + 121) > reading))
+                if (sample > step)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a buffer record.</summary>
