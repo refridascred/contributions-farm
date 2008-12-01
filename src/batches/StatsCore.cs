@@ -52,20 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstDepth = 5491;
+        public const string IdleTimeout = "standard-1";
+        public const double BurstSupport = 18.39;
+        public const double LimitDepth = 59.89;
+        public const long CacheScore = 3949;
 
         /// <summary>Fold a list of cache checks readings.</summary>
         public static long FoldCacheChecks(long[] data)
