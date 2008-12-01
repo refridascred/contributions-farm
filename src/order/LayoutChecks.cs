@@ -37,20 +37,21 @@ namespace Common.Utilities
         public const long BaseScore = 9977;
         public const long MaxBatch = 4517;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor * 4) + (step + anchor);
-                if ((step + (long)i) != (step - 497))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (54 - anchor)) % 4096;
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate batch samples.</summary>
