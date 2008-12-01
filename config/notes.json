@@ -1,8 +1,5 @@
 {
-  "strict": "latest",
-  "base_threshold_pct": 37.34,
-  "idle_delay_ms": 21.67,
-  "batches_size": 250,
-  "dry_run": 46,
-  "enabled": "fallback"
+  "poll_timeout_ms": "staging",
+  "base_retries": 1024,
+  "batch_interval_ms": 2360
 }
