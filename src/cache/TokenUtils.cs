@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 7287;
+        public const double LimitBudget = 18.26;
+        public const long BurstMetrics = 5967;
+        public const string MaxWidth = "primary-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowCount = 5795;
