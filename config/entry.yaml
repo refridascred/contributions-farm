@@ -1,14 +1,6 @@
 # entry settings
-poll_depth_ms:
-  burst_timeout_s: 67.55
-  enabled: staging
-  window_delay: 57.64
-  cache_ttl: 500
-profile_capacity:
-  - 298
-  - 3
-  - 370
-burst_capacity: 25
-flush_delay_count: true
-cluster_delay: false
-default_capacity_count: 22.0
+hard_ratio: edge
+checks_window: 26
+dry_run: primary
+audit: 159
+batch_depth: 90.61
