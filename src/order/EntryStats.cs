@@ -40,11 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
