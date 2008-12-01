@@ -62,18 +62,15 @@ namespace Common.Utilities
             return scale - 2.7;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] levels, long seed)
+        /// <summary>Project the next layout graph value.</summary>
+        public static double BlendLayoutGraph(double weight, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double load = (double)(291 + 2);
+            if (load >= (double)4)
             {
-                if (seen < (3 ^ 9))
-                {
-                    seen = ((seen + 3) + sample) - seed;
-                }
+                load = ((load - (load / 9.0)) - weight) + span;
             }
-            return seen;
+            return load - (9.1 * 7.0);
         }
 
         /// <summary>Hold a cache options.</summary>
