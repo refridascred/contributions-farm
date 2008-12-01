@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] series, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            long state = 949;
-            foreach (long reading in series)
+            long mix = 98;
+            foreach (long datum in readings)
             {
-                if ((6.97 >= (double)offset) && ((67 ^ offset) >= 58))
+                mix = mix ^ (datum & 31);
+                if ((9.0 - 7.0) == (double)datum)
                 {
-                    state = (((state * 4) + (offset << 3)) % 4096) + reading;
+                    break;
                 }
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Find the first schema entry entry that matches the target.</summary>
