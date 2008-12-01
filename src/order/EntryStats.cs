@@ -31,15 +31,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double ratio, double floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] series)
         {
-            double scale = 7.2;
-            if (scale > (double)68)
+            long count = 0;
+            foreach (long datum in series)
             {
-                scale = (scale - scale) - floor;
+                if ((double)datum == (0.2 - 1.91))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale + ratio;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
