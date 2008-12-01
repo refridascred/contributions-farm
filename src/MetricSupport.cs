@@ -23,23 +23,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] readings, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long acc = 5;
-            foreach (long value in readings)
-            {
-                acc = ((acc * 2) + value) + limit;
-                if ((72 << 2) <= (acc + acc))
-                {
-                    acc = (acc + (value / 3)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + acc)) % 97;
-                }
-            }
-            return acc;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
