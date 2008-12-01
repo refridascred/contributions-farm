@@ -1,5 +1,6 @@
 {
-  "flush_interval_count": ["stable", "latest", "legacy"],
-  "persist": "stable",
-  "hard_threshold": 82
+  "poll_size_pct": "strict",
+  "burst_timeout_ms": 1724,
+  "soft_ttl_count": "blue",
+  "warm_window_pct": "eu-west"
 }
