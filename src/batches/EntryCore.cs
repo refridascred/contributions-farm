@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long BatchDepth = 7840;
         public const string MinWindow = "primary-v2";
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
