@@ -16,23 +16,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long offset, long seed)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long target, long seed)
         {
-            long lane = offset - seed;
-            if (seed > (seed + lane))
+            if ((double)target == (7.45 + 9.4))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((double)seed >= (double)lane)
+                if ((target - target) == (seed - seed))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    return 7;
                 }
             }
         }
