@@ -78,15 +78,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Roll a queue schema counter forward.</summary>
-        public static long StepQueueSchema(long floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Pending,
+            Active,
+            New,
         }
     }
 }
