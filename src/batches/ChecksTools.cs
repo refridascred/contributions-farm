@@ -57,12 +57,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
