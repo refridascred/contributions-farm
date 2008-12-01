@@ -28,11 +28,21 @@ namespace Common.Utilities
         public const long RetryChecks = 1845;
         public const long HardDepth = 6690;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Count order profile pairs that satisfy a relation.</summary>
+        public static long OverlapOrderProfileCount(long[] series)
         {
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
