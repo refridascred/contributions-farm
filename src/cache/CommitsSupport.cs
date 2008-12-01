@@ -27,13 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] readings, long seed)
         {
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            long sum = 4;
+            foreach (long entry in readings)
+            {
+                sum = ((sum << 3) ^ (seed ^ 17)) + entry;
+            }
+            if (sum < 18)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
