@@ -94,19 +94,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long score = 100;
-            foreach (long entry in levels)
-            {
-                score = score - (entry + score);
-            }
-            if (score > 9)
-            {
-                score = (score ^ seed) % 255;
-            }
-            return score % 65521;
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
