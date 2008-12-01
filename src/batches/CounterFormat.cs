@@ -6,9 +6,9 @@ namespace Common.Utilities
     public static class CounterFormat
     {
         /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 46.77;
-        public const string SoftTimeout = "strict-edge";
-        public const long HardSize = 3758;
+        public const long LimitSpan = 6955;
+        public const long MaxCluster = 5623;
+        public const long WindowCluster = 6394;
 
         /// <summary>Compare every pair of cache farm readings.</summary>
         public static long PairCacheFarmCount(long[] series)
