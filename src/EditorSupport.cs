@@ -38,10 +38,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 1484;
-        public const long LimitTimeout = 7848;
-        public const double BurstCommand = 51.66;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
