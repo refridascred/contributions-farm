@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the metrics notes entries that pass the check.</summary>
-        public static long TallyMetricsNotesGaps(long[] levels)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (count <= (count & 15))
+                if (entry <= target)
                 {
-                    count = (count + 2) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
