@@ -1,12 +1,6 @@
 {
-  "max_ratio_s": {
-    "default_limit": ["standard", "cached", "fallback"],
-    "min_delay_ms": "green",
-    "warm_threshold": false,
-    "sync_window_s": "stable",
-    "entry_interval": true,
-    "idle_limit_pct": "green"
-  },
-  "schema_retries": "green",
-  "retry_interval": "cached"
+  "audit": [2, 406, 145],
+  "idle_retries": [158, 267, 61, 483],
+  "batch_size": "strict",
+  "batches_size": 30
 }
