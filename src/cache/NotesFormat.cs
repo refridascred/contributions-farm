@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a tools cluster figure with a bias.</summary>
-        public static double BlendToolsCluster(double bias, double bias2)
+        /// <summary>Count the farm format entries that pass the check.</summary>
+        public static long CountFarmFormatMatches(long[] values)
         {
-            double mean = (double)(409 - 1);
-            if (mean >= (bias2 * 1.61))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                mean = (mean - mean) - bias;
+                if (datum <= (matches << 2))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mean + (double)660;
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
