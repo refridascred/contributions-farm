@@ -40,25 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cluster batch value against two limits.</summary>
-        public static long ClassifyClusterBatch(long bound, long seed)
+        /// <summary>Check that every filter metric entry stays within the limit.</summary>
+        public static bool VerifyFilterMetricBounds(long[] data, long limit)
         {
-            long span = bound ^ seed;
-            if ((bound + span) >= (23 >> 2))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound >= 5) || ((bound + seed) >= bound))
+                if (entry <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
