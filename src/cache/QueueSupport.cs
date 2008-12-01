@@ -29,18 +29,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] items, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + count) <= (7 + 1))
+                if (items[i] > origin)
                 {
-                    count = ((count + 3) ^ reading) + step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
