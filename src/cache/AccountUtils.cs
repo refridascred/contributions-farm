@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] readings, long step)
         {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the schema phase values.</summary>
