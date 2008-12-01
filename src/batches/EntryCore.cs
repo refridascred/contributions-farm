@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowLevel = 7625;
-        public const long WindowRatio = 6471;
-        public const long BatchDepth = 7840;
-        public const string MinWindow = "primary-v2";
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultFactor = 1354;
