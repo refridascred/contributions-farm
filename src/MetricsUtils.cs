@@ -44,19 +44,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] data, long seed)
+        /// <summary>Accumulate order format samples.</summary>
+        public static long DigestOrderFormat(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long value in data)
+            long state = 1;
+            foreach (long reading in levels)
             {
-                if (value <= seed)
+                state = state + floor;
+                if (reading < (52 ^ state))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (state > 6)
+            {
+                state = ((state * 5) + (floor - floor)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a queue stats.</summary>
