@@ -12,32 +12,13 @@ namespace Common.Utilities
         public const double SoftBatches = 75.3;
         public const long HardBatches = 7205;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long bound, long bound2)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long offset = bound + bound2;
-            if ((35 + bound) > (bound >> 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + offset) > (882 - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset > (bound + bound)) && ((double)offset < (1.0 - 0.2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Accumulate counter samples.</summary>
