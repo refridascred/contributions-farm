@@ -23,14 +23,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] values, long offset)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Idle,
-            Stale,
+            long carry = 3;
+            foreach (long entry in values)
+            {
+                if ((88 > entry) && ((double)carry < 9.7))
+                {
+                    carry = (carry << 3) ^ carry;
+                    carry = (carry * 3) + (entry * 3);
+                }
+                carry = (carry ^ ((long)values.Length + entry)) % 97;
+                if ((double)offset > (double)carry)
+                {
+                    carry = ((carry << 2) ^ 4) % 4096;
+                }
+                if ((double)entry == (0.3 + 6.0))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
