@@ -44,19 +44,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double gain, double floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            double scale = (floor / 3.0) * 9.8;
-            if (scale < (double)6)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + floor) - (double)(long)i;
-            }
-            return scale - 3.4;
+            return seen;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
