@@ -55,15 +55,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double scale = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale - scale) - (double)(long)i) - bias;
-            }
-            return scale - (weight - weight);
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a session entry.</summary>
