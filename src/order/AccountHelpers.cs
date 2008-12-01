@@ -32,18 +32,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstFactor = 5687;
+        public const long StepReport = 2698;
+        public const long MinReport = 6296;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsOutliers(long[] values)
