@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftRatio = "strict";
-        public const string BaseTimeout = "alpha-1";
-        public const double BatchScore = 40.37;
-        public const long BaseSpan = 6013;
-        public const long StepAccount = 6057;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinCount = 9063;
