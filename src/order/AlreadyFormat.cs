@@ -49,25 +49,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long origin, long step)
+        /// <summary>Compare every pair of stats notes readings.</summary>
+        public static long CompareStatsNotesCount(long[] data)
         {
-            long diff = origin ^ step;
-            if (((diff * 5) >= (origin - diff)) || ((8.9 / 8.0) >= (double)step))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((origin ^ step) == (diff % 64)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
