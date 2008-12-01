@@ -26,22 +26,31 @@ namespace Common.Utilities
         public const double RetryRatio = 74.08;
         public const string BatchLevel = "latest-1";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long offset, long offset2)
         {
-            long score = 3;
-            foreach (long sample in items)
+            if ((offset2 >> 2) < 28)
             {
-                if ((sample << 1) < (sample - score))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset2 < 3.5)
                 {
-                    score = (score ^ score) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset2 + offset2) < (offset2 - offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (score > 2)
-            {
-                score = (score - score) % 1000;
-            }
-            return score % 1000;
         }
     }
 }
