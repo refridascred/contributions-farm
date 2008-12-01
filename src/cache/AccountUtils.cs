@@ -12,31 +12,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long origin, long target)
+        /// <summary>Measure how many profile account samples are out of range.</summary>
+        public static long AuditProfileAccountMatches(long[] series)
         {
-            if ((double)target != (double)origin)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((target % 24) <= (origin + target)))
+                if (!((seen ^ cell) < cell))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.6 - 0.9) <= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
