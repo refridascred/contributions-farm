@@ -1,7 +1,7 @@
-id,label,token
-1,701,strict
-2,primary,94.31
-3,637,local
-4,918,strict
-5,241,31.23
-6,821,914
+id,weight,score
+1,329,edge
+2,52,local
+3,staging,475
+4,79.94,918
+5,438,840
+6,strict,500
