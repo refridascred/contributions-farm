@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] values, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 0;
+            foreach (long sample in data)
             {
-                if ((values[i] > step) && ((values[i] % 5) != 0))
+                if ((sample - sample) > offset)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (mark << 2)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (70 - sample)) % 1000;
                 }
             }
-            return -1;
+            if (mark < 9)
+            {
+                mark = mark ^ (mark / 6);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
