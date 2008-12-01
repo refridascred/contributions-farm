@@ -1,4 +1,27 @@
 # entry settings
-readonly: fallback
-persist: 92
-audit: 100
+retry_depth:
+  - 348
+  - 37
+  - 239
+  - 359
+persist: 99
+account_timeout: false
+metric_threshold:
+  stats_capacity: local
+  max_size_pct: 5873
+  queue_ratio:
+    - 31
+    - 175
+    - 257
+    - 404
+  retry_threshold_count:
+    cache_size_count: 32
+    readonly: false
+    compress: cached
+  burst_interval: true
+  dry_run: 5478
+default_interval_pct: 1739
+queue_limit:
+  - blue
+  - local
+  - standard
