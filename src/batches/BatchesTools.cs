@@ -29,17 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits checks sample.</summary>
-        public static long FindCommitsChecksIndex(long[] items, long offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Queued,
+            Failed,
+            New,
         }
     }
 }
