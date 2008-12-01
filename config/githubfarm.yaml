@@ -1,5 +1,7 @@
 # githubfarm settings
-cluster_capacity: local
-persist: green
-hard_delay_count: legacy
-max_depth: 58
+batch_interval_count: strict
+queue_ratio: 74
+audit:
+  - 56
+  - 324
+  - 230
