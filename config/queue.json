@@ -1,16 +1,5 @@
 {
-  "record_timeout": 34.76,
-  "soft_window_pct": {
-    "flush_timeout_s": true,
-    "counter_timeout": 34,
-    "persist": "staging",
-    "default_size_s": {
-      "verbose": 77.21,
-      "flush_threshold_s": 86.07,
-      "soft_ttl_pct": 79,
-      "min_interval_pct": 83.68
-    }
-  },
-  "strict": true,
-  "burst_delay_ms": 43.39
+  "base_retries": true,
+  "cache_size": false,
+  "warm_capacity_s": 30
 }
