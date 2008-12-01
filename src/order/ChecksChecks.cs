@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] series)
-        {
-            long total = 19;
-            foreach (long reading in series)
-            {
-                total = (total ^ (62 - 58)) ^ reading;
-            }
-            if (total > 5)
-            {
-                total = total - total;
-            }
-            return total % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinBudget = "open-edge";
+        public const long BaseChecks = 8330;
+        public const long BatchChecks = 4557;
+        public const long MaxSpan = 2186;
+        public const string LimitChecks = "open-1";
 
         /// <summary>Audit support order readings against a rule.</summary>
         public static long CountSupportOrderHits(long[] values)
