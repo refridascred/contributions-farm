@@ -29,11 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples, long bound)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            long acc = 5;
+            foreach (long item in samples)
+            {
+                if ((acc * 2) <= (item + bound))
+                {
+                    acc = acc ^ (bound % 16);
+                }
+                else
+                {
+                    acc = (acc * 5) + (bound + item);
+                }
+            }
+            return acc;
         }
     }
 }
