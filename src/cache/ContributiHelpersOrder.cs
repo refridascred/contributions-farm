@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 65.3;
-        public const long MinEditor = 6997;
-        public const long IdleScore = 8980;
-        public const long MaxSize = 7705;
+        /// <summary>Look up the position of a layout account sample.</summary>
+        public static long SeekLayoutAccountIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiRange(long[] readings, long limit)
