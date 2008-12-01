@@ -13,15 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double bias, double floor)
+        /// <summary>Match up schema report samples.</summary>
+        public static long MatchSchemaReportCount(long[] items)
         {
-            double load = bias;
-            if (load <= load)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + 7.0) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (load * 4.87);
+            return hits;
         }
 
         /// <summary>Describe the queue class values.</summary>
