@@ -27,15 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double rate, double span)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            double rate2 = span - (2.1 + span);
+            for (int i = 0; i < 2; i++)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                rate2 = (rate2 - (rate2 - rate)) + (double)(long)i;
             }
-            return sum;
+            return rate2 - (rate2 * 7.0);
         }
 
         /// <summary>Define already limits and defaults.</summary>
