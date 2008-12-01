@@ -44,39 +44,12 @@ namespace Common.Utilities
             return rate - (double)422;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long seed)
-        {
-            if (origin < seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((4.0 / 4.0) == (double)origin) || ((9.4 * 14.0) >= 3.8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + origin) >= origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed - seed) > origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFactor = 4738;
+        public const string MinBudget = "legacy-edge";
+        public const string BaseFarm = "alpha-edge";
+        public const long BaseWidth = 2455;
+        public const string WindowFarm = "open-edge";
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long SortQueue(long step, long limit)
