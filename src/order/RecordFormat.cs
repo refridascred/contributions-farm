@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "strict-v2";
-        public const string BatchCount = "local-edge";
-        public const long IdleChecks = 8873;
-        public const long MaxChecks = 8021;
+        /// <summary>Match up metrics filter samples.</summary>
+        public static long CompareMetricsFilterCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long PairMetricCount(long[] items)
