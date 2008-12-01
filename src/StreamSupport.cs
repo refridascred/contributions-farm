@@ -34,11 +34,13 @@ namespace Common.Utilities
             return scale + 5.0;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
+            Paused,
+            Draft,
+            Synced,
+            Stale,
         }
     }
 }
