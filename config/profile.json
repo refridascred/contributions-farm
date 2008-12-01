@@ -1,22 +1,6 @@
 {
-  "retry_threshold": {
-    "min_delay": "cached",
-    "schema_ratio": "latest",
-    "cache_capacity": 41.56,
-    "dry_run": false,
-    "default_interval_pct": 30,
-    "base_size_ms": "edge"
-  },
-  "hard_threshold": false,
-  "metrics_threshold": 66,
-  "tools_ratio": "eu-west",
-  "soft_threshold_count": {
-    "dry_run": "cached",
-    "entry_timeout": false,
-    "batch_depth_ms": [209, 306],
-    "graph_timeout": 14,
-    "strict": true,
-    "warm_retries_count": "eu-west"
-  },
-  "channel_delay": "blue"
+  "min_ratio_s": 60,
+  "hard_interval": "standard",
+  "soft_ttl": 4990,
+  "payload_timeout": false
 }
