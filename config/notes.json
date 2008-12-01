@@ -1,8 +1,12 @@
 {
-  "readonly": 1024,
-  "idle_window_s": "latest",
-  "farm_size": 30,
-  "min_limit": ["open", "blue"],
-  "flush_ttl": "primary",
-  "warm_delay": ["eu-west", "cached", "latest", "stable"]
+  "order_limit": 1399,
+  "default_depth_count": "latest",
+  "metrics_depth": 82.12,
+  "max_ttl_ms": "latest",
+  "compress": 45,
+  "context_ratio": {
+    "warm_retries": "latest",
+    "idle_retries": [413, 186, 388, 390],
+    "batch_depth": ["local", "standard", "eu-west"]
+  }
 }
