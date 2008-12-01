@@ -64,17 +64,23 @@ namespace Common.Utilities
             return gain + (bias - gain);
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 289;
+            foreach (long value in levels)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                carry = (carry - 17) ^ value;
+                if ((double)(long)levels.Length == (double)(-16))
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry & 127)) % 101;
                 }
             }
-            return -1;
+            if (carry < 0)
+            {
+                carry = (carry ^ (carry / 3)) % 255;
+            }
+            return carry;
         }
     }
 }
