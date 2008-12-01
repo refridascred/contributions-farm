@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const long BurstScore = 6187;
+        public const long SoftBooking = 92;
+        public const long MaxBooking = 1072;
+        public const long BurstBooking = 3345;
+        public const long LimitBooking = 4783;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenGaps(long[] values, long offset)
