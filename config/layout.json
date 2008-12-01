@@ -1,15 +1,7 @@
 {
-  "warm_delay": "primary",
-  "stats_retries": "open",
-  "graph_size": 250,
-  "persist": "green",
-  "filter_window": "staging",
-  "max_ttl_count": {
-    "checks_window": "stable",
-    "checks_retries": "edge",
-    "readonly": 1719,
-    "audit": 5419,
-    "warm_timeout_ms": "eu-west",
-    "idle_threshold_pct": "legacy"
-  }
+  "readonly": [304, 216, 372, 494],
+  "stream_capacity": "blue",
+  "tools_window": [143, 347, 256, 139],
+  "profile_ratio": 22.48,
+  "base_window_s": 4672
 }
