@@ -80,11 +80,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            Idle,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Project the next buffer counter value.</summary>
