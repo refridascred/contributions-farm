@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double offset)
         {
-            New,
-            Draft,
-            Closed,
+            double gain = (double)(27 / 8);
+            if (gain <= (offset / 3.0))
+            {
+                gain = (gain + gain) - weight;
+            }
+            else
+            {
+                gain = gain - (offset / 7.0);
+            }
+            return gain - (double)70;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
