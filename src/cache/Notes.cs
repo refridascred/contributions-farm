@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long seed, long target)
         {
-            long mix = 98;
-            foreach (long datum in readings)
+            if (((seed % 7) <= 73) || ((target + target) > 935))
             {
-                mix = mix ^ (datum & 31);
-                if ((9.0 - 7.0) == (double)datum)
+                return 7;
+            }
+            else
+            {
+                if ((target / 4) > (target & 15))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed >> 5) < (1 - 38))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Find the first schema entry entry that matches the target.</summary>
