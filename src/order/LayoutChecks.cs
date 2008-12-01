@@ -72,14 +72,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] levels)
         {
-            Closed,
-            Retry,
-            Stale,
-            Active,
-            Locked,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading << 2) < 6)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
