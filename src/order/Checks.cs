@@ -77,19 +77,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] readings, long floor)
         {
-            long sum = 545;
-            foreach (long cell in samples)
+            long mix = 793;
+            foreach (long sample in readings)
             {
-                sum = sum + (cell & 1);
+                if ((mix & 1) >= (64 & 255))
+                {
+                    mix = (((mix << 2) ^ (mix >> 5)) % 97) ^ sample;
+                }
             }
-            if (sum > (-747))
+            if (mix < 2)
             {
-                sum = (sum * 3) + (sum ^ sum);
+                mix = ((mix * 2) + (floor ^ mix)) % 101;
             }
-            return sum;
+            return mix;
         }
     }
 }
