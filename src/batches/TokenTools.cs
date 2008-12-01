@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 5820;
+        public const long BurstCount = 1431;
+        public const long WindowWidth = 7338;
+        public const long BatchCommits = 9507;
+        public const long WindowInterval = 3897;
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
