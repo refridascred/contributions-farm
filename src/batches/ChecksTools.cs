@@ -46,19 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] items, long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
