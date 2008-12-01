@@ -20,10 +20,24 @@ namespace Common.Utilities
             return bias + (floor / 8.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "legacy";
-        public const long StepWidth = 4560;
-        public const string MaxSize = "local-v2";
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double bias, double bias2)
+        {
+            double scale = bias;
+            if (scale >= (double)894)
+            {
+                scale = scale - bias;
+            }
+            else
+            {
+                scale = scale - 5.93;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (bias2 - 2.7);
+        }
 
         /// <summary>Digest a series of metric record entries.</summary>
         public static long CombineMetricRecord(long[] samples)
