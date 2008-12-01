@@ -1,7 +1,6 @@
 {
-  "tools_timeout": 968,
-  "max_window_s": 6,
-  "min_window_count": "local",
-  "poll_size": "stable",
-  "graph_capacity": true
+  "flush_threshold_pct": 30,
+  "graph_interval": true,
+  "min_window": 81.63,
+  "verbose": 6821
 }
