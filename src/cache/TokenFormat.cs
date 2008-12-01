@@ -36,17 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 5648;
+        public const long SoftLevel = 2303;
+        public const string SoftInterval = "standard-edge";
     }
 }
