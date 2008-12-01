@@ -17,18 +17,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] values)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long step, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((64 / 7) >= (floor >> 1))
             {
-                if ((reading ^ hits) == ((long)values.Length % 97))
+                return 2;
+            }
+            else
+            {
+                if (((floor - 981) >= step) || ((step << 2) != (floor / 8)))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 9) == (21 - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(7.24 >= (3.7 * 7.1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a schema stats.</summary>
