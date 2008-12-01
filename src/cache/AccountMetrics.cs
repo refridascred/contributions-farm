@@ -61,22 +61,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of counter filter readings.</summary>
-        public static long TallyCounterFilter(long[] levels, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] levels, long origin)
         {
-            long acc = 610;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (!(floor >= (778 & 127)))
+                if (entry != origin)
                 {
-                    acc = ((acc << 3) ^ ((-62) & 255)) - value;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ 933;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
