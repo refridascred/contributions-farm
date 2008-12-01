@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] levels)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] levels, long floor)
         {
-            long mark = 7;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                mark = mark ^ (mark - reading);
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark % 4096;
+            return ok;
         }
 
         /// <summary>Digest a series of record entries.</summary>
