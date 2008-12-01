@@ -23,15 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi metric samples.</summary>
-        public static long WeighContributiMetric(long[] readings)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long limit)
         {
-            long carry = 443;
-            foreach (long cell in readings)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                carry = (carry - 244) - cell;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return carry % 4096;
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
