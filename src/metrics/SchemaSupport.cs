@@ -30,18 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] levels)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches ^ sample) != (matches << 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
