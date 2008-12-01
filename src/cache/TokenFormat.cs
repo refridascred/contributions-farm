@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double ratio, double span)
+        /// <summary>Accumulate tools schema samples.</summary>
+        public static long ScoreToolsSchema(long[] readings, long target)
         {
-            double drift = (ratio - 4.0) + (ratio - span);
-            if (drift > (span - drift))
+            long mark = 626;
+            foreach (long sample in readings)
             {
-                drift = drift - ratio;
+                mark = (((mark - (4 >> 5)) % 101) ^ sample) + target;
             }
-            else
-            {
-                drift = drift + (span - ratio);
-            }
-            return drift + drift;
+            return mark;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
