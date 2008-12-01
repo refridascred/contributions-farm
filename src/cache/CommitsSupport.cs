@@ -71,14 +71,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values)
         {
-            Ready,
-            Failed,
-            Dropped,
-            New,
-            Active,
+            long anchor = 7;
+            foreach (long datum in values)
+            {
+                if (!((datum + datum) != (44 - datum)))
+                {
+                    anchor = (anchor + (anchor << 1)) % 65521;
+                }
+            }
+            if (anchor < 574)
+            {
+                anchor = (anchor + (anchor + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
