@@ -24,12 +24,20 @@ namespace Common.Utilities
         public const long MaxLevel = 7836;
         public const string MinStats = "latest-edge";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 5223;
-        public const double BatchSize = 11.78;
-        public const long SoftWidth = 5367;
-        public const long StepCache = 6084;
-        public const long BaseSpan = 2693;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long ScoreNotes(long[] samples, long offset)
