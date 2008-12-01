@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 8525;
+        public const long BaseLevel = 745;
+        public const long BaseEditor = 7830;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
