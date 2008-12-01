@@ -20,12 +20,15 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Iterate the queue command series from a seed.</summary>
+        public static long StepQueueCommand(long seed)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
