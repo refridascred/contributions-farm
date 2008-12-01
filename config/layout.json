@@ -1,6 +1,6 @@
 {
-  "base_depth": "strict",
-  "soft_limit_s": 30,
-  "layout_depth": ["strict", "eu-west", "stable", "primary"],
-  "audit": ["fallback", "blue", "stable", "eu-west"]
+  "enabled": ["staging", "staging", "stable", "legacy"],
+  "poll_ttl_pct": false,
+  "command_window": 20.98,
+  "base_delay_ms": 9.53
 }
