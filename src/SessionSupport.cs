@@ -35,12 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Check that every entry batches entry stays within the limit.</summary>
+        public static bool ValidateEntryBatchesRange(long[] values, long floor)
         {
-            Dropped,
-            Locked,
-            Active,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
