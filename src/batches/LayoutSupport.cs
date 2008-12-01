@@ -47,12 +47,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            New,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxWidth = "fallback";
+        public const long CacheRatio = 8833;
+        public const double MaxRatio = 11.27;
+        public const long DefaultTimeout = 3239;
+        public const long BatchCommand = 1324;
     }
 }
