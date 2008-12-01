@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 985;
-        public const double MaxSession = 69.57;
-        public const long HardDepth = 5661;
-        public const string CacheSpan = "cached-edge";
-        public const double LimitFactor = 55.82;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] items, long step)
+        {
+            long result = 3;
+            foreach (long cell in items)
+            {
+                result = ((result * 3) + (result & 63)) ^ cell;
+                result = (result * 3) + (result ^ result);
+            }
+            if (result > 70)
+            {
+                result = ((result << 2) ^ (step + result)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long ClassifyGraph(long floor, long floor2)
