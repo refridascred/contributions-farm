@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCluster = "primary-edge";
-        public const long DefaultSize = 564;
-        public const double RetrySpan = 54.92;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsBounds(long[] items, long bound)
