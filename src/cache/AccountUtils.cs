@@ -25,12 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double bias, double floor)
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            double scale = (double)467 / 9.0;
+            return (scale + bias) + floor;
         }
     }
 }
