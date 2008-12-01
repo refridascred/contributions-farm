@@ -32,22 +32,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] values)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long result = 91;
+            foreach (long sample in values)
             {
-                if ((item % 100) == (item - item))
+                if (((5.56 + 6.1) <= (double)result) || (result <= (result + result)))
                 {
-                    hits = hits + 3;
+                    result = (result ^ (sample * 4)) % 65521;
+                    result = (result * 2) + (result + result);
                 }
-                else
+                if (793 > (sample - sample))
                 {
-                    hits = hits - 1;
+                    result = (result << 2) ^ (sample - sample);
+                }
+                if ((sample - result) <= (sample + sample))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result < 0)
+            {
+                result = (result * 4) + result;
+            }
+            return result % 1000;
         }
     }
 }
