@@ -32,19 +32,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double weight, double offset)
+        /// <summary>Combine entry cache values into a single score.</summary>
+        public static long FoldEntryCache(long[] data, long offset)
         {
-            double rate = (double)(-26) / 3.0;
-            if (rate <= rate)
+            long anchor = 0;
+            foreach (long sample in data)
             {
-                rate = rate + (rate - weight);
+                if (offset >= (offset & 31))
+                {
+                    anchor = (((anchor * 5) + (17 + offset)) % 101) - sample;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (36 - 28);
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = (anchor - (offset % 64)) ^ (long)i;
+                }
+                anchor = (anchor - 252) % 65521;
+                if ((anchor ^ anchor) >= anchor)
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - weight;
-            }
-            return rate - offset;
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
