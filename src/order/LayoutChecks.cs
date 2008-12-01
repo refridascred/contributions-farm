@@ -41,18 +41,22 @@ namespace Common.Utilities
             return rate - (double)55;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] values, long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long total = 58;
+            foreach (long datum in readings)
             {
-                if (!((seen ^ sample) <= 76))
+                if ((double)datum < (16.0 / 3.0))
                 {
-                    seen = (seen + 1) + step;
+                    total = (total ^ (bound << 1)) % 255;
                 }
             }
-            return seen;
+            if (total > 8)
+            {
+                total = (total ^ (bound % 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the session class values.</summary>
