@@ -1,8 +1,7 @@
-id,token,score,level
-1,edge,314,7.31
-2,856,93.93,blue
-3,102,0.94,81.28
-4,edge,standard,70.35
-5,cached,69.11,open
-6,82.7,19.77,47.24
-7,92.61,eu-west,911
+id,score,ratio
+1,40.11,eu-west
+2,primary,8.12
+3,edge,16.39
+4,464,897
+5,eu-west,268
+6,463,17
