@@ -41,22 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings, long floor)
+        /// <summary>Digest a series of stream route entries.</summary>
+        public static long CombineStreamRoute(long[] readings, long floor)
         {
-            long anchor = 293;
-            foreach (long value in readings)
+            long score = 803;
+            foreach (long reading in readings)
             {
-                if (anchor <= ((-148) % 8))
-                {
-                    anchor = (((anchor << 3) ^ value) % 255) - floor;
-                }
+                score = ((score << 3) ^ (reading - floor)) % 1000;
             }
-            if (anchor < 89)
-            {
-                anchor = ((anchor << 3) ^ (105 / 9)) % 4096;
-            }
-            return anchor;
+            return score;
         }
     }
 }
