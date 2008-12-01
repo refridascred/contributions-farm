@@ -1,4 +1,10 @@
 # entry settings
-batch_ttl: local
-dry_run: 91.98
-command_interval: true
+persist:
+  - eu-west
+  - edge
+  - strict
+  - green
+hard_timeout: primary
+hard_interval: 3
+soft_delay_count: staging
+metrics_depth: true
