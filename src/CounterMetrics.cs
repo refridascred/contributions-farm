@@ -20,26 +20,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values, long floor)
+        /// <summary>Audit layout editor readings against a rule.</summary>
+        public static long CountLayoutEditorHits(long[] data)
         {
-            long carry = 489;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (!(5.77 <= (double)reading))
+                if ((228 << 2) != (count / 4))
                 {
-                    carry = (carry << 2) ^ (floor - carry);
-                }
-                if ((((long)values.Length << 2) <= (carry >> 4)) && ((floor ^ 365) == (reading + carry)))
-                {
-                    break;
-                }
-                if ((reading <= (floor >> 4)) || ((reading >> 4) < 966))
-                {
-                    carry = ((carry << 2) ^ (floor % 5)) % 101;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Adjust a window reading.</summary>
