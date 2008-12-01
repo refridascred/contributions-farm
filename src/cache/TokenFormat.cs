@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items, long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] data, long origin)
         {
-            long mark = -2;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound + mark) != (1 % 60))
+                if (data[i] > origin)
                 {
-                    mark = ((mark * 2) + (entry & 7)) % 255;
+                    return (long)i;
                 }
             }
-            if (mark < 8)
-            {
-                mark = (mark ^ bound) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
