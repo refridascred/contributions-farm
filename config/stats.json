@@ -1,5 +1,14 @@
 {
-  "hard_retries_pct": ["blue", "open", "edge", "primary"],
-  "schema_retries": [357, 463, 350],
-  "retry_timeout_count": [61, 461, 430]
+  "base_window": ["edge", "green", "fallback"],
+  "metrics_size": 100,
+  "verbose": "primary",
+  "sync_retries": {
+    "persist": "legacy",
+    "format_window": "green",
+    "burst_size_count": 500,
+    "dry_run": "strict",
+    "already_window": "strict"
+  },
+  "flush_ttl_s": "primary",
+  "default_depth": "staging"
 }
