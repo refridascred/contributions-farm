@@ -15,21 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the layout phase values.</summary>
