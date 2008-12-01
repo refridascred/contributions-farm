@@ -52,12 +52,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor * 5) + ((long)i % 10);
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
