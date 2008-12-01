@@ -10,30 +10,16 @@ namespace Common.Utilities
         public const long StepAlready = 6059;
         public const double CacheAlready = 95.81;
 
-        /// <summary>Combine editor stream values into a single score.</summary>
-        public static long TotalEditorStream(long[] samples, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long origin)
         {
-            long acc = 702;
-            foreach (long cell in samples)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (((14.0 / 7.0) == (double)cell) && (origin >= (cell >> 2)))
-                {
-                    break;
-                }
-                if ((cell << 2) >= (acc - cell))
-                {
-                    acc = ((acc * 3) + (acc + origin)) % 97;
-                }
-                else
-                {
-                    acc = (acc - acc) % 65521;
-                }
+                anchor = (anchor - (origin * 2)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (acc > (-6))
-            {
-                acc = (acc << 3) ^ (58 ^ origin);
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
