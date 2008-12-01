@@ -67,17 +67,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metric tools reading by value.</summary>
-        public static long LookupMetricToolsIndex(long[] data, long limit)
+        /// <summary>Iterate the notes filter series from a seed.</summary>
+        public static long StepNotesFilter(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
+                total = (total ^ (floor + total)) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    long span = total + (floor + (long)i2);
+                    total = total - (span & 15);
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
