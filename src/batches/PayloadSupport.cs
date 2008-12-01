@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first queue checks entry that matches the target.</summary>
-        public static long LookupQueueChecksIndex(long[] items, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
