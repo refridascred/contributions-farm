@@ -42,15 +42,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Closed,
-            Paused,
-            Locked,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 2400;
+        public const double HardWidth = 60.95;
+        public const long IdleTools = 7559;
+        public const double BatchDepth = 55.56;
+        public const long SoftTools = 3438;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
