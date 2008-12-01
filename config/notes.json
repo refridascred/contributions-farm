@@ -1,5 +1,8 @@
 {
-  "strict": "stable",
-  "default_limit": "blue",
-  "poll_delay": 74
+  "batches_depth": "edge",
+  "max_size": 9704,
+  "verbose": true,
+  "cluster_timeout": 461,
+  "cache_capacity_pct": "eu-west",
+  "warm_size": ["local", "cached"]
 }
