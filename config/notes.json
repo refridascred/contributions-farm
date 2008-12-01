@@ -1,5 +1,8 @@
 {
-  "batch_size_s": 250,
-  "cache_ttl_count": "fallback",
-  "counter_ratio": 4.63
+  "max_window_pct": [341, 387, 251, 12],
+  "cache_limit_s": "cached",
+  "channel_timeout": 10.3,
+  "persist": [113, 401, 116, 345],
+  "burst_window_count": false,
+  "support_retries": [441, 338, 335, 171]
 }
