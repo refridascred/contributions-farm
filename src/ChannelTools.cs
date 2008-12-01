@@ -32,10 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 3720;
-        public const long SoftLayout = 4950;
-        public const long BatchDepth = 7375;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Active,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
