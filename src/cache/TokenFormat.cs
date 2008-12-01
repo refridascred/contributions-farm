@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long step, long offset)
         {
-            Idle,
-            Active,
-            Done,
-            Dropped,
-            Draft,
+            if (step <= (379 * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.0 + 9.7) != (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7.4 / 7.0) < (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up entry samples.</summary>
