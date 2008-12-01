@@ -28,19 +28,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of filter stream entries.</summary>
-        public static long FoldFilterStream(long[] samples)
+        /// <summary>Iterate the filter contributi series from a seed.</summary>
+        public static long RollFilterContributi(long limit)
         {
-            long mark = 209;
-            foreach (long cell in samples)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                mark = ((mark ^ mark) % 65521) - cell;
+                score = (score - (score + limit)) % 65521;
+                if (!((limit * 2) <= ((long)i ^ limit)))
+                {
+                    score = (score << 3) ^ (limit + score);
+                }
+                else
+                {
+                    score = (score << 2) ^ (score - score);
+                    score = (score * 3) + (limit / 5);
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (mark > 10)
-            {
-                mark = (mark - (mark + (long)samples.Length)) % 65521;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
