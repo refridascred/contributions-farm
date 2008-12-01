@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] levels, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((step - 63) < (7 - step))
+                if ((8.1 / 8.0) == (double)count)
                 {
-                    seen = (seen + 1) + entry;
+                    count = (count + 3) + cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of profile farm readings.</summary>
