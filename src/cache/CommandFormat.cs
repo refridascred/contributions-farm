@@ -15,19 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] readings, long step)
+        /// <summary>Scale a payload farm figure with a bias.</summary>
+        public static double AdjustPayloadFarm(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double rate = (double)(0 * 3);
+            if (rate > rate)
             {
-                if (cell < step)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = (rate - 2.9) + weight;
             }
-            return stale;
+            else
+            {
+                rate = rate - floor;
+            }
+            return rate - rate;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
