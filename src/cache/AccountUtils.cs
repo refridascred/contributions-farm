@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "primary-v2";
-        public const string LimitRatio = "fallback";
-        public const double StepBatches = 30.77;
-        public const double SoftBatches = 75.3;
-        public const long HardBatches = 7205;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Project the next editor contributi value.</summary>
         public static double ScaleEditorContributi(double weight, double bias)
