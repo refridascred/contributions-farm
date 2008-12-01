@@ -55,11 +55,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] items)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum << 2) >= (95 - datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
