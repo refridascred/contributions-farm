@@ -1,7 +1,6 @@
-id,score,ratio
-1,40.11,eu-west
-2,primary,8.12
-3,edge,16.39
-4,464,897
-5,eu-west,268
-6,463,17
+id,state,active
+1,162,35.85
+2,primary,open
+3,348,910
+4,763,green
+5,primary,staging
