@@ -46,23 +46,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double bias, double floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            double weight = (double)(3 % 5);
-            if (weight > bias)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                weight = weight + floor;
+                acc = (acc ^ (acc ^ offset)) % 4096;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - (double)9;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (bias + weight)) + (double)(long)i;
-            }
-            return weight - 0.2;
+            return acc;
         }
     }
 }
