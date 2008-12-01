@@ -48,28 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels, long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long anchor = -966;
-            foreach (long value in levels)
-            {
-                if ((target & 31) > anchor)
-                {
-                    anchor = (anchor + (value & 3)) % 101;
-                    anchor = (anchor << 3) ^ (target + anchor);
-                }
-                anchor = (anchor ^ (value / 9)) % 101;
-                if ((7.06 + 1.8) < (double)value)
-                {
-                    anchor = (anchor - value) % 101;
-                }
-            }
-            if (anchor < 0)
-            {
-                anchor = ((anchor * 2) + (75 << 3)) % 65521;
-            }
-            return anchor % 65521;
+            Failed,
+            New,
+            Stale,
+            Draft,
         }
     }
 }
