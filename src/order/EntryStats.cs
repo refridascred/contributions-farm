@@ -46,18 +46,32 @@ namespace Common.Utilities
         public const long SoftBudget = 4569;
         public const long LimitCommand = 2828;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] series)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long offset = limit ^ seed;
+            if (((offset + seed) == (seed ^ limit)) && ((double)seed > (double)2))
             {
-                if ((19.0 / 8.0) <= (double)item)
+                return 7;
+            }
+            else
+            {
+                if ((offset * 4) != (seed & 1))
                 {
-                    hits = hits + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit >> 5) < (seed + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
