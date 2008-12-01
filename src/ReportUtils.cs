@@ -29,11 +29,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
