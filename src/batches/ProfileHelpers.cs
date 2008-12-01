@@ -66,14 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 9186;
+        public const string MinEditor = "open-v2";
+        public const long MinLevel = 8860;
+        public const double StepFactor = 94.71;
+        public const long SoftScore = 3286;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitEditor = 7605;
