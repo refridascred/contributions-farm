@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up profile stream samples.</summary>
-        public static long OverlapProfileStreamCount(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum < tally)
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
