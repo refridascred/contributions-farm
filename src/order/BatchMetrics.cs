@@ -12,10 +12,20 @@ namespace Common.Utilities
             return (ratio + weight) + offset;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultTimeout = 4687;
-        public const long MaxLevel = 7836;
-        public const string MinStats = "latest-edge";
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderHits(long[] data, long step)
