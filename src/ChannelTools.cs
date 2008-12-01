@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
