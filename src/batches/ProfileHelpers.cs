@@ -67,11 +67,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
