@@ -21,18 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] levels)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ 17) >= (entry & 63))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a stats info.</summary>
