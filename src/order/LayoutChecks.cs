@@ -60,18 +60,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream checks samples are out of range.</summary>
-        public static long CountStreamChecksOutliers(long[] levels)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((706 <= (sample >> 5)) || ((((long)levels.Length + sample) < (sample - hits)) && ((sample * 5) > ((-195) % 5))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Retry,
+            Stale,
+            Active,
+            Locked,
         }
     }
 }
