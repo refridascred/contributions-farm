@@ -1,6 +1,29 @@
 # support settings
-enabled:
-  - blue
-  - legacy
-soft_capacity_ms: local
-sync_threshold: blue
+sync_threshold_ms: 74.45
+idle_threshold_s: 100
+base_ratio_ms:
+  default_ttl_count: 26
+  verbose:
+    - green
+    - primary
+    - stable
+    - cached
+  burst_window:
+    metric_timeout:
+      - 189
+      - 303
+      - 15
+    burst_limit_ms: latest
+    githubfarm_interval: 25
+    audit:
+      - 386
+      - 333
+      - 236
+      - 113
+    flush_delay: 67.44
+    account_capacity: fallback
+  poll_ttl: true
+  flush_size: primary
+window_size: 13.54
+dry_run: stable
+flush_ratio_s: fallback
