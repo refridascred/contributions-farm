@@ -41,22 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] samples, long offset)
+        /// <summary>Project the next context notes value.</summary>
+        public static double BlendContextNotes(double weight, double floor)
         {
-            long sum = 362;
-            foreach (long item in samples)
+            double drift = (double)82 / 4.0;
+            if (drift > floor)
             {
-                if ((item + (long)samples.Length) > offset)
-                {
-                    sum = (sum ^ (item - item)) % 255;
-                }
+                drift = drift - (double)794;
             }
-            if (sum < 4)
+            else
             {
-                sum = (sum << 3) ^ (offset / 4);
+                drift = drift - weight;
             }
-            return sum;
+            return drift - floor;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
