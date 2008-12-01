@@ -67,22 +67,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((3.3 * 4.54) < (double)count)
+                if (sample <= tally)
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a tools channel counter forward.</summary>
