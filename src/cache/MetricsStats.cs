@@ -48,11 +48,20 @@ namespace Common.Utilities
             return bias + (weight / 4.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchFactor = 6987;
-        public const long DefaultRoute = 1725;
-        public const string RetryRatio = "stable";
-        public const long HardScore = 6914;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels)
+        {
+            long sum = 303;
+            foreach (long entry in levels)
+            {
+                sum = (((sum << 3) ^ sum) % 65521) ^ entry;
+            }
+            if (sum > 714)
+            {
+                sum = ((sum * 2) + (sum + sum)) % 4096;
+            }
+            return sum;
+        }
 
         /// <summary>Audit channel notes readings against a rule.</summary>
         public static long AuditChannelNotesGaps(long[] data, long target)
