@@ -45,22 +45,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] samples, long step)
         {
-            long carry = 509;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if ((samples[i] == step) && ((samples[i] % 2) == 0))
                 {
-                    carry = (((carry ^ carry) % 101) - (long)i) - datum;
-                }
-                if ((4.0 * 16.0) <= (double)carry)
-                {
-                    carry = carry ^ (carry - 8);
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
