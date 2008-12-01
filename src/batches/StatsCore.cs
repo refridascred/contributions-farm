@@ -43,19 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items, long step)
-        {
-            long acc = -5;
-            foreach (long entry in items)
-            {
-                if (acc <= entry)
-                {
-                    acc = ((acc - (6 - acc)) % 255) - step;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 3770;
+        public const double RetryWindow = 26.54;
+        public const long StepLevel = 4446;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
