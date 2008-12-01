@@ -1,18 +1,11 @@
 # entry settings
-flush_window_s: 100
-batch_size: 61.92
-persist:
-  max_depth_s: 936
-  poll_depth_count: false
-  persist: edge
-  order_window: 58
-  compress:
-    metric_timeout:
-      - 152
-      - 62
-    min_capacity: 60
-    retry_threshold: 61.95
-    poll_ratio_count: true
-    enabled: true
-  format_capacity: 39.35
-context_delay: 100
+context_capacity:
+  - 291
+  - 38
+route_threshold: true
+idle_delay_s: 100
+strict:
+  - primary
+  - local
+  - strict
+  - staging
