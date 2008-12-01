@@ -83,21 +83,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultRatio = 1768;
+        public const long CacheInterval = 6804;
+        public const double StepEditor = 34.11;
+        public const double WindowCount = 87.81;
+        public const long BatchRatio = 3730;
     }
 }
