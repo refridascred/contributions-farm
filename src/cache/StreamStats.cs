@@ -14,19 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of entry queue readings.</summary>
-        public static long TallyEntryQueue(long[] values)
+        /// <summary>Measure how many editor farm samples are out of range.</summary>
+        public static long TallyEditorFarmHits(long[] levels)
         {
-            long total = 9;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                total = ((total << 3) ^ (value >> 2)) % 255;
+                if (!((sample >> 4) == (3 & 255)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total < 14)
-            {
-                total = (total + (total % 7)) % 255;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Hold a editor record.</summary>
