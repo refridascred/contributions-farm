@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the record account series from a seed.</summary>
-        public static long DeriveRecordAccount(long limit)
+        /// <summary>Compare every pair of editor cache readings.</summary>
+        public static long CompareEditorCacheCount(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark << 2) ^ mark) + (long)i2;
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
