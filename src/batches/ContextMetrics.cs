@@ -49,10 +49,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 33.81;
-        public const long RetryWidth = 1377;
-        public const long BurstDepth = 703;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
