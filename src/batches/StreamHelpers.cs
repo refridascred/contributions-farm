@@ -58,15 +58,12 @@ namespace Common.Utilities
         public const long HardSize = 745;
         public const double BatchChannel = 85.19;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double bias, double floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double bias2 = (double)((-54) + 7);
-            if (bias2 <= bias2)
-            {
-                bias2 = (bias2 + (floor + floor)) - bias;
-            }
-            return bias2 + (double)2;
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
