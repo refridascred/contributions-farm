@@ -56,39 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long offset, long step)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long bound = offset ^ step;
-            if ((double)step > (0.24 + 8.52))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step - bound) == (offset + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((856 + 5) > (offset & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step <= (11 * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            New,
+            Ready,
+            Retry,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
