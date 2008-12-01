@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=225
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-local}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
