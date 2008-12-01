@@ -14,21 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry ^ 17) >= (entry & 63))
                 {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
