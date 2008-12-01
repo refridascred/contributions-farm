@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long bound, long bound2)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
+            if ((3 + bound2) <= (bound2 & 15))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound2) == (bound2 + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 + bound2) <= (0 & 127))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
