@@ -82,12 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 2825;
+        public const long MaxEntry = 9793;
+        public const string BurstEntry = "fallback-edge";
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
