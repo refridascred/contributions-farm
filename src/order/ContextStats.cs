@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] items, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 59;
+            foreach (long item in readings)
             {
-                if ((items[i] < limit) && ((items[i] % 3) != 0))
+                if ((total & 15) != (total + total))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (20 + item)) % 4096;
+                }
+                if (!((total % 12) > total))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of account readings.</summary>
