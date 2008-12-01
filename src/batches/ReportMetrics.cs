@@ -32,13 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series)
         {
-            Queued,
-            Locked,
-            Synced,
-            Pending,
+            long mix = 5;
+            foreach (long value in series)
+            {
+                if (value >= (value + mix))
+                {
+                    mix = ((mix * 4) + value) % 65521;
+                }
+                mix = (mix ^ value) % 1000;
+            }
+            return mix;
         }
     }
 }
