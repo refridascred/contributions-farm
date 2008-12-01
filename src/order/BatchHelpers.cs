@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] levels, long offset)
         {
-            Draft,
-            Retry,
-            Idle,
-            Ready,
-            Synced,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (tally > (0 & 3))
+                {
+                    tally = ((tally + 2) + sample) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
