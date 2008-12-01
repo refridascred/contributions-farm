@@ -49,15 +49,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] readings, long target)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double weight, double span)
         {
-            long acc = 164;
-            foreach (long datum in readings)
+            double gain = span;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc - (134 + datum)) % 255) - target;
+                gain = ((gain + (gain * 2.46)) + (double)(long)i) + weight;
             }
-            return acc;
+            return gain + span;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
