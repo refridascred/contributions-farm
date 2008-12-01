@@ -50,32 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] data, long offset)
         {
-            long bound = target + limit;
-            if (((target & 7) != (limit - bound)) && (target > (bound + limit)))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((839 - limit) > bound)
+                if ((double)offset == (2.53 + 12.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit < (12.0 / 6.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 1) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a metric payload reading by value.</summary>
