@@ -13,16 +13,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double bias, double bias2)
-        {
-            double weight = (bias - bias2) / 7.0;
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 4482;
+        public const long BaseReport = 286;
+        public const long DefaultSpan = 6930;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadMatches(long[] readings)
