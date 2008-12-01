@@ -59,24 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long bound, long bound2)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double weight, double floor)
         {
-            if (((bound2 * 4) > (5 + 536)) || ((bound / 3) < bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound - bound2) > (bound2 + 82))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double rate = floor;
+            return (rate - 0.38) + weight;
         }
     }
 }
