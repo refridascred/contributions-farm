@@ -1,6 +1,33 @@
 # githubfarm settings
-dry_run: 63
-batch_capacity_pct: blue
-sync_window_s: true
-commits_delay: false
-token_ttl: true
+verbose: true
+readonly:
+  default_limit_pct: 10.41
+  cache_window:
+    dry_run: primary
+    cache_ratio_pct: 78.49
+    warm_capacity_count: 87
+    warm_size_count:
+      - 346
+      - 218
+      - 321
+      - 28
+    enabled:
+      - standard
+      - blue
+  burst_limit_s: false
+  idle_depth_pct: 88.26
+  warm_size_ms:
+    - 321
+    - 335
+    - 210
+    - 463
+  soft_ttl_s:
+    contributi_window: primary
+    queue_threshold: false
+    base_threshold_s:
+      - 100
+      - 48
+      - 285
+    enabled: 46
+sync_threshold_count: 250
+default_ttl: false
