@@ -23,13 +23,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Roll a window graph counter forward.</summary>
+        public static long StepWindowGraph(long seed)
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 3) + (seed << 3)) % 4096;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Locate a account reading by value.</summary>
