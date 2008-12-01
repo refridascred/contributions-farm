@@ -1,19 +1,9 @@
 # githubfarm settings
-base_threshold: eu-west
-metrics_capacity: strict
-schema_retries:
-  poll_retries_ms:
-    - blue
-    - fallback
-    - local
-  min_ttl_pct: cached
-  layout_retries: 65.26
-  max_window_ms:
-    - open
-    - latest
-    - cached
-    - green
-  base_retries: 82
-  strict: edge
-batch_ttl_ms: 6
-entry_timeout: fallback
+burst_interval_ms:
+  githubfarm_depth: standard
+  batch_threshold: cached
+  burst_ttl_ms: 6429
+poll_window_ms: cached
+base_delay:
+  - cached
+  - open
