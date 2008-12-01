@@ -31,13 +31,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public double Limit { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Ready,
+            Pending,
+            Draft,
         }
     }
 }
