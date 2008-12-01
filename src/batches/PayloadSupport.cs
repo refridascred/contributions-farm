@@ -31,24 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long bound, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            if ((double)limit < 4.3)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound > (3.32 / 5.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
