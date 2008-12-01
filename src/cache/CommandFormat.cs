@@ -16,25 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long origin, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            long span = origin + floor;
-            if (!((double)span <= (13.0 * 9.0)))
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span + floor) < (origin + floor))
+                if ((9 >> 4) >= target)
                 {
-                    return 7;
+                    continue;
                 }
-                else
+                if ((10 * 4) == (target / 6))
                 {
-                    return 3;
+                    acc = (acc * 3) + 805;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Hold a payload header.</summary>
