@@ -17,38 +17,18 @@ namespace Common.Utilities
         public const long MaxLevel = 7836;
         public const string MinStats = "latest-edge";
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long offset, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] data, long step)
         {
-            if ((seed <= (offset % 2)) || ((15 >> 3) > (offset - offset)))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset ^ offset) == (offset / 7))
+                if (!((99 - 0) <= (9 + (long)data.Length)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - seed) < (seed + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) <= (66 & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = ((count + 3) ^ cell) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate notes samples.</summary>
