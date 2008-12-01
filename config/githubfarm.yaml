@@ -1,7 +1,6 @@
 # githubfarm settings
-default_window_s:
-  - 225
-  - 294
-sync_capacity: 12.85
-sync_threshold: 55
-poll_timeout: latest
+cache_depth:
+  - standard
+  - cached
+retry_size_s: open
+hard_retries: eu-west
