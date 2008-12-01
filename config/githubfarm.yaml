@@ -1,19 +1,7 @@
 # githubfarm settings
-poll_retries_count: 45
-soft_delay: local
-soft_capacity_count:
-  flush_interval_s:
-    profile_timeout: 30
-    verbose: strict
-    cluster_capacity: stable
-  order_timeout: true
-  hard_window_count:
-    min_limit: fallback
-    hard_size: 18.57
-    queue_limit: true
-schema_size: 34
-idle_size:
-  flush_retries: green
-  readonly: true
-  strict: 4823
-retry_retries_pct: open
+warm_ttl_ms: fallback
+flush_interval_s: 85
+audit: fallback
+flush_threshold: edge
+default_interval: 5099
+max_delay_pct: open
