@@ -20,23 +20,11 @@ namespace Common.Utilities
             return bias + (floor / 8.0);
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double bias, double bias2)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double scale = bias;
-            if (scale >= (double)894)
-            {
-                scale = scale - bias;
-            }
-            else
-            {
-                scale = scale - 5.93;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (bias2 - 2.7);
+            public double Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of metric record entries.</summary>
