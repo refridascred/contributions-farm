@@ -20,12 +20,10 @@ namespace Common.Utilities
             return bias + (floor / 8.0);
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public double Size { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitDepth = "stable-v2";
+        public const string DefaultPayload = "strict-1";
+        public const long RetryInterval = 7202;
 
         /// <summary>Compare every pair of session entry readings.</summary>
         public static long PairSessionEntryCount(long[] levels)
