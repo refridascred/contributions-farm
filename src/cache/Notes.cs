@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate payload samples.</summary>
