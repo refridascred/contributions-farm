@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of checks channel entries.</summary>
-        public static long TotalChecksChannel(long[] items, long bound)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long score = 4;
-            foreach (long reading in items)
-            {
-                score = score - (reading - 87);
-                score = score + (score - 41);
-                score = score ^ (99 - score);
-            }
-            if (score < 70)
-            {
-                score = ((score << 3) ^ bound) % 97;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
