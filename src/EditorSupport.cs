@@ -29,18 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] levels)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (tally < (tally % 12))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            Idle,
+            Synced,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define command limits and defaults.</summary>
