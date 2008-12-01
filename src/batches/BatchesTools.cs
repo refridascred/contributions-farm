@@ -17,17 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] items, long bound)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = rate;
+            if (mean < (double)8)
             {
-                if ((items[i] == bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (offset * 4.82);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean + offset;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
