@@ -1,5 +1,21 @@
 # support settings
-sync_ttl: 34.13
-format_ratio: fallback
-idle_ratio_ms: 9766
-hard_capacity: primary
+verbose:
+  hard_capacity_s: eu-west
+  cluster_size: 60
+  batch_capacity_pct: 11.46
+entry_threshold:
+  idle_depth: 44
+  cache_retries_ms:
+    - 73
+    - 315
+  flush_timeout_pct: edge
+  already_retries: 87.82
+  dry_run: true
+dry_run: 2626
+burst_ratio_s:
+  - cached
+  - primary
+  - latest
+  - local
+burst_threshold_ms: 25
+persist: 60
