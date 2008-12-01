@@ -46,10 +46,20 @@ namespace Common.Utilities
         public const string StepEditor = "staging-edge";
         public const long BatchWidth = 2927;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 2183;
-        public const long CacheReport = 4683;
-        public const long IdleSpan = 5176;
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double bias, double bias2)
+        {
+            double weight = bias2 / 8.0;
+            if (weight < weight)
+            {
+                weight = (weight + (double)411) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (bias2 + 9.7)) + (double)(long)i;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double AdjustWindow(double scale, double bias)
