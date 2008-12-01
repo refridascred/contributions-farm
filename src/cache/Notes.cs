@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate counter channel readings against a bound.</summary>
-        public static bool ValidateCounterChannelLimits(long[] levels, long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Weight { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
