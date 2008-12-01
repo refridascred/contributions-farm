@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "staging-edge";
-        public const long IdleFactor = 5488;
-        public const long BaseOrder = 9109;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long IterateFormat(long floor)
