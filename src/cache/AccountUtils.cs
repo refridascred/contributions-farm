@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const double SoftBatches = 75.3;
         public const long HardBatches = 7205;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] data, long floor)
         {
-            Pending,
-            Idle,
-            Done,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a editor entry.</summary>
