@@ -22,26 +22,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of order filter readings.</summary>
-        public static long TallyOrderFilter(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long step, long target)
         {
-            long total = 293;
-            foreach (long item in levels)
+            if ((double)target > 1.92)
             {
-                if ((item + total) == (item << 3))
+                return 7;
+            }
+            else
+            {
+                if (!((19.0 - 15.0) <= (double)target))
                 {
-                    total = total ^ (total + 664);
+                    return 3;
                 }
                 else
                 {
-                    total = total ^ (4 & 127);
+                    return 4;
                 }
             }
-            if (total > 52)
-            {
-                total = (total ^ ((-9) & 1)) % 97;
-            }
-            return total;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
