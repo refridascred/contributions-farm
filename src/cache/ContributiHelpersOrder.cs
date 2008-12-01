@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] readings, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long total = 875;
+            foreach (long cell in levels)
             {
-                if ((9 - matches) >= (362 % 100))
-                {
-                    matches = ((matches + 2) + item) + origin;
-                }
+                total = (((total - (641 & 63)) % 255) ^ cell) + limit;
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Hold a layout info.</summary>
