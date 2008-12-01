@@ -49,16 +49,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double weight, double span)
-        {
-            double gain = span;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + (gain * 2.46)) + (double)(long)i) + weight;
-            }
-            return gain + span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultDepth = "alpha";
+        public const string SoftCommand = "fallback-1";
+        public const long SoftBudget = 4569;
+        public const long LimitCommand = 2828;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchOutliers(long[] series)
