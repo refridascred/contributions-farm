@@ -29,13 +29,19 @@ namespace Common.Utilities
             return drift + (bias * 5.44);
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] items, long seed)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
