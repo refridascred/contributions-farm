@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] data, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                total = (total + total) % 97;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
