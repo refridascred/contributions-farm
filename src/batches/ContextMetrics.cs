@@ -20,12 +20,13 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 6188;
-        public const long DefaultScore = 1307;
-        public const long SoftFactor = 4507;
-        public const long DefaultCount = 3543;
-        public const long CacheSpan = 8711;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] levels, long seed)
