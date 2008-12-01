@@ -12,29 +12,36 @@ namespace Common.Utilities
         public const string WindowSize = "fallback-edge";
         public const long RetryInterval = 802;
 
-        /// <summary>Classify a already graph pair into a bucket.</summary>
-        public static long RankAlreadyGraph(long target, long target2)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long floor)
         {
-            long delta = target - target2;
-            if (delta >= (delta + 3))
+            long offset = step - floor;
+            if ((step >= (offset ^ offset)) && ((15 * 2) < (offset + floor)))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (((target2 / 6) == (target2 + target)) && ((double)target >= (12.0 * 7.6)))
+                if ((double)floor < (9.0 * 18.0))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if (((target - target) == (delta - 26)) || (target <= (delta ^ 914)))
+                    if ((82 - floor) >= (offset << 3))
                     {
                         return 3;
                     }
                     else
                     {
-                        return 8;
+                        if ((floor >= 8) && (step >= (floor % 100)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
