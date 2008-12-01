@@ -42,39 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long seed, long origin)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            long delta = seed - origin;
-            if ((double)seed <= 6.42)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)seed <= (2.7 / 5.0)) && (2.37 <= (double)delta))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (delta <= origin)
+                    if ((values[i] ^ values[j]) == 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + delta) == (delta ^ delta))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
