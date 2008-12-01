@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (ratio + weight) + offset;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Validate command graph readings against a bound.</summary>
+        public static bool VerifyCommandGraphLimits(long[] levels, long limit)
         {
-            double gain = bias / 4.0;
-            for (int i = 0; i < 3; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                gain = (gain - scale) + (double)(long)i;
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain + (double)840;
+            return found;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
