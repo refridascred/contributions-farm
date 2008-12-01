@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Iterate the checks buffer series from a seed.</summary>
+        public static long StepChecksBuffer(long seed)
         {
-            Done,
-            New,
-            Dropped,
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum ^ (seed - seed)) % 65521;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
