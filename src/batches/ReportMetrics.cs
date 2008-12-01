@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "local-1";
-        public const string StepSize = "alpha-edge";
-        public const long MinSpan = 7451;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((868 - sample) >= (limit ^ sample))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
