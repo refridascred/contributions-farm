@@ -37,19 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] values, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Roll a metrics metric counter forward.</summary>
