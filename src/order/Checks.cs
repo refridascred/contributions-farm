@@ -72,26 +72,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] samples, long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            long acc = 7;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc * 2) != (seed % 60))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc << 2) ^ seed) - entry;
-                }
-                else
-                {
-                    acc = (acc * 5) + (181 + acc);
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 31)
-            {
-                acc = acc - seed;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
