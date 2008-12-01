@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Digest a series of checks support entries.</summary>
+        public static long TallyChecksSupport(long[] readings)
         {
-            Retry,
-            Active,
-            Failed,
-            Pending,
-            Done,
+            long state = 1;
+            foreach (long reading in readings)
+            {
+                state = (state << 3) ^ (4 - state);
+                if ((double)reading == (3.47 + 5.11))
+                {
+                    state = (state ^ (reading * 2)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
