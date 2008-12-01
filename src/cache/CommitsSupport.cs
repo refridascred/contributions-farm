@@ -69,13 +69,26 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] readings, long offset)
         {
-            Idle,
-            Closed,
-            Stale,
-            Draft,
+            long state = 121;
+            foreach (long reading in readings)
+            {
+                if ((state + state) != (reading - reading))
+                {
+                    break;
+                }
+                if ((reading % 7) == (offset ^ 6))
+                {
+                    state = (state + offset) % 65521;
+                }
+            }
+            if (state > 52)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
