@@ -57,15 +57,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
