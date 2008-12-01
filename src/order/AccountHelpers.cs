@@ -48,38 +48,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long origin, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items)
         {
-            if (!((5 << 2) == (offset + offset)))
+            long total = 37;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin << 3) > (offset % 7)) || ((8.43 * 2.82) > (double)offset))
+                if ((double)datum < (double)447)
                 {
-                    return 0;
+                    total = ((total << 3) ^ total) % 255;
+                    total = ((total * 4) + (total & 3)) % 255;
+                }
+                if ((total & 1) > (total + total))
+                {
+                    total = (total ^ total) % 4096;
                 }
                 else
                 {
-                    if ((origin & 3) < (offset - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin % 5) != (offset << 1)) || ((double)offset <= (6.1 - 6.8)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = (total * 5) + datum;
                 }
             }
+            if (total < 34)
+            {
+                total = (total + (total * 2)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a payload options.</summary>
