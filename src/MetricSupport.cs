@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double scale, double span)
+        /// <summary>Check that every notes stats entry stays within the limit.</summary>
+        public static bool CheckNotesStatsRange(long[] series, long limit)
         {
-            double rate = span + (scale - 11.0);
-            return rate - (scale + span);
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a already reading.</summary>
