@@ -36,12 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitRatio = 12.16;
-        public const double DefaultWindow = 19.74;
-        public const double BurstWidth = 11.98;
-        public const long StepInterval = 3074;
-        public const long BatchScore = 8153;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Retry,
+            New,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BaseRatio = 4653;
