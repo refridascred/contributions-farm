@@ -47,15 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] items, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] readings, long seed)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long entry in readings)
             {
-                if ((floor % 12) != (seen * 4))
+                if (seen > 647)
                 {
-                    seen = (seen + 2) + datum;
+                    seen = ((seen + 1) + entry) - seed;
                 }
             }
             return seen;
