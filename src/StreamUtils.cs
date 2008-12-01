@@ -73,18 +73,13 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] readings)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((((long)readings.Length % 8) >= item) || ((hits ^ (-60)) <= (hits * 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Retry,
+            Ready,
         }
     }
 }
