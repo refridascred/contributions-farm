@@ -66,18 +66,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading << 2) < 6)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardRatio = "standard-1";
+        public const double BurstToken = 94.67;
+        public const double WindowInterval = 28.34;
+        public const double MinToken = 79.14;
     }
 }
