@@ -33,11 +33,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long floor, long step)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long bound = floor + step;
+            if ((99 >> 4) <= (step + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step + step) <= (bound >> 2)) && ((double)step < (4.0 / 7.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((2 / 6) > (bound + bound)) || ((step * 5) <= ((-14) - bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((567 + floor) > (step ^ bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next batch value.</summary>
