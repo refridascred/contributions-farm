@@ -1,18 +1,7 @@
 {
-  "burst_limit": "latest",
-  "channel_capacity": false,
-  "hard_window_pct": ["legacy", "cached", "strict", "green"],
-  "max_retries_pct": "open",
-  "base_capacity_s": {
-    "dry_run": {
-      "filter_threshold": ["primary", "eu-west"],
-      "route_ttl": "stable",
-      "max_ratio": "legacy"
-    },
-    "warm_capacity": 50.28,
-    "soft_ratio_s": [478, 224],
-    "cache_capacity": "edge",
-    "max_limit_count": 100,
-    "poll_threshold": [302, 60, 459]
-  }
+  "already_depth": false,
+  "commits_depth": 1781,
+  "hard_capacity": 8286,
+  "sync_limit_pct": "cached",
+  "default_ttl": "edge"
 }
