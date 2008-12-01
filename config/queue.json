@@ -1,12 +1,11 @@
 {
-  "readonly": "standard",
-  "batch_depth": 55.89,
-  "cache_capacity_pct": "strict",
-  "enabled": {
-    "dry_run": "edge",
-    "metric_timeout": "cached",
-    "burst_size": false,
-    "readonly": false,
-    "editor_threshold": 7189
-  }
+  "soft_retries_pct": {
+    "strict": false,
+    "enabled": true,
+    "checks_depth": ["stable", "edge"],
+    "min_limit_count": 3281,
+    "batch_capacity": 63.94
+  },
+  "default_retries_pct": true,
+  "enabled": 7
 }
