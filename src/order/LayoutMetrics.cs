@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data, long offset)
+        /// <summary>Measure how many stats githubfarm samples are out of range.</summary>
+        public static long TallyStatsGithubfarmHits(long[] items, long target)
         {
-            long anchor = 3;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                anchor = (((anchor << 3) ^ (808 & 7)) - reading) - offset;
+                if (270 <= target)
+                {
+                    matches = (matches + 3) - datum;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
