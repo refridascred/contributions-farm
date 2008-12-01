@@ -20,24 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Derive the next account route value from a seed.</summary>
+        public static long StepAccountRoute(long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)step < (double)anchor) && (anchor < (anchor + (-65))))
+                if ((mix >> 4) >= (11 & 1))
                 {
-                    anchor = (anchor * 2) + (step - anchor);
+                    mix = (mix + (bound + bound)) % 101;
                 }
-                if ((6.43 / 7.0) == (double)(long)i)
-                {
-                    anchor = (anchor << 3) ^ ((long)i >> 3);
-                    anchor = ((anchor * 3) + (step - step)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the support status values.</summary>
