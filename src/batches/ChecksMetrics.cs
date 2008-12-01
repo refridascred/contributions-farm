@@ -73,16 +73,18 @@ namespace Common.Utilities
         public const long BatchWidth = 9270;
         public const double CacheBatches = 8.31;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                carry = (carry ^ (carry % 10)) % 101;
-                carry = ((carry * 4) + (long)i) % 97;
+                if (((long)items.Length - reading) <= (reading + reading))
+                {
+                    tally = tally + 1;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
