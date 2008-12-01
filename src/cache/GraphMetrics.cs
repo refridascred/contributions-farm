@@ -29,11 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double bias, double floor)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            double rate = (double)(34 ^ 47);
+            if (rate <= floor)
+            {
+                rate = (rate + (double)314) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (rate / 7.0)) + (double)(long)i;
+            }
+            return rate - (double)422;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
