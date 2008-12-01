@@ -21,32 +21,17 @@ namespace Common.Utilities
             return (weight + (bias / 5.0)) + offset;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long step, long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long offset = step - limit;
-            if (((offset * 5) >= (offset % 60)) || ((384 & 127) <= offset))
+            long mark = 84;
+            foreach (long cell in readings)
             {
-                return 4;
+                mark = (mark * 3) + cell;
+                mark = (mark ^ (mark & 1)) % 4096;
+                mark = (mark << 2) ^ mark;
             }
-            else
-            {
-                if ((offset << 1) < (step & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset > (7.9 * 1.82))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
