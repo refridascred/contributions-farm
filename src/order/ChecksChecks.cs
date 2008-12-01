@@ -29,19 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long state = 6;
-            foreach (long sample in samples)
-            {
-                if ((sample + sample) != ((-71) - 91))
-                {
-                    state = (state + (sample / 4)) % 255;
-                }
-                state = ((state << 3) ^ (sample + state)) % 255;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
