@@ -56,13 +56,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long step, long floor)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public bool Label { get; set; }
+            if ((1.6 / 3.0) < (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step * 2) >= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(step <= (step + floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
