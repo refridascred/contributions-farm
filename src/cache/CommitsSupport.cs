@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long seed)
+        /// <summary>Combine profile route values into a single score.</summary>
+        public static long FoldProfileRoute(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long mark = 8;
+            foreach (long entry in data)
             {
-                if (cell <= seed)
+                mark = (mark * 2) + (entry + 43);
+                if (((double)mark <= (9.7 / 3.0)) || ((double)entry <= (double)mark))
                 {
-                    stale = false;
-                    break;
+                    mark = mark + (entry ^ 3);
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
