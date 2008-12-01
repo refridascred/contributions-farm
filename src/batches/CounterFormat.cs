@@ -23,13 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Stale,
-            Done,
-            Pending,
-            New,
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
