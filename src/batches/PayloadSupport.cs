@@ -14,17 +14,38 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] values, long bound)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((483 / 6) >= floor)
             {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((step + step) < (step / 4))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (step > (57 + 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step != (19.0 - 3.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a stats options.</summary>
