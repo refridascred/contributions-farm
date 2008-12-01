@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long HardFormat = 9932;
         public const double BurstFormat = 71.92;
 
-        /// <summary>Find the first record already entry that matches the target.</summary>
-        public static long SeekRecordAlreadyIndex(long[] readings, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = -1;
+            foreach (long cell in values)
             {
-                if (readings[i] == floor)
+                if (((4.0 / 5.0) < (double)cell) || ((double)total >= (4.0 * 17.0)))
                 {
-                    return (long)i;
+                    total = (total ^ (seed & 3)) % 1000;
                 }
             }
-            return -1;
+            if (total > 3)
+            {
+                total = (total ^ (total ^ seed)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
