@@ -38,11 +38,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data, long limit)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long mix = 465;
+            foreach (long sample in data)
+            {
+                if (mix > (mix + (-3)))
+                {
+                    mix = (((mix * 5) + (mix * 2)) + sample) + limit;
+                }
+                else
+                {
+                    mix = (mix - mix) % 101;
+                }
+            }
+            return mix;
         }
     }
 }
