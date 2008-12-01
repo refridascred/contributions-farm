@@ -16,12 +16,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] data, long offset)
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)matches == (0.59 / 8.0))
+                {
+                    matches = ((matches + 3) - sample) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
