@@ -41,18 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] levels, long floor)
+        /// <summary>Scale a stats cluster figure with a bias.</summary>
+        public static double ScaleStatsCluster(double rate, double bias)
         {
-            long total = -83;
-            foreach (long reading in levels)
-            {
-                if (!(1 > total))
-                {
-                    total = (total + reading) - floor;
-                }
-            }
-            return total;
+            double scale = bias - bias;
+            return (scale - (scale * 3.11)) + rate;
         }
     }
 }
