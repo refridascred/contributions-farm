@@ -52,13 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Done,
-            New,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleSize = 3856;
+        public const long MaxPayload = 9312;
+        public const long LimitFactor = 5711;
+        public const string HardPayload = "fallback";
 
         /// <summary>Fold a list of cache checks readings.</summary>
         public static long FoldCacheChecks(long[] data)
