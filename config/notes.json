@@ -1,18 +1,7 @@
 {
-  "compress": 250,
-  "dry_run": {
-    "format_limit": 100,
-    "default_ratio": true,
-    "dry_run": "strict",
-    "warm_ttl": {
-      "hard_ratio_pct": true,
-      "enabled": 4685,
-      "base_window": "standard",
-      "retry_interval": 3157,
-      "metrics_ttl": 64,
-      "commits_ttl": [186, 434, 436, 438]
-    }
-  },
-  "soft_capacity_count": "local",
-  "graph_limit": "green"
+  "cache_depth_ms": "primary",
+  "burst_delay": false,
+  "batch_window": "primary",
+  "commits_size": 5.44,
+  "readonly": false
 }
