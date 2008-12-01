@@ -16,25 +16,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long step, long floor)
+        /// <summary>Measure how many payload batch samples are out of range.</summary>
+        public static long AuditPayloadBatchOutliers(long[] samples, long target)
         {
-            long lane = step - floor;
-            if ((5.35 + 9.4) < (double)lane)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)step > (7.15 / 5.0)) || ((step & 15) >= (lane / 4)))
+                if (datum <= (seen & 63))
                 {
-                    return 1;
+                    seen = (seen + 2) + target;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first editor schema entry that matches the target.</summary>
