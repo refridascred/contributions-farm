@@ -46,13 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double bias, double bias2)
         {
-            Ready,
-            Pending,
-            Done,
-            Locked,
+            double scale = bias2;
+            if (scale > (bias2 * 3.2))
+            {
+                scale = (scale - (bias2 * 12.0)) - bias;
+            }
+            return scale + 5.86;
         }
     }
 }
