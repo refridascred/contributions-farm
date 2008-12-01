@@ -1,12 +1,9 @@
 # support settings
-channel_delay: latest
-idle_threshold_s:
-  - primary
-  - blue
-burst_ratio_pct:
-  default_capacity_ms: false
-  batch_threshold_s: 10
-  poll_capacity_pct: 500
-default_depth: 71.92
-idle_delay_s: 577
-cache_ratio_pct: false
+strict: true
+queue_limit: 57.02
+payload_delay: 1173
+hard_ratio:
+  - legacy
+  - local
+  - legacy
+dry_run: 250
