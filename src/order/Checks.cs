@@ -59,13 +59,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            Stale,
+            New,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Project the next layout value.</summary>
