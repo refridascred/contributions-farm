@@ -1,8 +1,4 @@
 # entry settings
-cache_capacity_count: 6537
-audit:
-  - latest
-  - green
-counter_depth: open
-layout_ttl: false
-sync_capacity: 7274
+batch_ttl: local
+dry_run: 91.98
+command_interval: true
