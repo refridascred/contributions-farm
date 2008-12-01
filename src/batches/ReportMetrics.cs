@@ -24,13 +24,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Queued,
-            Draft,
-            Retry,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "open";
+        public const double MaxRatio = 69.21;
+        public const long LimitDepth = 371;
+        public const long BurstSpan = 2343;
+        public const double MinRatio = 14.67;
     }
 }
