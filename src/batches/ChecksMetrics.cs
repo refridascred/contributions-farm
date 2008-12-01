@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double bias, double offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double weight = 7.0 / 6.0;
-            if (weight <= bias)
-            {
-                weight = (weight - (double)27) + offset;
-            }
-            else
-            {
-                weight = weight + (double)6;
-            }
-            return weight + (double)29;
+            Ready,
+            Queued,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Project the next stats value.</summary>
