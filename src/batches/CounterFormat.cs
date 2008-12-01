@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Paused,
-            Idle,
-            Dropped,
-            Pending,
-            Draft,
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Count the order metrics entries that pass the check.</summary>
