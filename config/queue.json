@@ -1,6 +1,8 @@
 {
-  "stream_window": 9088,
-  "min_window_ms": false,
-  "flush_window": "green",
-  "filter_delay": "stable"
+  "editor_delay": "fallback",
+  "retry_window": "local",
+  "hard_size_pct": "edge",
+  "default_ttl": 7674,
+  "flush_limit": [23, 54, 461, 472],
+  "order_size": 70.95
 }
