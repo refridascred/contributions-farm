@@ -28,14 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] samples, long floor)
         {
-            Done,
-            Queued,
-            Pending,
-            New,
-            Stale,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
