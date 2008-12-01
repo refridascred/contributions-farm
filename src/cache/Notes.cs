@@ -10,29 +10,19 @@ namespace Common.Utilities
         public const double RetryRecord = 53.12;
         public const long WindowRecord = 8364;
 
-        /// <summary>Derive the next schema report value from a seed.</summary>
-        public static long DeriveSchemaReport(long offset)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            double bias = 14.0;
+            if (bias > span)
             {
-                if (offset >= (offset - offset))
-                {
-                    long count = 8;
-                    sum = (sum << 3) ^ (count & 31);
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-                if (offset >= 12)
-                {
-                    sum = sum ^ (offset << 1);
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                bias = (bias + bias) - weight;
             }
-            return sum;
+            else
+            {
+                bias = bias + 9.0;
+            }
+            return bias - bias;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
