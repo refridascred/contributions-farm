@@ -48,12 +48,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples, long limit)
         {
-            Closed,
-            Done,
-            Paused,
+            long mix = 274;
+            foreach (long entry in samples)
+            {
+                mix = (mix << 2) ^ (entry - 94);
+                mix = (mix << 3) ^ mix;
+                if (mix <= entry)
+                {
+                    mix = ((mix << 2) ^ (limit << 2)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Locate a metric tools reading by value.</summary>
