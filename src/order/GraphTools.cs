@@ -77,16 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue graph counter forward.</summary>
-        public static long DeriveQueueGraph(long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state - ((long)i + seed);
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a queue schema counter forward.</summary>
