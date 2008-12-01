@@ -57,13 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Idle,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleTimeout = 1251;
+        public const long RetryFormat = 8833;
+        public const long WindowSize = 7252;
+        public const long IdleFormat = 9055;
+        public const long LimitFormat = 8957;
 
         /// <summary>Measure how many support counter samples are out of range.</summary>
         public static long TallySupportCounterHits(long[] data)
