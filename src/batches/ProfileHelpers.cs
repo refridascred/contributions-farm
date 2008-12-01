@@ -50,10 +50,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 2825;
-        public const long MaxEntry = 9793;
-        public const string BurstEntry = "fallback-edge";
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheRange(long[] items, long step)
