@@ -1,11 +1,6 @@
 # githubfarm settings
-burst_timeout_s: 250
-filter_limit: latest
-readonly:
-  stats_capacity: legacy
-  report_depth: true
-  batch_limit_pct: 35.91
-  soft_ttl_s: 250
-  sync_window_pct: cached
-  flush_window_ms: open
-cache_size: false
+contributi_retries: 1024
+dry_run: strict
+idle_ttl: 9358
+compress: true
+payload_capacity: local
