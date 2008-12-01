@@ -19,20 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Count stream schema pairs that satisfy a relation.</summary>
+        public static long CompareStreamSchemaCount(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry ^ ((long)i2 / 5);
-                    carry = (carry - ((-70) / 6)) % 255;
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the route phase values.</summary>
