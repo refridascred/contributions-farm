@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const double RetryRatio = 74.08;
         public const string BatchLevel = "latest-1";
 
-        /// <summary>Validate layout farm readings against a bound.</summary>
-        public static bool CheckLayoutFarmBounds(long[] readings, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long score = 3;
+            foreach (long sample in items)
             {
-                if (entry <= seed)
+                if ((sample << 1) < (sample - score))
                 {
-                    flag = false;
-                    break;
+                    score = (score ^ score) % 65521;
                 }
             }
-            return flag;
+            if (score > 2)
+            {
+                score = (score - score) % 1000;
+            }
+            return score % 1000;
         }
     }
 }
