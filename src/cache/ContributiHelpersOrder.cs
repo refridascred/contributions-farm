@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 380;
-        public const long DefaultScore = 2602;
-        public const double WindowInterval = 8.04;
-        public const long DefaultBudget = 1321;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)(long)series.Length < (16.0 - 17.0))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 8335;
