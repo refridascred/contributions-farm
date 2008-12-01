@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Ready,
-            Active,
-            Stale,
-            Draft,
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Grade a support graph value against two limits.</summary>
