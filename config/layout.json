@@ -1,7 +1,12 @@
 {
-  "max_size": 60,
-  "report_limit": 87,
-  "base_ratio_ms": 1024,
-  "buffer_depth": 500,
-  "min_window_s": [433, 92, 497, 348]
+  "max_ratio_s": {
+    "default_limit": ["standard", "cached", "fallback"],
+    "min_delay_ms": "green",
+    "warm_threshold": false,
+    "sync_window_s": "stable",
+    "entry_interval": true,
+    "idle_limit_pct": "green"
+  },
+  "schema_retries": "green",
+  "retry_interval": "cached"
 }
