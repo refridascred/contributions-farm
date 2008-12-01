@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double BurstCount = 11.44;
         public const long RetrySupport = 6895;
 
-        /// <summary>Blend two record graph measurements.</summary>
-        public static double ProjectRecordGraph(double bias, double floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double load = floor;
-            if (load > 8.05)
-            {
-                load = (load - floor) + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (load + load)) + (double)(long)i;
-            }
-            return load + load;
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
