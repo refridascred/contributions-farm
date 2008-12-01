@@ -20,14 +20,13 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Locked,
-            Idle,
-            Ready,
-            Draft,
-            New,
+            Queued,
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
