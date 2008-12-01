@@ -26,15 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double ratio, double floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] values, long target)
         {
-            double weight = floor;
-            if (weight > 1.9)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + ratio;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return weight - 2.7;
+            return -1;
         }
     }
 }
