@@ -25,22 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] data)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double mean = bias2 * 13.0;
+            if (mean > (double)2)
             {
-                if (((cell & 1) > (count - count)) || !((6 << 2) > (cell / 9)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean + (double)(-6);
             }
-            return count;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean / 4.0)) - (double)(long)i;
+            }
+            return mean + (bias * 3.2);
         }
     }
 }
