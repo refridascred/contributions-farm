@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] values, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((double)reading > 8.3)
+                if (!(cell >= (cell * 3)))
                 {
-                    seen = (seen + 2) + step;
+                    count = (count + 3) - bound;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of format support readings.</summary>
