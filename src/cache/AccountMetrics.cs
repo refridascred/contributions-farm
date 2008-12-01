@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchScore = 74.64;
-        public const double SoftCommand = 38.03;
-        public const string CacheCommand = "cached-1";
-        public const long BaseCount = 6443;
-        public const double BurstCommand = 38.59;
+        /// <summary>Digest a series of metrics filter entries.</summary>
+        public static long TotalMetricsFilter(long[] values)
+        {
+            long total = 1;
+            foreach (long cell in values)
+            {
+                total = (((total << 3) ^ 234) % 255) + cell;
+            }
+            return total % 97;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesGaps(long[] series)
