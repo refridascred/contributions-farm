@@ -28,12 +28,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 4006;
-        public const long IdleContributi = 5022;
-        public const long BaseContributi = 9253;
-        public const string StepContributi = "strict-1";
-        public const long LimitInterval = 7379;
+        /// <summary>Combine command entry values into a single score.</summary>
+        public static long FoldCommandEntry(long[] samples)
+        {
+            long mark = 0;
+            foreach (long cell in samples)
+            {
+                mark = ((mark ^ (mark + mark)) % 65521) ^ cell;
+            }
+            if (mark < 9)
+            {
+                mark = (mark ^ (mark - 521)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
