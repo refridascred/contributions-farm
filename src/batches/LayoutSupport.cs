@@ -36,15 +36,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route commits value from a seed.</summary>
-        public static long DeriveRouteCommits(long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long offset, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long lane = offset ^ seed;
+            if (((double)lane < (double)92) || (lane < (lane - offset)))
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((offset ^ lane) >= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Match up filter samples.</summary>
