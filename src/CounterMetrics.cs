@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long LimitOrder = 2716;
         public const long BaseTimeout = 9679;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Locked,
+            Failed,
+            Done,
+            Ready,
+            Active,
         }
 
         /// <summary>Accumulate stats samples.</summary>
