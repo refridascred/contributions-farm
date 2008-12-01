@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double scale, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] values, long offset)
         {
-            double drift = 11.0 + (double)(-743);
-            if (drift > (drift * 17.0))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                drift = drift + (drift / 6.0);
+                if ((tally * 4) <= tally)
+                {
+                    tally = ((tally + 1) - cell) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (offset + 19.0)) - (double)(long)i;
-            }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Check that every counter payload entry stays within the limit.</summary>
