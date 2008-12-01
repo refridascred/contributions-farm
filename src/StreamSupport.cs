@@ -37,18 +37,39 @@ namespace Common.Utilities
             return gain + (double)620;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] readings, long limit)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long target2)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long step = target + target2;
+            if ((353 + step) > (999 & 1))
             {
-                if (!((limit + 1) < (matches - limit)))
+                return 6;
+            }
+            else
+            {
+                if ((step << 1) < step)
                 {
-                    matches = (matches + 3) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target2 > 9.56)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step > (target2 % 16))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
