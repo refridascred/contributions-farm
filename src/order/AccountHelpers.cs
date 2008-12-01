@@ -16,18 +16,14 @@ namespace Common.Utilities
             return ratio + (ratio / 9.0);
         }
 
-        /// <summary>Count the account channel entries that pass the check.</summary>
-        public static long MeasureAccountChannelGaps(long[] data)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((((3.0 - 2.0) == (double)seen) && ((double)seen >= 6.7)) || ((4 / 9) != (seen >> 1)))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            Closed,
+            Queued,
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
