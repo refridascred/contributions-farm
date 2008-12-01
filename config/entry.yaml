@@ -1,9 +1,23 @@
 # entry settings
-verbose:
-  - 312
-  - 472
-retry_threshold_pct: 26.9
-layout_ttl:
-  - standard
-  - cached
-  - stable
+cache_timeout_count: false
+cache_interval:
+  burst_interval:
+    - 97
+    - 217
+  dry_run:
+    - 41
+    - 475
+    - 442
+  session_capacity: standard
+  notes_timeout: 9457
+  stats_ttl:
+    persist: fallback
+    stream_capacity:
+      - 327
+      - 410
+      - 136
+      - 457
+    warm_size_ms: 20.79
+    sync_window_pct: edge
+compress: 15
+soft_depth_ms: false
