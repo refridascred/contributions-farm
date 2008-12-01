@@ -26,18 +26,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the metrics entry entries that pass the check.</summary>
-        public static long AuditMetricsEntryMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!((((long)levels.Length - item) <= (item - (long)levels.Length)) && ((50 ^ item) >= item)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardFactor = 28.34;
+        public const string LimitCount = "staging";
+        public const double IdleLevel = 59.5;
     }
 }
