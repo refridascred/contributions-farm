@@ -53,11 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseRatio = 9291;
-        public const long DefaultOrder = 3478;
-        public const double SoftOrder = 76.51;
-        public const long WindowOrder = 3806;
-        public const double IdleOrder = 35.43;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Synced,
+            New,
+            Locked,
+            Dropped,
+            Queued,
+        }
     }
 }
