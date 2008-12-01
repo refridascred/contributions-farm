@@ -29,18 +29,9 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the githubfarm channel entries that pass the check.</summary>
-        public static long CountGithubfarmChannelGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (item > (item - 22))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryFactor = 6746;
+        public const long BatchGithubfarm = 9369;
+        public const long StepGithubfarm = 801;
     }
 }
