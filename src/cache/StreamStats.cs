@@ -38,22 +38,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine filter metrics values into a single score.</summary>
-        public static long FoldFilterMetrics(long[] items, long limit)
-        {
-            long carry = -1;
-            foreach (long datum in items)
-            {
-                if (((57 - datum) != (carry + 30)) && (carry < (carry * 5)))
-                {
-                    carry = (((carry * 5) + (9 << 2)) % 101) + limit;
-                }
-                else
-                {
-                    carry = (carry * 2) + (carry << 1);
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 94.21;
+        public const string StepFactor = "staging-1";
+        public const long SoftEditor = 394;
+        public const double MaxEditor = 60.85;
+        public const long BaseBudget = 2027;
     }
 }
