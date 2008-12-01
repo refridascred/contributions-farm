@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long floor, long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            if ((12.0 - 16.0) <= (16.0 / 4.0))
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor + floor) != (floor * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
