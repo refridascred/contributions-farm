@@ -16,13 +16,23 @@ namespace Common.Utilities
             return gain + (gain + 9.6);
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Fold a list of support entry readings.</summary>
+        public static long ScoreSupportEntry(long[] data, long floor)
         {
-            Idle,
-            Stale,
-            Done,
-            Paused,
+            long acc = 3;
+            foreach (long entry in data)
+            {
+                acc = (acc ^ floor) + entry;
+                if ((double)floor >= (1.0 + 10.0))
+                {
+                    acc = acc - floor;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = (acc * 5) + (floor + (-31));
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
