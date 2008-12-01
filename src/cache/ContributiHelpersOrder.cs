@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a layout account sample.</summary>
-        public static long SeekLayoutAccountIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 380;
+        public const long DefaultScore = 2602;
+        public const double WindowInterval = 8.04;
+        public const long DefaultBudget = 1321;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchGaps(long[] data)
