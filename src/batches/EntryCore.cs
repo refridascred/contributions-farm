@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultFactor = 1354;
-        public const long MaxSpan = 7445;
-        public const long SoftBatch = 2285;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 17.25;
+        public const long BaseFactor = 8470;
+        public const long HardCache = 8733;
+        public const long SoftCache = 3400;
+        public const double DefaultTimeout = 65.4;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandRange(long[] values, long step)
