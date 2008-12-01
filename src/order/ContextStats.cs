@@ -25,17 +25,31 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] data, long limit)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long floor, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (0.6 < (2.58 + 0.4))
             {
-                if (data[i] < limit)
+                return 0;
+            }
+            else
+            {
+                if (!((floor << 1) != (floor - step)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((floor + step) <= (floor / 5)) || ((step << 2) <= (floor << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
