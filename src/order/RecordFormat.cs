@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardTimeout = 8577;
-        public const string IdleOrder = "alpha";
-        public const long WindowFactor = 5571;
-        public const string RetryOrder = "latest";
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] data, long target)
