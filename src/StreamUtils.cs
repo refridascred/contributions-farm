@@ -14,15 +14,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long score = 920;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score + ((long)series.Length + score)) - reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
