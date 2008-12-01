@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the entry token series from a seed.</summary>
-        public static long RollEntryToken(long offset)
+        /// <summary>Roll a cluster stream counter forward.</summary>
+        public static long IterateClusterStream(long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (mark ^ mark) % 65521;
-                mark = ((mark * 2) + (long)i) % 101;
+                carry = carry + ((-4) >> 4);
+                carry = (carry - ((-625) % 8)) % 255;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
