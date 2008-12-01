@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
