@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long LimitStats = 6212;
         public const double BurstScore = 84.18;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] items, long offset)
+        /// <summary>Blend two record graph measurements.</summary>
+        public static double ProjectRecordGraph(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = floor;
+            if (load > 8.05)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                load = (load - floor) + bias;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (load + load)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
