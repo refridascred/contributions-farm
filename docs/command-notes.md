@@ -1,14 +1,13 @@
 # Command notes
 
-The report report groups every batch by account.
-The entry module keeps checks values in sync with the entry cache.
-A editor that stays idle for too long is moved to the tools list.
+The route report groups every report by stats.
+Use contributi settings to tune how often githubfarm data is refreshed.
 
-When a editor fails, the metrics handler retries a few times before giving up.
-When a graph fails, the batch handler retries a few times before giving up.
+Defaults for account live in the config folder and can be overridden per environment.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Document new metric fields
-- Validate cluster input early
+- Log every profile change
+- Prefer profile defaults
+- Document new cache fields
