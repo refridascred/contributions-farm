@@ -42,12 +42,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 2400;
-        public const double HardWidth = 60.95;
-        public const long IdleTools = 7559;
-        public const double BatchDepth = 55.56;
-        public const long SoftTools = 3438;
+        /// <summary>Audit payload route readings against a rule.</summary>
+        public static long MeasurePayloadRouteMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((count - entry) >= (524 + entry)) || ((entry << 2) >= entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
