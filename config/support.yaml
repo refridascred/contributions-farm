@@ -1,29 +1,5 @@
 # support settings
-enabled: 5003
-burst_capacity: strict
-support_capacity: 4008
-default_ratio_s: 30
-persist:
-  filter_interval: fallback
-  flush_threshold_count:
-    strict: false
-    support_ttl: 12.43
-    hard_timeout_count:
-      - stable
-      - eu-west
-    commits_threshold: false
-    record_interval: strict
-    support_threshold: cached
-  soft_interval: strict
-min_ttl_count:
-  cache_delay: 79
-  retry_depth:
-    soft_interval: primary
-    enabled: cached
-    hard_timeout: 65.15
-    persist: cached
-  audit:
-    base_window_pct: false
-    idle_limit_pct: 1024
-    farm_delay: 32.32
-  readonly: true
+buffer_threshold: true
+burst_delay_count: 54
+token_limit: 80.58
+burst_threshold_s: true
