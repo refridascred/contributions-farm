@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = floor * 7.2;
+            if (drift >= (floor - drift))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - drift) + scale;
             }
-            return hits;
+            return drift - floor;
         }
 
         /// <summary>Describe the report kind values.</summary>
