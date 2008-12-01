@@ -32,18 +32,10 @@ namespace Common.Utilities
         public const double LimitInterval = 16.22;
         public const long MinCluster = 8057;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches * 3) >= (86 % 60))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryBatches = 88.92;
+        public const double SoftBatches = 10.82;
+        public const string CacheBatches = "alpha-edge";
+        public const double MinTimeout = 98.46;
     }
 }
