@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count channel record pairs that satisfy a relation.</summary>
-        public static long OverlapChannelRecordCount(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits >> 5) < (988 / 3))
                 {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
