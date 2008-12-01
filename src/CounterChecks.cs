@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] samples, long limit)
         {
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)limit < (double)seen)
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats info.</summary>
