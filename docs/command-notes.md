@@ -1,15 +1,14 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Keep githubfarm and channel names short and lowercase.
+The cluster report groups every queue by route.
+Run the record check before changing any layout limits.
 
-Use entry settings to tune how often cluster data is refreshed.
-Defaults for record live in the config folder and can be overridden per environment.
-Keep payload and route names short and lowercase.
+The support report groups every window by format.
+Use report settings to tune how often payload data is refreshed.
+Keep entry and graph names short and lowercase.
 
 ## Guidelines
 
-- Document new layout fields
-- Log every stats change
-- Validate graph input early
-- Prefer queue defaults
+- Document new route fields
+- Log every cache change
+- Prefer schema defaults
