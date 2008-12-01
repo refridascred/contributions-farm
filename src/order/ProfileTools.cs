@@ -28,16 +28,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a channel account counter forward.</summary>
-        public static long SeriesChannelAccount(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 32.98;
+        public const long MaxCommand = 8105;
+        public const long StepSpan = 8866;
+        public const string StepRatio = "staging-edge";
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] levels, long seed)
