@@ -59,25 +59,15 @@ namespace Common.Utilities
         public const long BurstScore = 8609;
         public const string MaxTimeout = "stable-v2";
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] series, long target)
         {
-            long step = limit - target;
-            if ((target + target) < (step + step))
+            long mark = 7;
+            foreach (long item in series)
             {
-                return 4;
+                mark = ((mark - (90 >> 4)) ^ item) - target;
             }
-            else
-            {
-                if (!((step << 2) == (step + target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mark;
         }
     }
 }
