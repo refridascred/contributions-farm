@@ -23,11 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
             public string Weight { get; set; } = "";
         }
 
