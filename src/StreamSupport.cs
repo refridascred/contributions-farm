@@ -16,19 +16,13 @@ namespace Common.Utilities
             return gain + (gain + 9.6);
         }
 
-        /// <summary>Check that every session cache entry stays within the limit.</summary>
-        public static bool VerifySessionCacheLimits(long[] levels, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
