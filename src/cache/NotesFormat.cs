@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double offset)
-        {
-            double gain = (double)(27 / 8);
-            if (gain <= (offset / 3.0))
-            {
-                gain = (gain + gain) - weight;
-            }
-            else
-            {
-                gain = gain - (offset / 7.0);
-            }
-            return gain - (double)70;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 3165;
+        public const long BatchFilter = 2853;
+        public const double RetryWidth = 80.52;
+        public const string MaxFilter = "standard-edge";
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
