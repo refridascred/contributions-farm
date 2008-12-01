@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload route values into a single score.</summary>
-        public static long WeighPayloadRoute(long[] items, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] samples)
         {
-            long anchor = 6;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                anchor = (anchor + (anchor + seed)) % 65521;
-                if (48 >= (item + anchor))
+                if ((((double)datum < (double)seen) && (seen > (seen >> 4))) && (datum >= (seen % 12)))
                 {
-                    anchor = anchor ^ (item << 2);
+                    seen = seen + 1;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
