@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long step)
         {
-            Pending,
-            Draft,
-            Retry,
-            Locked,
+            long carry = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(9.41 >= (double)carry))
+                {
+                    carry = ((carry * 2) + (carry / 3)) % 4096;
+                }
+                carry = ((carry * 2) + (step - carry)) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
