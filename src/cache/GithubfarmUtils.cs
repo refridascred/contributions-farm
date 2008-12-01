@@ -20,11 +20,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftCount = 9340;
-        public const double LimitSize = 78.98;
-        public const double RetryRatio = 74.08;
-        public const string BatchLevel = "latest-1";
+        /// <summary>Roll a notes farm counter forward.</summary>
+        public static long StepNotesFarm(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Rank entry queue input into a small class.</summary>
         public static long SortEntryQueue(long target, long floor)
