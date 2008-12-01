@@ -44,17 +44,11 @@ namespace Common.Utilities
         public const long MinPayload = 2354;
         public const long MaxPayload = 8591;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] levels, long limit)
-        {
-            long total = 1;
-            foreach (long entry in levels)
-            {
-                total = ((total * 3) + (entry - total)) % 65521;
-                total = (total + (limit - entry)) % 101;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitTimeout = 72.62;
+        public const double RetryDepth = 57.44;
+        public const long LimitLevel = 5411;
+        public const long StepSize = 9110;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long FoldFilter(long[] readings)
