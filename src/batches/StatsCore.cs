@@ -75,23 +75,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double gain, double floor)
+        /// <summary>Find the first githubfarm checks entry that matches the target.</summary>
+        public static long FindGithubfarmChecksIndex(long[] samples, long limit)
         {
-            double gain2 = (double)(30 & 255);
-            if (gain2 < gain2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = gain2 + (gain2 + floor);
+                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (double)5;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 + (double)84;
+            return -1;
         }
     }
 }
