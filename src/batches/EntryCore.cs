@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const long SoftCache = 3400;
         public const double DefaultTimeout = 65.4;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] values, long step)
+        /// <summary>Compare every pair of token batch readings.</summary>
+        public static long MatchTokenBatchCount(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
