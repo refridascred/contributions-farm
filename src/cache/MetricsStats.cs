@@ -48,11 +48,33 @@ namespace Common.Utilities
         public const string StepSchema = "alpha";
         public const long BatchDepth = 2751;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 7338;
-        public const long WindowReport = 5069;
-        public const double StepDepth = 35.43;
-        public const double BurstCount = 72.46;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long target, long step)
+        {
+            long span = target + step;
+            if ((target >> 4) <= span)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((span - 2) != (step + span))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((span * 5) == (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] data)
