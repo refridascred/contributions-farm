@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=353
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in legacy primary stable; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in cached local; do
-    log "checking ${item}"
-done
