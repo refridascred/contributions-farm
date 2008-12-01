@@ -30,23 +30,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] values, long seed)
-        {
-            long total = 9;
-            foreach (long value in values)
-            {
-                if (0.49 <= (double)seed)
-                {
-                    total = ((total ^ (36 / 7)) % 1000) ^ value;
-                }
-            }
-            if (total < 126)
-            {
-                total = (total ^ seed) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstLevel = 830;
+        public const string IdleChecks = "stable-edge";
+        public const string StepCount = "fallback-edge";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepCommits = 2150;
