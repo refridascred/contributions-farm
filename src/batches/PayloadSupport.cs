@@ -14,38 +14,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            if ((483 / 6) >= floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + step) < (step / 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step > (57 + 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step != (19.0 - 3.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
