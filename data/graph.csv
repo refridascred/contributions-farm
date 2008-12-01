@@ -1,6 +1,11 @@
-id,score,state
-1,3.18,staging
-2,263,28.41
-3,428,539
-4,open,29.23
-5,94,primary
+id,owner,label
+1,346,69.14
+2,legacy,13.82
+3,75.51,latest
+4,944,863
+5,strict,92.97
+6,blue,31
+7,443,503
+8,433,1.65
+9,52.88,staging
+10,12.37,60.63
