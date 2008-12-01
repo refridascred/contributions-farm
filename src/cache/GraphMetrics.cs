@@ -22,15 +22,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Roll a checks notes counter forward.</summary>
-        public static long SeriesChecksNotes(long step)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a entry entry.</summary>
