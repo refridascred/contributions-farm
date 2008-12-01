@@ -61,12 +61,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleTimeout = 1251;
-        public const long RetryFormat = 8833;
-        public const long WindowSize = 7252;
-        public const long IdleFormat = 9055;
-        public const long LimitFormat = 8957;
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many support counter samples are out of range.</summary>
         public static long TallySupportCounterHits(long[] data)
