@@ -15,39 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a batch buffer value against two limits.</summary>
-        public static long BucketBatchBuffer(long origin, long origin2)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long bound = origin ^ origin2;
-            if ((origin & 255) >= (origin + origin2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((16.0 + 2.0) == (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin2 > (bound ^ bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin > (9.2 + 6.11))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
