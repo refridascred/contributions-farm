@@ -19,29 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (!((seed << 3) > ((long)i * 5)))
+                if ((matches - entry) >= matches)
                 {
-                    sum = (sum + (sum >> 4)) % 97;
-                    sum = ((sum << 3) ^ (90 % 24)) % 65521;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    sum = (sum * 3) + 1;
+                    matches = matches - 1;
                 }
-                sum = (sum - seed) % 1000;
-                if ((11.0 - 1.5) > (double)sum)
-                {
-                    sum = sum + (sum % 60);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank already input into a small class.</summary>
