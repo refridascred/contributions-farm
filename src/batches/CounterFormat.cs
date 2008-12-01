@@ -20,12 +20,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Look up the position of a queue counter sample.</summary>
+        public static long FindQueueCounterIndex(long[] items, long origin)
         {
-            Ready,
-            Pending,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
