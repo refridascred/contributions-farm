@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] values, long limit)
+        /// <summary>Combine format queue values into a single score.</summary>
+        public static long WeighFormatQueue(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long sum = 0;
+            foreach (long value in data)
             {
-                if ((((long)values.Length < count) && ((limit >> 3) > (count << 2))) || ((sample - sample) <= (limit + count)))
+                sum = ((sum * 4) + bound) % 4096;
+                if ((46 - (-9)) >= value)
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            if (sum < 916)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Adjust a githubfarm checks reading.</summary>
