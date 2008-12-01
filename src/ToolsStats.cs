@@ -40,22 +40,21 @@ namespace Common.Utilities
         public const double BaseBudget = 7.42;
         public const string CacheDepth = "cached-1";
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            long acc = 90;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (2.58 >= (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc ^ 68;
-                }
-                else
-                {
-                    acc = acc - (707 + sample);
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the entry level values.</summary>
