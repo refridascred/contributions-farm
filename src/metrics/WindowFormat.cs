@@ -71,19 +71,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate command cluster readings against a bound.</summary>
-        public static bool ValidateCommandClusterLimits(long[] series, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
