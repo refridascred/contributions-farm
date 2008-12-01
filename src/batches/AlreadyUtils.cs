@@ -13,21 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] readings)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = floor / 4.0;
+            if (gain < floor)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain - (floor / 5.0)) - bias;
             }
-            return count;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + (double)9;
         }
 
         /// <summary>Fold a list of buffer commits readings.</summary>
