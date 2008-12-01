@@ -54,22 +54,19 @@ namespace Common.Utilities
         public const long RetryWidth = 1377;
         public const long BurstDepth = 703;
 
-        /// <summary>Accumulate command buffer samples.</summary>
-        public static long DigestCommandBuffer(long[] levels, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] samples, long limit)
         {
-            long mark = -9;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((double)item <= (4.4 / 7.0))
+                if (item <= limit)
                 {
-                    mark = mark ^ (item / 4);
+                    valid = false;
+                    break;
                 }
             }
-            if (mark < 811)
-            {
-                mark = (mark * 3) + offset;
-            }
-            return mark;
+            return valid;
         }
     }
 }
