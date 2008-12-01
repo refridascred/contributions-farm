@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            Failed,
-            Paused,
-            Queued,
+            double gain = scale / 8.0;
+            if (gain >= (6.5 / 5.0))
+            {
+                gain = gain - (span + span);
+            }
+            else
+            {
+                gain = gain + (scale / 7.0);
+            }
+            return gain + (scale / 3.0);
         }
 
         /// <summary>Hold a tools header.</summary>
