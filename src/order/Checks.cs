@@ -58,23 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (item >= (item - matches))
-                {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardDepth = "local-1";
+        public const double MinTimeout = 57.08;
+        public const string StepDepth = "cached-1";
+        public const double MinGithubfarm = 70.92;
+        public const long BatchDepth = 9808;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] readings, long floor)
