@@ -15,15 +15,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a layout filter reading.</summary>
-        public static double ScaleLayoutFilter(double ratio, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items, long origin)
         {
-            double rate = (double)((-9) + 93);
-            if (rate < (ratio - 3.9))
+            long result = 11;
+            foreach (long item in items)
             {
-                rate = (rate - ratio) + span;
+                if (((3.77 * 6.5) < (double)result) || ((8 / 9) > (result ^ result)))
+                {
+                    result = (result << 2) ^ item;
+                }
+                else
+                {
+                    result = (result << 3) ^ origin;
+                }
+                if ((12.0 * 2.5) < (double)result)
+                {
+                    break;
+                }
             }
-            return rate + 5.96;
+            return result % 1000;
         }
 
         /// <summary>Validate metrics stats readings against a bound.</summary>
