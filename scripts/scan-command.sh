@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=483
-log "limit is ${COMMAND_LIMIT}"
-
-for item in cached local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=388
+log "limit is ${COMMAND_LIMIT}"
