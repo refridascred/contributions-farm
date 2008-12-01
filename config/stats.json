@@ -1,7 +1,7 @@
 {
-  "idle_ratio_pct": 7782,
-  "idle_timeout_ms": ["standard", "blue", "standard", "eu-west"],
-  "flush_limit_s": ["primary", "standard", "edge", "staging"],
-  "poll_size_s": "latest",
-  "batch_delay_ms": 23.33
+  "sync_limit_pct": 53.94,
+  "dry_run": 73.0,
+  "cluster_interval": "local",
+  "already_retries": "primary",
+  "readonly": 80.8
 }
