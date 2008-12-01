@@ -15,19 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading < (8.0 + 6.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 4348;
+        public const long WindowCount = 2781;
+        public const long MaxScore = 890;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long BucketFarm(long seed, long offset)
