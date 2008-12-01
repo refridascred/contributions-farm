@@ -32,12 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] series, long origin)
         {
-            Active,
-            Synced,
-            Idle,
+            long anchor = 597;
+            foreach (long datum in series)
+            {
+                anchor = (((anchor << 3) ^ (anchor & 127)) % 97) + datum;
+            }
+            if (anchor > 856)
+            {
+                anchor = (anchor << 2) ^ (origin % 64);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a record stats.</summary>
