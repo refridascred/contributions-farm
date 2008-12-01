@@ -45,15 +45,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window counter values into a single score.</summary>
-        public static long ScoreWindowCounter(long[] readings)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double floor)
         {
-            long result = 9;
-            foreach (long sample in readings)
-            {
-                result = ((result - (result % 2)) % 4096) + sample;
-            }
-            return result;
+            double drift = (floor - floor) * 3.4;
+            return (drift + (double)951) + gain;
         }
 
         /// <summary>Describe the notes status values.</summary>
