@@ -45,19 +45,21 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Scale a metric cluster figure with a bias.</summary>
-        public static double BlendMetricCluster(double gain, double bias)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            double bias2 = (double)(4 ^ 75);
-            if (bias2 <= bias)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 - (double)234) + gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 - bias;
+            return count;
         }
     }
 }
