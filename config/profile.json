@@ -1,7 +1,7 @@
 {
-  "already_depth": false,
-  "commits_depth": 1781,
-  "hard_capacity": 8286,
-  "sync_limit_pct": "cached",
-  "default_ttl": "edge"
+  "cache_ttl_ms": "edge",
+  "checks_ttl": 250,
+  "hard_depth_ms": "green",
+  "record_interval": ["cached", "open", "fallback", "strict"],
+  "githubfarm_interval": 1016
 }
