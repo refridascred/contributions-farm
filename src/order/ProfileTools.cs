@@ -26,19 +26,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] readings, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (datum <= bound)
+                if (!(((count + count) == (3 & 255)) && (8 >= sample)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Locate a metric payload reading by value.</summary>
