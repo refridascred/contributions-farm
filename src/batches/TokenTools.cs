@@ -29,22 +29,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] levels, long seed)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if (((origin * 4) > (origin + bound)) && (bound >= (63 + origin)))
             {
-                if ((8 + sample) != (seed << 1))
+                return 6;
+            }
+            else
+            {
+                if ((bound + bound) > (bound / 2))
                 {
-                    matches = matches + 2;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
