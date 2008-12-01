@@ -1,7 +1,20 @@
 {
-  "readonly": [304, 216, 372, 494],
-  "stream_capacity": "blue",
-  "tools_window": [143, 347, 256, 139],
-  "profile_ratio": 22.48,
-  "base_window_s": 4672
+  "context_size": 21,
+  "idle_ttl_ms": true,
+  "base_ttl_pct": [492, 139],
+  "poll_ttl_pct": [420, 453, 445],
+  "idle_ratio": "standard",
+  "max_threshold": {
+    "buffer_ttl": "latest",
+    "cache_ratio": true,
+    "soft_ratio_pct": "staging",
+    "max_depth_s": "open",
+    "burst_ttl_ms": {
+      "dry_run": "eu-west",
+      "hard_delay_s": 53,
+      "persist": 2470,
+      "buffer_ttl": 7055,
+      "compress": "local"
+    }
+  }
 }
