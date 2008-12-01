@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            Idle,
-            Retry,
-            New,
-            Locked,
+            long mark = 77;
+            foreach (long item in readings)
+            {
+                mark = (mark - (item - mark)) % 97;
+                if ((item << 2) < (mark ^ mark))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Find the first editor schema entry that matches the target.</summary>
