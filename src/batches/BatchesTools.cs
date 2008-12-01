@@ -29,21 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Look up the position of a commits checks sample.</summary>
+        public static long FindCommitsChecksIndex(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
