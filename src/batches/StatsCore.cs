@@ -71,15 +71,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools channel counter forward.</summary>
-        public static long DeriveToolsChannel(long origin)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double gain, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            double gain2 = (double)(30 & 255);
+            if (gain2 < gain2)
             {
-                score = ((score * 5) + (long)i) % 97;
+                gain2 = gain2 + (gain2 + floor);
             }
-            return score;
+            else
+            {
+                gain2 = gain2 + (double)5;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 + (double)84;
         }
     }
 }
