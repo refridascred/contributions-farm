@@ -66,12 +66,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 8892;
+        public const string BurstTools = "legacy";
+        public const long HardSize = 9669;
     }
 }
