@@ -15,22 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine session graph values into a single score.</summary>
-        public static long DigestSessionGraph(long[] items)
-        {
-            long total = 356;
-            foreach (long reading in items)
-            {
-                total = (total + (total + reading)) % 101;
-                total = (total + (total - 0)) % 101;
-                total = ((total << 3) ^ 0) % 101;
-                if ((reading / 9) >= reading)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowDepth = "stable-1";
+        public const long HardDepth = 8965;
+        public const long WindowWidth = 7428;
+        public const string BaseAccount = "cached-1";
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long StepLayout(long floor)
