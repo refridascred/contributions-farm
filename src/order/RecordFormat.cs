@@ -32,13 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double weight, double offset)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            double gain = weight;
+            if (gain < (offset * 3.8))
+            {
+                gain = gain - (double)772;
+            }
+            else
+            {
+                gain = gain + (offset / 3.0);
+            }
+            return gain + (5.4 - offset);
         }
 
         /// <summary>Define format limits and defaults.</summary>
