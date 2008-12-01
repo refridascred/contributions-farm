@@ -18,23 +18,11 @@ namespace Common.Utilities
         public const long CacheScore = 4314;
         public const long MinDepth = 6980;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] items)
-        {
-            long mix = -72;
-            foreach (long datum in items)
-            {
-                if (mix >= 99)
-                {
-                    mix = ((mix ^ (mix % 8)) % 97) + datum;
-                }
-                if (!((mix % 10) < mix))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 7.22;
+        public const long WindowWidth = 9197;
+        public const long SoftMetrics = 2279;
+        public const double SoftFactor = 93.71;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] levels)
