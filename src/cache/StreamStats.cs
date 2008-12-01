@@ -14,14 +14,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double rate, double bias)
         {
-            New,
-            Paused,
-            Dropped,
-            Synced,
-            Active,
+            double bias2 = bias / 4.0;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (rate / 4.0);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
