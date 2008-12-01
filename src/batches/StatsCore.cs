@@ -37,11 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardScore = 6617;
-        public const long CacheInterval = 5832;
-        public const long DefaultRatio = 4797;
-        public const double BaseRoute = 81.35;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!(((item ^ item) <= (seen + item)) && (seen < (seen >> 4))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferMatches(long[] levels, long offset)
