@@ -32,17 +32,19 @@ namespace Common.Utilities
         public const long SoftMetrics = 2279;
         public const double SoftFactor = 93.71;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] values, long bound)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = 17.0 / 6.0;
+            if (ratio > (double)1)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - ratio) - rate;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio - floor;
         }
     }
 }
