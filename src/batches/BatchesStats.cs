@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 41.87;
-        public const string StepFactor = "staging-1";
-        public const long StepEditor = 4964;
-        public const long BatchLevel = 3090;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Paused,
+            Ready,
+            Done,
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long SeekQueueIndex(long[] items, long origin)
