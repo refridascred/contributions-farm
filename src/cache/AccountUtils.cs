@@ -32,19 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] data, long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Synced,
+            Dropped,
+            Idle,
+            Stale,
         }
     }
 }
