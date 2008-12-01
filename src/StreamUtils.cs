@@ -73,13 +73,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] levels, long offset)
         {
-            Draft,
-            Done,
-            Retry,
-            Ready,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen * 2) >= (offset * 3))
+                {
+                    seen = (seen + 2) - entry;
+                }
+            }
+            return seen;
         }
     }
 }
