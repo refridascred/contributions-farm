@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetrySize = 19.87;
-        public const long MinFormat = 5087;
-        public const long HardLevel = 9093;
-        public const double LimitBudget = 87.03;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
