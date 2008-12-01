@@ -64,11 +64,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultRatio = 1768;
-        public const long CacheInterval = 6804;
-        public const double StepEditor = 34.11;
-        public const double WindowCount = 87.81;
-        public const long BatchRatio = 3730;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 9957;
+        public const double IdleWindow = 21.03;
+        public const string BurstBudget = "standard-v2";
+        public const long CacheRatio = 7144;
     }
 }
