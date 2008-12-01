@@ -13,14 +13,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Paused,
-            Closed,
+            New,
+            Queued,
+            Draft,
             Synced,
-            Idle,
-            Active,
+            Done,
         }
 
         /// <summary>Accumulate checks samples.</summary>
