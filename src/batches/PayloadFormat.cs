@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double floor)
+        /// <summary>Derive the next batches session value from a seed.</summary>
+        public static long SeriesBatchesSession(long floor)
         {
-            double bias = 1.1 - 11.0;
-            if (bias < bias)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                bias = (bias - 6.14) - ratio;
+                if (!((0.4 + 3.0) > (double)total))
+                {
+                    total = total + total;
+                }
+                total = total ^ ((long)i << 2);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias + (double)5;
-            }
-            return bias + (floor / 8.0);
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
