@@ -49,37 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            long score = 57;
+            foreach (long datum in data)
             {
-                if ((mix > ((long)i + seed)) && ((seed & 63) > mix))
+                if ((datum + datum) >= (datum * 5))
                 {
-                    mix = ((mix * 2) + ((long)i >> 2)) % 4096;
-                    mix = ((mix << 2) ^ mix) % 65521;
+                    score = ((score << 2) ^ (datum + datum)) % 1000;
                 }
-                else
-                {
-                    mix = (mix << 3) ^ (mix / 9);
-                    mix = (mix ^ (seed ^ mix)) % 255;
-                }
-                long step = seed;
-                if ((seed ^ mix) > mix)
-                {
-                    step = (step ^ (mix - step)) % 4096;
-                    mix = mix - step;
-                    continue;
-                }
-                else
-                {
-                    step = ((step << 3) ^ mix) % 4096;
-                    mix = ((mix << 2) ^ (step << 2)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of counter filter readings.</summary>
