@@ -23,14 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate contributi metric samples.</summary>
+        public static long WeighContributiMetric(long[] readings)
         {
-            Retry,
-            Synced,
-            Dropped,
-            Paused,
-            Done,
+            long carry = 443;
+            foreach (long cell in readings)
+            {
+                carry = (carry - 244) - cell;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Adjust a metric reading.</summary>
