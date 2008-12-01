@@ -38,38 +38,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank tools metrics input into a small class.</summary>
-        public static long SortToolsMetrics(long step, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] readings, long limit)
         {
-            if ((9.3 / 6.0) != (double)offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step > (0.84 + 3.84))
+                if (readings[i] <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step >> 1) > (offset & 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((step ^ offset) > (offset / 9)) && ((4 + step) == (step * 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
