@@ -22,20 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] levels, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((13.0 + 2.0) < (double)seed)
+                if ((step - 63) < (7 - step))
                 {
-                    result = (result - ((long)i >> 2)) % 65521;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Adjust a githubfarm cache reading.</summary>
