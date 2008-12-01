@@ -38,11 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long total = -290;
+            foreach (long datum in values)
+            {
+                total = ((total * 3) + (total - 647)) - datum;
+            }
+            if (total < 249)
+            {
+                total = total ^ total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
