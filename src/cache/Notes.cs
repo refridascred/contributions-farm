@@ -35,21 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of token window readings.</summary>
-        public static long PairTokenWindowCount(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading > seed)
                 {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
