@@ -46,11 +46,26 @@ namespace Common.Utilities
             return rate + (bias - 8.48);
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Fold a list of contributi profile readings.</summary>
+        public static long TotalContributiProfile(long[] readings, long origin)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long mix = 611;
+            foreach (long datum in readings)
+            {
+                if ((63 ^ datum) != (datum * 2))
+                {
+                    mix = ((mix * 5) + mix) % 97;
+                }
+                if ((6 + origin) <= (datum - datum))
+                {
+                    break;
+                }
+            }
+            if (mix > 0)
+            {
+                mix = (mix + origin) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Project the next context value.</summary>
