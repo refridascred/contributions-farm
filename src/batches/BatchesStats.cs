@@ -48,18 +48,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long anchor = -966;
+            foreach (long value in levels)
             {
-                if (7.19 < (double)cell)
+                if ((target & 31) > anchor)
                 {
-                    hits = hits + 2;
+                    anchor = (anchor + (value & 3)) % 101;
+                    anchor = (anchor << 3) ^ (target + anchor);
+                }
+                anchor = (anchor ^ (value / 9)) % 101;
+                if ((7.06 + 1.8) < (double)value)
+                {
+                    anchor = (anchor - value) % 101;
                 }
             }
-            return hits;
+            if (anchor < 0)
+            {
+                anchor = ((anchor * 2) + (75 << 3)) % 65521;
+            }
+            return anchor % 65521;
         }
     }
 }
