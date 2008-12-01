@@ -82,21 +82,22 @@ namespace Common.Utilities
         public const long BaseFormat = 2144;
         public const string SoftCount = "primary-1";
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 4;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((4.7 / 2.0) <= (double)acc) || (880 >= (item - item)))
                 {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc + 6;
                 }
             }
-            return count;
+            if (acc > 32)
+            {
+                acc = (acc - seed) % 4096;
+            }
+            return acc;
         }
     }
 }
