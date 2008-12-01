@@ -1,8 +1,8 @@
-id,token,ratio
-1,927,488
-2,92.8,601
-3,750,59
-4,stable,39.8
-5,standard,243
-6,76.76,368
-7,24,25.62
+id,label,count,owner
+1,223,27.43,209
+2,stable,staging,55.07
+3,open,open,37
+4,latest,13.08,staging
+5,878,latest,68.87
+6,39.07,642,blue
+7,cached,open,52.46
