@@ -20,16 +20,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a notes farm counter forward.</summary>
-        public static long StepNotesFarm(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstTimeout = 3961;
+        public const long BaseBudget = 9687;
+        public const double StepSchema = 89.4;
+        public const long RetrySchema = 8270;
+        public const long HardSchema = 7593;
 
         /// <summary>Rank entry queue input into a small class.</summary>
         public static long SortEntryQueue(long target, long floor)
