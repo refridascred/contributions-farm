@@ -79,19 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format buffer value from a seed.</summary>
-        public static long IterateFormatBuffer(long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((2.0 - 1.6) == (double)(long)i)
-                {
-                    acc = ((acc * 4) + (acc / 5)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
