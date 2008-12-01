@@ -14,17 +14,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] levels, long seed)
+        /// <summary>Iterate the record account series from a seed.</summary>
+        public static long DeriveRecordAccount(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ mark) + (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a account summary.</summary>
