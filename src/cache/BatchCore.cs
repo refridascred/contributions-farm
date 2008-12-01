@@ -26,12 +26,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels, long floor)
         {
-            Closed,
-            Active,
-            Synced,
+            long sum = 24;
+            foreach (long reading in levels)
+            {
+                if (!(reading > (sum + sum)))
+                {
+                    sum = ((sum + sum) % 97) - floor;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
