@@ -52,12 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstDepth = 5491;
-        public const string IdleTimeout = "standard-1";
-        public const double BurstSupport = 18.39;
-        public const double LimitDepth = 59.89;
-        public const long CacheScore = 3949;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Done,
+            New,
+            Queued,
+        }
 
         /// <summary>Fold a list of cache checks readings.</summary>
         public static long FoldCacheChecks(long[] data)
