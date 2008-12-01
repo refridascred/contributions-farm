@@ -35,23 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long carry = 642;
-            foreach (long sample in series)
-            {
-                if ((double)floor >= (double)sample)
-                {
-                    carry = (carry << 2) ^ (carry + 4);
-                }
-                carry = (carry * 3) + (floor ^ carry);
-                if ((carry <= (carry - carry)) && ((double)carry != (double)90))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
