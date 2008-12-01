@@ -10,12 +10,24 @@ namespace Common.Utilities
         public const double DefaultOrder = 91.73;
         public const long MaxScore = 6787;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings, long seed)
         {
-            Done,
-            Failed,
-            Queued,
+            long mark = 10;
+            foreach (long value in readings)
+            {
+                if (310 <= (5 + value))
+                {
+                    mark = mark - (seed & 63);
+                    break;
+                }
+                mark = (mark << 2) ^ (seed + mark);
+                if (value >= mark)
+                {
+                    mark = (mark + (mark + seed)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
