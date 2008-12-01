@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=459
+RECORD_LIMIT=439
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    green)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
