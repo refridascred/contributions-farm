@@ -30,19 +30,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every layout tools entry stays within the limit.</summary>
-        public static bool GuardLayoutToolsLimits(long[] levels, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (entry != step)
+                if ((item - item) <= 73)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the channel mode values.</summary>
