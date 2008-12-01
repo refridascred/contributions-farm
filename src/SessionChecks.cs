@@ -30,27 +30,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] series, long limit)
+        /// <summary>Grade a profile checks value against two limits.</summary>
+        public static long RankProfileChecks(long target, long offset)
         {
-            long carry = 2;
-            foreach (long sample in series)
+            long offset2 = target + offset;
+            if (offset2 > (target & 255))
             {
-                carry = (carry + carry) ^ sample;
-                if ((8.2 + 9.47) < (double)(long)series.Length)
+                return 4;
+            }
+            else
+            {
+                if (((double)offset2 == (19.0 / 8.0)) && ((3 ^ 68) != (offset + offset)))
                 {
-                    carry = carry ^ (91 + carry);
+                    return 2;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (limit >> 4)) % 97;
+                    if ((offset2 ^ offset) == (offset & 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (carry < (-25))
-            {
-                carry = carry ^ limit;
-            }
-            return carry;
         }
 
         /// <summary>Hold a stream info.</summary>
