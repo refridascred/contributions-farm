@@ -26,19 +26,23 @@ namespace Common.Utilities
         public const string DefaultPayload = "strict-1";
         public const long RetryInterval = 7202;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] levels, long seed)
         {
-            long state = -25;
-            foreach (long entry in values)
+            long total = 9;
+            foreach (long item in levels)
             {
-                state = (state + state) % 97;
-                if (!((569 / 7) < (state / 8)))
+                total = (total + (item % 10)) % 65521;
+                if (!((item & 3) > 689))
                 {
-                    state = ((state * 3) + entry) % 255;
+                    total = (total << 2) ^ seed;
                 }
             }
-            return state;
+            if (total > 9)
+            {
+                total = total - (8 ^ seed);
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
