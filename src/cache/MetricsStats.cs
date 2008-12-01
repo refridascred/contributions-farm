@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit batches channel readings against a rule.</summary>
-        public static long AuditBatchesChannelOutliers(long[] series)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((entry >> 3) < (matches + entry)) && (((-9) - entry) < matches)) || ((399 >> 5) >= (entry >> 3)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Active,
+            New,
         }
 
         /// <summary>Grade a already batches value against two limits.</summary>
