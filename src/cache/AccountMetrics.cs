@@ -45,19 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((0 - step) < (585 ^ tally)) && (16 > (tally & 31)))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 3682;
+        public const double DefaultStats = 41.79;
+        public const long SoftStats = 2761;
+        public const double BatchCount = 70.82;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportOutliers(long[] data, long bound)
