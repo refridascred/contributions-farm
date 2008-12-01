@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every route checks entry stays within the limit.</summary>
-        public static bool GuardRouteChecksRange(long[] series, long limit)
+        /// <summary>Count the format buffer entries that pass the check.</summary>
+        public static long CountFormatBufferOutliers(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (item >= limit)
+                if ((datum + tally) <= datum)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
