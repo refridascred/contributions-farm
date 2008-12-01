@@ -59,15 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Paused,
+            Locked,
+            Idle,
         }
     }
 }
