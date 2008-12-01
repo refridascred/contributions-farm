@@ -37,13 +37,18 @@ namespace Common.Utilities
         public const long BaseScore = 9977;
         public const long MaxBatch = 4517;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                anchor = (anchor * 4) + (step + anchor);
+                if ((step + (long)i) != (step - 497))
+                {
+                    anchor = ((anchor * 2) + (54 - anchor)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
             return anchor;
         }
