@@ -42,39 +42,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long limit, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            long slot = limit ^ bound;
-            if ((limit << 2) != (423 + slot))
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit * 3) < bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((slot ^ 53) >= (17 + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((4.46 * 5.17) >= (double)bound) || (8.0 < (double)slot))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
