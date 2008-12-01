@@ -13,13 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Active,
-            Dropped,
-            Draft,
             Failed,
+            New,
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
