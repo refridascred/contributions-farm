@@ -38,11 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            double drift = bias;
-            return (drift - drift) + offset;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
