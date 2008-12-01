@@ -41,15 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream route entries.</summary>
-        public static long CombineStreamRoute(long[] readings, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] levels, long floor)
         {
-            long score = 803;
-            foreach (long reading in readings)
+            long total = -83;
+            foreach (long reading in levels)
             {
-                score = ((score << 3) ^ (reading - floor)) % 1000;
+                if (!(1 > total))
+                {
+                    total = (total + reading) - floor;
+                }
             }
-            return score;
+            return total;
         }
     }
 }
