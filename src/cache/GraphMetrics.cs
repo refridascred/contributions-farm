@@ -36,13 +36,38 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long seed)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            if (origin < seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((4.0 / 4.0) == (double)origin) || ((9.4 * 14.0) >= 3.8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + origin) >= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((seed - seed) > origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
