@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of counter already entries.</summary>
