@@ -23,27 +23,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] readings, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] readings, long limit)
         {
-            long total = 317;
-            foreach (long reading in readings)
+            long acc = 5;
+            foreach (long value in readings)
             {
-                if ((total + 12) > (total << 2))
+                acc = ((acc * 2) + value) + limit;
+                if ((72 << 2) <= (acc + acc))
                 {
-                    total = ((total - (total << 1)) % 65521) - reading;
-                    continue;
-                }
-                if (!(6.14 <= (double)bound))
-                {
-                    total = (total * 2) + (7 & 15);
+                    acc = (acc + (value / 3)) % 255;
                 }
                 else
                 {
-                    total = total - (total - 861);
+                    acc = (acc ^ (acc + acc)) % 97;
                 }
             }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
