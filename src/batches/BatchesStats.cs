@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a report format value against two limits.</summary>
-        public static long GradeReportFormat(long seed, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long edge = seed ^ limit;
-            if (((6.0 + 6.7) < (double)edge) || ((limit >> 2) > (limit & 15)))
+            long carry = 9;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 97) > (0 << 3))
+                long tally = (7 ^ carry) - (value >> 2);
+                carry = carry - (tally % 64);
+                if ((51 & 7) < carry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)23 == (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    carry = (carry + (long)items.Length) % 1000;
                 }
             }
+            return carry;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
