@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit route commits readings against a rule.</summary>
-        public static long MeasureRouteCommitsHits(long[] readings, long limit)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((2.33 / 7.0) == (double)limit)
-                {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
