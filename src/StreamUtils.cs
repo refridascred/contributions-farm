@@ -36,12 +36,20 @@ namespace Common.Utilities
         public const long BaseScore = 1594;
         public const long IdleWidth = 9012;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 6688;
-        public const double CacheBatch = 68.91;
-        public const long HardBatch = 8008;
-        public const long WindowWidth = 4269;
-        public const string BurstBatch = "staging-1";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double ProjectStream(double bias, double bias2)
