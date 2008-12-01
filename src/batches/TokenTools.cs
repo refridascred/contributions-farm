@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            Closed,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
