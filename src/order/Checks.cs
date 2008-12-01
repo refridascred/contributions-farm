@@ -40,10 +40,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 1523;
-        public const double HardBudget = 61.14;
-        public const long WindowCount = 8916;
+        /// <summary>Grade a format stats value against two limits.</summary>
+        public static long BucketFormatStats(long seed, long limit)
+        {
+            long bound = seed + limit;
+            if ((limit << 3) < bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit != (3.65 - 4.61))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed % 5) <= (seed / 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((-8) <= (seed + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphMatches(long[] samples)
