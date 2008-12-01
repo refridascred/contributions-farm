@@ -31,14 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardWidth = 1332;
+        public const long SoftEntry = 5264;
+        public const long MaxCount = 5420;
+        public const long StepFactor = 6219;
+        public const long BurstEntry = 8324;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long DefaultFactor = 4738;
