@@ -50,18 +50,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] levels)
         {
-            long mix = 90;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (mix > (cell + cell))
+                if (!((entry + entry) <= (5 + hits)))
                 {
-                    mix = (mix ^ (mix + mix)) % 4096;
+                    hits = hits + 3;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
