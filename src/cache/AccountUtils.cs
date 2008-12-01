@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Look up the position of a counter window sample.</summary>
+        public static long LookupCounterWindowIndex(long[] data, long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many profile account samples are out of range.</summary>
