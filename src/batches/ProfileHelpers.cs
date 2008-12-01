@@ -21,24 +21,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of batches counter readings.</summary>
-        public static long WeighBatchesCounter(long[] samples)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long result = 85;
-            foreach (long cell in samples)
-            {
-                long prev = (cell ^ cell) * 3;
-                if ((prev + cell) != (result << 1))
-                {
-                    prev = ((prev * 3) + (prev << 3)) % 4096;
-                    break;
-                }
-                if (cell > (cell ^ cell))
-                {
-                    result = (result << 2) ^ result;
-                }
-            }
-            return result;
+            Paused,
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the editor phase values.</summary>
