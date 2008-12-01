@@ -43,39 +43,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a order entry value against two limits.</summary>
-        public static long GradeOrderEntry(long floor, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long seed)
         {
-            long slot = floor - target;
-            if (((5.22 + 7.9) > (double)slot) && ((target + (-6)) != (target << 2)))
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor == (2.6 / 8.0)) && ((double)target < (3.0 * 18.0)))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 1;
+                    mix = (((mix * 4) + (mix + seed)) % 1000) - (long)i2;
+                    mix = mix + (long)i;
                 }
-                else
-                {
-                    if ((target - slot) < (slot - slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor * 3) == (slot + slot))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mix = mix + seed;
+                mix = (mix * 5) + (mix / 7);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Grade a cluster route value against two limits.</summary>
