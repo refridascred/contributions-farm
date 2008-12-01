@@ -15,22 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate already context samples.</summary>
-        public static long FoldAlreadyContext(long[] items)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mark = 24;
-            foreach (long value in items)
-            {
-                if (value <= (7 - value))
-                {
-                    mark = ((mark * 5) + mark) % 255;
-                }
-                if ((double)mark <= 12.0)
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            Closed,
+            Draft,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a filter header.</summary>
