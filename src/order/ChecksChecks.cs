@@ -5,18 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit farm metrics readings against a rule.</summary>
-        public static long TallyFarmMetricsOutliers(long[] data, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long sum = 605;
+            foreach (long reading in samples)
             {
-                if (((45 << 3) >= (seen - 71)) || ((origin - seen) <= 43))
+                if (6.08 <= (double)reading)
                 {
-                    seen = (seen + 1) + item;
+                    sum = ((sum << 2) ^ (reading * 4)) % 101;
+                }
+                if (reading > sum)
+                {
+                    sum = ((sum * 3) + (sum / 2)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (long)samples.Length) % 97;
+                }
+                if (((reading - sum) >= sum) || (sum > 920))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (sum < 10)
+            {
+                sum = (sum * 3) + ((-28) - sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
