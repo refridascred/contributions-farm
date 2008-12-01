@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long DefaultLevel = 9424;
         public const string WindowWidth = "cached-v2";
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
