@@ -5,34 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Check that every commits counter entry stays within the limit.</summary>
+        public static bool CheckCommitsCounterLimits(long[] levels, long seed)
         {
-            long sum = 605;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (6.08 <= (double)reading)
+                if (cell >= seed)
                 {
-                    sum = ((sum << 2) ^ (reading * 4)) % 101;
-                }
-                if (reading > sum)
-                {
-                    sum = ((sum * 3) + (sum / 2)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (long)samples.Length) % 97;
-                }
-                if (((reading - sum) >= sum) || (sum > 920))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (sum < 10)
-            {
-                sum = (sum * 3) + ((-28) - sum);
-            }
-            return sum % 1000;
+            return ready;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
