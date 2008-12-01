@@ -77,18 +77,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry support readings.</summary>
-        public static long CombineEntrySupport(long[] data)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            long mark = 24;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mark / 5) > mark)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark + (entry << 1)) % 4096;
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
