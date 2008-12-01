@@ -22,32 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long floor, long bound)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long step)
         {
-            long cur = floor ^ bound;
-            if (!(cur >= bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor > (floor % 12))
+                if ((series[i] > step) && ((series[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((10.0 + 3.7) == (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate already contributi samples.</summary>
