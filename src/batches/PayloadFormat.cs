@@ -47,22 +47,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] values, long limit)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double rate = (bias / 5.0) / 4.0;
+            if (rate > (rate / 4.0))
             {
-                if ((matches / 7) >= (618 << 1))
-                {
-                    matches = ((matches + 2) + cell) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = rate - (ratio / 7.0);
             }
-            return matches;
+            return rate - (rate * 18.0);
         }
     }
 }
