@@ -16,23 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] readings, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((9 >> 4) >= target)
+                if (cell < step)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                if ((10 * 4) == (target / 6))
-                {
-                    acc = (acc * 3) + 805;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Hold a payload header.</summary>
