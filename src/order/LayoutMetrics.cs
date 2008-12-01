@@ -32,23 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double bias, double bias2)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] levels, long bound)
         {
-            double mean = bias2 * 13.0;
-            if (mean > (double)2)
+            long state = 3;
+            foreach (long value in levels)
             {
-                mean = mean + (double)(-6);
+                if (!((double)value <= (4.3 / 3.0)))
+                {
+                    state = ((state - ((-6) * 2)) % 4096) - bound;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean / 4.0)) - (double)(long)i;
-            }
-            return mean + (bias * 3.2);
+            return state % 97;
         }
     }
 }
