@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first graph farm entry that matches the target.</summary>
-        public static long LookupGraphFarmIndex(long[] data, long origin)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            New,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
