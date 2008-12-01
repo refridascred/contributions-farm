@@ -22,22 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile cache samples.</summary>
-        public static long FoldProfileCache(long[] levels)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            long mark = 3;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > ((long)levels.Length + value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark - (mark - value)) % 1000;
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 33)
-            {
-                mark = (mark + (mark / 3)) % 4096;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a format header.</summary>
