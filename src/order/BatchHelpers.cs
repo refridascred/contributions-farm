@@ -38,9 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchScore = 96.65;
-        public const long LimitFilter = 4737;
-        public const double MaxDepth = 53.28;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count <= (count / 9)) && ((value & 63) < (value * 4)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
