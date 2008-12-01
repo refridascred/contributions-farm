@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] series)
         {
-            Locked,
-            Pending,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((cell - 131) <= tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
