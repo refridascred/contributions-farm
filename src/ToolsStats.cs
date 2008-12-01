@@ -23,10 +23,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 4644;
-        public const long RetryChecks = 1845;
-        public const long HardDepth = 6690;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardWidth = 9082;
+        public const double WindowRatio = 89.58;
+        public const string SoftCount = "alpha";
+        public const double BurstQueue = 91.39;
 
         /// <summary>Count order profile pairs that satisfy a relation.</summary>
         public static long OverlapOrderProfileCount(long[] series)
