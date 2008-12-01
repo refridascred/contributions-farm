@@ -1,26 +1,8 @@
 {
-  "min_threshold_pct": {
-    "dry_run": "staging",
-    "retry_interval": 6870,
-    "context_timeout": {
-      "base_size_count": 15,
-      "burst_window": 96.58,
-      "cache_retries_s": false,
-      "commits_threshold": "eu-west"
-    }
-  },
-  "sync_timeout_s": ["cached", "primary", "blue", "eu-west"],
-  "already_timeout": 3214,
-  "flush_size": 7837,
-  "burst_depth": {
-    "readonly": {
-      "buffer_retries": "local",
-      "retry_ratio": 4583,
-      "dry_run": 49.97,
-      "strict": "strict"
-    },
-    "enabled": "fallback",
-    "retry_threshold_s": "edge"
-  },
-  "max_capacity": 96.35
+  "audit": 32,
+  "context_limit": 16.56,
+  "sync_size": false,
+  "githubfarm_depth": "cached",
+  "verbose": "fallback",
+  "batch_ttl": 75
 }
