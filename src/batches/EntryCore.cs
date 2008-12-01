@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many channel notes samples are out of range.</summary>
-        public static long MeasureChannelNotesOutliers(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell > (18.0 / 7.0))
-                {
-                    tally = (tally + 2) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "stable-v2";
+        public const long DefaultSize = 257;
+        public const string DefaultQueue = "legacy-edge";
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
