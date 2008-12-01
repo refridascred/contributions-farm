@@ -27,12 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardFactor = 9762;
-        public const long StepTools = 6493;
-        public const long WindowTools = 4973;
-        public const double HardLevel = 98.87;
-        public const double BaseTools = 50.99;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((double)reading != (9.7 - 1.2)) || !((seed * 3) >= 164))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] levels)
