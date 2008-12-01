@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "cached-v2";
-        public const long MaxFactor = 3851;
-        public const long SoftFactor = 2204;
-        public const long DefaultRatio = 7996;
-        public const double BatchSize = 86.62;
+        /// <summary>Measure how many payload batch samples are out of range.</summary>
+        public static long CountPayloadBatchGaps(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item % 8) != (item >> 2))
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LookupWindowIndex(long[] values, long seed)
