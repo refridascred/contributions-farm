@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 697;
-        public const double IdleWidth = 48.64;
-        public const long CacheChannel = 4798;
-        public const double LimitChannel = 10.69;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
