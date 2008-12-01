@@ -32,10 +32,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstFactor = 5687;
-        public const long StepReport = 2698;
-        public const long MinReport = 6296;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstRoute = 68.58;
+        public const long CacheFactor = 7036;
+        public const double DefaultDepth = 98.21;
+        public const double SoftTimeout = 77.53;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsOutliers(long[] values)
