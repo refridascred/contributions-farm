@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] items, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] values, long limit)
         {
-            long total = 91;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((54 - (-1)) == (cell - floor))
+                if ((value & 63) == (limit << 3))
                 {
-                    total = total ^ (total - total);
-                }
-                else
-                {
-                    total = total ^ 463;
-                }
-                if ((double)cell >= (double)total)
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (total < 22)
-            {
-                total = (total * 4) + (total + floor);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
