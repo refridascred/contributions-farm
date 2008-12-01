@@ -28,11 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryRatio = 17.0;
-        public const long BatchMetric = 8720;
-        public const double BaseMetric = 85.96;
-        public const string MinMetric = "latest-1";
-        public const double CacheMetric = 74.76;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value > hits)
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
+        }
     }
 }
