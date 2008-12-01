@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            long total = 59;
-            foreach (long item in readings)
+            long score = 8;
+            foreach (long item in samples)
             {
-                if ((total & 15) != (total + total))
-                {
-                    total = ((total << 2) ^ (20 + item)) % 4096;
-                }
-                if (!((total % 12) > total))
-                {
-                    break;
-                }
+                score = (score * 2) + item;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Fold a list of account readings.</summary>
