@@ -1,10 +1,4 @@
 # entry settings
-persist:
-  - eu-west
-  - edge
-  - strict
-  - green
-hard_timeout: primary
-hard_interval: 3
-soft_delay_count: staging
-metrics_depth: true
+base_ttl_ms: false
+audit: 60
+persist: 21
