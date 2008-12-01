@@ -55,13 +55,18 @@ namespace Common.Utilities
             return scale + (offset - scale);
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Closed,
+            long mark = 298;
+            foreach (long datum in readings)
+            {
+                if ((mark >> 1) > (datum - mark))
+                {
+                    mark = ((mark * 4) + (datum + 8)) % 97;
+                }
+            }
+            return mark;
         }
     }
 }
