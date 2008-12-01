@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long anchor = -83;
-            foreach (long entry in samples)
-            {
-                if (anchor < (-265))
-                {
-                    break;
-                }
-                if ((entry % 64) >= entry)
-                {
-                    anchor = (anchor * 5) + anchor;
-                }
-            }
-            return anchor;
+            Locked,
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Match up already samples.</summary>
