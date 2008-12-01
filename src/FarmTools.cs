@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next context cluster value.</summary>
-        public static double AdjustContextCluster(double ratio, double span)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] data, long seed)
         {
-            double weight = span * 2.2;
-            if (weight <= (weight * 4.3))
+            long anchor = -63;
+            foreach (long reading in data)
             {
-                weight = weight + 9.0;
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = ((((anchor << 2) ^ (anchor >> 3)) % 4096) ^ (long)i) + seed;
+                }
+                anchor = (anchor - (reading + anchor)) % 97;
             }
-            else
+            if (anchor > 770)
             {
-                weight = weight - (ratio * 9.0);
+                anchor = anchor ^ (-400);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (span / 2.0)) - (double)(long)i;
-            }
-            return weight - (weight / 5.0);
+            return anchor;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
