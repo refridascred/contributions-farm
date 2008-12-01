@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] levels, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] values, long step)
         {
-            long mark = 9;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + datum) + floor;
-                if ((double)mark >= 8.89)
+                if (values[i] == step)
                 {
-                    mark = (mark << 3) ^ (4 % 2);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
