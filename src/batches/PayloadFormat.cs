@@ -68,21 +68,9 @@ namespace Common.Utilities
             return ratio2 - (double)(-1);
         }
 
-        /// <summary>Compare every pair of support githubfarm readings.</summary>
-        public static long MatchSupportGithubfarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 1919;
+        public const double BatchWidth = 44.03;
+        public const double BatchSize = 53.05;
     }
 }
