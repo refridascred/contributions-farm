@@ -22,22 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long floor, long bound)
         {
-            long state = -14;
-            foreach (long item in data)
+            long cur = floor ^ bound;
+            if (!(cur >= bound))
             {
-                if (!((state + 722) >= (item % 3)))
+                return 5;
+            }
+            else
+            {
+                if (floor > (floor % 12))
                 {
-                    state = (state + state) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    state = (state * 3) + ((long)data.Length >> 5);
+                    if ((10.0 + 3.7) == (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Accumulate already contributi samples.</summary>
