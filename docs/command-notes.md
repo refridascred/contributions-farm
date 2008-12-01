@@ -1,15 +1,12 @@
 # Command notes
 
-Keep schema and metric names short and lowercase.
-A commits that stays idle for too long is moved to the support list.
-Each session is validated before it reaches the batch queue.
-
-Run the support check before changing any filter limits.
-Defaults for support live in the config folder and can be overridden per environment.
-The buffer report groups every stats by command.
+A context that stays idle for too long is moved to the channel list.
+Use payload settings to tune how often stats data is refreshed.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Document new token fields
-- Review context limits each release
+- Document new support fields
+- Keep stream values small
+- Validate buffer input early
+- Prefer already defaults
