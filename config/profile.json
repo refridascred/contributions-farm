@@ -1,8 +1,6 @@
 {
-  "flush_timeout": 67.85,
-  "batch_timeout_count": "edge",
-  "default_retries": "primary",
-  "flush_interval": true,
-  "account_limit": 1085,
-  "already_size": 67.29
+  "strict": true,
+  "githubfarm_window": [443, 104, 17, 320],
+  "dry_run": "eu-west",
+  "hard_threshold_pct": 2389
 }
