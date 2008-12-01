@@ -20,15 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Look up the position of a order editor sample.</summary>
