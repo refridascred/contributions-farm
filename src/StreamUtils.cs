@@ -21,23 +21,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double rate, double bias)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long step, long seed)
         {
-            double scale = (double)((-233) / 4);
-            if (scale < rate)
+            if ((step / 2) < (step + seed))
             {
-                scale = scale - rate;
+                return 5;
             }
             else
             {
-                scale = scale - bias;
+                if ((seed & 63) < step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (9.1 - 6.71)) + (double)(long)i;
-            }
-            return scale - (5.7 - scale);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
