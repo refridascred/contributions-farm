@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every notes context entry stays within the limit.</summary>
-        public static bool ValidateNotesContextRange(long[] data, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long mark = 664;
+            foreach (long sample in items)
             {
-                if (datum >= origin)
+                for (int i = 0; i < 12; i++)
                 {
-                    ready = false;
+                    mark = ((mark << 3) ^ ((long)i ^ target)) % 97;
+                }
+                if ((sample - sample) != (mark & 255))
+                {
+                    mark = mark + (4 + sample);
+                }
+                else
+                {
+                    mark = mark - (sample + target);
+                }
+                if ((target >> 4) <= (sample - 8))
+                {
                     break;
                 }
             }
-            return ready;
+            return mark % 97;
         }
 
         /// <summary>Describe the stats status values.</summary>
