@@ -38,15 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double gain, double offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] levels, long step)
         {
-            double rate = gain;
-            if (rate >= (double)6)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                rate = (rate - (double)40) + offset;
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate - (double)55;
+            return found;
         }
 
         /// <summary>Accumulate batch samples.</summary>
