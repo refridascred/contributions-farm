@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double scale, double floor)
         {
-            long sum = 6;
-            foreach (long sample in series)
+            double bias = floor;
+            if (bias > (double)9)
             {
-                if ((sample + 52) != (8 & 127))
-                {
-                    sum = sum ^ (sample ^ 136);
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sample ^ sum)) % 101;
-                }
-                sum = (sum - (5 - 782)) % 65521;
+                bias = (bias - (double)46) + scale;
             }
-            if (sum < 428)
-            {
-                sum = sum - (sum >> 1);
-            }
-            return sum;
+            return bias - (double)157;
         }
 
         /// <summary>Iterate the filter contributi series from a seed.</summary>
