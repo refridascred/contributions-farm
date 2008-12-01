@@ -30,22 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] levels)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long carry = -6;
+            foreach (long value in samples)
             {
-                if ((item - item) <= 73)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry - ((-533) * 4)) % 65521) + value;
             }
-            return seen;
+            if (carry < 116)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the channel mode values.</summary>
