@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long MaxSize = 3092;
         public const double DefaultCluster = 82.88;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] samples, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (entry != limit)
+                if ((tally + sample) > (sample + sample))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a already header.</summary>
