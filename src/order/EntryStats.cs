@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit report checks readings against a rule.</summary>
-        public static long CountReportChecksHits(long[] items)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (datum <= (tally >> 4))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Retry,
+            Draft,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a stats stats.</summary>
