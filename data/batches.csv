@@ -1,7 +1,7 @@
-id,level,score
-1,94,74
-2,998,stable
-3,353,stable
-4,eu-west,fallback
-5,15.93,755
-6,latest,51.13
+id,owner,active,label
+1,589,868,62.91
+2,strict,84.38,eu-west
+3,603,standard,13.43
+4,701,legacy,778
+5,46,blue,legacy
+6,fallback,3,16.41
