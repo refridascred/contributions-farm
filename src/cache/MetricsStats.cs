@@ -33,19 +33,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double weight, double offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double bias = (double)((-533) + 1);
-            if (bias < offset)
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + (weight / 4.0);
+            Locked,
+            Retry,
+            Synced,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
