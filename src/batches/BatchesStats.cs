@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] samples, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (item > step)
+                if ((limit - datum) <= (limit + limit))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
