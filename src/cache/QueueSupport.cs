@@ -15,14 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            New,
-            Locked,
             Synced,
-            Paused,
-            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Hold a farm record.</summary>
