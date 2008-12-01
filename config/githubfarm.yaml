@@ -1,6 +1,23 @@
 # githubfarm settings
-hard_ttl: latest
-idle_ttl: true
-burst_ratio_s: 20
-batch_capacity_s: true
-max_ratio_s: legacy
+sync_delay_pct:
+  - cached
+  - latest
+  - cached
+  - primary
+sync_limit: cached
+cache_window_s:
+  enabled:
+    - 32
+    - 210
+    - 222
+  stream_capacity:
+    - 2
+    - 411
+    - 157
+  dry_run: 1875
+  token_limit: latest
+  stats_capacity: legacy
+  base_window_s: 36.82
+max_retries: 8050
+idle_size_count: 13.12
+strict: primary
