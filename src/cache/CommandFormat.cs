@@ -36,11 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a window sample.</summary>
