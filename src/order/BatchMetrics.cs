@@ -55,22 +55,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support metrics readings against a rule.</summary>
-        public static long TallySupportMetricsGaps(long[] series)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (3.0 <= (double)tally)
-                {
-                    tally = (tally + 2) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of notes session readings.</summary>
