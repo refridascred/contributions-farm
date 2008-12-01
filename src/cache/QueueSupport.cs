@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long WindowLevel = 7836;
         public const long MinReport = 7525;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowDepth = "stable-1";
-        public const long HardDepth = 8965;
-        public const long WindowWidth = 7428;
-        public const string BaseAccount = "cached-1";
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Failed,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BaseDepth = 85.6;
