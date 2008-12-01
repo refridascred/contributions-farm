@@ -1,4 +1,5 @@
 # githubfarm settings
-max_timeout_s: open
-default_depth_pct: edge
-dry_run: latest
+cluster_capacity: local
+persist: green
+hard_delay_count: legacy
+max_depth: 58
