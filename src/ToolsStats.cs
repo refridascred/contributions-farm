@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long mix = -999;
-            foreach (long datum in data)
-            {
-                if ((2 - mix) <= mix)
-                {
-                    mix = (mix * 3) + datum;
-                }
-            }
-            return mix;
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Combine metric farm values into a single score.</summary>
