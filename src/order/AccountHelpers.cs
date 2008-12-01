@@ -31,19 +31,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            long mix = 24;
+            foreach (long cell in samples)
             {
-                if (!!((long)i >= ((long)i >> 5)))
-                {
-                    sum = (sum ^ (step - step)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                mix = ((mix ^ (mix & 3)) % 97) - cell;
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
