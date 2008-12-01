@@ -72,21 +72,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 7;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((acc * 2) != (seed % 60))
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 2) ^ seed) - entry;
+                }
+                else
+                {
+                    acc = (acc * 5) + (181 + acc);
                 }
             }
-            return tally;
+            if (acc < 31)
+            {
+                acc = acc - seed;
+            }
+            return acc;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
