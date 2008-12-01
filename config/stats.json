@@ -1,7 +1,11 @@
 {
-  "warm_retries": ["local", "strict", "primary"],
-  "retry_depth_ms": [317, 178, 99],
-  "batch_interval_pct": 6634,
-  "readonly": 8.3,
-  "max_delay_count": "local"
+  "default_ttl": "green",
+  "batch_interval_s": {
+    "order_limit": 66.39,
+    "readonly": ["green", "staging", "blue", "primary"],
+    "compress": false,
+    "editor_ttl": true,
+    "editor_capacity": true
+  },
+  "readonly": 81.1
 }
