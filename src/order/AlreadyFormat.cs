@@ -13,13 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] series, long step)
         {
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
