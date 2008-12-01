@@ -1,5 +1,5 @@
 {
-  "filter_depth": 40.43,
-  "warm_ttl_count": 63,
-  "min_ttl_pct": 860
+  "audit": ["green", "standard", "legacy"],
+  "cluster_depth": false,
+  "min_timeout_s": true
 }
