@@ -48,11 +48,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 87.2;
-        public const double StepScore = 4.3;
-        public const long BatchCluster = 6138;
-        public const string BaseCluster = "latest-v2";
-        public const long DefaultLevel = 4763;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long origin, long step)
+        {
+            long diff = origin ^ step;
+            if (((diff * 5) >= (origin - diff)) || ((8.9 / 8.0) >= (double)step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((origin ^ step) == (diff % 64)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
