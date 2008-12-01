@@ -43,19 +43,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double gain, double offset)
         {
-            long total = -290;
-            foreach (long datum in values)
-            {
-                total = ((total * 3) + (total - 647)) - datum;
-            }
-            if (total < 249)
-            {
-                total = total ^ total;
-            }
-            return total % 4096;
+            double scale = (double)(28 >> 2);
+            return ((scale - (scale / 6.0)) + gain) + offset;
         }
 
         /// <summary>Describe the checks state values.</summary>
