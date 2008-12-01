@@ -31,11 +31,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitSpan = 7479;
-        public const double BurstMetrics = 37.68;
-        public const string SoftTimeout = "stable";
-        public const long DefaultSpan = 8109;
-        public const long BatchDepth = 9907;
+        /// <summary>Look up the position of a order editor sample.</summary>
+        public static long FindOrderEditorIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
