@@ -38,14 +38,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Ready,
-            Active,
-            Dropped,
-            Paused,
-            Synced,
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit layout schema readings against a rule.</summary>
