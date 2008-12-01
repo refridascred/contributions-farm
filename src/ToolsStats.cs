@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Synced,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 5121;
+        public const long CacheSpan = 5694;
+        public const long WindowSupport = 3086;
+        public const long MaxSupport = 6153;
+        public const long BaseDepth = 8408;
 
         /// <summary>Combine metric farm values into a single score.</summary>
         public static long TotalMetricFarm(long[] values, long target)
