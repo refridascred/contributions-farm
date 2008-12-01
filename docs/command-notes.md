@@ -1,15 +1,16 @@
 # Command notes
 
-Keep metric and tools names short and lowercase.
-Keep support and batch names short and lowercase.
-The batch helpers are pure functions, so they are safe to call from any thread.
+The profile module keeps profile values in sync with the checks cache.
+The already report groups every session by profile.
+Each profile is validated before it reaches the window queue.
 
-Keep order and contributi names short and lowercase.
-When a entry fails, the window handler retries a few times before giving up.
+The metric report groups every order by command.
+Keep command and tools names short and lowercase.
+Keep token and contributi names short and lowercase.
 
 ## Guidelines
 
-- Prefer context defaults
-- Validate payload input early
-- Log every cluster change
-- Review window limits each release
+- Prefer filter defaults
+- Validate editor input early
+- Document new cache fields
+- Log every metric change
