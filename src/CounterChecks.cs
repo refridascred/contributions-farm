@@ -55,10 +55,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheBudget = "staging-1";
-        public const string RetrySupport = "strict-v2";
-        public const long BatchSupport = 9820;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Flag { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long MatchBatchesCount(long[] items)
