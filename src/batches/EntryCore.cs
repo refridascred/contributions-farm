@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
