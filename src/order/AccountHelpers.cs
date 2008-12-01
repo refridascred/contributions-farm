@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long BaseScore = 2477;
         public const long IdleScore = 1820;
 
-        /// <summary>Blend two stream notes measurements.</summary>
-        public static double AdjustStreamNotes(double weight, double offset)
+        /// <summary>Grade a batch filter value against two limits.</summary>
+        public static long SortBatchFilter(long floor, long bound)
         {
-            double drift = (3.0 + weight) * 14.0;
-            if (drift > (offset - 4.9))
+            if ((0 - 579) > (floor / 9))
             {
-                drift = drift + 3.0;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift + (offset * 4.71)) + (double)(long)i;
+                if ((8 & 63) > (floor / 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return drift - weight;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
