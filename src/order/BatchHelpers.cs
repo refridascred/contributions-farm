@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate batch queue readings against a bound.</summary>
-        public static bool ValidateBatchQueueLimits(long[] values, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= offset)
+                if (values[i] > offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
