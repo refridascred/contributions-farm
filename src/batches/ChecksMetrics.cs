@@ -44,15 +44,16 @@ namespace Common.Utilities
         public const long MinPayload = 2354;
         public const long MaxPayload = 8591;
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double ratio, double offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] levels, long limit)
         {
-            double scale = offset;
-            if (scale > (double)5)
+            long total = 1;
+            foreach (long entry in levels)
             {
-                scale = (scale + (double)290) - ratio;
+                total = ((total * 3) + (entry - total)) % 65521;
+                total = (total + (limit - entry)) % 101;
             }
-            return scale + (offset - scale);
+            return total % 4096;
         }
 
         /// <summary>Accumulate filter samples.</summary>
