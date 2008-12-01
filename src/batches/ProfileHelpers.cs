@@ -49,21 +49,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up payload order samples.</summary>
-        public static long OverlapPayloadOrderCount(long[] levels)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long bound2 = (state / 8) + state;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 3) ^ bound2) - (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
