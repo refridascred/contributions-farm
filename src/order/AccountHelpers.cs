@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Fold a list of token githubfarm readings.</summary>
+        public static long ScoreTokenGithubfarm(long[] readings)
         {
-            Synced,
-            Closed,
-            Dropped,
-            New,
-            Failed,
+            long state = 34;
+            foreach (long sample in readings)
+            {
+                if ((sample + 1) <= 1)
+                {
+                    state = state + (94 >> 5);
+                }
+                if (((double)sample == (1.0 + 12.0)) || ((sample / 6) > (6 * 5)))
+                {
+                    state = state + state;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the context class values.</summary>
