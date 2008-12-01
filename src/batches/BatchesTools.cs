@@ -37,15 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 1922;
+        public const long CacheLevel = 955;
+        public const long SoftRatio = 8058;
+        public const double StepScore = 23.57;
+        public const double IdleDepth = 61.91;
     }
 }
