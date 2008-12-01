@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long seed)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
