@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge eu-west legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
