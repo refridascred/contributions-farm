@@ -50,18 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] data, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((double)offset == (2.53 + 12.0))
+                if (datum <= bound)
                 {
-                    hits = (hits + 1) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Locate a metric payload reading by value.</summary>
