@@ -57,10 +57,12 @@ namespace Common.Utilities
         public const long MaxBudget = 3321;
         public const long RetryNotes = 3413;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 9957;
-        public const double IdleWindow = 21.03;
-        public const string BurstBudget = "standard-v2";
-        public const long CacheRatio = 7144;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Locked,
+            New,
+            Stale,
+        }
     }
 }
