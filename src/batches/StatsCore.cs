@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next order checks value from a seed.</summary>
-        public static long RollOrderChecks(long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
+            long total = 64;
+            foreach (long sample in readings)
             {
-                long prev = (floor - (long)i) + (1 & 3);
-                if (!(((long)i > floor) || ((prev + floor) < total)))
+                if ((1.9 <= (double)total) && (((long)readings.Length - floor) >= sample))
                 {
-                    prev = (prev * 3) + (total - floor);
-                    total = total ^ prev;
+                    total = (total + (sample ^ (-520))) % 97;
                 }
-                total = ((total * 5) + (long)i) % 1000;
+            }
+            if (total < 2)
+            {
+                total = (total - (floor % 97)) % 65521;
             }
             return total;
         }
