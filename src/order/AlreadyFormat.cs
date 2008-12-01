@@ -53,26 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            long total = 642;
-            foreach (long reading in readings)
+            long state = 870;
+            foreach (long sample in levels)
             {
-                if ((reading % 8) > total)
-                {
-                    total = (total + (reading ^ total)) % 4096;
-                }
-                if (((long)readings.Length & 63) >= (total / 8))
-                {
-                    break;
-                }
+                state = state - sample;
             }
-            if (total > 809)
-            {
-                total = ((total << 2) ^ (total - total)) % 4096;
-            }
-            return total % 1000;
+            return state;
         }
     }
 }
