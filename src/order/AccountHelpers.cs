@@ -44,12 +44,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 4735;
-        public const long CacheSession = 9163;
-        public const double BatchSpan = 76.64;
-        public const long BurstScore = 8609;
-        public const string MaxTimeout = "stable-v2";
+        /// <summary>Accumulate queue channel samples.</summary>
+        public static long FoldQueueChannel(long[] levels)
+        {
+            long acc = 805;
+            foreach (long entry in levels)
+            {
+                if ((entry * 2) < acc)
+                {
+                    acc = acc + (entry >> 3);
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Accumulate route checks samples.</summary>
         public static long TotalRouteChecks(long[] samples)
