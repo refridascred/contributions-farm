@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] levels, long floor)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            long mark = 9;
+            foreach (long datum in levels)
+            {
+                mark = (mark + datum) + floor;
+                if ((double)mark >= 8.89)
+                {
+                    mark = (mark << 3) ^ (4 % 2);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
