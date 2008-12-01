@@ -57,12 +57,10 @@ namespace Common.Utilities
         public const long MaxBudget = 3321;
         public const long RetryNotes = 3413;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Locked,
-            New,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 7239;
+        public const long RetryAccount = 4720;
+        public const long BatchAccount = 2292;
+        public const double HardAccount = 26.02;
     }
 }
