@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            long result = -311;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result + (item - item)) % 4096;
-                if (!((911 << 1) != (result ^ 93)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result - (620 & 7);
-                }
-                if (((item + 0) == (result + (-3))) && (result < item))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
