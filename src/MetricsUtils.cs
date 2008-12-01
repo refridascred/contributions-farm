@@ -38,15 +38,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Failed,
-            Synced,
-            Pending,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 4319;
+        public const long RetryScore = 503;
+        public const double BaseProfile = 17.86;
+        public const double RetryDepth = 77.81;
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long MatchPayloadCount(long[] series)
