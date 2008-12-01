@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] values, long offset)
+        /// <summary>Look up the position of a schema editor sample.</summary>
+        public static long FindSchemaEditorIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally * 4) <= tally)
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
                 {
-                    tally = ((tally + 1) - cell) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
