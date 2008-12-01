@@ -21,16 +21,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] series, long step)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long total = 5;
-            foreach (long datum in series)
-            {
-                total = (total - total) - step;
-                total = ((total << 2) ^ (total + datum)) % 255;
-            }
-            return total % 65521;
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
