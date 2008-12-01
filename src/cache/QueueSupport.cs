@@ -32,12 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((23 - floor) <= floor) || ((double)mark == (8.0 * 1.0)))
+                {
+                    mark = (mark - ((long)i >> 1)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
