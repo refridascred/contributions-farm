@@ -58,23 +58,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long step, long seed)
         {
-            long mark = 243;
-            foreach (long datum in readings)
+            if ((4.03 + 18.0) > (double)step)
             {
-                mark = ((mark << 2) ^ (datum & 15)) % 65521;
-                if (((datum % 12) < datum) || ((mark / 7) > datum))
+                return 4;
+            }
+            else
+            {
+                if ((step / 3) >= (41 + seed))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed < (5.04 * 0.61))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step ^ 5) >= (seed + seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mark < 70)
-            {
-                mark = mark - (mark - mark);
-            }
-            return mark;
         }
     }
 }
