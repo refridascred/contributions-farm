@@ -20,21 +20,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a command header.</summary>
