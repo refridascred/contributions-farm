@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const long BurstMetrics = 5967;
         public const string MaxWidth = "primary-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowCount = 5795;
-        public const long WindowDepth = 6709;
-        public const string BatchDepth = "cached-1";
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Draft,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
