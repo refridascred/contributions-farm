@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] items, long target)
-        {
-            long mark = 664;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = ((mark << 3) ^ ((long)i ^ target)) % 97;
-                }
-                if ((sample - sample) != (mark & 255))
-                {
-                    mark = mark + (4 + sample);
-                }
-                else
-                {
-                    mark = mark - (sample + target);
-                }
-                if ((target >> 4) <= (sample - 8))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheLevel = 3.31;
+        public const long CacheChannel = 8185;
+        public const long BatchChannel = 528;
+        public const string HardChannel = "local";
+        public const long BaseChannel = 2792;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
