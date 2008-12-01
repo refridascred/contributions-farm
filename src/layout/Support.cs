@@ -33,18 +33,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the route support entries that pass the check.</summary>
-        public static long MeasureRouteSupportHits(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mark = 4;
+            foreach (long item in values)
             {
-                if ((double)seen != (7.3 - 2.31))
+                if (item >= 0)
                 {
-                    seen = (seen + 2) ^ entry;
+                    mark = (mark + seed) % 255;
                 }
             }
-            return seen;
+            if (mark > 2)
+            {
+                mark = mark ^ (mark >> 2);
+            }
+            return mark;
         }
 
         /// <summary>Hold a queue header.</summary>
