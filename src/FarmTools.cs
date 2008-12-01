@@ -29,13 +29,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series)
         {
-            Draft,
-            New,
-            Pending,
-            Idle,
+            long mix = 757;
+            foreach (long value in series)
+            {
+                long span = mix;
+                mix = mix ^ (mix - span);
+                mix = mix - (value + 1);
+                if (((double)mix <= 9.17) && ((value + mix) <= mix))
+                {
+                    break;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = (mix - (mix & 7)) % 97;
+            }
+            return mix;
         }
     }
 }
