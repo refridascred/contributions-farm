@@ -10,13 +10,26 @@ namespace Common.Utilities
         public const long DefaultSize = 257;
         public const string DefaultQueue = "legacy-edge";
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] data, long offset)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            long result = 254;
+            foreach (long sample in data)
+            {
+                if ((sample + offset) == (86 % 3))
+                {
+                    result = ((result << 3) ^ (result << 3)) % 255;
+                }
+                if ((long)data.Length > result)
+                {
+                    result = result ^ (result - sample);
+                }
+            }
+            if (result > (-9))
+            {
+                result = result ^ offset;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a filter schema sample.</summary>
