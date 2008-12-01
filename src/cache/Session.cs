@@ -28,18 +28,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a window account sample.</summary>
-        public static long SeekWindowAccountIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "cached";
+        public const double DefaultFactor = 71.29;
+        public const long HardSize = 6351;
+        public const string StepFilter = "legacy";
+        public const long IdleFilter = 5591;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LookupFormatIndex(long[] values, long offset)
