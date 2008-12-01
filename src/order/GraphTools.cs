@@ -34,12 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a record metric figure with a bias.</summary>
-        public static double BlendRecordMetric(double ratio, double span)
-        {
-            double rate = span;
-            return rate - ratio;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstWidth = 5142;
+        public const double HardFactor = 78.18;
+        public const long SoftBuffer = 5392;
+        public const string BurstBuffer = "cached-1";
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long RollCache(long target)
