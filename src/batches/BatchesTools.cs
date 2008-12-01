@@ -16,17 +16,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] items, long step)
+        /// <summary>Classify a route account pair into a bucket.</summary>
+        public static long GradeRouteAccount(long origin, long origin2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((origin % 64) > (origin - origin)))
             {
-                if ((items[i] < step) && ((items[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if (origin >= (origin2 - origin2))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (74 > origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
