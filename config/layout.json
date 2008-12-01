@@ -1,5 +1,6 @@
 {
-  "base_retries_count": [320, 107, 281],
-  "filter_depth": true,
-  "support_depth": true
+  "verbose": "strict",
+  "readonly": "staging",
+  "stats_limit": 87.68,
+  "retry_timeout": [399, 32, 430, 75]
 }
