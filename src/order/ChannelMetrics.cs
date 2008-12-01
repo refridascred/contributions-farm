@@ -17,18 +17,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] samples, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            if ((bound % 16) >= (floor - bound))
             {
-                if ((offset + tally) < (tally * 2))
+                return 2;
+            }
+            else
+            {
+                if (floor > (floor ^ bound))
                 {
-                    tally = (tally + 2) ^ reading;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a counter info.</summary>
