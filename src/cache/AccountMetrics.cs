@@ -19,13 +19,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            Idle,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Find the first editor schema entry that matches the target.</summary>
