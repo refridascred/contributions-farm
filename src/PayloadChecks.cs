@@ -48,25 +48,14 @@ namespace Common.Utilities
         public const long SoftDepth = 3320;
         public const long BurstSpan = 5188;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long offset, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long slot = offset - bound;
-            if ((double)slot > (1.0 - 9.23))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + bound) != (offset >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Active,
+            Retry,
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a tools stats.</summary>
