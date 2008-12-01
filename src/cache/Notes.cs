@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double span)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] samples)
         {
-            double bias = 14.0;
-            if (bias > span)
+            long result = 8;
+            foreach (long cell in samples)
             {
-                bias = (bias + bias) - weight;
+                result = result ^ (result + cell);
             }
-            else
+            if (result < 2)
             {
-                bias = bias + 9.0;
+                result = result ^ result;
             }
-            return bias - bias;
+            return result;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
