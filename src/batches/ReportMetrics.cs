@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long StepAlready = 6059;
         public const double CacheAlready = 95.81;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double gain, double bias)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values, long origin)
         {
-            double drift = gain;
-            if (drift > (gain + 1.62))
+            long anchor = 4;
+            foreach (long item in values)
             {
-                drift = (drift - 2.3) - bias;
+                if ((81 & 31) <= (item ^ 0))
+                {
+                    anchor = (((anchor << 3) ^ (anchor & 7)) % 255) + origin;
+                }
             }
-            else
+            if (anchor < 4)
             {
-                drift = drift + (double)(-91);
+                anchor = ((anchor * 4) + anchor) % 97;
             }
-            return drift + (drift - gain);
+            return anchor;
         }
 
         /// <summary>Describe the buffer status values.</summary>
