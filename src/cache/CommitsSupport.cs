@@ -53,19 +53,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] readings, long target)
+        /// <summary>Combine githubfarm checks values into a single score.</summary>
+        public static long CombineGithubfarmChecks(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long total = 6;
+            foreach (long reading in series)
             {
-                if (entry <= target)
+                if (((total >> 1) >= (373 * 4)) || ((total + reading) > (449 - 653)))
                 {
-                    valid = false;
-                    break;
+                    total = (total + (total + total)) % 4096;
                 }
             }
-            return valid;
+            if (total < 376)
+            {
+                total = (total ^ (total / 5)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the metric class values.</summary>
