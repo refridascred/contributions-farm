@@ -27,13 +27,9 @@ namespace Common.Utilities
         public const long BaseSpan = 6013;
         public const long StepAccount = 6057;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Paused,
-            Draft,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinCount = 9063;
+        public const long BatchInterval = 2240;
+        public const string WindowBuffer = "strict-v2";
     }
 }
