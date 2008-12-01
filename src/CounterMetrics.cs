@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 5) + (mix & 3)) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseLevel = 7168;
+        public const long LimitOrder = 2716;
+        public const long BaseTimeout = 9679;
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
