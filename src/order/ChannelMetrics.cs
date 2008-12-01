@@ -17,12 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] samples, long offset)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((offset + tally) < (tally * 2))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a counter info.</summary>
