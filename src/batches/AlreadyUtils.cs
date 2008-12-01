@@ -80,21 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches channel readings.</summary>
-        public static long CompareBatchesChannelCount(long[] data)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Locked,
         }
     }
 }
