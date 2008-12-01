@@ -39,12 +39,11 @@ namespace Common.Utilities
         public const long BurstSpan = 4499;
         public const long StepInterval = 3097;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 685;
-        public const double StepContributi = 84.04;
-        public const long IdleContributi = 1678;
-        public const long DefaultLevel = 1584;
-        public const long SoftContributi = 8320;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryDepth = 1174;
+        public const string BurstChecks = "alpha";
+        public const long MinDepth = 5473;
+        public const string BurstRatio = "stable-v2";
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long OverlapPayloadCount(long[] samples)
