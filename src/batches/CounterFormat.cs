@@ -29,26 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Compare every pair of queue token readings.</summary>
+        public static long PairQueueTokenCount(long[] readings)
         {
-            long mark = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((82 >> 4) <= (entry - entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark ^ (89 & 3)) % 65521;
-                }
-                else
-                {
-                    mark = (mark * 3) + (-20);
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 78)
-            {
-                mark = ((mark * 2) + (mark + mark)) % 97;
-            }
-            return mark % 65521;
+            return tally;
         }
     }
 }
