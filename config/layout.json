@@ -1,7 +1,15 @@
 {
-  "window_window": ["edge", "local", "latest"],
-  "strict": [374, 236],
-  "counter_timeout": 30,
-  "audit": 76.97,
-  "min_limit_s": [309, 39]
+  "warm_delay": "primary",
+  "stats_retries": "open",
+  "graph_size": 250,
+  "persist": "green",
+  "filter_window": "staging",
+  "max_ttl_count": {
+    "checks_window": "stable",
+    "checks_retries": "edge",
+    "readonly": 1719,
+    "audit": 5419,
+    "warm_timeout_ms": "eu-west",
+    "idle_threshold_pct": "legacy"
+  }
 }
