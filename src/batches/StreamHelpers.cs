@@ -58,11 +58,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 4769;
-        public const long IdleSize = 1529;
-        public const double MinBatches = 25.91;
-        public const long MaxBudget = 2738;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Stale,
+            Idle,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
