@@ -34,19 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] series, long floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (item <= floor)
+                if (reading < bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
