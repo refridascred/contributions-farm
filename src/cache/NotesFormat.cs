@@ -13,11 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultWidth = 9851;
-        public const long SoftRatio = 9685;
-        public const long BatchSize = 1866;
-        public const long BaseCounter = 3014;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstFactor = 4469;
+        public const long LimitDepth = 5202;
+        public const double MinCommits = 5.24;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinDepth = 2665;
