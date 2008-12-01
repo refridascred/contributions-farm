@@ -51,11 +51,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count stream contributi pairs that satisfy a relation.</summary>
+        public static long PairStreamContributiCount(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first tools record entry that matches the target.</summary>
