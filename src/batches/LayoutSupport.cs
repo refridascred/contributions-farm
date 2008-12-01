@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long carry = 2;
-            foreach (long entry in samples)
-            {
-                if ((entry % 3) > (carry ^ carry))
-                {
-                    carry = (carry << 3) ^ (carry - entry);
-                }
-                if ((carry % 97) <= entry)
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            Retry,
+            New,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define route limits and defaults.</summary>
