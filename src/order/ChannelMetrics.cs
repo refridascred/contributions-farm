@@ -22,24 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long bound, long floor)
+        /// <summary>Look up the position of a commits editor sample.</summary>
+        public static long LookupCommitsEditorIndex(long[] data, long limit)
         {
-            if ((bound % 16) >= (floor - bound))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor > (floor ^ bound))
+                if (data[i] > limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a counter info.</summary>
