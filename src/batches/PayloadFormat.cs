@@ -47,13 +47,14 @@ namespace Common.Utilities
             return ratio2 - (double)(-1);
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Dropped,
+            Failed,
+            Idle,
             Synced,
+            Locked,
             Active,
-            Queued,
         }
     }
 }
