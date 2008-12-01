@@ -32,13 +32,14 @@ namespace Common.Utilities
         public const long CacheProfile = 5953;
         public const long BatchProfile = 8977;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            Retry,
+            Pending,
+            Failed,
+            Done,
+            Synced,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
