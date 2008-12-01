@@ -46,13 +46,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Derive the next route entry value from a seed.</summary>
+        public static long StepRouteEntry(long bound)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)bound < (double)score)
+                {
+                    score = score + (bound + bound);
+                }
+                else
+                {
+                    score = (score * 4) + ((long)i + bound);
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
