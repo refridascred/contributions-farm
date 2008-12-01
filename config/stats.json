@@ -1,12 +1,8 @@
 {
-  "dry_run": "legacy",
-  "strict": [274, 121, 22],
-  "verbose": {
-    "warm_threshold_s": 5645,
-    "enabled": 9775,
-    "base_window_s": 44.15,
-    "default_depth_count": 1024,
-    "min_ratio_s": 4457,
-    "verbose": 500
-  }
+  "verbose": [317, 371, 255],
+  "strict": 500,
+  "account_capacity": 1024,
+  "max_depth_count": ["cached", "staging", "cached", "edge"],
+  "enabled": "staging",
+  "support_retries": 5461
 }
