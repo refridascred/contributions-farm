@@ -20,22 +20,19 @@ namespace Common.Utilities
             return load - (weight + offset);
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] values, long seed)
+        /// <summary>Validate batch queue readings against a bound.</summary>
+        public static bool ValidateBatchQueueLimits(long[] values, long offset)
         {
-            long total = -1;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (((4.0 / 5.0) < (double)cell) || ((double)total >= (4.0 * 17.0)))
+                if (entry >= offset)
                 {
-                    total = (total ^ (seed & 3)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (total > 3)
-            {
-                total = (total ^ (total ^ seed)) % 255;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
