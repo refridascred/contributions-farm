@@ -27,21 +27,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long cur = seed - offset;
+            if (seed < (offset << 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset > (5.5 * 1.63))
                 {
-                    if ((items[i] + items[j]) == 8)
+                    return 8;
+                }
+                else
+                {
+                    if ((cur < offset) || ((double)offset >= (8.96 + 4.7)))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((cur + seed) <= ((-7) ^ 627))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
