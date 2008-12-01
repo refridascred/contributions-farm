@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] values)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((tally % 64) != (tally << 3)) && ((datum + (long)values.Length) >= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
