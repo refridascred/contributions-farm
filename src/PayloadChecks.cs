@@ -36,14 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Retry,
-            New,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleWidth = 3683;
+        public const string BurstDepth = "alpha-v2";
+        public const string StepQueue = "local-edge";
+        public const long BatchQueue = 4257;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BaseRatio = 4653;
