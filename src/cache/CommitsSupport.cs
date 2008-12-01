@@ -88,22 +88,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] levels, long floor)
         {
-            long anchor = 7;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (!((datum + datum) != (44 - datum)))
+                if (!((entry << 3) <= (matches >> 1)) || !((floor * 4) < entry))
                 {
-                    anchor = (anchor + (anchor << 1)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            if (anchor < 574)
-            {
-                anchor = (anchor + (anchor + anchor)) % 101;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
