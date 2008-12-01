@@ -41,32 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long bound, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] readings, long target)
         {
-            long gap = bound ^ target;
-            if (((target + bound) != (target - target)) || ((double)bound <= (7.09 + 7.5)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound ^ gap) >= bound)
+                if (readings[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target & 7) != (target - target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
