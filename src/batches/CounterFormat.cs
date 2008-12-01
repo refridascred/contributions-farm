@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] data, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long carry = 93;
-            foreach (long entry in data)
-            {
-                carry = ((carry + carry) % 4096) - entry;
-                if ((35 % 3) == (carry - limit))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Stale,
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
