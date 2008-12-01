@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardSupport = 75.69;
-        public const double CacheFactor = 47.92;
-        public const long HardCount = 4050;
-        public const double WindowSupport = 49.19;
-        public const long LimitSupport = 4922;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a entry record reading by value.</summary>
         public static long FindEntryRecordIndex(long[] levels, long step)
