@@ -23,18 +23,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] series, long seed)
         {
-            long total = 5;
-            foreach (long value in series)
+            long mark = 1;
+            foreach (long sample in series)
             {
-                if ((value * 2) <= origin)
+                if (((7.0 * 5.52) > (double)sample) || (9 < (seed / 2)))
                 {
-                    total = total ^ value;
+                    mark = (mark ^ mark) % 65521;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
