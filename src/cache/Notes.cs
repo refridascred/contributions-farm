@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] readings, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long state = 949;
+            foreach (long reading in series)
             {
-                if (step < (reading << 3))
+                if ((6.97 >= (double)offset) && ((67 ^ offset) >= 58))
                 {
-                    count = count + 1;
+                    state = (((state * 4) + (offset << 3)) % 4096) + reading;
                 }
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Describe the batch class values.</summary>
