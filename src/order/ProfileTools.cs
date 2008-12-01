@@ -15,12 +15,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Grade a batch buffer value against two limits.</summary>
+        public static long BucketBatchBuffer(long origin, long origin2)
         {
-            Pending,
-            Stale,
-            Done,
+            long bound = origin ^ origin2;
+            if ((origin & 255) >= (origin + origin2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((16.0 + 2.0) == (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin2 > (bound ^ bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin > (9.2 + 6.11))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank record input into a small class.</summary>
