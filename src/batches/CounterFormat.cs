@@ -10,23 +10,21 @@ namespace Common.Utilities
         public const string SoftTimeout = "strict-edge";
         public const long HardSize = 3758;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Compare every pair of cache farm readings.</summary>
+        public static long PairCacheFarmCount(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i >> 5) >= 628)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (long)i) % 97;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ limit) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine format values into a single score.</summary>
