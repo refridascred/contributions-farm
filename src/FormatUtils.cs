@@ -46,22 +46,21 @@ namespace Common.Utilities
         public const long DefaultLevel = 1584;
         public const long SoftContributi = 8320;
 
-        /// <summary>Fold a list of channel record readings.</summary>
-        public static long WeighChannelRecord(long[] data, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long result = 653;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result - entry) % 101) - (long)i;
-                }
-                if (!((offset + entry) >= (offset / 8)))
-                {
-                    result = ((result << 2) ^ (result << 1)) % 101;
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Describe the batches level values.</summary>
