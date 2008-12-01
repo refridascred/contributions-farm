@@ -62,21 +62,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 642;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading % 8) > total)
                 {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (reading ^ total)) % 4096;
+                }
+                if (((long)readings.Length & 63) >= (total / 8))
+                {
+                    break;
                 }
             }
-            return count;
+            if (total > 809)
+            {
+                total = ((total << 2) ^ (total - total)) % 4096;
+            }
+            return total % 1000;
         }
     }
 }
