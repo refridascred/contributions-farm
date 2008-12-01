@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two filter already measurements.</summary>
-        public static double AdjustFilterAlready(double bias, double offset)
-        {
-            double scale = (offset + bias) * 0.32;
-            if (scale < (scale + scale))
-            {
-                scale = scale + (scale + 7.12);
-            }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale + offset;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepBudget = 8.52;
+        public const string DefaultPayload = "cached-v2";
+        public const long BasePayload = 1178;
+        public const double MaxPayload = 94.47;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterMatches(long[] items)
