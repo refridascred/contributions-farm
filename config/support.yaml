@@ -1,26 +1,4 @@
 # support settings
-buffer_timeout: 64
-compress: 8
-soft_timeout: green
-tools_delay: eu-west
-cluster_depth:
-  sync_timeout_pct: primary
-  channel_size:
-    filter_capacity:
-      - 33
-      - 177
-      - 408
-      - 341
-    sync_size:
-      - fallback
-      - staging
-    base_size_s: 60.71
-    already_limit: 4028
-  profile_threshold:
-    batches_limit: 1347
-    idle_timeout_count: open
-    tools_delay: 93.74
-    hard_ttl_pct: false
-    cache_ratio: 24
-    hard_retries_count: local
-checks_capacity: legacy
+hard_ratio_ms: 79.74
+tools_window: 34.11
+tools_delay: strict
