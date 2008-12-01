@@ -1,8 +1,5 @@
 {
-  "max_window_pct": [341, 387, 251, 12],
-  "cache_limit_s": "cached",
-  "channel_timeout": 10.3,
-  "persist": [113, 401, 116, 345],
-  "burst_window_count": false,
-  "support_retries": [441, 338, 335, 171]
+  "cache_ttl": 2859,
+  "already_window": 85.69,
+  "verbose": 500
 }
