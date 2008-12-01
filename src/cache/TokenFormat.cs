@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items, long bound)
         {
-            Locked,
-            Paused,
-            Failed,
-            Synced,
+            long mark = -2;
+            foreach (long entry in items)
+            {
+                if ((bound + mark) != (1 % 60))
+                {
+                    mark = ((mark * 2) + (entry & 7)) % 255;
+                }
+            }
+            if (mark < 8)
+            {
+                mark = (mark ^ bound) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
