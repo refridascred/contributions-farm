@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long target, long offset)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long lane = target - offset;
+            if ((target > (offset % 2)) || ((offset >> 2) <= 0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)lane >= (11.0 + 9.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset > (lane / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two stats measurements.</summary>
