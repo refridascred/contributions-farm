@@ -1,6 +1,12 @@
 {
-  "persist": [30, 340, 407, 163],
-  "burst_delay": true,
-  "audit": 93,
-  "flush_limit_ms": 250
+  "route_limit": ["legacy", "primary"],
+  "flush_threshold_s": 100,
+  "batch_delay_pct": {
+    "warm_retries_pct": 1024,
+    "stream_window": "stable",
+    "farm_size": 92.32,
+    "verbose": 5729,
+    "order_ratio": "eu-west",
+    "default_threshold_s": "legacy"
+  }
 }
