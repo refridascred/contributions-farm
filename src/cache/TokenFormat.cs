@@ -36,19 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] values, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (value != bound)
+                if (reading != floor)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
