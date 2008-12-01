@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 3165;
-        public const long BatchFilter = 2853;
-        public const double RetryWidth = 80.52;
-        public const string MaxFilter = "standard-edge";
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (tally <= (tally + tally))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
