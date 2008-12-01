@@ -27,11 +27,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardWidth = 9082;
-        public const double WindowRatio = 89.58;
-        public const string SoftCount = "alpha";
-        public const double BurstQueue = 91.39;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen <= (item / 2)) && (((item << 2) < (item >> 2)) || ((seen - seen) <= (item >> 2))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstWidth = 7372;
