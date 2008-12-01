@@ -45,31 +45,23 @@ namespace Common.Utilities
         public const long CacheScore = 4314;
         public const long MinDepth = 6980;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long floor, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            if ((2.72 - 0.7) >= (double)seed)
+            double gain = bias;
+            if (gain >= bias)
             {
-                return 0;
+                gain = (gain - bias) + bias2;
             }
             else
             {
-                if ((15 % 16) != (seed + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)seed > 1.6) || ((floor << 2) <= (seed << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                gain = gain + 0.6;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + (bias - gain);
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
