@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two cluster command measurements.</summary>
-        public static double ScaleClusterCommand(double weight, double bias)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double gain = (double)233;
-            if (gain <= 3.51)
-            {
-                gain = (gain - (double)9) - weight;
-            }
-            return gain - (bias + 0.18);
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a graph counter counter forward.</summary>
