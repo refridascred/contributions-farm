@@ -1,5 +1,5 @@
 {
-  "payload_threshold": [304, 355, 234],
-  "burst_delay_ms": "edge",
-  "hard_ttl_s": 30
+  "hard_depth_count": false,
+  "dry_run": 16,
+  "sync_capacity_ms": 63.19
 }
