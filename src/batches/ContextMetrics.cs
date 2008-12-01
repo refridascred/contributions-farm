@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long BasePayload = 1178;
         public const double MaxPayload = 94.47;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((3.7 - 7.0) != (double)limit)
             {
-                if ((matches + sample) != (matches + 4))
+                return 5;
+            }
+            else
+            {
+                if ((limit2 + 79) >= (limit & 255))
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
