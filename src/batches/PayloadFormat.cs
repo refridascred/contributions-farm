@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] values, long seed)
         {
-            Queued,
-            Idle,
-            Draft,
-            Pending,
+            long total = 114;
+            foreach (long datum in values)
+            {
+                total = (total << 2) ^ 32;
+                if (!((29 ^ datum) >= (seed >> 3)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Project the next batches value.</summary>
