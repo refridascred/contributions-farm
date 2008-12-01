@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            Active,
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
