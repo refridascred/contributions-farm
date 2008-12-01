@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 9744;
-        public const long StepAlready = 6059;
-        public const double CacheAlready = 95.81;
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Draft,
+            Ready,
+            Closed,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TotalContributi(long[] values, long origin)
