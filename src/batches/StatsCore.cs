@@ -30,19 +30,23 @@ namespace Common.Utilities
             return rate + (double)322;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] data, long bound)
+        /// <summary>Project the next order githubfarm value.</summary>
+        public static double ScaleOrderGithubfarm(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long item in data)
+            double load = (double)(475 << 2);
+            if (load > load)
             {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - gain;
             }
-            return ready;
+            else
+            {
+                load = load - (floor / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (gain * 11.0)) + (double)(long)i;
+            }
+            return load + 4.29;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
