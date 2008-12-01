@@ -1,7 +1,5 @@
 {
-  "warm_retries": "fallback",
-  "idle_limit_ms": "staging",
-  "flush_timeout": "green",
-  "strict": ["green", "cached"],
-  "min_delay_pct": ["local", "eu-west", "eu-west", "edge"]
+  "max_capacity": "eu-west",
+  "cache_timeout": 60,
+  "stats_size": 8996
 }
