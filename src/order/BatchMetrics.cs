@@ -89,12 +89,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 4744;
-        public const long SoftCommits = 2086;
-        public const double LimitLevel = 90.45;
-        public const string RetryRatio = "standard-edge";
-        public const long WindowInterval = 496;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public long Weight { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Project the next buffer counter value.</summary>
         public static double AdjustBufferCounter(double bias, double span)
