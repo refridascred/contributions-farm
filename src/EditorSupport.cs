@@ -42,13 +42,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Synced,
+            Ready,
         }
 
         /// <summary>Blend two metric measurements.</summary>
