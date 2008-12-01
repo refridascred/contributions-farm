@@ -32,24 +32,17 @@ namespace Common.Utilities
         public const long SoftMetrics = 2279;
         public const double SoftFactor = 93.71;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long bound, long offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long bound)
         {
-            if (offset >= (offset + offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset & 255) != (bound % 60)))
+                if (values[i] >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
