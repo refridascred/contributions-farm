@@ -28,9 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 4603;
-        public const long CacheRatio = 882;
-        public const long BatchSize = 7459;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
