@@ -35,10 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxWidth = "latest-edge";
-        public const long MaxDepth = 7658;
-        public const double BaseSize = 63.97;
-        public const double RetryRatio = 35.91;
+        /// <summary>Count the githubfarm channel entries that pass the check.</summary>
+        public static long CountGithubfarmChannelGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (item > (item - 22))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
