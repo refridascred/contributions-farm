@@ -75,17 +75,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] series, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Closed,
+            Ready,
         }
     }
 }
