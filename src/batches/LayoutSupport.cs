@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double bias, double floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long target)
         {
-            double rate = bias;
-            if (rate < floor)
+            long bound = origin ^ target;
+            if (bound > (origin << 1))
             {
-                rate = rate + bias;
+                return 7;
             }
             else
             {
-                rate = rate - (bias - floor);
+                if (!((double)origin != (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target <= 8.45)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound / 4) > (19 / 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return rate - (double)952;
         }
 
         /// <summary>Describe the channel state values.</summary>
