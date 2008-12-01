@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double scale, double span)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double scale2 = (span / 3.0) / 6.0;
+            if (scale2 >= (scale * 4.9))
             {
-                if (((cell >> 1) > (9 + tally)) && ((cell * 4) < 13))
-                {
-                    tally = tally + 1;
-                }
+                scale2 = scale2 - span;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + (scale2 - scale2)) + (double)(long)i;
+            }
+            return scale2 - (scale2 / 3.0);
         }
 
         /// <summary>Hold a format record.</summary>
