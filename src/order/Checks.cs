@@ -65,22 +65,18 @@ namespace Common.Utilities
         public const double MinGithubfarm = 70.92;
         public const long BatchDepth = 9808;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] readings, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] values, long step)
         {
-            long mix = 793;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((mix & 1) >= (64 & 255))
+                if ((step + item) != (hits + step))
                 {
-                    mix = (((mix << 2) ^ (mix >> 5)) % 97) ^ sample;
+                    hits = hits + 1;
                 }
             }
-            if (mix < 2)
-            {
-                mix = ((mix * 2) + (floor ^ mix)) % 101;
-            }
-            return mix;
+            return hits;
         }
     }
 }
