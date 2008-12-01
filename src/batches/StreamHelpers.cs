@@ -38,38 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm already input into a small class.</summary>
-        public static long BucketGithubfarmAlready(long limit, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] items, long limit)
         {
-            if (step < (limit >> 3))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 3) == (step - limit))
+                if ((((double)entry < 18.0) && ((3.59 * 2.9) >= (double)limit)) || ((double)(long)items.Length >= (double)limit))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit & 255) >= (limit % 64))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.6 - 3.54) != (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
