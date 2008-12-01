@@ -45,24 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (!((0.1 - 3.28) == (double)sum))
+                if (reading < offset)
                 {
-                    sum = sum - (14 ^ (-45));
+                    ready = false;
+                    break;
                 }
-                sum = (sum + (9 - 992)) % 1000;
-                if ((target & 31) < target)
-                {
-                    sum = sum ^ (long)i;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return ready;
         }
     }
 }
