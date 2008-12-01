@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next editor account value from a seed.</summary>
-        public static long IterateEditorAccount(long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                state = (state * 3) + (limit * 2);
-                state = ((state * 4) + (long)i) % 1000;
+                if (2 < (item ^ 671))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the notes state values.</summary>
