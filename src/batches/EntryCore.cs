@@ -30,39 +30,12 @@ namespace Common.Utilities
         public const long WindowWidth = 8773;
         public const long IdleFactor = 1273;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long step, long floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long offset = step + floor;
-            if ((offset + floor) == (floor + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step / 7) < (step & 7)) && (step > (73 + floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor & 1) > floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((offset + offset) < (offset ^ floor)) && ((floor + offset) <= (18 ^ offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
