@@ -37,21 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
