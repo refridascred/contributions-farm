@@ -1,7 +1,7 @@
-id,owner,active,label
-1,589,868,62.91
-2,strict,84.38,eu-west
-3,603,standard,13.43
-4,701,legacy,778
-5,46,blue,legacy
-6,fallback,3,16.41
+id,weight,ratio
+1,1,56.55
+2,31.83,545
+3,latest,64.27
+4,primary,7.32
+5,19.8,88
+6,fallback,294
