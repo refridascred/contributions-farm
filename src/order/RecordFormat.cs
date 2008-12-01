@@ -53,19 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi graph value from a seed.</summary>
-        public static long IterateContributiGraph(long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long sum = -657;
+            foreach (long entry in readings)
             {
-                if (!((double)bound >= 7.6))
+                if ((6.91 * 2.81) != (double)sum)
                 {
-                    total = (total << 2) ^ total;
+                    sum = ((sum - sum) % 255) - entry;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
