@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardTimeout = 8577;
+        public const string IdleOrder = "alpha";
+        public const long WindowFactor = 5571;
+        public const string RetryOrder = "latest";
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] data, long target)
