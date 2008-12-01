@@ -1,10 +1,10 @@
 {
-  "idle_delay_count": {
-    "commits_retries": ["eu-west", "green", "primary"],
-    "burst_window_count": ["latest", "green"],
-    "soft_limit": ["latest", "cached"]
+  "checks_ratio": 1024,
+  "entry_delay": {
+    "stream_threshold": "open",
+    "filter_timeout": 60,
+    "persist": true,
+    "sync_retries_s": [202, 130, 476, 368]
   },
-  "retry_limit": "standard",
-  "warm_capacity_pct": 115,
-  "record_limit": true
+  "metrics_size": 60
 }
