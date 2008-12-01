@@ -16,21 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count window contributi pairs that satisfy a relation.</summary>
-        public static long CompareWindowContributiCount(long[] readings)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
