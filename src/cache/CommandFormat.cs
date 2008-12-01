@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double scale, double floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            double bias = floor;
-            if (bias > (double)9)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                bias = (bias - (double)46) + scale;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return bias - (double)157;
+            return mark;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
