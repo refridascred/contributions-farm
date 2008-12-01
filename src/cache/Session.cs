@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] data, long floor)
+        /// <summary>Scale a window schema figure with a bias.</summary>
+        public static double BlendWindowSchema(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            double scale2 = (double)(777 * 3);
+            if (scale2 >= (floor / 4.0))
             {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                scale2 = (scale2 + (0.6 / 4.0)) - scale;
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + (15.0 / 3.0)) - (double)(long)i;
+            }
+            return scale2 + (scale2 - floor);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
