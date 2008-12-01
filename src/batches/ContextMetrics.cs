@@ -54,19 +54,12 @@ namespace Common.Utilities
         public const long RetryWidth = 1377;
         public const long BurstDepth = 703;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] samples, long limit)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
