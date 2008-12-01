@@ -46,26 +46,11 @@ namespace Common.Utilities
             return rate + (bias - 8.48);
         }
 
-        /// <summary>Fold a list of contributi profile readings.</summary>
-        public static long TotalContributiProfile(long[] readings, long origin)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mix = 611;
-            foreach (long datum in readings)
-            {
-                if ((63 ^ datum) != (datum * 2))
-                {
-                    mix = ((mix * 5) + mix) % 97;
-                }
-                if ((6 + origin) <= (datum - datum))
-                {
-                    break;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = (mix + origin) % 4096;
-            }
-            return mix % 1000;
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next context value.</summary>
