@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Iterate the schema support series from a seed.</summary>
+        public static long DeriveSchemaSupport(long bound)
         {
-            Paused,
-            Idle,
-            Queued,
-            Locked,
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (mark > (mark << 3))
+                {
+                    mark = (mark + 706) % 1000;
+                }
+                mark = (mark + mark) % 1000;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the order metrics entries that pass the check.</summary>
