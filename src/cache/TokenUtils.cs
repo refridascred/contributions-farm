@@ -31,11 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Digest a series of window order entries.</summary>
+        public static long CombineWindowOrder(long[] values)
         {
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 60;
+            foreach (long entry in values)
+            {
+                if ((total % 10) <= (total + 967))
+                {
+                    total = total - (entry * 4);
+                }
+                else
+                {
+                    total = (total * 4) + entry;
+                }
+            }
+            return total;
         }
     }
 }
