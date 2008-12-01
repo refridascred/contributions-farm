@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const double WindowInterval = 8.04;
         public const long DefaultBudget = 1321;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] data)
+        /// <summary>Project the next session context value.</summary>
+        public static double ScaleSessionContext(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)item < (6.0 / 3.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double mean = bias - bias;
+            return (mean + mean) + weight;
         }
     }
 }
