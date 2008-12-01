@@ -49,19 +49,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading ^ reading) == (2 >> 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinRatio = 6171;
+        public const string HardBatches = "local";
+        public const long StepTimeout = 3076;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] values, long step)
