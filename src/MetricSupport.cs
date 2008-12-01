@@ -31,11 +31,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long seed)
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            long total = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total ^ (-858);
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
