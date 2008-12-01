@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the cluster profile entries that pass the check.</summary>
-        public static long CountClusterProfileGaps(long[] items, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long anchor = 45;
+            foreach (long value in data)
             {
-                if ((item / 3) > target)
+                if ((8.98 * 17.0) > (double)anchor)
                 {
-                    seen = seen + 3;
+                    anchor = (((anchor - (anchor & 63)) % 65521) ^ value) + floor;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a editor record.</summary>
