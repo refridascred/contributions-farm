@@ -48,10 +48,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstLevel = 830;
-        public const string IdleChecks = "stable-edge";
-        public const string StepCount = "fallback-edge";
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of support githubfarm readings.</summary>
         public static long MatchSupportGithubfarmCount(long[] series)
