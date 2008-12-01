@@ -42,22 +42,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 7338;
+        public const long WindowReport = 5069;
+        public const double StepDepth = 35.43;
+        public const double BurstCount = 72.46;
 
         /// <summary>Adjust a filter reading.</summary>
         public static double BlendFilter(double weight, double floor)
