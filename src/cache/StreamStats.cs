@@ -43,9 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 9734;
-        public const long HardFactor = 4200;
-        public const long DefaultAlready = 8292;
+        /// <summary>Combine filter metrics values into a single score.</summary>
+        public static long FoldFilterMetrics(long[] items, long limit)
+        {
+            long carry = -1;
+            foreach (long datum in items)
+            {
+                if (((57 - datum) != (carry + 30)) && (carry < (carry * 5)))
+                {
+                    carry = (((carry * 5) + (9 << 2)) % 101) + limit;
+                }
+                else
+                {
+                    carry = (carry * 2) + (carry << 1);
+                }
+            }
+            return carry % 1000;
+        }
     }
 }
