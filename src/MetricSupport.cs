@@ -37,13 +37,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long step, long limit)
         {
-            Ready,
-            Done,
-            Pending,
-            Queued,
+            long offset = step - limit;
+            if (((offset * 5) >= (offset % 60)) || ((384 & 127) <= offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset << 1) < (step & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset > (7.9 * 1.82))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
