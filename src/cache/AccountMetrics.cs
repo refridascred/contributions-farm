@@ -16,22 +16,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long target, long seed)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long step, long floor)
         {
-            if ((double)target == (7.45 + 9.4))
+            long lane = step - floor;
+            if ((5.35 + 9.4) < (double)lane)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((target - target) == (seed - seed))
+                if (((double)step > (7.15 / 5.0)) || ((step & 15) >= (lane / 4)))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    return 0;
                 }
             }
         }
