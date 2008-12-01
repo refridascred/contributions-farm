@@ -29,18 +29,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count <= (count / 9)) && ((value & 63) < (value * 4)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 4603;
+        public const long CacheRatio = 882;
+        public const long BatchSize = 7459;
     }
 }
