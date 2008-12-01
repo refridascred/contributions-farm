@@ -77,17 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order queue reading by value.</summary>
-        public static long SeekOrderQueueIndex(long[] series, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] >= limit)
+                if ((origin + cell) <= (62 + origin))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a queue schema counter forward.</summary>
