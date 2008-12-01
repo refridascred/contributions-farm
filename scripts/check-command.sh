@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open legacy blue; do
+for item in fallback staging eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=125
+COMMAND_LIMIT=145
 log "limit is ${COMMAND_LIMIT}"
