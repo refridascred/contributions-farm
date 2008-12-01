@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every stream support entry stays within the limit.</summary>
-        public static bool CheckStreamSupportRange(long[] readings, long bound)
+        /// <summary>Audit stream notes readings against a rule.</summary>
+        public static long MeasureStreamNotesOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (reading != bound)
+                if (value <= (value << 1))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Derive the next account route value from a seed.</summary>
