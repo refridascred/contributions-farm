@@ -29,31 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long seed)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            if ((-258) > seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (714 <= (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit <= 8.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
