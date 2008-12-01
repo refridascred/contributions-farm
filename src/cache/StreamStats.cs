@@ -46,13 +46,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 9734;
+        public const long HardFactor = 4200;
+        public const long DefaultAlready = 8292;
     }
 }
