@@ -38,13 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item % 100) == (item - item))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
