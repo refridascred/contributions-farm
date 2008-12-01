@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a cluster stream counter forward.</summary>
-        public static long IterateClusterStream(long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                carry = carry + ((-4) >> 4);
-                carry = (carry - ((-625) % 8)) % 255;
-                carry = ((carry * 2) + (long)i) % 97;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
