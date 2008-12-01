@@ -22,11 +22,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long floor)
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 5) + (mix + (long)i)) % 255;
+                mix = (mix * 2) + ((long)i / 4);
+                if (((double)(long)i < (3.1 * 7.9)) && ((double)floor != (7.2 + 2.3)))
+                {
+                    mix = mix + ((long)i - mix);
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Check that every entry batches entry stays within the limit.</summary>
