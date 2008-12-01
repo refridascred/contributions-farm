@@ -38,11 +38,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double weight, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] items)
         {
-            double rate = 5.66;
-            return ((rate + (double)7) + weight) + span;
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample / 9) != (972 / 5))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every commits counter entry stays within the limit.</summary>
