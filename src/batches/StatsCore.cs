@@ -43,13 +43,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((0.7 * 7.84) < (double)value)
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
