@@ -36,38 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long step, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] values, long bound)
         {
-            if ((offset + offset) != (offset * 5))
+            bool flag = true;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (step >= (step ^ step))
+                if (value != bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset - offset) < (offset - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset >= step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
