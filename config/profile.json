@@ -1,7 +1,11 @@
 {
-  "sync_window": 5,
-  "default_limit": "primary",
-  "poll_retries_s": "staging",
-  "counter_retries": 74.74,
-  "base_retries": [252, 386]
+  "base_retries_pct": "standard",
+  "min_capacity_ms": false,
+  "retry_retries_pct": {
+    "cache_capacity": 7082,
+    "cluster_retries": false,
+    "readonly": ["staging", "edge"],
+    "cache_interval_s": "legacy"
+  },
+  "command_limit": false
 }
