@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route context reading.</summary>
-        public static double BlendRouteContext(double bias, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] levels)
         {
-            double drift = 17.0;
-            if (drift <= (bias * 12.0))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                drift = (drift + drift) + offset;
+                if (((41 * 4) > (count - count)) && ((double)cell <= (1.5 - 16.0)))
+                {
+                    count = count + 2;
+                }
             }
-            return drift + (bias * 5.44);
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
