@@ -1,12 +1,7 @@
 {
-  "compress": {
-    "already_window": "eu-west",
-    "batches_interval": 52,
-    "cache_ratio": 9032,
-    "warm_retries_ms": true,
-    "soft_interval": 1210,
-    "readonly": ["open", "stable", "primary", "fallback"]
-  },
-  "max_ttl": [7, 64],
-  "burst_ratio": 250
+  "warm_retries": 51.54,
+  "batch_depth_count": false,
+  "base_limit_count": "cached",
+  "tools_delay": false,
+  "default_window_ms": 14
 }
