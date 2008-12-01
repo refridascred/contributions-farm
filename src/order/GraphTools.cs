@@ -69,13 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a queue schema counter forward.</summary>
