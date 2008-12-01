@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinBudget = "open-edge";
-        public const long BaseChecks = 8330;
-        public const long BatchChecks = 4557;
-        public const long MaxSpan = 2186;
-        public const string LimitChecks = "open-1";
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Pending,
+            Dropped,
+            New,
+            Active,
+            Locked,
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long target, long origin)
