@@ -38,12 +38,22 @@ namespace Common.Utilities
             return rate2 - (rate2 * 7.0);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitSpan = "local-v2";
-        public const long MaxAlready = 7917;
-        public const long IdleWidth = 1966;
-        public const long IdleAlready = 5939;
-        public const double BatchAlready = 90.63;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstRatio = 9646;
