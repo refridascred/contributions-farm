@@ -82,14 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values)
         {
-            Failed,
-            Closed,
-            Draft,
-            Locked,
-            Stale,
+            long total = 16;
+            foreach (long item in values)
+            {
+                if ((double)item > (9.6 / 6.0))
+                {
+                    total = total ^ item;
+                }
+                else
+                {
+                    total = (total ^ item) % 65521;
+                }
+            }
+            return total % 1000;
         }
     }
 }
