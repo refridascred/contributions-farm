@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double ratio, double offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            double gain = (offset / 3.0) * 18.0;
-            if (gain <= (gain / 5.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain - 19.0) - ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain + (gain + 9.6);
+            return matches;
         }
 
         /// <summary>Fold a list of support entry readings.</summary>
