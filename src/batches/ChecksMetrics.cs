@@ -55,15 +55,21 @@ namespace Common.Utilities
         public const long BatchLevel = 3846;
         public const long MaxLayout = 3273;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] samples, long origin)
+        /// <summary>Match up checks cache samples.</summary>
+        public static long CompareChecksCacheCount(long[] samples)
         {
-            long mark = 3;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + origin) + entry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Blend two cache measurements.</summary>
