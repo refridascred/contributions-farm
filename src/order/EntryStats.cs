@@ -31,13 +31,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double ratio, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            double scale = 7.2;
+            if (scale > (double)68)
+            {
+                scale = (scale - scale) - floor;
+            }
+            return scale + ratio;
         }
 
         /// <summary>Define command limits and defaults.</summary>
