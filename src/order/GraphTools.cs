@@ -40,11 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstWidth = 5142;
-        public const double HardFactor = 78.18;
-        public const long SoftBuffer = 5392;
-        public const string BurstBuffer = "cached-1";
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double BlendBatch(double ratio, double floor)
