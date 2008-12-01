@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 19;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total ^ (62 - 58)) ^ reading;
             }
-            return matches;
+            if (total > 5)
+            {
+                total = total - total;
+            }
+            return total % 97;
         }
 
         /// <summary>Match up commits metric samples.</summary>
