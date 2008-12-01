@@ -14,22 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] data, long origin)
         {
-            long anchor = 768;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (value >= (value * 4))
+                if (entry >= origin)
                 {
-                    anchor = (anchor ^ 7) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor > 80)
-            {
-                anchor = ((anchor * 2) + (anchor & 31)) % 101;
-            }
-            return anchor % 97;
+            return found;
         }
 
         /// <summary>Hold a cluster entry.</summary>
