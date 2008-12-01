@@ -27,9 +27,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinCount = 9063;
-        public const long BatchInterval = 2240;
-        public const string WindowBuffer = "strict-v2";
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading / 2) <= tally))
+                {
+                    tally = (tally + 3) - floor;
+                }
+            }
+            return tally;
+        }
     }
 }
