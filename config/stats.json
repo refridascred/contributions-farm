@@ -1,8 +1,7 @@
 {
-  "verbose": [317, 371, 255],
-  "strict": 500,
-  "account_capacity": 1024,
-  "max_depth_count": ["cached", "staging", "cached", "edge"],
-  "enabled": "staging",
-  "support_retries": 5461
+  "base_interval_pct": 45,
+  "profile_ratio": "latest",
+  "warm_limit_pct": "green",
+  "base_ratio_s": ["open", "edge"],
+  "min_size": "legacy"
 }
