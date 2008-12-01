@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] items)
         {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((5.0 / 5.0) == (double)(long)items.Length)
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
