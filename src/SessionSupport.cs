@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix * 5) + (mix + (long)i)) % 255;
-                mix = (mix * 2) + ((long)i / 4);
-                if (((double)(long)i < (3.1 * 7.9)) && ((double)floor != (7.2 + 2.3)))
+                if (17.0 < (double)cell)
                 {
-                    mix = mix + ((long)i - mix);
+                    hits = hits + 2;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
