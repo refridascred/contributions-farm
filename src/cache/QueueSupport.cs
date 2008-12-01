@@ -19,17 +19,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor << 2) ^ ((long)i + 4);
-                anchor = (anchor - (anchor + (long)i)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
