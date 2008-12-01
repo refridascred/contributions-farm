@@ -1,6 +1,17 @@
 {
-  "compress": false,
-  "cache_timeout": "stable",
-  "retry_ratio_count": 250,
-  "max_size_pct": true
+  "already_capacity": {
+    "support_interval": "strict",
+    "notes_delay": "latest",
+    "verbose": "strict",
+    "cache_retries": 98
+  },
+  "batch_window": "primary",
+  "poll_size_pct": ["open", "blue", "standard", "cached"],
+  "dry_run": 60,
+  "notes_limit": "green",
+  "hard_threshold_s": {
+    "default_retries": true,
+    "notes_capacity": ["primary", "latest"],
+    "batch_threshold": "fallback"
+  }
 }
