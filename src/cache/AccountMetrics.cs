@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of window counter readings.</summary>
-        public static long MatchWindowCounterCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchScore = 74.64;
+        public const double SoftCommand = 38.03;
+        public const string CacheCommand = "cached-1";
+        public const long BaseCount = 6443;
+        public const double BurstCommand = 38.59;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesGaps(long[] series)
