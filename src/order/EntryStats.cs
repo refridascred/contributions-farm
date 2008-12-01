@@ -23,21 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metric filter readings.</summary>
-        public static long PairMetricFilterCount(long[] series)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm options.</summary>
