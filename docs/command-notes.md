@@ -1,10 +1,15 @@
 # Command notes
 
-When a record fails, the stats handler retries a few times before giving up.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Keep githubfarm and channel names short and lowercase.
+
+Use entry settings to tune how often cluster data is refreshed.
+Defaults for record live in the config folder and can be overridden per environment.
+Keep payload and route names short and lowercase.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate record input early
-- Review metric limits each release
+- Document new layout fields
+- Log every stats change
+- Validate graph input early
+- Prefer queue defaults
