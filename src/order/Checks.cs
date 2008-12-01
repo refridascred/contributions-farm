@@ -23,20 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter payload entry stays within the limit.</summary>
-        public static bool GuardCounterPayloadLimits(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 8232;
+        public const long BurstFactor = 9378;
+        public const string MinScore = "cached-v2";
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long ClassifyCommits(long step, long floor)
