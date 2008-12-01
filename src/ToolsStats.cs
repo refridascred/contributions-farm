@@ -26,12 +26,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 45.86;
-        public const double IdleFactor = 95.9;
-        public const long BatchStream = 7710;
-        public const long LimitLevel = 8067;
-        public const long IdleTimeout = 9030;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Stale,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstWidth = 7372;
