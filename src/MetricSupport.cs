@@ -14,11 +14,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            double weight = bias;
-            return (weight + (bias / 5.0)) + offset;
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate batch samples.</summary>
