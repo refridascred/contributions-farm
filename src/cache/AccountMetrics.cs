@@ -49,22 +49,22 @@ namespace Common.Utilities
         public const long SoftStats = 2761;
         public const double BatchCount = 70.82;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] data, long bound)
+        /// <summary>Fold a list of counter filter readings.</summary>
+        public static long TallyCounterFilter(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long acc = 610;
+            foreach (long value in levels)
             {
-                if ((entry << 3) >= entry)
+                if (!(floor >= (778 & 127)))
                 {
-                    seen = (seen + 1) - bound;
+                    acc = ((acc << 3) ^ ((-62) & 255)) - value;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = (acc << 2) ^ 933;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
