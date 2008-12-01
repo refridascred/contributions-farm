@@ -40,12 +40,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 8315;
+        public const double StepWidth = 40.98;
+        public const string RetryTimeout = "cached-1";
+        public const long CacheLevel = 7091;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
