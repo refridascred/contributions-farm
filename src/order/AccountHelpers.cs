@@ -56,12 +56,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
