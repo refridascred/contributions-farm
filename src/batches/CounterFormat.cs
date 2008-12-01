@@ -12,21 +12,21 @@ namespace Common.Utilities
             return (rate - floor) + scale;
         }
 
-        /// <summary>Compare every pair of cache farm readings.</summary>
-        public static long PairCacheFarmCount(long[] series)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 14)
+                    if ((readings[i] - readings[j]) != 4)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
