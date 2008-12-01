@@ -13,23 +13,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a graph counter counter forward.</summary>
-        public static long DeriveGraphCounter(long step)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (sum + (sum + sum)) - (long)i2;
-                }
-                if (((-860) + step) >= (step + 39))
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the githubfarm channel entries that pass the check.</summary>
