@@ -1,6 +1,5 @@
 {
-  "profile_retries": 3356,
-  "readonly": 3.59,
-  "schema_retries": 74.6,
-  "batch_limit": "edge"
+  "retry_limit": "local",
+  "verbose": 5715,
+  "cache_retries_ms": true
 }
