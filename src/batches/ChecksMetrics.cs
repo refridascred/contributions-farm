@@ -20,17 +20,19 @@ namespace Common.Utilities
             return weight + (double)29;
         }
 
-        /// <summary>Look up the position of a metric token sample.</summary>
-        public static long SeekMetricTokenIndex(long[] series, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = 1.0 / 2.0;
+            if (weight >= ratio)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                weight = weight + (offset * 9.75);
             }
-            return -1;
+            else
+            {
+                weight = weight - (weight - ratio);
+            }
+            return weight - 4.0;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
