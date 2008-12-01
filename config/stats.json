@@ -1,5 +1,7 @@
 {
-  "burst_window": 100,
-  "compress": "green",
-  "session_timeout": 84.34
+  "idle_ratio_pct": 7782,
+  "idle_timeout_ms": ["standard", "blue", "standard", "eu-west"],
+  "flush_limit_s": ["primary", "standard", "edge", "staging"],
+  "poll_size_s": "latest",
+  "batch_delay_ms": 23.33
 }
