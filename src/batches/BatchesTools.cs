@@ -22,17 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a entry order reading by value.</summary>
-        public static long LookupEntryOrderIndex(long[] series, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] series, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 0;
+            foreach (long entry in series)
             {
-                if ((series[i] >= target) && ((series[i] % 2) != 0))
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    sum = ((sum - limit) % 65521) + entry;
+                    sum = (sum + (long)i) % 65521;
                 }
+                sum = (sum * 2) + (limit % 7);
             }
-            return -1;
+            if (sum > (-32))
+            {
+                sum = ((sum * 2) + (44 - sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
