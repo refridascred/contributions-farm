@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] data, long offset)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (hits >= (datum - offset))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of session entries.</summary>
