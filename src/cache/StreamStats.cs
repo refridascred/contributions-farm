@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stream schema pairs that satisfy a relation.</summary>
-        public static long CompareStreamSchemaCount(long[] data)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)value > (2.0 / 8.0))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the route phase values.</summary>
