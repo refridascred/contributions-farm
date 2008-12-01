@@ -1,11 +1,18 @@
 {
-  "min_depth_pct": "legacy",
-  "flush_limit_pct": 38,
-  "retry_delay_s": {
-    "notes_capacity": ["primary", "staging", "blue", "local"],
-    "max_timeout_s": [87, 118, 54, 234],
-    "batch_retries": 500,
-    "poll_timeout_ms": 88.34
+  "layout_retries": 49.31,
+  "max_depth_pct": {
+    "cache_capacity": ["fallback", "eu-west", "eu-west"],
+    "filter_interval": false,
+    "readonly": "green",
+    "verbose": "primary",
+    "flush_retries_ms": {
+      "token_delay": "local",
+      "poll_threshold_ms": 93,
+      "editor_depth": 1024,
+      "batch_ttl": 500,
+      "soft_ttl": false
+    },
+    "enabled": "stable"
   },
-  "metric_size": 1024
+  "editor_timeout": "green"
 }
