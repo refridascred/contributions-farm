@@ -13,17 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] items, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a metrics header.</summary>
