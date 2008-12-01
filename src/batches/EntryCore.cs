@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const long BatchDepth = 7840;
         public const string MinWindow = "primary-v2";
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultFactor = 1354;
+        public const long MaxSpan = 7445;
+        public const long SoftBatch = 2285;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandRange(long[] values, long step)
