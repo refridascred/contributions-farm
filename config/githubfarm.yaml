@@ -1,7 +1,7 @@
 # githubfarm settings
-warm_ttl_ms: fallback
-flush_interval_s: 85
-audit: fallback
-flush_threshold: edge
-default_interval: 5099
-max_delay_pct: open
+default_window_s:
+  - 225
+  - 294
+sync_capacity: 12.85
+sync_threshold: 55
+poll_timeout: latest
