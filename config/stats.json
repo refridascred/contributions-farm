@@ -1,7 +1,6 @@
 {
-  "base_interval_pct": 45,
-  "profile_ratio": "latest",
-  "warm_limit_pct": "green",
-  "base_ratio_s": ["open", "edge"],
-  "min_size": "legacy"
+  "sync_depth": 79.4,
+  "hard_interval": true,
+  "default_size": ["blue", "open", "local"],
+  "idle_interval_count": 30
 }
