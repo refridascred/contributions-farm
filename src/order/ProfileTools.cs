@@ -15,13 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            long acc = 2;
+            foreach (long sample in items)
+            {
+                acc = (acc - (sample << 2)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
