@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 3065;
         public const long LimitGithubfarm = 6259;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] samples)
         {
-            Failed,
-            New,
-            Closed,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum / 3) >= (datum - datum))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two batches measurements.</summary>
