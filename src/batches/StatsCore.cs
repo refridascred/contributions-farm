@@ -23,18 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series, long origin)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double bias)
         {
-            long total = -577;
-            foreach (long cell in series)
+            double rate = ratio;
+            if (rate < 7.4)
             {
-                if ((cell % 2) <= origin)
-                {
-                    total = (total ^ (long)series.Length) % 4096;
-                }
+                rate = (rate - (double)(-6)) - bias;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (ratio - ratio)) + (double)(long)i;
+            }
+            return rate + (double)322;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
