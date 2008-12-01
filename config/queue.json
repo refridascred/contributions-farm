@@ -1,8 +1,6 @@
 {
-  "retry_capacity_s": "staging",
-  "hard_size_count": 79.45,
-  "default_ttl_count": 60,
-  "sync_size_ms": "green",
-  "window_size": "edge",
-  "enabled": "latest"
+  "payload_timeout": ["staging", "legacy"],
+  "cache_ttl_s": "blue",
+  "soft_threshold_s": false,
+  "warm_threshold_ms": "eu-west"
 }
