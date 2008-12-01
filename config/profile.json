@@ -1,5 +1,8 @@
 {
-  "account_timeout": 83.84,
-  "support_delay": [50, 419, 385, 480],
-  "batch_limit_s": 100
+  "flush_timeout": 67.85,
+  "batch_timeout_count": "edge",
+  "default_retries": "primary",
+  "flush_interval": true,
+  "account_limit": 1085,
+  "already_size": 67.29
 }
