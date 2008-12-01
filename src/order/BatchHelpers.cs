@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] items, long offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (1 < (reading + 80))
-                {
-                    hits = (hits + 3) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate batch queue readings against a bound.</summary>
