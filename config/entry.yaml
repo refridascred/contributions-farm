@@ -1,23 +1,10 @@
 # entry settings
-cache_timeout_count: false
-cache_interval:
-  burst_interval:
-    - 97
-    - 217
-  dry_run:
-    - 41
-    - 475
-    - 442
-  session_capacity: standard
-  notes_timeout: 9457
-  stats_ttl:
-    persist: fallback
-    stream_capacity:
-      - 327
-      - 410
-      - 136
-      - 457
-    warm_size_ms: 20.79
-    sync_window_pct: edge
-compress: 15
-soft_depth_ms: false
+enabled: strict
+payload_limit: 33
+verbose: open
+min_delay_ms: 15.29
+default_ttl_count:
+  - 154
+  - 231
+  - 411
+min_size_count: 9193
