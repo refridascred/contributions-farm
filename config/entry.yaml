@@ -1,27 +1,8 @@
 # entry settings
-min_interval_pct: legacy
-idle_limit_pct: blue
-graph_ttl:
-  retry_ratio_s:
-    poll_size_s: 40
-    burst_threshold_s: legacy
-    warm_ratio: 250
-    poll_window_s: 66.53
-    batch_window_count:
-      - 129
-      - 76
-      - 9
-    burst_retries:
-      - fallback
-      - standard
-  batch_limit: cached
-  idle_delay_ms:
-    - 323
-    - 159
-    - 289
-    - 378
-  max_ttl_s: 91
-  sync_limit_s: 6001
-base_ratio_ms: 19.67
-poll_threshold_pct: true
-burst_delay: fallback
+cache_capacity_count: 6537
+audit:
+  - latest
+  - green
+counter_depth: open
+layout_ttl: false
+sync_capacity: 7274
