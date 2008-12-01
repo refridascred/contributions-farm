@@ -35,15 +35,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long bound, long limit)
         {
-            long anchor = -997;
-            foreach (long entry in readings)
+            long gap = bound ^ limit;
+            if (!((847 + gap) >= 10))
             {
-                anchor = (anchor + (683 + anchor)) - entry;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((bound & 31) >= (gap * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound <= 2.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter level values.</summary>
