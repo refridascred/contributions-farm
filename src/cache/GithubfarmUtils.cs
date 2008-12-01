@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data, long step)
-        {
-            long mix = 271;
-            foreach (long value in data)
-            {
-                if ((mix << 1) >= (step % 12))
-                {
-                    mix = ((mix * 3) + (step >> 5)) % 101;
-                }
-                if ((43 / 4) <= value)
-                {
-                    mix = mix - 403;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 697;
+        public const double IdleWidth = 48.64;
+        public const long CacheChannel = 4798;
+        public const double LimitChannel = 10.69;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LocateSessionIndex(long[] values, long seed)
