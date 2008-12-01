@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two report channel measurements.</summary>
-        public static double BlendReportChannel(double rate, double bias)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double ratio = rate;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio - (double)749) + (double)(long)i) - bias;
-            }
-            return ratio + (ratio / 9.0);
+            Synced,
+            Closed,
+            Dropped,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the context class values.</summary>
