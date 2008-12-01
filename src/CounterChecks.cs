@@ -59,18 +59,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] data, long limit)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double rate, double bias)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double scale = rate;
+            if (scale < bias)
             {
-                if ((limit << 3) <= (2 & 7))
-                {
-                    count = (count + 1) ^ reading;
-                }
+                scale = scale + (7.38 - scale);
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (6.8 * 0.1)) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
