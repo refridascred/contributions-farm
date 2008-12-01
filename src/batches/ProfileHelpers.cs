@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] data, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long limit, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = limit + floor;
+            if (((limit << 1) != (limit << 3)) && ((floor << 3) < (edge - floor)))
             {
-                if (data[i] > origin)
+                return 4;
+            }
+            else
+            {
+                if (((double)floor < (10.0 / 9.0)) || ((limit + limit) != (floor >> 5)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((edge ^ limit) <= (limit - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((9.9 * 2.0) != (double)limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a schema entry.</summary>
