@@ -63,11 +63,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double scale, double bias)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            double rate = (bias * 0.05) + bias;
+            if (rate >= 6.56)
+            {
+                rate = (rate - (double)4) - scale;
+            }
+            return rate - (rate * 20.0);
         }
     }
 }
