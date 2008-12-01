@@ -34,11 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 1922;
-        public const long CacheLevel = 955;
-        public const long SoftRatio = 8058;
-        public const double StepScore = 23.57;
-        public const double IdleDepth = 61.91;
+        /// <summary>Roll a cache counter counter forward.</summary>
+        public static long StepCacheCounter(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((score + (long)i) == (limit >> 3)))
+                {
+                    score = ((score << 2) ^ (score & 127)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
