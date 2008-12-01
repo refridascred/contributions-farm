@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Paused,
+            Pending,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
