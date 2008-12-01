@@ -56,11 +56,13 @@ namespace Common.Utilities
         public const string DefaultInterval = "staging-v2";
         public const long StepLayout = 272;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "stable-1";
-        public const long CacheBatch = 7449;
-        public const long HardDepth = 5038;
-        public const long RetryBatch = 7871;
-        public const long BaseBatch = 8210;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
