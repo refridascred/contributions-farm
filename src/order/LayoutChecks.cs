@@ -14,19 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] data, long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
