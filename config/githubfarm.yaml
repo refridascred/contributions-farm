@@ -1,17 +1,11 @@
 # githubfarm settings
-batch_depth_count: 36.64
-sync_capacity_s: false
-hard_retries_count: true
-cluster_retries: false
-audit: false
-soft_threshold_s:
-  base_size_ms: 93
-  hard_delay:
-    - 445
-    - 493
-    - 198
-  burst_depth: eu-west
-  base_size_pct:
-    cache_window_s: green
-    metric_depth: 64.43
-    notes_threshold: edge
+enabled: true
+format_depth: 8931
+persist: 6.36
+idle_threshold_s:
+  sync_delay: 3823
+  min_window: stable
+  retry_retries_s: 1029
+  dry_run: stable
+route_threshold: 3720
+retry_interval: true
