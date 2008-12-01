@@ -65,12 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardDepth = "local-1";
-        public const double MinTimeout = 57.08;
-        public const string StepDepth = "cached-1";
-        public const double MinGithubfarm = 70.92;
-        public const long BatchDepth = 9808;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double ScaleLayout(double weight, double span)
