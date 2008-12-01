@@ -15,12 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            Retry,
-            Done,
-            Locked,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ entry) < entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
