@@ -54,11 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long floor)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate counter cache samples.</summary>
