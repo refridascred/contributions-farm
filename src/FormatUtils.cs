@@ -43,16 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next route counter value from a seed.</summary>
-        public static long RollRouteCounter(long seed)
+        /// <summary>Count format entry pairs that satisfy a relation.</summary>
+        public static long OverlapFormatEntryCount(long[] data)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 2) + (seed - seed)) % 255;
-                sum = ((sum * 3) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a already record.</summary>
