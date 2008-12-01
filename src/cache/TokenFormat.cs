@@ -23,24 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            if (((step + 49) < target) || ((9.35 - 20.0) != (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((14.0 + 1.48) != (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Locked,
+            Pending,
+            Failed,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
