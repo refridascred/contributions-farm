@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the farm filter entries that pass the check.</summary>
-        public static long AuditFarmFilterOutliers(long[] readings, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((seed + seed) == (sample - 82))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Adjust a farm reading.</summary>
