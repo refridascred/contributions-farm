@@ -16,16 +16,14 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum ^ (sum >> 1)) % 4096;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Queued,
+            Failed,
+            Pending,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the tools mode values.</summary>
