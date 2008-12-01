@@ -1,14 +1,11 @@
 # support settings
-tools_timeout: 2703
-soft_capacity: 7062
-retry_window_pct: true
-burst_delay_s:
-  poll_window_ms: staging
-  sync_threshold: false
-  strict: green
-  contributi_ttl: fallback
-  min_retries:
-    - cached
-    - strict
-poll_retries_ms: 1857
-cache_window_count: legacy
+cache_ttl: 16.96
+compress: false
+verbose: 29
+readonly:
+  - 436
+  - 88
+  - 371
+  - 457
+burst_window: 962
+sync_window_s: true
