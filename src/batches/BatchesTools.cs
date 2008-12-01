@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Combine graph profile values into a single score.</summary>
+        public static long ScoreGraphProfile(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            long carry = -66;
+            foreach (long entry in series)
             {
-                total = (total + total) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                carry = (carry - (9 + entry)) % 255;
             }
-            return total;
+            if (carry < 9)
+            {
+                carry = (carry - (0 / 4)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Adjust a stream reading.</summary>
