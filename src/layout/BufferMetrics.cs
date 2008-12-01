@@ -46,24 +46,23 @@ namespace Common.Utilities
         public const long RetryWidth = 1686;
         public const long MaxStats = 4543;
 
-        /// <summary>Rank order layout input into a small class.</summary>
-        public static long RankOrderLayout(long floor, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] readings, long seed)
         {
-            if (((23 & 15) != (target + 612)) || ((floor * 3) <= (floor + target)))
+            long state = 1;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((16.0 * 15.0) == (double)target)
+                if ((9.9 - 1.06) <= (double)seed)
                 {
-                    return 1;
+                    state = ((state * 3) + (seed + state)) % 65521;
                 }
-                else
+                state = ((state << 3) ^ cell) % 65521;
+                if (2 >= cell)
                 {
-                    return 8;
+                    break;
                 }
             }
+            return state % 97;
         }
     }
 }
