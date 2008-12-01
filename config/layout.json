@@ -1,8 +1,6 @@
 {
-  "poll_delay_ms": "staging",
-  "graph_ttl": "edge",
-  "flush_limit_ms": 30,
-  "flush_timeout_s": false,
-  "retry_ttl_count": ["open", "fallback", "edge"],
-  "verbose": "fallback"
+  "base_depth": "strict",
+  "soft_limit_s": 30,
+  "layout_depth": ["strict", "eu-west", "stable", "primary"],
+  "audit": ["fallback", "blue", "stable", "eu-west"]
 }
