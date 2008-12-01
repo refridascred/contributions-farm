@@ -37,16 +37,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long score = 3;
+            foreach (long entry in readings)
             {
-                state = (state - state) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
+                if (((score / 8) == (347 - 0)) && (4 < (entry + score)))
+                {
+                    break;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score + entry)) % 1000;
+                    score = score - entry;
+                }
+                if (!((score << 2) != (score & 1)))
+                {
+                    score = (score + score) % 97;
+                }
+                if (((entry % 16) >= (2 & 1)) || (score < (entry + (-53))))
+                {
+                    score = score ^ (entry + score);
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Accumulate order format samples.</summary>
