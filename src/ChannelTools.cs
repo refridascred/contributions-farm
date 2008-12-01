@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double scale, double span)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long bound, long bound2)
         {
-            double scale2 = (span / 3.0) / 6.0;
-            if (scale2 >= (scale * 4.9))
+            if ((double)bound > (double)bound2)
             {
-                scale2 = scale2 - span;
+                return 4;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale2 = (scale2 + (scale2 - scale2)) + (double)(long)i;
+                if ((double)bound2 < (8.74 - 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound >= (bound >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return scale2 - (scale2 / 3.0);
         }
 
         /// <summary>Hold a format record.</summary>
