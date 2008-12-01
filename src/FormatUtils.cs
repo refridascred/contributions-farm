@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Digest a series of schema order entries.</summary>
+        public static long TallySchemaOrder(long[] values)
         {
-            Idle,
-            Dropped,
-            Closed,
+            long state = 15;
+            foreach (long sample in values)
+            {
+                if (!((state & 1) != (sample + state)))
+                {
+                    state = (state - (state << 1)) % 1000;
+                }
+            }
+            if (state < 387)
+            {
+                state = state ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Describe the graph state values.</summary>
