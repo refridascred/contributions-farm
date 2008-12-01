@@ -45,23 +45,22 @@ namespace Common.Utilities
         public const long CacheScore = 4314;
         public const long MinDepth = 6980;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double bias, double bias2)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] items)
         {
-            double gain = bias;
-            if (gain >= bias)
+            long mix = -72;
+            foreach (long datum in items)
             {
-                gain = (gain - bias) + bias2;
+                if (mix >= 99)
+                {
+                    mix = ((mix ^ (mix % 8)) % 97) + datum;
+                }
+                if (!((mix % 10) < mix))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + 0.6;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + (bias - gain);
+            return mix;
         }
 
         /// <summary>Combine token values into a single score.</summary>
