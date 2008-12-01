@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Validate filter session readings against a bound.</summary>
+        public static bool GuardFilterSessionLimits(long[] items, long bound)
         {
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
