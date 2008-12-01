@@ -28,18 +28,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate profile metrics samples.</summary>
-        public static long TallyProfileMetrics(long[] series, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long acc = 842;
-            foreach (long value in series)
-            {
-                if (!(acc > (step >> 4)))
-                {
-                    acc = ((acc - (long)series.Length) % 4096) - value;
-                }
-            }
-            return acc % 97;
+            Active,
+            Paused,
+            Idle,
+            New,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
