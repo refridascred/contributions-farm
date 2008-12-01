@@ -1,5 +1,5 @@
 {
-  "enabled": 8506,
-  "stream_timeout": "legacy",
-  "idle_ratio_s": 47.63
+  "strict": "stable",
+  "default_limit": "blue",
+  "poll_delay": 74
 }
