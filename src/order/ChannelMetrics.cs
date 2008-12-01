@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Count tools already pairs that satisfy a relation.</summary>
+        public static long CompareToolsAlreadyCount(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix << 2) ^ ((long)i << 2)) % 97;
-                mix = ((mix * 4) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Rank report input into a small class.</summary>
