@@ -59,18 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Accumulate checks window samples.</summary>
+        public static long TallyChecksWindow(long[] samples)
         {
-            long sum = -657;
-            foreach (long entry in readings)
+            long total = 1;
+            foreach (long entry in samples)
             {
-                if ((6.91 * 2.81) != (double)sum)
+                total = (total ^ (entry / 6)) % 255;
+                if (((15.0 / 2.0) > (double)total) || ((19.0 * 13.0) < (double)entry))
                 {
-                    sum = ((sum - sum) % 255) - entry;
+                    total = (total << 2) ^ (total - total);
                 }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
