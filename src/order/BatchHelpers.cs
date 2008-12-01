@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] readings, long step)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length % 16) != (step + (-28)))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
