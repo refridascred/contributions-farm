@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] series, long bound)
+        /// <summary>Validate counter channel readings against a bound.</summary>
+        public static bool ValidateCounterChannelLimits(long[] levels, long origin)
         {
-            long sum = 8;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((entry % 7) <= (entry ^ entry))
+                if (cell >= origin)
                 {
-                    sum = ((sum + (298 * 5)) % 1000) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return valid;
         }
 
         /// <summary>Describe the batch class values.</summary>
