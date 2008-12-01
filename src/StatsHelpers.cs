@@ -82,19 +82,13 @@ namespace Common.Utilities
         public const long BaseFormat = 2144;
         public const string SoftCount = "primary-1";
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] data, long floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Dropped,
+            Ready,
+            New,
         }
     }
 }
