@@ -29,14 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] series, long bound)
         {
-            Idle,
-            Synced,
-            Stale,
-            Dropped,
-            Done,
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
