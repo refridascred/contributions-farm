@@ -16,14 +16,17 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] items, long floor)
         {
-            Queued,
-            Failed,
-            Pending,
-            Idle,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
