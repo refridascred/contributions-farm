@@ -42,13 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] series, long floor)
         {
-            Done,
-            New,
-            Idle,
-            Closed,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((value - floor) == (value + value)) || ((tally + 50) <= value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next route counter value from a seed.</summary>
