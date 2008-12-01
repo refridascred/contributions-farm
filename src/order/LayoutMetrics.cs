@@ -12,21 +12,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (values[i] > seed)
                 {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
