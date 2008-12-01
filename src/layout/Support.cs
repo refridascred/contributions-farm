@@ -54,12 +54,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Find the first tools record entry that matches the target.</summary>
+        public static long LookupToolsRecordIndex(long[] samples, long limit)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
