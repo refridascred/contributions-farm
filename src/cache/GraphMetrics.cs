@@ -27,39 +27,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long bound, long limit)
+        /// <summary>Roll a checks notes counter forward.</summary>
+        public static long SeriesChecksNotes(long step)
         {
-            long lane = bound + limit;
-            if (((14 << 3) != (bound + lane)) || (3.1 < (double)bound))
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 7;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)limit > (0.12 / 9.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound / 5) >= 87))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((bound + bound) == (lane - lane)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the queue state values.</summary>
