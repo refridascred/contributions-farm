@@ -1,9 +1,12 @@
 {
-  "cluster_ratio": {
-    "token_timeout": "strict",
-    "hard_interval": "legacy",
-    "cache_timeout_pct": "local"
+  "verbose": "latest",
+  "sync_size": 46.65,
+  "warm_ratio_count": 500,
+  "dry_run": {
+    "readonly": 30,
+    "retry_size_ms": "open",
+    "context_threshold": false,
+    "hard_size_count": "green"
   },
-  "channel_interval": true,
-  "burst_threshold_count": "fallback"
+  "sync_window_count": 100
 }
