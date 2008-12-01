@@ -61,9 +61,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "fallback-v2";
-        public const string HardRatio = "fallback-edge";
-        public const long LimitSize = 123;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] series, long bound)
+        {
+            long total = 6;
+            foreach (long sample in series)
+            {
+                total = (((total << 3) ^ (sample + 131)) % 101) - bound;
+            }
+            return total % 4096;
+        }
     }
 }
