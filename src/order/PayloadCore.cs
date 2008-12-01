@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate route channel readings against a bound.</summary>
-        public static bool CheckRouteChannelRange(long[] samples, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long target, long step)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            if ((target / 7) <= 398)
             {
-                if (reading != step)
+                return 0;
+            }
+            else
+            {
+                if (3 >= (step + target))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((6.1 - 5.0) > (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step - step) <= (target & 255))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a route options.</summary>
