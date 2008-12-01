@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long origin)
+        /// <summary>Count the channel counter entries that pass the check.</summary>
+        public static long MeasureChannelCounterGaps(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] > origin)
+                if (!((-8) <= datum))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a profile reading.</summary>
