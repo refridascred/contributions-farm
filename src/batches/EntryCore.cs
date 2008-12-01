@@ -56,31 +56,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long step, long floor)
-        {
-            if ((1.6 / 3.0) < (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step * 2) >= step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(step <= (step + floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepSpan = "local";
+        public const long MinWidth = 9145;
+        public const long SoftWidth = 1570;
+        public const string LimitChannel = "local-v2";
+        public const double BatchScore = 37.82;
     }
 }
