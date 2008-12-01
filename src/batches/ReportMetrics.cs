@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up context contributi samples.</summary>
-        public static long PairContextContributiCount(long[] series)
+        /// <summary>Measure how many window support samples are out of range.</summary>
+        public static long AuditWindowSupportMatches(long[] values, long target)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (count >= (target - 90))
                 {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) - entry;
                 }
             }
             return count;
