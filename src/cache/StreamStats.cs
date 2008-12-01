@@ -51,31 +51,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long bound, long offset)
-        {
-            if ((5.73 * 1.93) > (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (93 <= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound == (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 3550;
+        public const long DefaultSchema = 2081;
+        public const long LimitInterval = 8062;
+        public const string BaseInterval = "standard";
     }
 }
