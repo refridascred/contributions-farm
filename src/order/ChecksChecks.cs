@@ -14,15 +14,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of buffer checks readings.</summary>
-        public static long CombineBufferChecks(long[] readings, long floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long state = 757;
-            foreach (long item in readings)
-            {
-                state = (((state * 4) + item) % 97) + floor;
-            }
-            return state % 4096;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
