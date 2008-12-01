@@ -42,15 +42,19 @@ namespace Common.Utilities
         public const double RetryRatio = 74.08;
         public const string BatchLevel = "latest-1";
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double rate, double span)
+        /// <summary>Validate layout farm readings against a bound.</summary>
+        public static bool CheckLayoutFarmBounds(long[] readings, long seed)
         {
-            double mean = (double)((-94) << 3);
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                mean = mean + (double)(long)i;
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - (span - rate);
+            return flag;
         }
     }
 }
