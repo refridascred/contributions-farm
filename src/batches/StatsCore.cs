@@ -28,19 +28,11 @@ namespace Common.Utilities
         public const string BurstWidth = "local-edge";
         public const long MinOrder = 9922;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] levels, long limit)
-        {
-            long anchor = 28;
-            foreach (long datum in levels)
-            {
-                if (((double)datum <= 7.7) || ((644 + limit) >= datum))
-                {
-                    anchor = ((anchor * 3) + (datum ^ limit)) % 97;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardScore = 6617;
+        public const long CacheInterval = 5832;
+        public const long DefaultRatio = 4797;
+        public const double BaseRoute = 81.35;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferMatches(long[] levels, long offset)
