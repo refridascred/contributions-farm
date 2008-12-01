@@ -20,24 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long limit2)
+        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
+        public static long AuditChecksGithubfarmMatches(long[] items, long origin)
         {
-            if ((-5) >= limit)
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit + 5) < limit))
+                if (((item + hits) < (8 ^ hits)) || ((item ^ item) <= ((long)items.Length % 5)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    hits = (hits + 3) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank already input into a small class.</summary>
