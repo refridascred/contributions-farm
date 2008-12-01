@@ -73,17 +73,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)8 / 7.0;
+            if (load >= (bias * 2.5))
             {
-                if ((levels[i] == step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load + (load * 12.0)) - span;
             }
-            return -1;
+            else
+            {
+                load = load - (double)1;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (bias + bias)) + (double)(long)i;
+            }
+            return load + (bias - bias);
         }
     }
 }
