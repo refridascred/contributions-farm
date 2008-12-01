@@ -36,11 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleWidth = 3683;
-        public const string BurstDepth = "alpha-v2";
-        public const string StepQueue = "local-edge";
-        public const long BatchQueue = 4257;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseRatio = 37.13;
+        public const double MaxBuffer = 28.94;
+        public const double BaseBuffer = 0.58;
+        public const string RetryRatio = "staging-1";
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
