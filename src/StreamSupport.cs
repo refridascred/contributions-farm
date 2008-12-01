@@ -14,20 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double bias, double floor)
-        {
-            double scale = floor;
-            if (scale < (double)(-22))
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale - floor;
-            }
-            return scale + 5.0;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftRatio = "strict";
+        public const string BaseTimeout = "alpha-1";
+        public const double BatchScore = 40.37;
+        public const long BaseSpan = 6013;
+        public const long StepAccount = 6057;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
