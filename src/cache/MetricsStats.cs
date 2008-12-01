@@ -59,18 +59,24 @@ namespace Common.Utilities
             return scale - 3.4;
         }
 
-        /// <summary>Audit channel notes readings against a rule.</summary>
-        public static long AuditChannelNotesGaps(long[] data, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if (((bound2 * 4) > (5 + 536)) || ((bound / 3) < bound))
             {
-                if ((sample / 4) != (target - sample))
+                return 8;
+            }
+            else
+            {
+                if ((bound - bound2) > (bound2 + 82))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
     }
 }
