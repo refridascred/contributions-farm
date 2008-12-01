@@ -29,12 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] samples)
         {
-            Active,
-            New,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample != (double)(-8))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
