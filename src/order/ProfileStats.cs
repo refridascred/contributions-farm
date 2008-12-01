@@ -32,10 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinSize = 8220;
-        public const double DefaultCommand = 88.14;
-        public const long SoftCommand = 8206;
-        public const double IdleCommand = 29.34;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)bound > (15.0 / 5.0))
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
+        }
     }
 }
