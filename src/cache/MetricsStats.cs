@@ -46,22 +46,11 @@ namespace Common.Utilities
             return rate + (bias - 8.48);
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] items, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen & 31) == (seed << 1))
-                {
-                    seen = (seen + 2) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
