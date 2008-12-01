@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] values, long limit)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value & 63) == (limit << 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the report mode values.</summary>
