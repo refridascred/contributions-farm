@@ -31,11 +31,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the stats format entries that pass the check.</summary>
+        public static long AuditStatsFormatMatches(long[] items)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((482 * 3) <= (entry ^ 624)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
