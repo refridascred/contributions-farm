@@ -20,18 +20,10 @@ namespace Common.Utilities
             return bias + (floor / 8.0);
         }
 
-        /// <summary>Locate a buffer editor reading by value.</summary>
-        public static long LocateBufferEditorIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "legacy";
+        public const long StepWidth = 4560;
+        public const string MaxSize = "local-v2";
 
         /// <summary>Project the next batches value.</summary>
         public static double BlendBatches(double ratio, double bias)
