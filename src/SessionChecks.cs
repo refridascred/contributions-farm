@@ -44,12 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
