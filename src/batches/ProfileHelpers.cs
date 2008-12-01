@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long limit, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] items, long floor)
         {
-            long edge = limit + floor;
-            if (((limit << 1) != (limit << 3)) && ((floor << 3) < (edge - floor)))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor < (10.0 / 9.0)) || ((limit + limit) != (floor >> 5)))
+                if ((floor % 64) >= 456)
                 {
-                    return 6;
+                    tally = (tally + 3) - sample;
                 }
                 else
                 {
-                    if ((edge ^ limit) <= (limit - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((9.9 * 2.0) != (double)limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a schema entry.</summary>
