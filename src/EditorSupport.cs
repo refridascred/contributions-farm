@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Queued,
-            Active,
-            Closed,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchWidth = 70.81;
+        public const double StepWidth = 30.1;
+        public const string SoftFactor = "fallback-v2";
+        public const long CacheProfile = 5953;
+        public const long BatchProfile = 8977;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
