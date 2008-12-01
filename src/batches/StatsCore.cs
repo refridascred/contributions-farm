@@ -67,19 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter cache samples.</summary>
-        public static long CombineCounterCache(long[] values, long target)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] values, long target)
         {
-            long sum = 151;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                sum = ((sum ^ (value + 60)) % 65521) + target;
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum < 66)
-            {
-                sum = sum + (long)values.Length;
-            }
-            return sum % 97;
+            return valid;
         }
 
         /// <summary>Fold a list of cache checks readings.</summary>
