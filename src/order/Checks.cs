@@ -40,39 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format stats value against two limits.</summary>
-        public static long BucketFormatStats(long seed, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] data)
         {
-            long bound = seed + limit;
-            if ((limit << 3) < bound)
+            long state = -14;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit != (3.65 - 4.61))
+                if (!((state + 722) >= (item % 3)))
                 {
-                    return 5;
+                    state = (state + state) % 65521;
                 }
                 else
                 {
-                    if ((seed % 5) <= (seed / 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((-8) <= (seed + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = (state * 3) + ((long)data.Length >> 5);
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
