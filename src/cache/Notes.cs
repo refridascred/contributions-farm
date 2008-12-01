@@ -20,19 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] samples)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            long result = 8;
-            foreach (long cell in samples)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                result = result ^ (result + cell);
+                if ((255 / 5) >= anchor)
+                {
+                    anchor = (anchor * 5) + ((-110) - (long)i);
+                    anchor = (anchor * 2) + (step + step);
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (result < 2)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the profile mode values.</summary>
