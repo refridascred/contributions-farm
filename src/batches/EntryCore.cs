@@ -23,26 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] data, long offset)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] items, long step)
         {
-            long result = 254;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample + offset) == (86 % 3))
+                if ((items[i] < step) && ((items[i] % 5) != 0))
                 {
-                    result = ((result << 3) ^ (result << 3)) % 255;
-                }
-                if ((long)data.Length > result)
-                {
-                    result = result ^ (result - sample);
+                    return (long)i;
                 }
             }
-            if (result > (-9))
-            {
-                result = result ^ offset;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the batch status values.</summary>
