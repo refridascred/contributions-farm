@@ -31,18 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (!(((long)data.Length / 7) <= (59 ^ tally)) || ((datum >= tally) && ((double)datum < (0.1 / 3.0))))
+                if (reading > floor)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
