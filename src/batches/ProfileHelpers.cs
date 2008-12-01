@@ -62,11 +62,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
