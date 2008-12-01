@@ -64,11 +64,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 2549;
-        public const double BurstScore = 5.36;
-        public const long HardSize = 745;
-        public const double BatchChannel = 85.19;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 4769;
+        public const long IdleSize = 1529;
+        public const double MinBatches = 25.91;
+        public const long MaxBudget = 2738;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
