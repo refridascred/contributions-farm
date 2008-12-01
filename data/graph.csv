@@ -1,9 +1,8 @@
-id,region,label,rank,count
-1,98.29,639,789,strict
-2,339,309,42.51,27
-3,80.66,807,608,740
-4,208,87.12,local,latest
-5,913,local,73,latest
-6,blue,827,622,78.81
-7,blue,staging,staging,81.78
-8,19.08,404,32.01,43.84
+id,owner,ratio
+1,63.48,18.2
+2,standard,primary
+3,993,81.88
+4,45.4,77.06
+5,edge,842
+6,stable,72.11
+7,149,24.96
