@@ -41,10 +41,16 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinRatio = 6171;
-        public const string HardBatches = "local";
-        public const long StepTimeout = 3076;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double gain, double offset)
+        {
+            double rate = gain;
+            if (rate >= (double)6)
+            {
+                rate = (rate - (double)40) + offset;
+            }
+            return rate - (double)55;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] values, long step)
