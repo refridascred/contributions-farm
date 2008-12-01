@@ -63,21 +63,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of notes session readings.</summary>
-        public static long PairNotesSessionCount(long[] series)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the order kind values.</summary>
