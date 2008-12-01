@@ -16,10 +16,19 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinInterval = 62.06;
-        public const long CacheScore = 4314;
-        public const long MinDepth = 6980;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen * 3) <= (item * 4))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderLimits(long[] series, long target)
