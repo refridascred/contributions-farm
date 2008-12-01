@@ -40,17 +40,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 16.23;
+        public const long BurstLevel = 6696;
+        public const long BatchSchema = 280;
     }
 }
