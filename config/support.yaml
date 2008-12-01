@@ -1,22 +1,5 @@
 # support settings
-checks_timeout: 344
-compress: 27
-readonly: 73.34
-retry_threshold_s:
-  base_timeout: 933
-  flush_threshold: 30
-  window_threshold: 17
-  poll_retries_pct:
-    - local
-    - fallback
-    - latest
-    - standard
-  audit:
-    persist: legacy
-    soft_depth: fallback
-    flush_interval_pct: false
-    context_ttl: staging
-retry_ratio_pct:
-  - 145
-  - 132
-  - 453
+idle_capacity: open
+batch_size_ms: 1923
+idle_window_s: true
+cluster_delay: strict
