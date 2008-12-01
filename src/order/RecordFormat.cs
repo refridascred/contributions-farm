@@ -44,19 +44,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks window samples.</summary>
-        public static long TallyChecksWindow(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long seed, long seed2)
         {
-            long total = 1;
-            foreach (long entry in samples)
+            if ((seed2 + 797) >= (78 + seed2))
             {
-                total = (total ^ (entry / 6)) % 255;
-                if (((15.0 / 2.0) > (double)total) || ((19.0 * 13.0) < (double)entry))
+                return 4;
+            }
+            else
+            {
+                if ((seed & 7) <= (seed - seed2))
                 {
-                    total = (total << 2) ^ (total - total);
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return total;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
