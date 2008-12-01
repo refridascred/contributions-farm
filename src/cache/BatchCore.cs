@@ -32,23 +32,18 @@ namespace Common.Utilities
         public const long SoftMetrics = 2279;
         public const double SoftFactor = 93.71;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] readings, long origin)
         {
-            long carry = 289;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                carry = (carry - 17) ^ value;
-                if ((double)(long)levels.Length == (double)(-16))
+                if ((origin >> 1) >= (82 - sample))
                 {
-                    carry = (carry ^ (carry & 127)) % 101;
+                    seen = seen + 3;
                 }
             }
-            if (carry < 0)
-            {
-                carry = (carry ^ (carry / 3)) % 255;
-            }
-            return carry;
+            return seen;
         }
     }
 }
