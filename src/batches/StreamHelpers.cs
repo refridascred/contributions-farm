@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double gain, double span)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double ratio, double floor)
         {
-            double weight = 8.3;
-            if (weight > (double)74)
+            double bias = ratio;
+            if (bias <= (10.0 / 6.0))
             {
-                weight = (weight - weight) + span;
+                bias = (bias - (ratio * 2.0)) + floor;
             }
             else
             {
-                weight = weight - gain;
+                bias = bias - (ratio / 2.0);
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 2; i++)
             {
-                weight = (weight + (double)4) + (double)(long)i;
+                bias = (bias + bias) - (double)(long)i;
             }
-            return weight - gain;
+            return bias + bias;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
