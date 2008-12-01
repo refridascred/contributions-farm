@@ -1,11 +1,19 @@
 # githubfarm settings
-readonly: false
-audit:
-  - green
-  - blue
-  - green
-  - local
-verbose: 28
-dry_run: 1024
-sync_retries_count: 60
-soft_depth_s: 8056
+base_threshold: eu-west
+metrics_capacity: strict
+schema_retries:
+  poll_retries_ms:
+    - blue
+    - fallback
+    - local
+  min_ttl_pct: cached
+  layout_retries: 65.26
+  max_window_ms:
+    - open
+    - latest
+    - cached
+    - green
+  base_retries: 82
+  strict: edge
+batch_ttl_ms: 6
+entry_timeout: fallback
