@@ -1,6 +1,12 @@
 {
-  "poll_size_pct": "strict",
-  "burst_timeout_ms": 1724,
-  "soft_ttl_count": "blue",
-  "warm_window_pct": "eu-west"
+  "compress": {
+    "already_window": "eu-west",
+    "batches_interval": 52,
+    "cache_ratio": 9032,
+    "warm_retries_ms": true,
+    "soft_interval": 1210,
+    "readonly": ["open", "stable", "primary", "fallback"]
+  },
+  "max_ttl": [7, 64],
+  "burst_ratio": 250
 }
