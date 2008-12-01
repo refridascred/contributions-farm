@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] readings, long step)
         {
-            public double Weight { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (step < (reading << 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batch class values.</summary>
