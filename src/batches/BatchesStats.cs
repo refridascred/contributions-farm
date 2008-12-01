@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples, long seed)
         {
-            Closed,
-            Stale,
-            Queued,
+            long anchor = 14;
+            foreach (long datum in samples)
+            {
+                if (anchor < (seed << 1))
+                {
+                    anchor = ((anchor << 3) ^ (seed - seed)) % 97;
+                }
+                if ((datum / 9) < (datum % 100))
+                {
+                    anchor = (anchor ^ (datum & 127)) % 255;
+                }
+            }
+            if (anchor < 79)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
