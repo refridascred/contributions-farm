@@ -1,6 +1,4 @@
 # githubfarm settings
-cache_depth:
-  - standard
-  - cached
-retry_size_s: open
-hard_retries: eu-west
+already_interval: 35.39
+batch_threshold: false
+readonly: 7569
