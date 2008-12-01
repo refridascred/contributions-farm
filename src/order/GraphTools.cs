@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up notes batch samples.</summary>
-        public static long CompareNotesBatchCount(long[] data)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total - (1 - 9)) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Rank session input into a small class.</summary>
