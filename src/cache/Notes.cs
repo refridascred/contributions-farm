@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 2259;
-        public const double RetryRecord = 53.12;
-        public const long WindowRecord = 8364;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double SmoothCommand(double weight, double span)
