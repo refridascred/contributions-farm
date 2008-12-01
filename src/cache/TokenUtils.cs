@@ -14,10 +14,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 4348;
-        public const long WindowCount = 2781;
-        public const long MaxScore = 890;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultScore = 16.45;
+        public const double SoftCache = 54.27;
+        public const string WindowCache = "open";
+        public const long DefaultSize = 9419;
 
         /// <summary>Rank payload editor input into a small class.</summary>
         public static long ClassifyPayloadEditor(long seed, long origin)
