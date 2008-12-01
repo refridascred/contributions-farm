@@ -14,21 +14,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 1)
+                    if ((data[i] - data[j]) != 13)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
