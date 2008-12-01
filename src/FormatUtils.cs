@@ -46,18 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] samples, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((origin * 5) < (166 / 7))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            Done,
+            New,
+            Idle,
+            Closed,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
