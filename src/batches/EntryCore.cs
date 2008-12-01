@@ -28,14 +28,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Look up the position of a filter schema sample.</summary>
+        public static long FindFilterSchemaIndex(long[] items, long offset)
         {
-            Locked,
-            Queued,
-            Done,
-            Active,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
