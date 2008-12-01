@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const double SoftBatches = 75.3;
         public const long HardBatches = 7205;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] data)
+        /// <summary>Project the next editor contributi value.</summary>
+        public static double ScaleEditorContributi(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = (double)(8 % 64);
+            if (weight2 <= (weight2 * 16.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight2 = (weight2 + (weight2 / 2.0)) - weight;
             }
-            return seen;
+            else
+            {
+                weight2 = weight2 + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + (bias / 5.0)) - (double)(long)i;
+            }
+            return weight2 - bias;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
