@@ -44,19 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long acc = -5;
+            foreach (long entry in items)
             {
-                if (reading <= limit)
+                if (acc <= entry)
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc - (6 - acc)) % 255) - step;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Hold a record entry.</summary>
