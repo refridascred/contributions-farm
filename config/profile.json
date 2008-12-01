@@ -1,6 +1,6 @@
 {
-  "audit": "latest",
-  "burst_size": [351, 47, 52],
-  "notes_depth": 92,
-  "enabled": true
+  "poll_ratio_s": 8181,
+  "readonly": ["primary", "edge", "green", "strict"],
+  "dry_run": "open",
+  "max_capacity": false
 }
