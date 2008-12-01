@@ -28,11 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next order queue value.</summary>
-        public static double ProjectOrderQueue(double weight, double offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double ratio = (weight * 5.83) / 9.0;
-            return (ratio - (double)3) + offset;
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
