@@ -62,22 +62,37 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long floor, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long floor, long seed)
         {
-            if (!((11.0 + 6.08) == (double)floor))
+            long bound = floor - seed;
+            if ((bound / 2) > (floor << 1))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (floor > seed)
+                if (bound > (bound ^ seed))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 4;
+                    if (((bound >> 2) != (seed - bound)) && ((bound + seed) > (seed + seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed == (18.0 / 8.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
