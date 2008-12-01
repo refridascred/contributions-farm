@@ -1,7 +1,6 @@
 {
-  "enabled": 4,
-  "poll_retries_ms": "stable",
-  "audit": false,
-  "verbose": [166, 138],
-  "stream_ttl": 25
+  "audit": "latest",
+  "burst_size": [351, 47, 52],
+  "notes_depth": 92,
+  "enabled": true
 }
