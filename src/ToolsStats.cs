@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Adjust a githubfarm cache reading.</summary>
