@@ -21,18 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] levels, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((limit - datum) <= (limit + limit))
+                if (((reading <= seen) || (9.14 > (double)seen)) && (reading >= (floor & 255)))
                 {
-                    matches = matches + 2;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate queue samples.</summary>
