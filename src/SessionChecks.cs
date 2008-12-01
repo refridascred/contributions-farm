@@ -58,21 +58,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric report pairs that satisfy a relation.</summary>
-        public static long OverlapMetricReportCount(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 66;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = ((score ^ (item + 632)) % 1000) - floor;
+                if ((item - score) == (item & 15))
                 {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (score < 240)
+            {
+                score = ((score << 3) ^ (547 / 7)) % 4096;
+            }
+            return score % 65521;
         }
     }
 }
