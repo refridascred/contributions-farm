@@ -28,13 +28,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            Active,
-            Paused,
-            Idle,
-            New,
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
