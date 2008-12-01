@@ -1,11 +1,6 @@
-id,owner,label
-1,346,69.14
-2,legacy,13.82
-3,75.51,latest
-4,944,863
-5,strict,92.97
-6,blue,31
-7,443,503
-8,433,1.65
-9,52.88,staging
-10,12.37,60.63
+id,owner,count,weight
+1,88.17,916,eu-west
+2,672,standard,76.86
+3,61.57,latest,79.37
+4,2.83,369,56.73
+5,eu-west,477,443
