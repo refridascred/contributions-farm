@@ -66,12 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 9186;
-        public const string MinEditor = "open-v2";
-        public const long MinLevel = 8860;
-        public const double StepFactor = 94.71;
-        public const long SoftScore = 3286;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((555 + entry) < (origin + origin))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitEditor = 7605;
