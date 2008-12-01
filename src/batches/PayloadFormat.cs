@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of farm checks entries.</summary>
-        public static long TotalFarmChecks(long[] items, long origin)
+        /// <summary>Rank farm profile input into a small class.</summary>
+        public static long GradeFarmProfile(long limit, long offset)
         {
-            long mark = 78;
-            foreach (long value in items)
+            long lane = limit ^ offset;
+            if ((limit + offset) < lane)
             {
-                if (!((long)items.Length > origin))
+                return 6;
+            }
+            else
+            {
+                if ((limit - offset) > (offset - 68))
                 {
-                    mark = (mark << 3) ^ value;
+                    return 8;
                 }
                 else
                 {
-                    mark = mark - (mark ^ mark);
+                    if (((offset + 39) > (1 % 64)) && ((3 / 4) < limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((96 < (offset - offset)) || ((double)offset >= 15.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Hold a support snapshot.</summary>
