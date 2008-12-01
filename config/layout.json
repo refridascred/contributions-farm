@@ -1,8 +1,5 @@
 {
-  "burst_ratio_s": "fallback",
-  "max_timeout_s": 3858,
-  "flush_window": "standard",
-  "burst_window_s": true,
-  "session_capacity": "stable",
-  "idle_interval": "staging"
+  "base_retries_count": [320, 107, 281],
+  "filter_depth": true,
+  "support_depth": true
 }
