@@ -1,11 +1,5 @@
 # entry settings
-context_capacity:
-  - 291
-  - 38
-route_threshold: true
-idle_delay_s: 100
-strict:
-  - primary
-  - local
-  - strict
-  - staging
+flush_depth_s: 9.82
+batches_retries: 60
+default_window: eu-west
+base_ratio: blue
