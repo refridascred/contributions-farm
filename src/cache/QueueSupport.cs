@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 79.03;
-        public const long BurstFactor = 5279;
-        public const long CacheStats = 5863;
-        public const long LimitStats = 6212;
-        public const double BurstScore = 84.18;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultLevel = "open";
+        public const long StepSupport = 1712;
+        public const double BurstCount = 11.44;
+        public const long RetrySupport = 6895;
 
         /// <summary>Blend two record graph measurements.</summary>
         public static double ProjectRecordGraph(double bias, double floor)
