@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long origin, long limit)
         {
-            New,
-            Closed,
-            Pending,
-            Active,
-            Done,
+            long lane = origin - limit;
+            if (!((limit << 3) <= 687))
+            {
+                return 2;
+            }
+            else
+            {
+                if (lane <= (limit >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) < limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((origin * 4) <= (18 >> 2)) && ((3 / 5) >= (lane % 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
