@@ -14,22 +14,36 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long offset, long offset2)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long floor, long floor2)
         {
-            if ((double)offset2 >= (double)offset)
+            if ((79 >> 3) >= (floor + floor2))
             {
                 return 5;
             }
             else
             {
-                if (offset >= (21 >> 1))
+                if ((764 / 3) == (floor << 3))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if (((9.33 - 9.5) <= (double)floor2) || ((4.0 / 5.0) <= (double)floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor << 2) > floor) || ((floor2 + floor) < (floor2 & 255)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
