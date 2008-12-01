@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long state = 53;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)cell > (0.18 / 6.0)) || ((7 - cell) <= (1 ^ cell)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 3) ^ (limit + 7)) % 101;
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Describe the order phase values.</summary>
