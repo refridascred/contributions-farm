@@ -42,18 +42,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit payload route readings against a rule.</summary>
-        public static long MeasurePayloadRouteMatches(long[] values)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((count - entry) >= (524 + entry)) || ((entry << 2) >= entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a context record.</summary>
