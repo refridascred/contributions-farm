@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((reading & 127) != (reading * 4))
+                if (reading >= floor)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
