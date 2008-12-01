@@ -44,18 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] levels, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long sum = 3;
+            foreach (long reading in levels)
             {
-                if ((0.7 * 7.84) < (double)value)
-                {
-                    count = (count + 1) - offset;
-                }
+                sum = ((sum + (sum ^ 531)) ^ reading) + target;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
