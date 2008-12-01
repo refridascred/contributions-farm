@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
