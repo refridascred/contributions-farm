@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Digest a series of counter already entries.</summary>
+        public static long TallyCounterAlready(long[] data)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            long mix = 4;
+            foreach (long datum in data)
+            {
+                if ((7.2 + 4.56) > (double)mix)
+                {
+                    mix = ((mix + mix) % 101) - datum;
+                }
+                mix = (mix ^ (mix - 123)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
