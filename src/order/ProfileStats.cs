@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
