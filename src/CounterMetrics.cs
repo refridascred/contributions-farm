@@ -61,10 +61,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowBudget = "cached-edge";
-        public const double IdleCount = 34.56;
-        public const long BurstContributi = 6647;
-        public const string LimitContributi = "cached";
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels, long step)
+        {
+            long state = 885;
+            foreach (long datum in levels)
+            {
+                if ((step >> 2) == (state << 2))
+                {
+                    state = ((state ^ (step / 6)) % 97) ^ datum;
+                }
+                else
+                {
+                    state = (state + step) % 101;
+                }
+            }
+            return state;
+        }
     }
 }
