@@ -31,13 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the editor graph entries that pass the check.</summary>
+        public static long MeasureEditorGraphOutliers(long[] samples, long seed)
         {
-            public double Total { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (0.9 >= (double)seed)
+                {
+                    tally = (tally + 1) - value;
+                }
+            }
+            return tally;
         }
     }
 }
