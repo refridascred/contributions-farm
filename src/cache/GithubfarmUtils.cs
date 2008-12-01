@@ -40,21 +40,21 @@ namespace Common.Utilities
         public const double RetryRatio = 74.08;
         public const string BatchLevel = "latest-1";
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 16)
+                    if ((series[i] + series[j]) < 8)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
