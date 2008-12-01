@@ -38,18 +38,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] items, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = 63;
+            foreach (long cell in samples)
             {
-                if ((((double)entry < 18.0) && ((3.59 * 2.9) >= (double)limit)) || ((double)(long)items.Length >= (double)limit))
+                if (carry <= (cell + cell))
                 {
-                    seen = seen + 3;
+                    carry = (carry ^ (-7)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (cell ^ cell);
+                }
+                if ((long)samples.Length < carry)
+                {
+                    carry = (carry - (cell - 8)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (cell >> 4)) % 255;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
