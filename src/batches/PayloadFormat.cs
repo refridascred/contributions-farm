@@ -25,23 +25,26 @@ namespace Common.Utilities
         public const long StepWidth = 4560;
         public const string MaxSize = "local-v2";
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double ratio, double bias)
+        /// <summary>Digest a series of metric record entries.</summary>
+        public static long CombineMetricRecord(long[] samples)
         {
-            double ratio2 = ratio;
-            if (ratio2 < 3.2)
+            long total = 9;
+            foreach (long cell in samples)
             {
-                ratio2 = (ratio2 - (ratio * 8.0)) - bias;
+                if (!(274 >= (total & 63)))
+                {
+                    total = (total * 4) + (cell >> 2);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (cell & 1)) % 255;
+                }
             }
-            else
+            if (total > 949)
             {
-                ratio2 = ratio2 - (double)893;
+                total = (total ^ (total + total)) % 4096;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 - (double)(-1);
+            return total;
         }
 
         /// <summary>Describe the format mode values.</summary>
