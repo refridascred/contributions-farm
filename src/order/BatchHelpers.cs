@@ -28,11 +28,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
+            public long Flag { get; set; }
             public double Total { get; set; }
-            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
