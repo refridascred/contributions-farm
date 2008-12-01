@@ -58,11 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double weight, double bias)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] readings, long limit)
         {
-            double drift = weight;
-            return (drift + 4.0) + bias;
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
