@@ -41,19 +41,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] levels, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (cell >= step)
+                if ((558 + tally) > (item % 12))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a context record.</summary>
