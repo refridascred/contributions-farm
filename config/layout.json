@@ -1,7 +1,5 @@
 {
-  "enabled": 93.12,
-  "report_ttl": "legacy",
-  "farm_threshold": "local",
-  "burst_timeout_count": 61,
-  "soft_ttl": "local"
+  "token_ratio": "blue",
+  "burst_retries_s": 100,
+  "soft_size_ms": "open"
 }
