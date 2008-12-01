@@ -44,13 +44,13 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Draft,
-            Ready,
+            Locked,
             Paused,
-            Active,
+            Ready,
+            Closed,
         }
 
         /// <summary>Validate checks format readings against a bound.</summary>
