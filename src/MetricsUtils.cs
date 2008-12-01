@@ -37,31 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long score = 3;
-            foreach (long entry in readings)
-            {
-                if (((score / 8) == (347 - 0)) && (4 < (entry + score)))
-                {
-                    break;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score + entry)) % 1000;
-                    score = score - entry;
-                }
-                if (!((score << 2) != (score & 1)))
-                {
-                    score = (score + score) % 97;
-                }
-                if (((entry % 16) >= (2 & 1)) || (score < (entry + (-53))))
-                {
-                    score = score ^ (entry + score);
-                }
-            }
-            return score;
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the graph class values.</summary>
