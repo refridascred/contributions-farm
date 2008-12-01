@@ -32,15 +32,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long offset)
         {
-            long mix = 24;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix ^ (mix & 3)) % 97) - cell;
+                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
