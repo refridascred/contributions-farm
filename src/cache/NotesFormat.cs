@@ -12,11 +12,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long floor, long floor2)
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            if (!((floor - floor2) <= floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (266 >= (floor2 / 6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)floor > (9.01 / 5.0)) && (floor2 < (floor << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank command input into a small class.</summary>
