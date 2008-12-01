@@ -1,12 +1,6 @@
 # support settings
-audit: 24
-support_size:
-  entry_retries: cached
-  warm_threshold: 81.61
-  commits_ratio: 84.06
-  tools_retries: staging
-  warm_depth: 5059
-  persist: latest
-session_size: 3050
-order_window: 35
-commits_capacity: 81.52
+enabled:
+  - blue
+  - legacy
+soft_capacity_ms: local
+sync_threshold: blue
