@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of farm entry readings.</summary>
-        public static long CompareFarmEntryCount(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] levels, long offset)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum + offset) < (offset + 83))
                 {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
