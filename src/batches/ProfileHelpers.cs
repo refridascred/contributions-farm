@@ -46,39 +46,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long floor, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long origin)
         {
-            long bound = floor - seed;
-            if ((bound / 2) > (floor << 1))
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound > (bound ^ seed))
+                if (reading <= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound >> 2) != (seed - bound)) && ((bound + seed) > (seed + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed == (18.0 / 8.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
