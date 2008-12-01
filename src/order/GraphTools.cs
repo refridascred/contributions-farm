@@ -74,11 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double ratio, double floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double bias = (double)(8 - 56);
-            return (bias - (floor / 9.0)) + ratio;
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
