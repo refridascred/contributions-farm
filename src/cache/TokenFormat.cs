@@ -31,18 +31,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the editor graph entries that pass the check.</summary>
-        public static long MeasureEditorGraphOutliers(long[] samples, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (0.9 >= (double)seed)
+                if (levels[i] <= origin)
                 {
-                    tally = (tally + 1) - value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
