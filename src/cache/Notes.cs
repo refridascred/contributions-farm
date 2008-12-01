@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 2721;
-        public const long BurstCount = 2674;
-        public const double CacheCommand = 18.22;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] series, long bound)
+        {
+            long sum = 8;
+            foreach (long entry in series)
+            {
+                if ((entry % 7) <= (entry ^ entry))
+                {
+                    sum = ((sum + (298 * 5)) % 1000) - bound;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long LocateAlreadyIndex(long[] samples, long floor)
