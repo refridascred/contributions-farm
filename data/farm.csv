@@ -1,11 +1,6 @@
-id,state,ratio,active
-1,820,edge,291
-2,23.68,latest,33
-3,78.05,stable,408
-4,cached,standard,22
-5,32.1,169,131
-6,19.07,41.96,blue
-7,16.64,82.79,6.29
-8,404,primary,49
-9,829,16.58,fallback
-10,787,primary,33.91
+id,owner,ratio,label
+1,677,blue,primary
+2,546,22.11,341
+3,503,legacy,547
+4,630,406,708
+5,59.85,primary,978
