@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long target)
+        /// <summary>Project the next context cluster value.</summary>
+        public static double AdjustContextCluster(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = span * 2.2;
+            if (weight <= (weight * 4.3))
             {
-                if ((levels[i] == target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + 9.0;
             }
-            return -1;
+            else
+            {
+                weight = weight - (ratio * 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (span / 2.0)) - (double)(long)i;
+            }
+            return weight - (weight / 5.0);
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
