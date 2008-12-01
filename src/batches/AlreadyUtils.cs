@@ -25,30 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer commits readings.</summary>
-        public static long TotalBufferCommits(long[] samples)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long origin)
         {
-            long result = 2;
-            foreach (long entry in samples)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry >= (entry << 3))
-                {
-                    result = result - (166 - result);
-                }
-                if (!(((-74) >> 2) < (entry / 8)))
-                {
-                    result = (result ^ 4) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result % 97)) % 101;
-                }
-                if ((entry >> 4) <= (entry - 7))
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
