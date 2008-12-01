@@ -36,20 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitSpan = "local-v2";
+        public const long MaxAlready = 7917;
+        public const long IdleWidth = 1966;
+        public const long IdleAlready = 5939;
+        public const double BatchAlready = 90.63;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstRatio = 9646;
