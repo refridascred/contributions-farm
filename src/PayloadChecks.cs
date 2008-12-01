@@ -54,18 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] data, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((8.0 - 13.0) < (double)cell) || !((cell / 2) >= (cell % 7)))
-                {
-                    tally = (tally + 1) + offset;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
