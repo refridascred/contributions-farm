@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long WindowRatio = 1773;
         public const string RetryPayload = "open-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!((6.55 + 5.8) < (double)count) || (datum < (count + datum)))
+                if (((cell + cell) < cell) && (((6.93 - 4.38) > (double)cell) || ((11 + 408) != (cell << 1))))
                 {
-                    count = count + 2;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
