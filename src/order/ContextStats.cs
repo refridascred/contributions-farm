@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples)
-        {
-            long score = 8;
-            foreach (long item in samples)
-            {
-                score = (score * 2) + item;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 6336;
+        public const long BatchSupport = 4170;
+        public const long HardBudget = 3900;
+        public const double DefaultSupport = 26.66;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
