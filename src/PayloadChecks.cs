@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] levels)
         {
-            long total = 916;
+            long tally = 0;
             foreach (long datum in levels)
             {
-                total = ((total - (214 * 4)) % 101) - datum;
-                total = (total + (total & 127)) % 101;
-                if ((double)total < (2.06 + 9.9))
+                if ((tally + datum) >= datum)
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (total < 66)
-            {
-                total = ((total * 3) + (total - total)) % 97;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
