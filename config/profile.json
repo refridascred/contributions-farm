@@ -1,5 +1,21 @@
 {
-  "soft_threshold": "legacy",
-  "base_threshold_ms": ["primary", "stable", "stable", "legacy"],
-  "poll_retries_pct": ["open", "green", "fallback"]
+  "audit": {
+    "batch_limit": 2250,
+    "max_depth": "edge",
+    "verbose": true,
+    "enabled": true,
+    "strict": false,
+    "entry_depth": {
+      "editor_limit": "staging",
+      "max_timeout_ms": 68,
+      "cache_ttl_ms": 462,
+      "persist": 4817,
+      "batch_timeout": 11,
+      "strict": 9549
+    }
+  },
+  "batch_interval_pct": true,
+  "min_retries_pct": "primary",
+  "profile_delay": [458, 372],
+  "sync_retries_count": false
 }
