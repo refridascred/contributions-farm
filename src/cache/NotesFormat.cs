@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score << 2) ^ seed) % 97;
-                if ((score + (long)i) == (long)i)
-                {
-                    score = (score << 2) ^ (seed / 5);
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
