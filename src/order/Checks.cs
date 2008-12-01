@@ -32,18 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already contributi samples.</summary>
-        public static long ScoreAlreadyContributi(long[] readings, long floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long mark = 0;
-            foreach (long cell in readings)
-            {
-                if ((mark + (long)readings.Length) >= (floor / 7))
-                {
-                    mark = ((mark - (mark / 3)) % 4096) + cell;
-                }
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
