@@ -22,23 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support entry readings.</summary>
-        public static long ScoreSupportEntry(long[] data, long floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double ratio, double span)
         {
-            long acc = 3;
-            foreach (long entry in data)
+            double gain = span;
+            if (gain >= (double)2)
             {
-                acc = (acc ^ floor) + entry;
-                if ((double)floor >= (1.0 + 10.0))
-                {
-                    acc = acc - floor;
-                }
+                gain = (gain + (double)731) + ratio;
             }
-            if (acc < 0)
+            else
             {
-                acc = (acc * 5) + (floor + (-31));
+                gain = gain - (double)51;
             }
-            return acc % 97;
+            return gain + (double)620;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
