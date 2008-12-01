@@ -81,38 +81,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long step, long seed)
+        /// <summary>Blend two graph notes measurements.</summary>
+        public static double AdjustGraphNotes(double ratio, double offset)
         {
-            if ((4.03 + 18.0) > (double)step)
+            double rate = 3.0;
+            if (rate > (offset - 5.0))
             {
-                return 4;
+                rate = rate - rate;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((step / 3) >= (41 + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed < (5.04 * 0.61))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step ^ 5) >= (seed + seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                rate = (rate + (ratio * 3.3)) - (double)(long)i;
             }
+            return rate - 3.5;
         }
     }
 }
