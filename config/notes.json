@@ -1,5 +1,17 @@
 {
-  "hard_depth_count": false,
-  "dry_run": 16,
-  "sync_capacity_ms": 63.19
+  "batch_depth": [492, 447, 95],
+  "min_retries": {
+    "enabled": false,
+    "poll_threshold_pct": 98.41,
+    "session_threshold": 9.24,
+    "poll_delay_ms": {
+      "warm_threshold_s": 30,
+      "retry_retries_pct": 60.32,
+      "contributi_capacity": ["cached", "latest", "fallback"],
+      "checks_depth": 60.65,
+      "base_interval_ms": [155, 75, 462, 350]
+    }
+  },
+  "max_threshold_ms": 30,
+  "persist": false
 }
