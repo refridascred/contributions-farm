@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseDepth = 6351;
-        public const long BurstSession = 2189;
-        public const long MinSession = 8509;
-        public const string IdleDepth = "primary";
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextMatches(long[] series, long offset)
