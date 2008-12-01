@@ -56,31 +56,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long target, long seed)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            if ((9.3 - 6.8) <= (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed & 63) > seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed <= (3.0 + 9.6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
