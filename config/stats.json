@@ -1,7 +1,8 @@
 {
-  "sync_limit_pct": 53.94,
-  "dry_run": 73.0,
-  "cluster_interval": "local",
-  "already_retries": "primary",
-  "readonly": 80.8
+  "idle_size": 60,
+  "hard_threshold": 500,
+  "sync_ttl_pct": true,
+  "verbose": 60,
+  "min_interval_count": 30,
+  "readonly": 35.19
 }
