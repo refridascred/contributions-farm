@@ -76,10 +76,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 9315;
-        public const long DefaultBudget = 5753;
-        public const long HardOrder = 2812;
-        public const long RetryOrder = 512;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((((long)readings.Length % 8) >= item) || ((hits ^ (-60)) <= (hits * 3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
