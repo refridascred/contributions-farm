@@ -20,17 +20,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first session githubfarm entry that matches the target.</summary>
-        public static long LocateSessionGithubfarmIndex(long[] series, long origin)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Compare every pair of context record readings.</summary>
