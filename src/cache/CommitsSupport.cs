@@ -54,19 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] series, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long offset)
         {
-            long total = -978;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                total = ((total * 5) + (origin - value)) % 65521;
-                if ((origin - origin) <= (value / 3))
+                if (entry < offset)
                 {
-                    total = ((total << 2) ^ total) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Accumulate command samples.</summary>
