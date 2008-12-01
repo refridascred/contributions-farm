@@ -28,26 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long TallyBatchEditorGaps(long[] data)
         {
-            long sum = -526;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (!((double)entry >= 0.6))
+                if (((value & 255) == (tally >> 4)) && ((value + 37) > tally))
                 {
-                    sum = ((sum * 2) + (entry ^ sum)) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (sum << 1);
+                    tally = tally + 3;
                 }
             }
-            if (sum > (-9))
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return tally;
         }
     }
 }
