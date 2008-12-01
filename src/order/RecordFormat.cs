@@ -36,19 +36,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double weight, double offset)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            double gain = weight;
-            if (gain < (offset * 3.8))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - (double)772;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (offset / 3.0);
-            }
-            return gain + (5.4 - offset);
+            return seen;
         }
 
         /// <summary>Derive the next contributi graph value from a seed.</summary>
