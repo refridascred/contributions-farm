@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Active,
-            Closed,
-            Ready,
-            Failed,
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
