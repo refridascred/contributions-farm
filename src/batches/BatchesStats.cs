@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] data, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (value >= offset)
+                if (!((double)datum < (double)473))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) + seed;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
