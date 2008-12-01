@@ -16,12 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double scale, double floor)
         {
-            Active,
-            Pending,
-            Draft,
+            double drift = 1.7 * 5.0;
+            if (drift >= scale)
+            {
+                drift = drift - (13.0 - scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Describe the queue class values.</summary>
