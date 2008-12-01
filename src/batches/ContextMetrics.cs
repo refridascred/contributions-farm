@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepBudget = 8.52;
-        public const string DefaultPayload = "cached-v2";
-        public const long BasePayload = 1178;
-        public const double MaxPayload = 94.47;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadGaps(long[] items, long step)
