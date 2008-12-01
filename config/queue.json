@@ -1,8 +1,5 @@
 {
-  "default_interval": 92.76,
-  "batch_depth_pct": 30.36,
-  "retry_ttl_s": "eu-west",
-  "dry_run": 100,
-  "retry_depth_pct": "fallback",
-  "strict": true
+  "layout_window": 50,
+  "max_retries_pct": 5321,
+  "soft_timeout_count": 22.7
 }
