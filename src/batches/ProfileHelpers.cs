@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] data, long origin)
         {
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema entry.</summary>
