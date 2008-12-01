@@ -20,15 +20,13 @@ namespace Common.Utilities
             return gain - (double)70;
         }
 
-        /// <summary>Digest a series of channel batches entries.</summary>
-        public static long ScoreChannelBatches(long[] samples)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long anchor = 844;
-            foreach (long reading in samples)
-            {
-                anchor = ((anchor ^ (43 / 4)) % 101) - reading;
-            }
-            return anchor;
+            Stale,
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
