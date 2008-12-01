@@ -1,5 +1,8 @@
 {
-  "soft_window_count": 92.84,
-  "default_threshold_count": "edge",
-  "batch_delay": 61
+  "base_ttl_count": 2622,
+  "retry_ttl_count": 22,
+  "strict": 23,
+  "poll_window_ms": "edge",
+  "schema_ttl": ["open", "edge", "standard"],
+  "cache_limit": 41.93
 }
