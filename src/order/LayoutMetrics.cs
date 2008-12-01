@@ -25,10 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseBudget = "alpha-v2";
-        public const string BurstEntry = "staging";
-        public const long CacheScore = 523;
-        public const double MaxEntry = 82.12;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
