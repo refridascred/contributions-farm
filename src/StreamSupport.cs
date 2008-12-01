@@ -33,39 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long target2)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] items)
         {
-            long step = target + target2;
-            if ((353 + step) > (999 & 1))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step << 1) < step)
+                if (!((15 ^ matches) != (matches * 4)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target2 > 9.56)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step > (target2 % 16))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 3) + datum;
                 }
             }
+            return matches;
         }
     }
 }
