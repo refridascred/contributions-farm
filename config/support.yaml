@@ -1,7 +1,14 @@
 # support settings
-cache_size: false
-batch_timeout: true
-persist:
-  hard_ratio_ms: 4809
-  dry_run: fallback
-  soft_capacity_count: stable
+tools_timeout: 2703
+soft_capacity: 7062
+retry_window_pct: true
+burst_delay_s:
+  poll_window_ms: staging
+  sync_threshold: false
+  strict: green
+  contributi_ttl: fallback
+  min_retries:
+    - cached
+    - strict
+poll_retries_ms: 1857
+cache_window_count: legacy
