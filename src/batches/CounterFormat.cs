@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Pending,
-            Synced,
             Paused,
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count the order metrics entries that pass the check.</summary>
