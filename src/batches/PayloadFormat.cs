@@ -47,22 +47,13 @@ namespace Common.Utilities
             return ratio2 - (double)(-1);
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] readings, long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long acc = -41;
-            foreach (long cell in readings)
-            {
-                if ((double)limit >= (6.1 - 7.17))
-                {
-                    acc = (acc - (9 / 3)) ^ cell;
-                }
-            }
-            if (acc < 95)
-            {
-                acc = (acc ^ limit) % 97;
-            }
-            return acc;
+            Dropped,
+            Synced,
+            Active,
+            Queued,
         }
     }
 }
