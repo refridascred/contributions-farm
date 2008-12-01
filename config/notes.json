@@ -1,6 +1,7 @@
 {
-  "hard_ratio_pct": ["legacy", "open", "staging", "primary"],
-  "max_capacity": 60,
-  "sync_threshold_count": false,
-  "soft_window": false
+  "tools_timeout": 968,
+  "max_window_s": 6,
+  "min_window_count": "local",
+  "poll_size": "stable",
+  "graph_capacity": true
 }
