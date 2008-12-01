@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
-            Done,
-            Queued,
-            Failed,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((3.7 + 1.8) > (double)count)
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
