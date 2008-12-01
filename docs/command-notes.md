@@ -1,12 +1,14 @@
 # Command notes
 
-A context that stays idle for too long is moved to the channel list.
-Use payload settings to tune how often stats data is refreshed.
-Defaults for cluster live in the config folder and can be overridden per environment.
+The counter report groups every counter by schema.
+Keep filter and commits names short and lowercase.
+
+The context report groups every batches by farm.
+Run the commits check before changing any layout limits.
 
 ## Guidelines
 
-- Document new support fields
-- Keep stream values small
-- Validate buffer input early
-- Prefer already defaults
+- Prefer layout defaults
+- Keep payload values small
+- Log every stats change
+- Review command limits each release
