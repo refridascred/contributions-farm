@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] values, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((long)i ^ target) > target))
+                if ((values[i] > step) && ((values[i] % 5) != 0))
                 {
-                    anchor = anchor + (76 << 1);
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
