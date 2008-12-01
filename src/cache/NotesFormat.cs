@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] levels, long origin)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
