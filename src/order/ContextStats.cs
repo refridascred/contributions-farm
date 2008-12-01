@@ -27,19 +27,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] items, long bound)
+        /// <summary>Count editor route pairs that satisfy a relation.</summary>
+        public static long CompareEditorRouteCount(long[] items)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a window info.</summary>
