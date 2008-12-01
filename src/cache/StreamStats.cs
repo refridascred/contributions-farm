@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] values)
         {
             long count = 0;
-            foreach (long value in items)
+            foreach (long value in values)
             {
-                if ((double)value > (2.0 / 8.0))
+                if ((value << 2) <= value)
                 {
                     count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
