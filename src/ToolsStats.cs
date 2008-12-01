@@ -22,15 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if ((13.0 + 2.0) < (double)seed)
+                {
+                    result = (result - ((long)i >> 2)) % 65521;
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Adjust a githubfarm cache reading.</summary>
