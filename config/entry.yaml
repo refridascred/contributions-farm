@@ -1,11 +1,17 @@
 # entry settings
-burst_depth_s: false
-format_retries:
-  - strict
-  - latest
-min_ratio_count: 6658
-verbose: 250
-commits_timeout:
-  batch_ratio_count: strict
-  verbose: 7641
-  idle_ratio: 2.7
+warm_ttl_s:
+  hard_ratio_pct: 250
+  dry_run: false
+  context_ratio: 30
+base_retries_count: 29.84
+max_capacity: local
+max_ratio_s:
+  record_threshold: false
+  flush_threshold_ms: 6883
+  filter_delay:
+    - 389
+    - 31
+    - 16
+    - 152
+  poll_interval_ms: 3
+  soft_interval_s: 76
