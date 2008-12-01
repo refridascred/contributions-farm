@@ -1,7 +1,25 @@
 # route settings
-buffer_capacity: 24.22
-sync_depth_ms: 8011
-readonly: local
-sync_capacity_ms: 30.88
-soft_ratio: 96.22
-githubfarm_ttl: 250
+hard_size:
+  - 490
+  - 461
+  - 271
+poll_delay_s: edge
+idle_ttl_pct:
+  editor_ratio: 41.11
+  hard_window:
+    min_window_ms: local
+    max_limit_count:
+      - primary
+      - eu-west
+      - primary
+    poll_threshold_s: cached
+    audit: cached
+    warm_size_ms:
+      - 461
+      - 377
+    hard_ttl_s: 67
+  warm_timeout_pct: 67
+  default_interval_s: false
+  dry_run: 3326
+  command_delay: 250
+hard_interval: true
