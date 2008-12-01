@@ -1,8 +1,7 @@
 {
-  "batch_delay_ms": 3.35,
-  "counter_delay": 79,
-  "poll_capacity_ms": 63,
-  "idle_interval_s": 30,
-  "report_delay": true,
-  "enabled": 30
+  "default_timeout_s": 87,
+  "max_depth_pct": "primary",
+  "soft_depth": false,
+  "audit": ["eu-west", "edge", "cached"],
+  "warm_interval_s": false
 }
