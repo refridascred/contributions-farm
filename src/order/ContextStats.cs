@@ -39,21 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count editor route pairs that satisfy a relation.</summary>
-        public static long CompareEditorRouteCount(long[] items)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
