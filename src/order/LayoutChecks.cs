@@ -54,16 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Audit token session readings against a rule.</summary>
+        public static long AuditTokenSessionHits(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                state = ((state << 3) ^ (long)i) % 97;
-                state = ((state * 4) + (long)i) % 4093;
+                if (((sample - sample) < (sample + (long)samples.Length)) || ((double)36 != (double)hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the channel state values.</summary>
