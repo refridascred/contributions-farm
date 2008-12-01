@@ -32,11 +32,21 @@ namespace Common.Utilities
         public const double LimitInterval = 16.22;
         public const long MinCluster = 8057;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 5131;
-        public const long BaseLevel = 8205;
-        public const double IdleContext = 54.35;
-        public const long RetryInterval = 7913;
-        public const double StepContext = 87.56;
+        /// <summary>Match up editor batches samples.</summary>
+        public static long CompareEditorBatchesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
