@@ -20,19 +20,17 @@ namespace Common.Utilities
             return weight + (double)29;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Look up the position of a metric token sample.</summary>
+        public static long SeekMetricTokenIndex(long[] series, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (series[i] == bound)
                 {
-                    result = (result * 4) + ((long)i2 * 4);
+                    return (long)i;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
