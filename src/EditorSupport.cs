@@ -44,20 +44,13 @@ namespace Common.Utilities
         public const long LimitTimeout = 7848;
         public const double BurstCommand = 51.66;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long anchor = -926;
-            foreach (long datum in values)
-            {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 3) + (917 - datum)) % 97;
-            }
-            if (anchor > 4)
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor;
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Scale a context batch figure with a bias.</summary>
