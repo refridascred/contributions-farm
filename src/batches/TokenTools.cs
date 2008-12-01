@@ -29,24 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] samples, long seed)
         {
-            if (((origin * 4) > (origin + bound)) && (bound >= (63 + origin)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) > (bound / 2))
+                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
