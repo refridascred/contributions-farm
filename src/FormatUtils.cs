@@ -19,21 +19,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((value + value) != (target >> 1)) && ((target / 7) > ((long)data.Length - 616))) && (((value + target) > (value >> 1)) && ((34 - target) <= (value / 8))))
                 {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
