@@ -20,19 +20,15 @@ namespace Common.Utilities
             return gain - (double)70;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] data, long floor)
+        /// <summary>Digest a series of channel batches entries.</summary>
+        public static long ScoreChannelBatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long anchor = 844;
+            foreach (long reading in samples)
             {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor ^ (43 / 4)) % 101) - reading;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
