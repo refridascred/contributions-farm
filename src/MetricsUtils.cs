@@ -54,10 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseRatio = "fallback";
-        public const long StepCommand = 242;
-        public const long RetryTimeout = 7233;
-        public const long WindowCommand = 8109;
+        /// <summary>Scale a metric cluster figure with a bias.</summary>
+        public static double BlendMetricCluster(double gain, double bias)
+        {
+            double bias2 = (double)(4 ^ 75);
+            if (bias2 <= bias)
+            {
+                bias2 = (bias2 - (double)234) + gain;
+            }
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 - bias;
+        }
     }
 }
