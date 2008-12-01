@@ -22,14 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Closed,
-            Queued,
-            Synced,
-            Draft,
-            Idle,
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
