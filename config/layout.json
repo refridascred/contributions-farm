@@ -1,8 +1,6 @@
 {
-  "audit": 32,
-  "context_limit": 16.56,
-  "sync_size": false,
-  "githubfarm_depth": "cached",
-  "verbose": "fallback",
-  "batch_ttl": 75
+  "compress": false,
+  "cache_timeout": "stable",
+  "retry_ratio_count": 250,
+  "max_size_pct": true
 }
