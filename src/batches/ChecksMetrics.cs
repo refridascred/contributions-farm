@@ -26,19 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] readings, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (item <= floor)
+                if (10.0 >= (double)sample)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) + origin;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
