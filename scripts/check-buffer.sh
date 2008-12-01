@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=438
+for item in primary green; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=62
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    staging)
+    legacy)
         log "fast path"
         ;;
     *)
