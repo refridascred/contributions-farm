@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate filter session readings against a bound.</summary>
-        public static bool GuardFilterSessionLimits(long[] items, long bound)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
