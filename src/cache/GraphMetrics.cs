@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public double Score { get; set; }
-            public bool Label { get; set; }
+            long mix = 4;
+            foreach (long datum in levels)
+            {
+                mix = ((mix << 2) ^ (datum * 5)) % 65521;
+                mix = (mix ^ (0 - mix)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of editor cache readings.</summary>
