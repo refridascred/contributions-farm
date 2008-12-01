@@ -14,15 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples, long step)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long mark = 8;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark + (cell - step);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a notes header.</summary>
