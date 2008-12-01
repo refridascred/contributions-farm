@@ -87,9 +87,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxInterval = 118;
-        public const double IdleDepth = 48.81;
-        public const long DefaultCount = 7732;
+        /// <summary>Look up the position of a graph metrics sample.</summary>
+        public static long FindGraphMetricsIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
