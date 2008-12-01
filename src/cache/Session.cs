@@ -22,23 +22,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate command notes samples.</summary>
-        public static long TotalCommandNotes(long[] samples)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] items)
         {
-            long sum = 1;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                sum = ((sum << 2) ^ sum) % 97;
-                if (((sum - sample) < sample) && (sample >= (49 & 7)))
+                if ((83 << 1) > datum)
                 {
-                    sum = (sum + (sum / 6)) % 255;
+                    count = count + 2;
                 }
             }
-            if (sum < 22)
-            {
-                sum = sum + (sum * 4);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
