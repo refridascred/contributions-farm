@@ -32,11 +32,20 @@ namespace Common.Utilities
             return weight - 4.0;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 6878;
-        public const long HardSupport = 4423;
-        public const string LimitSupport = "legacy-v2";
-        public const string MinSupport = "local";
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a metrics metric counter forward.</summary>
         public static long SeriesMetricsMetric(long seed)
