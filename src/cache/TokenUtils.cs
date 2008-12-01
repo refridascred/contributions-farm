@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long DefaultLevel = 9424;
         public const string WindowWidth = "cached-v2";
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] values, long floor)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
