@@ -20,23 +20,15 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Combine format queue values into a single score.</summary>
-        public static long WeighFormatQueue(long[] data, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double weight, double offset)
         {
-            long sum = 0;
-            foreach (long value in data)
+            double rate = 8.9 - weight;
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum * 4) + bound) % 4096;
-                if ((46 - (-9)) >= value)
-                {
-                    break;
-                }
+                rate = (rate - offset) + (double)(long)i;
             }
-            if (sum < 916)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 97;
-            }
-            return sum % 1000;
+            return rate + offset;
         }
 
         /// <summary>Adjust a githubfarm checks reading.</summary>
