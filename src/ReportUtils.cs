@@ -45,11 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Combine window counter values into a single score.</summary>
+        public static long ScoreWindowCounter(long[] readings)
         {
-            public double Limit { get; set; }
-            public double Offset { get; set; }
+            long result = 9;
+            foreach (long sample in readings)
+            {
+                result = ((result - (result % 2)) % 4096) + sample;
+            }
+            return result;
         }
 
         /// <summary>Describe the notes status values.</summary>
