@@ -20,17 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] items, long floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < floor) && ((items[i] % 2) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up commits metric samples.</summary>
