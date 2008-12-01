@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached latest green primary; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=285
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-green}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
 for i in $(seq 1 10); do
-    total=$((total + i * 3))
+    total=$((total + i * 1))
 done
 log "total ${total}"
