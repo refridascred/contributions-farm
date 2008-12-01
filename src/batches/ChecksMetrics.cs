@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinChannel = 65.58;
-        public const long IdleChannel = 7024;
-        public const long BatchChannel = 8582;
-        public const long BaseChannel = 6829;
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double bias, double offset)
+        {
+            double weight = 7.0 / 6.0;
+            if (weight <= bias)
+            {
+                weight = (weight - (double)27) + offset;
+            }
+            else
+            {
+                weight = weight + (double)6;
+            }
+            return weight + (double)29;
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long StepRoute(long origin)
