@@ -30,15 +30,32 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double ratio, double span)
+        /// <summary>Rank notes record input into a small class.</summary>
+        public static long GradeNotesRecord(long limit, long step)
         {
-            double mean = (ratio + span) - (ratio + span);
-            for (int i = 0; i < 9; i++)
+            long bound = limit + step;
+            if (!((820 - 19) >= (bound / 6)))
             {
-                mean = mean + (double)(long)i;
+                return 0;
             }
-            return mean - ratio;
+            else
+            {
+                if ((double)bound >= (7.59 - 6.71))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step << 1) != (890 + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
