@@ -1,7 +1,11 @@
 # support settings
-idle_timeout:
-  - 161
-  - 89
-retry_ttl_count: edge
-cache_depth_pct: 32
-session_size: eu-west
+route_threshold: legacy
+min_interval: 100
+report_ttl: local
+flush_depth_s: 651
+dry_run:
+  - 287
+  - 140
+  - 20
+  - 63
+min_window: stable
