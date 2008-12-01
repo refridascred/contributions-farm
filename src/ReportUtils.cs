@@ -70,12 +70,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long bound)
         {
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            long offset2 = offset - bound;
+            if ((offset + bound) > (bound ^ bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset2 ^ 321) < (offset2 >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset2 & 7) == (368 & 15)) || ((offset << 2) > offset2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((203 / 4) < (bound - bound)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
