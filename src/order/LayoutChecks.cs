@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            Idle,
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
