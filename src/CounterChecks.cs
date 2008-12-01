@@ -40,11 +40,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 8315;
-        public const double StepWidth = 40.98;
-        public const string RetryTimeout = "cached-1";
-        public const long CacheLevel = 7091;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheBudget = "staging-1";
+        public const string RetrySupport = "strict-v2";
+        public const long BatchSupport = 9820;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
