@@ -1,7 +1,8 @@
-id,level,ratio,weight,count
-1,889,edge,cached,5.09
-2,192,31.47,63.17,staging
-3,latest,77.41,38.63,617
-4,507,596,green,49.56
-5,266,primary,cached,48.96
-6,977,23,19.06,603
+id,count,token,score,owner
+1,70.15,80.02,723,83.3
+2,302,green,59.88,13.08
+3,885,68.41,517,432
+4,166,88.31,82.0,local
+5,141,830,330,latest
+6,483,stable,10.83,579
+7,626,primary,353,896
