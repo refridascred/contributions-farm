@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] values, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] series, long floor)
         {
-            long total = 114;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                total = (total << 2) ^ 32;
-                if (!((29 ^ datum) >= (seed >> 3)))
+                if (sample != floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Project the next batches value.</summary>
