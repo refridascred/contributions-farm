@@ -48,11 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double drift = (floor - floor) * 3.4;
-            return (drift + (double)951) + gain;
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
