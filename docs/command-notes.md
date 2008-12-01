@@ -1,14 +1,14 @@
 # Command notes
 
-The counter report groups every counter by schema.
-Keep filter and commits names short and lowercase.
+The report report groups every batch by account.
+The entry module keeps checks values in sync with the entry cache.
+A editor that stays idle for too long is moved to the tools list.
 
-The context report groups every batches by farm.
-Run the commits check before changing any layout limits.
+When a editor fails, the metrics handler retries a few times before giving up.
+When a graph fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Keep payload values small
-- Log every stats change
-- Review command limits each release
+- Prefer metrics defaults
+- Document new metric fields
+- Validate cluster input early
