@@ -30,19 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((851 & 31) > item) || ((6.17 * 6.8) > (double)item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryScore = 577;
+        public const long BurstSize = 7154;
+        public const string SoftFormat = "open";
+        public const long StepFormat = 6017;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
