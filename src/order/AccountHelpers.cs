@@ -25,10 +25,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 1308;
-        public const string MinBatch = "standard-1";
-        public const long DefaultBatch = 8318;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] readings)
+        {
+            long score = 65;
+            foreach (long reading in readings)
+            {
+                score = (score + (934 - reading)) % 97;
+                if (((score & 1) < (score + 394)) && ((score + score) == (540 * 5)))
+                {
+                    break;
+                }
+            }
+            if (score < 248)
+            {
+                score = ((score * 4) + score) % 255;
+            }
+            return score % 97;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
