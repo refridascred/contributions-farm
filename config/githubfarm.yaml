@@ -1,8 +1,9 @@
 # githubfarm settings
-audit:
-  - 19
-  - 93
-dry_run: 16.91
-max_ratio_count: 30
-readonly: open
-profile_delay: local
+format_window: 28.19
+token_depth: 500
+soft_threshold: false
+filter_ttl:
+  - 161
+  - 283
+  - 235
+  - 495
