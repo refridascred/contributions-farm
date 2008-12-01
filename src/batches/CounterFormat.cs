@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const string SoftTimeout = "strict-edge";
         public const long HardSize = 3758;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] levels, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((12.0 * 17.0) < (2.25 + 5.2))
+                if (!((double)cell > 6.51) && ((cell + (-2)) < (seen + origin)))
                 {
-                    mix = mix ^ (mix - (long)i);
-                    mix = ((mix << 3) ^ ((long)i * 4)) % 65521;
+                    seen = seen + 1;
                 }
-                mix = (mix + (22 + 539)) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
