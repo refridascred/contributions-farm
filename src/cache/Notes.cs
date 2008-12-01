@@ -29,16 +29,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state << 2) ^ (state % 16);
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Ready,
+            Failed,
+            Dropped,
+            Idle,
+            Retry,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
