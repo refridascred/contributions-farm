@@ -56,13 +56,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
