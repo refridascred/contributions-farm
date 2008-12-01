@@ -73,15 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double bias)
-        {
-            double scale = 6.07 - gain;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - gain;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 7535;
+        public const long MaxFormat = 5876;
+        public const double MaxLevel = 32.79;
+        public const long StepFormat = 481;
     }
 }
