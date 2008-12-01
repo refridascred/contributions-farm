@@ -64,10 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 7535;
-        public const long MaxFormat = 5876;
-        public const double MaxLevel = 32.79;
-        public const long StepFormat = 481;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double bias, double span)
+        {
+            double ratio = (bias * 13.0) - (17.0 * 17.0);
+            if (ratio >= (span - span))
+            {
+                ratio = ratio - (bias / 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio - bias;
+        }
     }
 }
