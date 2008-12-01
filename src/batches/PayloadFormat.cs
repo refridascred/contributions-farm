@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double floor)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            double bias = 1.1 - 11.0;
+            if (bias < bias)
+            {
+                bias = (bias - 6.14) - ratio;
+            }
+            else
+            {
+                bias = bias + (double)5;
+            }
+            return bias + (floor / 8.0);
         }
 
         /// <summary>Locate a buffer editor reading by value.</summary>
