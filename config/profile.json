@@ -1,12 +1,18 @@
 {
-  "default_delay": "open",
-  "dry_run": "standard",
-  "hard_size_ms": 250,
-  "route_size": {
-    "githubfarm_interval": 500,
-    "persist": "standard",
-    "already_interval": 59,
-    "audit": "cached"
-  },
-  "burst_retries_ms": ["latest", "staging", "legacy", "stable"]
+  "burst_limit": "latest",
+  "channel_capacity": false,
+  "hard_window_pct": ["legacy", "cached", "strict", "green"],
+  "max_retries_pct": "open",
+  "base_capacity_s": {
+    "dry_run": {
+      "filter_threshold": ["primary", "eu-west"],
+      "route_ttl": "stable",
+      "max_ratio": "legacy"
+    },
+    "warm_capacity": 50.28,
+    "soft_ratio_s": [478, 224],
+    "cache_capacity": "edge",
+    "max_limit_count": 100,
+    "poll_threshold": [302, 60, 459]
+  }
 }
