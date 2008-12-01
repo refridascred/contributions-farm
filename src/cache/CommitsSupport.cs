@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 2612;
-        public const long HardPayload = 8986;
-        public const long WindowRatio = 1773;
-        public const string RetryPayload = "open-1";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchMatches(long[] series)
