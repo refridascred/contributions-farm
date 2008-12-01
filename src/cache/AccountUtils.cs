@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Closed,
+            Stale,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a session options.</summary>
