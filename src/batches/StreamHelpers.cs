@@ -45,13 +45,19 @@ namespace Common.Utilities
             return ((rate + (double)7) + weight) + span;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Check that every commits counter entry stays within the limit.</summary>
+        public static bool CheckCommitsCounterBounds(long[] samples, long seed)
         {
-            Stale,
-            Idle,
-            Locked,
-            Pending,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a queue info.</summary>
