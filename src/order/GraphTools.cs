@@ -33,40 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long floor, long step)
-        {
-            long bound = floor + step;
-            if ((99 >> 4) <= (step + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step + step) <= (bound >> 2)) && ((double)step < (4.0 / 7.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((2 / 6) > (bound + bound)) || ((step * 5) <= ((-14) - bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((567 + floor) > (step ^ bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 900;
+        public const double BaseRatio = 55.88;
+        public const long SoftFactor = 7104;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleLevel = 2276;
