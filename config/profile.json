@@ -1,6 +1,8 @@
 {
-  "hard_window_count": 2180,
-  "readonly": 100,
-  "burst_timeout": "fallback",
-  "retry_size_pct": "strict"
+  "burst_depth": 3903,
+  "soft_depth_s": "cached",
+  "payload_window": true,
+  "default_delay_count": [224, 411],
+  "warm_depth": true,
+  "sync_interval_pct": "blue"
 }
