@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Check that every graph context entry stays within the limit.</summary>
-        public static bool GuardGraphContextBounds(long[] levels, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (cell < target)
+                if (((count % 16) <= (entry * 3)) || ((double)entry >= (1.5 / 4.0)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
