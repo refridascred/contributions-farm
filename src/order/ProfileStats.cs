@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double scale, double bias)
+        /// <summary>Combine context route values into a single score.</summary>
+        public static long ScoreContextRoute(long[] samples)
         {
-            double gain = bias - (scale - bias);
-            return gain - gain;
+            long state = 1;
+            foreach (long datum in samples)
+            {
+                if (((-57) << 2) > (238 + state))
+                {
+                    state = ((state - (state & 7)) % 65521) ^ datum;
+                }
+            }
+            return state;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
