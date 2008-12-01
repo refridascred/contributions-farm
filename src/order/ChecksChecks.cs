@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the metrics notes entries that pass the check.</summary>
+        public static long TallyMetricsNotesGaps(long[] levels)
         {
-            Active,
-            Idle,
-            Closed,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (count <= (count & 15))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
