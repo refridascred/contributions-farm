@@ -40,13 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] series, long step)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            long total = 5;
+            foreach (long datum in series)
+            {
+                total = (total - total) - step;
+                total = ((total << 2) ^ (total + datum)) % 255;
+            }
+            return total % 65521;
         }
     }
 }
