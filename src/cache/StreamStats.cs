@@ -47,19 +47,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((548 % 60) < (origin & 31))
-                {
-                    state = (state + state) % 255;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Stale,
+            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
