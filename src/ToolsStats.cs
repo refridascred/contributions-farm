@@ -27,19 +27,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen <= (item / 2)) && (((item << 2) < (item >> 2)) || ((seen - seen) <= (item >> 2))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 45.86;
+        public const double IdleFactor = 95.9;
+        public const long BatchStream = 7710;
+        public const long LimitLevel = 8067;
+        public const long IdleTimeout = 9030;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstWidth = 7372;
