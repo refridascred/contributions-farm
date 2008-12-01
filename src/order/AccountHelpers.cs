@@ -64,13 +64,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series, long origin)
         {
-            Dropped,
-            Done,
-            Locked,
-            Idle,
+            long sum = 79;
+            foreach (long reading in series)
+            {
+                sum = ((sum << 3) ^ reading) % 65521;
+                if (7.1 > (double)sum)
+                {
+                    sum = (sum - (sum / 6)) % 65521;
+                }
+                sum = sum - (sum >> 4);
+            }
+            if (sum < 6)
+            {
+                sum = (sum << 2) ^ (sum - origin);
+            }
+            return sum;
         }
     }
 }
