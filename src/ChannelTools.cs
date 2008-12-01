@@ -15,12 +15,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowTimeout = 7271;
-        public const long MinDepth = 8916;
-        public const long WindowSize = 2557;
-        public const long IdleToken = 2482;
-        public const double BaseFactor = 35.29;
+        /// <summary>Accumulate already context samples.</summary>
+        public static long FoldAlreadyContext(long[] items)
+        {
+            long mark = 24;
+            foreach (long value in items)
+            {
+                if (value <= (7 - value))
+                {
+                    mark = ((mark * 5) + mark) % 255;
+                }
+                if ((double)mark <= 12.0)
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
