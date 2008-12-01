@@ -25,18 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] levels)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((cell + seen) < (cell % 60)) || (((8 ^ seen) != (cell + seen)) || ((double)seen <= (1.0 + 6.76))))
+                if (((cell & 1) > (count - count)) || !((6 << 2) > (cell / 9)))
                 {
-                    seen = seen + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
