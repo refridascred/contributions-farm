@@ -25,13 +25,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Synced,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 1308;
+        public const string MinBatch = "standard-1";
+        public const long DefaultBatch = 8318;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
