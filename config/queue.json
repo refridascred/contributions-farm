@@ -1,5 +1,11 @@
 {
-  "base_retries": true,
-  "cache_size": false,
-  "warm_capacity_s": 30
+  "min_depth_pct": "legacy",
+  "flush_limit_pct": 38,
+  "retry_delay_s": {
+    "notes_capacity": ["primary", "staging", "blue", "local"],
+    "max_timeout_s": [87, 118, 54, 234],
+    "batch_retries": 500,
+    "poll_timeout_ms": 88.34
+  },
+  "metric_size": 1024
 }
