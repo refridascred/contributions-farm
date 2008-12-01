@@ -1,5 +1,12 @@
 {
-  "report_interval": 26,
-  "soft_ratio": "strict",
-  "strict": 1024
+  "default_delay": "open",
+  "dry_run": "standard",
+  "hard_size_ms": 250,
+  "route_size": {
+    "githubfarm_interval": 500,
+    "persist": "standard",
+    "already_interval": 59,
+    "audit": "cached"
+  },
+  "burst_retries_ms": ["latest", "staging", "legacy", "stable"]
 }
