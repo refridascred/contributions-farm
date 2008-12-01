@@ -35,9 +35,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardFactor = 28.34;
-        public const string LimitCount = "staging";
-        public const double IdleLevel = 59.5;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Owner { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
