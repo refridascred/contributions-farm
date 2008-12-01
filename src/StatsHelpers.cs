@@ -40,20 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter metric entry stays within the limit.</summary>
-        public static bool VerifyFilterMetricBounds(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitMetrics = 28.19;
+        public const string LimitInterval = "strict-v2";
+        public const long RetryMetrics = 5586;
+        public const double BaseMetrics = 82.0;
+        public const long MinRatio = 9065;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] items)
