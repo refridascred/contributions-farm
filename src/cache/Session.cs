@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias2 - (double)3;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Dropped,
-            Paused,
-            Pending,
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine command entry values into a single score.</summary>
