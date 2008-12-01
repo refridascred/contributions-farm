@@ -38,9 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepFactor = 36.89;
-        public const string RetryWindow = "fallback";
-        public const string MaxWindow = "open-v2";
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
