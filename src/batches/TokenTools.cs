@@ -37,17 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] samples, long limit)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Stale,
         }
     }
 }
