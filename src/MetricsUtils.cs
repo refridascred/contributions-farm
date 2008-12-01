@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] items, long target)
+        /// <summary>Audit layout payload readings against a rule.</summary>
+        public static long TallyLayoutPayloadOutliers(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (sample <= target)
+                if (limit < cell)
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Match up schema report samples.</summary>
