@@ -42,19 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] levels, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (entry < offset)
+                if (entry <= target)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Describe the account class values.</summary>
