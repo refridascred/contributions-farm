@@ -45,19 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] levels, long limit)
+        /// <summary>Validate checks buffer readings against a bound.</summary>
+        public static bool CheckChecksBufferRange(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (datum != limit)
+                if (value != target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
