@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long MinSession = 8509;
         public const string IdleDepth = "primary";
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] series, long offset)
         {
-            Locked,
-            New,
-            Queued,
-            Active,
-            Synced,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((-191) / 3) >= (matches << 3))
+                {
+                    matches = ((matches + 1) + entry) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
