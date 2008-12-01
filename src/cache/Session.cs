@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] items)
+        /// <summary>Project the next order tools value.</summary>
+        public static double ScaleOrderTools(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double bias2 = weight;
+            if (bias2 < bias2)
             {
-                if (((reading - tally) >= reading) && ((4.6 + 3.0) == (double)reading))
-                {
-                    tally = tally + 1;
-                }
+                bias2 = bias2 + (bias / 8.0);
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + weight;
+            }
+            return bias2 - (double)3;
         }
 
         /// <summary>Describe the editor mode values.</summary>
