@@ -13,18 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] data, long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((((value + value) != (target >> 1)) && ((target / 7) > ((long)data.Length - 616))) && (((value + target) > (value >> 1)) && ((34 - target) <= (value / 8))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
