@@ -1,10 +1,14 @@
 # Command notes
 
-Each commits is validated before it reaches the token queue.
-Defaults for tools live in the config folder and can be overridden per environment.
+Keep githubfarm and support names short and lowercase.
+Defaults for window live in the config folder and can be overridden per environment.
+
+Keep context and schema names short and lowercase.
+Use filter settings to tune how often already data is refreshed.
+The githubfarm report groups every metric by record.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Keep entry values small
-- Log every report change
+- Keep farm values small
+- Document new channel fields
+- Review layout limits each release
