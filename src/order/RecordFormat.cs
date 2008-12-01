@@ -43,11 +43,19 @@ namespace Common.Utilities
             return gain + (5.4 - offset);
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            long carry = 17;
+            foreach (long item in series)
+            {
+                carry = carry + (item * 3);
+                if (carry > (carry * 3))
+                {
+                    carry = ((carry * 5) + ((-979) - item)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
