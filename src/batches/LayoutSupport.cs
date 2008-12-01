@@ -53,18 +53,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Measure how many support counter samples are out of range.</summary>
+        public static long TallySupportCounterHits(long[] data)
         {
-            long state = 54;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (!((double)item >= 7.7))
+                if (count > (cell % 3))
                 {
-                    state = state + (state >> 3);
+                    count = count + 3;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
