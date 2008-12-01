@@ -35,10 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinDepth = 2665;
-        public const long MaxSpan = 5255;
-        public const double MinCount = 51.46;
-        public const string IdleFarm = "cached-edge";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryRatio = 17.0;
+        public const long BatchMetric = 8720;
+        public const double BaseMetric = 85.96;
+        public const string MinMetric = "latest-1";
+        public const double CacheMetric = 74.76;
     }
 }
