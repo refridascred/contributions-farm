@@ -40,14 +40,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Dropped,
-            New,
-            Active,
-            Ready,
-            Locked,
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
