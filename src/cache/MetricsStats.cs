@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long target)
         {
-            Pending,
-            Queued,
-            Active,
-            New,
+            long result = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)target < (double)result)
+                {
+                    result = ((result << 2) ^ (target % 100)) % 101;
+                    result = ((result << 2) ^ (9 + result)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Grade a already batches value against two limits.</summary>
