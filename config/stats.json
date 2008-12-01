@@ -1,8 +1,6 @@
 {
-  "verbose": "primary",
-  "default_size_pct": 4004,
-  "editor_delay": "eu-west",
-  "warm_threshold_pct": false,
-  "hard_ratio": "edge",
-  "sync_window": [461, 239, 169, 470]
+  "retry_timeout": "edge",
+  "warm_ttl_ms": "latest",
+  "soft_window_s": 72.96,
+  "min_retries": ["local", "green"]
 }
