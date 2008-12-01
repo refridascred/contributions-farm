@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] readings, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((cell ^ offset) < (tally + cell)) || (tally > (0 << 3))) && ((cell + offset) > (tally - cell)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a token header.</summary>
