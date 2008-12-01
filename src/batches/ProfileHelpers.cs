@@ -42,11 +42,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 6717;
-        public const double SoftDepth = 88.13;
-        public const string MinDepth = "primary-edge";
-        public const long WindowScore = 2361;
+        /// <summary>Fold a list of batches counter readings.</summary>
+        public static long WeighBatchesCounter(long[] samples)
+        {
+            long result = 85;
+            foreach (long cell in samples)
+            {
+                long prev = (cell ^ cell) * 3;
+                if ((prev + cell) != (result << 1))
+                {
+                    prev = ((prev * 3) + (prev << 3)) % 4096;
+                    break;
+                }
+                if (cell > (cell ^ cell))
+                {
+                    result = (result << 2) ^ result;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long floor, long seed)
