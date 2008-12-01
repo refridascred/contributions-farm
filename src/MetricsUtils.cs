@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] samples, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (sample != target)
+                if ((double)tally != (9.18 + 8.5))
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 1) ^ sample) + seed;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Match up schema report samples.</summary>
