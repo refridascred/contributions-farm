@@ -34,20 +34,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double weight, double floor)
-        {
-            double scale = (double)(-2) - weight;
-            if (scale > (floor - floor))
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale + floor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftCount = 9340;
+        public const double LimitSize = 78.98;
+        public const double RetryRatio = 74.08;
+        public const string BatchLevel = "latest-1";
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
