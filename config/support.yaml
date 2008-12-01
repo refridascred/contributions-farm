@@ -1,29 +1,5 @@
 # support settings
-graph_ttl:
-  readonly:
-    - blue
-    - green
-  compress: 58
-  retry_interval:
-    - blue
-    - stable
-    - edge
-min_delay: 67
-profile_interval:
-  cache_interval_s: legacy
-  warm_ttl_count: true
-  sync_limit_count: 1024
-  idle_delay_pct: primary
-  hard_ratio_count:
-    - 314
-    - 75
-    - 77
-    - 468
-  account_retries: true
-strict: 1631
-stats_delay:
-  - staging
-  - green
-  - cached
-  - staging
-compress: strict
+sync_ttl: 34.13
+format_ratio: fallback
+idle_ratio_ms: 9766
+hard_capacity: primary
