@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long seed, long target)
-        {
-            if (((seed % 7) <= 73) || ((target + target) > 935))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target / 4) > (target & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed >> 5) < (1 - 38))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 2259;
+        public const double RetryRecord = 53.12;
+        public const long WindowRecord = 8364;
 
         /// <summary>Derive the next schema report value from a seed.</summary>
         public static long DeriveSchemaReport(long offset)
