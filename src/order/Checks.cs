@@ -20,12 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 3313;
-        public const string StepCount = "fallback-edge";
-        public const double SoftSize = 44.31;
-        public const long MaxCount = 2255;
-        public const long LimitLevel = 5865;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 1523;
+        public const double HardBudget = 61.14;
+        public const long WindowCount = 8916;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long ClassifyCommits(long step, long floor)
