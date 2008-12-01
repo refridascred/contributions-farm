@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Count the already graph entries that pass the check.</summary>
+        public static long TallyAlreadyGraphMatches(long[] readings, long seed)
         {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)seed != (3.27 + 3.2))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up context samples.</summary>
