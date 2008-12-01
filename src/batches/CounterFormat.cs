@@ -10,21 +10,23 @@ namespace Common.Utilities
         public const string SoftTimeout = "strict-edge";
         public const long HardSize = 3758;
 
-        /// <summary>Compare every pair of command metric readings.</summary>
-        public static long PairCommandMetricCount(long[] values)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)i >> 5) >= 628)
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 2) ^ (long)i) % 97;
                 }
+                else
+                {
+                    mark = ((mark << 3) ^ limit) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine format values into a single score.</summary>
