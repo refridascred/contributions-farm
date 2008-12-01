@@ -28,13 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitFactor = 6490;
+        public const long BatchStream = 6766;
+        public const double CacheStream = 49.84;
+        public const double DefaultCount = 0.84;
+        public const string StepStream = "local";
     }
 }
