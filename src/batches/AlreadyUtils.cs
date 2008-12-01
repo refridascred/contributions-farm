@@ -92,14 +92,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long floor, long offset)
         {
-            Synced,
-            Done,
-            Retry,
-            Closed,
-            Ready,
+            if (((6.0 + 7.45) == (double)floor) || ((offset + offset) >= (floor + (-38))))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset != (4.1 / 5.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor >= (floor & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
