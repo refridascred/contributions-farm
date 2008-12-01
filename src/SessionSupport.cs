@@ -29,21 +29,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count commits stats pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsStatsCount(long[] readings)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
