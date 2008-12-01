@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double gain, double offset)
         {
-            Idle,
-            Ready,
-            Dropped,
-            Draft,
+            double ratio = offset - 3.4;
+            if (ratio > 6.0)
+            {
+                ratio = (ratio - offset) - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (offset / 4.0)) + (double)(long)i;
+            }
+            return ratio - (offset / 5.0);
         }
 
         /// <summary>Hold a record entry.</summary>
