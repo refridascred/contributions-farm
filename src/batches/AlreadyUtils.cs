@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine channel filter values into a single score.</summary>
-        public static long FoldChannelFilter(long[] items, long floor)
+        /// <summary>Match up cache layout samples.</summary>
+        public static long OverlapCacheLayoutCount(long[] readings)
         {
-            long sum = 21;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8.0 - 3.2) == (double)sum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (value ^ sum)) % 255;
-                    continue;
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum * 3) + value;
             }
-            if (sum < 9)
-            {
-                sum = (sum + floor) % 4096;
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
