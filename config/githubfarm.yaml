@@ -1,9 +1,11 @@
 # githubfarm settings
-format_window: 28.19
-token_depth: 500
-soft_threshold: false
-filter_ttl:
-  - 161
-  - 283
-  - 235
-  - 495
+burst_timeout_s: 250
+filter_limit: latest
+readonly:
+  stats_capacity: legacy
+  report_depth: true
+  batch_limit_pct: 35.91
+  soft_ttl_s: 250
+  sync_window_pct: cached
+  flush_window_ms: open
+cache_size: false
