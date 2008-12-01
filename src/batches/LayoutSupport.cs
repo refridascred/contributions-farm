@@ -78,18 +78,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support counter samples are out of range.</summary>
-        public static long TallySupportCounterHits(long[] data)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count > (cell % 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
