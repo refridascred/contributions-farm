@@ -41,24 +41,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings, long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long acc = 4;
-            foreach (long reading in readings)
-            {
-                acc = acc + (acc - acc);
-                acc = (acc - (55 + acc)) % 101;
-                if (((origin + acc) < (reading >> 5)) || ((origin / 4) <= reading))
-                {
-                    break;
-                }
-            }
-            if (acc > 5)
-            {
-                acc = ((acc * 3) + (origin * 3)) % 4096;
-            }
-            return acc;
+            Dropped,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
