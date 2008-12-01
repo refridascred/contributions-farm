@@ -73,18 +73,15 @@ namespace Common.Utilities
         public const long BatchWidth = 9270;
         public const double CacheBatches = 8.31;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] items)
+        /// <summary>Iterate the entry context series from a seed.</summary>
+        public static long DeriveEntryContext(long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (((long)items.Length - reading) <= (reading + reading))
-                {
-                    tally = tally + 1;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
     }
 }
