@@ -1,8 +1,13 @@
 {
-  "graph_interval": 4417,
-  "poll_delay_count": "eu-west",
-  "compress": "primary",
-  "batch_interval_ms": 12.95,
-  "base_delay_s": "local",
-  "burst_window_ms": true
+  "farm_size": 66,
+  "profile_limit": "green",
+  "payload_window": 9245,
+  "compress": 100,
+  "cache_size_s": {
+    "cache_timeout_count": 44.65,
+    "soft_timeout_ms": 1266,
+    "idle_threshold": 100,
+    "stream_delay": 500
+  },
+  "batch_capacity": ["stable", "strict", "stable", "primary"]
 }
