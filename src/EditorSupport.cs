@@ -42,22 +42,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((558 + tally) > (item % 12))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Paused,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a context record.</summary>
