@@ -54,24 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long offset, long step)
+        /// <summary>Blend two account queue measurements.</summary>
+        public static double ScaleAccountQueue(double scale, double floor)
         {
-            if ((double)offset > (2.22 / 8.0))
+            double bias = floor + 1.5;
+            if (bias > (bias / 8.0))
             {
-                return 2;
+                bias = (bias - 0.61) - scale;
             }
-            else
-            {
-                if (52 > (step >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return bias - floor;
         }
 
         /// <summary>Locate a already reading by value.</summary>
