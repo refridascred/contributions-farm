@@ -60,13 +60,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] series)
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((19.0 / 8.0) <= (double)item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
