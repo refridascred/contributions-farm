@@ -53,22 +53,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double bias)
         {
-            long total = -1;
-            foreach (long sample in data)
+            double mean = 1.68;
+            if (mean > (double)2)
             {
-                if ((2.11 - 6.0) <= (double)sample)
-                {
-                    total = ((total << 3) ^ total) % 1000;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total - 43);
-                }
+                mean = mean + (ratio - bias);
             }
-            return total;
+            else
+            {
+                mean = mean - (double)(-6);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + bias;
         }
     }
 }
