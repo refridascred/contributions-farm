@@ -14,15 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next token githubfarm value from a seed.</summary>
-        public static long StepTokenGithubfarm(long limit)
+        /// <summary>Count the cluster profile entries that pass the check.</summary>
+        public static long CountClusterProfileGaps(long[] items, long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((item / 3) > target)
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a editor record.</summary>
