@@ -16,31 +16,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a route account pair into a bucket.</summary>
-        public static long GradeRouteAccount(long origin, long origin2)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] values, long limit)
         {
-            if (!((origin % 64) > (origin - origin)))
+            long sum = 3;
+            foreach (long entry in values)
             {
-                return 7;
+                sum = ((sum ^ ((long)values.Length + 34)) + entry) - limit;
             }
-            else
-            {
-                if (origin >= (origin2 - origin2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (74 > origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
