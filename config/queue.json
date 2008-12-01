@@ -1,12 +1,8 @@
 {
-  "token_capacity": ["fallback", "staging"],
-  "enabled": 92.62,
-  "batch_timeout": "legacy",
-  "farm_ttl": {
-    "metrics_size": false,
-    "max_threshold": [261, 307, 7],
-    "enabled": "standard",
-    "layout_timeout": "edge",
-    "sync_retries_pct": 31.69
-  }
+  "min_ttl": "stable",
+  "persist": "edge",
+  "cache_window_s": 10.63,
+  "strict": "cached",
+  "compress": false,
+  "soft_interval_ms": 25.74
 }
