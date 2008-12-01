@@ -32,11 +32,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstRoute = 68.58;
-        public const long CacheFactor = 7036;
-        public const double DefaultDepth = 98.21;
-        public const double SoftTimeout = 77.53;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Synced,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
