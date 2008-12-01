@@ -14,12 +14,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            long state = step;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
