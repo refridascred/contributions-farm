@@ -82,17 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph metrics sample.</summary>
-        public static long FindGraphMetricsIndex(long[] levels, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
