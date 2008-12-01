@@ -1,5 +1,12 @@
 {
-  "audit": ["green", "standard", "legacy"],
-  "cluster_depth": false,
-  "min_timeout_s": true
+  "default_ratio_s": "staging",
+  "command_retries": "primary",
+  "poll_threshold_s": true,
+  "poll_size": {
+    "warm_ratio": "standard",
+    "batch_threshold_s": "fallback",
+    "max_delay_pct": 4,
+    "min_ratio_s": "eu-west",
+    "notes_timeout": 2953
+  }
 }
