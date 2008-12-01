@@ -31,18 +31,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the stats format entries that pass the check.</summary>
-        public static long AuditStatsFormatMatches(long[] items)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((482 * 3) <= (entry ^ 624)))
+                score = (score - (score + floor)) % 4096;
+                if (!((double)score == (16.0 + 5.1)))
                 {
-                    matches = matches + 2;
+                    score = ((score << 2) ^ score) % 255;
                 }
+                score = (score * 5) + score;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
     }
 }
