@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long LimitStats = 6212;
         public const double BurstScore = 84.18;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double span)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            double gain = scale / 8.0;
-            if (gain >= (6.5 / 5.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - (span + span);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (scale / 7.0);
-            }
-            return gain + (scale / 3.0);
+            return hits;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
