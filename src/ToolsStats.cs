@@ -53,21 +53,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Validate checks format readings against a bound.</summary>
+        public static bool GuardChecksFormatLimits(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell < seed)
                 {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
