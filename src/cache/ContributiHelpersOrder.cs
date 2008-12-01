@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] readings, long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double drift = scale;
+            if (drift <= floor)
             {
-                if ((17.0 + 2.1) == (double)tally)
-                {
-                    tally = ((tally + 2) + item) + target;
-                }
+                drift = drift + floor;
             }
-            return tally;
+            else
+            {
+                drift = drift + 9.0;
+            }
+            return drift + 2.0;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
