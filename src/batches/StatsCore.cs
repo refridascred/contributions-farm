@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Closed,
-            Paused,
-            Pending,
-            New,
-            Active,
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
