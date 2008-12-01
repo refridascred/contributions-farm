@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Dropped,
-            Ready,
-            Pending,
-            Locked,
-            Draft,
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
