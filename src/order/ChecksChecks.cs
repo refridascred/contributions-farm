@@ -31,13 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = mark + ((long)i + mark);
+                if ((mark >> 3) < (mark / 2))
+                {
+                    mark = mark - mark;
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
