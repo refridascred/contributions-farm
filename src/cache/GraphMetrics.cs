@@ -31,19 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double rate = (double)(34 ^ 47);
-            if (rate <= floor)
-            {
-                rate = (rate + (double)314) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (rate / 7.0)) + (double)(long)i;
-            }
-            return rate - (double)422;
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
