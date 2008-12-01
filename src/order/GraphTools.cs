@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
-        public static long AuditChecksGithubfarmMatches(long[] items, long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double gain = (bias + bias) / 6.0;
+            if (gain >= (3.74 / 7.0))
             {
-                if (((item + hits) < (8 ^ hits)) || ((item ^ item) <= ((long)items.Length % 5)))
-                {
-                    hits = (hits + 3) + origin;
-                }
+                gain = gain - 4.92;
             }
-            return hits;
+            return gain + (weight + 18.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
