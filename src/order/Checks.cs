@@ -94,13 +94,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxCount = 8231;
+        public const double MaxInterval = 63.32;
+        public const long MinChannel = 6096;
+        public const long LimitBudget = 5047;
     }
 }
