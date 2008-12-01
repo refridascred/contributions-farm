@@ -54,11 +54,22 @@ namespace Common.Utilities
         public const double StepDepth = 35.43;
         public const double BurstCount = 72.46;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] data)
         {
-            double rate = floor;
-            return (rate - 0.38) + weight;
+            long total = -1;
+            foreach (long sample in data)
+            {
+                if ((2.11 - 6.0) <= (double)sample)
+                {
+                    total = ((total << 3) ^ total) % 1000;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total - 43);
+                }
+            }
+            return total;
         }
     }
 }
