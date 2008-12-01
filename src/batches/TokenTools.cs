@@ -30,12 +30,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Locked,
-            Dropped,
-            Stale,
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
