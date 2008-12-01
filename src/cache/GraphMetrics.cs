@@ -14,12 +14,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] levels, long seed)
         {
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account summary.</summary>
