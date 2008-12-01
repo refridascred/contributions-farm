@@ -26,9 +26,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseDepth = 85.6;
-        public const double WindowChannel = 48.14;
-        public const long BaseLevel = 6236;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
