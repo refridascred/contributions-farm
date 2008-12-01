@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (ratio + weight) + offset;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] values, long offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double gain = bias / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain - scale) + (double)(long)i;
             }
-            return ok;
+            return gain + (double)840;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
