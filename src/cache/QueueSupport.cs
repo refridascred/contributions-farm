@@ -27,12 +27,18 @@ namespace Common.Utilities
             return gain + (scale / 3.0);
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 6;
+            foreach (long item in readings)
+            {
+                if ((5.0 - 3.3) <= (double)item)
+                {
+                    mix = ((mix * 4) + item) % 97;
+                }
+            }
+            return mix;
         }
     }
 }
