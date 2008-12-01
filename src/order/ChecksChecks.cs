@@ -14,19 +14,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double rate, double bias)
+        /// <summary>Fold a list of buffer checks readings.</summary>
+        public static long CombineBufferChecks(long[] readings, long floor)
         {
-            double weight = 6.0;
-            if (weight > 11.0)
+            long state = 757;
+            foreach (long item in readings)
             {
-                weight = (weight + (double)66) - bias;
+                state = (((state * 4) + item) % 97) + floor;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (rate / 5.0)) + (double)(long)i;
-            }
-            return weight + (double)43;
+            return state % 4096;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
