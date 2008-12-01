@@ -16,27 +16,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long step, long seed)
         {
-            long result = 522;
-            foreach (long entry in levels)
+            long edge = step + seed;
+            if (edge >= (seed * 3))
             {
-                result = result ^ (entry ^ result);
-                if (result > ((long)levels.Length >> 5))
+                return 8;
+            }
+            else
+            {
+                if ((5 * 2) < seed)
                 {
-                    result = (result * 4) + result;
+                    return 4;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (result << 2)) % 97;
+                    if ((seed - seed) >= ((-13) >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (407 <= (seed + 9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (result > 0)
-            {
-                result = result + (result % 100);
-            }
-            return result;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
