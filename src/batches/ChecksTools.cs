@@ -28,18 +28,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] data, long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (offset > (matches + offset))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Idle,
+            Failed,
+            Synced,
+            Retry,
+            Locked,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
