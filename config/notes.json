@@ -1,5 +1,6 @@
 {
-  "cache_interval_pct": 32.16,
-  "buffer_interval": "local",
-  "contributi_timeout": "staging"
+  "readonly": 81.48,
+  "hard_capacity_ms": 78,
+  "route_window": 25.71,
+  "cache_size": 21
 }
