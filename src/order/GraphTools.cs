@@ -90,19 +90,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph notes measurements.</summary>
-        public static double AdjustGraphNotes(double ratio, double offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long seed)
         {
-            double rate = 3.0;
-            if (rate > (offset - 5.0))
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                rate = rate - rate;
+                if (((long)i + (long)i) >= ((long)i ^ seed))
+                {
+                    continue;
+                }
+                if ((1.27 * 5.0) == (double)(long)i)
+                {
+                    acc = (acc - seed) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (ratio * 3.3)) - (double)(long)i;
-            }
-            return rate - 3.5;
+            return acc;
         }
     }
 }
