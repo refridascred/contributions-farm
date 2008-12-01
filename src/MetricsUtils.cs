@@ -32,31 +32,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine entry cache values into a single score.</summary>
-        public static long FoldEntryCache(long[] data, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long anchor = 0;
-            foreach (long sample in data)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (offset >= (offset & 31))
-                {
-                    anchor = (((anchor * 5) + (17 + offset)) % 101) - sample;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (36 - 28);
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = (anchor - (offset % 64)) ^ (long)i;
-                }
-                anchor = (anchor - 252) % 65521;
-                if ((anchor ^ anchor) >= anchor)
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
