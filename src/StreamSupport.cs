@@ -51,11 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count the support batch entries that pass the check.</summary>
+        public static long TallySupportBatchGaps(long[] samples)
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (matches >= (matches * 3))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
