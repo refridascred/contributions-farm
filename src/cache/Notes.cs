@@ -59,15 +59,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Count stream layout pairs that satisfy a relation.</summary>
+        public static long OverlapStreamLayoutCount(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 18)
+                    if ((levels[i] - levels[j]) == 10)
                     {
                         count = count + 1;
                     }
