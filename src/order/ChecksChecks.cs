@@ -20,22 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels, long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long score = 68;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((-5) + step) == (score + score)) || ((score % 24) < (step ^ score)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (((score * 4) + step) % 65521) - cell;
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > (-94))
-            {
-                score = (score - (score & 63)) % 101;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Fold a list of session buffer readings.</summary>
