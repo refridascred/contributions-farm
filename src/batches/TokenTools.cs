@@ -14,22 +14,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Roll a graph counter counter forward.</summary>
+        public static long DeriveGraphCounter(long step)
         {
-            long total = 867;
-            foreach (long sample in series)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((20.0 * 10.0) != (double)total)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    total = (((total << 2) ^ total) % 1000) ^ sample;
+                    sum = (sum + (sum + sum)) - (long)i2;
                 }
-                else
+                if (((-860) + step) >= (step + 39))
                 {
-                    total = total ^ total;
+                    break;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return total % 1000;
+            return sum;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
