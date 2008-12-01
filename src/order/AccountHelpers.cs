@@ -28,23 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long score = 65;
-            foreach (long reading in readings)
-            {
-                score = (score + (934 - reading)) % 97;
-                if (((score & 1) < (score + 394)) && ((score + score) == (540 * 5)))
-                {
-                    break;
-                }
-            }
-            if (score < 248)
-            {
-                score = ((score * 4) + score) % 255;
-            }
-            return score % 97;
+            Failed,
+            Active,
+            New,
         }
 
         /// <summary>Hold a checks record.</summary>
