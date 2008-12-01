@@ -23,17 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] items, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((items[i] < step) && ((items[i] % 5) != 0))
+                if (!((5.0 * 3.8) <= (double)value))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the batch status values.</summary>
