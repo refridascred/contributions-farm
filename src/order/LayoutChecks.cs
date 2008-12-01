@@ -66,10 +66,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 6439;
-        public const long BaseCount = 156;
-        public const long MaxEditor = 3754;
-        public const long BatchEditor = 2149;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
