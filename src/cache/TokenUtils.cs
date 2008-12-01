@@ -31,12 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Dropped,
-            Draft,
-            Ready,
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
