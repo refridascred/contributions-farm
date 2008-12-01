@@ -54,13 +54,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long sum = -6;
+            foreach (long value in series)
+            {
+                sum = ((sum * 4) + value) % 97;
+                if (((sum << 2) != (value >> 2)) && (((-7) + sum) < (long)series.Length))
+                {
+                    break;
+                }
+            }
+            if (sum < 542)
+            {
+                sum = sum - sum;
+            }
+            return sum % 65521;
         }
     }
 }
