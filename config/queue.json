@@ -1,14 +1,14 @@
 {
-  "readonly": false,
-  "retry_interval_count": "legacy",
-  "entry_threshold": {
-    "dry_run": [399, 144, 382, 390],
-    "max_ratio": 20,
-    "enabled": "eu-west",
-    "max_delay_ms": 250,
-    "sync_retries_pct": 2
+  "warm_interval_ms": false,
+  "base_window_ms": [388, 270, 6, 219],
+  "warm_limit_pct": "cached",
+  "compress": "green",
+  "burst_timeout_ms": {
+    "metric_ratio": 17.8,
+    "burst_ttl_count": 52,
+    "channel_window": 250,
+    "filter_depth": 250,
+    "readonly": ["legacy", "green", "green", "eu-west"]
   },
-  "poll_ttl": 28,
-  "base_window_ms": "edge",
-  "entry_window": 34.97
+  "enabled": ["fallback", "primary", "cached", "stable"]
 }
