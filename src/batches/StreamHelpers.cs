@@ -43,11 +43,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double gain, double offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] data, long origin)
         {
-            double scale = (double)(28 >> 2);
-            return ((scale - (scale / 6.0)) + gain) + offset;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the checks state values.</summary>
