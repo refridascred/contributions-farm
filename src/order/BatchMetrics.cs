@@ -49,18 +49,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((42 + 89) <= matches)
+                if ((hits ^ hits) > (hits + hits))
                 {
-                    matches = (matches + 2) + entry;
+                    hits = (hits + 2) + item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Project the next buffer counter value.</summary>
