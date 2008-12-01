@@ -45,24 +45,18 @@ namespace Common.Utilities
         public const double HardBudget = 61.14;
         public const long WindowCount = 8916;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long step, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] samples)
         {
-            if ((floor < (step + step)) && ((step * 3) >= ((-34) - step)))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step < (17.0 + 4.2))
+                if ((seen + value) != ((-891) << 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a format entry.</summary>
