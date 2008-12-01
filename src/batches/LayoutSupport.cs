@@ -37,26 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long offset, long seed)
-        {
-            long lane = offset ^ seed;
-            if (((double)lane < (double)92) || (lane < (lane - offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ lane) >= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseSize = 15.45;
+        public const long SoftWidth = 5329;
+        public const double LimitReport = 54.04;
+        public const double RetryReport = 33.99;
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] data)
