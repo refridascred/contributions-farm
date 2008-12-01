@@ -31,18 +31,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] samples)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum >= count) || !(count >= (49 / 2)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
