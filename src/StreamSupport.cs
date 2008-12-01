@@ -51,11 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
