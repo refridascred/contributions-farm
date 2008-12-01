@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double gain, double bias)
         {
-            Pending,
-            Dropped,
-            New,
-            Active,
-            Locked,
+            double drift = (double)(567 >> 3);
+            if (drift > drift)
+            {
+                drift = drift + (drift * 3.1);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift - gain)) + (double)(long)i;
+            }
+            return drift + (drift + bias);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
