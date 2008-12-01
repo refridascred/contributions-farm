@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] levels, long step)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Ready,
+            Pending,
+            Locked,
+            Draft,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
