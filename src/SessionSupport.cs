@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] values, long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
