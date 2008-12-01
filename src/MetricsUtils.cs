@@ -30,22 +30,19 @@ namespace Common.Utilities
         public const string MinBuffer = "stable-edge";
         public const long BurstBuffer = 4803;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] values, long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double rate = (double)(-26) / 3.0;
+            if (rate <= rate)
             {
-                if (step <= (hits / 4))
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = rate + (rate - weight);
             }
-            return hits;
+            else
+            {
+                rate = rate - weight;
+            }
+            return rate - offset;
         }
 
         /// <summary>Scale a metric cluster figure with a bias.</summary>
