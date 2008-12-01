@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((hits << 3) <= (283 - 815)) && (((-7) + hits) < sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
