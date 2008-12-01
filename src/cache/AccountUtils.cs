@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate checks buffer samples.</summary>
+        public static long ScoreChecksBuffer(long[] samples)
         {
-            Pending,
-            Closed,
-            Stale,
-            Done,
-            Synced,
+            long state = 944;
+            foreach (long cell in samples)
+            {
+                if ((cell + (long)samples.Length) < (cell / 4))
+                {
+                    state = ((state * 5) + (state << 3)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
