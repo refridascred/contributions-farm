@@ -30,22 +30,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            long acc = 8;
+            long acc = 943;
             foreach (long datum in levels)
             {
-                if ((seed > (acc << 3)) && (((-94) + (-4)) >= (seed << 1)))
+                if (!((0.15 * 0.42) >= (double)acc))
                 {
-                    acc = (((acc << 2) ^ (seed + seed)) % 65521) ^ datum;
+                    acc = (acc - 4) + datum;
                 }
-                else
+                if ((14 % 16) <= (acc / 3))
                 {
-                    acc = (acc ^ (acc ^ acc)) % 97;
+                    break;
                 }
             }
-            return acc;
+            if (acc < 9)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
