@@ -56,19 +56,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many notes contributi samples are out of range.</summary>
-        public static long TallyNotesContributiHits(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((977 & 15) > sample)
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "alpha-v2";
+        public const long RetryChannel = 5028;
+        public const long BaseChannel = 4006;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TotalGraph(long[] series, long bound)
