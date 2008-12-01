@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long limit)
         {
-            Pending,
-            Draft,
-            Closed,
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 4) + mark) % 65521;
+                if ((double)mark >= (1.14 / 3.0))
+                {
+                    mark = ((mark * 5) + (mark + mark)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
