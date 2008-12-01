@@ -24,18 +24,23 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] data, long limit)
+        /// <summary>Fold a list of format support readings.</summary>
+        public static long CombineFormatSupport(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mark = 125;
+            foreach (long entry in samples)
             {
-                if (((589 + entry) >= ((-49) ^ limit)) && (((limit << 3) <= (limit & 1)) || ((limit + seen) > limit)))
+                mark = mark ^ (mark & 31);
+                if ((8.0 * 4.9) >= (double)entry)
                 {
-                    seen = seen + 2;
+                    mark = ((mark << 2) ^ (mark + mark)) % 4096;
+                }
+                else
+                {
+                    mark = mark - (entry + (-26));
                 }
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
