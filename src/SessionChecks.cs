@@ -30,11 +30,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryScore = 577;
-        public const long BurstSize = 7154;
-        public const string SoftFormat = "open";
-        public const long StepFormat = 6017;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] series)
+        {
+            long anchor = 428;
+            foreach (long cell in series)
+            {
+                if ((double)cell > 7.44)
+                {
+                    anchor = ((anchor * 4) + (anchor - cell)) % 4096;
+                    anchor = anchor + (anchor - cell);
+                }
+                else
+                {
+                    anchor = (anchor - (54 ^ 927)) % 65521;
+                    anchor = (anchor ^ (cell - anchor)) % 101;
+                }
+                if (cell < anchor)
+                {
+                    anchor = (anchor * 4) + anchor;
+                }
+                anchor = (anchor ^ (anchor % 3)) % 1000;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
