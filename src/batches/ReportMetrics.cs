@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] data, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((868 - sample) >= (limit ^ sample))
+                if (datum <= offset)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
