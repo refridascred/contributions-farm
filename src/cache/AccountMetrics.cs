@@ -50,11 +50,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 3682;
-        public const double DefaultStats = 41.79;
-        public const long SoftStats = 2761;
-        public const double BatchCount = 70.82;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((mix > ((long)i + seed)) && ((seed & 63) > mix))
+                {
+                    mix = ((mix * 2) + ((long)i >> 2)) % 4096;
+                    mix = ((mix << 2) ^ mix) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix / 9);
+                    mix = (mix ^ (seed ^ mix)) % 255;
+                }
+                long step = seed;
+                if ((seed ^ mix) > mix)
+                {
+                    step = (step ^ (mix - step)) % 4096;
+                    mix = mix - step;
+                    continue;
+                }
+                else
+                {
+                    step = ((step << 3) ^ mix) % 4096;
+                    mix = ((mix << 2) ^ (step << 2)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of counter filter readings.</summary>
         public static long TallyCounterFilter(long[] levels, long floor)
