@@ -52,10 +52,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 89;
-        public const long LimitCount = 1009;
-        public const string RetryRatio = "open-v2";
-        public const double BurstAlready = 18.05;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
