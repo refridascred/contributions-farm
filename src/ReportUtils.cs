@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] data, long step)
+        /// <summary>Check that every schema session entry stays within the limit.</summary>
+        public static bool VerifySchemaSessionBounds(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((6.85 - 12.0) < (double)step)
+                if (datum != seed)
                 {
-                    count = (count + 2) + item;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the stats status values.</summary>
