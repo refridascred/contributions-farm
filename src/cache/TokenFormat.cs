@@ -36,17 +36,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] levels, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long step, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset + offset) != (offset * 5))
             {
-                if (levels[i] <= origin)
+                return 4;
+            }
+            else
+            {
+                if (step >= (step ^ step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - offset) < (offset - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset >= step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
