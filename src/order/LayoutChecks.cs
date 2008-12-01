@@ -44,19 +44,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] levels, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Accumulate batch samples.</summary>
