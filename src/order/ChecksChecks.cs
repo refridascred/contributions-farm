@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Paused,
-            Closed,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 3680;
+        public const long StepContributi = 7891;
+        public const long LimitContributi = 6057;
 
         /// <summary>Match up profile counter samples.</summary>
         public static long CompareProfileCounterCount(long[] levels)
