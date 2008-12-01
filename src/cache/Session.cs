@@ -34,11 +34,39 @@ namespace Common.Utilities
             return scale2 + (scale2 - floor);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitBudget = 94.07;
-        public const long BatchInterval = 2277;
-        public const double DefaultSpan = 58.3;
-        public const long BatchSchema = 1695;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long floor, long target)
+        {
+            if (floor > (target / 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((776 + floor) > (floor >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target + floor) < (target + target)) && ((floor % 7) != (target & 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(target >= (target << 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double StepCount = 79.13;
