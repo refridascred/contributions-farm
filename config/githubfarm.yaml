@@ -1,33 +1,19 @@
 # githubfarm settings
-verbose: true
-readonly:
-  default_limit_pct: 10.41
-  cache_window:
-    dry_run: primary
-    cache_ratio_pct: 78.49
-    warm_capacity_count: 87
-    warm_size_count:
-      - 346
-      - 218
-      - 321
-      - 28
-    enabled:
-      - standard
-      - blue
-  burst_limit_s: false
-  idle_depth_pct: 88.26
-  warm_size_ms:
-    - 321
-    - 335
-    - 210
-    - 463
-  soft_ttl_s:
-    contributi_window: primary
-    queue_threshold: false
-    base_threshold_s:
-      - 100
-      - 48
-      - 285
-    enabled: 46
-sync_threshold_count: 250
-default_ttl: false
+poll_retries_count: 45
+soft_delay: local
+soft_capacity_count:
+  flush_interval_s:
+    profile_timeout: 30
+    verbose: strict
+    cluster_capacity: stable
+  order_timeout: true
+  hard_window_count:
+    min_limit: fallback
+    hard_size: 18.57
+    queue_limit: true
+schema_size: 34
+idle_size:
+  flush_retries: green
+  readonly: true
+  strict: 4823
+retry_retries_pct: open
