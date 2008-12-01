@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] items, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum % 3) <= count)
+                {
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
