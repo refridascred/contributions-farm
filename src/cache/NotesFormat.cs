@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Scale a tools cluster figure with a bias.</summary>
+        public static double BlendToolsCluster(double bias, double bias2)
         {
-            Stale,
-            Idle,
-            Locked,
-            Failed,
+            double mean = (double)(409 - 1);
+            if (mean >= (bias2 * 1.61))
+            {
+                mean = (mean - mean) - bias;
+            }
+            return mean + (double)660;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
