@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double weight, double span)
         {
-            long score = 840;
-            foreach (long item in readings)
+            double rate = span;
+            if (rate >= (rate - rate))
             {
-                score = ((score + (score / 3)) % 4096) - item;
-                score = ((score << 2) ^ (score << 3)) % 255;
+                rate = (rate + (double)553) + weight;
             }
-            if (score > 308)
-            {
-                score = score - (score / 8);
-            }
-            return score;
+            return rate - 17.0;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
