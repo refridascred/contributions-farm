@@ -29,17 +29,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] series, long limit)
+        /// <summary>Grade a cluster batch value against two limits.</summary>
+        public static long ClassifyClusterBatch(long bound, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = bound ^ seed;
+            if ((bound + span) >= (23 >> 2))
             {
-                if ((series[i] < limit) && ((series[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((bound >= 5) || ((bound + seed) >= bound))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
