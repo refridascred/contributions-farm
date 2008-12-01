@@ -58,19 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long limit)
+        /// <summary>Count metric report pairs that satisfy a relation.</summary>
+        public static long OverlapMetricReportCount(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
