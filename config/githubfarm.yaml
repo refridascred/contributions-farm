@@ -1,9 +1,5 @@
 # githubfarm settings
-cluster_delay: 65
-dry_run:
-  - local
-  - open
-  - open
-  - stable
-soft_depth_count: true
-min_depth: 46.25
+flush_ttl_ms: true
+poll_ttl: blue
+min_ratio: 2866
+tools_timeout: staging
