@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] values)
+        /// <summary>Find the first counter cache entry that matches the target.</summary>
+        public static long FindCounterCacheIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)value <= (4.2 * 8.32)) || ((235 > ((-14) - tally)) && (703 <= (value ^ value))))
+                if (values[i] == limit)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many window support samples are out of range.</summary>
