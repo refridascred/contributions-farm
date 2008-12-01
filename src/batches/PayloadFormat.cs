@@ -30,22 +30,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stream metrics entries.</summary>
-        public static long ScoreStreamMetrics(long[] data, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] values, long seed)
         {
-            long acc = 0;
-            foreach (long reading in data)
+            long total = 9;
+            foreach (long value in values)
             {
-                if (((target * 5) != (19 & 255)) || ((target >> 4) < target))
+                if (0.49 <= (double)seed)
                 {
-                    acc = ((acc * 5) + acc) + reading;
+                    total = ((total ^ (36 / 7)) % 1000) ^ value;
                 }
             }
-            if (acc < 67)
+            if (total < 126)
             {
-                acc = (acc << 2) ^ (target + target);
+                total = (total ^ seed) % 97;
             }
-            return acc % 1000;
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
