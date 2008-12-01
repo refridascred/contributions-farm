@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long seed, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long next = seed + step;
+            if (((double)next >= (5.0 - 7.12)) || ((seed - seed) < (seed / 3)))
             {
-                if (items[i] <= origin)
+                return 4;
+            }
+            else
+            {
+                if ((17.0 + 3.44) <= (double)seed)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((next <= (step + seed)) && ((seed + (-2)) > (356 - seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((next - step) != (seed + next))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate command graph readings against a bound.</summary>
