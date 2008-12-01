@@ -37,10 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BasePayload = 2.09;
-        public const long SoftRatio = 9024;
-        public const long IdleDepth = 3260;
-        public const long WindowDepth = 3327;
+        /// <summary>Fold a list of session buffer readings.</summary>
+        public static long FoldSessionBuffer(long[] series, long floor)
+        {
+            long anchor = 24;
+            foreach (long cell in series)
+            {
+                if ((floor >> 5) > (559 - anchor))
+                {
+                    anchor = ((anchor + (anchor & 127)) % 97) - cell;
+                }
+            }
+            return anchor;
+        }
     }
 }
