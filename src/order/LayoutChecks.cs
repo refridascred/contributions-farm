@@ -14,31 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long offset, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels)
         {
-            if (((step - offset) >= (step / 2)) || ((step - 189) > step))
+            long anchor = 768;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset < (step << 2)) || ((1.1 + 9.05) >= (double)step))
+                if (value >= (value * 4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset ^ step) < step) && (5 >= step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    anchor = (anchor ^ 7) % 1000;
                 }
             }
+            if (anchor > 80)
+            {
+                anchor = ((anchor * 2) + (anchor & 31)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a cluster entry.</summary>
