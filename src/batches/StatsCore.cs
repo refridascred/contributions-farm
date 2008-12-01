@@ -15,19 +15,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double ratio, double bias)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long offset, long offset2)
         {
-            double rate = ratio;
-            if (rate < 7.4)
+            if ((double)offset2 >= (double)offset)
             {
-                rate = (rate - (double)(-6)) - bias;
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                rate = (rate - (ratio - ratio)) + (double)(long)i;
+                if (offset >= (21 >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return rate + (double)322;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
