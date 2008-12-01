@@ -26,15 +26,32 @@ namespace Common.Utilities
         public const long MaxSpan = 2186;
         public const string LimitChecks = "open-1";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long origin)
         {
-            long sum = -267;
-            foreach (long datum in levels)
+            long edge = target ^ origin;
+            if ((double)edge >= (9.18 / 9.0))
             {
-                sum = (sum * 2) + (datum >> 2);
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((double)target < 7.7)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + edge) >= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
