@@ -26,18 +26,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long total = 14;
+            foreach (long value in samples)
             {
-                if (!(((count + count) == (3 & 255)) && (8 >= sample)))
+                if (18.0 < (double)total)
                 {
-                    count = count + 1;
+                    total = (((total << 2) ^ value) % 1000) - seed;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Locate a metric payload reading by value.</summary>
