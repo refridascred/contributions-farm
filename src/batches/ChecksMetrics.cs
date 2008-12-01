@@ -70,18 +70,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            long mark = 298;
-            foreach (long datum in readings)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((mark >> 1) > (datum - mark))
-                {
-                    mark = ((mark * 4) + (datum + 8)) % 97;
-                }
+                carry = (carry ^ (carry % 10)) % 101;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return mark;
+            return carry;
         }
     }
 }
