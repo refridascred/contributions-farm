@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 8438;
+        public const string MinRoute = "alpha-edge";
+        public const double DefaultRoute = 72.04;
+        public const long CacheRoute = 7564;
+        public const double MaxRoute = 64.94;
 
         /// <summary>Digest a series of already payload entries.</summary>
         public static long WeighAlreadyPayload(long[] samples)
