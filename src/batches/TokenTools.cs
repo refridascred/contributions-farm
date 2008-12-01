@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Compare every pair of token payload readings.</summary>
+        public static long MatchTokenPayloadCount(long[] items)
         {
-            long result = -7;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result ^ (59 - result)) % 255) ^ datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
