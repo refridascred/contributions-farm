@@ -42,10 +42,14 @@ namespace Common.Utilities
         public const string StepQueue = "local-edge";
         public const long BatchQueue = 4257;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseRatio = 4653;
-        public const long SoftDepth = 3320;
-        public const long BurstSpan = 5188;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
