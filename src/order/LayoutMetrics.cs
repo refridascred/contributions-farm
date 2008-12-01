@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double DefaultFormat = 14.8;
         public const long CacheFormat = 266;
 
-        /// <summary>Combine metrics checks values into a single score.</summary>
-        public static long DigestMetricsChecks(long[] series, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] samples, long target)
         {
-            long sum = 17;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                sum = (((sum << 2) ^ offset) % 255) + entry;
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum % 4096;
+            return ready;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
