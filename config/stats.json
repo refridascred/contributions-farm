@@ -1,6 +1,17 @@
 {
-  "retry_timeout": "edge",
-  "warm_ttl_ms": "latest",
-  "soft_window_s": 72.96,
-  "min_retries": ["local", "green"]
+  "max_depth_count": "legacy",
+  "queue_depth": true,
+  "audit": {
+    "warm_capacity_pct": true,
+    "readonly": 6418,
+    "default_size_pct": "eu-west",
+    "commits_delay": {
+      "dry_run": [97, 472, 461, 486],
+      "persist": "blue",
+      "flush_size_ms": 3635,
+      "sync_ratio_ms": "eu-west",
+      "commits_capacity": 500
+    },
+    "idle_window": 36.63
+  }
 }
