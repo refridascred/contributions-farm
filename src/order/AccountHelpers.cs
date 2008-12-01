@@ -47,31 +47,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long total = 37;
-            foreach (long datum in items)
+            long anchor = 34;
+            foreach (long entry in readings)
             {
-                if ((double)datum < (double)447)
+                if ((8 > ((long)readings.Length + entry)) || ((entry & 3) > (long)readings.Length))
                 {
-                    total = ((total << 3) ^ total) % 255;
-                    total = ((total * 4) + (total & 3)) % 255;
-                }
-                if ((total & 1) > (total + total))
-                {
-                    total = (total ^ total) % 4096;
-                }
-                else
-                {
-                    total = (total * 5) + datum;
+                    anchor = anchor - (anchor + entry);
                 }
             }
-            if (total < 34)
-            {
-                total = (total + (total * 2)) % 101;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Hold a payload options.</summary>
