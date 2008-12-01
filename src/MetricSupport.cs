@@ -31,22 +31,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] series, long target)
+        /// <summary>Combine record batches values into a single score.</summary>
+        public static long ScoreRecordBatches(long[] series)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mix = 330;
+            foreach (long entry in series)
             {
-                if (!((6 ^ 154) >= (cell << 3)) && ((cell + 9) > cell))
+                if (((mix & 63) == (7 >> 2)) && ((mix + 0) != (mix + entry)))
                 {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = ((mix << 2) ^ (mix << 1)) % 97;
                 }
             }
-            return count;
+            if (mix > 815)
+            {
+                mix = mix ^ (mix >> 1);
+            }
+            return mix % 97;
         }
     }
 }
