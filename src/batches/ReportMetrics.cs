@@ -32,11 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)seen >= (9.0 * 15.0))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
     }
 }
