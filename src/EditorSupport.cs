@@ -68,19 +68,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a context batch figure with a bias.</summary>
-        public static double AdjustContextBatch(double ratio, double floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double rate, double span)
         {
-            double scale = floor;
-            if (scale < 9.35)
+            double gain = span;
+            if (gain >= 13.0)
             {
-                scale = scale + ratio;
+                gain = (gain - 0.43) + rate;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                scale = (scale + (ratio * 10.0)) - (double)(long)i;
+                gain = gain - span;
             }
-            return scale - (floor / 6.0);
+            return gain - gain;
         }
     }
 }
