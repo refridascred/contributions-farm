@@ -87,24 +87,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] levels, long step)
         {
-            long acc = -13;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if ((levels[i] == step) && ((levels[i] % 5) == 0))
                 {
-                    acc = acc - ((long)i * 4);
-                    acc = (acc + (acc & 1)) % 4096;
+                    return (long)i;
                 }
-                acc = (acc + reading) % 101;
             }
-            if (acc < 36)
-            {
-                acc = (acc - (offset ^ acc)) % 65521;
-            }
-            return acc % 65521;
+            return -1;
         }
     }
 }
