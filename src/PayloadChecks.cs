@@ -22,15 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long total = 916;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                total = ((total - (214 * 4)) % 101) - datum;
+                total = (total + (total & 127)) % 101;
+                if ((double)total < (2.06 + 9.9))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (total < 66)
+            {
+                total = ((total * 3) + (total - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
