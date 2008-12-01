@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long LimitStats = 6212;
         public const double BurstScore = 84.18;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] < offset)
                 {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
