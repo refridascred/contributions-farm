@@ -41,20 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already payload entries.</summary>
-        public static long WeighAlreadyPayload(long[] samples)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long score = 271;
-            foreach (long cell in samples)
-            {
-                score = ((score - (score & 255)) % 1000) - cell;
-                score = (score << 2) ^ (2 >> 5);
-            }
-            if (score < 174)
-            {
-                score = (score << 3) ^ (score + score);
-            }
-            return score % 4096;
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
