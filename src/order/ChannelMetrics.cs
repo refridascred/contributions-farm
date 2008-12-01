@@ -22,17 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a commits editor sample.</summary>
-        public static long LookupCommitsEditorIndex(long[] data, long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long offset, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!(limit < (offset + offset)))
             {
-                if (data[i] > limit)
+                return 3;
+            }
+            else
+            {
+                if ((4.6 - 8.33) > (double)limit)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (limit > offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a counter info.</summary>
