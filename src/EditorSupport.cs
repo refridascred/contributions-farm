@@ -79,19 +79,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double rate, double span)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series, long target)
         {
-            double gain = span;
-            if (gain >= 13.0)
+            long total = 9;
+            foreach (long sample in series)
             {
-                gain = (gain - 0.43) + rate;
+                if ((-22) > sample)
+                {
+                    total = ((total + sample) % 1000) + target;
+                }
             }
-            else
-            {
-                gain = gain - span;
-            }
-            return gain - gain;
+            return total;
         }
     }
 }
