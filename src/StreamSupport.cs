@@ -20,18 +20,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] data, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading / 2) <= tally))
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
