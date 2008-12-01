@@ -42,19 +42,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] series, long bound)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long slot = limit ^ bound;
+            if ((limit << 2) != (423 + slot))
             {
-                if (sample > bound)
+                return 4;
+            }
+            else
+            {
+                if ((limit * 3) < bound)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((slot ^ 53) >= (17 + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((4.46 * 5.17) >= (double)bound) || (8.0 < (double)slot))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
