@@ -1,5 +1,4 @@
 # entry settings
-flush_depth_s: 9.82
-batches_retries: 60
-default_window: eu-west
-base_ratio: blue
+base_interval: 83
+compress: 8306
+persist: 250
