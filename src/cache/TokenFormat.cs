@@ -43,16 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes context counter forward.</summary>
-        public static long DeriveNotesContext(long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] series, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                anchor = (anchor * 2) + bound;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (item <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
