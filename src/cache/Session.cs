@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats window entries.</summary>
-        public static long TotalStatsWindow(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] data, long floor)
         {
-            long carry = -860;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                carry = ((carry * 5) + ((-9) * 5)) + entry;
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry % 65521;
+            return stale;
         }
 
         /// <summary>Hold a record entry.</summary>
