@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] values)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((3.7 + 1.8) > (double)count)
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
