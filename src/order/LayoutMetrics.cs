@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] levels, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] levels)
         {
-            long state = 3;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!((double)value <= (4.3 / 3.0)))
+                if ((double)item <= (double)hits)
                 {
-                    state = ((state - ((-6) * 2)) % 4096) - bound;
+                    hits = hits + 2;
                 }
             }
-            return state % 97;
+            return hits;
         }
     }
 }
