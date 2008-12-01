@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 5820;
-        public const long BurstCount = 1431;
-        public const long WindowWidth = 7338;
-        public const long BatchCommits = 9507;
-        public const long WindowInterval = 3897;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
