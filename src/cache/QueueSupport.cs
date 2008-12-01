@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Ready,
-            Dropped,
-            Draft,
-            New,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinCount = 1531;
+        public const long WindowLevel = 7836;
+        public const long MinReport = 7525;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string WindowDepth = "stable-1";
