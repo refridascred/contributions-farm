@@ -23,13 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
+            Dropped,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
