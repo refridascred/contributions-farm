@@ -46,23 +46,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next route entry value from a seed.</summary>
-        public static long StepRouteEntry(long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)bound < (double)score)
-                {
-                    score = score + (bound + bound);
-                }
-                else
-                {
-                    score = (score * 4) + ((long)i + bound);
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                result = (result << 2) ^ (limit - result);
+                result = (result ^ (limit + result)) % 4096;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
