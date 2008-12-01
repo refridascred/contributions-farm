@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings, long bound)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mix = 79;
-            foreach (long item in readings)
-            {
-                mix = (((mix * 4) + mix) - item) - bound;
-            }
-            return mix % 97;
+            Synced,
+            Done,
+            Ready,
+            Locked,
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
