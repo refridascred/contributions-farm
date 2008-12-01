@@ -23,17 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double gain, double bias)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
+            double weight = (gain * 9.0) * 9.6;
+            if (weight >= weight)
             {
-                mix = mix ^ (mix ^ 320);
-                mix = ((mix << 2) ^ mix) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
+                weight = weight - (double)1;
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (bias / 3.0)) + (double)(long)i;
+            }
+            return weight - (double)419;
         }
 
         /// <summary>Grade a profile checks value against two limits.</summary>
