@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Accumulate checks payload samples.</summary>
+        public static long WeighChecksPayload(long[] values, long step)
         {
-            Queued,
-            Pending,
-            Locked,
+            long mark = 82;
+            foreach (long datum in values)
+            {
+                mark = (((mark << 2) ^ step) % 255) ^ datum;
+                if (step >= 8)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Match up schema report samples.</summary>
