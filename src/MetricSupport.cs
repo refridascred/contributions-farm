@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every notes stats entry stays within the limit.</summary>
-        public static bool CheckNotesStatsRange(long[] series, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Adjust a already reading.</summary>
