@@ -1,6 +1,13 @@
 {
-  "strict": true,
-  "githubfarm_window": [443, 104, 17, 320],
-  "dry_run": "eu-west",
-  "hard_threshold_pct": 2389
+  "batch_retries": {
+    "base_window_ms": "blue",
+    "soft_delay_s": 939,
+    "persist": "eu-west",
+    "max_window": ["blue", "staging"],
+    "flush_window_count": "stable",
+    "batch_capacity_s": 66
+  },
+  "burst_depth": 62,
+  "idle_interval_pct": "stable",
+  "warm_delay": ["staging", "eu-west", "staging"]
 }
