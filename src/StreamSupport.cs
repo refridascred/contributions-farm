@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double ratio, double span)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] levels, long offset)
         {
-            double gain = span;
-            if (gain >= (double)2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain + (double)731) + ratio;
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (double)51;
-            }
-            return gain + (double)620;
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
