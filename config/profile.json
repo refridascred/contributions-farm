@@ -1,10 +1,15 @@
 {
-  "checks_ratio": 1024,
-  "entry_delay": {
-    "stream_threshold": "open",
-    "filter_timeout": 60,
-    "persist": true,
-    "sync_retries_s": [202, 130, 476, 368]
+  "poll_ttl_pct": 43,
+  "verbose": [254, 231, 104, 324],
+  "default_timeout_count": 82.22,
+  "buffer_interval": {
+    "burst_window": {
+      "compress": 8985,
+      "strict": 6048,
+      "max_ttl": 86.25
+    },
+    "sync_size": 49,
+    "command_limit": 91
   },
-  "metrics_size": 60
+  "retry_threshold_s": ["legacy", "primary", "open", "cached"]
 }
