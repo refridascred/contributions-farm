@@ -1,8 +1,5 @@
 {
-  "base_ttl_count": 500,
-  "burst_depth_ms": 18.8,
-  "audit": "legacy",
-  "schema_ratio": ["latest", "blue", "green"],
-  "batch_interval": "blue",
-  "record_window": ["local", "latest"]
+  "strict": [292, 220, 125, 402],
+  "already_timeout": true,
+  "persist": [294, 401, 199]
 }
