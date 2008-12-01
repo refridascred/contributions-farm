@@ -1,7 +1,6 @@
 {
-  "cache_size_ms": 71.87,
-  "entry_limit": "latest",
-  "batch_limit": "cached",
-  "flush_delay_pct": true,
-  "batch_depth_ms": 250
+  "burst_window_pct": "staging",
+  "strict": 100,
+  "sync_delay_ms": 39.41,
+  "flush_ttl_count": 92.71
 }
