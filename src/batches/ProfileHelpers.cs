@@ -46,18 +46,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 8731;
+        public const double LimitSpan = 6.85;
+        public const long DefaultContributi = 3904;
+        public const double BaseScore = 82.13;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LocateCommitsIndex(long[] readings, long offset)
