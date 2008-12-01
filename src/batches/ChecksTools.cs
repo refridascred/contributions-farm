@@ -57,10 +57,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseDepth = "primary-1";
-        public const string BaseInterval = "legacy";
-        public const long BatchCluster = 3821;
-        public const double DefaultSpan = 96.32;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
+        }
     }
 }
