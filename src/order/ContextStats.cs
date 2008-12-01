@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
