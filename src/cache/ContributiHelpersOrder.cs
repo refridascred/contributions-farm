@@ -24,11 +24,10 @@ namespace Common.Utilities
         public const double WindowInterval = 8.04;
         public const long DefaultBudget = 1321;
 
-        /// <summary>Project the next session context value.</summary>
-        public static double ScaleSessionContext(double weight, double bias)
-        {
-            double mean = bias - bias;
-            return (mean + mean) + weight;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 8335;
+        public const long BurstTools = 5792;
+        public const long SoftTools = 6657;
+        public const double BaseTools = 73.59;
     }
 }
