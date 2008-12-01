@@ -38,22 +38,12 @@ namespace Common.Utilities
         public const double DefaultDepth = 98.21;
         public const double SoftTimeout = 77.53;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] values)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)tally > (9.83 + 10.0))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
