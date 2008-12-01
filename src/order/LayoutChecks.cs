@@ -29,13 +29,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long seed)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            if ((-258) > seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (714 <= (seed + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit <= 8.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a schema reading.</summary>
