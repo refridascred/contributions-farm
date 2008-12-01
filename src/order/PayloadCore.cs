@@ -45,19 +45,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks buffer readings against a bound.</summary>
-        public static bool CheckChecksBufferRange(long[] levels, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (value != target)
+                if (!((0.1 - 3.28) == (double)sum))
                 {
-                    flag = false;
-                    break;
+                    sum = sum - (14 ^ (-45));
                 }
+                sum = (sum + (9 - 992)) % 1000;
+                if ((target & 31) < target)
+                {
+                    sum = sum ^ (long)i;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
     }
 }
