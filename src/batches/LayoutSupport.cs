@@ -53,13 +53,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values)
         {
-            Draft,
-            Paused,
-            Ready,
-            Dropped,
+            long state = 54;
+            foreach (long item in values)
+            {
+                if (!((double)item >= 7.7))
+                {
+                    state = state + (state >> 3);
+                }
+            }
+            return state;
         }
     }
 }
