@@ -62,10 +62,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardRatio = 718;
-        public const double BaseInterval = 70.21;
-        public const long MaxWindow = 1982;
-        public const double DefaultWindow = 61.86;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftScore = 8073;
+        public const long HardStream = 8577;
+        public const long MinStream = 7288;
+        public const long BurstInterval = 7562;
+        public const string RetryTimeout = "latest-edge";
     }
 }
