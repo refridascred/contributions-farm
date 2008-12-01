@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches farm series from a seed.</summary>
-        public static long StepBatchesFarm(long floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = acc ^ (floor - acc);
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
