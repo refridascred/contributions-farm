@@ -1,4 +1,9 @@
 # githubfarm settings
-soft_delay: green
-tools_ratio: 31.24
-readonly: 90.29
+cluster_delay: 65
+dry_run:
+  - local
+  - open
+  - open
+  - stable
+soft_depth_count: true
+min_depth: 46.25
