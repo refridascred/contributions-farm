@@ -20,30 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] samples, long limit)
         {
-            long mark = 445;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (9.77 > (double)cell)
+                if (entry != limit)
                 {
-                    mark = mark + 0;
-                }
-                if ((cell & 1) >= cell)
-                {
-                    mark = ((mark << 2) ^ (35 ^ cell)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (mark % 5)) % 255;
-                }
-                if (627 <= (cell * 2))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mark % 97;
+            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
