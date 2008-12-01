@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            Synced,
-            Done,
-            Ready,
-            Locked,
+            long carry = 24;
+            foreach (long item in levels)
+            {
+                if (720 > (item << 3))
+                {
+                    carry = ((carry * 4) + (carry / 5)) % 255;
+                }
+            }
+            if (carry > 935)
+            {
+                carry = (carry * 2) + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
