@@ -31,18 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] samples, long seed)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] items, long floor)
         {
-            long total = 14;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (18.0 < (double)total)
+                if (items[i] > floor)
                 {
-                    total = (((total << 2) ^ value) % 1000) - seed;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Locate a order reading by value.</summary>
