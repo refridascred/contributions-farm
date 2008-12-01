@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Scale a cache window figure with a bias.</summary>
+        public static double ProjectCacheWindow(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = scale;
+            if (bias > scale)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias + (bias - offset);
             }
-            return tally;
+            return bias - (bias / 2.0);
         }
 
         /// <summary>Match up already samples.</summary>
