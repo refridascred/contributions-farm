@@ -72,19 +72,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 7605;
+        public const string IdleEditor = "open";
+        public const string BaseFactor = "primary-1";
+        public const string BaseEditor = "cached";
     }
 }
