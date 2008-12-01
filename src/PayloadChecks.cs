@@ -80,11 +80,18 @@ namespace Common.Utilities
         public const long StepTimeout = 4405;
         public const string BatchSchema = "local";
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] values)
         {
-            public double Level { get; set; }
-            public bool Size { get; set; }
+            long score = 92;
+            foreach (long entry in values)
+            {
+                if (((score >> 3) == (entry & 1)) && (entry < (entry << 2)))
+                {
+                    score = (score << 3) ^ entry;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a graph metrics sample.</summary>
