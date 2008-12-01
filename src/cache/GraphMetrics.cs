@@ -58,18 +58,12 @@ namespace Common.Utilities
         public const long BaseWidth = 2455;
         public const string WindowFarm = "open-edge";
 
-        /// <summary>Accumulate githubfarm command samples.</summary>
-        public static long TallyGithubfarmCommand(long[] samples)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mix = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry << 1) > 384)
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-            }
-            return mix % 1000;
+            Pending,
+            Synced,
+            Draft,
         }
     }
 }
