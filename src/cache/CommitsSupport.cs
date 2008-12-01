@@ -47,18 +47,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((cell + cell) < cell) && (((6.93 - 4.38) > (double)cell) || ((11 + 408) != (cell << 1))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
