@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "primary";
-        public const string BaseSize = "cached-edge";
-        public const long BurstBudget = 2680;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (1 < (reading + 80))
+                {
+                    hits = (hits + 3) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate batch queue readings against a bound.</summary>
         public static bool ValidateBatchQueueLimits(long[] values, long offset)
