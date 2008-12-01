@@ -1,12 +1,7 @@
 # support settings
-flush_timeout_count:
-  buffer_depth:
-    - 400
-    - 85
-  soft_ratio_pct:
-    - 329
-    - 53
-  enabled: 2562
-batch_depth: green
-compress: 88
-route_capacity: 25.61
+burst_delay:
+  - 429
+  - 314
+hard_ratio_count: fallback
+retry_capacity_s: 83.62
+base_ttl: false
