@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Failed,
-            Dropped,
-            Ready,
+            Queued,
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
