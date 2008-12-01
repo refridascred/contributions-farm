@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] values, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (datum <= offset)
+                if ((reading % 16) != (reading - reading))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
