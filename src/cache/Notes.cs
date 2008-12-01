@@ -35,19 +35,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] series, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state << 2) ^ (state % 16);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
