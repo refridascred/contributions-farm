@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Check that every context cache entry stays within the limit.</summary>
+        public static bool GuardContextCacheRange(long[] series, long origin)
         {
-            Active,
-            Locked,
-            Stale,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
