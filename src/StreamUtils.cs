@@ -21,12 +21,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] levels, long origin)
+        /// <summary>Look up the position of a farm tools sample.</summary>
+        public static long LookupFarmToolsIndex(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= origin)
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
