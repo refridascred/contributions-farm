@@ -46,14 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long step)
         {
-            Done,
-            Queued,
-            Paused,
-            Failed,
-            Synced,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((0 - step) < (585 ^ tally)) && (16 > (tally & 31)))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
