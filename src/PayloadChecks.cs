@@ -80,12 +80,11 @@ namespace Common.Utilities
         public const long StepTimeout = 4405;
         public const string BatchSchema = "local";
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
             public double Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
