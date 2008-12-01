@@ -12,39 +12,21 @@ namespace Common.Utilities
         public const string WindowSize = "fallback-edge";
         public const long RetryInterval = 802;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            long offset = step - floor;
-            if ((step >= (offset ^ offset)) && ((15 * 2) < (offset + floor)))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor < (9.0 * 18.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((82 - floor) >= (offset << 3))
+                    if ((samples[i] ^ samples[j]) != 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor >= 8) && (step >= (floor % 100)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
