@@ -1,5 +1,11 @@
 {
-  "min_retries": 8003,
-  "min_delay_pct": ["green", "standard"],
-  "warm_capacity_pct": "local"
+  "cache_threshold_pct": {
+    "buffer_depth": "fallback",
+    "soft_window_s": 30,
+    "batches_interval": "green"
+  },
+  "base_depth": 57.47,
+  "strict": 81.56,
+  "dry_run": "open",
+  "farm_capacity": 8132
 }
