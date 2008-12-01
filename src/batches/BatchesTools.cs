@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] values, long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long sum = 3;
-            foreach (long entry in values)
-            {
-                sum = ((sum ^ ((long)values.Length + 34)) + entry) - limit;
-            }
-            return sum % 1000;
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
