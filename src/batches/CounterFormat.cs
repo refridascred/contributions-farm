@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count the order metrics entries that pass the check.</summary>
