@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a commits stream pair into a bucket.</summary>
-        public static long GradeCommitsStream(long seed, long origin)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if (!((seed * 5) < (origin & 31)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed & 63) >= ((-29) / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.7 + 6.0) < (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Failed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
