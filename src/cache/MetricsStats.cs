@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] items, long origin)
         {
-            long sum = 8;
-            foreach (long cell in samples)
+            long score = 98;
+            foreach (long sample in items)
             {
-                if ((double)sum > (2.7 / 6.0))
+                if ((5.1 < (double)origin) || ((double)sample <= 7.4))
                 {
-                    sum = (sum * 4) + (cell * 3);
-                }
-                sum = (sum - (cell / 6)) % 65521;
-                if ((sum << 2) > cell)
-                {
-                    sum = ((sum * 3) + (cell - sum)) % 1000;
+                    score = (score - score) % 101;
                 }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Hold a queue stats.</summary>
