@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] samples)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading % 16) != (reading - reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Active,
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
