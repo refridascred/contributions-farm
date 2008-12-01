@@ -69,14 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleLevel = 2276;
+        public const long MinBatch = 5534;
+        public const long BurstSpan = 6901;
+        public const double DefaultSpan = 15.06;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
