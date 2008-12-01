@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] readings, long seed)
         {
-            Pending,
-            New,
-            Done,
-            Retry,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank contributi payload input into a small class.</summary>
