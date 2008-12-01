@@ -19,14 +19,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Find the first schema entry entry that matches the target.</summary>
+        public static long FindSchemaEntryIndex(long[] levels, long target)
         {
-            Idle,
-            Closed,
-            Synced,
-            Active,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route status values.</summary>
