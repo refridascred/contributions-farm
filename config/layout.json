@@ -1,6 +1,17 @@
 {
-  "verbose": "strict",
-  "readonly": "staging",
-  "stats_limit": 87.68,
-  "retry_timeout": [399, 32, 430, 75]
+  "flush_timeout_count": false,
+  "compress": "stable",
+  "token_interval": {
+    "default_timeout_count": 47,
+    "soft_size_pct": true,
+    "idle_threshold": "strict",
+    "idle_retries_s": {
+      "hard_window": true,
+      "poll_window_ms": ["fallback", "primary"],
+      "strict": true,
+      "contributi_retries": 17,
+      "persist": "green",
+      "max_threshold": 50
+    }
+  }
 }
