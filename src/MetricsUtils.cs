@@ -23,12 +23,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 7890;
-        public const string HardBuffer = "latest-edge";
-        public const long BatchBuffer = 847;
-        public const string MinBuffer = "stable-edge";
-        public const long BurstBuffer = 4803;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Idle,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double weight, double offset)
