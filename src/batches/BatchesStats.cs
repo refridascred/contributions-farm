@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Failed,
-            Queued,
-            Active,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 41.87;
+        public const string StepFactor = "staging-1";
+        public const long StepEditor = 4964;
+        public const long BatchLevel = 3090;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
