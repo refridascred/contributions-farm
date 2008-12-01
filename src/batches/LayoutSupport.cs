@@ -23,14 +23,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] readings, long origin)
         {
-            Stale,
-            Paused,
-            Synced,
-            Pending,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next route commits value from a seed.</summary>
