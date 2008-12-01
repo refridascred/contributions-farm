@@ -58,26 +58,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate route checks samples.</summary>
-        public static long TotalRouteChecks(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] data)
         {
-            long result = 5;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (!((value << 2) > (value << 1)))
+                if ((value + value) > value)
                 {
-                    result = (result - result) % 1000;
-                }
-                else
-                {
-                    result = (result ^ value) % 1000;
+                    seen = seen + 3;
                 }
             }
-            if (result < 466)
-            {
-                result = ((result * 4) + (result - result)) % 255;
-            }
-            return result % 4096;
+            return seen;
         }
     }
 }
