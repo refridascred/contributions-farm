@@ -61,15 +61,17 @@ namespace Common.Utilities
         public const long RetryChannel = 5028;
         public const long BaseChannel = 4006;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] series, long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long floor)
         {
-            long total = 6;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (((total << 3) ^ (sample + 131)) % 101) - bound;
+                if ((items[i] >= floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
