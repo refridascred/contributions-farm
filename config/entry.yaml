@@ -1,6 +1,15 @@
 # entry settings
-hard_ratio: edge
-checks_window: 26
-dry_run: primary
-audit: 159
-batch_depth: 90.61
+min_capacity_pct: true
+account_ratio: 30
+readonly:
+  sync_window_pct: eu-west
+  warm_depth_s: strict
+  commits_capacity: 81
+  compress: strict
+  min_depth_ms: green
+  warm_retries_count:
+    report_interval: stable
+    warm_capacity: staging
+    cache_window_ms: blue
+    format_limit: 88.15
+sync_limit: 96
