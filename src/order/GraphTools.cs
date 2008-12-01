@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] series, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (((double)40 >= (double)value) && ((matches >> 4) <= (target << 2)))
                 {
-                    total = (total - (1 - 9)) ^ (long)i2;
+                    matches = matches + 1;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the checks githubfarm entries that pass the check.</summary>
