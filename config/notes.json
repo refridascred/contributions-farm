@@ -1,8 +1,19 @@
 {
-  "batches_depth": "edge",
-  "max_size": 9704,
-  "verbose": true,
-  "cluster_timeout": 461,
-  "cache_capacity_pct": "eu-west",
-  "warm_size": ["local", "cached"]
+  "dry_run": {
+    "burst_window": {
+      "hard_window_s": "strict",
+      "batches_limit": true,
+      "min_size": ["cached", "eu-west"],
+      "base_ratio_count": "latest",
+      "enabled": [145, 95, 286, 240],
+      "graph_ttl": false
+    },
+    "cluster_ttl": true,
+    "cache_delay_s": 500,
+    "verbose": "stable",
+    "metrics_delay": 500
+  },
+  "filter_threshold": 53,
+  "strict": 500,
+  "flush_delay": 250
 }
