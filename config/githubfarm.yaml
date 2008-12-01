@@ -1,7 +1,36 @@
 # githubfarm settings
-queue_delay: 8183
-cache_limit: 35.59
-max_ttl_count:
-  - legacy
-  - open
-min_window: 96.77
+order_interval:
+  already_depth: 33.58
+  dry_run: edge
+  idle_retries_ms:
+    audit: 30
+    batch_interval_s: 40.37
+    max_ttl_ms: legacy
+    burst_delay_pct:
+      - 317
+      - 159
+burst_interval_s:
+  - 111
+  - 159
+batch_ttl_count:
+  - blue
+  - edge
+account_limit:
+  retry_capacity_count: 500
+  poll_timeout_pct: blue
+  min_threshold_count: 60
+  idle_threshold_ms: fallback
+max_size_ms: true
+max_delay:
+  burst_threshold_pct: latest
+  default_ratio: local
+  stream_threshold: legacy
+  base_threshold:
+    strict: 61.58
+    verbose: fallback
+    cluster_depth: 7918
+    readonly:
+      - 244
+      - 104
+      - 145
+  order_limit: true
