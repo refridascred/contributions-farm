@@ -33,18 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] data, long offset)
+        /// <summary>Adjust a githubfarm checks reading.</summary>
+        public static double ScaleGithubfarmChecks(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double mean = 5.9;
+            if (mean >= bias)
             {
-                if (value > hits)
-                {
-                    hits = (hits + 2) + offset;
-                }
+                mean = mean + weight;
             }
-            return hits;
+            return mean + (bias * 8.04);
         }
     }
 }
