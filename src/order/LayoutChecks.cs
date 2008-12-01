@@ -13,19 +13,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] series, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long offset, long step)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            if (((step - offset) >= (step / 2)) || ((step - 189) > step))
             {
-                if (sample >= offset)
+                return 3;
+            }
+            else
+            {
+                if ((offset < (step << 2)) || ((1.1 + 9.05) >= (double)step))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((offset ^ step) < step) && (5 >= step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of window cache readings.</summary>
