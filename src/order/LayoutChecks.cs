@@ -66,10 +66,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardRatio = "standard-1";
-        public const double BurstToken = 94.67;
-        public const double WindowInterval = 28.34;
-        public const double MinToken = 79.14;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 6439;
+        public const long BaseCount = 156;
+        public const long MaxEditor = 3754;
+        public const long BatchEditor = 2149;
     }
 }
