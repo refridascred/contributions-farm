@@ -25,19 +25,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] series, long seed)
+        /// <summary>Accumulate layout notes samples.</summary>
+        public static long WeighLayoutNotes(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long total = 936;
+            foreach (long sample in values)
             {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total - (total - total)) % 1000) - limit;
+                total = (total * 5) + (sample - total);
             }
-            return ok;
+            return total;
         }
     }
 }
