@@ -68,19 +68,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] values, long limit)
+        /// <summary>Match up payload order samples.</summary>
+        public static long OverlapPayloadOrderCount(long[] levels)
         {
-            long sum = 944;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((entry & 1) >= (sum + limit)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum - (limit - entry)) % 65521;
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = (sum ^ sum) % 255;
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Hold a notes entry.</summary>
