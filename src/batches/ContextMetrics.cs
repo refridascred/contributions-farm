@@ -62,10 +62,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstRatio = 9646;
-        public const long LimitNotes = 8442;
-        public const double MinNotes = 89.46;
-        public const long CacheInterval = 9527;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardRatio = 718;
+        public const double BaseInterval = 70.21;
+        public const long MaxWindow = 1982;
+        public const double DefaultWindow = 61.86;
     }
 }
