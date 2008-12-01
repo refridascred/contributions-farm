@@ -43,21 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count format entry pairs that satisfy a relation.</summary>
-        public static long OverlapFormatEntryCount(long[] data)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a already record.</summary>
