@@ -1,7 +1,8 @@
 {
-  "idle_limit_count": "eu-west",
-  "batch_ratio": "standard",
-  "buffer_timeout": false,
-  "default_ttl_s": "local",
-  "burst_window_count": true
+  "layout_retries": 23.99,
+  "audit": 62,
+  "warm_threshold_ms": ["cached", "blue", "legacy", "open"],
+  "flush_interval_s": 2106,
+  "hard_threshold_count": "stable",
+  "flush_depth_count": 77.81
 }
