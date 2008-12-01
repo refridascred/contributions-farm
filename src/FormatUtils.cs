@@ -39,11 +39,19 @@ namespace Common.Utilities
         public const long BurstSpan = 4499;
         public const long StepInterval = 3097;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 66.47;
-        public const string SoftOrder = "local-edge";
-        public const double DefaultLevel = 65.43;
-        public const string LimitInterval = "local-1";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((origin * 5) < (166 / 7))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long OverlapPayloadCount(long[] samples)
