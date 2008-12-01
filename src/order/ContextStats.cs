@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
