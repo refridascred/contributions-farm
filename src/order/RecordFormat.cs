@@ -44,24 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long seed, long seed2)
+        /// <summary>Measure how many checks payload samples are out of range.</summary>
+        public static long CountChecksPayloadHits(long[] data, long seed)
         {
-            if ((seed2 + 797) >= (78 + seed2))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 7) <= (seed - seed2))
+                if ((matches ^ cell) >= (matches & 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 3) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
