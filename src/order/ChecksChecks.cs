@@ -37,18 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session buffer readings.</summary>
-        public static long FoldSessionBuffer(long[] series, long floor)
+        /// <summary>Match up commits metric samples.</summary>
+        public static long MatchCommitsMetricCount(long[] items)
         {
-            long anchor = 24;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor >> 5) > (559 - anchor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor + (anchor & 127)) % 97) - cell;
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
