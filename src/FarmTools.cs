@@ -19,11 +19,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitFactor = 6490;
-        public const long BatchStream = 6766;
-        public const double CacheStream = 49.84;
-        public const double DefaultCount = 0.84;
-        public const string StepStream = "local";
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            New,
+            Done,
+            Stale,
+        }
     }
 }
