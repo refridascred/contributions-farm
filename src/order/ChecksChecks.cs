@@ -14,38 +14,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a support graph value against two limits.</summary>
-        public static long BucketSupportGraph(long origin, long limit)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if (9.8 >= (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 3) <= (304 + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin << 1) == (399 ^ origin)) || ((12.0 / 6.0) > (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin >= (origin * 2)) && (origin <= (43 + origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
