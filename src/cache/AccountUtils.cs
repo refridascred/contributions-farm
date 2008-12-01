@@ -43,28 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] values, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long carry = 3;
-            foreach (long entry in values)
-            {
-                if ((88 > entry) && ((double)carry < 9.7))
-                {
-                    carry = (carry << 3) ^ carry;
-                    carry = (carry * 3) + (entry * 3);
-                }
-                carry = (carry ^ ((long)values.Length + entry)) % 97;
-                if ((double)offset > (double)carry)
-                {
-                    carry = ((carry << 2) ^ 4) % 4096;
-                }
-                if ((double)entry == (0.3 + 6.0))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
