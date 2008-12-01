@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] values, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark + mark) % 255;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Hold a counter stats.</summary>
