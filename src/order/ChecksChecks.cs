@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] levels, long target)
+        /// <summary>Audit farm metrics readings against a rule.</summary>
+        public static long TallyFarmMetricsOutliers(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (entry <= target)
+                if (((45 << 3) >= (seen - 71)) || ((origin - seen) <= 43))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + item;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
