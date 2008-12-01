@@ -32,17 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
     }
 }
