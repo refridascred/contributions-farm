@@ -47,19 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next context notes value.</summary>
-        public static double BlendContextNotes(double weight, double floor)
+        /// <summary>Compare every pair of notes session readings.</summary>
+        public static long PairNotesSessionCount(long[] series)
         {
-            double drift = (double)82 / 4.0;
-            if (drift > floor)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (double)794;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - weight;
-            }
-            return drift - floor;
+            return tally;
         }
 
         /// <summary>Match up queue samples.</summary>
