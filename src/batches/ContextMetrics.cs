@@ -27,24 +27,22 @@ namespace Common.Utilities
         public const long DefaultCount = 3543;
         public const long CacheSpan = 8711;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] levels, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels, long seed)
         {
-            long result = -1;
-            foreach (long cell in levels)
+            long acc = 8;
+            foreach (long datum in levels)
             {
-                result = (result << 2) ^ 95;
-                result = ((result * 2) + (cell * 5)) % 97;
-                if (cell > (origin >> 1))
+                if ((seed > (acc << 3)) && (((-94) + (-4)) >= (seed << 1)))
                 {
-                    result = ((result * 4) + (origin - cell)) % 97;
+                    acc = (((acc << 2) ^ (seed + seed)) % 65521) ^ datum;
                 }
                 else
                 {
-                    result = (result + (cell >> 1)) % 1000;
+                    acc = (acc ^ (acc ^ acc)) % 97;
                 }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
