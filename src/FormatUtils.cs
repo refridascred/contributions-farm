@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long BaseLevel = 745;
         public const long BaseEditor = 7830;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryLevel = 7754;
+        public const long DefaultNotes = 3201;
+        public const long RetryNotes = 4584;
+        public const long WindowNotes = 8962;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LookupWindowIndex(long[] readings, long bound)
