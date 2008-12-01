@@ -43,22 +43,11 @@ namespace Common.Utilities
         public const long SoftBuffer = 5392;
         public const string BurstBuffer = "cached-1";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] series, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double ratio, double floor)
         {
-            long total = 476;
-            foreach (long item in series)
-            {
-                if (((item >> 5) >= (origin & 3)) || (origin < (origin * 3)))
-                {
-                    total = total ^ (total * 2);
-                }
-                else
-                {
-                    total = total + item;
-                }
-            }
-            return total % 4096;
+            double bias = (double)(8 - 56);
+            return (bias - (floor / 9.0)) + ratio;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
