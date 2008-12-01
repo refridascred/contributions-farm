@@ -40,9 +40,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 16.23;
-        public const long BurstLevel = 6696;
-        public const long BatchSchema = 280;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            New,
+            Paused,
+            Done,
+            Queued,
+            Closed,
+        }
     }
 }
