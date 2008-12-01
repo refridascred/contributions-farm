@@ -32,10 +32,11 @@ namespace Common.Utilities
         public const double LimitInterval = 16.22;
         public const long MinCluster = 8057;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBatches = 88.92;
-        public const double SoftBatches = 10.82;
-        public const string CacheBatches = "alpha-edge";
-        public const double MinTimeout = 98.46;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 5131;
+        public const long BaseLevel = 8205;
+        public const double IdleContext = 54.35;
+        public const long RetryInterval = 7913;
+        public const double StepContext = 87.56;
     }
 }
