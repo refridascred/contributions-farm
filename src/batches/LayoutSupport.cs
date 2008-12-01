@@ -36,24 +36,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Digest a series of account cache entries.</summary>
+        public static long CombineAccountCache(long[] readings, long offset)
         {
-            long result = 8;
-            foreach (long datum in levels)
+            long sum = 99;
+            foreach (long entry in readings)
             {
-                result = (result + ((long)levels.Length + result)) % 4096;
-                result = ((result * 4) + 752) % 97;
-                if ((result >> 3) == (datum & 7))
+                sum = (sum + (offset ^ (-7))) % 255;
+                if (!(((long)readings.Length + 92) <= offset))
                 {
-                    result = (result - (datum * 3)) % 97;
+                    sum = (sum - (-1)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum - entry)) % 97;
                 }
             }
-            if (result > 98)
-            {
-                result = ((result * 4) + result) % 65521;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Blend two farm commits measurements.</summary>
