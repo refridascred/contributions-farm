@@ -43,12 +43,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double gain, double floor)
         {
-            Active,
-            Draft,
-            Pending,
+            double drift = gain;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (floor + 16.0)) - (double)(long)i;
+            }
+            return drift + (gain / 9.0);
         }
     }
 }
