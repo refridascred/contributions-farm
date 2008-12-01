@@ -17,24 +17,11 @@ namespace Common.Utilities
         public const long WindowDepth = 6709;
         public const string BatchDepth = "cached-1";
 
-        /// <summary>Rank payload editor input into a small class.</summary>
-        public static long ClassifyPayloadEditor(long seed, long origin)
-        {
-            if ((1.1 - 14.0) < (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)origin > (17.0 + 3.04)) || ((seed % 2) >= seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryWidth = "local-v2";
+        public const long BaseBatch = 8858;
+        public const string IdleBatch = "alpha-1";
+        public const double RetryTimeout = 9.02;
+        public const double LimitBatch = 20.18;
     }
 }
