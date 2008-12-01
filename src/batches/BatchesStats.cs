@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long StepEditor = 4964;
         public const long BatchLevel = 3090;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] items, long origin)
         {
-            Closed,
-            Pending,
-            Paused,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
