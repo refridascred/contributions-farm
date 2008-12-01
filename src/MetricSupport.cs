@@ -31,17 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] samples, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                if (!(((long)data.Length / 7) <= (59 ^ tally)) || ((datum >= tally) && ((double)datum < (0.1 / 3.0))))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
