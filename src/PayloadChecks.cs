@@ -22,10 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleScore = "open-edge";
-        public const long StepRecord = 2283;
-        public const long RetryTimeout = 6195;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
