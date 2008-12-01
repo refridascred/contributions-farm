@@ -98,15 +98,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 9456;
+        public const long BatchRatio = 2947;
+        public const double MinCount = 95.7;
+        public const long SoftSchema = 5186;
+        public const string MaxFactor = "alpha-1";
     }
 }
