@@ -82,12 +82,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            Failed,
+            Closed,
+            Draft,
+            Locked,
+            Stale,
         }
     }
 }
