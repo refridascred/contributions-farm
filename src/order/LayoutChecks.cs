@@ -32,21 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)offset <= 7.0)
-                {
-                    result = (result * 5) + (264 << 1);
-                }
-                result = ((result << 2) ^ (offset + result)) % 101;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 44.63;
+        public const long BaseScore = 9977;
+        public const long MaxBatch = 4517;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long RollAccount(long bound)
