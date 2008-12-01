@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Draft,
-            Pending,
-            Synced,
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
