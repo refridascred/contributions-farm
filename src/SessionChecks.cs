@@ -58,11 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double weight, double bias)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            double drift = weight;
+            return (drift + 4.0) + bias;
         }
     }
 }
