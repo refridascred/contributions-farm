@@ -58,14 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            Synced,
-            New,
-            Locked,
-            Dropped,
-            Queued,
+            long mix = 801;
+            foreach (long cell in readings)
+            {
+                if ((6.21 + 12.0) >= (double)cell)
+                {
+                    mix = ((mix * 5) + (mix & 31)) % 65521;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
