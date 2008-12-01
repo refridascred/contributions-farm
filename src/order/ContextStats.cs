@@ -25,31 +25,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long floor, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if (0.6 < (2.58 + 0.4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((floor << 1) != (floor - step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor + step) <= (floor / 5)) || ((step << 2) <= (floor << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
