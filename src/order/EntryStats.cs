@@ -49,15 +49,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Ready,
-            Done,
-            Stale,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryDepth = 2259;
+        public const double BatchLayout = 68.04;
+        public const long MaxScore = 3172;
+        public const string DefaultInterval = "staging-v2";
+        public const long StepLayout = 272;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BurstBatch = "stable-1";
