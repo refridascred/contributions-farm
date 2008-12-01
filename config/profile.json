@@ -1,5 +1,11 @@
 {
-  "dry_run": 83,
-  "channel_ttl": 51.99,
-  "poll_interval_ms": "local"
+  "burst_retries_pct": false,
+  "retry_delay_count": "strict",
+  "sync_threshold_ms": 16.23,
+  "burst_delay_s": {
+    "retry_capacity": [43, 168, 1],
+    "cache_limit_count": "stable",
+    "hard_ratio": 26.73
+  },
+  "sync_window": "eu-west"
 }
