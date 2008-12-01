@@ -1,7 +1,5 @@
 {
-  "warm_retries": 51.54,
-  "batch_depth_count": false,
-  "base_limit_count": "cached",
-  "tools_delay": false,
-  "default_window_ms": 14
+  "flush_delay_s": 6098,
+  "githubfarm_delay": "green",
+  "warm_threshold_s": 100
 }
