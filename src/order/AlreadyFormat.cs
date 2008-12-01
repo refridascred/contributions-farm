@@ -30,19 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long bound)
         {
-            double drift = weight;
-            if (drift > offset)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                drift = drift - (offset * 9.03);
+                if (cell > (bound & 1))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + (double)0;
+            return tally;
         }
 
         /// <summary>Describe the cache mode values.</summary>
