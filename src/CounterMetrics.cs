@@ -23,17 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a entry notes sample.</summary>
-        public static long LookupEntryNotesIndex(long[] samples, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 505;
+            foreach (long reading in readings)
             {
-                if (samples[i] > bound)
+                total = ((total << 2) ^ (total + total)) % 1000;
+                if ((322 ^ reading) <= total)
                 {
-                    return (long)i;
+                    total = total + (total % 100);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
