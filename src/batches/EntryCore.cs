@@ -58,11 +58,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepSpan = "local";
-        public const long MinWidth = 9145;
-        public const long SoftWidth = 1570;
-        public const string LimitChannel = "local-v2";
-        public const double BatchScore = 37.82;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] values)
+        {
+            long sum = 77;
+            foreach (long entry in values)
+            {
+                sum = ((sum << 2) ^ (sum ^ sum)) % 255;
+                if ((sum + sum) > (sum - entry))
+                {
+                    break;
+                }
+            }
+            if (sum < 6)
+            {
+                sum = sum - sum;
+            }
+            return sum % 4096;
+        }
     }
 }
