@@ -16,18 +16,25 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] series)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long lane = offset - seed;
+            if (seed > (seed + lane))
             {
-                if ((value * 5) == (matches - (long)series.Length))
+                return 4;
+            }
+            else
+            {
+                if ((double)seed >= (double)lane)
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first editor schema entry that matches the target.</summary>
