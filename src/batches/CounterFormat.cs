@@ -27,12 +27,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long mark = 0;
+            foreach (long entry in samples)
+            {
+                if ((82 >> 4) <= (entry - entry))
+                {
+                    mark = (mark ^ (89 & 3)) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 3) + (-20);
+                }
+            }
+            if (mark < 78)
+            {
+                mark = ((mark * 2) + (mark + mark)) % 97;
+            }
+            return mark % 65521;
         }
     }
 }
