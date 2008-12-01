@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate checks payload samples.</summary>
-        public static long WeighChecksPayload(long[] values, long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] items, long target)
         {
-            long mark = 82;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                mark = (((mark << 2) ^ step) % 255) ^ datum;
-                if (step >= 8)
+                if (sample <= target)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Match up schema report samples.</summary>
