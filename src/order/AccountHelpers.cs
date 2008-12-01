@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long BaseScore = 2477;
         public const long IdleScore = 1820;
 
-        /// <summary>Grade a batch filter value against two limits.</summary>
-        public static long SortBatchFilter(long floor, long bound)
+        /// <summary>Count the account channel entries that pass the check.</summary>
+        public static long MeasureAccountChannelGaps(long[] data)
         {
-            if ((0 - 579) > (floor / 9))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8 & 63) > (floor / 9))
+                if ((((3.0 - 2.0) == (double)seen) && ((double)seen >= 6.7)) || ((4 / 9) != (seen >> 1)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 2) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
