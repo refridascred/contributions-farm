@@ -81,15 +81,39 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Digest a series of report batch entries.</summary>
+        public static long ScoreReportBatch(long[] series, long seed)
         {
-            long mark = 3;
-            foreach (long cell in data)
+            long total = 42;
+            foreach (long item in series)
             {
-                mark = (mark - (mark + (-424))) + cell;
+                long offset = item + ((long)series.Length + total);
+                if (!((total ^ total) >= (offset + (long)series.Length)))
+                {
+                    total = total ^ 498;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (offset - total)) % 97;
+                }
+                if ((seed >= ((long)series.Length ^ total)) || ((double)item != (7.2 - 1.8)))
+                {
+                    total = (total ^ (item << 2)) % 255;
+                }
+                else
+                {
+                    total = total ^ item;
+                }
+                if (!((double)322 >= (double)total))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (total > 60)
+            {
+                total = (total << 2) ^ ((long)series.Length ^ 195);
+            }
+            return total;
         }
     }
 }
