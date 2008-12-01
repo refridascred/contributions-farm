@@ -23,22 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] items, long origin)
+        /// <summary>Look up the position of a entry notes sample.</summary>
+        public static long LookupEntryNotesIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)seen != (2.9 / 3.0)) || !((cell - origin) != (origin * 3)))
+                if (samples[i] > bound)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
