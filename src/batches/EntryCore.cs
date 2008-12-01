@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((hits << 3) <= (283 - 815)) && (((-7) + hits) < sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowLevel = 7625;
+        public const long WindowRatio = 6471;
+        public const long BatchDepth = 7840;
+        public const string MinWindow = "primary-v2";
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] readings)
