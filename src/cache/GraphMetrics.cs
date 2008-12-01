@@ -47,18 +47,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit layout schema readings against a rule.</summary>
-        public static long CountLayoutSchemaOutliers(long[] items, long floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((floor / 9) != (308 - floor)) && ((4.5 * 9.8) <= (double)count))
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Pending,
         }
     }
 }
