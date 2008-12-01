@@ -1,8 +1,8 @@
 {
-  "idle_size": 60,
-  "hard_threshold": 500,
-  "sync_ttl_pct": true,
-  "verbose": 60,
-  "min_interval_count": 30,
-  "readonly": 35.19
+  "verbose": "primary",
+  "default_size_pct": 4004,
+  "editor_delay": "eu-west",
+  "warm_threshold_pct": false,
+  "hard_ratio": "edge",
+  "sync_window": [461, 239, 169, 470]
 }
