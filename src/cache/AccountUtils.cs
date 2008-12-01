@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile account samples are out of range.</summary>
-        public static long AuditProfileAccountMatches(long[] series)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((seen ^ cell) < cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
