@@ -55,19 +55,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats session readings against a bound.</summary>
-        public static bool VerifyStatsSessionRange(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxFactor = 6729;
+        public const long DefaultSpan = 7172;
+        public const long RetryTools = 8727;
     }
 }
