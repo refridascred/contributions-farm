@@ -43,21 +43,24 @@ namespace Common.Utilities
         public const double LimitReport = 54.04;
         public const double RetryReport = 33.99;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 8;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = (result + ((long)levels.Length + result)) % 4096;
+                result = ((result * 4) + 752) % 97;
+                if ((result >> 3) == (datum & 7))
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - (datum * 3)) % 97;
                 }
             }
-            return tally;
+            if (result > 98)
+            {
+                result = ((result * 4) + result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the counter kind values.</summary>
