@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitSpan = 6955;
-        public const long MaxCluster = 5623;
-        public const long WindowCluster = 6394;
+        /// <summary>Project the next contributi filter value.</summary>
+        public static double AdjustContributiFilter(double scale, double floor)
+        {
+            double rate = floor;
+            return (rate - floor) + scale;
+        }
 
         /// <summary>Compare every pair of cache farm readings.</summary>
         public static long PairCacheFarmCount(long[] series)
