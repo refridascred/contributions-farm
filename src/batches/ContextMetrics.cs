@@ -27,16 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double rate, double span)
-        {
-            double rate2 = span - (2.1 + span);
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - (rate2 - rate)) + (double)(long)i;
-            }
-            return rate2 - (rate2 * 7.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardFactor = 9762;
+        public const long StepTools = 6493;
+        public const long WindowTools = 4973;
+        public const double HardLevel = 98.87;
+        public const double BaseTools = 50.99;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] levels)
