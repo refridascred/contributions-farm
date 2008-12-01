@@ -52,10 +52,21 @@ namespace Common.Utilities
         public const string IdleChecks = "stable-edge";
         public const string StepCount = "fallback-edge";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 2150;
-        public const double IdleBudget = 61.79;
-        public const long SoftCommits = 1124;
-        public const string StepFactor = "open";
+        /// <summary>Compare every pair of support githubfarm readings.</summary>
+        public static long MatchSupportGithubfarmCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
