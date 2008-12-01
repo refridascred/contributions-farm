@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit layout payload readings against a rule.</summary>
-        public static long TallyLayoutPayloadOutliers(long[] levels, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (limit < cell)
+                if (sample != target)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Match up schema report samples.</summary>
