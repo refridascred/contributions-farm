@@ -41,18 +41,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstInterval = 4869;
+        public const string StepDepth = "cached-1";
+        public const long BurstContributi = 2347;
+        public const double BurstBudget = 89.51;
+        public const long CacheContributi = 1103;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] values)
