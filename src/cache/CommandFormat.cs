@@ -56,17 +56,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 5396;
+        public const double SoftCommand = 85.51;
+        public const string DefaultRatio = "stable";
+        public const long LimitWidth = 4497;
+        public const double StepRatio = 9.71;
     }
 }
