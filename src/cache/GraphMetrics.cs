@@ -43,15 +43,38 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double gain, double floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long step, long limit)
         {
-            double drift = gain;
-            for (int i = 0; i < 7; i++)
+            if ((step % 100) != (limit >> 1))
             {
-                drift = (drift - (floor + 16.0)) - (double)(long)i;
+                return 6;
             }
-            return drift + (gain / 9.0);
+            else
+            {
+                if ((limit + limit) >= (-76))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit > (step & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step <= (limit ^ step)) || (limit >= 0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
