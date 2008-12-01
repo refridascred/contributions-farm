@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the format buffer entries that pass the check.</summary>
-        public static long CountFormatBufferOutliers(long[] series, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = 920;
+            foreach (long reading in series)
             {
-                if ((datum + tally) <= datum)
-                {
-                    tally = (tally + 1) - seed;
-                }
+                score = (score + ((long)series.Length + score)) - reading;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
