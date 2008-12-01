@@ -28,12 +28,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Digest a series of already payload entries.</summary>
+        public static long WeighAlreadyPayload(long[] samples)
         {
-            Locked,
-            Retry,
-            Synced,
+            long score = 271;
+            foreach (long cell in samples)
+            {
+                score = ((score - (score & 255)) % 1000) - cell;
+                score = (score << 2) ^ (2 >> 5);
+            }
+            if (score < 174)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Adjust a account reading.</summary>
