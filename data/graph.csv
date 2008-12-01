@@ -1,6 +1,10 @@
-id,owner,count,weight
-1,88.17,916,eu-west
-2,672,standard,76.86
-3,61.57,latest,79.37
-4,2.83,369,56.73
-5,eu-west,477,443
+id,weight,region
+1,22.16,8.43
+2,381,3
+3,14.29,577
+4,404,35.78
+5,local,primary
+6,primary,859
+7,633,92.77
+8,184,local
+9,767,774
