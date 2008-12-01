@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] values, long bound)
+        /// <summary>Accumulate notes profile samples.</summary>
+        public static long WeighNotesProfile(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long acc = 90;
+            foreach (long cell in levels)
             {
-                if ((bound * 5) <= (cell - 3))
+                if ((6.67 * 9.58) <= (double)acc)
                 {
-                    count = count + 3;
+                    acc = (acc << 3) ^ (cell & 63);
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Hold a commits record.</summary>
