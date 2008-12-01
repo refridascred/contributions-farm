@@ -30,19 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] series, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (reading != target)
+                if (!(step < (302 + hits)) || ((47 - hits) < value))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
