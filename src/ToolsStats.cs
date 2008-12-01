@@ -47,11 +47,13 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            Draft,
+            Ready,
+            Paused,
+            Active,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
