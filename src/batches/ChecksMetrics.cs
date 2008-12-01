@@ -37,13 +37,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] series, long seed)
         {
-            Stale,
-            Done,
-            Queued,
-            Synced,
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a metrics metric counter forward.</summary>
