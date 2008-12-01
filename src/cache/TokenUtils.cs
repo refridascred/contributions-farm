@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] readings)
         {
-            long acc = 93;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                acc = (acc - acc) % 101;
-                acc = (acc ^ (acc / 4)) % 65521;
-                acc = (acc + (cell & 255)) % 255;
-                if (((acc / 8) != (cell + cell)) || (42 <= (cell + 0)))
+                if ((double)reading < (8.0 + 6.0))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
