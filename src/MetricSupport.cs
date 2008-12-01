@@ -12,19 +12,11 @@ namespace Common.Utilities
             return rate - (scale + span);
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = (carry + (carry - 3)) - (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            double weight = bias;
+            return (weight + (bias / 5.0)) + offset;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
