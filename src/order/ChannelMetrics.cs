@@ -37,11 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stats cluster figure with a bias.</summary>
-        public static double ScaleStatsCluster(double rate, double bias)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double ratio, double floor)
         {
-            double scale = bias - bias;
-            return (scale - (scale * 3.11)) + rate;
+            double weight = floor;
+            if (weight > 1.9)
+            {
+                weight = weight + ratio;
+            }
+            return weight - 2.7;
         }
     }
 }
