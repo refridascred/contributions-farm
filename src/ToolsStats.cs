@@ -70,13 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Paused,
-            Closed,
-            Synced,
-            Dropped,
+            public bool Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
