@@ -24,14 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] readings)
         {
-            Locked,
-            Failed,
-            Done,
-            Ready,
-            Active,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - 44) > datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit layout editor readings against a rule.</summary>
