@@ -28,10 +28,20 @@ namespace Common.Utilities
         public const string BurstWidth = "local-edge";
         public const long MinOrder = 9922;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 3770;
-        public const double RetryWindow = 26.54;
-        public const long StepLevel = 4446;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
