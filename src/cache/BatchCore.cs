@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double rate, double floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
+            double rate2 = (double)((-346) << 3);
+            if (rate2 >= (rate2 - floor))
             {
-                mark = ((mark * 4) + mark) % 65521;
-                if ((double)mark >= (1.14 / 3.0))
-                {
-                    mark = ((mark * 5) + (mark + mark)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
+                rate2 = (rate2 - (double)(-851)) + rate;
             }
-            return mark;
+            return rate2 - floor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
