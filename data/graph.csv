@@ -1,6 +1,9 @@
-id,region,score
-1,1.1,primary
-2,963,37.96
-3,green,standard
-4,54.46,staging
-5,1.85,blue
+id,region,label,rank,count
+1,98.29,639,789,strict
+2,339,309,42.51,27
+3,80.66,807,608,740
+4,208,87.12,local,latest
+5,913,local,73,latest
+6,blue,827,622,78.81
+7,blue,staging,staging,81.78
+8,19.08,404,32.01,43.84
