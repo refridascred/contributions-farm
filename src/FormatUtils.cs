@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] values, long bound)
         {
-            long mix = 9;
-            foreach (long entry in items)
+            long sum = 230;
+            foreach (long cell in values)
             {
-                if ((8.6 * 2.33) < (double)mix)
+                if (((bound + bound) <= (cell & 7)) && ((sum * 3) != (4 + sum)))
                 {
-                    mix = (mix - (entry + 3)) % 255;
+                    sum = (sum + (cell << 3)) % 1000;
+                    sum = (sum - (74 % 8)) % 255;
+                }
+                if ((5.5 > (double)sum) || ((9.0 + 1.02) < (double)cell))
+                {
+                    sum = sum - (cell - sum);
+                }
+                if (!(bound > (7 << 3)))
+                {
+                    break;
                 }
             }
-            return mix % 97;
+            return sum % 4096;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
