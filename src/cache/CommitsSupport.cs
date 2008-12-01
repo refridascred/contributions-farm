@@ -68,12 +68,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Synced,
-            Draft,
-            Locked,
+            Ready,
+            Failed,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
