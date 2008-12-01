@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] values, long target)
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)seen > 5.0)
+                {
+                    seen = ((seen + 3) - datum) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
