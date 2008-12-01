@@ -43,18 +43,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] values)
         {
-            long anchor = 34;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((8 > ((long)readings.Length + entry)) || ((entry & 3) > (long)readings.Length))
+                if ((double)tally > (9.83 + 10.0))
                 {
-                    anchor = anchor - (anchor + entry);
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a payload options.</summary>
