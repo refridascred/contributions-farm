@@ -38,19 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double bias)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            double mean = (double)20 - (gain + gain);
+            if (mean > 2.7)
             {
-                if (!!((origin - total) == (origin ^ total)))
-                {
-                    total = (total + ((long)i % 64)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                mean = mean - bias;
             }
-            return total;
+            return mean + bias;
         }
     }
 }
