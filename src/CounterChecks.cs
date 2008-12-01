@@ -56,15 +56,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of token command entries.</summary>
-        public static long TallyTokenCommand(long[] readings, long seed)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long total = 23;
-            foreach (long item in readings)
-            {
-                total = ((((total * 5) + (total & 1)) % 1000) - item) - seed;
-            }
-            return total;
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of report batch entries.</summary>
