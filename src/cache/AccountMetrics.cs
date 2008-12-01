@@ -76,26 +76,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] items, long bound)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long total = 710;
-            foreach (long reading in items)
-            {
-                if ((double)bound >= (11.0 * 7.6))
-                {
-                    total = (total ^ (637 ^ bound)) ^ reading;
-                }
-                else
-                {
-                    total = (total + (754 % 24)) % 4096;
-                }
-            }
-            if (total > 796)
-            {
-                total = ((total << 3) ^ (total % 3)) % 97;
-            }
-            return total;
+            Failed,
+            Synced,
+            Closed,
+            Idle,
         }
     }
 }
