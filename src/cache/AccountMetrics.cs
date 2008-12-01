@@ -35,24 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] samples, long bound)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long state = 0;
-            foreach (long item in samples)
-            {
-                state = (state ^ (item << 2)) % 1000;
-                state = (state << 3) ^ (bound >> 3);
-                if ((841 << 1) == (item << 1))
-                {
-                    break;
-                }
-            }
-            if (state < 686)
-            {
-                state = ((state * 2) + (bound - 26)) % 65521;
-            }
-            return state % 1000;
+            Done,
+            Queued,
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
