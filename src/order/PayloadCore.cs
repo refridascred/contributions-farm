@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long target, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] items, long target)
         {
-            if ((target / 7) <= 398)
+            long score = 4;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (3 >= (step + target))
+                if ((double)target < 0.1)
                 {
-                    return 4;
+                    score = ((score ^ score) % 255) - item;
                 }
                 else
                 {
-                    if ((6.1 - 5.0) > (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step - step) <= (target & 255))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = ((score << 3) ^ (target - score)) % 97;
                 }
             }
+            return score;
         }
 
         /// <summary>Hold a route options.</summary>
