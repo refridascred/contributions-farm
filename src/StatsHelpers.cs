@@ -47,39 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches session pair into a bucket.</summary>
-        public static long SortBatchesSession(long bound, long floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] series, long limit)
         {
-            long cur = bound - floor;
-            if (!((13.0 / 2.0) != (double)floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - 8) < (bound & 63))
+                if ((series[i] < limit) && ((series[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound <= (bound * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor <= cur)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
