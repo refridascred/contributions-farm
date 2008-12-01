@@ -41,32 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long step, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings, long floor)
         {
-            long delta = step + offset;
-            if (((delta & 127) > (delta * 3)) && (6.77 < (double)delta))
+            long anchor = 293;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((delta ^ (-58)) == (96 << 2))
+                if (anchor <= ((-148) % 8))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.16 * 5.0) == (double)delta)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (((anchor << 3) ^ value) % 255) - floor;
                 }
             }
+            if (anchor < 89)
+            {
+                anchor = ((anchor << 3) ^ (105 / 9)) % 4096;
+            }
+            return anchor;
         }
     }
 }
