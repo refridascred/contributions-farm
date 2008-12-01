@@ -47,11 +47,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Pending,
-            Closed,
+            New,
+            Locked,
             Ready,
         }
     }
