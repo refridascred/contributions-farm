@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the counter graph series from a seed.</summary>
-        public static long SeriesCounterGraph(long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state * 5) + ((long)i / 7);
-                state = ((state * 2) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
