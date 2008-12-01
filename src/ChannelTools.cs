@@ -32,12 +32,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long limit, long floor)
         {
-            Closed,
-            Pending,
-            Paused,
+            if (floor > (limit - 863))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6.9 + 5.72) >= (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + floor) > limit) || ((limit & 1) < (limit ^ floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record stats.</summary>
