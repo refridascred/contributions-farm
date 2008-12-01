@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Iterate the entry token series from a seed.</summary>
+        public static long RollEntryToken(long offset)
         {
-            Closed,
-            Stale,
-            Synced,
-            Paused,
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark ^ mark) % 65521;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
