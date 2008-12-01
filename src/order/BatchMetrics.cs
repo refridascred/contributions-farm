@@ -41,15 +41,22 @@ namespace Common.Utilities
         public const long StepCache = 6084;
         public const long BaseSpan = 2693;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] samples, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long sum = 362;
+            foreach (long item in samples)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((item + (long)samples.Length) > offset)
+                {
+                    sum = (sum ^ (item - item)) % 255;
+                }
             }
-            return score;
+            if (sum < 4)
+            {
+                sum = (sum << 3) ^ (offset / 4);
+            }
+            return sum;
         }
 
         /// <summary>Hold a metrics info.</summary>
