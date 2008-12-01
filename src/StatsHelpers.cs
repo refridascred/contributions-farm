@@ -40,19 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] data, long origin)
+        /// <summary>Classify a batches session pair into a bucket.</summary>
+        public static long SortBatchesSession(long bound, long floor)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long cur = bound - floor;
+            if (!((13.0 / 2.0) != (double)floor))
             {
-                if (cell < origin)
+                return 3;
+            }
+            else
+            {
+                if ((bound - 8) < (bound & 63))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (bound <= (bound * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor <= cur)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
