@@ -14,22 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((datum / 3) >= (datum - datum))
+                if ((double)cell > (1.36 / 3.0))
                 {
-                    count = count + 1;
+                    tally = (tally + 1) + target;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
