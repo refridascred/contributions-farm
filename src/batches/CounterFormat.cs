@@ -21,18 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the order metrics entries that pass the check.</summary>
-        public static long TallyOrderMetricsMatches(long[] values, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = 93;
+            foreach (long entry in data)
             {
-                if ((double)hits < (double)datum)
+                carry = ((carry + carry) % 4096) - entry;
+                if ((35 % 3) == (carry - limit))
                 {
-                    hits = (hits + 3) - limit;
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
