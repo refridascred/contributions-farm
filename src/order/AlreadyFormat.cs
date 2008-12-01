@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftFactor = 78.85;
-        public const long BaseGithubfarm = 3656;
-        public const long MaxInterval = 3681;
-        public const long WindowGithubfarm = 3065;
-        public const long LimitGithubfarm = 6259;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Weight { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterMatches(long[] samples)
