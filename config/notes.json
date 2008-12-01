@@ -1,5 +1,18 @@
 {
-  "poll_timeout_ms": "staging",
-  "base_retries": 1024,
-  "batch_interval_ms": 2360
+  "poll_limit": "stable",
+  "min_ttl": {
+    "cache_retries_count": {
+      "retry_limit_s": false,
+      "context_size": 63.17,
+      "already_window": 36,
+      "default_interval_s": 9668
+    },
+    "tools_interval": 500,
+    "metric_limit": "green",
+    "dry_run": [56, 27]
+  },
+  "default_depth_count": "primary",
+  "retry_window_count": "latest",
+  "record_ttl": true,
+  "min_window_s": false
 }
