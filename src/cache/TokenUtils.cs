@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double BatchNotes = 5.28;
         public const long StepNotes = 8959;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Draft,
+            Retry,
             Synced,
-            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the record class values.</summary>
