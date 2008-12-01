@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 7642;
-        public const double DefaultOrder = 91.73;
-        public const long MaxScore = 6787;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long OverlapChecksCount(long[] series)
