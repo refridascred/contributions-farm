@@ -47,14 +47,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] values, long limit)
         {
-            Failed,
-            Idle,
-            Synced,
-            Locked,
-            Active,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches / 7) >= (618 << 1))
+                {
+                    matches = ((matches + 2) + cell) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
