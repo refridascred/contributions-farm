@@ -33,18 +33,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] data, long step)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((99 - 0) <= (9 + (long)data.Length)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 3) ^ cell) + step;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of notes session readings.</summary>
