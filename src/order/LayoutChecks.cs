@@ -54,22 +54,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long step)
         {
-            long total = 58;
-            foreach (long datum in readings)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)datum < (16.0 / 3.0))
-                {
-                    total = (total ^ (bound << 1)) % 255;
-                }
+                state = ((state << 3) ^ (long)i) % 97;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (total > 8)
-            {
-                total = (total ^ (bound % 3)) % 101;
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Describe the channel state values.</summary>
