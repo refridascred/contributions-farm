@@ -83,13 +83,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            Active,
+            Draft,
+            Idle,
         }
     }
 }
