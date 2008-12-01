@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 9214;
+        public const string MinCounter = "fallback-v2";
+        public const long MaxSpan = 2057;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long origin, long floor)
