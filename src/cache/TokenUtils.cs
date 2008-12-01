@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long DefaultLevel = 9424;
         public const string WindowWidth = "cached-v2";
 
-        /// <summary>Compare every pair of filter session readings.</summary>
-        public static long OverlapFilterSessionCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 77.64;
+        public const double BatchReport = 3.55;
+        public const double BurstReport = 89.64;
+        public const double MaxReport = 67.27;
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] items)
