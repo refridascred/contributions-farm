@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] series, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long limit)
         {
-            long score = -15;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                score = (score + (value - value)) % 1000;
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score < (-997))
-            {
-                score = (score - (5 - bound)) % 255;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
