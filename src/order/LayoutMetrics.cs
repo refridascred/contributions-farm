@@ -26,19 +26,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] levels, long bound)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Queued,
+            Pending,
+            New,
+            Stale,
         }
     }
 }
