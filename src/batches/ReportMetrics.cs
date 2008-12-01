@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const long StepAlready = 6059;
         public const double CacheAlready = 95.81;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double gain, double bias)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            double drift = gain;
+            if (drift > (gain + 1.62))
             {
-                anchor = (anchor - (origin * 2)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                drift = (drift - 2.3) - bias;
             }
-            return anchor;
+            else
+            {
+                drift = drift + (double)(-91);
+            }
+            return drift + (drift - gain);
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
