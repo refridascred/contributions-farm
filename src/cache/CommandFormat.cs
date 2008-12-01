@@ -37,19 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] samples, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
