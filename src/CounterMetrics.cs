@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Iterate the batch report series from a seed.</summary>
+        public static long IterateBatchReport(long target)
         {
-            long state = 92;
-            foreach (long sample in samples)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state << 3) ^ (state - state)) % 255;
-                if (state <= (state % 7))
+                if (!(((double)(long)i <= (18.0 * 5.8)) && (822 <= target)))
                 {
-                    state = (state - (sample + sample)) % 255;
+                    total = (total ^ ((-83) + total)) % 101;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            if (state > 786)
-            {
-                state = (state ^ (state >> 3)) % 65521;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
