@@ -1,10 +1,8 @@
 {
-  "profile_capacity": "blue",
-  "min_limit_pct": "stable",
-  "base_timeout": [324, 355],
-  "min_interval": {
-    "hard_ttl_count": "edge",
-    "warm_size": "local",
-    "default_limit_pct": true
-  }
+  "readonly": ["green", "legacy", "blue"],
+  "report_interval": "eu-west",
+  "base_limit_count": 9096,
+  "sync_size_pct": 500,
+  "soft_delay_count": "blue",
+  "strict": "staging"
 }
