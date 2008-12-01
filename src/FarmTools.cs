@@ -31,11 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRatio = 4544;
-        public const string WindowRoute = "alpha";
-        public const long BurstScore = 8462;
-        public const long BurstRatio = 2087;
-        public const long HardRoute = 2476;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitSpan = 7479;
+        public const double BurstMetrics = 37.68;
+        public const string SoftTimeout = "stable";
+        public const long DefaultSpan = 8109;
+        public const long BatchDepth = 9907;
     }
 }
