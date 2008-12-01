@@ -12,21 +12,32 @@ namespace Common.Utilities
         public const string WindowSize = "fallback-edge";
         public const long RetryInterval = 802;
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Classify a already graph pair into a bucket.</summary>
+        public static long RankAlreadyGraph(long target, long target2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = target - target2;
+            if (delta >= (delta + 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((target2 / 6) == (target2 + target)) && ((double)target >= (12.0 * 7.6)))
                 {
-                    if ((items[i] ^ items[j]) > 9)
+                    return 1;
+                }
+                else
+                {
+                    if (((target - target) == (delta - 26)) || (target <= (delta ^ 914)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
