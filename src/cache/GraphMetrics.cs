@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "open-1";
-        public const long SoftContributi = 3234;
-        public const long HardContributi = 270;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] values)
+        {
+            long mix = 69;
+            foreach (long item in values)
+            {
+                if (((947 / 8) < (item - item)) && ((1.7 - 7.6) == (double)mix))
+                {
+                    mix = (mix + (item + mix)) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ mix) % 4096;
+                }
+                if ((item - item) == (mix >> 2))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of editor cache readings.</summary>
         public static long CompareEditorCacheCount(long[] data)
