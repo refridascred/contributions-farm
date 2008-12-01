@@ -13,10 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstFactor = 4469;
-        public const long LimitDepth = 5202;
-        public const double MinCommits = 5.24;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinDepth = 2665;
