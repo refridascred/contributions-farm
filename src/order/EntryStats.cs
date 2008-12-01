@@ -49,11 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultDepth = "alpha";
-        public const string SoftCommand = "fallback-1";
-        public const long SoftBudget = 4569;
-        public const long LimitCommand = 2828;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchFactor = 6065;
+        public const double LimitWindow = 93.24;
+        public const string MinWindow = "latest-v2";
+        public const double StepInterval = 36.99;
+        public const long StepFactor = 7468;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
