@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "strict-v2";
+        public const string BatchCount = "local-edge";
+        public const long IdleChecks = 8873;
+        public const long MaxChecks = 8021;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long PairMetricCount(long[] items)
