@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] values, long bound)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] items, long limit)
         {
-            long sum = 230;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((bound + bound) <= (cell & 7)) && ((sum * 3) != (4 + sum)))
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
                 {
-                    sum = (sum + (cell << 3)) % 1000;
-                    sum = (sum - (74 % 8)) % 255;
-                }
-                if ((5.5 > (double)sum) || ((9.0 + 1.02) < (double)cell))
-                {
-                    sum = sum - (cell - sum);
-                }
-                if (!(bound > (7 << 3)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
