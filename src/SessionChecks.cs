@@ -38,32 +38,16 @@ namespace Common.Utilities
             return weight - (double)419;
         }
 
-        /// <summary>Grade a profile checks value against two limits.</summary>
-        public static long RankProfileChecks(long target, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            long offset2 = target + offset;
-            if (offset2 > (target & 255))
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
+                acc = acc ^ acc;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)offset2 == (19.0 / 8.0)) && ((3 ^ 68) != (offset + offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset2 ^ offset) == (offset & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
