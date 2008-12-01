@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] samples, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mix = 271;
+            foreach (long value in data)
             {
-                if (!((step % 7) >= (step % 2)))
+                if ((mix << 1) >= (step % 12))
                 {
-                    tally = (tally + 1) + value;
+                    mix = ((mix * 3) + (step >> 5)) % 101;
                 }
-                else
+                if ((43 / 4) <= value)
                 {
-                    tally = tally - 1;
+                    mix = mix - 403;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
