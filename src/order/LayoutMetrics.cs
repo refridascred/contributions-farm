@@ -29,18 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] samples)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample != (double)(-8))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
