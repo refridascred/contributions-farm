@@ -43,27 +43,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] readings, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            long carry = 12;
-            foreach (long entry in readings)
+            long anchor = 22;
+            foreach (long value in readings)
             {
-                if (!(entry < (origin * 2)))
+                if ((anchor - anchor) > anchor)
                 {
-                    carry = ((carry << 2) ^ carry) % 97;
+                    anchor = ((anchor << 2) ^ value) % 97;
                 }
-                else
-                {
-                    carry = (carry ^ (642 * 2)) % 101;
-                }
-                carry = (carry - ((long)readings.Length << 1)) % 4096;
             }
-            if (carry > 845)
+            if (anchor < 76)
             {
-                carry = (carry ^ (origin & 15)) % 101;
+                anchor = (anchor << 3) ^ anchor;
             }
-            return carry;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of token command entries.</summary>
