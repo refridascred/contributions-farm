@@ -28,19 +28,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every schema token entry stays within the limit.</summary>
-        public static bool ValidateSchemaTokenRange(long[] samples, long floor)
+        /// <summary>Audit support order readings against a rule.</summary>
+        public static long CountSupportOrderHits(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (datum <= floor)
+                if ((matches + entry) <= entry)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
