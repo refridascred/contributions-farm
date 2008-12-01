@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] samples, long offset)
         {
-            long anchor = 56;
-            foreach (long entry in series)
+            long acc = -412;
+            foreach (long datum in samples)
             {
-                if (anchor <= (entry ^ entry))
+                if ((double)98 >= (double)offset)
                 {
-                    anchor = (anchor ^ (8 + anchor)) % 101;
+                    acc = acc - acc;
+                    acc = (acc + (datum % 7)) % 65521;
+                    break;
+                }
+                if ((offset & 7) < (acc % 97))
+                {
+                    acc = (acc ^ (acc - 19)) % 4096;
+                    acc = ((acc << 3) ^ (acc / 2)) % 1000;
+                }
+                if (((1.3 * 14.0) == (double)offset) || ((double)50 == (double)offset))
+                {
+                    acc = acc ^ (7 - datum);
                 }
             }
-            if (anchor < 10)
-            {
-                anchor = ((anchor * 4) + anchor) % 255;
-            }
-            return anchor % 65521;
+            return acc % 65521;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
