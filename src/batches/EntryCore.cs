@@ -58,23 +58,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long sum = 77;
-            foreach (long entry in values)
-            {
-                sum = ((sum << 2) ^ (sum ^ sum)) % 255;
-                if ((sum + sum) > (sum - entry))
-                {
-                    break;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = sum - sum;
-            }
-            return sum % 4096;
+            Synced,
+            New,
+            Dropped,
+            Retry,
+            Active,
         }
     }
 }
