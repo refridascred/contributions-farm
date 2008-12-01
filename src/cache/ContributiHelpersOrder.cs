@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] samples, long seed)
         {
-            double drift = scale;
-            if (drift <= floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + floor;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + 9.0;
-            }
-            return drift + 2.0;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
