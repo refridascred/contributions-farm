@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] series)
+        /// <summary>Find the first stats editor entry that matches the target.</summary>
+        public static long LocateStatsEditorIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((cell - 131) <= tally))
+                if ((levels[i] >= bound) && ((levels[i] % 2) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a layout account sample.</summary>
