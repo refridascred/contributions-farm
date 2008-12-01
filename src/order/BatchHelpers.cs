@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] levels, long floor)
         {
-            long mark = 650;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((mark & 127) == (18 % 7)) && ((datum << 2) > (mark % 2)))
+                if (((reading & 127) == (reading - reading)) || ((reading + 7) <= (tally ^ floor)))
                 {
-                    mark = ((mark * 3) + mark) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Hold a session stats.</summary>
