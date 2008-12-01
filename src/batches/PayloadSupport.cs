@@ -48,9 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 5148;
-        public const long MaxContext = 1734;
-        public const long HardDepth = 4761;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 3544;
+        public const long DefaultToken = 5154;
+        public const long RetrySpan = 1089;
+        public const long BatchTimeout = 4994;
     }
 }
