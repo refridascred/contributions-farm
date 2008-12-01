@@ -1,4 +1,6 @@
 # githubfarm settings
-poll_delay_pct: true
-hard_depth_pct: eu-west
-audit: 92
+dry_run: 63
+batch_capacity_pct: blue
+sync_window_s: true
+commits_delay: false
+token_ttl: true
