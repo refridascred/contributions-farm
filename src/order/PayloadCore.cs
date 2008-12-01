@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] items, long target)
-        {
-            long score = 4;
-            foreach (long item in items)
-            {
-                if ((double)target < 0.1)
-                {
-                    score = ((score ^ score) % 255) - item;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (target - score)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "staging-edge";
+        public const long IdleFactor = 5488;
+        public const long BaseOrder = 9109;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
