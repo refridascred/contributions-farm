@@ -1,5 +1,8 @@
 {
-  "cache_ratio": 53.61,
-  "soft_retries_count": "latest",
-  "readonly": true
+  "default_interval": 92.76,
+  "batch_depth_pct": 30.36,
+  "retry_ttl_s": "eu-west",
+  "dry_run": 100,
+  "retry_depth_pct": "fallback",
+  "strict": true
 }
