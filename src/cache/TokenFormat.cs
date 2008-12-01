@@ -14,21 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up session stream samples.</summary>
-        public static long OverlapSessionStreamCount(long[] items)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((step + 49) < target) || ((9.35 - 20.0) != (double)step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((14.0 + 1.48) != (double)step)
                 {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
