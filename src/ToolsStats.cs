@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] values, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = 71;
-            foreach (long value in values)
-            {
-                if (value >= (origin >> 4))
-                {
-                    acc = (acc + 213) % 255;
-                }
-            }
-            return acc % 1000;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of filter entries.</summary>
