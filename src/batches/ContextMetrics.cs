@@ -20,15 +20,14 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Iterate the queue command series from a seed.</summary>
-        public static long StepQueueCommand(long seed)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Locked,
+            Idle,
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
