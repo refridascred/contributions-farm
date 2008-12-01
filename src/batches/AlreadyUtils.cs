@@ -31,15 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
