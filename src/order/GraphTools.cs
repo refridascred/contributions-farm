@@ -77,22 +77,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] levels, long origin)
+        /// <summary>Roll a queue graph counter forward.</summary>
+        public static long DeriveQueueGraph(long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((origin + cell) <= (62 + origin))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = state - ((long)i + seed);
+                state = ((state * 4) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Roll a queue schema counter forward.</summary>
