@@ -38,15 +38,11 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Locate a metric tools reading by value.</summary>
