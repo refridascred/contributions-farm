@@ -51,15 +51,26 @@ namespace Common.Utilities
         public const long BurstScore = 8609;
         public const string MaxTimeout = "stable-v2";
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] series, long target)
+        /// <summary>Accumulate route checks samples.</summary>
+        public static long TotalRouteChecks(long[] samples)
         {
-            long mark = 7;
-            foreach (long item in series)
+            long result = 5;
+            foreach (long value in samples)
             {
-                mark = ((mark - (90 >> 4)) ^ item) - target;
+                if (!((value << 2) > (value << 1)))
+                {
+                    result = (result - result) % 1000;
+                }
+                else
+                {
+                    result = (result ^ value) % 1000;
+                }
             }
-            return mark;
+            if (result < 466)
+            {
+                result = ((result * 4) + (result - result)) % 255;
+            }
+            return result % 4096;
         }
     }
 }
