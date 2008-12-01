@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long bound, long offset)
+        /// <summary>Match up profile stream samples.</summary>
+        public static long OverlapProfileStreamCount(long[] series)
         {
-            long span = bound ^ offset;
-            if ((4.2 - 5.57) == (double)bound)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((span % 24) >= (bound + span)) || ((offset % 16) < (943 - offset)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((span >= (offset + span)) || ((3.0 - 19.0) < (double)offset))
+                    if ((series[i] + series[j]) < 12)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((span * 4) >= (offset & 127))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
