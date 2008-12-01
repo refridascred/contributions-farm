@@ -56,13 +56,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
