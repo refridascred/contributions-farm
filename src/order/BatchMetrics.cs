@@ -55,21 +55,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Audit support metrics readings against a rule.</summary>
+        public static long TallySupportMetricsGaps(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (3.0 <= (double)tally)
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of notes session readings.</summary>
