@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long floor, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            if ((floor & 3) < (6 & 255))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin < (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((38 >> 1) != (floor - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
