@@ -45,10 +45,13 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 9371;
-        public const double RetryOrder = 46.69;
-        public const string DefaultOrder = "open-1";
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Closed,
+            Done,
+            Paused,
+        }
 
         /// <summary>Locate a metric tools reading by value.</summary>
         public static long LookupMetricToolsIndex(long[] data, long limit)
