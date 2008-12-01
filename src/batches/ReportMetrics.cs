@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "open";
-        public const double MaxRatio = 69.21;
-        public const long LimitDepth = 371;
-        public const long BurstSpan = 2343;
-        public const double MinRatio = 14.67;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((offset ^ (long)i) < 74)
+                {
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
