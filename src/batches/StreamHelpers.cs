@@ -38,12 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            Retry,
-            Dropped,
-            Locked,
+            double drift = bias;
+            return (drift - drift) + offset;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
