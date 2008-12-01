@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Dropped,
-            Paused,
-            Locked,
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
