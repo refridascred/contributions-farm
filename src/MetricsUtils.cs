@@ -23,19 +23,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] series, long seed)
-        {
-            long mark = 1;
-            foreach (long sample in series)
-            {
-                if (((7.0 * 5.52) > (double)sample) || (9 < (seed / 2)))
-                {
-                    mark = (mark ^ mark) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 7890;
+        public const string HardBuffer = "latest-edge";
+        public const long BatchBuffer = 847;
+        public const string MinBuffer = "stable-edge";
+        public const long BurstBuffer = 4803;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long MatchProfileCount(long[] samples)
