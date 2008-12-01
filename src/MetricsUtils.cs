@@ -38,15 +38,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Failed,
+            Synced,
+            Pending,
+            Retry,
+            Stale,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
