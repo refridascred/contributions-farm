@@ -1,5 +1,5 @@
 {
-  "queue_timeout": "local",
-  "buffer_interval": "legacy",
-  "poll_delay": ["stable", "open", "legacy", "fallback"]
+  "cache_ratio": 53.61,
+  "soft_retries_count": "latest",
+  "readonly": true
 }
