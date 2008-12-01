@@ -43,15 +43,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            long result = 5;
+            foreach (long sample in levels)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                result = (result << 2) ^ ((long)levels.Length + result);
+                result = result ^ (result % 3);
+                if ((double)sample < (10.0 - 12.0))
+                {
+                    break;
+                }
             }
-            return sum;
+            return result;
         }
     }
 }
