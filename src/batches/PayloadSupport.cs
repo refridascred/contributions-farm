@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] samples)
         {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) != (173 >> 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
