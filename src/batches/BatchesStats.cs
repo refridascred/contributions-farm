@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] data, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (!((double)datum < (double)473))
+                if (item > step)
                 {
-                    count = (count + 3) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
