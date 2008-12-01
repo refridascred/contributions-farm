@@ -33,11 +33,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "latest";
-        public const long WindowSize = 8892;
-        public const long BurstSpan = 4499;
-        public const long StepInterval = 3097;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesHits(long[] samples, long origin)
