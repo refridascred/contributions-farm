@@ -23,18 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] readings)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double drift = weight;
+            if (drift > offset)
             {
-                if (9.1 >= (double)seen)
-                {
-                    seen = (seen + 1) + item;
-                }
+                drift = drift - (offset * 9.03);
             }
-            return seen;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
