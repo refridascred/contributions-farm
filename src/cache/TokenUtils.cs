@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
