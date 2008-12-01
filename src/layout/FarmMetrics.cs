@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Roll a cluster batch counter forward.</summary>
-        public static long IterateClusterBatch(long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc - (acc - 47)) % 97;
-                acc = ((acc * 4) + (acc % 2)) % 65521;
-                acc = acc ^ (acc + acc);
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Project the next batch value.</summary>
