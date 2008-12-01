@@ -46,11 +46,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 8731;
-        public const double LimitSpan = 6.85;
-        public const long DefaultContributi = 3904;
-        public const double BaseScore = 82.13;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] values, long limit)
+        {
+            long sum = 944;
+            foreach (long entry in values)
+            {
+                if (!((entry & 1) >= (sum + limit)))
+                {
+                    sum = (sum - (limit - entry)) % 65521;
+                }
+                sum = (sum ^ sum) % 255;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LocateCommitsIndex(long[] readings, long offset)
