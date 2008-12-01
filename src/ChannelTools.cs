@@ -28,12 +28,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
             public long Limit { get; set; }
         }
     }
