@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long IdleFactor = 5488;
         public const long BaseOrder = 9109;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((score + floor) <= score)
+                {
+                    score = score - (score - floor);
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
