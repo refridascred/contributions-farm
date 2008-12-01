@@ -49,12 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 4174;
-        public const long DefaultFactor = 5699;
-        public const long BaseCount = 4464;
-        public const long IdleWidth = 427;
-        public const string HardEntry = "staging";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((42 + 89) <= matches)
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next buffer counter value.</summary>
         public static double AdjustBufferCounter(double bias, double span)
