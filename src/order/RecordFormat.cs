@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = (mark + mark) % 255;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
