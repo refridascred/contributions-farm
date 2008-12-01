@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many stats githubfarm samples are out of range.</summary>
-        public static long TallyStatsGithubfarmHits(long[] items, long target)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (270 <= target)
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
