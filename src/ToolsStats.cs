@@ -34,11 +34,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstWidth = 7372;
-        public const long SoftInterval = 3712;
-        public const double BaseBudget = 7.42;
-        public const string CacheDepth = "cached-1";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Size { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long MatchStatsCount(long[] series)
