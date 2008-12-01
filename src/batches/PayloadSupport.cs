@@ -43,13 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches * 3) >= (86 % 60))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
     }
 }
