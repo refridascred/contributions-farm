@@ -36,22 +36,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] series, long step)
+        /// <summary>Fold a list of already payload readings.</summary>
+        public static long FoldAlreadyPayload(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = 48;
+            foreach (long reading in values)
             {
-                if ((step * 3) >= (step * 4))
+                if (!((reading + 74) < 1))
                 {
-                    hits = (hits + 3) ^ datum;
+                    carry = carry ^ (reading + carry);
                 }
-                else
+                if (((97 - reading) != (reading & 7)) && ((-11) >= carry))
                 {
-                    hits = hits - 1;
+                    carry = (carry + reading) % 101;
+                }
+                if (!(0.8 >= (double)carry))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
