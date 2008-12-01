@@ -37,12 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            Idle,
-            Queued,
-            Closed,
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state - state) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Accumulate order format samples.</summary>
