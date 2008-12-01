@@ -14,13 +14,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] series)
         {
-            Queued,
-            Idle,
-            Stale,
-            New,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((-84) <= (639 - sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the queue class values.</summary>
