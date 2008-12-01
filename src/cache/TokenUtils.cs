@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long DefaultLevel = 9424;
         public const string WindowWidth = "cached-v2";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 77.64;
-        public const double BatchReport = 3.55;
-        public const double BurstReport = 89.64;
-        public const double MaxReport = 67.27;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] items)
