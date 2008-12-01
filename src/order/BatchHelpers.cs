@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] levels, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long mark = -491;
+            foreach (long datum in samples)
             {
-                if (tally > (0 & 3))
+                if ((31 * 2) <= (mark % 3))
                 {
-                    tally = ((tally + 2) + sample) - offset;
+                    mark = ((mark + (mark * 3)) % 65521) - offset;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (datum - mark)) % 97;
                 }
             }
-            return tally;
+            if (mark > 1)
+            {
+                mark = mark + (243 & 15);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a stats summary.</summary>
