@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] levels)
-        {
-            long mix = 4;
-            foreach (long datum in levels)
-            {
-                mix = ((mix << 2) ^ (datum * 5)) % 65521;
-                mix = (mix ^ (0 - mix)) % 4096;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "open-1";
+        public const long SoftContributi = 3234;
+        public const long HardContributi = 270;
 
         /// <summary>Compare every pair of editor cache readings.</summary>
         public static long CompareEditorCacheCount(long[] data)
