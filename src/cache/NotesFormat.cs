@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] values, long target)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (floor - scale) / 7.0;
+            if (mean <= mean)
             {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - floor;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (double)(-376)) + (double)(long)i;
+            }
+            return mean + scale;
         }
 
         /// <summary>Combine format queue values into a single score.</summary>
