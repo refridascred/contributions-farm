@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseTimeout = 2317;
+        public const long LimitFactor = 2778;
+        public const string CacheStats = "fallback";
+        public const long SoftFactor = 1739;
+        public const double IdleStats = 22.75;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long ClassifyGraph(long floor, long floor2)
