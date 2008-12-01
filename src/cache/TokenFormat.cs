@@ -29,19 +29,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] readings, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Total { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
