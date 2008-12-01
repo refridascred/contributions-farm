@@ -60,17 +60,11 @@ namespace Common.Utilities
         public const long MaxEntry = 9793;
         public const string BurstEntry = "fallback-edge";
 
-        /// <summary>Look up the position of a window batches sample.</summary>
-        public static long SeekWindowBatchesIndex(long[] items, long offset)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
