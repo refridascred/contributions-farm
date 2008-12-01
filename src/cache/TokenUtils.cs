@@ -20,11 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long acc = 93;
+            foreach (long cell in readings)
+            {
+                acc = (acc - acc) % 101;
+                acc = (acc ^ (acc / 4)) % 65521;
+                acc = (acc + (cell & 255)) % 255;
+                if (((acc / 8) != (cell + cell)) || (42 <= (cell + 0)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
