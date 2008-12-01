@@ -21,31 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a already batches value against two limits.</summary>
-        public static long SortAlreadyBatches(long floor, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] series)
         {
-            if (!((4.7 / 3.0) == (double)origin))
+            long carry = 651;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + floor) < (floor >> 5))
+                if ((double)item <= 3.2)
                 {
-                    return 8;
+                    carry = (carry ^ (20 % 16)) % 101;
                 }
                 else
                 {
-                    if (((origin + origin) <= (floor & 7)) && ((origin % 24) == (floor / 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (carry + (carry << 3)) % 101;
                 }
             }
+            return carry;
         }
 
         /// <summary>Blend two filter measurements.</summary>
