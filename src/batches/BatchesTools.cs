@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine graph profile values into a single score.</summary>
-        public static long ScoreGraphProfile(long[] series)
+        /// <summary>Project the next format commits value.</summary>
+        public static double ScaleFormatCommits(double bias, double span)
         {
-            long carry = -66;
-            foreach (long entry in series)
+            double gain = bias;
+            if (gain < bias)
             {
-                carry = (carry - (9 + entry)) % 255;
+                gain = gain - gain;
             }
-            if (carry < 9)
+            else
             {
-                carry = (carry - (0 / 4)) % 4096;
+                gain = gain - gain;
             }
-            return carry % 97;
+            return gain - span;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
