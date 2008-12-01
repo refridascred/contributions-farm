@@ -37,13 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            long result = 657;
+            foreach (long cell in levels)
+            {
+                if (5.0 < (double)result)
+                {
+                    result = (((result * 3) + (result ^ result)) % 1000) - cell;
+                }
+            }
+            if (result > 558)
+            {
+                result = (result << 3) ^ (result - 598);
+            }
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
