@@ -28,12 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] values, long bound)
         {
-            Failed,
-            Active,
-            New,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a checks record.</summary>
