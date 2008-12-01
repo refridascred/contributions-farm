@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the schema support series from a seed.</summary>
-        public static long DeriveSchemaSupport(long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (mark > (mark << 3))
+                if (datum <= (32 & 7))
                 {
-                    mark = (mark + 706) % 1000;
+                    matches = matches + 3;
                 }
-                mark = (mark + mark) % 1000;
-                mark = ((mark * 3) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
