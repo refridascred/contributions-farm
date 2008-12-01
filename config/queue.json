@@ -1,6 +1,10 @@
 {
-  "payload_timeout": ["staging", "legacy"],
-  "cache_ttl_s": "blue",
-  "soft_threshold_s": false,
-  "warm_threshold_ms": "eu-west"
+  "retry_window_s": {
+    "soft_limit_count": "blue",
+    "readonly": "cached",
+    "retry_timeout": 500,
+    "flush_retries": "standard"
+  },
+  "compress": false,
+  "dry_run": 11.18
 }
