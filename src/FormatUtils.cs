@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the cache token series from a seed.</summary>
-        public static long IterateCacheToken(long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix << 2) ^ (floor + mix);
-                mix = ((mix << 3) ^ ((long)i - (long)i)) % 1000;
-                mix = (mix + (803 + 2)) % 101;
-                mix = ((mix * 5) + (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Match up account samples.</summary>
