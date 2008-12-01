@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "stable-v2";
-        public const long DefaultSize = 257;
-        public const string DefaultQueue = "legacy-edge";
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            New,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long WeighAccount(long[] data, long offset)
