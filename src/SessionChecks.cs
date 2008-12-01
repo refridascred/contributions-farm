@@ -13,18 +13,26 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long acc = 0;
+            foreach (long sample in items)
             {
-                if (item >= (item + tally))
+                if ((limit << 3) == (acc >> 1))
                 {
-                    tally = tally + 2;
+                    acc = ((acc ^ acc) % 1000) ^ sample;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ acc;
                 }
             }
-            return tally;
+            if (acc > 567)
+            {
+                acc = ((acc << 3) ^ (limit + limit)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Grade a profile checks value against two limits.</summary>
