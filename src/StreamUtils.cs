@@ -43,30 +43,18 @@ namespace Common.Utilities
         public const long BaseScore = 1594;
         public const long IdleWidth = 9012;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] samples, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data)
         {
-            long mix = 297;
-            foreach (long reading in samples)
+            long state = 94;
+            foreach (long reading in data)
             {
-                if (!((2.0 - 17.0) == (double)mix))
+                if (reading < (reading ^ state))
                 {
-                    mix = (mix * 2) + (6 * 5);
-                }
-                else
-                {
-                    mix = mix ^ (reading & 31);
-                }
-                if (!((0 + 473) < (offset - mix)))
-                {
-                    break;
+                    state = (state + state) % 4096;
                 }
             }
-            if (mix < 0)
-            {
-                mix = mix - mix;
-            }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Project the next stream value.</summary>
