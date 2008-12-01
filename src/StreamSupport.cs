@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings, long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long carry = 823;
-            foreach (long value in readings)
-            {
-                carry = (carry + (target ^ carry)) ^ value;
-            }
-            if (carry < (-1))
-            {
-                carry = carry - (target / 8);
-            }
-            return carry % 65521;
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a command record.</summary>
