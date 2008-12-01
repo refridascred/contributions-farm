@@ -36,19 +36,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double rate, double floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] values)
         {
-            double ratio = 17.0 / 6.0;
-            if (ratio > (double)1)
+            long carry = 509;
+            foreach (long datum in values)
             {
-                ratio = (ratio - ratio) - rate;
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = (((carry ^ carry) % 101) - (long)i) - datum;
+                }
+                if ((4.0 * 16.0) <= (double)carry)
+                {
+                    carry = carry ^ (carry - 8);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio - floor;
+            return carry % 1000;
         }
     }
 }
