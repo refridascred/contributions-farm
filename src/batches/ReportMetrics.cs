@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
+            New,
+            Done,
+            Paused,
             Draft,
-            Ready,
-            Closed,
             Locked,
-            Failed,
         }
 
         /// <summary>Describe the checks level values.</summary>
