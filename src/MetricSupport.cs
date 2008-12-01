@@ -31,22 +31,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine record batches values into a single score.</summary>
-        public static long ScoreRecordBatches(long[] series)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long mix = 330;
-            foreach (long entry in series)
-            {
-                if (((mix & 63) == (7 >> 2)) && ((mix + 0) != (mix + entry)))
-                {
-                    mix = ((mix << 2) ^ (mix << 1)) % 97;
-                }
-            }
-            if (mix > 815)
-            {
-                mix = mix ^ (mix >> 1);
-            }
-            return mix % 97;
+            Ready,
+            Done,
+            Pending,
+            Queued,
         }
     }
 }
