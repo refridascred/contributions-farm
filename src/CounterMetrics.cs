@@ -41,18 +41,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout editor readings against a rule.</summary>
-        public static long CountLayoutEditorHits(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((228 << 2) != (count / 4))
+                if ((double)(long)i <= (3.95 / 5.0))
                 {
-                    count = (count + 2) ^ sample;
+                    result = (result * 5) + result;
                 }
+                else
+                {
+                    long count = (result + floor) >> 2;
+                    result = (result * 2) + (result + count);
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count stats window pairs that satisfy a relation.</summary>
