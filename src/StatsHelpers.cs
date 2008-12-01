@@ -68,15 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] values, long seed)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] series)
         {
             long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.21 + 9.79) >= (double)seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) ^ entry;
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
