@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
