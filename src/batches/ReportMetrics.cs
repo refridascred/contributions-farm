@@ -19,17 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long target)
+        /// <summary>Match up context contributi samples.</summary>
+        public static long PairContextContributiCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
