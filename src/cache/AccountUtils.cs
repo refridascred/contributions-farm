@@ -15,18 +15,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long offset = bound + bound2;
+            if ((35 + bound) > (bound >> 2))
             {
-                if ((entry ^ entry) < entry)
+                return 4;
+            }
+            else
+            {
+                if ((bound + offset) > (882 - offset))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset > (bound + bound)) && ((double)offset < (1.0 - 0.2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
