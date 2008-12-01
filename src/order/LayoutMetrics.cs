@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] items, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (datum <= seed)
+                if (((cell + seen) < (cell % 60)) || (((8 ^ seen) != (cell + seen)) || ((double)seen <= (1.0 + 6.76))))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
