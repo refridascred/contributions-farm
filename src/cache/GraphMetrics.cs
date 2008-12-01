@@ -53,38 +53,18 @@ namespace Common.Utilities
         public const long BaseWidth = 2455;
         public const string WindowFarm = "open-edge";
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long step, long limit)
+        /// <summary>Accumulate githubfarm command samples.</summary>
+        public static long TallyGithubfarmCommand(long[] samples)
         {
-            if ((step % 100) != (limit >> 1))
+            long mix = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + limit) >= (-76))
+                if ((entry << 1) > 384)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit > (step & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step <= (limit ^ step)) || (limit >= 0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = (mix ^ mix) % 101;
                 }
             }
+            return mix % 1000;
         }
     }
 }
