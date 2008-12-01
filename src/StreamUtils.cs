@@ -35,20 +35,10 @@ namespace Common.Utilities
         public const long BaseScore = 1594;
         public const long IdleWidth = 9012;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleInterval = 72.32;
+        public const double StepLevel = 52.99;
+        public const double StepAlready = 69.35;
 
         /// <summary>Project the next stream value.</summary>
         public static double ProjectStream(double bias, double bias2)
