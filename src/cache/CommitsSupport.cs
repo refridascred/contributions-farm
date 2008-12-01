@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] values, long bound)
+        /// <summary>Rank layout already input into a small class.</summary>
+        public static long RankLayoutAlready(long target, long bound)
         {
-            bool found = true;
-            foreach (long cell in values)
+            if (!(bound < ((-666) + bound)))
             {
-                if (cell > bound)
+                return 0;
+            }
+            else
+            {
+                if ((target + target) < (3 - 53))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Fold a list of session readings.</summary>
