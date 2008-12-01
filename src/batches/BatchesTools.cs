@@ -29,14 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] series, long bound)
         {
-            Dropped,
-            Paused,
-            Queued,
-            Failed,
-            New,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
