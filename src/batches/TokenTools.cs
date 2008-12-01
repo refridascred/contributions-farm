@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] values, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long result = -7;
+            foreach (long datum in data)
             {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result ^ (59 - result)) % 255) ^ datum;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
