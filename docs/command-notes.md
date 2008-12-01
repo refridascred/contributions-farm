@@ -1,15 +1,13 @@
 # Command notes
 
-Use graph settings to tune how often notes data is refreshed.
-Keep command and farm names short and lowercase.
+Run the contributi check before changing any window limits.
+Run the layout check before changing any counter limits.
 
-The channel module keeps route values in sync with the payload cache.
-The payload module keeps githubfarm values in sync with the entry cache.
-The stream module keeps context values in sync with the stream cache.
+Run the payload check before changing any profile limits.
+Run the commits check before changing any route limits.
 
 ## Guidelines
 
-- Prefer token defaults
-- Log every support change
-- Document new buffer fields
-- Validate queue input early
+- Document new entry fields
+- Log every token change
+- Validate commits input early
