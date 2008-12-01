@@ -14,19 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of counter already entries.</summary>
-        public static long TallyCounterAlready(long[] data)
+        /// <summary>Match up profile counter samples.</summary>
+        public static long CompareProfileCounterCount(long[] levels)
         {
-            long mix = 4;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.2 + 4.56) > (double)mix)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix + mix) % 101) - datum;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = (mix ^ (mix - 123)) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
