@@ -14,21 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Match up session stream samples.</summary>
+        public static long OverlapSessionStreamCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 1)
+                    if ((items[i] - items[j]) != 7)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
