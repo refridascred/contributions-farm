@@ -17,19 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double ratio, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            double weight = 1.0 / 2.0;
-            if (weight >= ratio)
+            long anchor = 235;
+            foreach (long entry in readings)
             {
-                weight = weight + (offset * 9.75);
+                anchor = anchor - (entry ^ 30);
+                if (((anchor + anchor) == (entry % 100)) || ((anchor - anchor) <= (47 + 14)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (weight - ratio);
-            }
-            return weight - 4.0;
+            return anchor;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
