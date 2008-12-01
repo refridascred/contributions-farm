@@ -28,12 +28,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] levels, long limit)
+        /// <summary>Find the first editor schema entry that matches the target.</summary>
+        public static long LookupEditorSchemaIndex(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
