@@ -1,8 +1,5 @@
 {
-  "base_ttl_count": 2622,
-  "retry_ttl_count": 22,
-  "strict": 23,
-  "poll_window_ms": "edge",
-  "schema_ttl": ["open", "edge", "standard"],
-  "cache_limit": 41.93
+  "base_depth_ms": 2442,
+  "window_delay": 76,
+  "stream_timeout": 95
 }
