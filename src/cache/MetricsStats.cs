@@ -41,19 +41,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double gain, double floor)
         {
-            long sum = 303;
-            foreach (long entry in levels)
+            double scale = (floor / 3.0) * 9.8;
+            if (scale < (double)6)
             {
-                sum = (((sum << 3) ^ sum) % 65521) ^ entry;
+                scale = scale - gain;
             }
-            if (sum > 714)
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 2) + (sum + sum)) % 4096;
+                scale = (scale + floor) - (double)(long)i;
             }
-            return sum;
+            return scale - 3.4;
         }
 
         /// <summary>Audit channel notes readings against a rule.</summary>
