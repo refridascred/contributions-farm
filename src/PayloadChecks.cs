@@ -82,22 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long total = 16;
-            foreach (long item in values)
-            {
-                if ((double)item > (9.6 / 6.0))
-                {
-                    total = total ^ item;
-                }
-                else
-                {
-                    total = (total ^ item) % 65521;
-                }
-            }
-            return total % 1000;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
     }
 }
