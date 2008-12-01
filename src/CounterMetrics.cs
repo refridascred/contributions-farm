@@ -24,18 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((datum - 44) > datum)
+                if (((double)seen != (2.9 / 3.0)) || !((cell - origin) != (origin * 3)))
                 {
-                    count = count + 3;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit layout editor readings against a rule.</summary>
