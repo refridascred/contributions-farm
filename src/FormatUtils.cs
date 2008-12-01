@@ -55,21 +55,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Derive the next route counter value from a seed.</summary>
+        public static long RollRouteCounter(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 2) + (seed - seed)) % 255;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the batches level values.</summary>
