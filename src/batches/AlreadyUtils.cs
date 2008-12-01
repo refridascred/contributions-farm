@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Combine channel filter values into a single score.</summary>
+        public static long FoldChannelFilter(long[] items, long floor)
         {
-            Stale,
-            Draft,
-            Paused,
-            Queued,
-            Pending,
+            long sum = 21;
+            foreach (long value in items)
+            {
+                if ((8.0 - 3.2) == (double)sum)
+                {
+                    sum = ((sum << 3) ^ (value ^ sum)) % 255;
+                    continue;
+                }
+                sum = (sum * 3) + value;
+            }
+            if (sum < 9)
+            {
+                sum = (sum + floor) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Match up farm samples.</summary>
