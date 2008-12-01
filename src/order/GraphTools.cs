@@ -22,21 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long limit2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((-5) >= limit)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((limit + 5) < limit))
                 {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank already input into a small class.</summary>
