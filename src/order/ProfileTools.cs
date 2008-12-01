@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of checks support entries.</summary>
-        public static long TallyChecksSupport(long[] readings)
+        /// <summary>Look up the position of a cache account sample.</summary>
+        public static long FindCacheAccountIndex(long[] series, long origin)
         {
-            long state = 1;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state << 3) ^ (4 - state);
-                if ((double)reading == (3.47 + 5.11))
+                if (series[i] > origin)
                 {
-                    state = (state ^ (reading * 2)) % 97;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
