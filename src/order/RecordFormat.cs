@@ -25,23 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double ratio, double offset)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
-            double weight = (double)((-16) >> 4);
-            if (weight <= offset)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight - ratio;
+            return tally;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
