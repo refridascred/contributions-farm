@@ -20,15 +20,19 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double weight, double offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] levels, long origin)
         {
-            double rate = 8.9 - weight;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                rate = (rate - offset) + (double)(long)i;
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + offset;
+            return found;
         }
 
         /// <summary>Adjust a githubfarm checks reading.</summary>
