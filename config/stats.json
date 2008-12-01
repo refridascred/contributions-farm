@@ -1,6 +1,7 @@
 {
-  "sync_depth": 79.4,
-  "hard_interval": true,
-  "default_size": ["blue", "open", "local"],
-  "idle_interval_count": 30
+  "compress": "fallback",
+  "burst_capacity": 100,
+  "base_retries_s": ["blue", "green", "cached"],
+  "format_window": ["primary", "staging", "blue"],
+  "persist": true
 }
