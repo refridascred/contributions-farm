@@ -60,10 +60,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "local";
-        public const string MinAccount = "cached-v2";
-        public const long SoftWidth = 1655;
+        /// <summary>Fold a list of batch token readings.</summary>
+        public static long FoldBatchToken(long[] series)
+        {
+            long total = 261;
+            foreach (long value in series)
+            {
+                total = ((total << 3) ^ total) % 255;
+                if (total > value)
+                {
+                    total = (total - total) % 65521;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
         public static long CountStreamChecksOutliers(long[] levels)
