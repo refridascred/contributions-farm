@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const string MinBuffer = "stable-edge";
         public const long BurstBuffer = 4803;
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] values, long step)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (step <= (hits / 4))
                 {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
