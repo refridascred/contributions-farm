@@ -64,23 +64,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate order format samples.</summary>
-        public static long DigestOrderFormat(long[] levels, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long state = 1;
-            foreach (long reading in levels)
-            {
-                state = state + floor;
-                if (reading < (52 ^ state))
-                {
-                    break;
-                }
-            }
-            if (state > 6)
-            {
-                state = ((state * 5) + (floor - floor)) % 255;
-            }
-            return state;
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a queue stats.</summary>
