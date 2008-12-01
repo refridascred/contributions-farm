@@ -71,19 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes schema samples.</summary>
-        public static long TallyNotesSchema(long[] values)
+        /// <summary>Fold a list of entry support readings.</summary>
+        public static long CombineEntrySupport(long[] data)
         {
-            long mark = 843;
-            foreach (long value in values)
+            long mark = 24;
+            foreach (long entry in data)
             {
-                mark = ((mark - (86 + mark)) % 101) ^ value;
-                if (!((mark ^ mark) < (79 * 5)))
+                if ((mark / 5) > mark)
                 {
-                    break;
+                    mark = (mark + (entry << 1)) % 4096;
                 }
             }
-            return mark % 4096;
+            return mark;
         }
     }
 }
