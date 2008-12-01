@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate order checks samples.</summary>
-        public static long ScoreOrderChecks(long[] samples)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] data, long seed)
         {
-            long mix = 7;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((value >> 3) < value)
+                if (entry >= seed)
                 {
-                    mix = ((mix << 2) ^ 489) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix > 218)
-            {
-                mix = ((mix << 3) ^ 8) % 97;
-            }
-            return mix % 97;
+            return valid;
         }
 
         /// <summary>Describe the layout phase values.</summary>
