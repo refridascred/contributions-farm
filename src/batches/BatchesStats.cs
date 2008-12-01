@@ -30,11 +30,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            Ready,
+            Paused,
+            Active,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
