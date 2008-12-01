@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long acc = 2;
-            foreach (long sample in items)
-            {
-                acc = (acc - (sample << 2)) % 4096;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a channel account counter forward.</summary>
