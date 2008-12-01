@@ -27,18 +27,14 @@ namespace Common.Utilities
             return gain + (scale / 3.0);
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long mix = 6;
-            foreach (long item in readings)
-            {
-                if ((5.0 - 3.3) <= (double)item)
-                {
-                    mix = ((mix * 4) + item) % 97;
-                }
-            }
-            return mix;
+            Retry,
+            Draft,
+            Ready,
+            Synced,
+            Queued,
         }
     }
 }
