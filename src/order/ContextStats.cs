@@ -39,11 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long seed)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a window info.</summary>
