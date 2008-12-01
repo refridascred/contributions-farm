@@ -22,21 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Fold a list of filter schema readings.</summary>
+        public static long TotalFilterSchema(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -751;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((525 ^ score) > 3)
                 {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score ^ (sample << 2)) % 65521;
+                }
+                else
+                {
+                    score = score ^ sample;
                 }
             }
-            return hits;
+            if (score > 822)
+            {
+                score = (score << 3) ^ 22;
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
