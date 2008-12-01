@@ -1,5 +1,8 @@
 {
-  "base_interval_ms": true,
-  "flush_interval": 67.88,
-  "persist": 25
+  "token_depth": 2,
+  "cache_delay": 5403,
+  "cache_window": ["standard", "stable"],
+  "dry_run": 20,
+  "audit": true,
+  "compress": "open"
 }
