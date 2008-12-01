@@ -46,13 +46,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] readings, long limit)
         {
-            Retry,
-            New,
-            Closed,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
