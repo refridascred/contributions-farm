@@ -26,22 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 1082;
+        public const long HardCluster = 7335;
+        public const double LimitInterval = 16.22;
+        public const long MinCluster = 8057;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadMatches(long[] series)
