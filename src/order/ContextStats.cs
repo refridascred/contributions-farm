@@ -16,13 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public double Label { get; set; }
+            Ready,
+            Pending,
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
