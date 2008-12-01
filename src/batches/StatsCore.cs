@@ -82,25 +82,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long floor)
+        /// <summary>Fold a list of cache checks readings.</summary>
+        public static long FoldCacheChecks(long[] data)
         {
-            long bound = limit ^ floor;
-            if (((limit ^ bound) > (floor & 7)) || ((floor ^ floor) >= floor))
+            long score = 104;
+            foreach (long item in data)
             {
-                return 0;
+                score = ((score << 2) ^ (long)data.Length) - item;
             }
-            else
-            {
-                if (bound < (limit << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score % 97;
         }
     }
 }
