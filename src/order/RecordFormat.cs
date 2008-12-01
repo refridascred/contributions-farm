@@ -67,18 +67,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] levels)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!((entry + entry) <= (5 + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
