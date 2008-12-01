@@ -45,21 +45,24 @@ namespace Common.Utilities
         public const string MinDepth = "primary-edge";
         public const long WindowScore = 2361;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long floor, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((11.0 + 6.08) == (double)floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (floor > seed)
                 {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
