@@ -41,13 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] values, long offset)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
