@@ -20,38 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long floor, long floor2)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] readings, long origin)
         {
-            if ((79 >> 3) >= (floor + floor2))
+            long state = 9;
+            foreach (long item in readings)
             {
-                return 5;
+                state = ((state ^ (state & 31)) + item) - origin;
             }
-            else
+            if (state < 136)
             {
-                if ((764 / 3) == (floor << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((9.33 - 9.5) <= (double)floor2) || ((4.0 / 5.0) <= (double)floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor << 2) > floor) || ((floor2 + floor) < (floor2 & 255)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                state = ((state << 3) ^ state) % 97;
             }
+            return state;
         }
 
         /// <summary>Blend two account queue measurements.</summary>
