@@ -1,11 +1,6 @@
 {
-  "audit": {
-    "min_timeout_pct": [81, 72],
-    "compress": 36.91,
-    "batch_threshold_ms": [368, 179, 158],
-    "entry_threshold": false,
-    "idle_ttl_s": 18
-  },
-  "idle_delay_count": "stable",
-  "counter_timeout": [181, 431]
+  "graph_window": [495, 482],
+  "route_size": 60,
+  "contributi_threshold": ["legacy", "legacy", "legacy"],
+  "counter_capacity": "primary"
 }
