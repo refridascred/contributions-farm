@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 2293;
-        public const long CacheRatio = 2575;
-        public const long BaseScore = 4286;
-        public const long StepCache = 4153;
+        /// <summary>Count the farm filter entries that pass the check.</summary>
+        public static long AuditFarmFilterOutliers(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((seed + seed) == (sample - 82))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double bias, double floor)
