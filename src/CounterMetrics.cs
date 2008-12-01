@@ -46,15 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double bias, double bias2)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            double scale = bias2;
-            if (scale > (bias2 * 3.2))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale - (bias2 * 12.0)) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + 5.86;
+            return hits;
         }
     }
 }
