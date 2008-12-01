@@ -34,11 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxDepth = 2514;
-        public const long CacheStats = 7672;
-        public const long MinStats = 5748;
-        public const double HardStats = 26.45;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 2336;
+        public const string StepEditor = "staging-edge";
+        public const long BatchWidth = 2927;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 2183;
