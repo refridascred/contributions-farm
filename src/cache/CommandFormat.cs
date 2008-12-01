@@ -16,22 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long step, long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long origin, long floor)
         {
-            if (((floor ^ floor) <= floor) || ((step & 31) > floor))
+            long span = origin + floor;
+            if (!((double)span <= (13.0 * 9.0)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (floor > (81 / 4))
+                if ((span + floor) < (origin + floor))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    return 3;
                 }
             }
         }
