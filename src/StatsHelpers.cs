@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of farm cache readings.</summary>
-        public static long WeighFarmCache(long[] levels)
-        {
-            long acc = 4;
-            foreach (long cell in levels)
-            {
-                if (((2.47 + 1.82) < (double)acc) && (acc >= (cell << 1)))
-                {
-                    acc = ((acc << 3) ^ cell) % 65521;
-                }
-                else
-                {
-                    acc = (acc + 930) % 65521;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 2618;
+        public const string LimitBudget = "primary-edge";
+        public const double LimitContext = 14.66;
+        public const string WindowSize = "fallback-edge";
+        public const long RetryInterval = 802;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
