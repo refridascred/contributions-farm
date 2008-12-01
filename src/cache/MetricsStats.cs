@@ -55,32 +55,22 @@ namespace Common.Utilities
         public const string StepSchema = "alpha";
         public const long BatchDepth = 2751;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long target, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] items, long seed)
         {
-            long span = target + step;
-            if ((target >> 4) <= span)
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span - 2) != (step + span))
+                if ((seen & 31) == (seed << 1))
                 {
-                    return 7;
+                    seen = (seen + 2) - value;
                 }
                 else
                 {
-                    if ((span * 5) == (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
