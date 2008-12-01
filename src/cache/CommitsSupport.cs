@@ -20,32 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank contributi payload input into a small class.</summary>
-        public static long ClassifyContributiPayload(long limit, long limit2)
-        {
-            if (limit < limit2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit2 >= (7.3 / 4.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit / 2) >= (limit2 - limit2)) || ((double)limit2 > 8.8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 2612;
+        public const long HardPayload = 8986;
+        public const long WindowRatio = 1773;
+        public const string RetryPayload = "open-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteHits(long[] values)
