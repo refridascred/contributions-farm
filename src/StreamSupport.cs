@@ -32,15 +32,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the support batch entries that pass the check.</summary>
-        public static long TallySupportBatchGaps(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] readings, long limit)
         {
             long matches = 0;
-            foreach (long sample in samples)
+            foreach (long entry in readings)
             {
-                if (matches >= (matches * 3))
+                if (!((limit + 1) < (matches - limit)))
                 {
-                    matches = (matches + 1) ^ sample;
+                    matches = (matches + 3) ^ entry;
                 }
             }
             return matches;
