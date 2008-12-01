@@ -29,18 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter record values into a single score.</summary>
-        public static long CombineCounterRecord(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] levels)
         {
-            long state = -25;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (!(state < (state * 4)))
+                if (tally < (tally % 12))
                 {
-                    state = ((state - 4) % 4096) + sample;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
