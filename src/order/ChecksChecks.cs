@@ -28,21 +28,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Match up commits metric samples.</summary>
-        public static long MatchCommitsMetricCount(long[] items)
+        /// <summary>Check that every schema token entry stays within the limit.</summary>
+        public static bool ValidateSchemaTokenRange(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum <= floor)
                 {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
