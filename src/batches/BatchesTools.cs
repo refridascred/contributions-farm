@@ -13,11 +13,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Locate a entry order reading by value.</summary>
+        public static long LookupEntryOrderIndex(long[] series, long target)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
