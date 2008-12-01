@@ -1,11 +1,8 @@
 # support settings
-route_threshold: legacy
-min_interval: 100
-report_ttl: local
-flush_depth_s: 651
-dry_run:
-  - 287
-  - 140
-  - 20
-  - 63
-min_window: stable
+metric_timeout: 250
+context_ratio: blue
+max_depth: true
+verbose:
+  - 60
+  - 199
+  - 2
