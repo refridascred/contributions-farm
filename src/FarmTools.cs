@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Closed,
+            Synced,
+            Idle,
+            Active,
         }
 
         /// <summary>Accumulate checks samples.</summary>
