@@ -32,21 +32,14 @@ namespace Common.Utilities
         public const double LimitInterval = 16.22;
         public const long MinCluster = 8057;
 
-        /// <summary>Match up editor batches samples.</summary>
-        public static long CompareEditorBatchesCount(long[] items)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Stale,
+            Closed,
+            New,
+            Idle,
         }
     }
 }
