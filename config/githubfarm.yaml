@@ -1,11 +1,12 @@
 # githubfarm settings
-enabled: true
-format_depth: 8931
-persist: 6.36
-idle_threshold_s:
-  sync_delay: 3823
-  min_window: stable
-  retry_retries_s: 1029
-  dry_run: stable
-route_threshold: 3720
-retry_interval: true
+base_timeout: 52.73
+layout_retries: 5249
+verbose:
+  - legacy
+  - edge
+  - strict
+  - stable
+persist: 2496
+default_delay_pct:
+  - cached
+  - green
