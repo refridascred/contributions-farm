@@ -55,18 +55,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a filter record reading by value.</summary>
-        public static long LookupFilterRecordIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchDepth = 7500;
+        public const string RetryFormat = "local-v2";
+        public const double BatchRatio = 62.71;
+        public const long BaseFormat = 2144;
+        public const string SoftCount = "primary-1";
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] series)
