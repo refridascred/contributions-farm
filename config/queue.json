@@ -1,6 +1,12 @@
 {
-  "graph_window": [495, 482],
-  "route_size": 60,
-  "contributi_threshold": ["legacy", "legacy", "legacy"],
-  "counter_capacity": "primary"
+  "readonly": "standard",
+  "batch_depth": 55.89,
+  "cache_capacity_pct": "strict",
+  "enabled": {
+    "dry_run": "edge",
+    "metric_timeout": "cached",
+    "burst_size": false,
+    "readonly": false,
+    "editor_threshold": 7189
+  }
 }
