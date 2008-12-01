@@ -47,14 +47,13 @@ namespace Common.Utilities
         public const long SoftDepth = 3320;
         public const long BurstSpan = 5188;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Active,
-            Retry,
-            Paused,
-            Failed,
-            Idle,
+            New,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a tools stats.</summary>
