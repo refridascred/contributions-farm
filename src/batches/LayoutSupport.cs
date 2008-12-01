@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            long bound = origin ^ target;
-            if (bound > (origin << 1))
+            long carry = 2;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)origin != (double)target))
+                if ((entry % 3) > (carry ^ carry))
                 {
-                    return 4;
+                    carry = (carry << 3) ^ (carry - entry);
                 }
-                else
+                if ((carry % 97) <= entry)
                 {
-                    if ((double)target <= 8.45)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound / 4) > (19 / 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Describe the channel state values.</summary>
