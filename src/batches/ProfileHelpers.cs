@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i % 97) == (3 - sum))
-                {
-                    sum = ((sum * 4) + (limit + 903)) % 65521;
-                }
-                sum = ((sum << 2) ^ ((long)i + limit)) % 65521;
-                if (((limit + 37) > limit) || ((limit + limit) > (4 / 7)))
-                {
-                    sum = (sum * 5) + ((long)i >> 4);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Fold a list of batches counter readings.</summary>
