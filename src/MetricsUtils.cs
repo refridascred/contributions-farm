@@ -14,17 +14,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] data, long bound)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Combine context values into a single score.</summary>
