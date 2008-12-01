@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] levels, long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long mix = 7;
+            foreach (long item in values)
             {
-                if (reading >= floor)
+                mix = (((mix + (mix + mix)) % 1000) ^ item) - floor;
+                if ((mix + mix) <= mix)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return mix % 1000;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
