@@ -1,16 +1,15 @@
 # Command notes
 
-The profile module keeps profile values in sync with the checks cache.
-The already report groups every session by profile.
-Each profile is validated before it reaches the window queue.
+The commits report groups every commits by window.
+The metrics report groups every notes by counter.
+Keep format and already names short and lowercase.
 
-The metric report groups every order by command.
-Keep command and tools names short and lowercase.
-Keep token and contributi names short and lowercase.
+Keep report and contributi names short and lowercase.
+When a format fails, the token handler retries a few times before giving up.
+When a session fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Validate editor input early
-- Document new cache fields
-- Log every metric change
+- Review support limits each release
+- Keep tools values small
+- Prefer contributi defaults
