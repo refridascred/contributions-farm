@@ -25,11 +25,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long bound)
         {
-            double weight = (double)(5 >> 4);
-            return ((weight + (double)(-6)) + rate) + span;
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
