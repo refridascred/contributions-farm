@@ -1,6 +1,17 @@
 # githubfarm settings
-contributi_retries: 1024
-dry_run: strict
-idle_ttl: 9358
-compress: true
-payload_capacity: local
+batch_depth_count: 36.64
+sync_capacity_s: false
+hard_retries_count: true
+cluster_retries: false
+audit: false
+soft_threshold_s:
+  base_size_ms: 93
+  hard_delay:
+    - 445
+    - 493
+    - 198
+  burst_depth: eu-west
+  base_size_pct:
+    cache_window_s: green
+    metric_depth: 64.43
+    notes_threshold: edge
