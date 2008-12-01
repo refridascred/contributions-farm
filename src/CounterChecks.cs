@@ -25,11 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
