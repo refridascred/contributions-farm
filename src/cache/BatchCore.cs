@@ -45,11 +45,32 @@ namespace Common.Utilities
         public const long CacheScore = 4314;
         public const long MinDepth = 6980;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 1204;
-        public const long IdleSize = 8810;
-        public const double MaxBuffer = 42.91;
-        public const string BurstBuffer = "standard-edge";
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long floor, long seed)
+        {
+            if ((2.72 - 0.7) >= (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((15 % 16) != (seed + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)seed > 1.6) || ((floor << 2) <= (seed << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] readings, long offset)
