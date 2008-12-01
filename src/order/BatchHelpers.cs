@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 1.19;
-        public const string CacheFormat = "legacy-1";
-        public const long CacheScore = 5901;
-        public const long HardFormat = 9932;
-        public const double BurstFormat = 71.92;
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double weight, double offset)
+        {
+            double load = offset;
+            if (load < 4.0)
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)585) - (double)(long)i;
+            }
+            return load - (weight + offset);
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TotalOrder(long[] values, long seed)
