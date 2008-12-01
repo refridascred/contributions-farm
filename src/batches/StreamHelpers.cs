@@ -89,21 +89,10 @@ namespace Common.Utilities
             return bias2 + (double)2;
         }
 
-        /// <summary>Count stats layout pairs that satisfy a relation.</summary>
-        public static long PairStatsLayoutCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowDepth = 55.6;
+        public const long SoftInterval = 8422;
+        public const long BurstSpan = 7569;
+        public const long SoftLevel = 1310;
     }
 }
