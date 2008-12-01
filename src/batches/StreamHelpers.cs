@@ -60,13 +60,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Synced,
-            Pending,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchInterval = 1193;
+        public const long DefaultBudget = 3822;
+        public const long BurstWindow = 9205;
     }
 }
