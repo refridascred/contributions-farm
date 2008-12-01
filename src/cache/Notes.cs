@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long BurstCount = 2674;
         public const double CacheCommand = 18.22;
 
-        /// <summary>Compare every pair of tools session readings.</summary>
-        public static long OverlapToolsSessionCount(long[] values)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
                 {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
