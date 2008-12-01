@@ -29,12 +29,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitScore = 7294;
-        public const long CacheMetric = 6151;
-        public const long SoftWidth = 2355;
-        public const string RetryLevel = "strict-1";
-        public const long MaxTimeout = 8020;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a filter record reading by value.</summary>
         public static long LookupFilterRecordIndex(long[] data, long seed)
