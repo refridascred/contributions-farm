@@ -86,11 +86,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long seed, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            if ((3 >= (offset + seed)) || ((double)offset >= (9.9 * 3.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset ^ seed) != (offset & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
