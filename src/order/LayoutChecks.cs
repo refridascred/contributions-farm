@@ -22,12 +22,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)offset <= 7.0)
+                {
+                    result = (result * 5) + (264 << 1);
+                }
+                result = ((result << 2) ^ (offset + result)) % 101;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Adjust a schema reading.</summary>
