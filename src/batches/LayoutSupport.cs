@@ -21,11 +21,20 @@ namespace Common.Utilities
         public const string WindowRatio = "latest-edge";
         public const long LimitTimeout = 7795;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseSize = 15.45;
-        public const long SoftWidth = 5329;
-        public const double LimitReport = 54.04;
-        public const double RetryReport = 33.99;
+        /// <summary>Validate metrics stats readings against a bound.</summary>
+        public static bool ValidateMetricsStatsRange(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TotalCluster(long[] levels)
