@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "open-edge";
-        public const double CacheOrder = 96.96;
-        public const long LimitOrder = 2160;
-        public const long WindowWidth = 2814;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((bound * 5) <= (cell - 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
