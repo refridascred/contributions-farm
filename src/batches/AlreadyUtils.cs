@@ -16,12 +16,12 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
             Dropped,
-            Locked,
-            Pending,
+            New,
+            Retry,
         }
 
         /// <summary>Fold a list of buffer commits readings.</summary>
