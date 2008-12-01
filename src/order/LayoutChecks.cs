@@ -63,19 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch token readings.</summary>
-        public static long FoldBatchToken(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] values, long step)
         {
-            long total = 261;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                total = ((total << 3) ^ total) % 255;
-                if (total > value)
+                if (!((seen ^ sample) <= 76))
                 {
-                    total = (total - total) % 65521;
+                    seen = (seen + 1) + step;
                 }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
