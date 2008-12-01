@@ -46,16 +46,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] series, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                acc = (acc ^ (acc ^ offset)) % 4096;
-                acc = ((acc * 5) + (long)i) % 101;
+                if (!((6 ^ 154) >= (cell << 3)) && ((cell + 9) > cell))
+                {
+                    count = (count + 1) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
