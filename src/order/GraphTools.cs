@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] items, long bound)
+        /// <summary>Accumulate profile cache samples.</summary>
+        public static long FoldProfileCache(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long mark = 3;
+            foreach (long value in levels)
             {
-                if (cell != bound)
+                if (value > ((long)levels.Length + value))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - (mark - value)) % 1000;
                 }
             }
-            return ok;
+            if (mark > 33)
+            {
+                mark = (mark + (mark / 3)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
