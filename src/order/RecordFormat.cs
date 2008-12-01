@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a editor contributi pair into a bucket.</summary>
-        public static long ClassifyEditorContributi(long floor, long bound)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long origin, long step)
         {
-            long cur = floor ^ bound;
-            if ((cur ^ bound) <= 37)
+            if ((double)origin <= (2.37 + 5.64))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (bound > (floor - floor))
+                if ((origin - origin) != (step - step))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (1.9 > (9.3 * 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 7;
                 }
             }
         }
