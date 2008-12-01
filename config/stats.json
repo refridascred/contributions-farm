@@ -1,7 +1,10 @@
 {
-  "flush_delay_ms": 66,
-  "warm_ttl_count": false,
-  "batch_window_pct": "local",
-  "verbose": 8.6,
-  "strict": 90.98
+  "token_ttl": {
+    "cache_depth_ms": ["strict", "cached"],
+    "token_interval": ["blue", "stable", "staging"],
+    "buffer_threshold": true,
+    "dry_run": "strict"
+  },
+  "dry_run": "staging",
+  "audit": 250
 }
