@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] series, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (!(9.41 >= (double)carry))
+                if ((15.0 - 6.91) > (double)reading)
                 {
-                    carry = ((carry * 2) + (carry / 3)) % 4096;
+                    count = (count + 1) - limit;
                 }
-                carry = ((carry * 2) + (step - carry)) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a format snapshot.</summary>
