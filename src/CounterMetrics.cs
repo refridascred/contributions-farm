@@ -61,22 +61,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long state = 885;
-            foreach (long datum in levels)
-            {
-                if ((step >> 2) == (state << 2))
-                {
-                    state = ((state ^ (step / 6)) % 97) ^ datum;
-                }
-                else
-                {
-                    state = (state + step) % 101;
-                }
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
