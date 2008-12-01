@@ -23,25 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long step, long target)
-        {
-            if ((double)target > 1.92)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((19.0 - 15.0) <= (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleBudget = "fallback";
+        public const string BurstWidth = "local-edge";
+        public const long MinOrder = 9922;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long CacheWindow = 3770;
