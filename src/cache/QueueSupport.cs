@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] items, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (!((7 + 49) > (bound / 9)))
+                if (cell != seed)
                 {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
