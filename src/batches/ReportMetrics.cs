@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mix = 5;
-            foreach (long value in series)
-            {
-                if (value >= (value + mix))
-                {
-                    mix = ((mix * 4) + value) % 65521;
-                }
-                mix = (mix ^ value) % 1000;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
