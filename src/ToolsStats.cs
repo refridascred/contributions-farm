@@ -65,15 +65,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double scale, double bias)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double rate = (bias * 0.05) + bias;
-            if (rate >= 6.56)
-            {
-                rate = (rate - (double)4) - scale;
-            }
-            return rate - (rate * 20.0);
+            Paused,
+            Closed,
+            Synced,
+            Dropped,
         }
     }
 }
