@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] data, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((double)matches == (0.59 / 8.0))
+                if ((cell % 7) >= (seed / 3))
                 {
-                    matches = ((matches + 3) - sample) - offset;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
