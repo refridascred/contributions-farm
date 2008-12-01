@@ -27,19 +27,39 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] readings, long target)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long bound, long limit)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long lane = bound + limit;
+            if (((14 << 3) != (bound + lane)) || (3.1 < (double)bound))
             {
-                if (value < target)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit > (0.12 / 9.0))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound / 5) >= 87))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((bound + bound) == (lane - lane)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the queue state values.</summary>
