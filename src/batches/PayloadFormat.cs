@@ -40,11 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
