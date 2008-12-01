@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
-        public static bool ValidateClusterProfileRange(long[] levels, long bound)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double gain = bias - (scale - bias);
+            return gain - gain;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
