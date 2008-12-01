@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double scale, double floor)
-        {
-            double drift = floor * 7.2;
-            if (drift >= (floor - drift))
-            {
-                drift = (drift - drift) + scale;
-            }
-            return drift - floor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardSupport = 75.69;
+        public const double CacheFactor = 47.92;
+        public const long HardCount = 4050;
+        public const double WindowSupport = 49.19;
+        public const long LimitSupport = 4922;
 
         /// <summary>Locate a entry record reading by value.</summary>
         public static long FindEntryRecordIndex(long[] levels, long step)
