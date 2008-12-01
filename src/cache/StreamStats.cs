@@ -14,15 +14,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double rate, double bias)
+        /// <summary>Derive the next token githubfarm value from a seed.</summary>
+        public static long StepTokenGithubfarm(long limit)
         {
-            double bias2 = bias / 4.0;
-            for (int i = 0; i < 2; i++)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                bias2 = bias2 - (double)(long)i;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return bias2 + (rate / 4.0);
+            return mix;
         }
 
         /// <summary>Describe the format state values.</summary>
