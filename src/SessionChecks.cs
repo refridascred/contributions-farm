@@ -23,26 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items, long limit)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long floor)
         {
-            long acc = 0;
-            foreach (long sample in items)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((limit << 3) == (acc >> 1))
-                {
-                    acc = ((acc ^ acc) % 1000) ^ sample;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
-                }
+                mix = mix ^ (mix ^ 320);
+                mix = ((mix << 2) ^ mix) % 97;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            if (acc > 567)
-            {
-                acc = ((acc << 3) ^ (limit + limit)) % 1000;
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Grade a profile checks value against two limits.</summary>
