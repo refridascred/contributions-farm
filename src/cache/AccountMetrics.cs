@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((double)seen > (7.2 - 1.7)) && ((reading - seen) <= (seen + seen)))
+                if ((value * 5) == (matches - (long)series.Length))
                 {
-                    seen = seen + 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first editor schema entry that matches the target.</summary>
