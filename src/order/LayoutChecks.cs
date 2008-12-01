@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleSpan = "strict-edge";
-        public const long LimitBudget = 8234;
-        public const string BaseSize = "open-v2";
-        public const double BaseRecord = 72.31;
-        public const long DefaultRecord = 6512;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphHits(long[] readings)
