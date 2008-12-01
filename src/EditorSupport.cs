@@ -29,19 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] series, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
