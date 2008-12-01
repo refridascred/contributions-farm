@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every schema session entry stays within the limit.</summary>
-        public static bool VerifySchemaSessionBounds(long[] series, long seed)
+        /// <summary>Check that every notes context entry stays within the limit.</summary>
+        public static bool ValidateNotesContextRange(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (datum != seed)
+                if (datum >= origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Describe the stats status values.</summary>
