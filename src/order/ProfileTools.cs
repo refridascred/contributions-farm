@@ -58,18 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Validate stats session readings against a bound.</summary>
+        public static bool VerifyStatsSessionRange(long[] readings, long offset)
         {
-            long mix = 801;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((6.21 + 12.0) >= (double)cell)
+                if (reading != offset)
                 {
-                    mix = ((mix * 5) + (mix & 31)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return flag;
         }
     }
 }
