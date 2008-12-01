@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const double SoftBatches = 75.3;
         public const long HardBatches = 7205;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] data, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] data)
         {
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] > floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
