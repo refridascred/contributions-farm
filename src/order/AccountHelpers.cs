@@ -63,23 +63,25 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of buffer checks readings.</summary>
-        public static long TallyBufferChecks(long[] series)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long target)
         {
-            long state = 68;
-            foreach (long reading in series)
+            long step = limit - target;
+            if ((target + target) < (step + step))
             {
-                for (int i = 0; i < 7; i++)
+                return 4;
+            }
+            else
+            {
+                if (!((step << 2) == (step + target)))
                 {
-                    state = (state << 2) ^ ((long)series.Length ^ (long)i);
+                    return 6;
                 }
-                state = (state - (-7)) % 97;
-                if (reading >= (4 >> 3))
+                else
                 {
-                    state = (state - (534 - 66)) % 65521;
+                    return 8;
                 }
             }
-            return state % 65521;
         }
     }
 }
