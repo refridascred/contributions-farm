@@ -1,8 +1,6 @@
-id,owner,ratio
-1,63.48,18.2
-2,standard,primary
-3,993,81.88
-4,45.4,77.06
-5,edge,842
-6,stable,72.11
-7,149,24.96
+id,token,region
+1,staging,staging
+2,fallback,95.96
+3,54.31,772
+4,657,27.18
+5,standard,8.76
