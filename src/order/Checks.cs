@@ -65,18 +65,23 @@ namespace Common.Utilities
         public const double MinGithubfarm = 70.92;
         public const long BatchDepth = 9808;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] values, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double weight, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double rate = weight;
+            if (rate >= (rate + 4.67))
             {
-                if ((step + item) != (hits + step))
-                {
-                    hits = hits + 1;
-                }
+                rate = (rate - rate) + span;
             }
-            return hits;
+            else
+            {
+                rate = rate + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - 11.0) + (double)(long)i;
+            }
+            return rate - (rate - 4.1);
         }
     }
 }
