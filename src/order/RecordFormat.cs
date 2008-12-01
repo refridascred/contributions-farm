@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every account farm entry stays within the limit.</summary>
-        public static bool VerifyAccountFarmBounds(long[] samples, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (cell != offset)
+                if (sample < origin)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Hold a counter stats.</summary>
