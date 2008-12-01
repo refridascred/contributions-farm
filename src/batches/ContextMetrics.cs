@@ -11,24 +11,18 @@ namespace Common.Utilities
         public const long BasePayload = 1178;
         public const double MaxPayload = 94.47;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long limit, long limit2)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] items, long step)
         {
-            if ((3.7 - 7.0) != (double)limit)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit2 + 79) >= (limit & 255))
+                if ((2.4 - 0.6) <= (double)matches)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    matches = ((matches + 3) + datum) + step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
