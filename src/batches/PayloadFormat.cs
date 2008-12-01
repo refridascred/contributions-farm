@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank farm profile input into a small class.</summary>
-        public static long GradeFarmProfile(long limit, long offset)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long lane = limit ^ offset;
-            if ((limit + offset) < lane)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit - offset) > (offset - 68))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset + 39) > (1 % 64)) && ((3 / 4) < limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((96 < (offset - offset)) || ((double)offset >= 15.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
