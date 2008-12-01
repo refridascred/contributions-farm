@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading >> 5) != (reading % 97))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
