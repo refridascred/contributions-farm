@@ -62,11 +62,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] data)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (6.8 >= (double)seen)
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
