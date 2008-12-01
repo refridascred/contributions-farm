@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy primary blue eu-west; do
+for item in legacy primary; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
+mode="${1:-latest}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
