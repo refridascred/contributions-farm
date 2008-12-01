@@ -28,19 +28,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine command entry values into a single score.</summary>
-        public static long FoldCommandEntry(long[] samples)
+        /// <summary>Look up the position of a window account sample.</summary>
+        public static long SeekWindowAccountIndex(long[] readings, long step)
         {
-            long mark = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark ^ (mark + mark)) % 65521) ^ cell;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 9)
-            {
-                mark = (mark ^ (mark - 521)) % 101;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
