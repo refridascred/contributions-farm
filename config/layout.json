@@ -1,6 +1,8 @@
 {
-  "audit": [2, 406, 145],
-  "idle_retries": [158, 267, 61, 483],
-  "batch_size": "strict",
-  "batches_size": 30
+  "graph_ttl": true,
+  "farm_interval": "staging",
+  "max_depth_ms": true,
+  "sync_size_count": "legacy",
+  "strict": 1024,
+  "poll_limit_s": 42
 }
