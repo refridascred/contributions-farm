@@ -44,10 +44,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 3550;
-        public const long DefaultSchema = 2081;
-        public const long LimitInterval = 8062;
-        public const string BaseInterval = "standard";
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
