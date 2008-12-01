@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a cache window figure with a bias.</summary>
-        public static double ProjectCacheWindow(double scale, double offset)
+        /// <summary>Match up notes batch samples.</summary>
+        public static long CompareNotesBatchCount(long[] data)
         {
-            double bias = scale;
-            if (bias > scale)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias + (bias - offset);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias - (bias / 2.0);
+            return count;
         }
 
         /// <summary>Match up already samples.</summary>
