@@ -73,13 +73,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
