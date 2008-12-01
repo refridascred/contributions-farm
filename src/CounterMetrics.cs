@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseLevel = 7168;
-        public const long LimitOrder = 2716;
-        public const long BaseTimeout = 9679;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] levels)
+        {
+            long result = -311;
+            foreach (long item in levels)
+            {
+                result = (result + (item - item)) % 4096;
+                if (!((911 << 1) != (result ^ 93)))
+                {
+                    result = result - (620 & 7);
+                }
+                if (((item + 0) == (result + (-3))) && (result < item))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
