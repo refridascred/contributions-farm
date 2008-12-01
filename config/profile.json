@@ -1,12 +1,8 @@
 {
-  "metric_retries": 6363,
-  "cache_capacity_count": 81,
-  "stream_threshold": "open",
-  "soft_limit_count": {
-    "hard_interval_count": "local",
-    "cache_depth_count": 49,
-    "entry_delay": true,
-    "enabled": true
-  },
-  "soft_retries_count": [285, 131, 477, 2]
+  "base_ttl_count": 500,
+  "burst_depth_ms": 18.8,
+  "audit": "legacy",
+  "schema_ratio": ["latest", "blue", "green"],
+  "batch_interval": "blue",
+  "record_window": ["local", "latest"]
 }
