@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine profile route values into a single score.</summary>
-        public static long FoldProfileRoute(long[] data)
+        /// <summary>Classify a graph payload pair into a bucket.</summary>
+        public static long GradeGraphPayload(long seed, long floor)
         {
-            long mark = 8;
-            foreach (long entry in data)
+            if ((seed % 16) >= (seed - floor))
             {
-                mark = (mark * 2) + (entry + 43);
-                if (((double)mark <= (9.7 / 3.0)) || ((double)entry <= (double)mark))
+                return 0;
+            }
+            else
+            {
+                if (((seed & 63) != (floor + floor)) || ((floor << 1) >= seed))
                 {
-                    mark = mark + (entry ^ 3);
+                    return 1;
+                }
+                else
+                {
+                    if (((seed % 10) >= seed) || ((seed * 3) < 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
