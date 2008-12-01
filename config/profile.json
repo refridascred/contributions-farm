@@ -1,13 +1,7 @@
 {
-  "checks_timeout": true,
-  "poll_depth_count": ["green", "eu-west", "local"],
-  "account_delay": 5237,
-  "retry_interval": "cached",
-  "tools_ratio": 92.07,
-  "tools_threshold": {
-    "soft_capacity_s": 5440,
-    "burst_ratio_pct": false,
-    "counter_timeout": "staging",
-    "enabled": "fallback"
-  }
+  "enabled": 4,
+  "poll_retries_ms": "stable",
+  "audit": false,
+  "verbose": [166, 138],
+  "stream_ttl": 25
 }
