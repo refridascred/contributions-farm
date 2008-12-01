@@ -15,12 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
