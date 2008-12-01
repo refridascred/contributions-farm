@@ -48,19 +48,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long seed, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long cur = seed + floor;
+            if (floor < cur)
             {
-                if (reading < offset)
+                return 5;
+            }
+            else
+            {
+                if ((cur + floor) > (floor + cur))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor > (cur * 4)) && ((double)cur >= (7.0 * 7.1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((6 >> 3) < seed) && ((530 / 4) > cur))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
