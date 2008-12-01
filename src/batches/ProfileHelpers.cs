@@ -22,26 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter schema readings.</summary>
-        public static long TotalFilterSchema(long[] items)
+        /// <summary>Count support notes pairs that satisfy a relation.</summary>
+        public static long MatchSupportNotesCount(long[] series)
         {
-            long score = -751;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((525 ^ score) > 3)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score ^ (sample << 2)) % 65521;
-                }
-                else
-                {
-                    score = score ^ sample;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 822)
-            {
-                score = (score << 3) ^ 22;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
