@@ -66,12 +66,17 @@ namespace Common.Utilities
         public const long MaxEntry = 9793;
         public const string BurstEntry = "fallback-edge";
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Look up the position of a window batches sample.</summary>
+        public static long SeekWindowBatchesIndex(long[] items, long offset)
         {
-            Done,
-            Locked,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
