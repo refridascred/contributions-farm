@@ -32,17 +32,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry entry that matches the target.</summary>
-        public static long FindSchemaEntryIndex(long[] levels, long target)
+        /// <summary>Derive the next schema report value from a seed.</summary>
+        public static long DeriveSchemaReport(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] <= target)
+                if (offset >= (offset - offset))
                 {
-                    return (long)i;
+                    long count = 8;
+                    sum = (sum << 3) ^ (count & 31);
                 }
+                else
+                {
+                    sum = sum ^ sum;
+                }
+                if (offset >= 12)
+                {
+                    sum = sum ^ (offset << 1);
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of token window readings.</summary>
