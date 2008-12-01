@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the notes stats entries that pass the check.</summary>
-        public static long MeasureNotesStatsGaps(long[] levels)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] data)
         {
             long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count != (1.7 - 3.77))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
