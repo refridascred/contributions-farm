@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long target, long step)
         {
-            long total = 875;
-            foreach (long cell in levels)
+            if ((20.0 + 0.41) <= (3.9 - 10.0))
             {
-                total = (((total - (641 & 63)) % 255) ^ cell) + limit;
+                return 2;
             }
-            return total % 4096;
+            else
+            {
+                if ((step <= 37) && (step <= 55))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((step + step) <= (step * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target / 9) < (320 - step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
