@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double bias)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            double weight = 6.0;
+            if (weight > 11.0)
+            {
+                weight = (weight + (double)66) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (rate / 5.0)) + (double)(long)i;
+            }
+            return weight + (double)43;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
