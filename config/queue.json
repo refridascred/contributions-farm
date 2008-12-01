@@ -1,11 +1,6 @@
 {
-  "soft_retries_pct": {
-    "strict": false,
-    "enabled": true,
-    "checks_depth": ["stable", "edge"],
-    "min_limit_count": 3281,
-    "batch_capacity": 63.94
-  },
-  "default_retries_pct": true,
-  "enabled": 7
+  "profile_retries": 3356,
+  "readonly": 3.59,
+  "schema_retries": 74.6,
+  "batch_limit": "edge"
 }
