@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitSpan = "primary-v2";
-        public const long CacheCommand = 3732;
-        public const long BaseCommand = 3448;
-        public const double MaxFactor = 84.73;
-        public const long IdleLevel = 2086;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long floor, long offset)
+        {
+            if ((12.0 - 16.0) <= (16.0 / 4.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + floor) != (floor * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
