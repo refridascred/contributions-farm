@@ -1,5 +1,10 @@
 {
-  "strict": [292, 220, 125, 402],
-  "already_timeout": true,
-  "persist": [294, 401, 199]
+  "idle_delay_count": {
+    "commits_retries": ["eu-west", "green", "primary"],
+    "burst_window_count": ["latest", "green"],
+    "soft_limit": ["latest", "cached"]
+  },
+  "retry_limit": "standard",
+  "warm_capacity_pct": 115,
+  "record_limit": true
 }
