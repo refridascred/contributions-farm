@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const double MaxFactor = 84.73;
         public const long IdleLevel = 2086;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a report summary.</summary>
