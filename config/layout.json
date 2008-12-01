@@ -1,16 +1,7 @@
 {
-  "batch_interval": "fallback",
-  "enabled": [408, 68, 384],
-  "audit": {
-    "strict": 31.21,
-    "format_interval": [217, 434, 485],
-    "max_limit_count": 5722,
-    "cache_threshold_pct": {
-      "flush_threshold_ms": "latest",
-      "cache_threshold": "green",
-      "default_timeout_count": "fallback",
-      "enabled": 80
-    },
-    "cache_depth": 34.23
-  }
+  "window_window": ["edge", "local", "latest"],
+  "strict": [374, 236],
+  "counter_timeout": 30,
+  "audit": 76.97,
+  "min_limit_s": [309, 39]
 }
