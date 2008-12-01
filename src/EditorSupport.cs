@@ -41,14 +41,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Active,
-            Draft,
-            New,
-            Synced,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 9689;
+        public const long StepScore = 9850;
+        public const long HardFarm = 4971;
+        public const double IdleLevel = 22.67;
+        public const long MinFarm = 2174;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyOutliers(long[] series, long target)
