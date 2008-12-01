@@ -32,18 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] data, long seed)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((seed / 3) > (count / 3))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
