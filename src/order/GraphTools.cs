@@ -30,10 +30,21 @@ namespace Common.Utilities
             return gain + (weight + 18.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 900;
-        public const double BaseRatio = 55.88;
-        public const long SoftFactor = 7104;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (((sum * 2) + 3) % 4096) - (long)i2;
+                    sum = (sum ^ (floor / 9)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long IdleLevel = 2276;
