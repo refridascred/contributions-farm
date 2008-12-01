@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Dropped,
-            Pending,
-            Stale,
-            New,
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the stats format entries that pass the check.</summary>
