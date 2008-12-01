@@ -63,19 +63,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] items, long bound)
         {
-            long acc = 4;
-            foreach (long item in items)
+            long total = 710;
+            foreach (long reading in items)
             {
-                if (!((acc + 63) > acc))
+                if ((double)bound >= (11.0 * 7.6))
                 {
-                    acc = ((acc ^ (acc - acc)) % 4096) + item;
+                    total = (total ^ (637 ^ bound)) ^ reading;
                 }
-                acc = (acc - (710 + acc)) % 101;
+                else
+                {
+                    total = (total + (754 % 24)) % 4096;
+                }
             }
-            return acc % 1000;
+            if (total > 796)
+            {
+                total = ((total << 3) ^ (total % 3)) % 97;
+            }
+            return total;
         }
     }
 }
