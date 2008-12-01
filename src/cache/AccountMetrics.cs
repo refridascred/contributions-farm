@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] samples)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (7 <= (count >> 4))
+                if ((((cell ^ offset) < (tally + cell)) || (tally > (0 << 3))) && ((cell + offset) > (tally - cell)))
                 {
-                    count = (count + 2) + sample;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a token header.</summary>
