@@ -5,31 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long bound, long bound2)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items, long origin)
         {
-            if ((3 + bound2) <= (bound2 & 15))
+            long mark = 88;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound2) == (bound2 + bound))
+                long cur = 509 ^ ((-3) * 3);
+                if (((reading - origin) <= mark) && ((double)(long)items.Length != (1.45 / 8.0)))
                 {
-                    return 0;
+                    mark = (mark * 3) + (origin + cur);
                 }
                 else
                 {
-                    if ((bound2 + bound2) <= (0 & 127))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = ((mark << 2) ^ (reading + cur)) % 65521;
+                }
+                if (reading > (43 - origin))
+                {
+                    mark = (mark - (mark & 15)) % 97;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
