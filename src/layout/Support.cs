@@ -33,15 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double gain, double span)
+        /// <summary>Count the route support entries that pass the check.</summary>
+        public static long MeasureRouteSupportHits(long[] series)
         {
-            double load = (span * 6.39) / 2.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                load = ((load - load) + (double)(long)i) + gain;
+                if ((double)seen != (7.3 - 2.31))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
             }
-            return load + span;
+            return seen;
         }
 
         /// <summary>Hold a queue header.</summary>
