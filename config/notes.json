@@ -1,7 +1,14 @@
 {
-  "cache_depth_ms": "primary",
-  "burst_delay": false,
-  "batch_window": "primary",
-  "commits_size": 5.44,
-  "readonly": false
+  "readonly": 86.26,
+  "window_ttl": 84,
+  "verbose": true,
+  "default_capacity_count": {
+    "hard_size_count": {
+      "idle_threshold": 7702,
+      "hard_capacity_s": 20,
+      "dry_run": true
+    },
+    "retry_timeout": 18,
+    "strict": "edge"
+  }
 }
