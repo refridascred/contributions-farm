@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultTimeout = 4687;
+        public const long MaxLevel = 7836;
+        public const string MinStats = "latest-edge";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long LimitCache = 5223;
