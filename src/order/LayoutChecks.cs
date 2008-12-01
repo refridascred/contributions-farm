@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window cache readings.</summary>
-        public static long PairWindowCacheCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleSpan = "strict-edge";
+        public const long LimitBudget = 8234;
+        public const string BaseSize = "open-v2";
+        public const double BaseRecord = 72.31;
+        public const long DefaultRecord = 6512;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphHits(long[] readings)
