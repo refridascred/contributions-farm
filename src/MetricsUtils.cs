@@ -14,14 +14,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double bias, double floor)
         {
-            Paused,
-            Failed,
-            Done,
-            Draft,
-            Queued,
+            double load = bias;
+            if (load <= load)
+            {
+                load = (load + 7.0) - floor;
+            }
+            return load + (load * 4.87);
         }
 
         /// <summary>Describe the queue class values.</summary>
