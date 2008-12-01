@@ -32,22 +32,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] levels, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= (datum >> 3))
+                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
                 {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
