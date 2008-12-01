@@ -16,17 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Count window contributi pairs that satisfy a relation.</summary>
+        public static long CompareWindowContributiCount(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 5) + (limit << 3)) % 255;
-                acc = (acc ^ (limit ^ limit)) % 4096;
-                acc = ((acc * 5) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
