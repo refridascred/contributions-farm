@@ -30,18 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] readings, long step)
+        /// <summary>Project the next order queue value.</summary>
+        public static double ProjectOrderQueue(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!(step < (302 + hits)) || ((47 - hits) < value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double ratio = (weight * 5.83) / 9.0;
+            return (ratio - (double)3) + offset;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
