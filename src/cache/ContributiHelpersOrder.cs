@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] readings, long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double bias, double span)
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double mean = 1.7;
+            return ((mean + (double)41) + bias) + span;
         }
     }
 }
