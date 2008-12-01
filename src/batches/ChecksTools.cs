@@ -57,13 +57,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
