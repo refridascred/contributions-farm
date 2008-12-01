@@ -56,18 +56,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)cell > (7.0 + 3.4)) || ((double)(long)samples.Length >= (4.0 + 4.19)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 1160;
+        public const double SoftAccount = 29.78;
+        public const long MaxCount = 2857;
     }
 }
