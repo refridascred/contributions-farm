@@ -13,18 +13,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] readings)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)811 < (9.28 / 9.0))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            Synced,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Rank support input into a small class.</summary>
