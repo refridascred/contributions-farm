@@ -30,21 +30,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((value + 50) == (9 + value)) && ((((long)values.Length + offset) != (value % 97)) && ((count * 4) > (offset % 2))))
                 {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
