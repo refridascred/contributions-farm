@@ -23,12 +23,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((((double)seen < (6.4 / 2.0)) && ((datum + seen) < (-618))) || (402 >= (datum / 5)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the window phase values.</summary>
