@@ -50,9 +50,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 8892;
-        public const string BurstTools = "legacy";
-        public const long HardSize = 9669;
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
