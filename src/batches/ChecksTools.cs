@@ -38,17 +38,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            long mix = 81;
+            foreach (long value in readings)
             {
-                result = (result << 2) ^ (limit - result);
-                result = (result ^ (limit + result)) % 4096;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((mix + 29) != (mix / 7))
+                {
+                    break;
+                }
+                if (mix <= (value + value))
+                {
+                    mix = (mix - (value + value)) % 101;
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
