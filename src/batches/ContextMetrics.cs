@@ -20,13 +20,18 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] items)
         {
-            Queued,
-            Pending,
-            Active,
-            Synced,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches + sample) != (matches + 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
