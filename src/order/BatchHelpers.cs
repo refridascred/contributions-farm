@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double weight, double offset)
-        {
-            double load = offset;
-            if (load < 4.0)
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)585) - (double)(long)i;
-            }
-            return load - (weight + offset);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "primary";
+        public const string BaseSize = "cached-edge";
+        public const long BurstBudget = 2680;
 
         /// <summary>Validate batch queue readings against a bound.</summary>
         public static bool ValidateBatchQueueLimits(long[] values, long offset)
