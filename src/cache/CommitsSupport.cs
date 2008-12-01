@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 2795;
-        public const long IdleContext = 6094;
-        public const long StepContext = 8304;
-        public const string BatchLevel = "open-v2";
-        public const long BaseTimeout = 8363;
+        /// <summary>Find the first graph account entry that matches the target.</summary>
+        public static long SeekGraphAccountIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool VerifyNotesRange(long[] values, long bound)
