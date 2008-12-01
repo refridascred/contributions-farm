@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally % 16) >= (-963))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleScore = "stable-1";
+        public const string BatchRoute = "strict-v2";
+        public const double CacheBudget = 86.68;
+        public const long BurstRoute = 6659;
 
         /// <summary>Roll a graph counter counter forward.</summary>
         public static long DeriveGraphCounter(long step)
