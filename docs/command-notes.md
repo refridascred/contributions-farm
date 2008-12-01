@@ -1,12 +1,11 @@
 # Command notes
 
-When a window fails, the cluster handler retries a few times before giving up.
-Keep route and batch names short and lowercase.
-A commits that stays idle for too long is moved to the support list.
+The queue report groups every batches by editor.
+Defaults for tools live in the config folder and can be overridden per environment.
+Use payload settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Document new farm fields
-- Log every layout change
-- Prefer schema defaults
-- Review batches limits each release
+- Log every buffer change
+- Prefer context defaults
+- Keep counter values small
