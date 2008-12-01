@@ -27,24 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long target, long step)
-        {
-            if ((double)target == (double)(-169))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target % 2) < step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BasePayload = 2.09;
+        public const long SoftRatio = 9024;
+        public const long IdleDepth = 3260;
+        public const long WindowDepth = 3327;
     }
 }
