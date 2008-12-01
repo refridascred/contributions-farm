@@ -31,22 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of window order entries.</summary>
-        public static long CombineWindowOrder(long[] values)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long total = 60;
-            foreach (long entry in values)
-            {
-                if ((total % 10) <= (total + 967))
-                {
-                    total = total - (entry * 4);
-                }
-                else
-                {
-                    total = (total * 4) + entry;
-                }
-            }
-            return total;
+            Draft,
+            Idle,
+            Failed,
         }
     }
 }
