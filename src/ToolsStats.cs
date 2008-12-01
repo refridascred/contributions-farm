@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] data)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long mix = -999;
+            foreach (long datum in data)
+            {
+                if ((2 - mix) <= mix)
+                {
+                    mix = (mix * 3) + datum;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine metric farm values into a single score.</summary>
