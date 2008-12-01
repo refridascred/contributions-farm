@@ -28,39 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long floor, long target)
-        {
-            if (floor > (target / 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((776 + floor) > (floor >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target + floor) < (target + target)) && ((floor % 7) != (target & 7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(target >= (target << 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 4006;
+        public const long IdleContributi = 5022;
+        public const long BaseContributi = 9253;
+        public const string StepContributi = "strict-1";
+        public const long LimitInterval = 7379;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
