@@ -17,11 +17,12 @@ namespace Common.Utilities
         public const long WindowDepth = 6709;
         public const string BatchDepth = "cached-1";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryWidth = "local-v2";
-        public const long BaseBatch = 8858;
-        public const string IdleBatch = "alpha-1";
-        public const double RetryTimeout = 9.02;
-        public const double LimitBatch = 20.18;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Dropped,
+            Draft,
+            Ready,
+        }
     }
 }
