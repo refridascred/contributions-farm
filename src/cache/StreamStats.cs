@@ -31,10 +31,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 57.53;
-        public const long BurstReport = 3818;
-        public const double WindowReport = 17.25;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = carry ^ ((long)i2 / 5);
+                    carry = (carry - ((-70) / 6)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long StepProfile(long origin)
