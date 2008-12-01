@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] levels, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((2.0 + 5.0) == (double)offset)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Match up entry samples.</summary>
