@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const double BatchNotes = 5.28;
         public const long StepNotes = 8959;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            Retry,
-            Synced,
-            Idle,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the record class values.</summary>
