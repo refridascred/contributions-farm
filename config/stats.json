@@ -1,5 +1,5 @@
 {
-  "max_capacity": "eu-west",
-  "cache_timeout": 60,
-  "stats_size": 8996
+  "hard_retries_pct": ["blue", "open", "edge", "primary"],
+  "schema_retries": [357, 463, 350],
+  "retry_timeout_count": [61, 461, 430]
 }
