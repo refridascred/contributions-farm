@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!((5.0 - 17.0) < (double)hits) || ((entry * 4) == (528 + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
