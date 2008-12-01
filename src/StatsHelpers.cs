@@ -82,22 +82,19 @@ namespace Common.Utilities
         public const long BaseFormat = 2144;
         public const string SoftCount = "primary-1";
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] values, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] data, long floor)
         {
-            long acc = 4;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (((4.7 / 2.0) <= (double)acc) || (880 >= (item - item)))
+                if (reading < floor)
                 {
-                    acc = acc + 6;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 32)
-            {
-                acc = (acc - seed) % 4096;
-            }
-            return acc;
+            return valid;
         }
     }
 }
