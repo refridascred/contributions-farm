@@ -67,19 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double gain, double floor)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double gain, double floor)
         {
-            double rate = (double)((-4) & 3);
-            if (rate < 7.0)
+            double load = 11.0;
+            if (load >= (load + gain))
             {
-                rate = (rate + rate) - gain;
+                load = (load + load) - floor;
             }
             else
             {
-                rate = rate + floor;
+                load = load - (8.3 * 3.46);
             }
-            return rate - rate;
+            return load - 4.23;
         }
     }
 }
