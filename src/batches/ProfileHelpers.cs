@@ -22,21 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count support notes pairs that satisfy a relation.</summary>
-        public static long MatchSupportNotesCount(long[] series)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)i % 97) == (3 - sum))
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 4) + (limit + 903)) % 65521;
                 }
+                sum = ((sum << 2) ^ ((long)i + limit)) % 65521;
+                if (((limit + 37) > limit) || ((limit + limit) > (4 / 7)))
+                {
+                    sum = (sum * 5) + ((long)i >> 4);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
