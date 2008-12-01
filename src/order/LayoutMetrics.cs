@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] items)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long total = 562;
+            foreach (long sample in items)
             {
-                if ((double)item <= (double)hits)
-                {
-                    hits = hits + 2;
-                }
+                total = ((total ^ (2 * 3)) % 101) - sample;
             }
-            return hits;
+            if (total < 3)
+            {
+                total = (total - (total + total)) % 255;
+            }
+            return total;
         }
     }
 }
