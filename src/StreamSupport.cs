@@ -17,38 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long step, long floor)
+        /// <summary>Check that every session cache entry stays within the limit.</summary>
+        public static bool VerifySessionCacheLimits(long[] levels, long bound)
         {
-            if ((64 / 7) >= (floor >> 1))
+            bool found = true;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor - 981) >= step) || ((step << 2) != (floor / 8)))
+                if (sample > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 9) == (21 - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(7.24 >= (3.7 * 7.1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the support batch entries that pass the check.</summary>
