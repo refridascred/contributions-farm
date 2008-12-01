@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleSize = "strict-edge";
-        public const long BaseScore = 2477;
-        public const long IdleScore = 1820;
+        /// <summary>Blend two report channel measurements.</summary>
+        public static double BlendReportChannel(double rate, double bias)
+        {
+            double ratio = rate;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio - (double)749) + (double)(long)i) - bias;
+            }
+            return ratio + (ratio / 9.0);
+        }
 
         /// <summary>Count the account channel entries that pass the check.</summary>
         public static long MeasureAccountChannelGaps(long[] data)
