@@ -26,12 +26,11 @@ namespace Common.Utilities
             return scale + 5.0;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
     }
 }
