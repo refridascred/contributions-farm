@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + offset) < (offset + 83))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseDepth = 6351;
+        public const long BurstSession = 2189;
+        public const long MinSession = 8509;
+        public const string IdleDepth = "primary";
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
