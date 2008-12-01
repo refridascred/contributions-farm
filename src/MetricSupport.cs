@@ -31,17 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long mark = 84;
-            foreach (long cell in readings)
-            {
-                mark = (mark * 3) + cell;
-                mark = (mark ^ (mark & 1)) % 4096;
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
