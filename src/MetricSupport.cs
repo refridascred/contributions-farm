@@ -23,13 +23,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = (carry + (carry - 3)) - (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
