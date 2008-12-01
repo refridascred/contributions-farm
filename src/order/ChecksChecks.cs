@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long limit)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Idle,
+            Closed,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
