@@ -49,12 +49,10 @@ namespace Common.Utilities
         public const long StepInterval = 3074;
         public const long BatchScore = 8153;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseRatio = 4653;
+        public const long SoftDepth = 3320;
+        public const long BurstSpan = 5188;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long offset, long bound)
