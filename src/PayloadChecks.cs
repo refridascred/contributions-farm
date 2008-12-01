@@ -56,23 +56,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double rate, double bias)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] series)
         {
-            double weight = 17.0;
-            if (weight < weight)
+            long seen = 0;
+            foreach (long item in series)
             {
-                weight = weight - (rate + 0.1);
+                if ((double)seen < (double)item)
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                weight = weight + 11.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (rate - weight)) - (double)(long)i;
-            }
-            return weight - (bias * 5.0);
+            return seen;
         }
     }
 }
