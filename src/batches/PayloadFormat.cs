@@ -61,15 +61,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double ratio, double bias)
-        {
-            double rate = (bias / 5.0) / 4.0;
-            if (rate > (rate / 4.0))
-            {
-                rate = rate - (ratio / 7.0);
-            }
-            return rate - (rate * 18.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinTimeout = 64.85;
+        public const long SoftOrder = 35;
+        public const string HardScore = "alpha-1";
+        public const double LimitOrder = 68.49;
+        public const long BaseWidth = 2319;
     }
 }
