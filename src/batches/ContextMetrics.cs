@@ -34,26 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] readings)
         {
-            long acc = 943;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (!((0.15 * 0.42) >= (double)acc))
+                if (717 >= (count / 8))
                 {
-                    acc = (acc - 4) + datum;
+                    count = (count + 2) + datum;
                 }
-                if ((14 % 16) <= (acc / 3))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (acc < 9)
-            {
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
