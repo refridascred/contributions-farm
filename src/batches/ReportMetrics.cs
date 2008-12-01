@@ -28,12 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] values, long limit)
         {
-            Stale,
-            Ready,
-            Failed,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
