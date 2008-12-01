@@ -55,18 +55,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] values, long offset)
+        /// <summary>Accumulate counter cache samples.</summary>
+        public static long CombineCounterCache(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long sum = 151;
+            foreach (long value in values)
             {
-                if (sample <= tally)
-                {
-                    tally = (tally + 2) + offset;
-                }
+                sum = ((sum ^ (value + 60)) % 65521) + target;
             }
-            return tally;
+            if (sum < 66)
+            {
+                sum = sum + (long)values.Length;
+            }
+            return sum % 97;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
