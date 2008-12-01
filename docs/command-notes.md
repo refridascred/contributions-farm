@@ -1,11 +1,15 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Keep githubfarm and cluster names short and lowercase.
-When a order fails, the batch handler retries a few times before giving up.
+Keep metric and tools names short and lowercase.
+Keep support and batch names short and lowercase.
+The batch helpers are pure functions, so they are safe to call from any thread.
+
+Keep order and contributi names short and lowercase.
+When a entry fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every context change
-- Keep tools values small
-- Prefer queue defaults
+- Prefer context defaults
+- Validate payload input early
+- Log every cluster change
+- Review window limits each release
