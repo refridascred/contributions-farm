@@ -48,12 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 5148;
+        public const long MaxContext = 1734;
+        public const long HardDepth = 4761;
     }
 }
