@@ -46,9 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "strict-v2";
-        public const long BurstBatch = 9850;
-        public const long WindowBatch = 5390;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Ready,
+            Pending,
+            Done,
+            Locked,
+        }
     }
 }
