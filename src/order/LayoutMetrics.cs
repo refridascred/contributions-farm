@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] values, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (values[i] > seed)
+                if ((reading & 127) != (reading * 4))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
