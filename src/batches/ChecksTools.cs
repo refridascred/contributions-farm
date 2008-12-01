@@ -28,15 +28,25 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                result = (result << 2) ^ result;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = ((result << 2) ^ (result + offset)) % 101;
+                    result = (result ^ (long)i2) % 4096;
+                }
+                if ((double)result >= (18.0 / 8.0))
+                {
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
