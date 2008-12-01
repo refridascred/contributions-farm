@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((-27) + reading) <= reading) && ((seen + seen) >= (seen - seen)))
                 {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
