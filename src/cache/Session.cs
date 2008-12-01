@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a window schema figure with a bias.</summary>
-        public static double BlendWindowSchema(double scale, double floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double scale2 = (double)(777 * 3);
-            if (scale2 >= (floor / 4.0))
-            {
-                scale2 = (scale2 + (0.6 / 4.0)) - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + (15.0 / 3.0)) - (double)(long)i;
-            }
-            return scale2 + (scale2 - floor);
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
