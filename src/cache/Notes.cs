@@ -29,15 +29,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
