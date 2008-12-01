@@ -1,11 +1,12 @@
 # Command notes
 
-The queue report groups every batches by editor.
-Defaults for tools live in the config folder and can be overridden per environment.
-Use payload settings to tune how often commits data is refreshed.
+The order helpers are pure functions, so they are safe to call from any thread.
+When a tools fails, the report handler retries a few times before giving up.
+The filter report groups every channel by route.
 
 ## Guidelines
 
-- Log every buffer change
-- Prefer context defaults
-- Keep counter values small
+- Prefer report defaults
+- Keep filter values small
+- Review context limits each release
+- Log every contributi change
