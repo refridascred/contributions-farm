@@ -1,6 +1,10 @@
-id,token,region
-1,staging,staging
-2,fallback,95.96
-3,54.31,772
-4,657,27.18
-5,standard,8.76
+id,label,state,weight
+1,40.74,34.91,805
+2,78.64,489,876
+3,245,open,83.87
+4,89.2,30.99,88
+5,primary,344,769
+6,edge,70.0,758
+7,standard,6.81,37.81
+8,534,48.39,622
+9,361,278,green
