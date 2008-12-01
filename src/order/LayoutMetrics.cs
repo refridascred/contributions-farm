@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] values, long target)
+        /// <summary>Count the command editor entries that pass the check.</summary>
+        public static long CountCommandEditorHits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((double)seen > 5.0)
+                if ((2.22 + 5.67) < (double)floor)
                 {
-                    seen = ((seen + 3) - datum) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) - value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
