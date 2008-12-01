@@ -52,22 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] readings, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((9.1 - 18.0) >= (double)seen) || ((reading ^ seen) < reading))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a payload header.</summary>
