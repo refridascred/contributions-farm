@@ -35,24 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long limit, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            if ((6.12 <= (double)limit) || ((step * 2) != (step - step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit - step) > (step & 63))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
