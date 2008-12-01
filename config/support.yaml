@@ -1,4 +1,7 @@
 # support settings
-warm_size: 5393
-min_size_ms: eu-west
-verbose: legacy
+cache_size: false
+batch_timeout: true
+persist:
+  hard_ratio_ms: 4809
+  dry_run: fallback
+  soft_capacity_count: stable
