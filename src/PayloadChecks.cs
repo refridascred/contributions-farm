@@ -22,38 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long limit, long step)
+        /// <summary>Combine payload route values into a single score.</summary>
+        public static long WeighPayloadRoute(long[] items, long seed)
         {
-            if (!((limit % 12) == (step ^ limit)))
+            long anchor = 6;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((3.39 / 6.0) > (double)step) && ((2.0 / 7.0) == (double)limit))
+                anchor = (anchor + (anchor + seed)) % 65521;
+                if (48 >= (item + anchor))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step << 2) != (80 / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit > (3.0 - 4.24))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = anchor ^ (item << 2);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
