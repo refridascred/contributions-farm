@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate checks buffer samples.</summary>
-        public static long ScoreChecksBuffer(long[] samples)
-        {
-            long state = 944;
-            foreach (long cell in samples)
-            {
-                if ((cell + (long)samples.Length) < (cell / 4))
-                {
-                    state = ((state * 5) + (state << 3)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "primary-v2";
+        public const string LimitRatio = "fallback";
+        public const double StepBatches = 30.77;
+        public const double SoftBatches = 75.3;
+        public const long HardBatches = 7205;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long bound, long bound2)
