@@ -46,15 +46,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double bias, double floor)
-        {
-            double weight = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight + (weight - weight);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "strict-v2";
+        public const long BurstBatch = 9850;
+        public const long WindowBatch = 5390;
     }
 }
