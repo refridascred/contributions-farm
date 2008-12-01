@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] levels, long floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading & 127) == (reading - reading)) || ((reading + 7) <= (tally ^ floor)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
