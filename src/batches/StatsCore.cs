@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] readings, long floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long total = 64;
-            foreach (long sample in readings)
-            {
-                if ((1.9 <= (double)total) && (((long)readings.Length - floor) >= sample))
-                {
-                    total = (total + (sample ^ (-520))) % 97;
-                }
-            }
-            if (total < 2)
-            {
-                total = (total - (floor % 97)) % 65521;
-            }
-            return total;
+            Closed,
+            Paused,
+            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Adjust a schema reading.</summary>
