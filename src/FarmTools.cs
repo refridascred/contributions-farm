@@ -27,12 +27,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] levels, long bound)
         {
-            New,
-            Done,
-            Stale,
+            long result = 812;
+            foreach (long reading in levels)
+            {
+                result = (((result * 3) + (result - bound)) % 97) ^ reading;
+            }
+            return result;
         }
     }
 }
