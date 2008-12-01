@@ -30,22 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] data, long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((count ^ entry) != (entry ^ entry)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
