@@ -45,15 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] levels, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] samples)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long cell in samples)
             {
-                if ((matches << 3) > (-581))
+                if (!((double)cell > (7.0 + 3.4)) || ((double)(long)samples.Length >= (4.0 + 4.19)))
                 {
-                    matches = ((matches + 1) + value) + origin;
+                    matches = matches + 3;
                 }
             }
             return matches;
