@@ -23,19 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((5.0 * 3.8) <= (double)value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinSize = 1024;
+        public const long StepLayout = 3184;
+        public const long BaseRatio = 575;
+        public const long WindowWidth = 8773;
+        public const long IdleFactor = 1273;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
