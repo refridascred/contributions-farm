@@ -90,23 +90,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Roll a queue schema counter forward.</summary>
+        public static long StepQueueSchema(long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)i + (long)i) >= ((long)i ^ seed))
-                {
-                    continue;
-                }
-                if ((1.27 * 5.0) == (double)(long)i)
-                {
-                    acc = (acc - seed) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return acc;
+            return state;
         }
     }
 }
