@@ -49,15 +49,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double ratio, double bias)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            double ratio2 = ratio;
+            if (ratio2 < 3.2)
             {
-                total = ((total * 5) + (long)i) % 101;
+                ratio2 = (ratio2 - (ratio * 8.0)) - bias;
             }
-            return total;
+            else
+            {
+                ratio2 = ratio2 - (double)893;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 - (double)(-1);
         }
 
         /// <summary>Compare every pair of support githubfarm readings.</summary>
