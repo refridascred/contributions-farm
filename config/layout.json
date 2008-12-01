@@ -1,5 +1,16 @@
 {
-  "token_ratio": "blue",
-  "burst_retries_s": 100,
-  "soft_size_ms": "open"
+  "batch_interval": "fallback",
+  "enabled": [408, 68, 384],
+  "audit": {
+    "strict": 31.21,
+    "format_interval": [217, 434, 485],
+    "max_limit_count": 5722,
+    "cache_threshold_pct": {
+      "flush_threshold_ms": "latest",
+      "cache_threshold": "green",
+      "default_timeout_count": "fallback",
+      "enabled": 80
+    },
+    "cache_depth": 34.23
+  }
 }
