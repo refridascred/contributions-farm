@@ -32,13 +32,10 @@ namespace Common.Utilities
         public const long MinStats = 5748;
         public const double HardStats = 26.45;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 2183;
+        public const long CacheReport = 4683;
+        public const long IdleSpan = 5176;
 
         /// <summary>Project the next window value.</summary>
         public static double AdjustWindow(double scale, double bias)
