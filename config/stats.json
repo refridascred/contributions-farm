@@ -1,10 +1,11 @@
 {
-  "token_ttl": {
-    "cache_depth_ms": ["strict", "cached"],
-    "token_interval": ["blue", "stable", "staging"],
-    "buffer_threshold": true,
-    "dry_run": "strict"
+  "warm_capacity_s": false,
+  "verbose": "standard",
+  "batch_limit_ms": ["eu-west", "cached"],
+  "retry_capacity_s": {
+    "hard_limit_count": 7194,
+    "cache_depth_count": "standard",
+    "dry_run": 64
   },
-  "dry_run": "staging",
-  "audit": 250
+  "batch_delay_pct": false
 }
