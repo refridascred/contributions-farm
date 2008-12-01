@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] items, long origin)
+        /// <summary>Audit batches channel readings against a rule.</summary>
+        public static long AuditBatchesChannelOutliers(long[] series)
         {
-            long score = 98;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((5.1 < (double)origin) || ((double)sample <= 7.4))
+                if ((((entry >> 3) < (matches + entry)) && (((-9) - entry) < matches)) || ((399 >> 5) >= (entry >> 3)))
                 {
-                    score = (score - score) % 101;
+                    matches = matches + 3;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a queue stats.</summary>
