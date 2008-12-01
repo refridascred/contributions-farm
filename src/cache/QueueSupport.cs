@@ -19,14 +19,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            Retry,
-            Draft,
-            Ready,
-            Synced,
-            Queued,
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor << 2) ^ ((long)i + 4);
+                anchor = (anchor - (anchor + (long)i)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
