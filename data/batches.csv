@@ -1,6 +1,6 @@
-id,count,score
-1,200,local
-2,74.88,52.23
-3,legacy,63.1
-4,555,78.11
-5,242,200
+id,count,region,weight,level
+1,350,local,36.48,97.21
+2,926,latest,40.14,26.17
+3,legacy,853,771,84.51
+4,174,149,726,green
+5,515,local,491,standard
