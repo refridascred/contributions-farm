@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] series)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (datum < tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
