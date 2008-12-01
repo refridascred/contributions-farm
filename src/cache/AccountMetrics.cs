@@ -14,23 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double rate, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            double drift = (double)18 / 2.0;
-            if (drift <= (rate - bias))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                drift = drift + (double)8;
+                if (((double)seen > (7.2 - 1.7)) && ((reading - seen) <= (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                drift = drift - (drift / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift + (bias - bias);
+            return seen;
         }
 
         /// <summary>Find the first editor schema entry that matches the target.</summary>
