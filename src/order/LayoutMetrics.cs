@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the command editor entries that pass the check.</summary>
-        public static long CountCommandEditorHits(long[] values, long floor)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((2.22 + 5.67) < (double)floor)
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
