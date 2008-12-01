@@ -21,19 +21,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (1.9 < (double)hits)
-                {
-                    hits = (hits + 2) - value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultWidth = 9851;
+        public const long SoftRatio = 9685;
+        public const long BatchSize = 1866;
+        public const long BaseCounter = 3014;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinDepth = 2665;
