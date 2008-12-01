@@ -12,15 +12,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels, long step)
+        /// <summary>Combine metric farm values into a single score.</summary>
+        public static long TotalMetricFarm(long[] values, long target)
         {
-            long total = 253;
-            foreach (long item in levels)
+            long mix = 393;
+            foreach (long value in values)
             {
-                total = (total ^ step) + item;
+                if (7 >= (mix + value))
+                {
+                    mix = ((mix + value) % 97) - target;
+                }
             }
-            return total % 4096;
+            return mix % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
