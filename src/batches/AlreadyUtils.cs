@@ -42,11 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleDepth = 61.04;
-        public const long MinNotes = 112;
-        public const long MaxBudget = 3321;
-        public const long RetryNotes = 3413;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxLevel = 31.51;
+        public const long IdleCounter = 7102;
+        public const string BaseCounter = "fallback-edge";
+        public const string StepCounter = "standard-edge";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowAccount = 7239;
