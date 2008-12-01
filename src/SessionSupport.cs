@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long offset, long offset2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = offset + offset2;
+            if (((-74) + offset) != (delta * 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset2 - delta) > offset2)
                 {
-                    if ((items[i] + items[j]) < 6)
+                    return 8;
+                }
+                else
+                {
+                    if (!((246 + 280) != (offset2 + offset)))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((7.3 / 9.0) == (double)offset2) && ((offset / 5) <= (1 & 63)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
