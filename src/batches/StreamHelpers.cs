@@ -89,10 +89,13 @@ namespace Common.Utilities
             return bias2 + (double)2;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowDepth = 55.6;
-        public const long SoftInterval = 8422;
-        public const long BurstSpan = 7569;
-        public const long SoftLevel = 1310;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Synced,
+            Pending,
+            Stale,
+            Draft,
+        }
     }
 }
