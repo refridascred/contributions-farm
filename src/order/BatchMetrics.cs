@@ -49,13 +49,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 4174;
+        public const long DefaultFactor = 5699;
+        public const long BaseCount = 4464;
+        public const long IdleWidth = 427;
+        public const string HardEntry = "staging";
 
         /// <summary>Project the next buffer counter value.</summary>
         public static double AdjustBufferCounter(double bias, double span)
