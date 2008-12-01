@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Grade a report format value against two limits.</summary>
+        public static long GradeReportFormat(long seed, long limit)
         {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            long edge = seed ^ limit;
+            if (((6.0 + 6.7) < (double)edge) || ((limit >> 2) > (limit & 15)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed % 97) > (0 << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)23 == (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
