@@ -41,13 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] levels, long origin)
         {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches << 3) > (-581))
+                {
+                    matches = ((matches + 1) + value) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
