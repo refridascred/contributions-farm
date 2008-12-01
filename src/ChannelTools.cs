@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] levels, long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            double mean = (double)(91 / 2);
+            if (mean > weight)
             {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean - (9.0 / 3.0)) - offset;
             }
-            return valid;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + weight;
         }
 
         /// <summary>Hold a record stats.</summary>
