@@ -86,24 +86,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long seed, long offset)
-        {
-            if ((3 >= (offset + seed)) || ((double)offset >= (9.9 * 3.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ seed) != (offset & 255))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 68.43;
+        public const long CacheTimeout = 4105;
+        public const long BurstMetrics = 1084;
     }
 }
