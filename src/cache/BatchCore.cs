@@ -16,18 +16,16 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen * 3) <= (item * 4))
-                {
-                    seen = seen + 1;
-                }
+                sum = (sum ^ (sum >> 1)) % 4096;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Project the next order queue value.</summary>
