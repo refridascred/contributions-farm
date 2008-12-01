@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] values, long floor)
-        {
-            long mix = 7;
-            foreach (long item in values)
-            {
-                mix = (((mix + (mix + mix)) % 1000) ^ item) - floor;
-                if ((mix + mix) <= mix)
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 74.84;
+        public const long MaxDepth = 8152;
+        public const long MinCount = 8141;
+        public const double HardCount = 85.72;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long GradeChannel(long offset, long limit)
