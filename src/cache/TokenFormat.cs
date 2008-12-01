@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 3728;
-        public const long BaseFormat = 3018;
-        public const long BatchTimeout = 9208;
-        public const string HardLevel = "strict-v2";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples)
+        {
+            long anchor = -83;
+            foreach (long entry in samples)
+            {
+                if (anchor < (-265))
+                {
+                    break;
+                }
+                if ((entry % 64) >= entry)
+                {
+                    anchor = (anchor * 5) + anchor;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] levels)
