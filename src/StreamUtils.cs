@@ -21,10 +21,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 70.38;
-        public const string CacheChannel = "latest-v2";
-        public const long DefaultTimeout = 7774;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxDepth = 2514;
