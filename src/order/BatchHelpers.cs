@@ -29,12 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchScore = 96.65;
+        public const long LimitFilter = 4737;
+        public const double MaxDepth = 53.28;
     }
 }
