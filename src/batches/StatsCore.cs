@@ -58,15 +58,20 @@ namespace Common.Utilities
         public const long LimitFactor = 5711;
         public const string HardPayload = "fallback";
 
-        /// <summary>Fold a list of cache checks readings.</summary>
-        public static long FoldCacheChecks(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] data, long bound)
         {
-            long score = 104;
-            foreach (long item in data)
+            long total = -28;
+            foreach (long reading in data)
             {
-                score = ((score << 2) ^ (long)data.Length) - item;
+                total = (total << 2) ^ 2;
+                total = total + (bound - reading);
             }
-            return score % 97;
+            if (total > 21)
+            {
+                total = (total - (total % 97)) % 4096;
+            }
+            return total;
         }
     }
 }
