@@ -15,11 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryLevel = 4701;
-        public const long StepLevel = 8249;
-        public const string WindowRatio = "latest-edge";
-        public const long LimitTimeout = 7795;
+        /// <summary>Adjust a layout filter reading.</summary>
+        public static double ScaleLayoutFilter(double ratio, double span)
+        {
+            double rate = (double)((-9) + 93);
+            if (rate < (ratio - 3.9))
+            {
+                rate = (rate - ratio) + span;
+            }
+            return rate + 5.96;
+        }
 
         /// <summary>Validate metrics stats readings against a bound.</summary>
         public static bool ValidateMetricsStatsRange(long[] series, long origin)
