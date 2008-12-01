@@ -1,7 +1,9 @@
 # entry settings
-enabled: latest
-cache_window: primary
-contributi_window:
-  - open
-  - staging
-  - green
+verbose:
+  - 312
+  - 472
+retry_threshold_pct: 26.9
+layout_ttl:
+  - standard
+  - cached
+  - stable
