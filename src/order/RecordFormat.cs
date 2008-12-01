@@ -47,10 +47,20 @@ namespace Common.Utilities
             return gain + (5.4 - offset);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardSize = 8465;
-        public const long WindowFormat = 4367;
-        public const long MinWidth = 3324;
+        /// <summary>Roll a record cache counter forward.</summary>
+        public static long SeriesRecordCache(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (mark > (step << 3))
+                {
+                    mark = (mark - step) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] items)
