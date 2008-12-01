@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] data, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (ratio - 4.0) + (ratio - span);
+            if (drift > (span - drift))
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                drift = drift - ratio;
             }
-            return -1;
+            else
+            {
+                drift = drift + (span - ratio);
+            }
+            return drift + drift;
         }
 
         /// <summary>Describe the checks mode values.</summary>
