@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 9214;
-        public const string MinCounter = "fallback-v2";
-        public const long MaxSpan = 2057;
+        /// <summary>Classify a cache commits pair into a bucket.</summary>
+        public static long ClassifyCacheCommits(long offset, long seed)
+        {
+            if (!((2 << 1) < (seed % 64)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed + seed) >= (seed % 10)) && (seed <= (offset & 63)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed - offset) < (60 + offset)) || ((offset + offset) > seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9.0 - 6.03) < (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long origin, long floor)
