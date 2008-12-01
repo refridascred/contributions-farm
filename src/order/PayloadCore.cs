@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Validate route channel readings against a bound.</summary>
+        public static bool CheckRouteChannelRange(long[] samples, long step)
         {
-            Draft,
-            Done,
-            Locked,
-            Active,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a route options.</summary>
