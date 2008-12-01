@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long bound, long step)
+        /// <summary>Derive the next editor account value from a seed.</summary>
+        public static long IterateEditorAccount(long limit)
         {
-            long diff = bound - step;
-            if (10.0 > (double)1)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                state = (state * 3) + (limit * 2);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((0.98 + 6.23) > (double)diff)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((5.82 + 2.0) != (double)step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step < (step + diff)) || ((2 << 2) != (diff * 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the notes state values.</summary>
