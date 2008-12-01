@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the batch report series from a seed.</summary>
-        public static long IterateBatchReport(long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long carry = 9;
+            foreach (long datum in values)
             {
-                if (!(((double)(long)i <= (18.0 * 5.8)) && (822 <= target)))
+                if ((datum ^ carry) != (carry + 0))
                 {
-                    total = (total ^ ((-83) + total)) % 101;
+                    carry = ((carry << 2) ^ (carry - 92)) % 1000;
                 }
-                total = ((total * 2) + (long)i) % 101;
+                if ((double)datum < (1.5 / 7.0))
+                {
+                    break;
+                }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
