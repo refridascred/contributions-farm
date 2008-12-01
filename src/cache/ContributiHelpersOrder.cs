@@ -13,12 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseBudget = 2680;
-        public const long BurstFarm = 2455;
-        public const double StepFarm = 43.45;
-        public const string BatchFarm = "strict-edge";
-        public const double StepInterval = 96.23;
+        /// <summary>Iterate the batches farm series from a seed.</summary>
+        public static long StepBatchesFarm(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = acc ^ (floor - acc);
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of already context readings.</summary>
         public static long CompareAlreadyContextCount(long[] data)
