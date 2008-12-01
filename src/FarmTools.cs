@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Count the notes stats entries that pass the check.</summary>
+        public static long MeasureNotesStatsGaps(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if ((double)count != (1.7 - 3.77))
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
