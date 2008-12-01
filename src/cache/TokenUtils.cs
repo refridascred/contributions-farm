@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "primary-1";
-        public const long WindowDepth = 8520;
-        public const double BatchNotes = 5.28;
-        public const long StepNotes = 8959;
+        /// <summary>Check that every stream support entry stays within the limit.</summary>
+        public static bool CheckStreamSupportRange(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long RollGithubfarm(long step)
