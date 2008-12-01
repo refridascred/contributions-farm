@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of schema order entries.</summary>
-        public static long TallySchemaOrder(long[] values)
+        /// <summary>Iterate the cache token series from a seed.</summary>
+        public static long IterateCacheToken(long floor)
         {
-            long state = 15;
-            foreach (long sample in values)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((state & 1) != (sample + state)))
-                {
-                    state = (state - (state << 1)) % 1000;
-                }
+                mix = (mix << 2) ^ (floor + mix);
+                mix = ((mix << 3) ^ ((long)i - (long)i)) % 1000;
+                mix = (mix + (803 + 2)) % 101;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (state < 387)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Match up account samples.</summary>
