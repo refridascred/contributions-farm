@@ -73,18 +73,21 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] levels, long offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen * 2) >= (offset * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) - entry;
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
