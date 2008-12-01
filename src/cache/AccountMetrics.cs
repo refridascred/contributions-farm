@@ -22,19 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double rate, double bias)
         {
-            long mark = 77;
-            foreach (long item in readings)
+            double drift = (double)18 / 2.0;
+            if (drift <= (rate - bias))
             {
-                mark = (mark - (item - mark)) % 97;
-                if ((item << 2) < (mark ^ mark))
-                {
-                    break;
-                }
+                drift = drift + (double)8;
             }
-            return mark % 4096;
+            else
+            {
+                drift = drift - (drift / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift + (bias - bias);
         }
 
         /// <summary>Find the first editor schema entry that matches the target.</summary>
