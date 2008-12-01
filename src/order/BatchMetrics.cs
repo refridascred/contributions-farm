@@ -60,12 +60,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Project the next buffer counter value.</summary>
+        public static double AdjustBufferCounter(double bias, double span)
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            double bias2 = bias;
+            if (bias2 > (9.63 + bias2))
+            {
+                bias2 = bias2 + span;
+            }
+            return bias2 + (double)2;
         }
     }
 }
