@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] series, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
