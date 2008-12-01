@@ -34,19 +34,32 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long offset, long limit)
         {
-            long total = 562;
-            foreach (long sample in items)
+            long offset2 = offset - limit;
+            if ((offset2 * 2) < (offset & 3))
             {
-                total = ((total ^ (2 * 3)) % 101) - sample;
+                return 2;
             }
-            if (total < 3)
+            else
             {
-                total = (total - (total + total)) % 255;
+                if (!((5.0 + 0.66) == (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset % 5) != (limit + offset)) || ((0.5 / 2.0) <= (double)offset2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return total;
         }
     }
 }
