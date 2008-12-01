@@ -48,12 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Find the first session githubfarm entry that matches the target.</summary>
+        public static long LocateSessionGithubfarmIndex(long[] series, long origin)
         {
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
