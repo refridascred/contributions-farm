@@ -54,17 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseRatio = 9291;
+        public const long DefaultOrder = 3478;
+        public const double SoftOrder = 76.51;
+        public const long WindowOrder = 3806;
+        public const double IdleOrder = 35.43;
     }
 }
