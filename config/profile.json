@@ -1,6 +1,13 @@
 {
-  "min_ratio_s": 60,
-  "hard_interval": "standard",
-  "soft_ttl": 4990,
-  "payload_timeout": false
+  "checks_timeout": true,
+  "poll_depth_count": ["green", "eu-west", "local"],
+  "account_delay": 5237,
+  "retry_interval": "cached",
+  "tools_ratio": 92.07,
+  "tools_threshold": {
+    "soft_capacity_s": 5440,
+    "burst_ratio_pct": false,
+    "counter_timeout": "staging",
+    "enabled": "fallback"
+  }
 }
