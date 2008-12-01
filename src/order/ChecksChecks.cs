@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double gain, double bias)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] readings, long step)
         {
-            double drift = (double)(567 >> 3);
-            if (drift > drift)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                drift = drift + (drift * 3.1);
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift - gain)) + (double)(long)i;
-            }
-            return drift + (drift + bias);
+            return ok;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
