@@ -31,17 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] items, long floor)
+        /// <summary>Roll a channel account counter forward.</summary>
+        public static long SeriesChannelAccount(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Locate a order reading by value.</summary>
