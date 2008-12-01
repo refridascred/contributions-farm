@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] values)
+        /// <summary>Adjust a counter notes reading.</summary>
+        public static double AdjustCounterNotes(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((cell ^ seen) <= ((long)values.Length - seen)) || ((double)seen != (5.64 + 1.43)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double ratio = (double)(41 ^ 7);
+            return (ratio + weight) + offset;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
