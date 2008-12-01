@@ -36,12 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] values, long step)
         {
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
