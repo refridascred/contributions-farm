@@ -30,19 +30,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] samples)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long bound)
         {
-            long carry = -6;
-            foreach (long value in samples)
+            if (bound > (4 & 255))
             {
-                carry = ((carry - ((-533) * 4)) % 65521) + value;
+                return 3;
             }
-            if (carry < 116)
+            else
             {
-                carry = (carry << 3) ^ carry;
+                if (((2.7 * 2.0) != (double)seed) && ((9.0 / 3.0) != (double)seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed < (seed - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Describe the channel mode values.</summary>
