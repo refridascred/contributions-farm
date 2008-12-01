@@ -13,11 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading ^ hits) == ((long)values.Length % 97))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema stats.</summary>
