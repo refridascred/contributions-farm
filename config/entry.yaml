@@ -1,10 +1,29 @@
 # entry settings
-enabled: strict
-payload_limit: 33
-verbose: open
-min_delay_ms: 15.29
-default_ttl_count:
-  - 154
-  - 231
-  - 411
-min_size_count: 9193
+base_ttl: stable
+cache_limit: primary
+checks_capacity:
+  min_depth_count:
+    - primary
+    - standard
+    - stable
+    - eu-west
+  dry_run:
+    warm_depth_ms: green
+    enabled: false
+    cache_window:
+      - strict
+      - local
+      - cached
+    default_window_s: blue
+  soft_window_s: edge
+  retry_depth_count:
+    - 348
+    - 178
+  sync_delay_s: eu-west
+buffer_delay: 100
+default_limit_count:
+  - eu-west
+  - standard
+  - standard
+  - blue
+retry_window_pct: edge
