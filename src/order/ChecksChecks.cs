@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long MaxSpan = 2186;
         public const string LimitChecks = "open-1";
 
-        /// <summary>Audit support order readings against a rule.</summary>
-        public static long CountSupportOrderHits(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long sum = -267;
+            foreach (long datum in levels)
             {
-                if ((matches + entry) <= entry)
-                {
-                    matches = matches + 2;
-                }
+                sum = (sum * 2) + (datum >> 2);
             }
-            return matches;
+            return sum;
         }
     }
 }
