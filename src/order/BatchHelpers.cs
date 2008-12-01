@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the command format entries that pass the check.</summary>
-        public static long CountCommandFormatMatches(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((count / 8) != (count - value))
+                if ((cell >> 4) >= (85 ^ floor))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
