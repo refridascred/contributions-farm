@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally % 16) >= (-963))
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a graph counter counter forward.</summary>
