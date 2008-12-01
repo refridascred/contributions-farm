@@ -53,15 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] levels)
-        {
-            long state = 870;
-            foreach (long sample in levels)
-            {
-                state = state - sample;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 87.2;
+        public const double StepScore = 4.3;
+        public const long BatchCluster = 6138;
+        public const string BaseCluster = "latest-v2";
+        public const long DefaultLevel = 4763;
     }
 }
