@@ -74,17 +74,15 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 3;
+            foreach (long cell in data)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark - (mark + (-424))) + cell;
             }
-            return -1;
+            return mark;
         }
     }
 }
