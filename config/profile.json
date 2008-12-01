@@ -1,6 +1,12 @@
 {
-  "poll_ratio_s": 8181,
-  "readonly": ["primary", "edge", "green", "strict"],
-  "dry_run": "open",
-  "max_capacity": false
+  "metric_retries": 6363,
+  "cache_capacity_count": 81,
+  "stream_threshold": "open",
+  "soft_limit_count": {
+    "hard_interval_count": "local",
+    "cache_depth_count": 49,
+    "entry_delay": true,
+    "enabled": true
+  },
+  "soft_retries_count": [285, 131, 477, 2]
 }
