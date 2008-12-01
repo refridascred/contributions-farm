@@ -1,14 +1,5 @@
 {
-  "readonly": 86.26,
-  "window_ttl": 84,
-  "verbose": true,
-  "default_capacity_count": {
-    "hard_size_count": {
-      "idle_threshold": 7702,
-      "hard_capacity_s": 20,
-      "dry_run": true
-    },
-    "retry_timeout": 18,
-    "strict": "edge"
-  }
+  "batch_size_s": 250,
+  "cache_ttl_count": "fallback",
+  "counter_ratio": 4.63
 }
