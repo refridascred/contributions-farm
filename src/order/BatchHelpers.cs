@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Find the first record already entry that matches the target.</summary>
+        public static long SeekRecordAlreadyIndex(long[] readings, long floor)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
