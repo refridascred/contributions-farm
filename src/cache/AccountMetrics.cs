@@ -47,18 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Iterate the batches metric series from a seed.</summary>
+        public static long IterateBatchesMetric(long origin)
         {
-            long score = 57;
-            foreach (long datum in data)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum + datum) >= (datum * 5))
-                {
-                    score = ((score << 2) ^ (datum + datum)) % 1000;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
