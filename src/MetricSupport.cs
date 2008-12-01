@@ -31,19 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] levels, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
