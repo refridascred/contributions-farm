@@ -1,6 +1,7 @@
 # entry settings
-soft_retries_pct: true
-sync_retries_pct: edge
-stream_delay: 7603
-cache_depth_ms: 43.46
-idle_interval_ms: 53.42
+enabled: latest
+cache_window: primary
+contributi_window:
+  - open
+  - staging
+  - green
