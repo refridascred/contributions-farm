@@ -23,20 +23,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long anchor = 968;
-            foreach (long value in samples)
-            {
-                anchor = (anchor * 2) + (anchor + anchor);
-                anchor = ((anchor * 5) + (value ^ 410)) % 255;
-            }
-            if (anchor < 93)
-            {
-                anchor = ((anchor * 2) + anchor) % 4096;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the layout phase values.</summary>
