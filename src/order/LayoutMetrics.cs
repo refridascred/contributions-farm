@@ -29,11 +29,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseBudget = "alpha-v2";
+        public const string BurstEntry = "staging";
+        public const long CacheScore = 523;
+        public const double MaxEntry = 82.12;
     }
 }
