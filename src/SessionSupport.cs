@@ -40,22 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] samples, long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            long sum = -92;
-            foreach (long value in samples)
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((value >> 5) > (8 + value))
+                if ((71 >> 4) < mark)
                 {
-                    sum = ((sum * 5) + (value + target)) % 4096;
+                    mark = (mark - offset) % 65521;
+                    continue;
                 }
+                else
+                {
+                    mark = (mark ^ (mark << 3)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            if (sum > 9)
-            {
-                sum = (sum + target) % 255;
-            }
-            return sum % 1000;
+            return mark;
         }
 
         /// <summary>Hold a window stats.</summary>
