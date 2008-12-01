@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] series, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mix = 79;
+            foreach (long item in readings)
             {
-                if ((cell >> 4) >= (85 ^ floor))
-                {
-                    seen = seen + 3;
-                }
+                mix = (((mix * 4) + mix) - item) - bound;
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Find the first record already entry that matches the target.</summary>
