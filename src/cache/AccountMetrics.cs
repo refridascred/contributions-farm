@@ -35,17 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] readings, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 0;
+            foreach (long item in samples)
             {
-                if (readings[i] <= target)
+                state = (state ^ (item << 2)) % 1000;
+                state = (state << 3) ^ (bound >> 3);
+                if ((841 << 1) == (item << 1))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state < 686)
+            {
+                state = ((state * 2) + (bound - 26)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
