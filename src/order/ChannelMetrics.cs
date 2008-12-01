@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data, long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            long mark = 0;
-            foreach (long sample in data)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((sample - sample) > offset)
-                {
-                    mark = ((mark << 2) ^ (mark << 2)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (70 - sample)) % 1000;
-                }
+                mix = ((mix << 2) ^ ((long)i << 2)) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (mark < 9)
-            {
-                mark = mark ^ (mark / 6);
-            }
-            return mark % 65521;
+            return mix;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
