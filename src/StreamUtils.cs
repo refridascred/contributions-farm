@@ -36,12 +36,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "latest-1";
-        public const long MaxRecord = 5072;
-        public const long SoftDepth = 7227;
-        public const long BaseScore = 1594;
-        public const long IdleWidth = 9012;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((5 / 5) < acc) || ((limit * 4) < ((long)i + limit)))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc + acc)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] data)
