@@ -31,21 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of already context readings.</summary>
-        public static long CompareAlreadyContextCount(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((count ^ entry) != (entry ^ entry)))
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
