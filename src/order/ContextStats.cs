@@ -51,12 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] samples, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                if (data[i] < limit)
                 {
                     return (long)i;
                 }
