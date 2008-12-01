@@ -49,21 +49,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of stats notes readings.</summary>
-        public static long CompareStatsNotesCount(long[] data)
+        /// <summary>Locate a metric tools reading by value.</summary>
+        public static long LookupMetricToolsIndex(long[] data, long limit)
         {
-            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
                 {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
