@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] series, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] levels, long origin)
         {
-            long anchor = 597;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                anchor = (((anchor << 3) ^ (anchor & 127)) % 97) + datum;
+                if (item < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor > 856)
-            {
-                anchor = (anchor << 2) ^ (origin % 64);
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a record stats.</summary>
