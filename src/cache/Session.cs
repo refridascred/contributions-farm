@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Retry,
-            Failed,
-            Paused,
-            Closed,
-            Pending,
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a queue header.</summary>
