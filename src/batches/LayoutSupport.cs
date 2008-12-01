@@ -23,17 +23,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] readings, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] == origin) && ((readings[i] % 2) == 0))
+                if ((5.6 / 7.0) == (double)cell)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
