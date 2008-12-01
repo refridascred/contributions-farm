@@ -41,12 +41,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 9689;
-        public const long StepScore = 9850;
-        public const long HardFarm = 4971;
-        public const double IdleLevel = 22.67;
-        public const long MinFarm = 2174;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings, long origin)
+        {
+            long acc = 4;
+            foreach (long reading in readings)
+            {
+                acc = acc + (acc - acc);
+                acc = (acc - (55 + acc)) % 101;
+                if (((origin + acc) < (reading >> 5)) || ((origin / 4) <= reading))
+                {
+                    break;
+                }
+            }
+            if (acc > 5)
+            {
+                acc = ((acc * 3) + (origin * 3)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyOutliers(long[] series, long target)
