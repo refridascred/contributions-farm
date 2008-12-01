@@ -60,12 +60,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSpan = "open-edge";
-        public const double StepSchema = 93.34;
-        public const double LimitSchema = 38.09;
-        public const long IdleSize = 7126;
-        public const double LimitBudget = 41.76;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardWidth = 2786;
+        public const long LimitBatches = 1300;
+        public const long StepBatches = 1649;
+        public const long BatchWidth = 9270;
+        public const double CacheBatches = 8.31;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long offset)
