@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long offset, long target)
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            if (((offset ^ 472) > (offset ^ offset)) && ((target << 1) <= (target % 24)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset % 24) > (offset / 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset <= (2.3 - 6.3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many editor farm samples are out of range.</summary>
