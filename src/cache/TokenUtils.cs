@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "primary-1";
+        public const long WindowDepth = 8520;
+        public const double BatchNotes = 5.28;
+        public const long StepNotes = 8959;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
