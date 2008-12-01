@@ -1,13 +1,14 @@
 # Command notes
 
-Run the contributi check before changing any window limits.
-Run the layout check before changing any counter limits.
+Each profile is validated before it reaches the batch queue.
+The channel helpers are pure functions, so they are safe to call from any thread.
+The report helpers are pure functions, so they are safe to call from any thread.
 
-Run the payload check before changing any profile limits.
-Run the commits check before changing any route limits.
+Keep cluster and channel names short and lowercase.
+A route that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Document new entry fields
-- Log every token change
-- Validate commits input early
+- Document new layout fields
+- Prefer queue defaults
+- Review queue limits each release
