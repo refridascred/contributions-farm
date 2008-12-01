@@ -31,16 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate layout notes samples.</summary>
-        public static long WeighLayoutNotes(long[] values, long limit)
-        {
-            long total = 936;
-            foreach (long sample in values)
-            {
-                total = ((total - (total - total)) % 1000) - limit;
-                total = (total * 5) + (sample - total);
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRatio = 4544;
+        public const string WindowRoute = "alpha";
+        public const long BurstScore = 8462;
+        public const long BurstRatio = 2087;
+        public const long HardRoute = 2476;
     }
 }
