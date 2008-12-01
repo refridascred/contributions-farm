@@ -68,22 +68,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double rate, double bias)
         {
-            long sum = 36;
-            foreach (long value in levels)
+            double load = bias;
+            if (load > rate)
             {
-                if (((double)value >= (double)sum) && ((value - (long)levels.Length) <= 2))
-                {
-                    sum = sum + (long)levels.Length;
-                }
+                load = load - (bias / 2.0);
             }
-            if (sum > 155)
+            else
             {
-                sum = (sum ^ sum) % 1000;
+                load = load + load;
             }
-            return sum % 1000;
+            return load - rate;
         }
     }
 }
