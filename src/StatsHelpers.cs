@@ -41,11 +41,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 95.96;
-        public const string StepTimeout = "strict-1";
-        public const long StepContext = 7425;
-        public const string MaxContext = "alpha";
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderGaps(long[] values, long seed)
