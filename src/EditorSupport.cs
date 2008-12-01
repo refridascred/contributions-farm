@@ -29,13 +29,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] levels, long step)
         {
-            Stale,
-            Dropped,
-            Failed,
-            New,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a context record.</summary>
