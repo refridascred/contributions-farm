@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
