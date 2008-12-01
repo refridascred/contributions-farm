@@ -1,20 +1,4 @@
 # githubfarm settings
-verbose:
-  soft_size_pct: green
-  persist: true
-  min_size: stable
-commits_window: 1024
-batches_timeout:
-  soft_interval_ms: 7982
-  max_depth:
-    - 175
-    - 288
-  command_limit:
-    - primary
-    - green
-    - green
-  flush_depth: local
-  profile_timeout: cached
-  retry_delay_s: false
-stream_ratio: 3826
-route_ratio: 250
+soft_delay: green
+tools_ratio: 31.24
+readonly: 90.29
