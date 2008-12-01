@@ -1,11 +1,5 @@
 {
-  "burst_timeout_pct": "primary",
-  "strict": 19.44,
-  "idle_ratio": "latest",
-  "max_interval_s": {
-    "verbose": 35,
-    "retry_size_ms": "open",
-    "flush_interval_pct": "fallback",
-    "buffer_ttl": "fallback"
-  }
+  "filter_depth": 40.43,
+  "warm_ttl_count": 63,
+  "min_ttl_pct": 860
 }
