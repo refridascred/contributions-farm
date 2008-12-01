@@ -23,16 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a window graph counter forward.</summary>
-        public static long StepWindowGraph(long seed)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 3) + (seed << 3)) % 4096;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
