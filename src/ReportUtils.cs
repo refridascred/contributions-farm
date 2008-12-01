@@ -31,13 +31,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] samples)
         {
-            New,
-            Failed,
-            Pending,
-            Retry,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum >= count) || !(count >= (49 / 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a layout summary.</summary>
