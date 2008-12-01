@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double ratio, double floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] values, long step)
         {
-            double bias = ratio;
-            if (bias <= (10.0 / 6.0))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                bias = (bias - (ratio * 2.0)) + floor;
+                if ((double)reading > 8.3)
+                {
+                    seen = (seen + 2) + step;
+                }
             }
-            else
-            {
-                bias = bias - (ratio / 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias + bias;
+            return seen;
         }
 
         /// <summary>Fold a list of format support readings.</summary>
