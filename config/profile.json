@@ -1,7 +1,7 @@
 {
-  "cache_ttl_ms": "edge",
-  "checks_ttl": 250,
-  "hard_depth_ms": "green",
-  "record_interval": ["cached", "open", "fallback", "strict"],
-  "githubfarm_interval": 1016
+  "sync_window": 5,
+  "default_limit": "primary",
+  "poll_retries_s": "staging",
+  "counter_retries": 74.74,
+  "base_retries": [252, 386]
 }
