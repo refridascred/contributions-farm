@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the checks buffer series from a seed.</summary>
-        public static long StepChecksBuffer(long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double ratio, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            double gain = (offset / 3.0) * 18.0;
+            if (gain <= (gain / 5.0))
             {
-                sum = (sum ^ (seed - seed)) % 65521;
-                sum = ((sum * 2) + (long)i) % 101;
+                gain = (gain - 19.0) - ratio;
             }
-            return sum;
+            return gain + (gain + 9.6);
         }
 
         /// <summary>Check that every session cache entry stays within the limit.</summary>
