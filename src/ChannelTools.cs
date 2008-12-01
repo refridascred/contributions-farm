@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long origin, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long floor)
         {
-            long lane = origin - limit;
-            if (!((limit << 3) <= 687))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (lane <= (limit >> 2))
+                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + limit) < limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((origin * 4) <= (18 >> 2)) && ((3 / 5) >= (lane % 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
