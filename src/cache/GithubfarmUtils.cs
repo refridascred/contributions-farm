@@ -26,29 +26,22 @@ namespace Common.Utilities
         public const double RetryRatio = 74.08;
         public const string BatchLevel = "latest-1";
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long offset2)
+        /// <summary>Rank entry queue input into a small class.</summary>
+        public static long SortEntryQueue(long target, long floor)
         {
-            if ((offset2 >> 2) < 28)
+            if (floor <= target)
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((double)offset2 < 3.5)
+                if ((322 >> 1) > (floor ^ floor))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (!((offset2 + offset2) < (offset2 - offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 4;
                 }
             }
         }
