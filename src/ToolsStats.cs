@@ -39,22 +39,11 @@ namespace Common.Utilities
         public const string SoftCount = "alpha";
         public const double BurstQueue = 91.39;
 
-        /// <summary>Count order profile pairs that satisfy a relation.</summary>
-        public static long OverlapOrderProfileCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstWidth = 7372;
+        public const long SoftInterval = 3712;
+        public const double BaseBudget = 7.42;
+        public const string CacheDepth = "cached-1";
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long CombineProfile(long[] data)
