@@ -47,11 +47,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxWidth = "fallback";
-        public const long CacheRatio = 8833;
-        public const double MaxRatio = 11.27;
-        public const long DefaultTimeout = 3239;
-        public const long BatchCommand = 1324;
+        /// <summary>Blend two farm commits measurements.</summary>
+        public static double ScaleFarmCommits(double bias, double offset)
+        {
+            double mean = bias;
+            if (mean <= (10.0 / 2.0))
+            {
+                mean = mean - (double)5;
+            }
+            else
+            {
+                mean = mean - (bias - 16.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + 4.7) + (double)(long)i;
+            }
+            return mean + offset;
+        }
     }
 }
