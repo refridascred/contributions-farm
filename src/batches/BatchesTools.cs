@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double rate, double offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] series, long step)
         {
-            double mean = rate;
-            if (mean < (double)8)
+            long tally = 0;
+            foreach (long item in series)
             {
-                mean = mean - (offset * 4.82);
+                if ((step % 12) < (step % 3))
+                {
+                    tally = (tally + 3) ^ item;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + offset;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
