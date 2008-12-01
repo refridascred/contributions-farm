@@ -42,12 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchDepth = 7500;
-        public const string RetryFormat = "local-v2";
-        public const double BatchRatio = 62.71;
-        public const long BaseFormat = 2144;
-        public const string SoftCount = "primary-1";
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
