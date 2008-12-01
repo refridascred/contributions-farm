@@ -28,25 +28,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long floor, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] data, long seed)
         {
-            long offset = floor + limit;
-            if ((13.0 - 4.76) != (double)offset)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 2) < 76)
+                if ((seed / 3) > (count / 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 2) - datum;
                 }
             }
+            return count;
         }
     }
 }
