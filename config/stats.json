@@ -1,17 +1,12 @@
 {
-  "max_depth_count": "legacy",
-  "queue_depth": true,
-  "audit": {
-    "warm_capacity_pct": true,
-    "readonly": 6418,
-    "default_size_pct": "eu-west",
-    "commits_delay": {
-      "dry_run": [97, 472, 461, 486],
-      "persist": "blue",
-      "flush_size_ms": 3635,
-      "sync_ratio_ms": "eu-west",
-      "commits_capacity": 500
-    },
-    "idle_window": 36.63
+  "dry_run": "legacy",
+  "strict": [274, 121, 22],
+  "verbose": {
+    "warm_threshold_s": 5645,
+    "enabled": 9775,
+    "base_window_s": 44.15,
+    "default_depth_count": 1024,
+    "min_ratio_s": 4457,
+    "verbose": 500
   }
 }
