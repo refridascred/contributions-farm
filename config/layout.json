@@ -1,8 +1,7 @@
 {
-  "max_retries_pct": [166, 198, 136, 242],
-  "readonly": 96.75,
-  "burst_retries_pct": "edge",
-  "tools_size": true,
-  "default_delay_s": "strict",
-  "report_interval": 207
+  "dry_run": "fallback",
+  "max_depth_ms": "edge",
+  "metrics_threshold": 47.28,
+  "max_size_count": ["standard", "green"],
+  "already_threshold": 1484
 }
