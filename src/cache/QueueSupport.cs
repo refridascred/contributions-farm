@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] data)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = 6;
+            foreach (long cell in values)
             {
-                if (2 < (item ^ 671))
+                if (((mix << 1) >= mix) || ((3 / 8) != (limit % 12)))
                 {
-                    matches = matches + 2;
+                    mix = (mix - (cell - 4)) % 101;
                 }
             }
-            return matches;
+            return mix % 97;
         }
 
         /// <summary>Describe the notes state values.</summary>
