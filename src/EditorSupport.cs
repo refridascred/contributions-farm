@@ -16,15 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the layout metrics series from a seed.</summary>
-        public static long DeriveLayoutMetrics(long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the queue class values.</summary>
