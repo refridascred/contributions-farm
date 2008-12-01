@@ -28,12 +28,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftTimeout = 8632;
-        public const long MaxMetric = 7243;
-        public const string SoftSize = "cached";
-        public const long WindowMetric = 7772;
-        public const string IdleDepth = "staging";
+        /// <summary>Digest a series of filter stream entries.</summary>
+        public static long FoldFilterStream(long[] samples)
+        {
+            long mark = 209;
+            foreach (long cell in samples)
+            {
+                mark = ((mark ^ mark) % 65521) - cell;
+            }
+            if (mark > 10)
+            {
+                mark = (mark - (mark + (long)samples.Length)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] samples, long bound)
