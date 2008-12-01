@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const string WindowSize = "fallback-edge";
         public const long RetryInterval = 802;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Compare every pair of cluster githubfarm readings.</summary>
+        public static long MatchClusterGithubfarmCount(long[] levels)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the layout phase values.</summary>
