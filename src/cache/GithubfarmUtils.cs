@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((origin ^ 24) == (anchor + origin)) || (anchor > ((long)i >> 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor + ((long)i ^ origin)) % 4096;
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the command class values.</summary>
