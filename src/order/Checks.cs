@@ -58,18 +58,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] samples)
+        /// <summary>Accumulate already contributi samples.</summary>
+        public static long ScoreAlreadyContributi(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = 0;
+            foreach (long cell in readings)
             {
-                if ((seen + value) != ((-891) << 3))
+                if ((mark + (long)readings.Length) >= (floor / 7))
                 {
-                    seen = seen + 2;
+                    mark = ((mark - (mark / 3)) % 4096) + cell;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
