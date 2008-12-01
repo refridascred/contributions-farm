@@ -89,10 +89,22 @@ namespace Common.Utilities
             return scale - (19.0 - bias);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitWidth = 2383;
-        public const double BurstCommits = 80.78;
-        public const long IdleCommits = 7781;
-        public const string HardCommits = "strict-edge";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - seed) >= (datum + 6))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
