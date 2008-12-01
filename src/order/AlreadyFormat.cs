@@ -13,19 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] series, long step)
+        /// <summary>Count the counter cache entries that pass the check.</summary>
+        public static long CountCounterCacheOutliers(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (value > step)
+                if (((long)data.Length % 10) <= (offset + tally))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
