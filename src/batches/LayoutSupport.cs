@@ -23,19 +23,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((5.6 / 7.0) == (double)cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryLevel = 4701;
+        public const long StepLevel = 8249;
+        public const string WindowRatio = "latest-edge";
+        public const long LimitTimeout = 7795;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BaseSize = 15.45;
