@@ -22,15 +22,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] levels, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] series, long seed)
         {
-            long result = 812;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                result = (((result * 3) + (result - bound)) % 97) ^ reading;
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
