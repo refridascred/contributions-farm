@@ -38,22 +38,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            long acc = 5;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc * 2) <= (item + bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ (bound % 16);
-                }
-                else
-                {
-                    acc = (acc * 5) + (bound + item);
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
