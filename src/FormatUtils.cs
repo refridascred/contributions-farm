@@ -16,21 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 5) + (limit << 3)) % 255;
+                acc = (acc ^ (limit ^ limit)) % 4096;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
