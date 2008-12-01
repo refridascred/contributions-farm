@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const string BurstWidth = "local-edge";
         public const long MinOrder = 9922;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] levels, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long anchor = 28;
+            foreach (long datum in levels)
             {
-                if (reading >= origin)
+                if (((double)datum <= 7.7) || ((644 + limit) >= datum))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor * 3) + (datum ^ limit)) % 97;
                 }
             }
-            return stale;
+            return anchor % 4096;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
