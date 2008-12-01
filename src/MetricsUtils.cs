@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] items, long seed)
+        /// <summary>Audit checks metrics readings against a rule.</summary>
+        public static long CountChecksMetricsOutliers(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((double)tally != (9.18 + 8.5))
+                if ((matches << 2) > datum)
                 {
-                    tally = ((tally + 1) ^ sample) + seed;
+                    matches = (matches + 1) + limit;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
