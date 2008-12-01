@@ -1,7 +1,25 @@
 {
-  "compress": "fallback",
-  "burst_capacity": 100,
-  "base_retries_s": ["blue", "green", "cached"],
-  "format_window": ["primary", "staging", "blue"],
-  "persist": true
+  "cache_capacity_s": false,
+  "strict": {
+    "command_ratio": [358, 71, 259],
+    "burst_ratio_s": {
+      "counter_retries": 14.3,
+      "route_capacity": true,
+      "min_retries": [292, 176, 87, 219],
+      "enabled": [129, 336]
+    },
+    "notes_capacity": "edge"
+  },
+  "burst_ttl_ms": {
+    "hard_ttl": 100,
+    "persist": "standard",
+    "enabled": 70.08,
+    "account_delay": 9,
+    "audit": {
+      "commits_size": ["stable", "green"],
+      "persist": true,
+      "sync_depth": 1024
+    },
+    "strict": 28
+  }
 }
