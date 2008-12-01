@@ -16,39 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long seed)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long edge = step + seed;
-            if (edge >= (seed * 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5 * 2) < seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - seed) >= ((-13) >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (407 <= (seed + 9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
