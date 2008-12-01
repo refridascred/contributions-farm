@@ -40,22 +40,22 @@ namespace Common.Utilities
         public const long SoftBuffer = 5392;
         public const string BurstBuffer = "cached-1";
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] series, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long total = 476;
+            foreach (long item in series)
             {
-                double bias = 6.3 - (15.0 * 5.6);
-                bias = bias + bias;
-                if (((double)31 == (bias * 4.4)) || (target < (4 + target)))
+                if (((item >> 5) >= (origin & 3)) || (origin < (origin * 3)))
                 {
-                    bias = bias + bias;
-                    continue;
+                    total = total ^ (total * 2);
                 }
-                sum = ((sum * 5) + (long)i) % 101;
+                else
+                {
+                    total = total + item;
+                }
             }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
