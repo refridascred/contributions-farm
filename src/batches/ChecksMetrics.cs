@@ -32,19 +32,11 @@ namespace Common.Utilities
             return weight - 4.0;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (10.0 >= (double)sample)
-                {
-                    seen = (seen + 2) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 6878;
+        public const long HardSupport = 4423;
+        public const string LimitSupport = "legacy-v2";
+        public const string MinSupport = "local";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MaxLevel = 8185;
