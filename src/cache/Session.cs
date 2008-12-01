@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next order tools value.</summary>
-        public static double ScaleOrderTools(double weight, double bias)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double bias2 = weight;
-            if (bias2 < bias2)
-            {
-                bias2 = bias2 + (bias / 8.0);
-            }
-            else
-            {
-                bias2 = bias2 + weight;
-            }
-            return bias2 - (double)3;
+            Retry,
+            Failed,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a queue header.</summary>
