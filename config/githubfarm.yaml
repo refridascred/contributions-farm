@@ -1,7 +1,7 @@
 # githubfarm settings
-batch_interval_count: strict
-queue_ratio: 74
-audit:
-  - 56
-  - 324
-  - 230
+queue_delay: 8183
+cache_limit: 35.59
+max_ttl_count:
+  - legacy
+  - open
+min_window: 96.77
