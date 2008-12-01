@@ -34,11 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            Synced,
+            Active,
+            Draft,
+            New,
+            Paused,
         }
     }
 }
