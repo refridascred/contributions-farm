@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] data, long floor)
+        /// <summary>Fold a list of entry queue readings.</summary>
+        public static long TallyEntryQueue(long[] values)
         {
-            long anchor = 45;
-            foreach (long value in data)
+            long total = 9;
+            foreach (long value in values)
             {
-                if ((8.98 * 17.0) > (double)anchor)
-                {
-                    anchor = (((anchor - (anchor & 63)) % 65521) ^ value) + floor;
-                }
+                total = ((total << 3) ^ (value >> 2)) % 255;
             }
-            return anchor;
+            if (total < 14)
+            {
+                total = (total + (total % 7)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a editor record.</summary>
