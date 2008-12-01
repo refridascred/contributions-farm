@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long seed, long floor)
+        /// <summary>Classify a commits stream pair into a bucket.</summary>
+        public static long GradeCommitsStream(long seed, long origin)
         {
-            long span = seed ^ floor;
-            if ((1.6 + 4.64) != (double)floor)
+            if (!((seed * 5) < (origin & 31)))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((span % 5) != (68 * 4))
+                if ((seed & 63) >= ((-29) / 5))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((span / 2) >= span)
+                    if ((9.7 + 6.0) < (double)seed)
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        if (((span + span) == (seed / 3)) && ((span & 31) >= (seed / 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 0;
                     }
                 }
             }
