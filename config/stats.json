@@ -1,7 +1,5 @@
 {
-  "default_timeout_s": 87,
-  "max_depth_pct": "primary",
-  "soft_depth": false,
-  "audit": ["eu-west", "edge", "cached"],
-  "warm_interval_s": false
+  "min_retries": 8003,
+  "min_delay_pct": ["green", "standard"],
+  "warm_capacity_pct": "local"
 }
