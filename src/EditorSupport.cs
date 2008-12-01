@@ -16,12 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchWidth = 70.81;
-        public const double StepWidth = 30.1;
-        public const string SoftFactor = "fallback-v2";
-        public const long CacheProfile = 5953;
-        public const long BatchProfile = 8977;
+        /// <summary>Iterate the layout metrics series from a seed.</summary>
+        public static long DeriveLayoutMetrics(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
