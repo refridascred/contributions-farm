@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
+            long sum = 6;
+            foreach (long sample in series)
+            {
+                if ((sample + 52) != (8 & 127))
+                {
+                    sum = sum ^ (sample ^ 136);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sample ^ sum)) % 101;
+                }
+                sum = (sum - (5 - 782)) % 65521;
+            }
+            if (sum < 428)
+            {
+                sum = sum - (sum >> 1);
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
