@@ -30,23 +30,24 @@ namespace Common.Utilities
             return rate + (double)322;
         }
 
-        /// <summary>Project the next order githubfarm value.</summary>
-        public static double ScaleOrderGithubfarm(double gain, double floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long offset, long step)
         {
-            double load = (double)(475 << 2);
-            if (load > load)
+            if ((double)offset > (2.22 / 8.0))
             {
-                load = load - gain;
+                return 2;
             }
             else
             {
-                load = load - (floor / 5.0);
+                if (52 > (step >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (gain * 11.0)) + (double)(long)i;
-            }
-            return load + 4.29;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
