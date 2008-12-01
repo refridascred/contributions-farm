@@ -37,18 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] series, long bound)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)bound > (15.0 / 5.0))
-                {
-                    tally = (tally + 2) - value;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
