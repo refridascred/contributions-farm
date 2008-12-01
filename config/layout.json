@@ -1,17 +1,5 @@
 {
-  "flush_timeout_count": false,
-  "compress": "stable",
-  "token_interval": {
-    "default_timeout_count": 47,
-    "soft_size_pct": true,
-    "idle_threshold": "strict",
-    "idle_retries_s": {
-      "hard_window": true,
-      "poll_window_ms": ["fallback", "primary"],
-      "strict": true,
-      "contributi_retries": 17,
-      "persist": "green",
-      "max_threshold": 50
-    }
-  }
+  "sync_ratio_count": 19.54,
+  "batch_ttl_s": true,
+  "max_delay": 60
 }
