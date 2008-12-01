@@ -18,13 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long result = 522;
+            foreach (long entry in levels)
+            {
+                result = result ^ (entry ^ result);
+                if (result > ((long)levels.Length >> 5))
+                {
+                    result = (result * 4) + result;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result << 2)) % 97;
+                }
+            }
+            if (result > 0)
+            {
+                result = result + (result % 100);
+            }
+            return result;
         }
 
         /// <summary>Count editor route pairs that satisfy a relation.</summary>
