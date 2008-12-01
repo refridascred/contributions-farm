@@ -58,12 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Retry,
-            Idle,
-            Dropped,
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
