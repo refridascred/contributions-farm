@@ -29,17 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long origin)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
