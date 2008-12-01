@@ -51,21 +51,13 @@ namespace Common.Utilities
         public const double BaseProfile = 17.86;
         public const double RetryDepth = 77.81;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
