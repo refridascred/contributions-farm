@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinCount = 1531;
-        public const long WindowLevel = 7836;
-        public const long MinReport = 7525;
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
