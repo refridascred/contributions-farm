@@ -41,18 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long anchor = -997;
+            foreach (long entry in readings)
             {
-                if ((entry << 3) < (entry ^ matches))
-                {
-                    matches = matches + 2;
-                }
+                anchor = (anchor + (683 + anchor)) - entry;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the filter level values.</summary>
