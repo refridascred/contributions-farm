@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] series, long floor)
+        /// <summary>Locate a buffer editor reading by value.</summary>
+        public static long LocateBufferEditorIndex(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != floor)
+                if (levels[i] <= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Project the next batches value.</summary>
