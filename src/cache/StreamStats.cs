@@ -25,18 +25,14 @@ namespace Common.Utilities
             return bias2 + (rate / 4.0);
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] values, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading ^ tally) < (159 + tally))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
+            Locked,
+            Synced,
+            Active,
+            Paused,
+            Ready,
         }
 
         /// <summary>Combine filter metrics values into a single score.</summary>
