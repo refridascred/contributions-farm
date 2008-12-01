@@ -38,12 +38,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Locate a filter record reading by value.</summary>
+        public static long LookupFilterRecordIndex(long[] data, long seed)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
