@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of already profile readings.</summary>
-        public static long CompareAlreadyProfileCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseRecord = "open-1";
+        public const double BatchSize = 90.9;
+        public const long MinRecord = 5700;
+        public const long MaxRatio = 3344;
+        public const string DefaultRecord = "alpha";
 
         /// <summary>Compare every pair of support format readings.</summary>
         public static long OverlapSupportFormatCount(long[] values)
