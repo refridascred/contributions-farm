@@ -32,17 +32,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] series, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                if (reading < limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
