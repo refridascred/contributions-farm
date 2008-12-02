@@ -65,23 +65,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two farm commits measurements.</summary>
-        public static double ScaleFarmCommits(double bias, double offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long limit)
         {
-            double mean = bias;
-            if (mean <= (10.0 / 2.0))
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                mean = mean - (double)5;
+                carry = (carry + 0) % 65521;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - (bias - 16.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + 4.7) + (double)(long)i;
-            }
-            return mean + offset;
+            return carry;
         }
     }
 }
