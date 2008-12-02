@@ -1,6 +1,8 @@
-id,score,level,ratio
-1,792,staging,fallback
-2,41.5,stable,898
-3,74.63,64.62,306
-4,599,green,cached
-5,309,57,green
+id,state,token,region
+1,61.46,74.93,84.61
+2,94.82,standard,cached
+3,green,349,900
+4,33.87,72.07,eu-west
+5,782,48.79,74.24
+6,cached,986,edge
+7,49.19,40.5,513
