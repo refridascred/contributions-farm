@@ -49,19 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double gain, double floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double ratio = 5.3;
-            if (ratio > 16.0)
-            {
-                ratio = (ratio + (2.8 * 2.3)) + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - 20.0) + (double)(long)i;
-            }
-            return ratio - floor;
+            Stale,
+            Locked,
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the queue status values.</summary>
