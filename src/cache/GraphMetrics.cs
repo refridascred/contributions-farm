@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double bias)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long floor, long bound)
         {
-            double scale = (double)(4 - 70);
-            return (scale - bias) + rate;
+            if ((bound + bound) <= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((84 % 64) != (bound - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Compare every pair of editor cache readings.</summary>
