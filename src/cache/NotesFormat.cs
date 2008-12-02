@@ -13,19 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every batch checks entry stays within the limit.</summary>
-        public static bool GuardBatchChecksBounds(long[] values, long floor)
+        /// <summary>Blend two tools layout measurements.</summary>
+        public static double SmoothToolsLayout(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            double rate = (double)(93 - 49);
+            if (rate >= offset)
             {
-                if (sample > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate - scale;
             }
-            return ready;
+            return rate - (double)69;
         }
 
         /// <summary>Hold a layout info.</summary>
