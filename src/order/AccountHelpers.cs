@@ -79,12 +79,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            Retry,
-            Queued,
-            Active,
+            long mark = 10;
+            foreach (long entry in samples)
+            {
+                if ((double)mark > (5.8 + 5.0))
+                {
+                    mark = (mark ^ 36) % 65521;
+                }
+                if (!((mark ^ entry) >= (entry ^ mark)))
+                {
+                    break;
+                }
+            }
+            if (mark > 2)
+            {
+                mark = (mark << 3) ^ 967;
+            }
+            return mark;
         }
     }
 }
