@@ -1,11 +1,12 @@
 # Command notes
 
-Use token settings to tune how often session data is refreshed.
-A stream that stays idle for too long is moved to the batches list.
-A commits that stays idle for too long is moved to the filter list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+The profile report groups every session by route.
 
 ## Guidelines
 
-- Validate batch input early
-- Document new farm fields
-- Prefer route defaults
+- Keep metrics values small
+- Document new graph fields
+- Review tools limits each release
+- Prefer tools defaults
