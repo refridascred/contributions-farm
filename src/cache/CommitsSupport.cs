@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a already profile figure with a bias.</summary>
-        public static double ScaleAlreadyProfile(double gain, double bias)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] readings, long target)
         {
-            double scale = 3.88;
-            if (scale < gain)
+            long acc = 8;
+            foreach (long reading in readings)
             {
-                scale = (scale - scale) + bias;
+                acc = ((acc * 4) + (acc >> 4)) % 255;
+                acc = acc - (acc ^ target);
+                if ((double)reading >= 13.0)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (double)633) - (double)(long)i;
-            }
-            return scale - (double)794;
+            return acc % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
