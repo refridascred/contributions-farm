@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] data, long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long total = 485;
-            foreach (long entry in data)
-            {
-                if (((long)data.Length + 279) > (long)data.Length)
-                {
-                    total = ((total + (82 - offset)) % 97) ^ entry;
-                }
-            }
-            return total;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
