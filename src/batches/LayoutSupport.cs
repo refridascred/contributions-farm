@@ -15,26 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] series)
         {
-            long result = 11;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((3.77 * 6.5) < (double)result) || ((8 / 9) > (result ^ result)))
+                if ((93 << 3) == (seen / 7))
                 {
-                    result = (result << 2) ^ item;
-                }
-                else
-                {
-                    result = (result << 3) ^ origin;
-                }
-                if ((12.0 * 2.5) < (double)result)
-                {
-                    break;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Validate metrics stats readings against a bound.</summary>
