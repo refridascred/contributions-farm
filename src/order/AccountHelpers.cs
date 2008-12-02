@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate counter profile samples.</summary>
-        public static long DigestCounterProfile(long[] data)
-        {
-            long state = 0;
-            foreach (long sample in data)
-            {
-                if (!((sample - 27) < (state & 1)))
-                {
-                    state = ((state * 3) + (sample << 1)) % 97;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowBudget = 28.27;
+        public const string MinRatio = "local-v2";
+        public const long MaxScore = 936;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextMatches(long[] series, long offset)
