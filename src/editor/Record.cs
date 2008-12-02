@@ -23,13 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] samples, long offset)
         {
-            Failed,
-            Closed,
-            Active,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel state values.</summary>
