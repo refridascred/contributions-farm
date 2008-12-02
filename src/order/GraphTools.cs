@@ -22,15 +22,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
