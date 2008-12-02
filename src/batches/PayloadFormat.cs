@@ -17,10 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "legacy-v2";
-        public const long RetrySchema = 6058;
-        public const long MinSchema = 6765;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] readings, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] series, long offset)
