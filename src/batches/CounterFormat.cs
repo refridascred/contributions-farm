@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 79.78;
+        public const string MaxCount = "open-1";
+        public const long CacheChannel = 126;
+        public const double DefaultRatio = 69.11;
+        public const long MinChannel = 7669;
 
         /// <summary>Compare every pair of support format readings.</summary>
         public static long OverlapSupportFormatCount(long[] values)
