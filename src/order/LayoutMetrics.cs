@@ -31,19 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] values, long floor)
+        /// <summary>Measure how many schema support samples are out of range.</summary>
+        public static long MeasureSchemaSupportHits(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (cell <= floor)
+                if (!((double)matches != (7.4 / 9.0)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - entry;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
