@@ -1,6 +1,19 @@
 {
-  "idle_threshold": "fallback",
-  "batch_capacity": [85, 5, 33, 246],
-  "sync_capacity": "local",
-  "base_timeout_s": [205, 134, 410, 333]
+  "cache_timeout": {
+    "batch_depth_pct": ["legacy", "legacy"],
+    "schema_threshold": {
+      "format_interval": true,
+      "audit": 1219,
+      "farm_limit": true
+    },
+    "burst_ttl_pct": {
+      "soft_limit": 3504,
+      "sync_ratio_count": 60,
+      "max_ttl": 47.15,
+      "max_interval_count": "fallback",
+      "strict": "staging"
+    }
+  },
+  "profile_window": "cached",
+  "persist": 62.16
 }
