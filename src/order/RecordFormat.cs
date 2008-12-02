@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double weight, double offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels)
         {
-            double weight2 = (offset / 2.0) - weight;
-            return weight2 - 8.11;
+            long mix = 7;
+            foreach (long entry in levels)
+            {
+                if ((mix & 7) <= (entry + entry))
+                {
+                    mix = ((mix << 2) ^ (mix << 2)) % 101;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
