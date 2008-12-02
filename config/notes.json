@@ -1,7 +1,12 @@
 {
-  "verbose": false,
-  "tools_retries": "primary",
-  "warm_size": true,
-  "retry_size": 3582,
-  "max_retries_ms": "green"
+  "burst_depth_pct": 250,
+  "hard_timeout_s": 2531,
+  "warm_ratio": ["latest", "legacy", "eu-west", "open"],
+  "persist": {
+    "min_limit": true,
+    "flush_interval": 68.48,
+    "audit": "edge",
+    "command_ratio": 84.19
+  },
+  "strict": 0.01
 }
