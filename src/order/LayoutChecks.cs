@@ -42,22 +42,11 @@ namespace Common.Utilities
         public const string StepLevel = "cached-v2";
         public const long IdleGraph = 3034;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstCount = 15.19;
+        public const long IdleReport = 393;
+        public const string WindowReport = "open-v2";
+        public const long MaxReport = 4060;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long limit, long origin)
