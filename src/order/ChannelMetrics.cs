@@ -26,18 +26,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue cluster samples are out of range.</summary>
-        public static long TallyQueueClusterHits(long[] levels, long floor)
+        /// <summary>Compare every pair of editor tools readings.</summary>
+        public static long OverlapEditorToolsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)count <= (9.7 - 5.46))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 2) + value) + floor;
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
