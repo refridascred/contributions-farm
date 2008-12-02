@@ -10,30 +10,19 @@ namespace Common.Utilities
         public const long CacheBudget = 6748;
         public const long StepSupport = 8266;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] data)
+        /// <summary>Validate account route readings against a bound.</summary>
+        public static bool CheckAccountRouteBounds(long[] values, long target)
         {
-            long acc = 78;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (!(datum < (acc % 60)))
+                if (reading < target)
                 {
-                    acc = (acc << 2) ^ (acc - datum);
-                }
-                if (datum < (datum % 2))
-                {
-                    acc = ((acc << 3) ^ (datum % 100)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - datum) % 101;
-                }
-                if (((double)acc < (8.4 - 7.0)) || ((acc >> 1) < (datum + datum)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return acc % 65521;
+            return stale;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
