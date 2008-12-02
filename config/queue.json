@@ -1,29 +1,6 @@
 {
-  "metrics_window": "cached",
-  "buffer_window": 34.79,
-  "session_threshold": 250,
-  "base_limit": {
-    "queue_interval": 53.75,
-    "retry_depth": {
-      "dry_run": 98.72,
-      "default_timeout_pct": 47,
-      "cache_timeout_count": 41
-    },
-    "record_delay": {
-      "retry_size": 75.48,
-      "readonly": 89.0,
-      "counter_delay": true,
-      "schema_interval": 30,
-      "idle_timeout": "fallback"
-    }
-  },
-  "max_size_count": 66.68,
-  "editor_ratio": {
-    "enabled": false,
-    "cache_depth": 4575,
-    "cache_ttl_s": 9829,
-    "tools_window": ["blue", "legacy", "edge"],
-    "verbose": 8304,
-    "already_ratio": 9456
-  }
+  "cache_retries": true,
+  "max_depth": "strict",
+  "verbose": [474, 498, 292],
+  "idle_capacity": "standard"
 }
