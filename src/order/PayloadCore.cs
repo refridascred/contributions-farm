@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] readings, long seed)
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate layout samples.</summary>
