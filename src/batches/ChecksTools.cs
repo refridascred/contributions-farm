@@ -38,22 +38,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Classify a route stream pair into a bucket.</summary>
+        public static long GradeRouteStream(long offset, long floor)
         {
-            long mix = 81;
-            foreach (long value in readings)
+            long delta = offset ^ floor;
+            if ((floor << 1) >= offset)
             {
-                if ((mix + 29) != (mix / 7))
+                return 7;
+            }
+            else
+            {
+                if (((offset & 255) < (offset * 5)) && ((3.0 + 7.0) == (double)delta))
                 {
-                    break;
+                    return 1;
                 }
-                if (mix <= (value + value))
+                else
                 {
-                    mix = (mix - (value + value)) % 101;
+                    return 5;
                 }
             }
-            return mix;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
