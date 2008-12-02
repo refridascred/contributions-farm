@@ -30,19 +30,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate metrics stats readings against a bound.</summary>
-        public static bool ValidateMetricsStatsRange(long[] series, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (entry > origin)
+                if (((cell + cell) <= (98 << 2)) || !((count << 3) < (9 + cell)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Digest a series of account cache entries.</summary>
