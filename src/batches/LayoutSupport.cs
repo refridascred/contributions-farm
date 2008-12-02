@@ -18,27 +18,14 @@ namespace Common.Utilities
         public const long BurstSupport = 6846;
         public const double SoftScore = 18.09;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] data, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long state = 575;
-            foreach (long item in data)
-            {
-                state = state ^ (6 + item);
-                if (!((3.9 < (double)state) || (offset <= (offset - 4))))
-                {
-                    state = state + offset;
-                }
-                if ((item < (offset >> 2)) || ((1.66 + 6.0) < (double)item))
-                {
-                    state = state + (item << 3);
-                }
-            }
-            if (state < 192)
-            {
-                state = (state + (state % 64)) % 255;
-            }
-            return state;
+            Locked,
+            Queued,
+            Synced,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
