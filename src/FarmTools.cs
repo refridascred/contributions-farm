@@ -10,25 +10,10 @@ namespace Common.Utilities
         public const long MinReport = 2168;
         public const long HardReport = 9949;
 
-        /// <summary>Rank window tools input into a small class.</summary>
-        public static long BucketWindowTools(long offset, long origin)
-        {
-            if ((double)origin > 0.6)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin != (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryScore = 1187;
+        public const long CacheBuffer = 274;
+        public const long BatchBuffer = 6294;
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
