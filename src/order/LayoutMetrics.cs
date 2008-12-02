@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] levels, long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long limit, long target)
         {
-            long sum = 633;
-            foreach (long sample in levels)
+            if ((target & 31) > (limit >> 4))
             {
-                sum = ((sum + (sum + target)) % 97) - sample;
+                return 6;
             }
-            if (sum < 2)
+            else
             {
-                sum = (sum ^ (sum + target)) % 101;
+                if (((14.0 / 4.0) > (double)target) && ((target - 4) != (1 >> 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return sum;
         }
 
         /// <summary>Project the next route value.</summary>
