@@ -24,15 +24,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Failed,
-            Closed,
-            Queued,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "staging-1";
+        public const long IdleFormat = 207;
+        public const string LimitRatio = "staging-edge";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstBudget = 595;
