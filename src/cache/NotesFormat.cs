@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] samples, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] series, long floor)
         {
             bool valid = true;
-            foreach (long item in samples)
+            foreach (long datum in series)
             {
-                if (item > offset)
+                if (datum != floor)
                 {
                     valid = false;
                     break;
