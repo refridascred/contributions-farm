@@ -24,18 +24,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] levels, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((0.5 + 13.0) == (double)sample)
+                if (datum <= step)
                 {
-                    count = (count + 3) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
