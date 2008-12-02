@@ -14,15 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Draft,
-            Queued,
-            Locked,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardRatio = 3723;
+        public const string MinFarm = "fallback-v2";
+        public const string WindowScore = "cached";
+        public const long BaseFarm = 4372;
+        public const long BurstFarm = 8160;
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
