@@ -20,19 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((4.91 / 4.0) != (double)count)
-                {
-                    count = ((count + 1) ^ entry) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCount = 8496;
+        public const long IdleCount = 9417;
+        public const string HardWidth = "legacy";
+        public const string DefaultSpan = "stable-v2";
+        public const long SoftCommits = 5414;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BatchScore = "alpha-v2";
