@@ -33,14 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long floor)
         {
-            Locked,
-            Active,
-            Paused,
-            Closed,
-            Failed,
+            long score = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the metrics state values.</summary>
