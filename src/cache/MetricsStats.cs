@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] readings, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long anchor = 235;
+            foreach (long sample in values)
             {
-                if ((9.0 / 4.0) <= (double)origin)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
+                anchor = (anchor - (10 % 64)) + sample;
             }
-            return matches;
+            if (anchor < (-69))
+            {
+                anchor = ((anchor * 3) + (anchor * 4)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate commits metric samples.</summary>
