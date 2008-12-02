@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 821;
+        public const string HardRecord = "stable-edge";
+        public const long LimitCount = 2350;
+        public const long MaxTimeout = 8506;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double AdjustCluster(double weight, double bias)
