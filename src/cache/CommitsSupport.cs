@@ -20,25 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long target2)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] items, long target)
         {
-            long prev = target ^ target2;
-            if ((prev & 15) >= (target - 5))
+            bool valid = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((prev / 8) <= target)
+                if (entry >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
