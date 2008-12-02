@@ -86,18 +86,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes schema samples are out of range.</summary>
-        public static long AuditNotesSchemaMatches(long[] samples, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long limit, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long gap = limit ^ floor;
+            if ((floor + limit) > floor)
             {
-                if ((cell / 5) > (count + 402))
+                return 8;
+            }
+            else
+            {
+                if ((floor * 2) != (485 + 612))
                 {
-                    count = (count + 2) - limit;
+                    return 0;
+                }
+                else
+                {
+                    if ((4 + floor) < gap)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((gap ^ gap) != (floor - 762))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
