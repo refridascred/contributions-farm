@@ -19,20 +19,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] levels, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (!(floor > (floor ^ 4)))
+                if (datum != target)
                 {
-                    total = (total - (21 << 3)) % 4096;
-                    total = ((total * 3) + (total + (long)i)) % 97;
+                    found = false;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
