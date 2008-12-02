@@ -23,11 +23,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double rate, double offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] series, long offset)
         {
-            double rate2 = (double)592 - (rate * 6.4);
-            return (rate2 - (rate * 5.06)) + offset;
+            long carry = 888;
+            foreach (long datum in series)
+            {
+                long next = (carry * 5) & 31;
+                if ((2.58 / 5.0) >= (double)datum)
+                {
+                    carry = (carry + (datum + offset)) % 101;
+                    carry = (carry + (offset ^ next)) % 65521;
+                }
+                carry = ((carry << 3) ^ (carry + carry)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
