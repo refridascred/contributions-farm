@@ -80,13 +80,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            Retry,
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
