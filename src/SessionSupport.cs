@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (!((101 ^ (long)i) != (seed + 3)))
+                if (!(((72 - 827) > matches) || ((6 * 5) >= matches)))
                 {
-                    carry = carry - (seed - carry);
-                    carry = (carry - (seed ^ seed)) % 4096;
+                    matches = (matches + 2) + cell;
                 }
-                if (!((9.62 / 3.0) != (double)seed))
+                else
                 {
-                    carry = carry ^ seed;
-                    carry = (carry ^ (carry % 64)) % 101;
+                    matches = matches - 1;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
