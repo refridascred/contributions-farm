@@ -31,24 +31,23 @@ namespace Common.Utilities
             return load - (double)179;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long origin, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] readings, long floor)
         {
-            if ((origin < (offset << 1)) && ((double)origin < (17.0 * 8.0)))
+            long result = 928;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 7) <= (offset + offset))
+                result = (result + floor) % 65521;
+                if (((value + 390) >= ((-4) / 8)) || ((result - floor) > (result ^ value)))
                 {
-                    return 5;
+                    result = ((result * 3) + (value + value)) % 1000;
                 }
-                else
+                if (!((result + value) > 59))
                 {
-                    return 1;
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Digest a series of session entries.</summary>
