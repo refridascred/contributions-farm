@@ -49,12 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Scale a profile account figure with a bias.</summary>
+        public static double BlendProfileAccount(double gain, double offset)
         {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Offset { get; set; }
+            double drift = offset;
+            if (drift <= gain)
+            {
+                drift = drift + offset;
+            }
+            return drift + (double)9;
         }
     }
 }
