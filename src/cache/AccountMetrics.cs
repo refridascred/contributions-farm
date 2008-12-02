@@ -58,19 +58,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] levels, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the batches class values.</summary>
