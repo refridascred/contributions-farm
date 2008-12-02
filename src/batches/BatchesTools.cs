@@ -30,19 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next stream buffer value.</summary>
-        public static double ProjectStreamBuffer(double gain, double offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double bias = 6.7 / 4.0;
-            if (bias >= offset)
-            {
-                bias = bias + gain;
-            }
-            else
-            {
-                bias = bias + (offset / 2.0);
-            }
-            return bias - (7.1 + offset);
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
