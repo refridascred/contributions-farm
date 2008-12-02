@@ -96,13 +96,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Derive the next payload metric value from a seed.</summary>
+        public static long RollPayloadMetric(long seed)
         {
-            Retry,
-            Done,
-            Idle,
-            Active,
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry << 2) ^ ((long)i ^ 643);
+                carry = ((carry << 3) ^ seed) % 255;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
