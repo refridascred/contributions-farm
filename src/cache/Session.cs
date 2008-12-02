@@ -33,13 +33,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long bound, long origin)
         {
-            Locked,
-            Queued,
-            Stale,
-            Closed,
+            long lane = bound - origin;
+            if ((lane << 2) >= (origin + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - 397) <= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin % 60) >= (bound % 8)) && ((double)origin <= (4.0 - 4.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((lane ^ bound) >= (27 + bound)) && ((305 % 64) == (lane * 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a notes cache counter forward.</summary>
