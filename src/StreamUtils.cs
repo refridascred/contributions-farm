@@ -62,19 +62,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double bias, double bias2)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double weight = bias2 / 8.0;
-            if (weight < weight)
-            {
-                weight = (weight + (double)411) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (bias2 + 9.7)) + (double)(long)i;
-            }
-            return weight + weight;
+            public double Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next channel queue value from a seed.</summary>
