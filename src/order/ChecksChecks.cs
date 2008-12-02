@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every commits counter entry stays within the limit.</summary>
-        public static bool CheckCommitsCounterLimits(long[] levels, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (cell >= seed)
+                if (sample < (sample * 2))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
