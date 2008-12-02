@@ -39,12 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitMetrics = 28.19;
-        public const string LimitInterval = "strict-v2";
-        public const long RetryMetrics = 5586;
-        public const double BaseMetrics = 82.0;
-        public const long MinRatio = 9065;
+        /// <summary>Count the already stream entries that pass the check.</summary>
+        public static long CountAlreadyStreamHits(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((item << 3) <= 563))
+                {
+                    seen = (seen + 2) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] items)
