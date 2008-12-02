@@ -36,22 +36,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] data)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (6.8 >= (double)seen)
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count stream layout pairs that satisfy a relation.</summary>
