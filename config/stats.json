@@ -1,8 +1,5 @@
 {
-  "metric_capacity": 8.49,
-  "burst_capacity": "fallback",
-  "batch_timeout": "strict",
-  "dry_run": "primary",
-  "tools_threshold": "eu-west",
-  "retry_ttl": "blue"
+  "warm_size": "staging",
+  "format_window": ["cached", "blue", "edge", "green"],
+  "enabled": 33.85
 }
