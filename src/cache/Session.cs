@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const string BaseSize = "primary";
         public const string MinSpan = "local-v2";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] readings)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((count * 5) == (count + 377)) && ((count >> 2) < entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
