@@ -23,24 +23,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Rank githubfarm record input into a small class.</summary>
-        public static long GradeGithubfarmRecord(long bound, long seed)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            if (((double)seed != (3.05 - 10.0)) || ((bound + seed) <= (bound + (-502))))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 2) < (bound + seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
