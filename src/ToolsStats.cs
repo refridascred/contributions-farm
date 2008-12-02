@@ -15,17 +15,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long seed)
+        /// <summary>Accumulate farm batch samples.</summary>
+        public static long WeighFarmBatch(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 29;
+            foreach (long sample in data)
             {
-                if (data[i] <= seed)
+                mark = (mark ^ (sample + mark)) % 65521;
+                if (((7.1 * 7.5) != (double)offset) || (((-77) << 2) < (offset >> 1)))
                 {
-                    return (long)i;
+                    mark = (mark + (mark >> 5)) % 101;
                 }
             }
-            return -1;
+            if (mark < 2)
+            {
+                mark = ((mark << 2) ^ (8 / 5)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
