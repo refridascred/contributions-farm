@@ -45,12 +45,12 @@ namespace Common.Utilities
         public const long HardSpan = 265;
         public const string MaxInterval = "open-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 59.84;
-        public const string RetryMetrics = "cached-v2";
-        public const string SoftMetrics = "alpha";
-        public const long BurstWidth = 2493;
-        public const long BurstMetrics = 20;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double rate, double floor)
+        {
+            double drift = (rate - rate) * 9.01;
+            return (drift + (8.9 - rate)) + floor;
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
