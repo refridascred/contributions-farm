@@ -58,18 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format channel readings against a rule.</summary>
-        public static long TallyFormatChannelHits(long[] values)
+        /// <summary>Project the next cache editor value.</summary>
+        public static double ScaleCacheEditor(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double rate = weight;
+            if (rate > 18.0)
             {
-                if ((sample ^ count) > (count ^ 731))
-                {
-                    count = count + 3;
-                }
+                rate = (rate + (double)13) - span;
             }
-            return count;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + weight;
         }
 
         /// <summary>Combine commits format values into a single score.</summary>
