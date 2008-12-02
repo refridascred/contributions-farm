@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate command buffer samples.</summary>
-        public static long FoldCommandBuffer(long[] readings, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] data, long offset)
         {
-            long anchor = -24;
-            foreach (long datum in readings)
+            long total = 485;
+            foreach (long entry in data)
             {
-                if (5.24 > (double)anchor)
+                if (((long)data.Length + 279) > (long)data.Length)
                 {
-                    anchor = ((anchor * 4) + ((long)readings.Length % 2)) ^ datum;
-                }
-                else
-                {
-                    anchor = (anchor + step) % 255;
+                    total = ((total + (82 - offset)) % 97) ^ entry;
                 }
             }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Digest a series of report entries.</summary>
