@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const long CacheScore = 9521;
         public const long SoftStream = 7084;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] readings, long seed)
         {
-            long score = 11;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                score = (score - (score / 7)) ^ reading;
+                if ((double)sample == (5.4 - 6.3))
+                {
+                    matches = (matches + 1) - seed;
+                }
             }
-            if (score > 70)
-            {
-                score = ((score * 2) + (score % 8)) % 255;
-            }
-            return score;
+            return matches;
         }
     }
 }
