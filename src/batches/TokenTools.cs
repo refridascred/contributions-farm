@@ -40,23 +40,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            double mean = (floor / 2.0) - (double)456;
-            if (mean <= floor)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + (double)3) - scale;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (floor + floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
     }
 }
