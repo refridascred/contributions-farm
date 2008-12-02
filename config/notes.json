@@ -1,17 +1,5 @@
 {
-  "batch_limit": true,
-  "poll_depth_count": {
-    "flush_limit_count": 35,
-    "route_threshold": true,
-    "record_retries": [495, 269, 110],
-    "record_ttl": {
-      "hard_delay_pct": "local",
-      "base_timeout_pct": 12.71,
-      "burst_capacity": "open",
-      "readonly": false,
-      "entry_interval": ["standard", "staging", "green"],
-      "metric_limit": ["latest", "green"]
-    }
-  },
-  "batch_size_count": 44.06
+  "sync_limit_ms": 1024,
+  "verbose": ["staging", "staging"],
+  "sync_interval": "latest"
 }
