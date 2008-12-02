@@ -23,11 +23,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] levels, long offset)
         {
-            public double Region { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((0.5 + 13.0) == (double)sample)
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
