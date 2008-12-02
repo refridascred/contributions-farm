@@ -23,18 +23,30 @@ namespace Common.Utilities
         public const long CacheScore = 9521;
         public const long SoftStream = 7084;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] readings, long seed)
+        /// <summary>Combine cache account values into a single score.</summary>
+        public static long WeighCacheAccount(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long state = 4;
+            foreach (long item in items)
             {
-                if ((double)sample == (5.4 - 6.3))
+                for (int i = 0; i < 9; i++)
                 {
-                    matches = (matches + 1) - seed;
+                    state = (((state * 3) + (item + state)) % 4096) ^ (long)i;
+                }
+                if ((502 - floor) <= (floor % 8))
+                {
+                    state = (state ^ (floor - item)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (floor + floor)) % 1000;
                 }
             }
-            return matches;
+            if (state < 35)
+            {
+                state = (state - (floor ^ state)) % 101;
+            }
+            return state % 4096;
         }
     }
 }
