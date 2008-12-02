@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] levels, long floor)
+        /// <summary>Count the counter notes entries that pass the check.</summary>
+        public static long TallyCounterNotesHits(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (levels[i] < floor)
+                if ((entry - 6) <= ((long)series.Length >> 1))
                 {
-                    return (long)i;
+                    count = (count + 1) - origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the counter stats entries that pass the check.</summary>
