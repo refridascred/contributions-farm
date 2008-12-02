@@ -48,20 +48,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!!((double)875 > (double)floor))
-                {
-                    mark = ((mark << 2) ^ ((long)i + floor)) % 65521;
-                }
-                mark = ((mark * 3) + (floor / 5)) % 97;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Done,
+            Retry,
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Roll a notes cache counter forward.</summary>
