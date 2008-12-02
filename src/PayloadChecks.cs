@@ -59,19 +59,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] items, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long mark = 5;
+            foreach (long datum in items)
             {
-                if (cell <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark - (mark + step)) ^ datum;
+                mark = (mark ^ (mark << 2)) % 65521;
             }
-            return ready;
+            return mark;
         }
     }
 }
