@@ -1,24 +1,7 @@
 # githubfarm settings
-stream_threshold: blue
-retry_threshold_pct: 66.07
-warm_capacity_ms: 13.53
-strict: true
-order_ttl:
-  - open
-  - green
-payload_size:
-  route_capacity: true
-  warm_depth_s:
-    stats_limit: staging
-    profile_ratio: 25.87
-    already_capacity:
-      - 352
-      - 342
-  format_depth: 1
-  idle_ttl_pct:
-    - 237
-    - 244
-  flush_depth_count:
-    - staging
-    - open
-  audit: 30
+context_ratio: strict
+commits_capacity: true
+checks_ttl:
+  batch_timeout_s: false
+  batch_capacity: true
+  soft_ratio_pct: green
