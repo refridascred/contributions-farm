@@ -22,23 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format support readings.</summary>
-        public static long CombineFormatSupport(long[] samples)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mark = 125;
-            foreach (long entry in samples)
-            {
-                mark = mark ^ (mark & 31);
-                if ((8.0 * 4.9) >= (double)entry)
-                {
-                    mark = ((mark << 2) ^ (mark + mark)) % 4096;
-                }
-                else
-                {
-                    mark = mark - (entry + (-26));
-                }
-            }
-            return mark % 4096;
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Classify a entry session pair into a bucket.</summary>
