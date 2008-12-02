@@ -13,19 +13,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] values, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long bound, long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            if (((seed + bound) > (bound * 5)) && ((double)bound == (5.52 * 4.3)))
             {
-                if (value > floor)
+                return 2;
+            }
+            else
+            {
+                if (2.14 <= (18.0 * 12.0))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed < (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (716 <= seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
