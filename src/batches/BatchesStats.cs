@@ -34,11 +34,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long bound)
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
+            long state = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((long)i > state)
+                {
+                    state = (state ^ 314) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
