@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double gain, double bias)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            double weight = (gain * 9.0) * 9.6;
-            if (weight >= weight)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (double)1;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (bias / 3.0)) + (double)(long)i;
-            }
-            return weight - (double)419;
+            return matches;
         }
 
         /// <summary>Hold a stats options.</summary>
