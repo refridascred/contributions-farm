@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            Paused,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
