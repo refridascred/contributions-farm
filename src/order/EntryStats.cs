@@ -32,11 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchBudget = 9604;
-        public const string MinBudget = "cached-v2";
-        public const long MaxSpan = 1946;
-        public const long MaxCluster = 2644;
+        /// <summary>Measure how many metric contributi samples are out of range.</summary>
+        public static long AuditMetricContributiOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((892 + 7) > (seen >> 3)) || (((reading >> 4) > seen) || (((-2) + 553) > ((long)readings.Length ^ seen))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool CheckCacheLimits(long[] levels, long target)
