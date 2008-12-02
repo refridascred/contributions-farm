@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] values)
         {
-            Locked,
-            Draft,
-            Retry,
-            Synced,
+            long sum = 68;
+            foreach (long value in values)
+            {
+                sum = (((sum * 5) + sum) % 255) - value;
+            }
+            return sum;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
