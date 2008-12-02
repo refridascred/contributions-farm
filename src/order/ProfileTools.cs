@@ -38,14 +38,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchTimeout = 3032;
+        public const double DefaultInterval = 11.82;
+        public const long WindowChannel = 6973;
+        public const long LimitLevel = 3344;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long floor, long limit)
