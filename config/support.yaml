@@ -1,12 +1,7 @@
 # support settings
-flush_limit_s: 56.87
-batch_ratio:
-  - 80
-  - 254
-  - 193
-default_limit:
-  - 353
-  - 280
-  - 442
-  - 378
-format_window: blue
+stream_depth:
+  - edge
+  - latest
+  - primary
+base_ttl_pct: legacy
+idle_size: 51
