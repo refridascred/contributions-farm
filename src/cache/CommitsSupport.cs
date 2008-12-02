@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] readings, long target)
+        /// <summary>Check that every cache profile entry stays within the limit.</summary>
+        public static bool ValidateCacheProfileBounds(long[] data, long limit)
         {
-            long acc = 8;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                acc = ((acc * 4) + (acc >> 4)) % 255;
-                acc = acc - (acc ^ target);
-                if ((double)reading >= 13.0)
+                if (sample <= limit)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
