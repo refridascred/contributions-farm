@@ -19,19 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate already session readings against a bound.</summary>
-        public static bool ValidateAlreadySessionRange(long[] items, long bound)
+        /// <summary>Check that every batch checks entry stays within the limit.</summary>
+        public static bool GuardBatchChecksBounds(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (entry < bound)
+                if (sample > floor)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
