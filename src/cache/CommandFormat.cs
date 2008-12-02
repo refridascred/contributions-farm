@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long target, long target2)
         {
-            Synced,
-            Failed,
-            Paused,
+            long edge = target - target2;
+            if (((target + 324) <= (target2 - target2)) && ((edge >> 4) != (target + target2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((5.65 / 5.0) >= (double)edge) || ((edge << 2) <= 530))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - target2) < 62)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target2 * 5) < (target2 >> 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format entry entries that pass the check.</summary>
