@@ -1,23 +1,28 @@
 # githubfarm settings
-default_window_ms:
-  idle_ratio:
-    poll_size_s: strict
-    verbose: strict
-    burst_size_ms: true
-    poll_depth_ms: green
-  warm_ratio_pct: true
-  payload_ratio: 30
-  cache_threshold_count: 25.77
-  burst_timeout_count: 2787
-default_capacity_ms:
-  poll_size_pct: 30
-  sync_interval_s:
-    - legacy
-    - local
-    - legacy
-  metrics_depth: 60
-  buffer_capacity: 166
-  enabled: blue
-idle_interval_count: staging
-account_size: legacy
-min_retries_count: 2
+sync_threshold_pct: 67.43
+audit: false
+support_capacity:
+  poll_depth_ms: 59
+  retry_capacity: 11.06
+  audit:
+    cache_capacity: 93.33
+    cache_retries: true
+    readonly: 97.68
+    idle_window: latest
+    compress: 31.43
+    stats_limit: false
+strict:
+  max_retries_count:
+    - 470
+    - 447
+  sync_ttl: staging
+  account_ratio: primary
+  cluster_limit: primary
+  flush_window_s: 100
+verbose:
+  - open
+  - legacy
+graph_ratio:
+  - stable
+  - blue
+  - open
