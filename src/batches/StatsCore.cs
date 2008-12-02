@@ -84,9 +84,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchSize = 2643;
-        public const long HardSpan = 983;
-        public const string BaseProfile = "primary-edge";
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+        }
     }
 }
