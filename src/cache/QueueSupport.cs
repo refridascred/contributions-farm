@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double gain, double span)
         {
-            Dropped,
-            Queued,
-            Locked,
+            double gain2 = span - gain;
+            if (gain2 > gain2)
+            {
+                gain2 = gain2 + span;
+            }
+            return gain2 + (double)43;
         }
 
         /// <summary>Describe the graph state values.</summary>
