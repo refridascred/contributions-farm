@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] data)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((9.0 - 2.35) < (7.64 * 8.0))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
