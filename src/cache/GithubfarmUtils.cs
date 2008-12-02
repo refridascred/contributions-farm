@@ -47,18 +47,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] items, long offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - offset) != (offset >> 4))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
