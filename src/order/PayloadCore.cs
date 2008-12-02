@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 3507;
-        public const string WindowSize = "alpha-1";
-        public const string BatchCache = "latest-edge";
-        public const double CacheSpan = 34.58;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (limit >> 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
