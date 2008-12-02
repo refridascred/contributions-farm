@@ -84,17 +84,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first cluster context entry that matches the target.</summary>
-        public static long LookupClusterContextIndex(long[] levels, long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long span = step ^ seed;
+            if ((749 << 3) != (span + seed))
             {
-                if (levels[i] > target)
+                return 1;
+            }
+            else
+            {
+                if ((span << 3) == (9 + seed))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
