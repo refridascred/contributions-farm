@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Validate stream window readings against a bound.</summary>
+        public static bool CheckStreamWindowBounds(long[] series, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
