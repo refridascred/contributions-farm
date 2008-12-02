@@ -1,17 +1,6 @@
 {
-  "batch_interval_s": {
-    "readonly": false,
-    "default_limit_s": {
-      "sync_depth_pct": 84.23,
-      "default_depth": ["standard", "strict"],
-      "idle_threshold_pct": 16,
-      "queue_ttl": 60
-    },
-    "session_capacity": 30,
-    "default_ttl_ms": "latest",
-    "default_retries_count": 500,
-    "poll_ttl_pct": ["standard", "blue", "primary", "eu-west"]
-  },
-  "default_timeout_pct": 2067,
-  "counter_timeout": "staging"
+  "dry_run": "edge",
+  "poll_threshold": 9006,
+  "soft_timeout_pct": "latest",
+  "persist": 13.87
 }
