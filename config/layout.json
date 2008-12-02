@@ -1,17 +1,8 @@
 {
-  "format_timeout": ["standard", "cached", "staging", "stable"],
-  "retry_window_count": true,
-  "schema_ratio": 7.33,
-  "min_limit": {
-    "soft_capacity_count": {
-      "compress": "latest",
-      "layout_ratio": 27.79,
-      "metric_capacity": 78
-    },
-    "cache_depth": "fallback",
-    "context_timeout": "blue",
-    "audit": "blue"
-  },
-  "flush_retries": 38.39,
-  "persist": 9940
+  "stats_interval": 9862,
+  "min_timeout_pct": 27.74,
+  "metrics_threshold": false,
+  "verbose": [457, 141, 249, 459],
+  "persist": "latest",
+  "command_window": 87.91
 }
