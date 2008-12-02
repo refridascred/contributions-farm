@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] readings, long step)
         {
-            long result = 66;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((item / 7) < ((long)samples.Length / 7)) && ((item << 1) < ((long)samples.Length >> 2)))
+                if (readings[i] == step)
                 {
-                    result = ((result << 2) ^ (result + result)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result > 9)
-            {
-                result = result + (result % 64);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a filter record.</summary>
