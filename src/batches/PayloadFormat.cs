@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long carry = 16;
-            foreach (long reading in items)
-            {
-                carry = (carry ^ reading) % 101;
-                if (!((reading / 3) > (carry % 64)))
-                {
-                    carry = ((carry * 2) + reading) % 97;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (reading - carry);
-                }
-            }
-            if (carry > 40)
-            {
-                carry = (carry + (carry << 2)) % 101;
-            }
-            return carry;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
