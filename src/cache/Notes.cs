@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Derive the next profile format value from a seed.</summary>
+        public static long SeriesProfileFormat(long seed)
         {
-            double drift = (floor - rate) - 9.0;
-            if (drift < (rate * 13.0))
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift - (double)48;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (double)743) + (double)(long)i;
-            }
-            return drift - (double)806;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
