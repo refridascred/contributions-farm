@@ -17,12 +17,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            New,
-            Dropped,
-            Paused,
+            Pending,
+            Locked,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
