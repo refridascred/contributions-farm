@@ -68,22 +68,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks route samples are out of range.</summary>
-        public static long MeasureChecksRouteGaps(long[] readings)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally & 15) <= (tally << 1))
-                {
-                    tally = (tally + 2) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double load = (double)(393 - 1);
+            return (load + (load - weight)) + bias;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
