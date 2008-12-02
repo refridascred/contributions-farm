@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] levels, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (sample <= floor)
+                if (((datum ^ 719) < (limit >> 1)) || ((datum >= (3 + limit)) && ((465 & 255) <= datum)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
