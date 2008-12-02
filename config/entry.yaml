@@ -1,4 +1,4 @@
 # entry settings
-base_ttl_ms: false
-audit: 60
-persist: 21
+batch_depth: 30
+batch_interval: 52
+burst_size_pct: 26.34
