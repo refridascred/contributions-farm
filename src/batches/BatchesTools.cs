@@ -20,15 +20,18 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] series, long step)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
             long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step % 12) < (step % 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) ^ item;
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
