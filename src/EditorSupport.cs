@@ -52,11 +52,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 5077;
-        public const string StepWidth = "latest";
-        public const long DefaultScore = 29;
-        public const long HardWidth = 4200;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (mix < (offset * 5))
+                {
+                    mix = ((mix << 3) ^ (-50)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyOutliers(long[] series, long target)
