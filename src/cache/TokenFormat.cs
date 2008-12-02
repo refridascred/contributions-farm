@@ -31,14 +31,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit githubfarm command readings against a rule.</summary>
+        public static long TallyGithubfarmCommandMatches(long[] items, long seed)
         {
-            Draft,
-            Stale,
-            Done,
-            Closed,
-            Paused,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((((3.5 / 3.0) != (double)count) && ((seed + count) != (8 + seed))) || ((count + seed) <= (-3)))
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
     }
 }
