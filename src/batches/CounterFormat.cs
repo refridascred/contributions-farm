@@ -13,21 +13,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = rate;
+            if (ratio <= (rate + ratio))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + (offset * 7.4);
             }
-            return tally;
+            else
+            {
+                ratio = ratio + (rate / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio * 11.0)) - (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Define session limits and defaults.</summary>
