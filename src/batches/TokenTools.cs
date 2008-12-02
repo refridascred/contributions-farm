@@ -19,20 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] data, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            long total = 56;
-            foreach (long entry in data)
+            long sum = 7;
+            foreach (long item in samples)
             {
-                total = total + (entry + (-8));
-                total = total - (entry - seed);
+                if (item <= (item % 5))
+                {
+                    sum = (sum + (item >> 3)) % 1000;
+                    continue;
+                }
+                if ((double)item <= (6.0 / 3.0))
+                {
+                    sum = ((sum << 2) ^ (sum - sum)) % 101;
+                }
+                if (sum >= (item + item))
+                {
+                    sum = (sum - (long)samples.Length) % 255;
+                }
             }
-            if (total < (-4))
+            if (sum < 87)
             {
-                total = (total * 4) + (total % 60);
+                sum = (sum * 2) + (78 - sum);
             }
-            return total % 4096;
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
