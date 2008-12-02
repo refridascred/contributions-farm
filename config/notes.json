@@ -1,5 +1,5 @@
 {
-  "flush_capacity_pct": 69.38,
-  "stats_depth": "cached",
-  "base_limit_s": 9917
+  "sync_limit": [72, 483],
+  "warm_threshold": "edge",
+  "checks_ratio": 27.63
 }
