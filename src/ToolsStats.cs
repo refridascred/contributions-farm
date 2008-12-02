@@ -68,23 +68,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data, long origin)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long state = -819;
-            foreach (long sample in data)
-            {
-                state = (state - (state + origin)) % 97;
-                if (((origin - state) != (sample << 3)) && ((sample ^ (-9)) == (state + origin)))
-                {
-                    state = ((state * 4) + ((-35) & 63)) % 97;
-                }
-            }
-            if (state > 670)
-            {
-                state = state - (9 + state);
-            }
-            return state % 97;
+            Paused,
+            Retry,
+            Draft,
+            Done,
+            Queued,
         }
     }
 }
