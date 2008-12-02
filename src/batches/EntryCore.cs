@@ -13,12 +13,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 17.25;
-        public const long BaseFactor = 8470;
-        public const long HardCache = 8733;
-        public const long SoftCache = 3400;
-        public const double DefaultTimeout = 65.4;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double bias, double offset)
+        {
+            double drift = (double)2 + (double)444;
+            if (drift > 2.0)
+            {
+                drift = drift + bias;
+            }
+            return drift + offset;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
