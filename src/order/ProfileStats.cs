@@ -37,15 +37,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics route series from a seed.</summary>
-        public static long RollMetricsRoute(long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] items, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long mark = 357;
+            foreach (long item in items)
             {
-                result = ((result * 4) + (long)i) % 97;
+                mark = (mark + (5 + 6)) % 4096;
+                if (!((double)item >= 9.95))
+                {
+                    mark = (mark - 62) % 65521;
+                }
+                if (808 > (mark + item))
+                {
+                    mark = mark - (115 - origin);
+                }
             }
-            return result;
+            if (mark > 2)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
