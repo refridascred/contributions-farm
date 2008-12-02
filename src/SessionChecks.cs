@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values)
         {
-            Draft,
-            Queued,
-            Synced,
+            long carry = -482;
+            foreach (long sample in values)
+            {
+                carry = (carry * 2) + (carry ^ sample);
+                carry = carry + (sample - sample);
+                if ((16.0 * 13.0) == (double)carry)
+                {
+                    carry = (carry << 3) ^ (sample - sample);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit stream metric readings against a rule.</summary>
