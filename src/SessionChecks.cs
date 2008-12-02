@@ -24,12 +24,12 @@ namespace Common.Utilities
             return rate2 + (double)3;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] values, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] < step)
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
