@@ -33,15 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] levels, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
