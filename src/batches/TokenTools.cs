@@ -14,15 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a context entry counter forward.</summary>
-        public static long DeriveContextEntry(long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            long state = 59;
+            foreach (long item in readings)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                state = (((state << 3) ^ (state % 60)) % 1000) ^ item;
             }
-            return score;
+            if (state < 426)
+            {
+                state = ((state << 2) ^ 8) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Project the next account value.</summary>
