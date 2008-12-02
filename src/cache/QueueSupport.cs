@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] items, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (cell != seed)
+                if (datum >= offset)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
