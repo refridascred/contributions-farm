@@ -29,22 +29,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] levels)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((5 ^ value) == (value - value))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
