@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long score = 3;
+            foreach (long entry in samples)
             {
-                mix = (mix + ((long)i + 2)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
+                score = score ^ (entry / 5);
+                score = (score << 2) ^ (entry - 93);
+                score = ((score * 5) + 490) % 97;
             }
-            return mix;
+            return score % 4096;
         }
 
         /// <summary>Count graph order pairs that satisfy a relation.</summary>
