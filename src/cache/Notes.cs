@@ -32,13 +32,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
+        public static long AuditGithubfarmBatchMatches(long[] readings, long step)
         {
-            Done,
-            Failed,
-            Retry,
-            Queued,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (hits < (step + step))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many report batches samples are out of range.</summary>
