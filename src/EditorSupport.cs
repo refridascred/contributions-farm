@@ -20,22 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] series, long seed)
         {
-            long acc = 88;
+            long hits = 0;
             foreach (long sample in series)
             {
-                if ((sample + 3) < (sample & 15))
+                if (seed >= ((-26) ^ 8))
                 {
-                    acc = (acc - (acc + acc)) % 65521;
+                    hits = (hits + 2) - sample;
                 }
-                if ((acc + sample) <= (-5))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
