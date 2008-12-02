@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] data, long offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (hits >= (datum - offset))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
