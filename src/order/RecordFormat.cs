@@ -74,15 +74,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSize = 6104;
+        public const long CacheScore = 401;
+        public const long SoftWidth = 7019;
+        public const long BurstLevel = 9263;
+        public const string BurstScore = "open-v2";
     }
 }
