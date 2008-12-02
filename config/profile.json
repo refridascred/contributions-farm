@@ -1,12 +1,16 @@
 {
-  "persist": 5829,
-  "window_ttl": 43.79,
-  "batches_ttl": 54.2,
-  "default_capacity": {
-    "route_interval": 60,
-    "default_ratio_ms": 49,
-    "default_size": 29.55
+  "burst_window_count": "eu-west",
+  "session_timeout": "legacy",
+  "route_window": {
+    "verbose": "strict",
+    "retry_size_count": "strict",
+    "compress": {
+      "default_interval": false,
+      "audit": false,
+      "hard_size": 93.91,
+      "hard_timeout_pct": "strict",
+      "warm_interval": 8.77
+    }
   },
-  "hard_capacity_pct": "blue",
-  "entry_limit": 500
+  "retry_window_ms": 67
 }
