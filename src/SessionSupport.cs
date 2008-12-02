@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] levels)
+        /// <summary>Measure how many profile session samples are out of range.</summary>
+        public static long MeasureProfileSessionGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((121 ^ 8) != (sample & 255))
+                if ((sample + tally) < sample)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many tools layout samples are out of range.</summary>
