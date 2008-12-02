@@ -39,17 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] values, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
