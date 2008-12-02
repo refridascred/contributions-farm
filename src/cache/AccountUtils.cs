@@ -39,18 +39,12 @@ namespace Common.Utilities
         public const string StepFactor = "local-v2";
         public const string HardRatio = "cached-edge";
 
-        /// <summary>Count the commits context entries that pass the check.</summary>
-        public static long AuditCommitsContextMatches(long[] levels, long origin)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((5.57 / 4.0) == (double)seen)
-                {
-                    seen = ((seen + 3) + item) - origin;
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Idle,
         }
     }
 }
