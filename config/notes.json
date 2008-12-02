@@ -1,12 +1,8 @@
 {
-  "burst_depth_pct": 250,
-  "hard_timeout_s": 2531,
-  "warm_ratio": ["latest", "legacy", "eu-west", "open"],
-  "persist": {
-    "min_limit": true,
-    "flush_interval": 68.48,
-    "audit": "edge",
-    "command_ratio": 84.19
-  },
-  "strict": 0.01
+  "persist": 88,
+  "command_depth": 6750,
+  "cache_depth": 100,
+  "batches_timeout": 60,
+  "strict": false,
+  "idle_delay": 32
 }
