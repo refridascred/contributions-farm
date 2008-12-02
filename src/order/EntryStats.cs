@@ -54,13 +54,11 @@ namespace Common.Utilities
         public const double StepInterval = 36.99;
         public const long StepFactor = 7468;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Stale,
-            Draft,
-            Ready,
-            Active,
+            Retry,
+            Failed,
             Idle,
         }
     }
