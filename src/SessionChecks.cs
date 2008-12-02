@@ -44,18 +44,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] values, long offset)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((offset + (-8)) < matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
