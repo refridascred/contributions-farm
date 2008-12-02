@@ -1,6 +1,10 @@
-id,state,token,weight
-1,38,583,local
-2,90.34,235,cached
-3,17.59,staging,84
-4,legacy,76.46,636
-5,41.37,538,446
+id,state,score,rank,label
+1,262,11.9,572,staging
+2,46.83,27,998,8
+3,74.21,248,strict,local
+4,74.26,735,514,470
+5,legacy,eu-west,857,54.32
+6,latest,eu-west,fallback,21.19
+7,edge,763,green,10.4
+8,primary,98,448,83.92
+9,196,661,59,67.74
