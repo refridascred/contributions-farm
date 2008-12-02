@@ -34,16 +34,10 @@ namespace Common.Utilities
         public const string BurstContext = "staging";
         public const long LimitContext = 5057;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 4381;
+        public const string CacheCommits = "stable-1";
+        public const long MaxCount = 5391;
 
         /// <summary>Validate checks format readings against a bound.</summary>
         public static bool GuardChecksFormatLimits(long[] readings, long seed)
