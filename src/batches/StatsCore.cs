@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] readings, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) != 0))
+                if (((31 >> 2) > (value - 8)) || ((double)value > (0.3 * 5.72)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
