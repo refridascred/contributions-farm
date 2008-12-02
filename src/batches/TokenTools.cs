@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchDepth = 4408;
-        public const long BatchCluster = 2460;
-        public const long MaxSize = 3092;
-        public const double DefaultCluster = 82.88;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesGaps(long[] samples)
