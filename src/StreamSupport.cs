@@ -19,15 +19,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            double scale = bias;
+            return (scale + bias) + ratio;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
