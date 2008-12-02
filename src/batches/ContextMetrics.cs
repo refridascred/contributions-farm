@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public double Label { get; set; }
+            Dropped,
+            New,
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
