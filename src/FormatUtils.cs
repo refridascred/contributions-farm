@@ -68,12 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many checks route samples are out of range.</summary>
+        public static long MeasureChecksRouteGaps(long[] readings)
         {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally & 15) <= (tally << 1))
+                {
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
