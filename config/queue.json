@@ -1,6 +1,15 @@
 {
-  "retry_retries": ["green", "blue", "latest"],
-  "default_retries": true,
-  "burst_threshold": "staging",
-  "min_retries_ms": "eu-west"
+  "default_threshold_s": true,
+  "entry_depth": {
+    "session_window": "blue",
+    "soft_timeout_count": ["eu-west", "latest", "open"],
+    "batch_interval": "blue",
+    "default_delay_ms": 67.68,
+    "hard_interval_ms": 35.16,
+    "editor_size": [214, 229, 287, 8]
+  },
+  "editor_capacity": "blue",
+  "record_retries": false,
+  "format_threshold": "standard",
+  "dry_run": 1024
 }
