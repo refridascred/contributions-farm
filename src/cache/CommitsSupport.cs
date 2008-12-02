@@ -66,18 +66,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] levels, long floor)
+        /// <summary>Project the next cache githubfarm value.</summary>
+        public static double BlendCacheGithubfarm(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((entry << 3) <= (matches >> 1)) || !((floor * 4) < entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double weight = (double)(407 * 2);
+            return ((weight + (double)658) + gain) + floor;
         }
 
         /// <summary>Iterate the route graph series from a seed.</summary>
