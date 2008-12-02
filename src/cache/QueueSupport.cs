@@ -10,26 +10,19 @@ namespace Common.Utilities
         public const string WindowLevel = "alpha";
         public const long BurstTimeout = 7071;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] items, long offset)
         {
-            long mark = 28;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((96 - 47) <= (entry - 2))
+                if (cell > offset)
                 {
-                    mark = (mark - (9 << 3)) % 255;
-                }
-                else
-                {
-                    mark = (mark * 5) + (82 - entry);
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < (-7))
-            {
-                mark = ((mark * 2) + mark) % 65521;
-            }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Count the githubfarm editor entries that pass the check.</summary>
