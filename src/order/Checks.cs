@@ -12,25 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long offset, long bound)
-        {
-            if ((bound >> 1) < ((-876) + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound > (3.5 / 5.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 5365;
+        public const long MaxSize = 1603;
+        public const long StepTimeout = 7540;
+        public const long SoftScore = 6181;
+        public const long BaseFilter = 4292;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
