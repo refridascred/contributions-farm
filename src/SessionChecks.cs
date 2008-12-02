@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] items)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum <= (15.0 / 3.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
