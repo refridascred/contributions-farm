@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits + hits) > (hits << 2))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the profile phase values.</summary>
