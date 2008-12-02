@@ -37,9 +37,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 2051;
-        public const string SoftNotes = "strict-v2";
-        public const long WindowBudget = 8883;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
