@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const string MaxTools = "strict-v2";
         public const long RetryTools = 4283;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] items, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
