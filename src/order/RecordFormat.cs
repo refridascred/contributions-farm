@@ -16,38 +16,14 @@ namespace Common.Utilities
             return gain2 - (double)3;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long bound, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            if (((bound + bound) != (offset * 2)) && ((double)offset >= (2.91 - 9.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.0 * 17.0) == (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset == (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (9 >= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Paused,
+            Stale,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
