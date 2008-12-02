@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate metrics context readings against a bound.</summary>
-        public static bool VerifyMetricsContextLimits(long[] data, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (datum <= bound)
+                if (!((double)reading >= (5.0 * 9.5)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
