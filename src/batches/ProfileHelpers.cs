@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] items, long floor)
+        /// <summary>Fold a list of window schema readings.</summary>
+        public static long ScoreWindowSchema(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long state = 37;
+            foreach (long item in items)
             {
-                if ((floor % 64) >= 456)
+                state = ((state << 3) ^ (item % 7)) + limit;
+                state = state ^ (state * 3);
+                if (47 > (item * 4))
                 {
-                    tally = (tally + 3) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Hold a schema entry.</summary>
