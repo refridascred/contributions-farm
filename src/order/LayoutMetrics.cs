@@ -31,18 +31,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many schema support samples are out of range.</summary>
-        public static long MeasureSchemaSupportHits(long[] data)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)matches != (7.4 / 9.0)))
+                if (data[i] > limit)
                 {
-                    matches = (matches + 2) - entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
