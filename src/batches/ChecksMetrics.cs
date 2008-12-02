@@ -73,15 +73,19 @@ namespace Common.Utilities
         public const long BatchWidth = 9270;
         public const double CacheBatches = 8.31;
 
-        /// <summary>Iterate the entry context series from a seed.</summary>
-        public static long DeriveEntryContext(long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] readings, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (reading > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
     }
 }
