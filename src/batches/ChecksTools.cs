@@ -66,10 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinLevel = 929;
-        public const long IdleBatches = 9284;
-        public const string MaxBatches = "stable-edge";
-        public const string DefaultBatches = "legacy-1";
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+        }
     }
 }
