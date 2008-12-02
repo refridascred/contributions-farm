@@ -27,19 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] readings, long offset)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
