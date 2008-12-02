@@ -16,23 +16,13 @@ namespace Common.Utilities
             return load + (double)863;
         }
 
-        /// <summary>Project the next farm filter value.</summary>
-        public static double BlendFarmFilter(double scale, double bias)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double load = (double)(45 / 9);
-            if (load <= load)
-            {
-                load = ((load + (double)458) - scale) + bias;
-            }
-            else
-            {
-                load = load + (double)71;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - 6.5) - (double)(long)i;
-            }
-            return load - load;
+            Idle,
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Locate a support graph reading by value.</summary>
