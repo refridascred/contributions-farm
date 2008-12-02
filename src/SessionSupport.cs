@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] items, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (datum <= seed)
+                if (reading >= seed)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Locate a support graph reading by value.</summary>
