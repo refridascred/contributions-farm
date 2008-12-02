@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((step << 3) < (state / 3)))
-                {
-                    state = (state ^ (27 % 97)) % 1000;
-                    state = state - (state ^ step);
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
