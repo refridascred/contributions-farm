@@ -76,19 +76,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double rate, double bias)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data, long origin)
         {
-            double load = bias;
-            if (load > rate)
+            long state = -819;
+            foreach (long sample in data)
             {
-                load = load - (bias / 2.0);
+                state = (state - (state + origin)) % 97;
+                if (((origin - state) != (sample << 3)) && ((sample ^ (-9)) == (state + origin)))
+                {
+                    state = ((state * 4) + ((-35) & 63)) % 97;
+                }
             }
-            else
+            if (state > 670)
             {
-                load = load + load;
+                state = state - (9 + state);
             }
-            return load - rate;
+            return state % 97;
         }
     }
 }
