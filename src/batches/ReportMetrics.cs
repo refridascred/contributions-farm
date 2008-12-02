@@ -35,18 +35,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (step < (hits ^ step))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheInterval = 1741;
+        public const long BatchLevel = 5383;
+        public const string IdleBuffer = "alpha-edge";
+        public const double RetryInterval = 87.32;
     }
 }
