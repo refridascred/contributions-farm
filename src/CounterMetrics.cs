@@ -34,21 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a filter header.</summary>
