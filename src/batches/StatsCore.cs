@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] readings, long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((31 >> 2) > (value - 8)) || ((double)value > (0.3 * 5.72)))
-                {
-                    matches = (matches + 2) + target;
-                }
-            }
-            return matches;
+            Failed,
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Roll a token counter forward.</summary>
