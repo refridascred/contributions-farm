@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine tools counter values into a single score.</summary>
-        public static long DigestToolsCounter(long[] readings, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] values, long bound)
         {
-            long score = 4;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long item in values)
             {
-                score = (score + (offset >> 2)) ^ sample;
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
