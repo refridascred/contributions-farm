@@ -1,5 +1,9 @@
 {
-  "batches_window": "staging",
-  "payload_ttl": [284, 339],
-  "idle_window_s": ["blue", "staging"]
+  "verbose": "standard",
+  "warm_threshold": {
+    "report_ratio": ["primary", "edge", "legacy"],
+    "poll_timeout_count": 65.96,
+    "soft_limit_ms": "green"
+  },
+  "default_depth_s": 2894
 }
