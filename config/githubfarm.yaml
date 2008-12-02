@@ -1,10 +1,20 @@
 # githubfarm settings
-persist: local
-soft_delay_count: green
-sync_interval_ms: 66.2
-githubfarm_threshold:
-  - 326
-  - 314
-  - 353
-min_size_s: 9615
-base_ratio_s: local
+verbose: 60
+hard_ratio_ms: legacy
+sync_interval_ms: eu-west
+persist:
+  metrics_capacity: legacy
+  commits_capacity:
+    min_timeout_ms: 5069
+    max_timeout_ms: latest
+    retry_timeout: open
+  commits_timeout:
+    - legacy
+    - local
+    - staging
+  default_capacity_count: false
+  buffer_capacity:
+    - 133
+    - 259
+  cache_depth: 6830
+min_delay: 12.8
