@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long limit, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] values, long origin)
         {
-            long lane = limit + floor;
-            if ((floor <= (lane & 63)) && ((floor * 3) < limit))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (888 <= (lane + (-655)))
+                if ((40 >> 2) > (count * 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor << 2) > (limit - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = ((count + 2) + value) - origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
