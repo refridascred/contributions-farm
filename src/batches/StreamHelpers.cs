@@ -36,31 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long floor, long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            if ((floor & 7) <= (floor << 1))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin == (2.55 / 3.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((-4) < (origin - floor))
+                    if ((items[i] + items[j]) != 7)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
