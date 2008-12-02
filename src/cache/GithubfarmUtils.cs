@@ -52,18 +52,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] samples, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((entry * 5) <= 63)
-                {
-                    seen = (seen + 1) + origin;
-                }
+                anchor = ((anchor << 3) ^ (170 + 2)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
     }
 }
