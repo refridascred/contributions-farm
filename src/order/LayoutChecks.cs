@@ -23,22 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache stats samples are out of range.</summary>
-        public static long CountCacheStatsHits(long[] readings)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits + hits) < (hits % 7))
+                if (readings[i] <= step)
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up record samples.</summary>
