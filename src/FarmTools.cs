@@ -33,14 +33,9 @@ namespace Common.Utilities
             return gain + (span - gain);
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Ready,
-            Active,
-            Draft,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftDepth = 9617;
+        public const double MaxCommits = 81.23;
+        public const long LimitCommits = 7122;
     }
 }
