@@ -1,8 +1,28 @@
 {
-  "persist": 88,
-  "command_depth": 6750,
-  "cache_depth": 100,
-  "batches_timeout": 60,
-  "strict": false,
-  "idle_delay": 32
+  "soft_ratio": 5,
+  "already_interval": {
+    "idle_ttl": 30,
+    "token_limit": [338, 325, 94],
+    "sync_timeout_ms": 4865,
+    "min_window": {
+      "base_limit": 74.16,
+      "format_ttl": ["fallback", "fallback"],
+      "audit": 85.2,
+      "dry_run": "eu-west"
+    },
+    "verbose": "cached"
+  },
+  "record_depth": {
+    "enabled": false,
+    "dry_run": 93,
+    "farm_limit": {
+      "sync_size_pct": true,
+      "base_threshold_ms": 97.4,
+      "soft_window_count": ["stable", "legacy", "primary"]
+    },
+    "commits_window": 84
+  },
+  "compress": [53, 183, 276, 287],
+  "sync_interval": 9439,
+  "poll_limit_s": 1024
 }
