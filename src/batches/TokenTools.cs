@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultSpan = "primary-v2";
-        public const long WindowCount = 7374;
-        public const long StepFactor = 6455;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesGaps(long[] samples)
