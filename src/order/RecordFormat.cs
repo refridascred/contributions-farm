@@ -19,17 +19,38 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] levels, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long bound, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((bound + bound) != (offset * 2)) && ((double)offset >= (2.91 - 9.0)))
             {
-                if (levels[i] <= limit)
+                return 6;
+            }
+            else
+            {
+                if ((6.0 * 17.0) == (double)bound)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset == (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (9 >= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
