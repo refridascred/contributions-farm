@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Accumulate counter profile samples.</summary>
+        public static long DigestCounterProfile(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            long state = 0;
+            foreach (long sample in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (!((sample - 27) < (state & 1)))
+                {
+                    state = ((state * 3) + (sample << 1)) % 97;
+                }
             }
-            return anchor;
+            return state % 97;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
