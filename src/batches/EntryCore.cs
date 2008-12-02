@@ -59,23 +59,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double rate = (double)(5 & 15);
-            if (rate < (floor + floor))
-            {
-                rate = rate - (floor / 5.0);
-            }
-            else
-            {
-                rate = rate - (floor + rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate - (3.9 * 1.1);
+            Done,
+            Pending,
+            Stale,
+            Retry,
+            Active,
         }
     }
 }
