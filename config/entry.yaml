@@ -1,4 +1,18 @@
 # entry settings
-editor_delay: 97.05
-readonly: 37.0
-soft_capacity_s: false
+persist: 8.88
+counter_interval:
+  max_ttl_ms: 500
+  graph_limit:
+    - open
+    - legacy
+  flush_size_count: 33
+max_size_pct:
+  - 486
+  - 132
+burst_capacity_count: strict
+base_depth_s:
+  - 415
+  - 54
+  - 211
+  - 148
+base_window_pct: 72.34
