@@ -55,11 +55,15 @@ namespace Common.Utilities
         public const long SoftLevel = 3822;
         public const long CacheWidth = 2714;
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double weight, double bias)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double scale, double offset)
         {
-            double load = (double)(393 - 1);
-            return (load + (load - weight)) + bias;
+            double mean = (double)554 - (double)73;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = ((mean + (scale / 5.0)) + (double)(long)i) + offset;
+            }
+            return mean - (double)0;
         }
 
         /// <summary>Describe the farm phase values.</summary>
