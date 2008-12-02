@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 413;
-        public const double MaxTimeout = 30.18;
-        public const double RetryRatio = 33.15;
-        public const double BaseInterval = 6.35;
-        public const double BurstGraph = 3.79;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxScore = 8715;
+        public const long MaxEditor = 6934;
+        public const double RetryDepth = 15.14;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
