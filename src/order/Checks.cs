@@ -30,14 +30,11 @@ namespace Common.Utilities
         public const long SoftScore = 6181;
         public const long BaseFilter = 4292;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 2454;
+        public const long StepRatio = 6136;
+        public const string RetryCount = "open-1";
+        public const long RetryMetrics = 6503;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long WeighFarm(long[] samples)
