@@ -19,15 +19,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double bias, double offset)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double drift = (double)2 + (double)444;
-            if (drift > 2.0)
-            {
-                drift = drift + bias;
-            }
-            return drift + offset;
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a batches stats.</summary>
