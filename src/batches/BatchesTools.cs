@@ -37,19 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long target, long seed)
         {
-            long mix = 8;
-            foreach (long reading in items)
+            if (((double)seed != (1.39 - 4.0)) && ((2.35 + 19.0) > (double)target))
             {
-                mix = mix ^ (4 - reading);
+                return 8;
             }
-            if (mix < 5)
+            else
             {
-                mix = (mix ^ mix) % 1000;
+                if ((20.0 / 5.0) > (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return mix % 65521;
         }
     }
 }
