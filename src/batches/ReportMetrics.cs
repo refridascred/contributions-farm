@@ -35,18 +35,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Accumulate report schema samples.</summary>
+        public static long WeighReportSchema(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 91;
+            foreach (long reading in data)
             {
-                if ((double)seen >= (9.0 * 15.0))
+                if (origin >= (result - result))
                 {
-                    seen = (seen + 2) ^ sample;
+                    result = ((result << 2) ^ (253 - 5)) - reading;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
