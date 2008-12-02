@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
