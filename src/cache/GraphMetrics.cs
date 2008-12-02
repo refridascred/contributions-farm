@@ -36,12 +36,16 @@ namespace Common.Utilities
         public const long StepFactor = 6219;
         public const long BurstEntry = 8324;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFactor = 4738;
-        public const string MinBudget = "legacy-edge";
-        public const string BaseFarm = "alpha-edge";
-        public const long BaseWidth = 2455;
-        public const string WindowFarm = "open-edge";
+        /// <summary>Project the next session route value.</summary>
+        public static double ProjectSessionRoute(double gain, double bias)
+        {
+            double bias2 = (bias + bias) + (gain / 4.0);
+            if (bias2 > bias)
+            {
+                bias2 = bias2 + (bias - bias2);
+            }
+            return bias2 - (double)346;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
