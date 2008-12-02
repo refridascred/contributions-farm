@@ -28,27 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of profile token readings.</summary>
-        public static long DigestProfileToken(long[] items, long seed)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long result = -969;
-            foreach (long reading in items)
-            {
-                result = (result << 2) ^ (seed - result);
-                if (seed < (15 / 9))
-                {
-                    result = (result + (7 & 1)) % 4096;
-                }
-                else
-                {
-                    result = result - (reading - 8);
-                }
-            }
-            if (result > 51)
-            {
-                result = result ^ (result - result);
-            }
-            return result % 97;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
