@@ -13,10 +13,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 3379;
-        public const string LimitCounter = "legacy-edge";
-        public const long SoftCount = 2440;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Failed,
+            Closed,
+            Queued,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstBudget = 595;
