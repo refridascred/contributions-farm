@@ -19,13 +19,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long origin, long limit)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            if ((double)limit >= (2.9 * 13.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < 7.7)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Rank context input into a small class.</summary>
