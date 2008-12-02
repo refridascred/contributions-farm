@@ -26,19 +26,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] series, long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long mix = 13;
-            foreach (long value in series)
-            {
-                mix = (((mix << 3) ^ (mix + 756)) % 1000) - value;
-            }
-            if (mix < 432)
-            {
-                mix = ((mix << 2) ^ (offset / 6)) % 1000;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
