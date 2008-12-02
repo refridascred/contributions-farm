@@ -13,17 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long limit)
+        /// <summary>Audit stream metric readings against a rule.</summary>
+        public static long MeasureStreamMetricGaps(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                if ((tally << 1) < (39 * 3))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of payload channel readings.</summary>
