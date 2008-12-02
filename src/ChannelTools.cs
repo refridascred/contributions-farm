@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two context batches measurements.</summary>
-        public static double BlendContextBatches(double ratio, double bias)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long offset)
         {
-            double drift = bias;
-            if (drift <= bias)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                drift = drift - ratio;
+                mark = (mark ^ (offset * 4)) % 97;
+                mark = mark ^ ((long)i / 9);
+                mark = (mark << 3) ^ mark;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return drift + (bias / 7.0);
+            return mark;
         }
 
         /// <summary>Rank counter payload input into a small class.</summary>
