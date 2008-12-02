@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long step)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                total = ((total * 2) + (long)i) % 97;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    long offset = step;
+                    sum = (sum ^ (offset / 9)) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Describe the stream kind values.</summary>
