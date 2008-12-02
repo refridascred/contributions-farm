@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] series, long bound)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
+            long total = 5;
+            foreach (long item in series)
+            {
+                total = ((total ^ total) % 255) ^ item;
+                if ((4.63 - 9.9) < (double)bound)
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Classify a commits token pair into a bucket.</summary>
