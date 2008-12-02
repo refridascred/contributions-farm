@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit editor graph readings against a rule.</summary>
-        public static long CountEditorGraphMatches(long[] readings)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mix = 691;
+            foreach (long sample in readings)
             {
-                if (((long)readings.Length / 9) == (tally + tally))
+                mix = mix + 48;
+                if (((mix ^ mix) < (mix + sample)) || (sample < (sample >> 1)))
                 {
-                    tally = (tally + 2) + entry;
+                    mix = (mix + (mix / 6)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = ((mix * 4) + (99 ^ mix)) % 1000;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
