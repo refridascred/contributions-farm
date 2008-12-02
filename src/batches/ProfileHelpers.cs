@@ -39,20 +39,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                long bound2 = (state / 8) + state;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = ((state << 3) ^ bound2) - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Active,
+            Retry,
+            Idle,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
