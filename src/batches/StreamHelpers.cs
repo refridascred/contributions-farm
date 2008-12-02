@@ -71,15 +71,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double scale, double bias)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long step, long offset)
         {
-            double ratio = bias;
-            for (int i = 0; i < 9; i++)
+            if ((offset >> 1) < (offset * 3))
             {
-                ratio = (ratio - (scale * 5.0)) + (double)(long)i;
+                return 7;
             }
-            return ratio + ratio;
+            else
+            {
+                if (!(offset > 988))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step & 127) > (offset / 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a batches stats reading.</summary>
