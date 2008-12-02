@@ -50,12 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] items, long step)
         {
-            Pending,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits ^ step) >= (hits / 9))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
     }
 }
