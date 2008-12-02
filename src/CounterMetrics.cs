@@ -14,19 +14,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double gain, double bias)
+        /// <summary>Rank cache farm input into a small class.</summary>
+        public static long BucketCacheFarm(long limit, long limit2)
         {
-            double ratio = (double)(5 << 2);
-            if (ratio > bias)
+            long offset = limit ^ limit2;
+            if ((limit2 > limit) && ((double)offset >= (5.61 - 4.56)))
             {
-                ratio = (ratio + (bias - 1.0)) - gain;
+                return 3;
             }
             else
             {
-                ratio = ratio + (double)8;
+                if ((offset + 49) > (limit >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit2 < limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return ratio - ratio;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
