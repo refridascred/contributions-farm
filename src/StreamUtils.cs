@@ -52,23 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long state = 4;
-            foreach (long cell in values)
-            {
-                state = (state + (state + 5)) % 4096;
-                if (!((state & 31) <= (cell + cell)))
-                {
-                    state = (state * 2) + (cell & 255);
-                }
-            }
-            if (state > 34)
-            {
-                state = (state + state) % 1000;
-            }
-            return state;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
