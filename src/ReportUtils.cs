@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] series, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (series[i] > target)
+                if (!(((-45) & 127) < (target % 7)) && (((55 ^ target) == (matches + datum)) || ((target << 3) > datum)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
