@@ -35,11 +35,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
+            Retry,
+            Stale,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
