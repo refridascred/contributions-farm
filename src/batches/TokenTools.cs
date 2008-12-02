@@ -32,31 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] levels, long floor)
         {
-            long sum = 7;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (item <= (item % 5))
+                if (sample > floor)
                 {
-                    sum = (sum + (item >> 3)) % 1000;
-                    continue;
-                }
-                if ((double)item <= (6.0 / 3.0))
-                {
-                    sum = ((sum << 2) ^ (sum - sum)) % 101;
-                }
-                if (sum >= (item + item))
-                {
-                    sum = (sum - (long)samples.Length) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 87)
-            {
-                sum = (sum * 2) + (78 - sum);
-            }
-            return sum % 65521;
+            return ok;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
