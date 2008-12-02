@@ -21,12 +21,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultCommits = 23.08;
-        public const long RetryTimeout = 4623;
-        public const string IdleDepth = "alpha";
-        public const long StepBudget = 4213;
-        public const long SoftCommits = 7985;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Idle,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorOutliers(long[] samples)
