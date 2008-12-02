@@ -66,32 +66,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long origin, long origin2)
-        {
-            long diff = origin + origin2;
-            if (((diff >> 4) >= (origin2 + origin)) || ((double)origin2 != (7.6 + 14.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin - origin2) >= (origin2 * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin2 & 15) == (origin2 ^ origin2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 5104;
+        public const string IdleGithubfarm = "latest";
+        public const string BaseFactor = "cached-v2";
+        public const long WindowGithubfarm = 6141;
     }
 }
