@@ -1,19 +1,9 @@
 # githubfarm settings
-enabled: 87
-farm_limit: blue
-commits_ttl: 500
-persist: strict
-retry_capacity: false
-hard_size:
-  min_ratio_pct:
-    - strict
-    - eu-west
-    - green
-    - primary
-  compress: false
-  default_interval_ms: false
-  idle_limit:
-    - cached
-    - local
-    - fallback
-    - latest
+record_ratio: false
+batch_timeout_pct: 74.83
+sync_retries_count: stable
+hard_depth_s:
+  soft_delay_count: standard
+  default_ttl_s: 64.23
+  base_interval: true
+soft_window: green
