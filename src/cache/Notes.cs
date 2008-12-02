@@ -45,21 +45,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count stream layout pairs that satisfy a relation.</summary>
-        public static long OverlapStreamLayoutCount(long[] levels)
+        /// <summary>Roll a filter already counter forward.</summary>
+        public static long RollFilterAlready(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry << 2) ^ ((long)i - (long)i)) % 101;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
     }
 }
