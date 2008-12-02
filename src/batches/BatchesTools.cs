@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next format commits value.</summary>
-        public static double ScaleFormatCommits(double bias, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] levels, long bound)
         {
-            double gain = bias;
-            if (gain < bias)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                gain = gain - gain;
+                if ((reading + bound) <= (bound + 426))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - span;
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
