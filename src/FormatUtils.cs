@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 8525;
-        public const long BaseLevel = 745;
-        public const long BaseEditor = 7830;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Queued,
+            Pending,
+            Synced,
+            New,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryLevel = 7754;
