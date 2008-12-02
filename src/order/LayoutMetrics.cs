@@ -44,13 +44,18 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] samples)
         {
-            Dropped,
-            Active,
-            New,
-            Done,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((double)value <= 2.2) && ((double)value < 11.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
