@@ -19,18 +19,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] data)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((2.1 - 4.3) < (double)matches)
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            Ready,
+            Active,
+            Failed,
         }
     }
 }
