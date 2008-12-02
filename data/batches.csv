@@ -1,9 +1,7 @@
-id,count,rank,ratio,score
-1,legacy,cached,877,937
-2,80.82,93.86,27.56,575
-3,1,64.47,primary,67.83
-4,915,21.69,140,42.13
-5,latest,open,edge,31.29
-6,local,legacy,fallback,83.54
-7,33.13,98.78,797,7.89
-8,58.83,1.95,68.97,local
+id,token,level
+1,661,299
+2,cached,636
+3,123,943
+4,704,44
+5,cached,92.81
+6,strict,46.69
