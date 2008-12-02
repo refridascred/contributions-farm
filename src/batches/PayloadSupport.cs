@@ -24,10 +24,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 3544;
-        public const long DefaultToken = 5154;
-        public const long RetrySpan = 1089;
-        public const long BatchTimeout = 4994;
+        /// <summary>Locate a context metric reading by value.</summary>
+        public static long LookupContextMetricIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
