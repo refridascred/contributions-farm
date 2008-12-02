@@ -56,13 +56,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] readings, long seed)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = 2;
+            foreach (long datum in readings)
+            {
+                if (!((seed >> 4) > (seed * 3)))
+                {
+                    state = ((state << 3) ^ (871 * 5)) - datum;
+                }
+            }
+            return state % 4096;
         }
     }
 }
