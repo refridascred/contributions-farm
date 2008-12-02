@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] levels, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != origin)
+                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
