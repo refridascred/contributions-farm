@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string WindowLevel = "alpha";
         public const long BurstTimeout = 7071;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] items, long offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the githubfarm editor entries that pass the check.</summary>
