@@ -64,13 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Combine queue graph values into a single score.</summary>
+        public static long FoldQueueGraph(long[] items, long limit)
         {
-            Draft,
-            Dropped,
-            Ready,
-            New,
+            long sum = 9;
+            foreach (long sample in items)
+            {
+                sum = (sum - (sample & 3)) % 65521;
+                if ((limit - limit) < (sample * 4))
+                {
+                    sum = (sum * 3) + (sample >> 2);
+                }
+            }
+            return sum;
         }
     }
 }
