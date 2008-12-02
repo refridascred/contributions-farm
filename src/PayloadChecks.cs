@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Find the first metrics counter entry that matches the target.</summary>
+        public static long LocateMetricsCounterIndex(long[] levels, long offset)
         {
-            Draft,
-            Idle,
-            Retry,
-            Synced,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
