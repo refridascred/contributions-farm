@@ -68,22 +68,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((reading - reading) != (reading + reading)) && (((double)matches < (4.35 * 0.67)) || (matches > (matches - 0))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstInterval = 27.24;
+        public const double SoftRoute = 15.3;
+        public const long WindowSize = 8815;
+        public const long BurstLevel = 6402;
+        public const long StepRoute = 2168;
     }
 }
