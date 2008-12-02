@@ -17,12 +17,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count graph order pairs that satisfy a relation.</summary>
+        public static long MatchGraphOrderCount(long[] values)
         {
-            Done,
-            Synced,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a context counter forward.</summary>
