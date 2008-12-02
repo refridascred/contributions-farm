@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two channel stats measurements.</summary>
-        public static double ScaleChannelStats(double rate, double span)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            double mean = rate - rate;
-            if (mean < (double)2)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean - span;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (sum - (9 % 100)) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - rate) - (double)(long)i;
-            }
-            return mean - 3.85;
+            return sum;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
