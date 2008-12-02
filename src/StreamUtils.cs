@@ -84,21 +84,20 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Derive the next channel queue value from a seed.</summary>
+        public static long SeriesChannelQueue(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)step >= (19.0 / 7.0)) && ((7 + acc) < step))
                 {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 2) ^ (59 << 1)) % 1000;
                 }
+                acc = ((acc << 3) ^ step) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
