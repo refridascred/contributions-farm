@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] data, long bound)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public bool Size { get; set; }
+            long state = 31;
+            foreach (long entry in data)
+            {
+                state = (((state << 3) ^ (state << 1)) % 65521) + bound;
+                if (entry < ((long)data.Length % 7))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate token samples.</summary>
