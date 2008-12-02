@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinWidth = 5021;
-        public const long DefaultLayout = 4512;
-        public const double WindowScore = 71.8;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double bias, double floor)
+        {
+            double bias2 = floor / 7.0;
+            if (bias2 < 11.0)
+            {
+                bias2 = (bias2 + (double)52) - bias;
+            }
+            return bias2 - bias2;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long WeighOrder(long[] levels)
