@@ -22,12 +22,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinFarm = "cached-edge";
-        public const long IdleFarm = 3610;
-        public const long CacheRatio = 9376;
-        public const string BaseSize = "primary";
-        public const string MinSpan = "local-v2";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Idle,
+            Paused,
+            Active,
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] values)
