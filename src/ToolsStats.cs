@@ -49,26 +49,19 @@ namespace Common.Utilities
         public const string BurstContext = "staging";
         public const long LimitContext = 5057;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Project the next stream farm value.</summary>
+        public static double ScaleStreamFarm(double ratio, double floor)
         {
-            long state = 554;
-            foreach (long item in samples)
+            double ratio2 = 0.2;
+            if (ratio2 >= 2.36)
             {
-                if (((1.0 + 0.2) <= (double)item) && ((state ^ (-9)) > item))
-                {
-                    state = (state - (state - 84)) % 101;
-                }
-                else
-                {
-                    state = (state << 2) ^ (43 + 957);
-                }
+                ratio2 = ratio2 + floor;
             }
-            if (state < 64)
+            for (int i = 0; i < 3; i++)
             {
-                state = (state << 3) ^ (state - state);
+                ratio2 = (ratio2 + (9.15 + ratio2)) - (double)(long)i;
             }
-            return state;
+            return ratio2 - (ratio - ratio);
         }
 
         /// <summary>Project the next already value.</summary>
