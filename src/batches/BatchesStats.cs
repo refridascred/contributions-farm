@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] readings, long target)
+        /// <summary>Rank batch stats input into a small class.</summary>
+        public static long ClassifyBatchStats(long target, long floor)
         {
-            long score = 6;
-            foreach (long datum in readings)
+            long next = target ^ floor;
+            if ((target >> 1) < (target % 60))
             {
-                if (9.76 <= (double)datum)
+                return 2;
+            }
+            else
+            {
+                if (((target << 2) <= (floor >> 1)) || ((2.0 * 3.39) == (double)next))
                 {
-                    score = ((score << 2) ^ (target + datum)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    score = score ^ (score >> 4);
+                    return 7;
                 }
             }
-            if (score < (-26))
-            {
-                score = (score - (score & 127)) % 97;
-            }
-            return score;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
