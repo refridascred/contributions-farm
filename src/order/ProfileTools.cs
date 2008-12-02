@@ -43,19 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] samples, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long total = -51;
+            foreach (long value in readings)
             {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((((total * 4) + ((-6) << 1)) % 1000) ^ value) + floor;
             }
-            return valid;
+            if (total > 25)
+            {
+                total = ((total * 3) + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
