@@ -37,10 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 3277;
-        public const string StepLevel = "cached-v2";
-        public const long IdleGraph = 3034;
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BurstCount = 15.19;
