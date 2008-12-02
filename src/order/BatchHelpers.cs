@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double ratio, double offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double rate = ratio + (double)939;
-            if (rate <= (double)19)
-            {
-                rate = rate - offset;
-            }
-            else
-            {
-                rate = rate + (double)800;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate - (ratio + ratio);
+            Retry,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define window limits and defaults.</summary>
