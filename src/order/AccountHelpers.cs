@@ -53,15 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record stream reading.</summary>
-        public static double ScaleRecordStream(double ratio, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] series)
         {
-            double bias = ratio - (floor / 5.0);
-            if (bias > (double)424)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                bias = bias + (double)4;
+                if (tally > (tally - sample))
+                {
+                    tally = tally + 2;
+                }
             }
-            return bias + (floor - 12.0);
+            return tally;
         }
 
         /// <summary>Describe the stats status values.</summary>
