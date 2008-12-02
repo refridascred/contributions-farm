@@ -27,13 +27,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Queued,
-            Active,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "standard-v2";
+        public const string BaseNotes = "latest-v2";
+        public const long IdleFactor = 9186;
     }
 }
