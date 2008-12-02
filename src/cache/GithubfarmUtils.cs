@@ -48,19 +48,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] items, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] items, long offset)
         {
-            bool stale = true;
+            long hits = 0;
             foreach (long reading in items)
             {
-                if (reading != bound)
+                if ((reading - offset) != (offset >> 4))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a tools entry.</summary>
