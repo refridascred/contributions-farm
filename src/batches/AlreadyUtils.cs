@@ -44,11 +44,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxLevel = 31.51;
-        public const long IdleCounter = 7102;
-        public const string BaseCounter = "fallback-edge";
-        public const string StepCounter = "standard-edge";
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long origin, long seed)
+        {
+            if ((seed + seed) < origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (2.16 >= (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin % 64) == (seed + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((0.06 * 8.66) != (double)seed) && ((origin + seed) >= (seed & 255)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowAccount = 7239;
