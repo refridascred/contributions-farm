@@ -35,15 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] data, long origin)
+        /// <summary>Measure how many editor command samples are out of range.</summary>
+        public static long CountEditorCommandMatches(long[] data, long offset)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long item in data)
             {
-                if ((datum > count) || (((double)origin < (14.0 * 2.89)) && ((count << 3) >= (3 ^ count))))
+                if ((12.0 * 3.1) >= (double)offset)
                 {
-                    count = count + 1;
+                    count = (count + 1) - item;
                 }
                 else
                 {
