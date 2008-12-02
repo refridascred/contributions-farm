@@ -27,16 +27,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long acc = 0;
+            foreach (long sample in items)
             {
-                score = score ^ (target + target);
-                score = ((score * 5) + (long)i) % 65521;
+                if ((long)items.Length <= (sample + acc))
+                {
+                    acc = (acc + sample) % 65521;
+                }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
