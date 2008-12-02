@@ -58,11 +58,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 3479;
-        public const long BatchLevel = 1693;
-        public const string DefaultToken = "latest";
-        public const long MinToken = 5649;
-        public const long HardFactor = 4344;
+        /// <summary>Find the first window metric entry that matches the target.</summary>
+        public static long LocateWindowMetricIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
