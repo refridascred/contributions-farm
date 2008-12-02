@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] items, long limit)
+        /// <summary>Accumulate channel counter samples.</summary>
+        public static long DigestChannelCounter(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long acc = 74;
+            foreach (long sample in series)
             {
-                if (sample < (limit >> 1))
+                acc = (acc << 3) ^ (sample >> 1);
+                if (!((sample ^ (-499)) >= sample))
                 {
-                    matches = matches + 2;
+                    break;
+                }
+                if (sample > ((-77) / 8))
+                {
+                    acc = (acc + (acc + acc)) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (sample * 3)) % 65521;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Fold a list of profile token readings.</summary>
