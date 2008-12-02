@@ -21,18 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] items, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (!(6.08 <= (double)entry))
+                if (value < floor)
                 {
-                    hits = (hits + 3) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Roll a layout session counter forward.</summary>
