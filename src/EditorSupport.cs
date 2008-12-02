@@ -20,12 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] series)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long acc = 88;
+            foreach (long sample in series)
+            {
+                if ((sample + 3) < (sample & 15))
+                {
+                    acc = (acc - (acc + acc)) % 65521;
+                }
+                if ((acc + sample) <= (-5))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
