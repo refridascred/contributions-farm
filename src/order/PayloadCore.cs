@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 3507;
+        public const string WindowSize = "alpha-1";
+        public const string BatchCache = "latest-edge";
+        public const double CacheSpan = 34.58;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BaseSpan = 399;
