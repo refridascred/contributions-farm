@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long target, long target2)
-        {
-            long edge = target - target2;
-            if (((target + 324) <= (target2 - target2)) && ((edge >> 4) != (target + target2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((5.65 / 5.0) >= (double)edge) || ((edge << 2) <= 530))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - target2) < 62)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target2 * 5) < (target2 >> 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftScore = 51.88;
+        public const double SoftReport = 50.08;
+        public const string WindowScore = "latest-1";
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool ValidateChecksBounds(long[] levels, long limit)
