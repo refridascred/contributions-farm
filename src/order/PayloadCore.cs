@@ -44,13 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] levels)
         {
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches >> 5) >= value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
