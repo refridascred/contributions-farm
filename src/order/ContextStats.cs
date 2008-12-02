@@ -33,15 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double gain, double floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings, long limit)
         {
-            double weight = (double)(4 & 31);
-            if (weight <= (0.4 + gain))
+            long carry = 44;
+            foreach (long sample in readings)
             {
-                weight = (weight - (weight - gain)) + floor;
+                if (limit >= sample)
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (limit % 2);
+                }
+                if ((long)readings.Length >= (-6))
+                {
+                    carry = (carry - limit) % 65521;
+                    break;
+                }
+                if (!((limit + carry) >= (sample * 3)))
+                {
+                    carry = carry + carry;
+                }
             }
-            return weight + weight;
+            return carry % 97;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
