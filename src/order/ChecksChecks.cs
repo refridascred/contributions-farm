@@ -14,32 +14,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long target, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long target)
         {
-            long prev = target ^ step;
-            if (!((prev % 3) >= (target & 15)))
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                mix = ((mix * 3) + (long)i) % 1000;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((target / 4) == (158 + prev)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)target != (9.0 / 7.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Match up report samples.</summary>
