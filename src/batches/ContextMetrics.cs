@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Adjust a checks channel reading.</summary>
+        public static double AdjustChecksChannel(double gain, double offset)
         {
-            Locked,
-            Stale,
-            Closed,
-            Synced,
+            double rate = gain / 6.0;
+            if (rate >= (double)7)
+            {
+                rate = (rate + (gain - 13.0)) - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (double)72;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
