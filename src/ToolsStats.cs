@@ -39,19 +39,18 @@ namespace Common.Utilities
         public const string CacheCommits = "stable-1";
         public const long MaxCount = 5391;
 
-        /// <summary>Validate checks format readings against a bound.</summary>
-        public static bool GuardChecksFormatLimits(long[] readings, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (cell < seed)
+                if ((bound + bound) >= value)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Digest a series of support command entries.</summary>
