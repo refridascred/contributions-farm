@@ -23,30 +23,11 @@ namespace Common.Utilities
         public const long CacheScore = 9521;
         public const long SoftStream = 7084;
 
-        /// <summary>Combine cache account values into a single score.</summary>
-        public static long WeighCacheAccount(long[] items, long floor)
+        /// <summary>Adjust a format cluster reading.</summary>
+        public static double AdjustFormatCluster(double rate, double offset)
         {
-            long state = 4;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    state = (((state * 3) + (item + state)) % 4096) ^ (long)i;
-                }
-                if ((502 - floor) <= (floor % 8))
-                {
-                    state = (state ^ (floor - item)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (floor + floor)) % 1000;
-                }
-            }
-            if (state < 35)
-            {
-                state = (state - (floor ^ state)) % 101;
-            }
-            return state % 4096;
+            double rate2 = 4.7;
+            return ((rate2 - (double)4) + rate) + offset;
         }
     }
 }
