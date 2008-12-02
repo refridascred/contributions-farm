@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 13)
+                    if ((series[i] - series[j]) == 0)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the account state values.</summary>
