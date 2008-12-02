@@ -23,15 +23,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double weight, double offset)
+        /// <summary>Grade a entry report value against two limits.</summary>
+        public static long RankEntryReport(long floor, long limit)
         {
-            double bias = (offset + offset) * 5.1;
-            if (bias > bias)
+            if ((floor - limit) >= (limit - limit))
             {
-                bias = (bias + (6.71 - 2.0)) - weight;
+                return 3;
             }
-            return bias - (double)(-155);
+            else
+            {
+                if (!((8.7 + 12.0) >= (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit == (7.83 - 17.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor & 1) >= (limit << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor state values.</summary>
