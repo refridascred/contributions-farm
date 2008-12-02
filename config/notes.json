@@ -1,7 +1,7 @@
 {
-  "order_timeout": true,
-  "dry_run": 58.22,
-  "base_limit_pct": [485, 322, 119],
-  "soft_limit_pct": 500,
-  "min_ratio_pct": "staging"
+  "verbose": false,
+  "tools_retries": "primary",
+  "warm_size": true,
+  "retry_size": 3582,
+  "max_retries_ms": "green"
 }
