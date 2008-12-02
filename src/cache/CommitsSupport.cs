@@ -20,25 +20,12 @@ namespace Common.Utilities
             return scale - (double)794;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long floor)
-        {
-            if (origin > floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin > floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 5899;
+        public const double BaseTools = 27.71;
+        public const long BurstTools = 1291;
+        public const double MaxTools = 0.89;
+        public const long RetryTools = 878;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryGaps(long[] series)
