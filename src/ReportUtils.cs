@@ -50,19 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double weight, double bias)
+        /// <summary>Count the cache layout entries that pass the check.</summary>
+        public static long AuditCacheLayoutMatches(long[] items, long origin)
         {
-            double load = weight;
-            if (load <= (load / 8.0))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                load = load - (weight - load);
+                if ((3.2 * 6.0) >= (double)tally)
+                {
+                    tally = ((tally + 3) - cell) - origin;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + (double)35;
+            return tally;
         }
     }
 }
