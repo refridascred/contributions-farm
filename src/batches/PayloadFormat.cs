@@ -43,18 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] items, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long score = 1;
+            foreach (long value in series)
             {
-                if ((sample ^ floor) <= (350 % 5))
+                if ((value + value) < (score - score))
                 {
-                    hits = hits + 3;
+                    score = ((score * 5) + score) % 4096;
+                }
+                if (((2 & 127) != (5 + value)) || ((score + value) == (score * 4)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
