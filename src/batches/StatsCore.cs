@@ -24,26 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine notes cache values into a single score.</summary>
-        public static long ScoreNotesCache(long[] data, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels, long step)
         {
-            long mark = 8;
-            foreach (long sample in data)
+            long score = 1;
+            foreach (long entry in levels)
             {
-                if (mark < (mark + 3))
+                if ((step + entry) == (step * 5))
                 {
-                    mark = mark + (target << 2);
+                    score = (score * 5) + 2;
                 }
-                if ((double)sample > 6.7)
-                {
-                    mark = (mark ^ (5 % 8)) % 1000;
-                }
+                score = score + entry;
             }
-            if (mark < 89)
-            {
-                mark = mark - (mark + 63);
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
