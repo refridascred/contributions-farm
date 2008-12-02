@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long DefaultWindow = 6166;
         public const long StepRatio = 6778;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitFactor = 1711;
-        public const double BaseNotes = 62.3;
-        public const long MaxFactor = 480;
-        public const long MaxNotes = 2600;
-        public const long BatchNotes = 2596;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((offset % 5) == (matches % 3))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long SeriesFarm(long floor)
