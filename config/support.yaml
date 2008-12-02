@@ -1,12 +1,15 @@
 # support settings
 verbose:
-  - 18
-  - 450
-  - 236
-  - 190
-farm_limit: fallback
-enabled: cached
-batch_limit: 83.19
-account_ratio:
-  - 248
-  - 412
+  - strict
+  - blue
+cluster_retries:
+  - green
+  - eu-west
+queue_ttl:
+  - blue
+  - eu-west
+  - blue
+  - stable
+token_window: 7909
+batch_delay_count: strict
+base_timeout_count: false
