@@ -1,7 +1,21 @@
 # support settings
-sync_interval_ms:
-  channel_threshold: blue
-  sync_timeout_ms: true
-  hard_capacity_count: 7605
-cache_threshold_count: 1024
-flush_capacity_count: 500
+batch_delay_ms:
+  - 245
+  - 152
+burst_ratio_pct: 90.97
+min_depth: true
+retry_timeout_ms:
+  - cached
+  - fallback
+  - latest
+  - blue
+order_capacity:
+  batch_interval_ms: 36.67
+  max_limit:
+    - 99
+    - 13
+    - 454
+    - 89
+  stream_retries:
+    - strict
+    - open
