@@ -1,28 +1,10 @@
 # githubfarm settings
-sync_threshold_pct: 67.43
-audit: false
-support_capacity:
-  poll_depth_ms: 59
-  retry_capacity: 11.06
-  audit:
-    cache_capacity: 93.33
-    cache_retries: true
-    readonly: 97.68
-    idle_window: latest
-    compress: 31.43
-    stats_limit: false
-strict:
-  max_retries_count:
-    - 470
-    - 447
-  sync_ttl: staging
-  account_ratio: primary
-  cluster_limit: primary
-  flush_window_s: 100
-verbose:
-  - open
-  - legacy
-graph_ratio:
-  - stable
-  - blue
-  - open
+max_capacity: 248
+cache_window: strict
+flush_retries:
+  base_limit_pct: 40.17
+  graph_ttl: open
+  readonly: eu-west
+  audit: 60
+  already_interval: 30
+persist: 21.9
