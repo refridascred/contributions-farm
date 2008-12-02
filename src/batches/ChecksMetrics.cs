@@ -22,17 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token record entry that matches the target.</summary>
-        public static long LocateTokenRecordIndex(long[] data, long floor)
+        /// <summary>Scale a record layout figure with a bias.</summary>
+        public static double ProjectRecordLayout(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = bias;
+            return (bias2 - (bias + bias2)) + weight;
         }
 
         /// <summary>Define session limits and defaults.</summary>
