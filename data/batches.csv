@@ -1,6 +1,9 @@
-id,weight,owner,label,ratio
-1,local,49.2,468,open
-2,70.22,178,122,edge
-3,fallback,5.27,fallback,66.91
-4,legacy,legacy,40,4.63
-5,16.45,edge,standard,410
+id,weight,score
+1,92,strict
+2,741,56.53
+3,eu-west,44.42
+4,24.36,794
+5,864,fallback
+6,609,49.47
+7,standard,175
+8,4.18,922
