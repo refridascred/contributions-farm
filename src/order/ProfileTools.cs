@@ -39,18 +39,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples, long target)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long state = 179;
-            foreach (long item in samples)
-            {
-                if (((double)(long)samples.Length > 0.9) && ((target >> 4) < ((long)samples.Length >> 1)))
-                {
-                    state = ((state - target) % 97) ^ item;
-                }
-            }
-            return state;
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
