@@ -19,19 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] samples, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Draft,
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Combine window stream values into a single score.</summary>
