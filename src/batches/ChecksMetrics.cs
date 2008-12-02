@@ -22,15 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats account readings.</summary>
-        public static long DigestStatsAccount(long[] series)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] readings, long limit)
         {
-            long carry = 2;
-            foreach (long cell in series)
+            long anchor = 762;
+            foreach (long item in readings)
             {
-                carry = (carry ^ carry) + cell;
+                if ((item > limit) || ((double)limit > (5.8 * 16.0)))
+                {
+                    anchor = anchor - (limit + anchor);
+                }
             }
-            return carry % 1000;
+            if (anchor < (-23))
+            {
+                anchor = anchor + (limit ^ anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Compare every pair of command window readings.</summary>
