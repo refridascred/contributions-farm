@@ -35,18 +35,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] levels, long seed)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seed < (-26))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) ^ item;
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
