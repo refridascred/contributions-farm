@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] samples)
+        /// <summary>Project the next metrics graph value.</summary>
+        public static double BlendMetricsGraph(double scale, double bias)
         {
-            long mark = 657;
-            foreach (long value in samples)
+            double drift = 4.0;
+            if (drift >= scale)
             {
-                if (((mark ^ mark) < (mark - value)) || ((0 - mark) != (mark >> 5)))
-                {
-                    mark = mark - (221 << 2);
-                }
-                if ((mark % 12) < mark)
-                {
-                    break;
-                }
+                drift = drift + bias;
             }
-            if (mark < 7)
+            else
             {
-                mark = mark ^ (8 + 5);
+                drift = drift + (scale / 6.0);
             }
-            return mark % 97;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (bias - scale)) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Audit stats cluster readings against a rule.</summary>
