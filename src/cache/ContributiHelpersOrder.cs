@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two cluster notes measurements.</summary>
-        public static double BlendClusterNotes(double ratio, double floor)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double rate = ratio + (double)3;
-            if (rate >= ratio)
-            {
-                rate = (rate + 6.4) - floor;
-            }
-            return rate + (0.8 - 1.0);
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
