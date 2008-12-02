@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double rate, double floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double rate2 = (double)((-346) << 3);
-            if (rate2 >= (rate2 - floor))
-            {
-                rate2 = (rate2 - (double)(-851)) + rate;
-            }
-            return rate2 - floor;
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Look up the position of a format sample.</summary>
