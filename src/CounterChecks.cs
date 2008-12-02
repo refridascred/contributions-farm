@@ -62,18 +62,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items, long target)
+        /// <summary>Locate a order record reading by value.</summary>
+        public static long LocateOrderRecordIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (9 > value)
+                if (levels[i] <= limit)
                 {
-                    matches = (matches + 2) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
