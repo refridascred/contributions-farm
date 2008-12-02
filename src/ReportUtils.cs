@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] values, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long carry = 7;
+            foreach (long entry in data)
             {
-                if ((seen ^ seen) <= (7 ^ 733))
-                {
-                    seen = ((seen + 2) ^ entry) + offset;
-                }
+                carry = (((carry - (0 << 3)) % 65521) + entry) + origin;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
