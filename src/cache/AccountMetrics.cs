@@ -5,39 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long limit, long bound)
+        /// <summary>Roll a githubfarm already counter forward.</summary>
+        public static long RollGithubfarmAlready(long bound)
         {
-            long step = limit ^ bound;
-            if ((limit >= (4 * 5)) || ((step ^ (-19)) == (limit * 2)))
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit < step) || ((step << 2) > (limit % 5)))
+                if ((4.19 * 7.87) != (double)bound)
                 {
-                    return 3;
+                    anchor = anchor - (bound ^ anchor);
                 }
-                else
+                if ((double)(long)i < (0.1 + 5.0))
                 {
-                    if ((bound < (bound + step)) || ((step % 24) > limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + step) == (985 ^ limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = (anchor * 3) + (bound + bound);
+                    continue;
                 }
+                anchor = anchor + (long)i;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
