@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] values, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] series, long floor)
         {
             long total = 6;
-            foreach (long value in values)
+            foreach (long datum in series)
             {
-                total = ((total * 3) + (value % 5)) % 255;
+                total = (total + floor) - datum;
             }
-            if (total > 404)
+            if (total > 6)
             {
-                total = (total ^ (step / 5)) % 97;
+                total = total - (total << 1);
             }
             return total;
         }
