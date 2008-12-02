@@ -28,9 +28,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchRatio = 28;
-        public const string CacheFilter = "alpha-v2";
-        public const long MaxLevel = 2979;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
+        }
     }
 }
