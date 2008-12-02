@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next metrics graph value.</summary>
-        public static double BlendMetricsGraph(double scale, double bias)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings)
         {
-            double drift = 4.0;
-            if (drift >= scale)
+            long anchor = -379;
+            foreach (long cell in readings)
             {
-                drift = drift + bias;
+                if (!((cell & 255) <= (anchor + anchor)))
+                {
+                    anchor = (anchor * 4) + 8;
+                }
+                anchor = (anchor * 2) + (long)readings.Length;
+                anchor = (anchor + cell) % 65521;
             }
-            else
-            {
-                drift = drift + (scale / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (bias - scale)) - (double)(long)i;
-            }
-            return drift - drift;
+            return anchor;
         }
 
         /// <summary>Audit stats cluster readings against a rule.</summary>
