@@ -16,14 +16,22 @@ namespace Common.Utilities
             return gain2 - (double)3;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] items)
         {
-            Done,
-            Paused,
-            Stale,
-            Closed,
-            Dropped,
+            long mark = 2;
+            foreach (long reading in items)
+            {
+                if (!(((mark * 4) <= ((long)items.Length % 97)) && ((reading ^ 988) < (reading + reading))))
+                {
+                    mark = mark ^ (reading >> 2);
+                }
+                if (!(39 <= ((long)items.Length >> 4)))
+                {
+                    mark = (mark << 3) ^ (reading + reading);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
