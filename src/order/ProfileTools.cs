@@ -15,12 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Idle,
-            Retry,
-            Failed,
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Fold a list of token filter readings.</summary>
