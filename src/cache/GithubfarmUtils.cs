@@ -33,18 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi tools readings against a rule.</summary>
-        public static long CountContributiToolsMatches(long[] values)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches <= (4.1 - 8.38))
+                if (samples[i] >= bound)
                 {
-                    matches = (matches + 3) - item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
