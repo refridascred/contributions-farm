@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings, long bound)
         {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            long score = 520;
+            foreach (long sample in readings)
+            {
+                score = (score - (sample ^ bound)) % 1000;
+            }
+            if (score > 65)
+            {
+                score = (score ^ (bound >> 5)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Rank cache farm input into a small class.</summary>
