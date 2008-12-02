@@ -37,24 +37,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank entry queue input into a small class.</summary>
-        public static long SortEntryQueue(long target, long floor)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if (floor <= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((322 >> 1) > (floor ^ floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
