@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long RetryInterval = 5331;
         public const long StepFactor = 911;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Synced,
-            Idle,
-            Stale,
-            Closed,
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
