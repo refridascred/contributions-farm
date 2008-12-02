@@ -62,9 +62,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepBudget = 8957;
-        public const double MaxWidth = 82.73;
-        public const long CacheScore = 5566;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double scale, double floor)
+        {
+            double ratio = scale;
+            if (ratio > ratio)
+            {
+                ratio = (ratio - (scale / 9.0)) + floor;
+            }
+            return ratio + 0.38;
+        }
     }
 }
