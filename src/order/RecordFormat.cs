@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] items)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading >> 5) != (reading % 97))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double weight2 = (offset / 2.0) - weight;
+            return weight2 - 8.11;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
