@@ -28,14 +28,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Retry,
-            Locked,
-            Done,
-            Dropped,
-            Paused,
+            Failed,
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
