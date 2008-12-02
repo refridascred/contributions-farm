@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const double MaxTools = 0.89;
         public const long RetryTools = 878;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] series)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)hits > (9.9 * 9.0))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of route readings.</summary>
