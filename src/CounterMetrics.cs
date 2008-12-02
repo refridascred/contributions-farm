@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series, long offset)
         {
-            long sum = 2;
-            foreach (long sample in samples)
+            long acc = 66;
+            foreach (long cell in series)
             {
-                if (!!((origin * 5) >= sample))
+                if ((offset + acc) < (acc ^ 20))
                 {
-                    sum = ((sum * 3) + (-90)) % 65521;
-                }
-                sum = (sum ^ origin) % 101;
-                if ((sum << 1) >= (origin * 5))
-                {
-                    break;
+                    acc = ((acc ^ ((-6) - acc)) % 101) - cell;
                 }
             }
-            if (sum > 725)
-            {
-                sum = (sum ^ (origin + sum)) % 1000;
-            }
-            return sum;
+            return acc % 4096;
         }
 
         /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
