@@ -46,26 +46,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] readings, long seed)
         {
-            long acc = -953;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((entry + acc) >= (-283))
+                if (!((double)matches > 3.0))
                 {
-                    acc = ((acc << 3) ^ (acc << 1)) % 97;
+                    matches = ((matches + 1) + reading) - seed;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ acc) % 255;
-                }
-                if ((acc >> 4) != (868 << 1))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
