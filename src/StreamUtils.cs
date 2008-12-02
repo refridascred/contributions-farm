@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long HardFactor = 4529;
         public const long DefaultEntry = 8014;
 
-        /// <summary>Find the first command batches entry that matches the target.</summary>
-        public static long LocateCommandBatchesIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] >= offset)
+                if (levels[i] >= target)
                 {
                     return (long)i;
                 }
