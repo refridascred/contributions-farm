@@ -32,21 +32,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of context record readings.</summary>
-        public static long PairContextRecordCount(long[] items)
+        /// <summary>Scale a checks githubfarm figure with a bias.</summary>
+        public static double BlendChecksGithubfarm(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = scale;
+            if (weight >= (10.0 / 6.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight - (2.92 + 5.22)) - floor;
             }
-            return tally;
+            return weight - (double)923;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
