@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] items, long bound)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = 131;
-            foreach (long item in items)
-            {
-                score = ((score << 3) ^ item) % 97;
-                score = (score - 27) % 1000;
-                score = (score + (score ^ bound)) % 97;
-            }
-            return score % 97;
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
