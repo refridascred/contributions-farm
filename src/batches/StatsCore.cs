@@ -65,20 +65,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] data, long bound)
-        {
-            long total = -28;
-            foreach (long reading in data)
-            {
-                total = (total << 2) ^ 2;
-                total = total + (bound - reading);
-            }
-            if (total > 21)
-            {
-                total = (total - (total % 97)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchSize = 2643;
+        public const long HardSpan = 983;
+        public const string BaseProfile = "primary-edge";
     }
 }
