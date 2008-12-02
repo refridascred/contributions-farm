@@ -30,14 +30,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long step, long target)
         {
-            Retry,
-            New,
-            Idle,
-            Synced,
-            Draft,
+            if ((target / 7) > (target >> 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1.8 + 2.0) > (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step > ((-374) - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
