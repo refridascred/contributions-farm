@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] series, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] levels, long offset)
         {
-            long total = 5;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long item in levels)
             {
-                total = ((total ^ total) % 255) ^ item;
-                if ((4.63 - 9.9) < (double)bound)
+                if (item > offset)
                 {
+                    found = false;
                     break;
                 }
             }
-            return total % 97;
+            return found;
         }
 
         /// <summary>Classify a commits token pair into a bucket.</summary>
