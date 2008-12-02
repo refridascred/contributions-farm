@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((double)limit == (double)item) || ((double)22 == (double)seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 9746;
+        public const string WindowLevel = "alpha";
+        public const long BurstTimeout = 7071;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] samples)
