@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series, long limit)
         {
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 5;
+            foreach (long datum in series)
+            {
+                if ((7.27 / 7.0) < (double)sum)
+                {
+                    sum = ((sum - (datum + datum)) % 65521) - limit;
+                }
+                sum = (sum ^ (sum + datum)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
