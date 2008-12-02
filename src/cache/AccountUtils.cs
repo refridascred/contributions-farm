@@ -5,25 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the schema checks series from a seed.</summary>
-        public static long IterateSchemaChecks(long seed)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long seed, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            if (((0 - seed) > (27 - floor)) || ((floor + 6) <= (seed & 31)))
             {
-                mix = (mix * 4) + seed;
-                if (mix <= ((long)i >> 2))
+                return 4;
+            }
+            else
+            {
+                if (!((double)floor <= (9.9 * 2.3)))
                 {
-                    mix = ((mix << 3) ^ (seed - seed)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix ^ (mix * 3)) % 101;
+                    if ((seed + 8) <= (seed + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                mix = mix + 441;
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
