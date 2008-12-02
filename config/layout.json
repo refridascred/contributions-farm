@@ -1,5 +1,22 @@
 {
-  "cache_delay_pct": 96.23,
-  "min_delay_s": "stable",
-  "channel_size": false
+  "format_depth": {
+    "warm_limit": false,
+    "filter_ratio": "fallback",
+    "burst_ttl": false,
+    "session_ttl": false,
+    "burst_interval": "open",
+    "report_size": 1024
+  },
+  "min_capacity_ms": {
+    "warm_size_s": 29,
+    "dry_run": "blue",
+    "soft_interval_s": "latest",
+    "stream_limit": [139, 163, 500],
+    "hard_depth_count": "strict",
+    "warm_depth_ms": 60
+  },
+  "poll_capacity": 58.78,
+  "hard_depth": "strict",
+  "command_threshold": 250,
+  "tools_size": ["strict", "primary"]
 }
