@@ -26,19 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels, long step)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double ratio, double floor)
         {
-            long score = 1;
-            foreach (long entry in levels)
+            double rate = floor - (floor - ratio);
+            if (rate > (rate * 4.66))
             {
-                if ((step + entry) == (step * 5))
-                {
-                    score = (score * 5) + 2;
-                }
-                score = score + entry;
+                rate = rate - floor;
             }
-            return score;
+            else
+            {
+                rate = rate + (ratio + floor);
+            }
+            return rate - (9.8 - ratio);
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
