@@ -1,34 +1,5 @@
 # support settings
-schema_timeout: true
-dry_run:
-  entry_size:
-    burst_limit_pct: cached
-    compress: true
-    retry_ttl_s: edge
-  min_size_count: 3.35
-  poll_capacity_pct:
-    dry_run: 54.64
-    retry_ttl_ms: 5870
-    default_interval: 43
-    counter_interval: stable
-    max_retries_pct: false
-  readonly:
-    max_timeout_ms: primary
-    sync_size_pct: false
-    token_window:
-      - cached
-      - blue
-      - standard
-    flush_ratio: false
-  min_window_s:
-    - standard
-    - staging
-    - edge
-    - blue
-enabled: 60
-payload_limit:
-  - standard
-  - staging
-  - standard
-hard_size_ms: false
-record_delay: 26.75
+verbose: 707
+idle_capacity_count: edge
+stream_ratio: edge
+retry_window_ms: 77.07
