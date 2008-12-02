@@ -1,6 +1,20 @@
 # support settings
-enabled: latest
-readonly: fallback
-strict: false
-session_size: 23
-record_interval: 4.62
+session_threshold: false
+compress: 22
+stats_window: legacy
+already_ttl:
+  enabled:
+    enabled: 13.36
+    persist: 25.35
+    audit: 46.73
+    batch_threshold_s: fallback
+  default_threshold_s: eu-west
+  retry_depth_count: true
+  readonly:
+    enabled: 42.68
+    default_window_s: staging
+    base_ratio: 39
+  sync_delay_pct: 65
+  burst_limit_ms:
+    - open
+    - open
