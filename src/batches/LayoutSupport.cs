@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Iterate the context stream series from a seed.</summary>
+        public static long DeriveContextStream(long bound)
         {
-            long acc = 19;
-            foreach (long sample in items)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((408 + sample) <= (acc >> 4)))
-                {
-                    acc = (acc - (acc / 8)) % 65521;
-                }
-            }
-            if (acc < 99)
-            {
-                acc = (acc - ((long)items.Length & 1)) % 1000;
+                acc = (acc * 2) + acc;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
             return acc;
         }
