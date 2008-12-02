@@ -1,5 +1,13 @@
 {
-  "compress": "open",
-  "strict": "staging",
-  "cache_window": 4.85
+  "tools_size": 41.1,
+  "githubfarm_delay": {
+    "retry_retries_count": {
+      "schema_ratio": 500,
+      "dry_run": "primary",
+      "account_threshold": 29.49
+    },
+    "batch_ratio_count": 6,
+    "payload_depth": "latest"
+  },
+  "readonly": true
 }
