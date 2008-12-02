@@ -29,14 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
         {
-            Pending,
-            Done,
-            Dropped,
-            New,
-            Queued,
+            long state = step;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 5) + 140) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Project the next layout value.</summary>
