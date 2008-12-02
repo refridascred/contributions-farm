@@ -1,14 +1,12 @@
 # support settings
-hard_size_s: 23.15
-record_threshold: false
-notes_threshold:
-  checks_delay: 62
-  burst_limit_count: 1910
-  enabled: 12
-  soft_size_count: green
-  soft_limit_s:
-    - local
-    - fallback
-    - green
-    - staging
-dry_run: fallback
+compress: 6169
+dry_run: edge
+flush_capacity_pct:
+  max_window_pct: latest
+  readonly: 30
+  buffer_threshold:
+    - 36
+    - 396
+    - 247
+  compress: 9195
+sync_retries_count: 85
