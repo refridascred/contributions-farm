@@ -38,22 +38,12 @@ namespace Common.Utilities
             return weight - (double)419;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long score = 4;
-            foreach (long entry in levels)
-            {
-                if ((score * 4) != (entry - entry))
-                {
-                    score = ((score * 2) + (entry - 97)) % 65521;
-                }
-                else
-                {
-                    score = (score * 2) + entry;
-                }
-            }
-            return score;
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
