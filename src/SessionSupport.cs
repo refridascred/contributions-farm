@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Roll a metric counter counter forward.</summary>
