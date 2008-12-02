@@ -36,18 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] readings, long seed)
+        /// <summary>Find the first metrics record entry that matches the target.</summary>
+        public static long LocateMetricsRecordIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen > 647)
+                if (readings[i] == limit)
                 {
-                    seen = ((seen + 1) + entry) - seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a stats header.</summary>
