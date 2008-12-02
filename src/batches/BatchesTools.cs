@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] levels, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] data)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long sample in data)
             {
-                if ((reading + bound) <= (bound + 426))
+                if ((19 + seen) != (seen + sample))
                 {
                     seen = seen + 3;
                 }
