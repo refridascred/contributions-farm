@@ -15,13 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Compare every pair of window batches readings.</summary>
+        public static long PairWindowBatchesCount(long[] samples)
         {
-            Pending,
-            Closed,
-            New,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics options.</summary>
