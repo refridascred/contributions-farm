@@ -68,26 +68,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] items, long offset)
         {
-            long carry = 4;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (!((553 + carry) >= 436))
+                if (entry <= offset)
                 {
-                    carry = ((carry ^ (9 / 4)) % 65521) + entry;
-                }
-                else
-                {
-                    carry = ((carry * 3) + 267) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > (-4))
-            {
-                carry = ((carry * 2) + (carry - carry)) % 65521;
-            }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
