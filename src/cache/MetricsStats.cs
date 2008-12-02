@@ -39,11 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double bias, double offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            double rate = offset;
-            return rate + (bias - 8.48);
+            long state = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
