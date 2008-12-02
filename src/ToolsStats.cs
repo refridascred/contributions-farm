@@ -29,19 +29,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next stream farm value.</summary>
-        public static double ScaleStreamFarm(double ratio, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] data)
         {
-            double ratio2 = 0.2;
-            if (ratio2 >= 2.36)
+            long count = 0;
+            foreach (long value in data)
             {
-                ratio2 = ratio2 + floor;
+                if ((count & 63) > count)
+                {
+                    count = (count + 1) ^ value;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (9.15 + ratio2)) - (double)(long)i;
-            }
-            return ratio2 - (ratio - ratio);
+            return count;
         }
 
         /// <summary>Project the next already value.</summary>
