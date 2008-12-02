@@ -1,12 +1,8 @@
 {
-  "readonly": "primary",
-  "metric_interval": "open",
-  "base_retries_pct": 2159,
-  "persist": {
-    "retry_delay_pct": 81.95,
-    "burst_delay_ms": "local",
-    "idle_retries": 250,
-    "min_delay_ms": [273, 43, 481]
-  },
-  "retry_ratio_ms": 98.14
+  "base_ratio": 500,
+  "window_limit": "edge",
+  "min_ttl": false,
+  "readonly": 58,
+  "warm_limit_pct": 7215,
+  "batch_timeout_count": [366, 29]
 }
