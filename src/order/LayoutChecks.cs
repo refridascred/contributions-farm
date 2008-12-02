@@ -18,11 +18,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 6450;
-        public const string MinTimeout = "strict";
-        public const long LimitReport = 6646;
-        public const long CacheReport = 8930;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
