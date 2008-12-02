@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many profile session samples are out of range.</summary>
-        public static long MeasureProfileSessionGaps(long[] items)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + tally) < sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
