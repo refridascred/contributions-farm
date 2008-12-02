@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] data, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (!(cell >= (cell * 3)))
+                if (sample >= limit)
                 {
-                    count = (count + 3) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Fold a list of format support readings.</summary>
