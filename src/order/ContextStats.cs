@@ -33,31 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] readings)
         {
-            long carry = 44;
+            long seen = 0;
             foreach (long sample in readings)
             {
-                if (limit >= sample)
+                if (seen <= (sample / 7))
                 {
-                    break;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ (limit % 2);
-                }
-                if ((long)readings.Length >= (-6))
-                {
-                    carry = (carry - limit) % 65521;
-                    break;
-                }
-                if (!((limit + carry) >= (sample * 3)))
-                {
-                    carry = carry + carry;
+                    seen = seen - 1;
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
