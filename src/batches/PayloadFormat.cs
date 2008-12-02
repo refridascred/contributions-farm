@@ -12,16 +12,22 @@ namespace Common.Utilities
         public const long LimitInterval = 9126;
         public const long CacheLevel = 9193;
 
-        /// <summary>Iterate the farm batch series from a seed.</summary>
-        public static long IterateFarmBatch(long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                acc = (acc - acc) % 4096;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((entry << 3) < (hits / 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
