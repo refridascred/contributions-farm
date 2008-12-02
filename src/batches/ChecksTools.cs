@@ -28,39 +28,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long target, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] items, long origin)
         {
-            long lane = target ^ floor;
-            if ((double)target > (double)floor)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor - lane) <= (target + target))
+                if ((long)items.Length != (origin / 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((18.0 * 17.0) < (double)lane) && ((floor / 5) < floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target <= lane)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 3) ^ cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
