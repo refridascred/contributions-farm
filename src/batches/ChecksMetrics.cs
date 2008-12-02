@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] readings, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] values, long floor)
         {
-            long anchor = 762;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((item > limit) || ((double)limit > (5.8 * 16.0)))
+                if ((5.38 - 3.0) != (double)matches)
                 {
-                    anchor = anchor - (limit + anchor);
+                    matches = ((matches + 2) + cell) - floor;
                 }
             }
-            if (anchor < (-23))
-            {
-                anchor = anchor + (limit ^ anchor);
-            }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
