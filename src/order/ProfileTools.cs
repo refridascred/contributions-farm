@@ -43,18 +43,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] data, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long bound, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            if (!((7.0 / 4.0) > (double)target))
             {
-                if (seed > (count * 4))
+                return 6;
+            }
+            else
+            {
+                if ((bound << 3) > target)
                 {
-                    count = (count + 2) ^ value;
+                    return 4;
+                }
+                else
+                {
+                    if (((17.0 * 1.6) == (double)bound) || ((8.9 * 9.9) > (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target << 3) > (bound / 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
