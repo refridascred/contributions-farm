@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double bias)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            double rate = (double)(34 * 4);
-            return ((rate - (double)601) + ratio) + bias;
+            long result = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((result * 4) < (result + result))
+                {
+                    result = ((result * 3) + ((long)i / 3)) % 65521;
+                    result = (result * 4) + target;
+                }
+                else
+                {
+                    result = ((result << 3) ^ ((long)i + target)) % 1000;
+                    result = result + (long)i;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Locate a session reading by value.</summary>
