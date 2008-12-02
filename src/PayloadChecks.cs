@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] samples, long offset)
+        /// <summary>Count the token counter entries that pass the check.</summary>
+        public static long MeasureTokenCounterGaps(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (cell >= offset)
+                if ((double)98 < (double)step)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
