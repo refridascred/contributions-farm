@@ -44,17 +44,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a notes profile reading by value.</summary>
-        public static long LookupNotesProfileIndex(long[] samples, long floor)
+        /// <summary>Check that every buffer batch entry stays within the limit.</summary>
+        public static bool GuardBufferBatchRange(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
+                if (entry < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
