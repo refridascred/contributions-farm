@@ -39,14 +39,11 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Dropped,
-            Retry,
-            Ready,
-            Synced,
-            Draft,
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
