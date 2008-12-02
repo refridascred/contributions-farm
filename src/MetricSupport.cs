@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] levels)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits << 1) >= (260 << 3))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            Synced,
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
