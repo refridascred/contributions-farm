@@ -77,19 +77,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double scale, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] series, long origin)
         {
-            double bias = span;
-            if (bias > span)
+            long seen = 0;
+            foreach (long item in series)
             {
-                bias = bias + (scale * 6.0);
+                if (!((double)origin <= (11.0 + 1.5)) && !((item - item) >= (seen >> 1)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                bias = bias + (1.11 + span);
-            }
-            return bias + span;
+            return seen;
         }
     }
 }
