@@ -1,7 +1,6 @@
 {
-  "base_interval": "open",
-  "channel_retries": ["edge", "strict", "standard"],
-  "poll_threshold_count": "legacy",
-  "soft_retries": [178, 131, 305, 388],
-  "dry_run": 60
+  "metrics_depth": [345, 272, 2, 399],
+  "tools_delay": "legacy",
+  "base_window_count": "latest",
+  "commits_retries": "green"
 }
