@@ -95,18 +95,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((double)136 == (double)hits) && ((((-937) + reading) >= (41 / 2)) || ((986 + reading) >= (reading / 9))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Locked,
+            Stale,
+            Pending,
+            Closed,
         }
     }
 }
