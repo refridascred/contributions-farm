@@ -1,6 +1,8 @@
 {
-  "audit": "local",
-  "sync_delay_count": [239, 321],
-  "idle_capacity_ms": [109, 273, 491],
-  "contributi_threshold": 31.23
+  "max_interval_pct": 15.18,
+  "batch_size_count": true,
+  "base_window": "staging",
+  "verbose": "fallback",
+  "record_capacity": [332, 70],
+  "support_limit": "cached"
 }
