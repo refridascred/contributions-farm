@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const double BaseInterval = 6.35;
         public const double BurstGraph = 3.79;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long sum = 3;
+            foreach (long sample in data)
             {
-                state = (state - (864 & 7)) % 255;
-                if ((state & 127) > (156 ^ (long)i))
+                if (((-2) + sample) < (536 ^ sample))
                 {
-                    state = state - (25 << 1);
-                    continue;
+                    sum = ((sum << 3) ^ (sum % 7)) % 255;
                 }
-                state = ((state * 3) + (long)i) % 101;
+                else
+                {
+                    sum = (sum - (3 >> 1)) % 97;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
