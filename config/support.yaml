@@ -1,29 +1,13 @@
 # support settings
-enabled:
-  - strict
-  - primary
-  - primary
-dry_run: 1118
-idle_limit: blue
-compress:
-  cache_depth_count: false
-  hard_window_count:
-    soft_size_count: 91
-    payload_ttl: 100
-    counter_window:
-      - open
-      - green
-    session_size: legacy
-    max_depth_pct: 1942
-    warm_delay_count: open
-  hard_retries_s:
-    - 234
-    - 274
-    - 70
-  base_size_pct: 4.11
-  hard_timeout: 1024
-cache_threshold_pct:
-  - 32
-  - 471
-  - 67
-  - 94
+dry_run:
+  - 352
+  - 141
+  - 274
+  - 99
+retry_window_count: 100
+poll_ratio:
+  - 380
+  - 306
+  - 112
+  - 164
+sync_delay: true
