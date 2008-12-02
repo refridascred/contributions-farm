@@ -1,14 +1,13 @@
 {
-  "verbose": 4760,
-  "burst_timeout": "primary",
-  "dry_run": {
-    "default_timeout_ms": 13.93,
-    "flush_window": "blue",
-    "audit": 100,
-    "strict": false,
-    "flush_delay_s": ["local", "local"],
-    "idle_threshold": [309, 103, 222]
+  "record_ratio": "blue",
+  "warm_interval_s": false,
+  "default_ratio": {
+    "batch_size_s": 56.89,
+    "min_threshold": 48,
+    "order_ratio": 9860,
+    "sync_capacity_ms": false
   },
-  "batch_interval_ms": [181, 51, 407, 309],
-  "metrics_threshold": "primary"
+  "graph_capacity": false,
+  "min_capacity": "green",
+  "retry_ratio_ms": "latest"
 }
