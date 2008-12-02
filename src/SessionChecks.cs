@@ -23,21 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
