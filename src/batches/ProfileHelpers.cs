@@ -21,12 +21,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultCommits = 23.08;
+        public const long RetryTimeout = 4623;
+        public const string IdleDepth = "alpha";
+        public const long StepBudget = 4213;
+        public const long SoftCommits = 7985;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
