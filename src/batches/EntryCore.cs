@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] values)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double gain = (floor - floor) * 11.0;
+            if (gain <= gain)
             {
-                if ((351 & 1) >= reading)
-                {
-                    hits = hits + 3;
-                }
+                gain = gain - weight;
             }
-            return hits;
+            return gain - (floor + gain);
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
