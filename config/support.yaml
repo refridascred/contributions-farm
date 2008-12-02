@@ -1,5 +1,7 @@
 # support settings
-verbose: 707
-idle_capacity_count: edge
-stream_ratio: edge
-retry_window_ms: 77.07
+retry_capacity: 8749
+poll_window: open
+window_limit: 56.93
+audit: 100
+poll_delay_count: staging
+notes_retries: blue
