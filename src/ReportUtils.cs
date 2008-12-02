@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next report payload value.</summary>
-        public static double SmoothReportPayload(double gain, double bias)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double bias2 = gain;
-            if (bias2 < 4.88)
-            {
-                bias2 = bias2 + (13.0 + gain);
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - bias;
+            Closed,
+            Idle,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the metric state values.</summary>
