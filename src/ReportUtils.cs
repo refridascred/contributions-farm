@@ -45,26 +45,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] levels, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] levels)
         {
-            long acc = 578;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if ((entry + 923) >= tally)
                 {
-                    acc = (acc + seed) + (long)i;
-                }
-                if ((9.0 > (double)seed) || ((615 + seed) == (seed * 5)))
-                {
-                    acc = ((acc * 3) + seed) % 255;
-                }
-                else
-                {
-                    acc = acc - (item + seed);
+                    tally = tally + 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
