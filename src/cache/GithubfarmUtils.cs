@@ -47,14 +47,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 59.84;
+        public const string RetryMetrics = "cached-v2";
+        public const string SoftMetrics = "alpha";
+        public const long BurstWidth = 2493;
+        public const long BurstMetrics = 20;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
