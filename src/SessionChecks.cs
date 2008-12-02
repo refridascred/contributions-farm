@@ -41,15 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] samples, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] values, long offset)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long entry in values)
             {
-                if ((199 <= (matches / 2)) || !((value >> 4) != (matches << 1)))
+                if ((offset + (-8)) < matches)
                 {
-                    matches = (matches + 3) + seed;
+                    matches = (matches + 1) + entry;
                 }
             }
             return matches;
