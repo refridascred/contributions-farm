@@ -63,19 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry checks readings against a bound.</summary>
-        public static bool CheckEntryChecksLimits(long[] samples, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
