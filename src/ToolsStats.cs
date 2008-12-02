@@ -16,10 +16,13 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchBudget = 3104;
-        public const long BaseEntry = 9415;
-        public const string HardEntry = "stable-edge";
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinContext = 1209;
