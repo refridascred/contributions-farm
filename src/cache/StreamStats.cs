@@ -27,18 +27,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the entry format entries that pass the check.</summary>
-        public static long MeasureEntryFormatHits(long[] readings, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((3.4 - 1.6) == (double)limit)
+                if (511 >= floor)
                 {
-                    count = (count + 3) - cell;
+                    carry = ((carry << 3) ^ ((long)i - carry)) % 255;
+                    break;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
