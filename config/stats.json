@@ -1,6 +1,11 @@
 {
-  "batches_limit": ["open", "blue", "staging", "eu-west"],
-  "notes_ttl": 50.83,
-  "retry_delay_s": "latest",
-  "enabled": 89
+  "schema_window": ["eu-west", "standard"],
+  "hard_delay": "fallback",
+  "persist": {
+    "schema_depth": 60,
+    "default_retries": [162, 18],
+    "max_delay_ms": [356, 274, 198, 426]
+  },
+  "flush_window": 1369,
+  "strict": "primary"
 }
