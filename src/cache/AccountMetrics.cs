@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] values, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long sum = 6;
+            foreach (long datum in samples)
             {
-                if (((long)values.Length + entry) <= (entry / 5))
+                if ((datum - sum) <= (offset >> 5))
                 {
-                    seen = (seen + 2) - origin;
+                    sum = (sum ^ (datum % 2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - datum) % 97;
                 }
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Locate a support command reading by value.</summary>
