@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long origin, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] samples)
         {
-            if ((target / 8) >= (origin * 5))
+            long mark = 657;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)target >= (9.0 / 2.0)) && ((double)target <= (double)origin))
+                if (((mark ^ mark) < (mark - value)) || ((0 - mark) != (mark >> 5)))
                 {
-                    return 0;
+                    mark = mark - (221 << 2);
                 }
-                else
+                if ((mark % 12) < mark)
                 {
-                    if (((target * 3) >= (origin + target)) || (8.4 < (double)target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin % 2) <= (8 + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mark < 7)
+            {
+                mark = mark ^ (8 + 5);
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit stats cluster readings against a rule.</summary>
