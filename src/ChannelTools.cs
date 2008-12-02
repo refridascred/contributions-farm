@@ -37,12 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 5) + (seed + seed)) % 97;
+                if (seed >= (sum + seed))
+                {
+                    sum = (sum - (sum + sum)) % 255;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
