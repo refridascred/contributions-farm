@@ -23,13 +23,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            New,
-            Failed,
-            Dropped,
-            Stale,
+            public double Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
