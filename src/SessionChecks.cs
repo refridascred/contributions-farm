@@ -59,10 +59,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepFactor = 5795;
-        public const long BatchLevel = 2508;
-        public const long HardCommits = 8160;
-        public const long HardDepth = 529;
+        /// <summary>Iterate the stats metric series from a seed.</summary>
+        public static long SeriesStatsMetric(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 4) + 8) % 101;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
