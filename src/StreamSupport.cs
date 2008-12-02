@@ -26,18 +26,18 @@ namespace Common.Utilities
             return (scale + bias) + ratio;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!((15 ^ matches) != (matches * 4)))
+                if ((2 - step) > (2 << 1))
                 {
-                    matches = (matches + 3) + datum;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
