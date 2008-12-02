@@ -13,21 +13,32 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of window batches readings.</summary>
-        public static long PairWindowBatchesCount(long[] samples)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long step = limit - offset;
+            if ((offset >> 2) < limit)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset / 5) < step)
                 {
-                    if ((samples[i] ^ samples[j]) == 10)
+                    return 4;
+                }
+                else
+                {
+                    if (((5.3 - 12.0) >= (double)limit) || ((double)offset > (double)258))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a metrics options.</summary>
