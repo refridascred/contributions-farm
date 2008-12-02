@@ -49,14 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] items, long target)
         {
-            Failed,
-            Dropped,
-            Retry,
-            Draft,
-            Queued,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen % 10) >= (entry >> 4))
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
         }
     }
 }
