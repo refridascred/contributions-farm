@@ -86,18 +86,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit context filter readings against a rule.</summary>
-        public static long MeasureContextFilterHits(long[] items)
+        /// <summary>Digest a series of buffer metric entries.</summary>
+        public static long CombineBufferMetric(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = 238;
+            foreach (long item in items)
             {
-                if (((12.0 >= (double)seen) && (seen < (1 - (long)items.Length))) || ((seen * 2) > (cell * 4)))
-                {
-                    seen = seen + 2;
-                }
+                mix = (mix ^ (item + (-51))) % 101;
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
