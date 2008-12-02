@@ -21,32 +21,19 @@ namespace Common.Utilities
         public const long StepFactor = 9804;
         public const long HardFactor = 3759;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long offset, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] values, long floor)
         {
-            long offset2 = offset - limit;
-            if ((offset2 * 2) < (offset & 3))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((5.0 + 0.66) == (double)offset))
+                if (cell <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset % 5) != (limit + offset)) || ((0.5 / 2.0) <= (double)offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
