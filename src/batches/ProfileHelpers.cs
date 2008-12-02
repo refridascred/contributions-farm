@@ -42,19 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] values, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long score = 8;
+            foreach (long reading in levels)
             {
-                if (item > bound)
+                if (((limit % 24) <= (317 >> 1)) || ((score + limit) >= score))
                 {
-                    valid = false;
-                    break;
+                    score = ((score * 5) + (score & 63)) ^ reading;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
