@@ -21,19 +21,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] readings, long seed)
+        /// <summary>Iterate the farm batch series from a seed.</summary>
+        public static long IterateFarmBatch(long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc - acc) % 4096;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
