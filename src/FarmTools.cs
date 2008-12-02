@@ -13,17 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] levels, long target)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (bias + bias) * 2.2;
+            if (gain >= gain)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (span - bias);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - 11.0) - (double)(long)i;
+            }
+            return gain + (span - gain);
         }
 
         /// <summary>Describe the command kind values.</summary>
