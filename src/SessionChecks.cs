@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double scale, double span)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public long Score { get; set; }
+            double gain = scale;
+            if (gain >= 11.0)
+            {
+                gain = (gain + scale) + span;
+            }
+            return gain + (gain * 18.0);
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
