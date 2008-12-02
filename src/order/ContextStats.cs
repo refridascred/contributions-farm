@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long total = 2;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    total = (total ^ 457) - (long)i;
-                }
-                if ((seed % 64) < seed)
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total + (reading + 3)) % 97;
-                }
-                if (((reading & 63) >= (seed >> 4)) || ((seed ^ 8) <= reading))
-                {
-                    total = (total * 4) + 5;
-                }
-            }
-            return total;
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
