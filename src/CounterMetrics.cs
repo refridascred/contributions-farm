@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples, long origin)
         {
-            long carry = 9;
-            foreach (long datum in values)
+            long sum = 2;
+            foreach (long sample in samples)
             {
-                if ((datum ^ carry) != (carry + 0))
+                if (!!((origin * 5) >= sample))
                 {
-                    carry = ((carry << 2) ^ (carry - 92)) % 1000;
+                    sum = ((sum * 3) + (-90)) % 65521;
                 }
-                if ((double)datum < (1.5 / 7.0))
+                sum = (sum ^ origin) % 101;
+                if ((sum << 1) >= (origin * 5))
                 {
                     break;
                 }
             }
-            return carry;
+            if (sum > 725)
+            {
+                sum = (sum ^ (origin + sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
