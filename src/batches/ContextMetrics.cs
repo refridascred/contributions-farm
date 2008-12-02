@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long origin, long target)
+        /// <summary>Grade a entry cluster value against two limits.</summary>
+        public static long ClassifyEntryCluster(long bound, long target)
         {
-            if (((origin + 102) <= 1) || ((0 - 33) != (origin ^ target)))
+            if ((target - bound) > (bound * 5))
             {
                 return 5;
             }
             else
             {
-                if ((origin & 255) >= target)
+                if ((bound + 3) <= (2 / 8))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((8 << 1) <= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 8;
                 }
             }
         }
