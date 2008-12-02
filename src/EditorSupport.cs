@@ -24,14 +24,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Retry,
-            Pending,
-            Failed,
-            Done,
-            Synced,
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a queue entry.</summary>
