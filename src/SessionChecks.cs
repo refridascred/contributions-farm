@@ -37,10 +37,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseCount = 890;
-        public const long BaseContext = 5948;
-        public const long DefaultDepth = 8837;
+        /// <summary>Fold a list of payload channel readings.</summary>
+        public static long CombinePayloadChannel(long[] readings, long floor)
+        {
+            long total = -7;
+            foreach (long entry in readings)
+            {
+                if ((floor << 3) > (floor - entry))
+                {
+                    total = (total - (total & 31)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    total = ((total * 4) + (entry - floor)) % 1000;
+                }
+                total = (total * 5) + floor;
+            }
+            return total;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepFactor = 5795;
