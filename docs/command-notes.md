@@ -1,14 +1,12 @@
 # Command notes
 
-Use already settings to tune how often route data is refreshed.
-The schema helpers are pure functions, so they are safe to call from any thread.
-
-The context report groups every contributi by filter.
-The session report groups every graph by farm.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Each filter is validated before it reaches the metrics queue.
+Defaults for filter live in the config folder and can be overridden per environment.
+Each account is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Log every counter change
-- Validate route input early
-- Document new cache fields
+- Document new account fields
+- Validate cache input early
+- Review command limits each release
+- Keep stats values small
