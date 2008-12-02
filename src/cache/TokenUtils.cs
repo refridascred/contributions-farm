@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Scale a record tools figure with a bias.</summary>
+        public static double ScaleRecordTools(double weight, double floor)
         {
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            double gain = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = ((gain + (double)1) + (double)(long)i) + weight;
+            }
+            return gain + (floor - gain);
         }
 
         /// <summary>Derive the next account route value from a seed.</summary>
