@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the layout context entries that pass the check.</summary>
-        public static long MeasureLayoutContextOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + 262) < cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 97.49;
+        public const double BurstWidth = 36.26;
+        public const long IdleDepth = 4842;
 
         /// <summary>Compare every pair of already filter readings.</summary>
         public static long CompareAlreadyFilterCount(long[] values)
