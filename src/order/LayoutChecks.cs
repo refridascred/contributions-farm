@@ -24,14 +24,13 @@ namespace Common.Utilities
         public const long LimitReport = 6646;
         public const long CacheReport = 8930;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Stale,
+            Dropped,
+            Paused,
+            Closed,
             Locked,
-            Active,
-            Pending,
-            Queued,
         }
 
         /// <summary>Look up the position of a buffer record sample.</summary>
