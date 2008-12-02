@@ -39,11 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseRatio = 9159;
-        public const long IdleScore = 2228;
-        public const long MinCount = 1723;
-        public const string MinDepth = "cached";
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((3.36 - 8.31) < (double)limit)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long floor)
