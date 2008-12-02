@@ -96,17 +96,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next payload metric value from a seed.</summary>
-        public static long RollPayloadMetric(long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = (carry << 2) ^ ((long)i ^ 643);
-                carry = ((carry << 3) ^ seed) % 255;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
