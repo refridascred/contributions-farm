@@ -65,10 +65,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 7605;
-        public const string IdleEditor = "open";
-        public const string BaseFactor = "primary-1";
-        public const string BaseEditor = "cached";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
