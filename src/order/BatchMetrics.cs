@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            public bool Region { get; set; }
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((896 >= ((long)i << 2)) || (origin > (origin + origin)))
+                {
+                    state = (state + (7 >> 1)) % 1000;
+                }
+                state = (state << 2) ^ (origin >> 4);
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the counter class values.</summary>
