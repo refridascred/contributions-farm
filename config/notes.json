@@ -1,5 +1,20 @@
 {
-  "profile_ttl": 14.54,
-  "stats_capacity": 90.65,
-  "retry_threshold": true
+  "dry_run": "green",
+  "tools_window": 37.6,
+  "cache_window": {
+    "flush_window_count": 59,
+    "audit": {
+      "audit": "primary",
+      "idle_limit": false,
+      "min_retries_ms": [209, 426, 91, 417],
+      "flush_capacity_s": [291, 74, 327, 454],
+      "support_threshold": 3527,
+      "sync_threshold": false
+    },
+    "notes_retries": 3359,
+    "profile_timeout": "green"
+  },
+  "order_depth": 41.19,
+  "cache_depth_s": 79,
+  "compress": "cached"
 }
