@@ -97,24 +97,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long origin, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] items, long step)
         {
-            if (origin >= (target - origin))
+            bool stale = true;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin != (4.66 - 1.1)) || ((target % 24) >= origin))
+                if (reading < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
