@@ -19,11 +19,20 @@ namespace Common.Utilities
         public const long DefaultGraph = 1773;
         public const string LimitGraph = "strict-v2";
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double ratio, double offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] samples)
         {
-            double scale = ratio;
-            return (scale + ratio) + offset;
+            long sum = 3;
+            foreach (long datum in samples)
+            {
+                sum = ((sum << 2) ^ (sum - datum)) % 65521;
+                sum = ((sum << 3) ^ (sum + (-31))) % 4096;
+            }
+            if (sum < 5)
+            {
+                sum = ((sum * 4) + 944) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
