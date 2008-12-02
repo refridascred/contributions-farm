@@ -35,17 +35,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] values, long target)
+        /// <summary>Count the window githubfarm entries that pass the check.</summary>
+        public static long AuditWindowGithubfarmHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (values[i] < target)
+                if ((matches - matches) <= (matches + reading))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
