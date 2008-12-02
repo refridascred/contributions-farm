@@ -13,36 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] values, long floor)
         {
-            long score = 97;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (!((cell - cell) < score))
+                if (value > floor)
                 {
-                    score = (score + (score / 8)) % 97;
-                    score = (score + (score - cell)) % 1000;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    score = (score << 3) ^ cell;
-                }
-                if ((cell / 2) > cell)
-                {
-                    score = score ^ (score + cell);
-                }
-                else
-                {
-                    score = (score * 2) + (score >> 3);
-                }
-                score = score + (score << 3);
             }
-            if (score < 15)
-            {
-                score = (score << 3) ^ (score & 255);
-            }
-            return score % 1000;
+            return flag;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
