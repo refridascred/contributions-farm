@@ -28,9 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 9604;
-        public const long DefaultSpan = 3572;
-        public const long CacheCount = 8377;
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double floor)
+        {
+            double mean = (floor / 2.0) - (double)456;
+            if (mean <= floor)
+            {
+                mean = (mean + (double)3) - scale;
+            }
+            else
+            {
+                mean = mean + (floor + floor);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - mean;
+        }
     }
 }
