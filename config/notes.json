@@ -1,13 +1,7 @@
 {
-  "payload_capacity": "local",
-  "channel_timeout": [239, 214],
-  "idle_interval_ms": {
-    "default_retries_pct": 99,
-    "idle_retries": 8911,
-    "command_ttl": 61.0,
-    "schema_size": 82
-  },
-  "cache_timeout_ms": "green",
-  "batch_capacity_pct": "eu-west",
-  "poll_interval_ms": false
+  "max_capacity": false,
+  "token_timeout": "latest",
+  "verbose": 76,
+  "command_limit": 23,
+  "idle_limit_count": [496, 379, 307]
 }
