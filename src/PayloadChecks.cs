@@ -15,18 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] samples, long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] samples, long offset)
         {
-            long result = 36;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((4.29 + 16.0) < (double)value)
+                if (cell >= offset)
                 {
-                    result = ((result << 3) ^ (seed + seed)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the stats kind values.</summary>
