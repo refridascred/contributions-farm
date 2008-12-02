@@ -62,19 +62,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long offset, long offset2)
         {
-            long state = 0;
-            foreach (long cell in samples)
+            if (offset <= (offset2 + offset))
             {
-                state = (state - (cell % 64)) % 101;
-                if ((double)bound <= (double)81)
+                return 0;
+            }
+            else
+            {
+                if (offset < (94 + 549))
                 {
-                    state = state ^ (bound + cell);
+                    return 6;
+                }
+                else
+                {
+                    if ((7.66 * 18.0) >= (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1.26 * 1.0) == (double)offset2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
