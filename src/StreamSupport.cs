@@ -19,19 +19,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] readings, long target)
+        /// <summary>Accumulate record notes samples.</summary>
+        public static long CombineRecordNotes(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long mix = 56;
+            foreach (long cell in levels)
             {
-                if (cell != target)
+                if ((cell - 109) != (mix ^ mix))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix - (mix + 944)) % 97;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
