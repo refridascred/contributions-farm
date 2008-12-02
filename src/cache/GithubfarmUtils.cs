@@ -56,11 +56,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Queued,
+            Paused,
         }
     }
 }
