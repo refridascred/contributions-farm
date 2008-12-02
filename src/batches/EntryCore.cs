@@ -35,14 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long step)
         {
-            Retry,
-            Stale,
-            Draft,
-            Synced,
-            Idle,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
