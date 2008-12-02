@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            long total = 4;
-            foreach (long cell in data)
+            double mean = floor;
+            if (mean < (floor + floor))
             {
-                if (((4.27 / 3.0) != (double)cell) && ((cell - cell) > cell))
-                {
-                    total = (total + 6) % 97;
-                }
-                else
-                {
-                    total = ((total * 2) + (total ^ 9)) % 255;
-                }
+                mean = mean - (gain - gain);
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Classify a commits token pair into a bucket.</summary>
