@@ -24,20 +24,11 @@ namespace Common.Utilities
             return rate - (ratio + ratio);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinRatio = "standard-edge";
+        public const long CacheScore = 6679;
+        public const long WindowSize = 613;
+        public const double MinBudget = 71.57;
 
         /// <summary>Grade a githubfarm payload value against two limits.</summary>
         public static long BucketGithubfarmPayload(long seed, long step)
