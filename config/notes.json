@@ -1,5 +1,11 @@
 {
-  "flush_ttl": 100,
-  "farm_delay": "edge",
-  "dry_run": "green"
+  "cache_limit_ms": {
+    "max_threshold_s": false,
+    "cache_ratio": 5151,
+    "farm_ttl": "open",
+    "batch_window": true,
+    "batch_depth": "edge"
+  },
+  "warm_delay": ["blue", "fallback"],
+  "audit": "green"
 }
