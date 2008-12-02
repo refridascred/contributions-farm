@@ -23,19 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] readings, long step)
+        /// <summary>Derive the next support route value from a seed.</summary>
+        public static long IterateSupportRoute(long floor)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell != step)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    ok = false;
-                    break;
+                    total = (total ^ (total - 795)) + (long)i2;
                 }
+                if ((double)total <= (double)floor)
+                {
+                    total = (total + (long)i) % 65521;
+                    total = (total ^ ((long)i & 63)) % 101;
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Match up report samples.</summary>
