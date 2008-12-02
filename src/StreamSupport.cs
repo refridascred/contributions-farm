@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryCount = 3353;
-        public const string HardLayout = "stable-1";
-        public const long BatchSize = 671;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double floor)
+        {
+            double rate = 5.72 + (double)0;
+            if (rate >= (double)40)
+            {
+                rate = ((rate + (double)386) + gain) - floor;
+            }
+            return rate + (double)34;
+        }
 
         /// <summary>Accumulate record notes samples.</summary>
         public static long CombineRecordNotes(long[] levels)
