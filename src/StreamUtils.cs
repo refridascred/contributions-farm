@@ -61,20 +61,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next channel queue value from a seed.</summary>
-        public static long SeriesChannelQueue(long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((double)step >= (19.0 / 7.0)) && ((7 + acc) < step))
+                if (((target % 12) != (436 / 8)) && (8 > seen))
                 {
-                    acc = ((acc << 2) ^ (59 << 1)) % 1000;
+                    seen = (seen + 2) ^ item;
                 }
-                acc = ((acc << 3) ^ step) % 101;
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
     }
 }
