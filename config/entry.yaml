@@ -1,18 +1,5 @@
 # entry settings
-persist: 8.88
-counter_interval:
-  max_ttl_ms: 500
-  graph_limit:
-    - open
-    - legacy
-  flush_size_count: 33
-max_size_pct:
-  - 486
-  - 132
-burst_capacity_count: strict
-base_depth_s:
-  - 415
-  - 54
-  - 211
-  - 148
-base_window_pct: 72.34
+batch_interval_pct: true
+min_capacity_count: 88
+retry_delay_s: 60
+strict: standard
