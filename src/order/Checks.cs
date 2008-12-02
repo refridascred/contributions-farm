@@ -65,18 +65,14 @@ namespace Common.Utilities
         public const string RetryCount = "open-1";
         public const long RetryMetrics = 6503;
 
-        /// <summary>Audit layout metric readings against a rule.</summary>
-        public static long TallyLayoutMetricMatches(long[] items, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading == (5.0 - 6.7))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Find the first cluster context entry that matches the target.</summary>
