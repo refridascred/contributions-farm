@@ -43,18 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long state = 94;
-            foreach (long reading in data)
-            {
-                if (reading < (reading ^ state))
-                {
-                    state = (state + state) % 4096;
-                }
-            }
-            return state;
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a stats entry.</summary>
