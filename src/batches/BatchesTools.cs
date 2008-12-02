@@ -31,12 +31,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double scale, double offset)
         {
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            double scale2 = scale;
+            if (scale2 >= (offset / 4.0))
+            {
+                scale2 = scale2 + offset;
+            }
+            else
+            {
+                scale2 = scale2 + (double)2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 + offset;
         }
     }
 }
