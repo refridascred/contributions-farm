@@ -33,21 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer cluster samples.</summary>
-        public static long CompareBufferClusterCount(long[] values)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a batch stats.</summary>
