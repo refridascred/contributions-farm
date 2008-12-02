@@ -98,13 +98,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long origin, long target)
         {
-            Failed,
-            Synced,
-            Closed,
-            Idle,
+            if (origin >= (target - origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)origin != (4.66 - 1.1)) || ((target % 24) >= origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
