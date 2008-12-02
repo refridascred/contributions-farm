@@ -65,22 +65,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many report batches samples are out of range.</summary>
-        public static long MeasureReportBatchesMatches(long[] samples)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell * 5) == (count * 2)) && ((count + count) >= ((long)samples.Length - count)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
