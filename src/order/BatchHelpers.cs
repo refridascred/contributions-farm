@@ -38,18 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit tools profile readings against a rule.</summary>
-        public static long TallyToolsProfileGaps(long[] series)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item + (-323)) <= (tally + item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            Closed,
+            Pending,
         }
     }
 }
