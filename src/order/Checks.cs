@@ -52,18 +52,18 @@ namespace Common.Utilities
         public const string RetryCount = "open-1";
         public const long RetryMetrics = 6503;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] samples)
+        /// <summary>Audit layout metric readings against a rule.</summary>
+        public static long TallyLayoutMetricMatches(long[] items, long limit)
         {
-            long anchor = -4;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((sample - anchor) == (sample << 2))
+                if ((double)reading == (5.0 - 6.7))
                 {
-                    anchor = (anchor - (anchor ^ (long)samples.Length)) % 65521;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Find the first cluster context entry that matches the target.</summary>
