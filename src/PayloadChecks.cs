@@ -29,14 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] data, long target)
         {
-            New,
-            Retry,
-            Done,
-            Paused,
-            Ready,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading ^ reading) > count))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already kind values.</summary>
