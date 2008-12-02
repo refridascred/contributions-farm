@@ -34,13 +34,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Look up the position of a buffer record sample.</summary>
+        public static long LocateBufferRecordIndex(long[] data, long offset)
         {
-            Ready,
-            Active,
-            Failed,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
