@@ -33,18 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] readings, long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long sum = -618;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)sum > (0.95 * 1.0)) && ((sample - limit) > sum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum - (sum << 3);
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
