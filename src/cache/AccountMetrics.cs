@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double IdleCount = 13.23;
         public const long RetryBudget = 8991;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((2.6 - 1.0) < (double)reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 6544;
+        public const long MinCommits = 7546;
+        public const long CacheLevel = 1210;
+        public const long WindowWidth = 2673;
+        public const long CacheWidth = 8551;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinContributi = 9340;
