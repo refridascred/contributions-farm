@@ -19,24 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long origin, long limit)
+        /// <summary>Validate already session readings against a bound.</summary>
+        public static bool ValidateAlreadySessionRange(long[] items, long bound)
         {
-            if ((double)limit >= (2.9 * 13.0))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin < 7.7)
+                if (entry < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
