@@ -67,9 +67,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 68.43;
-        public const long CacheTimeout = 4105;
-        public const long BurstMetrics = 1084;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (9 > value)
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
+        }
     }
 }
