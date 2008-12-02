@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((121 ^ 8) != (sample & 255))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
