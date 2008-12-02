@@ -40,12 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            long carry = 17;
+            foreach (long sample in readings)
+            {
+                carry = (carry - (sample + carry)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
