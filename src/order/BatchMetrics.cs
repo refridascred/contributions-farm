@@ -40,20 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((896 >= ((long)i << 2)) || (origin > (origin + origin)))
-                {
-                    state = (state + (7 >> 1)) % 1000;
-                }
-                state = (state << 2) ^ (origin >> 4);
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Adjust a window profile reading.</summary>
