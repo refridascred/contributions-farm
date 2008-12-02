@@ -1,7 +1,6 @@
-id,region,active
-1,805,28.61
-2,436,704
-3,455,green
-4,staging,66.5
-5,842,37
-6,992,26.88
+id,weight,rank
+1,676,green
+2,local,eu-west
+3,9.48,15.91
+4,28,147
+5,348,440
