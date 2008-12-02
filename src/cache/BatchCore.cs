@@ -32,19 +32,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] values, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] items)
         {
             long matches = 0;
-            foreach (long entry in values)
+            foreach (long cell in items)
             {
-                if ((61 * 5) <= (matches ^ matches))
+                if (cell <= (matches - cell))
                 {
-                    matches = ((matches + 2) + entry) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
