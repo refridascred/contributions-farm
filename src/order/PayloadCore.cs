@@ -26,11 +26,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] data)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry < (7.9 * 17.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format info.</summary>
