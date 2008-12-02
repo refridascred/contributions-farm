@@ -66,12 +66,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardWidth = 2786;
-        public const long LimitBatches = 1300;
-        public const long StepBatches = 1649;
-        public const long BatchWidth = 9270;
-        public const double CacheBatches = 8.31;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] items)
+        {
+            long mark = 3;
+            foreach (long cell in items)
+            {
+                mark = mark + (mark >> 2);
+                if (((-4) * 2) != (cell + mark))
+                {
+                    mark = (mark ^ (cell + mark)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteRange(long[] readings, long floor)
