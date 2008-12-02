@@ -79,13 +79,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Draft,
-            Ready,
+            Retry,
+            Queued,
             Active,
-            Synced,
         }
     }
 }
