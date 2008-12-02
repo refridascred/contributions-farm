@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] levels, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (cell <= seed)
+                if ((double)value == (2.2 * 7.0))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a batch stats.</summary>
