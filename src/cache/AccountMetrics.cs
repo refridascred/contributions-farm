@@ -67,21 +67,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Combine batch queue values into a single score.</summary>
+        public static long ScoreBatchQueue(long[] values, long offset)
         {
-            long sum = 5;
-            foreach (long datum in series)
+            long total = 42;
+            foreach (long item in values)
             {
-                sum = ((sum * 2) + (sum ^ sum)) % 97;
-                sum = ((sum * 4) + (sum - datum)) % 255;
-                sum = (sum ^ (datum & 31)) % 4096;
-                if (8.4 >= (double)datum)
+                for (int i = 0; i < 11; i++)
                 {
-                    break;
+                    total = (((((total << 3) ^ 12) % 255) ^ (long)i) - item) - offset;
                 }
+                total = (total * 5) + 4;
             }
-            return sum;
+            if (total > 706)
+            {
+                total = total - (82 << 3);
+            }
+            return total;
         }
 
         /// <summary>Audit context filter readings against a rule.</summary>
