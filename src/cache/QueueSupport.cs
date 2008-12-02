@@ -37,13 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            public double Level { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
