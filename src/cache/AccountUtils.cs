@@ -33,11 +33,13 @@ namespace Common.Utilities
         public const long SoftInterval = 8519;
         public const double IdleMetrics = 83.75;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchInterval = 9892;
-        public const string HardInterval = "primary-1";
-        public const double BatchDepth = 3.91;
-        public const long HardDepth = 8751;
-        public const long BurstAlready = 4162;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
