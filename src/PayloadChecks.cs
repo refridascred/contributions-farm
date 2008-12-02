@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
+            Failed,
             Closed,
-            Retry,
-            Idle,
-            Stale,
+            Synced,
+            Draft,
             Dropped,
         }
 
