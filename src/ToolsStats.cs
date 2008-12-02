@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] values)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits >> 5) < (988 / 3))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Match up token samples.</summary>
