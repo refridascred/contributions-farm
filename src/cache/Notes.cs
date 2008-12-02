@@ -16,11 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryCount = 2643;
-        public const double HardSchema = 63.1;
-        public const double WindowSchema = 1.42;
-        public const double MinSchema = 29.75;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((tally ^ 963) >= (item - item)) && ((double)item > 8.2))
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
