@@ -1,7 +1,13 @@
 {
-  "sync_ttl_count": 890,
-  "enabled": 89.53,
-  "poll_depth": 30,
-  "account_delay": "eu-west",
-  "retry_window": "latest"
+  "compress": true,
+  "max_window_count": "blue",
+  "persist": {
+    "default_depth_pct": "latest",
+    "compress": "eu-west",
+    "min_limit_s": 3,
+    "window_depth": "stable"
+  },
+  "strict": 500,
+  "context_limit": 80.44,
+  "buffer_threshold": 31.74
 }
