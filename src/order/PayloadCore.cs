@@ -46,37 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long seed, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long limit, long limit2)
         {
-            long cur = seed + floor;
-            if (floor < cur)
+            long bound = limit - limit2;
+            if ((limit * 3) > (limit - limit2))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((cur + floor) > (floor + cur))
+                if (bound > limit)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((floor > (cur * 4)) && ((double)cur >= (7.0 * 7.1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((6 >> 3) < seed) && ((530 / 4) > cur))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
