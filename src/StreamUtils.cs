@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long HardFactor = 4529;
         public const long DefaultEntry = 8014;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] readings, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((reading << 2) < (reading / 3))
+                if ((double)origin <= (double)tally)
                 {
-                    seen = (seen + 3) + origin;
+                    tally = (tally + 3) - item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
