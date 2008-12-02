@@ -59,36 +59,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long step, long limit)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long limit, long origin)
         {
-            long bound = step - limit;
-            if ((bound + limit) >= (step / 3))
+            if (!(origin >= (origin << 1)))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (((9.22 - 19.0) <= (double)step) && ((double)bound == (double)747))
+                if (((origin - origin) >= origin) && ((6.0 * 9.0) < (double)limit))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (3.31 > (double)limit)
+                    if (((limit << 3) <= (origin - limit)) || (15.0 >= (double)origin))
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        if ((4.2 * 3.0) <= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 6;
                     }
                 }
             }
