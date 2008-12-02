@@ -17,10 +17,11 @@ namespace Common.Utilities
         public const double CacheBudget = 87.6;
         public const long WindowAlready = 5769;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftSpan = 38.34;
-        public const long CacheGithubfarm = 1974;
-        public const double MinLevel = 46.48;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryTimeout = 5622;
+        public const long DefaultInterval = 7561;
+        public const string SoftContext = "alpha";
+        public const long IdleScore = 4842;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
