@@ -22,22 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            long mark = 2;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((mark * 4) <= ((long)items.Length % 97)) && ((reading ^ 988) < (reading + reading))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark ^ (reading >> 2);
-                }
-                if (!(39 <= ((long)items.Length >> 4)))
-                {
-                    mark = (mark << 3) ^ (reading + reading);
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
