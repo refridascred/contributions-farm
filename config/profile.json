@@ -1,8 +1,6 @@
 {
-  "base_ratio": 500,
-  "window_limit": "edge",
-  "min_ttl": false,
-  "readonly": 58,
-  "warm_limit_pct": 7215,
-  "batch_timeout_count": [366, 29]
+  "poll_limit_pct": 49.74,
+  "max_ratio": 70.66,
+  "cache_depth_ms": 1233,
+  "cluster_ratio": "latest"
 }
