@@ -96,23 +96,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double bias)
+        /// <summary>Audit record editor readings against a rule.</summary>
+        public static long CountRecordEditorHits(long[] values, long limit)
         {
-            double drift = 15.0 - 13.0;
-            if (drift < (drift * 0.2))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                drift = drift - 19.0;
+                if (!((tally & 7) > 0))
+                {
+                    tally = ((tally + 3) ^ reading) - limit;
+                }
             }
-            else
-            {
-                drift = drift + (scale + bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift / 8.0)) + (double)(long)i;
-            }
-            return drift - (scale * 4.06);
+            return tally;
         }
     }
 }
