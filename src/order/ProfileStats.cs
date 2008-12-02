@@ -53,19 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double weight, double span)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double ratio = weight + (20.0 / 3.0);
-            if (ratio >= (ratio * 7.22))
-            {
-                ratio = (ratio + (ratio + 2.1)) + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (2.0 - 0.24)) + (double)(long)i;
-            }
-            return ratio + weight;
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
