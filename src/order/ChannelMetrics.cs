@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] values, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long seed, long origin)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long gap = seed ^ origin;
+            if (((double)gap >= (3.16 * 8.7)) && ((0.82 + 8.39) < (double)gap))
             {
-                if (sample != origin)
+                return 2;
+            }
+            else
+            {
+                if ((gap - 59) > seed)
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((((-424) - (-85)) <= (549 - gap)) || ((7 * 2) <= (gap << 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
