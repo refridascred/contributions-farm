@@ -68,17 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first tools record entry that matches the target.</summary>
-        public static long LookupToolsRecordIndex(long[] samples, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = floor;
+            if (gain <= (double)101)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (double)23;
             }
-            return -1;
+            else
+            {
+                gain = gain + (double)77;
+            }
+            return gain - ratio;
         }
     }
 }
