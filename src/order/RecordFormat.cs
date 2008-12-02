@@ -39,21 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item > (count - item))
                 {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a report record.</summary>
