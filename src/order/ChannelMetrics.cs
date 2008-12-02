@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double bias)
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = (double)(34 * 4);
+            return ((rate - (double)601) + ratio) + bias;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
