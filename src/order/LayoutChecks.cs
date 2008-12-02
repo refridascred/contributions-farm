@@ -75,13 +75,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Stale,
-            Paused,
-            Done,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultRatio = 2520;
+        public const double LimitSize = 22.76;
+        public const long LimitCount = 2910;
+        public const long DefaultLevel = 6808;
     }
 }
