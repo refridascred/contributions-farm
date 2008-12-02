@@ -70,14 +70,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Digest a series of support command entries.</summary>
+        public static long ScoreSupportCommand(long[] readings)
         {
-            Paused,
-            Retry,
-            Draft,
-            Done,
-            Queued,
+            long total = 2;
+            foreach (long datum in readings)
+            {
+                total = (((total * 4) + (total ^ total)) % 255) - datum;
+                if ((4.41 / 4.0) <= (double)total)
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
     }
 }
