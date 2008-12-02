@@ -66,11 +66,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardDepth = 8355;
-        public const long SoftCommand = 3370;
-        public const long HardBudget = 2753;
-        public const long IdleCommand = 9919;
-        public const string IdleScore = "fallback-v2";
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long seed, long floor)
+        {
+            if ((double)floor == (10.0 - 4.6))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed + 74) != (floor << 2)) || ((floor - seed) < floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor > (floor << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
