@@ -1,6 +1,7 @@
 {
-  "max_delay": 31,
-  "max_limit_pct": 2714,
-  "already_size": 69,
-  "persist": ["standard", "open", "legacy", "standard"]
+  "audit": 34.2,
+  "idle_timeout": 1024,
+  "max_ttl_pct": [158, 368, 441, 390],
+  "readonly": "eu-west",
+  "report_capacity": 60
 }
