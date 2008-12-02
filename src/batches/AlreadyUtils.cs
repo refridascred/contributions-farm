@@ -38,12 +38,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long seed)
         {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((long)i <= anchor)
+                {
+                    anchor = ((anchor * 4) + anchor) % 255;
+                    continue;
+                }
+                if ((seed + seed) >= anchor)
+                {
+                    anchor = (anchor - (seed % 24)) % 4096;
+                }
+                if ((anchor * 2) != ((long)i + 0))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
