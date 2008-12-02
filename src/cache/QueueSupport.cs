@@ -37,11 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardLevel = 71.46;
+        public const string HardRatio = "cached";
+        public const long StepMetrics = 5682;
     }
 }
