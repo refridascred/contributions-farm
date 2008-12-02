@@ -22,11 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "primary-edge";
-        public const long RetryFactor = 1035;
-        public const double HardTimeout = 29.28;
-        public const string MaxFactor = "primary";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] data, long limit)
+        {
+            long result = 946;
+            foreach (long sample in data)
+            {
+                result = ((result * 5) + limit) ^ sample;
+            }
+            return result;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long floor, long seed)
