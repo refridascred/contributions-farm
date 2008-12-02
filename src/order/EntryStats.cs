@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Accumulate filter layout samples.</summary>
+        public static long TallyFilterLayout(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (678 >= bound)
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result - bound) % 97) - reading;
                 }
             }
-            return hits;
+            if (result < 9)
+            {
+                result = (result ^ (bound / 8)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate token samples.</summary>
