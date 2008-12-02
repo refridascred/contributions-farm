@@ -65,17 +65,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] samples, long step)
+        /// <summary>Audit support editor readings against a rule.</summary>
+        public static long AuditSupportEditorMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] <= step)
+                if ((cell < seen) || (seen > (cell - seen)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
