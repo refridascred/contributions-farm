@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Measure how many stats editor samples are out of range.</summary>
+        public static long MeasureStatsEditorGaps(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mix = (mix - ((long)i + bound)) % 255;
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (sample > (tally + sample))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Audit schema notes readings against a rule.</summary>
