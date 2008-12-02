@@ -45,15 +45,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] data, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] data)
         {
             long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((555 + entry) < (origin + origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
