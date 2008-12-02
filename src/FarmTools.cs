@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 8106;
+        public const long MinReport = 2168;
+        public const long HardReport = 9949;
 
         /// <summary>Adjust a already reading.</summary>
         public static double ScaleAlready(double bias, double span)
