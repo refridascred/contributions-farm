@@ -30,19 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] values, long bound)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
