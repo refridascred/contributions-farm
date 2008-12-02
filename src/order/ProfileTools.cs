@@ -28,11 +28,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 32.98;
-        public const long MaxCommand = 8105;
-        public const long StepSpan = 8866;
-        public const string StepRatio = "staging-edge";
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] data)
