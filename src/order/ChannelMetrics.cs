@@ -40,16 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long offset)
+        /// <summary>Find the first checks cluster entry that matches the target.</summary>
+        public static long FindChecksClusterIndex(long[] data, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark << 2) ^ (mark + offset)) % 255;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
