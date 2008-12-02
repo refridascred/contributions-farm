@@ -29,13 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] readings, long bound)
         {
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
