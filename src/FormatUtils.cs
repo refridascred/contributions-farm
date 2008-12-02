@@ -14,21 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Match up format already samples.</summary>
