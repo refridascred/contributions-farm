@@ -24,13 +24,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] data, long offset)
         {
-            Locked,
-            Active,
-            Idle,
-            Synced,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item ^ item) > (offset + item))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
