@@ -53,18 +53,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a buffer record sample.</summary>
-        public static long LocateBufferRecordIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchWidth = "strict-edge";
+        public const long BurstTools = 436;
+        public const string BatchTools = "latest-v2";
+        public const long StepScore = 8901;
+        public const string MaxFactor = "cached-1";
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long step, long seed)
