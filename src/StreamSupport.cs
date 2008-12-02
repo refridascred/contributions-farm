@@ -19,11 +19,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double ratio, double bias)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            double scale = bias;
-            return (scale + bias) + ratio;
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
