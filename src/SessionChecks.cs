@@ -13,22 +13,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit stream metric readings against a rule.</summary>
-        public static long MeasureStreamMetricGaps(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((tally << 1) < (39 * 3))
+                if (((cell % 7) <= (hits - step)) || ((4 & 3) == (step % 12)))
                 {
-                    tally = (tally + 3) ^ value;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
