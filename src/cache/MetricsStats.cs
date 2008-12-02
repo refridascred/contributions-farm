@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] values, long offset)
-        {
-            long score = 26;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    score = (((score ^ offset) % 255) + (long)i) + item;
-                }
-                if ((score + 1) >= (score * 5))
-                {
-                    score = ((score * 5) + (offset * 2)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftSpan = "local-edge";
+        public const long RetryRatio = 1918;
+        public const long BurstMetric = 7448;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksMatches(long[] readings, long origin)
