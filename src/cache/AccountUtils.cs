@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] levels, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long score = 952;
+            foreach (long entry in levels)
             {
-                if (item > offset)
+                if ((16.0 * 6.7) >= (double)score)
                 {
-                    found = false;
-                    break;
+                    score = (score - (step % 3)) - entry;
                 }
             }
-            return found;
+            return score % 97;
         }
 
         /// <summary>Classify a commits token pair into a bucket.</summary>
