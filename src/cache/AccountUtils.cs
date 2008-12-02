@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long seed, long floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            if (((0 - seed) > (27 - floor)) || ((floor + 6) <= (seed & 31)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)floor <= (9.9 * 2.3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + 8) <= (seed + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the batch mode values.</summary>
