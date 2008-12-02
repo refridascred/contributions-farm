@@ -24,16 +24,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Match up format already samples.</summary>
+        public static long OverlapFormatAlreadyCount(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state - (seed - seed)) % 4096;
-                state = ((state * 2) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
