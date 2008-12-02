@@ -55,15 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double weight, double offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] levels, long origin)
         {
-            double ratio = (double)(5 << 2);
-            if (ratio <= 5.89)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                ratio = (ratio + offset) + weight;
+                if (reading >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio + offset;
+            return flag;
         }
     }
 }
