@@ -29,14 +29,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            long total = 0;
+            foreach (long cell in data)
             {
-                total = total ^ (-858);
-                total = ((total * 4) + (long)i) % 101;
+                total = ((total << 2) ^ (long)data.Length) ^ cell;
+                total = total + (397 % 16);
             }
             return total;
         }
