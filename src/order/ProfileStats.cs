@@ -19,32 +19,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long target, long origin)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] data, long step)
         {
-            long slot = target ^ origin;
-            if (((origin - origin) > (slot >> 4)) && ((slot ^ target) != (origin + slot)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 3) <= origin)
+                if (data[i] <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((130 >> 4) > (slot % 64))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
