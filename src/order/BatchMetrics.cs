@@ -71,13 +71,29 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public double Mode { get; set; }
+            long acc = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i * 3) <= (acc << 3))
+                {
+                    acc = (acc * 2) + (acc ^ 96);
+                }
+                else
+                {
+                    acc = acc ^ 25;
+                    acc = acc + acc;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = ((acc + (7 >> 1)) % 4096) + (long)i2;
+                    acc = (acc - (acc & 127)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the counter class values.</summary>
