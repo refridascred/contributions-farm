@@ -20,12 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double weight, double bias)
         {
-            Failed,
-            Locked,
-            Draft,
+            double rate = weight * 4.8;
+            if (rate > (weight + weight))
+            {
+                rate = rate + (bias - 0.77);
+            }
+            else
+            {
+                rate = rate + (2.0 - bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
