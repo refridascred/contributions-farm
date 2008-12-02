@@ -26,17 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] items, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((items[i] <= floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of farm queue entries.</summary>
