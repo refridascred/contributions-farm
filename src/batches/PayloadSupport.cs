@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit batch checks readings against a rule.</summary>
-        public static long CountBatchChecksMatches(long[] items, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (((2.51 / 7.0) >= (double)bound) || ((9.5 + 9.75) == (double)bound))
+                if (cell < offset)
                 {
-                    tally = (tally + 1) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a cache stats.</summary>
