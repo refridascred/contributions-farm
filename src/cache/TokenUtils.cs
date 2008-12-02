@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double rate, double span)
+        /// <summary>Measure how many layout graph samples are out of range.</summary>
+        public static long TallyLayoutGraphOutliers(long[] items, long bound)
         {
-            double load = (double)(84 - 890);
-            if (load >= (0.22 / 4.0))
+            long hits = 0;
+            foreach (long item in items)
             {
-                load = (load - rate) - span;
+                if (bound <= (item >> 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 3.0) + (double)(long)i;
-            }
-            return load - 12.0;
+            return hits;
         }
     }
 }
