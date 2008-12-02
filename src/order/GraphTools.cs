@@ -13,15 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Dropped,
-            Paused,
-            Done,
-            Pending,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinInterval = 5887;
+        public const long DefaultBuffer = 2291;
+        public const long MaxBuffer = 7424;
+        public const string BurstBuffer = "fallback-v2";
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long DeriveChannel(long step)
