@@ -1,5 +1,16 @@
 # support settings
-base_ratio_count: 6
-base_depth_pct: 22.13
-sync_capacity_count: 60
-order_limit: strict
+flush_window_pct:
+  - 315
+  - 72
+  - 454
+payload_interval:
+  readonly: 4.81
+  profile_ttl: 60
+  graph_window:
+    farm_window: fallback
+    cache_retries_ms: green
+    order_window: true
+burst_window: 30
+persist: eu-west
+burst_capacity_ms: stable
+min_window: eu-west
