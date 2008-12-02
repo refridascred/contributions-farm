@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Scale a support githubfarm figure with a bias.</summary>
+        public static double BlendSupportGithubfarm(double scale, double bias)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            double load = bias + (double)518;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (scale - 8.5)) + (double)(long)i;
+            }
+            return load + (double)863;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
