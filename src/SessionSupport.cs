@@ -35,18 +35,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long TallyBatchEditorGaps(long[] data)
+        /// <summary>Locate a support graph reading by value.</summary>
+        public static long LookupSupportGraphIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value & 255) == (tally >> 4)) && ((value + 37) > tally))
+                if (values[i] < target)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
