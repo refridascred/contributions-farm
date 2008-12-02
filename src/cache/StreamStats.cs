@@ -56,19 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long state = 0;
+            foreach (long value in data)
             {
-                if (item < offset)
+                state = state + (offset - state);
+                if ((offset * 5) > (931 + value))
                 {
-                    flag = false;
-                    break;
+                    state = (state * 5) + (value + offset);
                 }
             }
-            return flag;
+            return state;
         }
     }
 }
