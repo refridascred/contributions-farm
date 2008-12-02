@@ -85,20 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Measure how many filter already samples are out of range.</summary>
+        public static long CountFilterAlreadyHits(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mark = (mark ^ (mark << 3)) % 255;
-                if ((double)(long)i < (5.0 * 1.9))
+                if (((5.8 * 20.0) <= (double)reading) && ((reading + hits) >= reading))
                 {
-                    mark = (mark + (step % 8)) % 1000;
+                    hits = hits + 3;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
     }
 }
