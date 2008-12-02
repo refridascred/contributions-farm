@@ -1,24 +1,5 @@
 # support settings
-dry_run: true
-editor_depth: false
-retry_capacity_s:
-  batch_interval: true
-  schema_limit: legacy
-  flush_window: 1024
-default_ttl_count:
-  - eu-west
-  - fallback
-  - edge
-channel_delay: 100
-layout_depth:
-  flush_capacity:
-    already_limit: blue
-    warm_limit_pct: false
-    soft_ttl_s: 77.44
-    audit:
-      - 207
-      - 21
-      - 28
-    persist: eu-west
-  poll_capacity_count: 30
-  layout_window: 84.14
+verbose: blue
+order_ratio: 97
+queue_ratio: 500
+default_ttl: staging
