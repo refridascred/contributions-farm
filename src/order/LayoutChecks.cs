@@ -52,12 +52,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchWidth = "strict-edge";
-        public const long BurstTools = 436;
-        public const string BatchTools = "latest-v2";
-        public const long StepScore = 8901;
-        public const string MaxFactor = "cached-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 8953;
+        public const string MinBatches = "alpha-edge";
+        public const long MaxBatches = 6389;
+        public const long IdleDepth = 2031;
+        public const string IdleBatches = "latest-v2";
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long step, long seed)
