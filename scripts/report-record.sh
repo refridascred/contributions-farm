@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-open}"
 case "${mode}" in
-    cached)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for item in blue latest legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
-
-RECORD_LIMIT=416
-log "limit is ${RECORD_LIMIT}"
