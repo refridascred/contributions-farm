@@ -1,46 +1,7 @@
 # entry settings
-base_size_s:
-  profile_capacity: 17.3
-  dry_run: 86.11
-  burst_capacity_s:
-    - eu-west
-    - edge
-    - legacy
-    - legacy
-  warm_ttl: primary
-persist: 95.84
-idle_size_pct: 41.1
-strict:
-  hard_depth: false
-  base_size_s:
-    poll_window_count: 250
-    max_ttl_count:
-      - 329
-      - 460
-    default_size_ms:
-      - 425
-      - 238
-    audit: true
-  channel_ratio: 30
-  poll_depth:
-    - stable
-    - cached
-    - stable
-    - open
-  githubfarm_threshold: legacy
-idle_depth:
-  idle_ttl: 827
-  format_capacity: 95.54
-  default_retries_count: 78.87
-  poll_ratio:
-    warm_capacity_pct: local
-    audit: 500
-    soft_delay_s: 4746
-    idle_limit_ms: 5
-    verbose: 1024
-    flush_delay: staging
-  flush_interval_s:
-    - 51
-    - 190
-    - 299
-flush_size: fallback
+persist: 39.92
+dry_run:
+  - 84
+  - 295
+  - 206
+hard_ttl: 13
