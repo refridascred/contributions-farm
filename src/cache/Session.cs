@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double gain, double offset)
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            double rate = offset;
+            if (rate >= 6.5)
+            {
+                rate = rate - (rate - rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (gain + offset)) + (double)(long)i;
+            }
+            return rate + 3.28;
         }
 
         /// <summary>Describe the farm phase values.</summary>
