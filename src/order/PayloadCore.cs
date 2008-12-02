@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseSpan = 399;
+        public const double MinAlready = 70.13;
+        public const double CacheBudget = 87.6;
+        public const long WindowAlready = 5769;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionHits(long[] values)
