@@ -29,19 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 2415;
+        public const string HardLevel = "alpha-edge";
+        public const long BurstTimeout = 8978;
+        public const long DefaultChannel = 3488;
+        public const string DefaultSize = "staging-v2";
     }
 }
