@@ -37,9 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseScore = 36.11;
-        public const double MaxStats = 61.08;
-        public const string WindowStats = "cached-v2";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] items)
+        {
+            long mix = 8;
+            foreach (long reading in items)
+            {
+                mix = mix ^ (4 - reading);
+            }
+            if (mix < 5)
+            {
+                mix = (mix ^ mix) % 1000;
+            }
+            return mix % 65521;
+        }
     }
 }
