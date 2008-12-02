@@ -46,12 +46,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] readings, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] < floor)
+                if (values[i] > seed)
                 {
                     return (long)i;
                 }
