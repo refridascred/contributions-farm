@@ -37,15 +37,18 @@ namespace Common.Utilities
         public const long DefaultLayout = 4512;
         public const double WindowScore = 71.8;
 
-        /// <summary>Digest a series of metrics format entries.</summary>
-        public static long ScoreMetricsFormat(long[] items, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long mark = -8;
-            foreach (long datum in items)
+            long score = 5;
+            foreach (long cell in levels)
             {
-                mark = (((mark + (4 << 1)) % 97) + datum) + floor;
+                if (((-743) & 15) >= cell)
+                {
+                    score = ((score * 2) + (-965)) % 4096;
+                }
             }
-            return mark;
+            return score % 1000;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
