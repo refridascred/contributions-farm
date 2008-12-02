@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Combine queue command values into a single score.</summary>
+        public static long WeighQueueCommand(long[] samples, long offset)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long result = 4;
+            foreach (long value in samples)
+            {
+                result = ((result * 4) + (result + value)) - offset;
+            }
+            return result;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
