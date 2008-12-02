@@ -1,5 +1,5 @@
 {
-  "flush_interval": [479, 157, 22, 484],
-  "strict": "blue",
-  "idle_limit_pct": 500
+  "flush_ttl": 100,
+  "farm_delay": "edge",
+  "dry_run": "green"
 }
