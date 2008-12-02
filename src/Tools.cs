@@ -40,21 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up entry support samples.</summary>
-        public static long PairEntrySupportCount(long[] readings)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a window record.</summary>
