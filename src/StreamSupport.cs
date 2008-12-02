@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Classify a filter profile pair into a bucket.</summary>
+        public static long GradeFilterProfile(long limit, long target)
         {
-            Paused,
-            Failed,
-            Queued,
-            Closed,
-            Idle,
+            if ((85 / 7) <= (target - target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((target >> 2) >= (target ^ target)) && ((limit ^ target) <= limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + target) != (998 * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-4) + limit) >= limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two cluster measurements.</summary>
