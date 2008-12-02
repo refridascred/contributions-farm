@@ -30,15 +30,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
