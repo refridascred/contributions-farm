@@ -26,21 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Adjust a graph channel reading.</summary>
+        public static double AdjustGraphChannel(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double mean = (double)((-239) ^ 396);
+            return ((mean + (mean + mean)) + rate) + span;
         }
 
         /// <summary>Compare every pair of batch stats readings.</summary>
