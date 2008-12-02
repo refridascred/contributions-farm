@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((hits - cell) == (845 + cell))
+                if (((double)count < 5.78) || !((5 + entry) < (entry + entry)))
                 {
-                    hits = hits + 2;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the report level values.</summary>
