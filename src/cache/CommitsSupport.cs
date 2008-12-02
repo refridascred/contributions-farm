@@ -41,21 +41,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks profile samples.</summary>
-        public static long OverlapChecksProfileCount(long[] series)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 93;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = ((total << 2) ^ (92 * 4)) % 97;
+                if ((12.0 / 5.0) <= (double)target)
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + (sample - target)) % 1000;
+                }
+                else
+                {
+                    total = total - (total + target);
+                }
+                if ((2.2 + 16.0) > (double)target)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < 8)
+            {
+                total = total + target;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of route readings.</summary>
