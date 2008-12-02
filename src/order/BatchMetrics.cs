@@ -75,29 +75,36 @@ namespace Common.Utilities
             return scale - (bias + 4.0);
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long origin, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long origin, long floor)
         {
-            long lane = origin ^ offset;
-            if ((lane / 2) < lane)
+            long delta = origin ^ floor;
+            if ((double)delta > (4.23 + 0.8))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (5 > (origin % 64))
+                if ((origin / 6) > (origin & 1))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if (((lane + origin) >= (431 % 3)) || ((13.0 - 5.6) == (double)offset))
+                    if (floor >= (87 - origin))
                     {
                         return 6;
                     }
                     else
                     {
-                        return 1;
+                        if ((double)origin > 4.8)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
