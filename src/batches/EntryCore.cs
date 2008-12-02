@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every context cache entry stays within the limit.</summary>
-        public static bool GuardContextCacheRange(long[] series, long origin)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
