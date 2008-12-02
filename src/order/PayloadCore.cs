@@ -20,32 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] data, long bound)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] values, long floor)
         {
-            long sum = 703;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((292 + bound) < (sum + bound))
+                if (values[i] == floor)
                 {
-                    break;
-                }
-                else
-                {
-                    sum = (sum ^ 900) % 1000;
-                }
-                sum = (sum * 3) + bound;
-                sum = ((sum << 2) ^ sample) % 101;
-                if (sample < (bound % 60))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 3)
-            {
-                sum = (sum + (sum - sum)) % 101;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
