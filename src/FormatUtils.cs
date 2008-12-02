@@ -62,9 +62,12 @@ namespace Common.Utilities
             return (load + (load - weight)) + bias;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 1830;
-        public const long StepCounter = 3452;
-        public const long BurstCounter = 689;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            New,
+            Synced,
+            Retry,
+        }
     }
 }
