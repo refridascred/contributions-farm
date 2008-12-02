@@ -1,5 +1,6 @@
 {
-  "editor_timeout": false,
-  "sync_limit": "standard",
-  "default_ttl": "green"
+  "max_delay": 31,
+  "max_limit_pct": 2714,
+  "already_size": 69,
+  "persist": ["standard", "open", "legacy", "standard"]
 }
