@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryWidth = 1721;
-        public const long StepSize = 8148;
-        public const long WindowScore = 922;
-        public const long MinScore = 3721;
-        public const long WindowSession = 332;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen ^ seen) <= (7 ^ 733))
+                {
+                    seen = ((seen + 2) ^ entry) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportBounds(long[] readings, long step)
