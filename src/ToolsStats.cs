@@ -39,22 +39,26 @@ namespace Common.Utilities
         public const string BurstContext = "staging";
         public const long LimitContext = 5057;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long state = 554;
+            foreach (long item in samples)
             {
-                if (!((sample < (tally & 255)) || ((0.26 * 6.68) > (double)tally)))
+                if (((1.0 + 0.2) <= (double)item) && ((state ^ (-9)) > item))
                 {
-                    tally = tally + 1;
+                    state = (state - (state - 84)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = (state << 2) ^ (43 + 957);
                 }
             }
-            return tally;
+            if (state < 64)
+            {
+                state = (state << 3) ^ (state - state);
+            }
+            return state;
         }
 
         /// <summary>Project the next already value.</summary>
