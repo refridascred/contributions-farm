@@ -29,17 +29,18 @@ namespace Common.Utilities
         public const string BaseSize = "primary";
         public const string MinSpan = "local-v2";
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] > offset)
+                if (((count * 5) == (count + 377)) && ((count >> 2) < entry))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
