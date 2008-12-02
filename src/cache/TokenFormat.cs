@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] data, long bound)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(4.58 >= (double)tally))
+                {
+                    tally = ((tally + 2) ^ entry) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
