@@ -1,20 +1,23 @@
 # githubfarm settings
-verbose: 60
-hard_ratio_ms: legacy
-sync_interval_ms: eu-west
-persist:
-  metrics_capacity: legacy
-  commits_capacity:
-    min_timeout_ms: 5069
-    max_timeout_ms: latest
-    retry_timeout: open
-  commits_timeout:
-    - legacy
-    - local
-    - staging
-  default_capacity_count: false
-  buffer_capacity:
-    - 133
-    - 259
-  cache_depth: 6830
-min_delay: 12.8
+base_timeout:
+  hard_timeout:
+    - eu-west
+    - blue
+  strict: 70
+  flush_timeout_ms: 100
+  compress: local
+  sync_depth_ms:
+    account_window: 66
+    verbose: true
+    max_capacity_count: false
+  cache_ttl_s: legacy
+batch_delay: 89.88
+base_ttl_ms:
+  persist: 1024
+  burst_size_s: 6608
+  filter_capacity: 60
+  compress: 2575
+batch_ratio_pct:
+  - standard
+  - cached
+  - staging
