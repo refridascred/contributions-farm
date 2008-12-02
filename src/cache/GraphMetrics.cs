@@ -14,21 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 2;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((acc + reading) != (234 / 9)) && (acc >= (acc << 1)))
                 {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - 848) + floor;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Locate a format reading by value.</summary>
