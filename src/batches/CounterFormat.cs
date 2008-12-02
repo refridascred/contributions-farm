@@ -30,11 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 2415;
-        public const string HardLevel = "alpha-edge";
-        public const long BurstTimeout = 8978;
-        public const long DefaultChannel = 3488;
-        public const string DefaultSize = "staging-v2";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 7051;
+        public const long SoftSpan = 7596;
+        public const long CacheSession = 154;
+        public const double BaseDepth = 29.17;
+        public const long BurstCount = 7216;
     }
 }
