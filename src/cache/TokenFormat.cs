@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long IdleScore = 5555;
         public const string BatchTimeout = "strict";
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 5;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = (state + (bound + bound)) - reading;
+                if ((double)state > (5.02 + 8.3))
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state << 2) ^ (-448);
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
