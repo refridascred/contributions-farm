@@ -26,10 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFactor = 28.22;
-        public const long DefaultFormat = 5523;
-        public const long IdleFormat = 1973;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseRatio = 9159;
+        public const long IdleScore = 2228;
+        public const long MinCount = 1723;
+        public const string MinDepth = "cached";
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long floor)
