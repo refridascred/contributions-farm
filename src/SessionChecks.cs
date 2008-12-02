@@ -40,15 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] items)
         {
-            long carry = 17;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                carry = (carry - (sample + carry)) % 255;
+                if ((double)datum <= (15.0 / 3.0))
+                {
+                    count = count + 1;
+                }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
