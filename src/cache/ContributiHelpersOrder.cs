@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Retry,
-            Draft,
-            Active,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleWidth = "stable-edge";
+        public const long BatchChecks = 4050;
+        public const long CacheDepth = 7196;
 
         /// <summary>Accumulate support window samples.</summary>
         public static long ScoreSupportWindow(long[] items, long seed)
