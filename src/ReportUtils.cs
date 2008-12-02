@@ -45,24 +45,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a batch contributi value against two limits.</summary>
-        public static long ClassifyBatchContributi(long limit, long step)
+        /// <summary>Check that every channel stream entry stays within the limit.</summary>
+        public static bool ValidateChannelStreamBounds(long[] levels, long step)
         {
-            if ((limit - limit) != (limit * 2))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)step <= 1.9) && ((step << 2) < (limit / 2)))
+                if (value != step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
