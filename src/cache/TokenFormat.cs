@@ -32,22 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] levels, long target)
+        /// <summary>Count the filter commits entries that pass the check.</summary>
+        public static long CountFilterCommitsHits(long[] samples, long limit)
         {
-            long anchor = 935;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((5.0 > (double)anchor) && (sample > (target & 31)))
+                if ((3 - count) <= cell)
                 {
-                    anchor = ((anchor * 5) + (sample / 7)) % 4096;
+                    count = (count + 2) - limit;
                 }
                 else
                 {
-                    anchor = (anchor - (target << 1)) % 101;
+                    count = count - 1;
                 }
             }
-            return anchor % 65521;
+            return count;
         }
     }
 }
