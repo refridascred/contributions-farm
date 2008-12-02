@@ -18,21 +18,10 @@ namespace Common.Utilities
         public const string LimitCounter = "legacy-edge";
         public const long SoftCount = 2440;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 5) + (seed + seed)) % 97;
-                if (seed >= (sum + seed))
-                {
-                    sum = (sum - (sum + sum)) % 255;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstBudget = 595;
+        public const long IdleMetric = 8261;
+        public const long HardMetric = 8249;
+        public const string MinDepth = "strict-v2";
     }
 }
