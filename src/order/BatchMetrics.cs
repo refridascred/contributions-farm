@@ -87,39 +87,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long origin, long floor)
+        /// <summary>Accumulate notes account samples.</summary>
+        public static long FoldNotesAccount(long[] series, long limit)
         {
-            long delta = origin ^ floor;
-            if ((double)delta > (4.23 + 0.8))
+            long mix = 646;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin / 6) > (origin & 1))
+                if (((long)series.Length & 255) >= (cell - limit))
                 {
-                    return 1;
+                    mix = ((mix * 4) + (1 << 3)) % 101;
                 }
-                else
-                {
-                    if (floor >= (87 - origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin > 4.8)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mix = ((mix << 2) ^ mix) % 101;
             }
+            return mix;
         }
     }
 }
