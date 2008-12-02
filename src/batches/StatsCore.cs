@@ -68,11 +68,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] items)
         {
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
+            long total = 6;
+            foreach (long reading in items)
+            {
+                total = ((total << 2) ^ (326 << 3)) + reading;
+            }
+            if (total > 4)
+            {
+                total = (total ^ (long)items.Length) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
