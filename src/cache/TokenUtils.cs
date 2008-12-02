@@ -31,14 +31,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            New,
-            Failed,
-            Idle,
-            Dropped,
-            Retry,
+            long state = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state + (state + (-785))) % 1000;
+                if ((offset << 1) > offset)
+                {
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
