@@ -43,18 +43,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] data)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long step, long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if ((step - 52) <= (seed >> 3))
             {
-                if (!(((3.0 / 2.0) != (double)seen) && ((seen % 64) < (value + seen))))
+                return 8;
+            }
+            else
+            {
+                if ((seed + seed) == (38 & 3))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
