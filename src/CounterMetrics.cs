@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 4768;
-        public const long IdleCommits = 1766;
-        public const long StepInterval = 5476;
-        public const string HardCommits = "stable-v2";
-        public const long IdleLevel = 8975;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] data)
