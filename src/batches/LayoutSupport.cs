@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long DefaultBudget = 3539;
         public const double SoftToken = 38.8;
 
-        /// <summary>Count commits support pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsSupportCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySpan = 7088;
+        public const double IdleWidth = 71.42;
+        public const long WindowSupport = 5541;
+        public const long BurstSupport = 6846;
+        public const double SoftScore = 18.09;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] data, long offset)
