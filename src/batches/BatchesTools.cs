@@ -20,11 +20,18 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] data)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((9.0 - 2.35) < (7.64 * 8.0))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of layout route readings.</summary>
