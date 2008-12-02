@@ -29,27 +29,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] items, long origin)
+        /// <summary>Match up contributi stats samples.</summary>
+        public static long CompareContributiStatsCount(long[] values)
         {
-            long mark = 357;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + (5 + 6)) % 4096;
-                if (!((double)item >= 9.95))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark - 62) % 65521;
-                }
-                if (808 > (mark + item))
-                {
-                    mark = mark - (115 - origin);
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 2)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
