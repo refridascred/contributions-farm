@@ -45,11 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinTimeout = 64.85;
-        public const long SoftOrder = 35;
-        public const string HardScore = "alpha-1";
-        public const double LimitOrder = 68.49;
-        public const long BaseWidth = 2319;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((sample ^ floor) <= (350 % 5))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
