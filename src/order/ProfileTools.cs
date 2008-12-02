@@ -59,10 +59,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchTimeout = 3032;
-        public const double DefaultInterval = 11.82;
-        public const long WindowChannel = 6973;
-        public const long LimitLevel = 3344;
+        public const long LimitChannel = 1851;
+        public const long LimitScore = 704;
+        public const long BurstInterval = 3473;
+        public const long SoftChannel = 3320;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long floor, long limit)
