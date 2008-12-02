@@ -1,6 +1,6 @@
 {
-  "sync_window_count": ["legacy", "legacy", "edge"],
-  "sync_interval_s": "open",
-  "window_interval": 6417,
-  "format_retries": ["fallback", "green", "primary", "standard"]
+  "poll_size": "local",
+  "retry_interval_count": "primary",
+  "farm_size": 36.65,
+  "base_delay": "primary"
 }
