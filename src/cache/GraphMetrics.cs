@@ -29,19 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] series, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] samples, long step)
         {
-            long sum = 579;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                sum = ((sum + (sum & 1)) % 1000) ^ cell;
+                if ((step ^ hits) == (hits << 2))
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (sum < 77)
-            {
-                sum = ((sum * 3) + origin) % 255;
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Project the next session route value.</summary>
