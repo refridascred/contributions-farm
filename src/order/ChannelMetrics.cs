@@ -40,17 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first checks cluster entry that matches the target.</summary>
-        public static long FindChecksClusterIndex(long[] data, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (data[i] == limit)
+                if (entry <= (-689))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
