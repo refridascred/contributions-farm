@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a filter profile pair into a bucket.</summary>
-        public static long GradeFilterProfile(long limit, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            if ((85 / 7) <= (target - target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((target >> 2) >= (target ^ target)) && ((limit ^ target) <= limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + target) != (998 * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-4) + limit) >= limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two cluster measurements.</summary>
