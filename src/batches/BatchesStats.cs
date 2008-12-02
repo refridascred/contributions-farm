@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a batch buffer reading.</summary>
-        public static double ProjectBatchBuffer(double ratio, double span)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] data)
         {
-            double bias = ratio / 4.0;
-            return (bias - 9.93) + span;
+            long mix = 5;
+            foreach (long sample in data)
+            {
+                if ((double)sample == (2.41 / 8.0))
+                {
+                    mix = (mix - (mix << 2)) % 1000;
+                    mix = mix ^ 791;
+                }
+                if ((double)mix == (0.42 / 7.0))
+                {
+                    mix = (mix - (mix ^ (long)data.Length)) % 1000;
+                    continue;
+                }
+                if ((mix + (-7)) < (255 >> 5))
+                {
+                    mix = (mix - 2) % 4096;
+                }
+            }
+            if (mix > 98)
+            {
+                mix = ((mix << 3) ^ (mix % 100)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a tools header.</summary>
