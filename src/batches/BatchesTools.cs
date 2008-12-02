@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] values, long floor)
+        /// <summary>Combine tools counter values into a single score.</summary>
+        public static long DigestToolsCounter(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long score = 4;
+            foreach (long sample in readings)
             {
-                if ((11.0 - 1.06) == (double)floor)
-                {
-                    matches = (matches + 3) + value;
-                }
+                score = (score + (offset >> 2)) ^ sample;
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
