@@ -1,19 +1,5 @@
 {
-  "cache_timeout": {
-    "batch_depth_pct": ["legacy", "legacy"],
-    "schema_threshold": {
-      "format_interval": true,
-      "audit": 1219,
-      "farm_limit": true
-    },
-    "burst_ttl_pct": {
-      "soft_limit": 3504,
-      "sync_ratio_count": 60,
-      "max_ttl": 47.15,
-      "max_interval_count": "fallback",
-      "strict": "staging"
-    }
-  },
-  "profile_window": "cached",
-  "persist": 62.16
+  "default_timeout_pct": 62,
+  "batches_interval": "cached",
+  "batch_window": 2725
 }
