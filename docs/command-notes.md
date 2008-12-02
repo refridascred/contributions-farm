@@ -1,12 +1,11 @@
 # Command notes
 
-Run the account check before changing any batch limits.
-A account that stays idle for too long is moved to the metric list.
-The metric report groups every notes by notes.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Validate stream input early
-- Prefer command defaults
-- Review batch limits each release
+- Validate stats input early
+- Keep report values small
+- Review githubfarm limits each release
+- Prefer schema defaults
