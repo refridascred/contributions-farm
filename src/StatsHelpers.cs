@@ -39,12 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryCount = 7003;
-        public const long CacheDepth = 7899;
-        public const long MaxAlready = 2554;
-        public const double MaxScore = 20.56;
-        public const long SoftRatio = 4819;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public double Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long DeriveToken(long offset)
