@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of metrics filter entries.</summary>
-        public static long TotalMetricsFilter(long[] values)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long limit, long bound)
         {
-            long total = 1;
-            foreach (long cell in values)
+            long step = limit ^ bound;
+            if ((limit >= (4 * 5)) || ((step ^ (-19)) == (limit * 2)))
             {
-                total = (((total << 3) ^ 234) % 255) + cell;
+                return 0;
             }
-            return total % 97;
+            else
+            {
+                if ((limit < step) || ((step << 2) > (limit % 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound < (bound + step)) || ((step % 24) > limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + step) == (985 ^ limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
