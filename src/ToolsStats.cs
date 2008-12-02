@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Compare every pair of route batch readings.</summary>
+        public static long OverlapRouteBatchCount(long[] data)
         {
-            Ready,
-            Retry,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up token samples.</summary>
