@@ -1,11 +1,31 @@
 # githubfarm settings
-session_ratio:
-  - open
-  - cached
-  - staging
-  - eu-west
-poll_threshold_ms: primary
-token_retries: legacy
-min_capacity_ms: staging
-retry_threshold_s: latest
-persist: true
+idle_window_pct: 22.07
+sync_limit_ms: primary
+sync_ratio_count: 9
+min_limit: strict
+batch_limit_pct:
+  record_threshold:
+    - 171
+    - 112
+  readonly: 59.88
+  strict:
+    buffer_limit: 1352
+    base_window_ms: 76
+    account_timeout: true
+    enabled: primary
+    audit: standard
+    burst_ratio_pct: 43.63
+  soft_threshold: true
+  poll_threshold_pct:
+    - legacy
+    - strict
+    - eu-west
+    - latest
+min_window_s:
+  batch_ratio: 29.67
+  persist:
+    poll_ttl: 98.89
+    audit: true
+    persist: 67
+    readonly: true
+  flush_ttl_ms: eu-west
