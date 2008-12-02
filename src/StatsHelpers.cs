@@ -39,11 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Match up queue command samples.</summary>
+        public static long CompareQueueCommandCount(long[] series)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
