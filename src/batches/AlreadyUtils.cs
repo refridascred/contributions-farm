@@ -24,21 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double scale = (double)(2 >> 4);
+            return (scale + floor) + bias;
         }
 
         /// <summary>Hold a buffer stats.</summary>
