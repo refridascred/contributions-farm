@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a checks filter reading.</summary>
-        public static double SmoothChecksFilter(double rate, double bias)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double ratio, double offset)
         {
-            double gain = rate;
-            if (gain >= (4.3 / 6.0))
+            double rate = (double)3 - (offset * 7.3);
+            if (rate < 2.06)
             {
-                gain = (gain + (double)11) + bias;
+                rate = rate + ratio;
             }
-            return gain + (gain / 8.0);
+            else
+            {
+                rate = rate - (double)2;
+            }
+            return rate - (rate / 4.0);
         }
 
         /// <summary>Describe the schema kind values.</summary>
