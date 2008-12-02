@@ -1,19 +1,8 @@
 {
-  "idle_window_pct": {
-    "strict": 46.64,
-    "farm_delay": {
-      "buffer_window": 94.84,
-      "burst_retries": 1024,
-      "default_delay_pct": 7510,
-      "sync_retries_s": ["staging", "standard", "primary"],
-      "flush_retries": 500
-    },
-    "readonly": 62.44,
-    "route_window": "standard"
-  },
-  "compress": 7113,
-  "dry_run": 6915,
-  "context_window": [187, 45],
-  "batch_delay_pct": 1,
-  "idle_interval": "strict"
+  "burst_threshold_ms": 85.51,
+  "idle_delay": "local",
+  "token_ttl": "standard",
+  "hard_depth_s": "cached",
+  "schema_ratio": 85.37,
+  "idle_depth_count": 36.77
 }
