@@ -66,10 +66,19 @@ namespace Common.Utilities
             return gain + (gain - span);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleSize = 9595;
-        public const long BaseSize = 6682;
-        public const long MaxCommand = 2873;
-        public const long LimitCommand = 5177;
+        /// <summary>Validate token editor readings against a bound.</summary>
+        public static bool GuardTokenEditorLimits(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
