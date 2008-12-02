@@ -40,12 +40,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long floor, long origin)
         {
-            Synced,
-            Locked,
-            Paused,
+            if ((floor & 7) <= (floor << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin == (2.55 / 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((-4) < (origin - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate entry checks readings against a bound.</summary>
