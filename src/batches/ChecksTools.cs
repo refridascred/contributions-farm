@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] levels, long floor)
         {
-            Retry,
-            Failed,
-            New,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
