@@ -1,8 +1,6 @@
 {
-  "batch_depth_s": 67.1,
-  "farm_interval": 95,
-  "token_timeout": "local",
-  "account_retries": ["strict", "legacy", "blue", "open"],
-  "warm_window_pct": "green",
-  "burst_size_s": 87
+  "audit": "local",
+  "sync_delay_count": [239, 321],
+  "idle_capacity_ms": [109, 273, 491],
+  "contributi_threshold": 31.23
 }
