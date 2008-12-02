@@ -35,11 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 4391;
-        public const long BurstLevel = 8184;
-        public const long BatchCommand = 2381;
-        public const long WindowCommand = 5347;
-        public const long BurstRatio = 7828;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long origin, long origin2)
+        {
+            long diff = origin + origin2;
+            if (((diff >> 4) >= (origin2 + origin)) || ((double)origin2 != (7.6 + 14.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin - origin2) >= (origin2 * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin2 & 15) == (origin2 ^ origin2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
