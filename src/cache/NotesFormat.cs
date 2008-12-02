@@ -21,31 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long floor, long floor2)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            if (!((floor - floor2) <= floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (266 >= (floor2 / 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)floor > (9.01 / 5.0)) && (floor2 < (floor << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank context input into a small class.</summary>
