@@ -35,15 +35,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate editor commits samples.</summary>
-        public static long WeighEditorCommits(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] values, long step)
         {
-            long result = 505;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                result = (result ^ (cell ^ 150)) % 255;
+                if (step < (hits ^ step))
+                {
+                    hits = (hits + 3) + value;
+                }
             }
-            return result % 65521;
+            return hits;
         }
     }
 }
