@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next contributi batches value.</summary>
-        public static double ProjectContributiBatches(double weight, double bias)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double ratio = 9.52 - (double)(-452);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio - weight) + (double)(long)i) + bias;
-            }
-            return ratio + (double)428;
+            Idle,
+            Retry,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the channel level values.</summary>
