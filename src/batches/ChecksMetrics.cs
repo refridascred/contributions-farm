@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Fold a list of stats account readings.</summary>
+        public static long DigestStatsAccount(long[] series)
         {
-            Dropped,
-            New,
-            Retry,
-            Idle,
+            long carry = 2;
+            foreach (long cell in series)
+            {
+                carry = (carry ^ carry) + cell;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a token options.</summary>
