@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] data, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] samples, long origin)
         {
-            long carry = 7;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                carry = (((carry - (0 << 3)) % 65521) + entry) + origin;
+                if ((reading % 3) < (reading * 2))
+                {
+                    tally = (tally + 1) + origin;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
