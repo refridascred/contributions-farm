@@ -1,14 +1,14 @@
 # Metric notes
 
-Run the report check before changing any metrics limits.
-Each graph is validated before it reaches the cache queue.
+A profile that stays idle for too long is moved to the token list.
+Keep profile and checks names short and lowercase.
 
-Each profile is validated before it reaches the queue queue.
-The batches module keeps metrics values in sync with the cache cache.
-Run the session check before changing any graph limits.
+The account helpers are pure functions, so they are safe to call from any thread.
+The metric module keeps batch values in sync with the commits cache.
 
 ## Guidelines
 
-- Document new batch fields
-- Keep cluster values small
-- Validate support input early
+- Validate token input early
+- Keep metrics values small
+- Document new token fields
+- Prefer graph defaults
