@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 1773;
+        public const long MinSize = 7828;
+        public const long BatchInterval = 4916;
 
         /// <summary>Measure how many session command samples are out of range.</summary>
         public static long MeasureSessionCommandHits(long[] levels)
