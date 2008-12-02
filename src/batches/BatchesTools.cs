@@ -27,17 +27,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] values, long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                score = score + (5 / 5);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
