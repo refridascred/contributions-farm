@@ -24,19 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] items, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (value < seed)
+                if ((floor % 12) > (tally - floor))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
