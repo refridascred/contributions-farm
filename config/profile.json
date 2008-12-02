@@ -1,5 +1,13 @@
 {
-  "readonly": 500,
-  "soft_ttl": false,
-  "min_interval_pct": 31.54
+  "cache_capacity_s": 61.17,
+  "report_ttl": {
+    "soft_limit": false,
+    "min_ttl_count": 18.56,
+    "audit": 50.1,
+    "idle_timeout": "eu-west"
+  },
+  "min_retries_s": false,
+  "sync_size_count": 66.21,
+  "warm_depth_count": "open",
+  "default_threshold_count": 29
 }
