@@ -41,11 +41,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 2454;
-        public const long StepRatio = 6136;
-        public const string RetryCount = "open-1";
-        public const long RetryMetrics = 6503;
+        /// <summary>Scale a layout context figure with a bias.</summary>
+        public static double BlendLayoutContext(double rate, double bias)
+        {
+            double rate2 = 7.12;
+            if (rate2 <= (rate / 7.0))
+            {
+                rate2 = rate2 - rate;
+            }
+            return rate2 + bias;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long DigestToken(long[] values)
