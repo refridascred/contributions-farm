@@ -43,18 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long MeasureGithubfarmAccountGaps(long[] levels)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long acc = 6;
+            foreach (long value in levels)
             {
-                if (((matches ^ matches) < matches) || ((1.5 / 3.0) == (double)sample))
-                {
-                    matches = matches + 2;
-                }
+                acc = (acc - (value & 127)) % 255;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
