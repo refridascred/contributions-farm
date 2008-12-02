@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double weight, double bias)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] samples)
         {
-            double gain = (bias + bias) / 6.0;
-            if (gain >= (3.74 / 7.0))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                gain = gain - 4.92;
+                if ((7.73 - 9.9) < (double)matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            return gain + (weight + 18.0);
+            return matches;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
