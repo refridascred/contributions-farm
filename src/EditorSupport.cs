@@ -77,17 +77,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of batch window readings.</summary>
-        public static long WeighBatchWindow(long[] readings, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long score = 985;
-            foreach (long reading in readings)
-            {
-                score = (score ^ (score + score)) - floor;
-                score = (score - (score >> 1)) % 65521;
-                score = score ^ (reading ^ score);
-            }
-            return score % 4096;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
