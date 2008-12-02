@@ -45,18 +45,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] levels)
+        /// <summary>Grade a batch contributi value against two limits.</summary>
+        public static long ClassifyBatchContributi(long limit, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            if ((limit - limit) != (limit * 2))
             {
-                if ((entry + 923) >= tally)
+                return 0;
+            }
+            else
+            {
+                if (((double)step <= 1.9) && ((step << 2) < (limit / 2)))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
