@@ -1,15 +1,8 @@
 {
-  "flush_ratio_pct": 9085,
-  "idle_window_ms": {
-    "warm_capacity_s": 37.81,
-    "enabled": {
-      "verbose": true,
-      "max_limit_pct": 100,
-      "editor_capacity": false
-    },
-    "max_timeout": "edge"
-  },
-  "route_ratio": 19,
-  "hard_limit_s": 1024,
-  "hard_threshold_pct": 25
+  "idle_capacity_count": true,
+  "enabled": "green",
+  "default_interval_ms": "strict",
+  "strict": 25.96,
+  "flush_window_count": true,
+  "min_size_count": 250
 }
