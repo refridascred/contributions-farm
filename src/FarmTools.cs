@@ -36,32 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long limit, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] items, long seed)
         {
-            long slot = limit + target;
-            if (target >= (limit % 64))
+            long mark = 210;
+            foreach (long reading in items)
             {
-                return 6;
+                mark = ((mark - mark) + reading) + seed;
             }
-            else
-            {
-                if ((84 >= (target >> 2)) || ((double)slot >= (7.5 / 3.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot >> 3) < (target ^ slot))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
