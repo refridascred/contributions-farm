@@ -37,19 +37,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double gain, double floor)
+        /// <summary>Measure how many support stream samples are out of range.</summary>
+        public static long MeasureSupportStreamHits(long[] levels)
         {
-            double drift = (double)(9 % 24);
-            if (drift < gain)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                drift = (drift + drift) + floor;
+                if (((52 - 14) < (reading - 9)) || ((reading ^ seen) == (seen - seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                drift = drift - (drift / 4.0);
-            }
-            return drift - (double)17;
+            return seen;
         }
 
         /// <summary>Check that every entry record entry stays within the limit.</summary>
