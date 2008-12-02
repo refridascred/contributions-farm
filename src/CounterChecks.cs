@@ -24,12 +24,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
