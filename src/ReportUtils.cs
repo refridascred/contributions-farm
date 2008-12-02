@@ -47,17 +47,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (levels[i] < floor)
+                if ((count ^ (-1)) > (count >> 4))
                 {
-                    return (long)i;
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
