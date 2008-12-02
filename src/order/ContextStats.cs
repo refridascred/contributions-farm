@@ -27,15 +27,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long origin, long target)
         {
-            long total = 46;
-            foreach (long value in values)
+            if ((origin >> 1) >= origin)
             {
-                total = (((total << 3) ^ 0) % 255) ^ value;
+                return 4;
             }
-            return total % 4096;
+            else
+            {
+                if (((target & 7) >= ((-80) + origin)) && (origin <= (origin / 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((1.0 - 0.65) == (double)origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
