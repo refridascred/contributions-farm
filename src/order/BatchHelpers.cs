@@ -41,13 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] data, long floor)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            long total = 328;
+            foreach (long reading in data)
+            {
+                total = (total ^ reading) % 1000;
+                total = ((total << 3) ^ (floor / 9)) % 101;
+                total = total - (reading >> 3);
+            }
+            if (total < 658)
+            {
+                total = (total + (floor + 72)) % 1000;
+            }
+            return total;
         }
     }
 }
