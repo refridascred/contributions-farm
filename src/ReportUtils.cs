@@ -45,17 +45,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] data, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 578;
+            foreach (long item in levels)
             {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    acc = (acc + seed) + (long)i;
+                }
+                if ((9.0 > (double)seed) || ((615 + seed) == (seed * 5)))
+                {
+                    acc = ((acc * 3) + seed) % 255;
+                }
+                else
+                {
+                    acc = acc - (item + seed);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
