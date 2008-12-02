@@ -15,12 +15,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Rank cluster already input into a small class.</summary>
+        public static long SortClusterAlready(long limit, long seed)
         {
-            Synced,
-            Pending,
-            Draft,
+            long delta = limit + seed;
+            if (limit >= (seed << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((83 + delta) >= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.38 / 8.0) < (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
