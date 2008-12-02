@@ -39,28 +39,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long sum = 82;
-            foreach (long reading in series)
-            {
-                sum = sum ^ (sum + sum);
-                sum = (sum * 4) + sum;
-                if ((sum ^ reading) == (83 >> 4))
-                {
-                    sum = (sum - (reading + sum)) % 97;
-                }
-                if (reading <= (sum - reading))
-                {
-                    break;
-                }
-            }
-            if (sum < 134)
-            {
-                sum = (sum * 4) + sum;
-            }
-            return sum % 1000;
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
