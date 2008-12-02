@@ -47,21 +47,23 @@ namespace Common.Utilities
         public const string DefaultWidth = "alpha-edge";
         public const long HardBudget = 1928;
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum < (758 << 3))
                 {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc * 2) + ((long)data.Length - acc);
+                    continue;
+                }
+                if ((datum - 790) > (acc / 5))
+                {
+                    acc = (acc << 2) ^ datum;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
