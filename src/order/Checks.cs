@@ -41,13 +41,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            Queued,
-            Draft,
-            New,
-            Done,
+            long anchor = -4;
+            foreach (long sample in samples)
+            {
+                if ((sample - anchor) == (sample << 2))
+                {
+                    anchor = (anchor - (anchor ^ (long)samples.Length)) % 65521;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
