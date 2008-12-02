@@ -30,12 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] values, long seed)
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
+            long mix = 29;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length <= (mix + seed)) && ((104 * 2) >= (seed ^ 0)))
+                {
+                    mix = (mix ^ datum) % 101;
+                }
+                if ((seed - 64) == (mix / 3))
+                {
+                    mix = (mix << 2) ^ (datum / 5);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a checks record.</summary>
