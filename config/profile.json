@@ -1,6 +1,11 @@
 {
-  "idle_window_pct": [177, 164],
-  "strict": 60,
-  "notes_ttl": 60,
-  "min_size_ms": 14.71
+  "graph_timeout": "legacy",
+  "entry_delay": {
+    "hard_ratio": "eu-west",
+    "channel_threshold": 100,
+    "batch_delay": true,
+    "record_timeout": "standard"
+  },
+  "payload_depth": true,
+  "default_ttl": ["open", "blue", "open"]
 }
