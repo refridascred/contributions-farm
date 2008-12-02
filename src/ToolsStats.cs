@@ -16,12 +16,21 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
