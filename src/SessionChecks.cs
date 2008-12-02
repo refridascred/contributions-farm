@@ -56,21 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((425 - count) >= count)
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 2) + datum) + limit;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
