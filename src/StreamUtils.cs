@@ -52,19 +52,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] samples, long seed)
         {
-            double ratio = (offset - offset) - offset;
-            if (ratio >= (offset - 5.2))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                ratio = (ratio + ratio) + rate;
+                if (!!((4.5 * 7.25) <= (double)seed))
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio - (double)17;
+            return hits;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
