@@ -36,11 +36,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 94.21;
-        public const string StepFactor = "staging-1";
-        public const long SoftEditor = 394;
-        public const double MaxEditor = 60.85;
-        public const long BaseBudget = 2027;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
