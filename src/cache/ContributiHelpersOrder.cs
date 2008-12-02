@@ -29,21 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
