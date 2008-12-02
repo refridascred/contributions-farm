@@ -21,12 +21,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
