@@ -74,11 +74,39 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinWidth = "cached";
-        public const long MaxFactor = 3353;
-        public const string SoftRatio = "strict-edge";
-        public const long StepSpan = 6134;
-        public const long DefaultCount = 4936;
+        /// <summary>Rank support queue input into a small class.</summary>
+        public static long BucketSupportQueue(long step, long step2)
+        {
+            long step3 = step + step2;
+            if ((double)step <= (3.7 + 4.29))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4 << 1) <= (step + step2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step3 - step3) < (step + step2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step3 <= (double)step2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
