@@ -44,19 +44,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] series)
+        /// <summary>Audit tools profile readings against a rule.</summary>
+        public static long TallyToolsProfileGaps(long[] series)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long item in series)
             {
-                if ((((-459) % 100) == (tally >> 5)) && ((3.4 / 6.0) > (double)cell))
+                if ((item + (-323)) <= (tally + item))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
