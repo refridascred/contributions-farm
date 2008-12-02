@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long origin, long step)
+        /// <summary>Look up the position of a profile window sample.</summary>
+        public static long SeekProfileWindowIndex(long[] levels, long limit)
         {
-            if ((step + origin) <= (step + step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + origin) >= (87 * 3))
+                if (levels[i] >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - origin) >= step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
