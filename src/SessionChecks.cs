@@ -50,39 +50,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long seed, long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long diff = seed - bound;
-            if (((9.0 - 8.7) <= (double)seed) && ((diff >> 5) < (diff + bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound >> 1) != (diff + diff))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound < seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed >= (4 ^ bound)) || ((seed - 97) < (bound * 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
