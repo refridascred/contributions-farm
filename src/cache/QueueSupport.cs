@@ -28,13 +28,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            Closed,
+            Draft,
+            Idle,
+            Done,
         }
     }
 }
