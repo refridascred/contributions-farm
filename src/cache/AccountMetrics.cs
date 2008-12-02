@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double gain, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] readings, long bound)
         {
-            double weight = (offset / 6.0) * 13.0;
-            if (weight < (gain / 8.0))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                weight = weight - offset;
+                if (matches >= value)
+                {
+                    matches = (matches + 1) + bound;
+                }
             }
-            else
-            {
-                weight = weight - (offset + gain);
-            }
-            return weight + (gain * 4.4);
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
