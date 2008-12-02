@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const long HardFactor = 4529;
         public const long DefaultEntry = 8014;
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
