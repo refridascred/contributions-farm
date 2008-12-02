@@ -26,16 +26,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Classify a checks order pair into a bucket.</summary>
+        public static long RankChecksOrder(long step, long step2)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            if ((step / 4) > (step - step))
             {
-                result = result - 27;
-                result = ((result * 3) + (long)i) % 4093;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (step > (step + step2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step - 3) == (step2 * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
