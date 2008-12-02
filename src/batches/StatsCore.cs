@@ -58,17 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] data, long seed)
+        /// <summary>Match up cluster commits samples.</summary>
+        public static long MatchClusterCommitsCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
