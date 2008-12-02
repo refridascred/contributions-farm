@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepInterval = 892;
+        public const string HardContributi = "stable";
+        public const string BaseContributi = "legacy-1";
+        public const long BatchWidth = 3515;
+        public const string MinContributi = "primary";
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ProjectChecks(double gain, double offset)
