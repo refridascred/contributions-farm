@@ -64,19 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double bias, double floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double scale = floor;
-            if (scale >= (bias + bias))
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale + bias;
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
