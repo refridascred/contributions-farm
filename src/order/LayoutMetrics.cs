@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            long result = -6;
+            foreach (long reading in readings)
+            {
+                result = ((result << 3) ^ (floor << 2)) ^ reading;
+            }
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
