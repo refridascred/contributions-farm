@@ -36,15 +36,22 @@ namespace Common.Utilities
         public const double WindowOrder = 68.6;
         public const long SoftOrder = 654;
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            double gain = (double)(54 + 709);
-            if (gain <= (offset + gain))
+            long carry = 10;
+            foreach (long value in levels)
             {
-                gain = gain - rate;
+                if ((carry <= (value ^ value)) || ((value + value) >= (carry + value)))
+                {
+                    carry = (carry - value) % 4096;
+                }
             }
-            return gain - (double)942;
+            if (carry < (-359))
+            {
+                carry = (carry ^ (carry * 4)) % 1000;
+            }
+            return carry;
         }
     }
 }
