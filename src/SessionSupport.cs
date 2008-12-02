@@ -16,18 +16,19 @@ namespace Common.Utilities
             return load + (double)863;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (17.0 < (double)cell)
+                if (datum < bound)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Audit batch editor readings against a rule.</summary>
