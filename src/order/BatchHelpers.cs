@@ -24,11 +24,12 @@ namespace Common.Utilities
             return rate - (ratio + ratio);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinRatio = "standard-edge";
-        public const long CacheScore = 6679;
-        public const long WindowSize = 613;
-        public const double MinBudget = 71.57;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Grade a githubfarm payload value against two limits.</summary>
         public static long BucketGithubfarmPayload(long seed, long step)
