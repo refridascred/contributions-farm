@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstSize = 6506;
-        public const string BatchWidth = "primary";
-        public const double IdleCount = 13.23;
-        public const long RetryBudget = 8991;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((long)values.Length + entry) <= (entry / 5))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a support command reading by value.</summary>
         public static long LocateSupportCommandIndex(long[] readings, long origin)
