@@ -62,19 +62,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi batch readings against a bound.</summary>
-        public static bool ValidateContributiBatchLimits(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinLevel = 929;
+        public const long IdleBatches = 9284;
+        public const string MaxBatches = "stable-edge";
+        public const string DefaultBatches = "legacy-1";
     }
 }
