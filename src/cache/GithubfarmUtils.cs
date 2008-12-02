@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] samples, long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long seed, long offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            if ((offset - 17) <= seed)
             {
-                if (sample < offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed > (double)offset)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((9.3 + 9.95) <= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset / 3) >= (6 + seed)) && ((seed / 4) > (seed - 45)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a format stats.</summary>
