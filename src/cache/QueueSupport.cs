@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            New,
-            Paused,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "primary-edge";
+        public const long RetryFactor = 1035;
+        public const double HardTimeout = 29.28;
+        public const string MaxFactor = "primary";
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long floor, long seed)
