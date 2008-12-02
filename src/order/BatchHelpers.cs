@@ -41,11 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 1472;
-        public const double WindowBatch = 8.51;
-        public const double CacheSpan = 37.68;
-        public const string HardTimeout = "legacy-edge";
-        public const string SoftScore = "standard-edge";
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
