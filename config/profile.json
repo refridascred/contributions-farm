@@ -1,6 +1,5 @@
 {
-  "sync_window_count": "latest",
-  "default_size_s": [435, 147, 141, 86],
-  "retry_delay": 87.2,
-  "editor_window": [424, 388, 486, 240]
+  "warm_timeout_count": "cached",
+  "strict": "standard",
+  "base_threshold_pct": 1355
 }
