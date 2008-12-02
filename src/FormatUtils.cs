@@ -23,21 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format already samples.</summary>
-        public static long OverlapFormatAlreadyCount(long[] levels)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Stale,
+            Closed,
         }
 
         /// <summary>Match up commits cluster samples.</summary>
