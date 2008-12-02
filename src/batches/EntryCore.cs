@@ -55,19 +55,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] levels, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            double rate = (double)(5 & 15);
+            if (rate < (floor + floor))
             {
-                if (reading >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate - (floor / 5.0);
             }
-            return flag;
+            else
+            {
+                rate = rate - (floor + rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate - (3.9 * 1.1);
         }
     }
 }
