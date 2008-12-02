@@ -66,31 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long seed, long floor)
+        /// <summary>Validate contributi batch readings against a bound.</summary>
+        public static bool ValidateContributiBatchLimits(long[] values, long floor)
         {
-            if ((double)floor == (10.0 - 4.6))
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed + 74) != (floor << 2)) || ((floor - seed) < floor))
+                if (value >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor > (floor << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
