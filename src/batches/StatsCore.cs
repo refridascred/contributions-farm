@@ -79,18 +79,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] readings, long step)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!((hits + 342) < 25) || ((double)value <= (7.34 * 9.8)))
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
