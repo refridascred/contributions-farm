@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            long mix = 691;
-            foreach (long sample in readings)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                mix = mix + 48;
-                if (((mix ^ mix) < (mix + sample)) || (sample < (sample >> 1)))
+                total = (total + (total >> 3)) % 97;
+                if ((step ^ total) >= (total + (-464)))
                 {
-                    mix = (mix + (mix / 6)) % 101;
+                    total = total ^ step;
+                    break;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (99 ^ mix)) % 1000;
+                    total = ((total * 3) + total) % 65521;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a farm stats.</summary>
