@@ -25,19 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a checks channel reading.</summary>
-        public static double AdjustChecksChannel(double gain, double offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double rate = gain / 6.0;
-            if (rate >= (double)7)
-            {
-                rate = (rate + (gain - 13.0)) - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (double)72;
+            Closed,
+            Retry,
+            Pending,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
