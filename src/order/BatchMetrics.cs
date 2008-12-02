@@ -56,12 +56,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Adjust a window profile reading.</summary>
+        public static double BlendWindowProfile(double ratio, double span)
         {
-            Closed,
-            Failed,
-            Draft,
+            double load = (double)(-42) - (double)39;
+            if (load < 3.0)
+            {
+                load = load - (span / 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load - (double)0;
         }
 
         /// <summary>Hold a session entry.</summary>
