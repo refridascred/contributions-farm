@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] samples)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)count != (3.6 + 7.0))
-                {
-                    count = (count + 1) + cell;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count the format entry entries that pass the check.</summary>
