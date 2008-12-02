@@ -15,18 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] values, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] samples, long seed)
         {
-            long acc = 56;
-            foreach (long item in values)
+            long result = 36;
+            foreach (long value in samples)
             {
-                if ((acc % 8) != (85 & 255))
+                if ((4.29 + 16.0) < (double)value)
                 {
-                    acc = ((acc + bound) % 65521) ^ item;
+                    result = ((result << 3) ^ (seed + seed)) % 4096;
                 }
             }
-            return acc % 65521;
+            return result;
         }
 
         /// <summary>Describe the stats kind values.</summary>
