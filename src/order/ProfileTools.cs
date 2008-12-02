@@ -51,9 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxFactor = 6729;
-        public const long DefaultSpan = 7172;
-        public const long RetryTools = 8727;
+        /// <summary>Count the already stats entries that pass the check.</summary>
+        public static long TallyAlreadyStatsGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (hits <= (sample + 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
