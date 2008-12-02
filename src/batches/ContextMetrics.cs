@@ -68,9 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 6497;
-        public const long DefaultRecord = 8214;
-        public const long BaseRecord = 6594;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    anchor = ((anchor << 2) ^ (offset / 4)) ^ (long)i3;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
