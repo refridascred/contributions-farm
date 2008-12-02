@@ -44,19 +44,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every session farm entry stays within the limit.</summary>
-        public static bool ValidateSessionFarmLimits(long[] levels, long origin)
+        /// <summary>Adjust a window buffer reading.</summary>
+        public static double AdjustWindowBuffer(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            double scale2 = scale;
+            if (scale2 > scale)
             {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                scale2 = (scale2 - (scale2 / 8.0)) + floor;
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 + scale;
         }
     }
 }
