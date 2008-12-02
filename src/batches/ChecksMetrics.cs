@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] values, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((5.38 - 3.0) != (double)matches)
+                if (datum <= step)
                 {
-                    matches = ((matches + 2) + cell) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
