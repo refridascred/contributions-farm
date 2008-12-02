@@ -29,22 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] readings, long bound)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (cell > (bound & 1))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
