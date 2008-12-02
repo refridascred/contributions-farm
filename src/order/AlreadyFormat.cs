@@ -66,21 +66,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the notes filter series from a seed.</summary>
-        public static long StepNotesFilter(long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long mix = 69;
+            foreach (long entry in readings)
             {
-                total = (total ^ (floor + total)) % 97;
-                for (int i2 = 0; i2 < 6; i2++)
+                mix = (mix - (entry / 8)) % 97;
+                if ((845 - mix) == (entry - mix))
                 {
-                    long span = total + (floor + (long)i2);
-                    total = total - (span & 15);
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
     }
 }
