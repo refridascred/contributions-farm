@@ -48,15 +48,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double scale, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] values)
         {
-            double rate = span - span;
-            if (rate > (double)889)
+            long count = 0;
+            foreach (long reading in values)
             {
-                rate = (rate + (double)56) - scale;
+                if ((6 ^ count) > (count + count))
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            return rate - rate;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
