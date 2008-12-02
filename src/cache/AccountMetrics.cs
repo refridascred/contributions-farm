@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double IdleCount = 13.23;
         public const long RetryBudget = 8991;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 6544;
-        public const long MinCommits = 7546;
-        public const long CacheLevel = 1210;
-        public const long WindowWidth = 2673;
-        public const long CacheWidth = 8551;
+        /// <summary>Locate a support command reading by value.</summary>
+        public static long LocateSupportCommandIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long FoldGithubfarm(long[] readings)
