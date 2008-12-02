@@ -16,22 +16,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many payload batch samples are out of range.</summary>
-        public static long AuditPayloadBatchOutliers(long[] samples, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (datum <= (seen & 63))
+                if ((2.6 - 1.0) < (double)reading)
                 {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first editor schema entry that matches the target.</summary>
