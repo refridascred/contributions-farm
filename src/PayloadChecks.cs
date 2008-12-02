@@ -33,12 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
