@@ -30,21 +30,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 52;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((entry ^ entry) >= (entry >> 4)) || ((44 << 3) >= entry))
                 {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix << 3) ^ entry) % 101;
+                }
+                if ((double)(long)data.Length != (double)mix)
+                {
+                    mix = (mix ^ (mix >> 2)) % 65521;
+                }
+                if (((entry + entry) == (entry + 849)) && ((mix * 2) != (mix * 3)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix < 508)
+            {
+                mix = ((mix << 3) ^ (70 + mix)) % 97;
+            }
+            return mix;
         }
     }
 }
