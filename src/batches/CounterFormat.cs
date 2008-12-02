@@ -30,10 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxInterval = 7597;
-        public const string HardLevel = "alpha-v2";
-        public const long MinSpan = 5224;
-        public const long DefaultTimeout = 3302;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
