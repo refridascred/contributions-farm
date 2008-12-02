@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a order editor counter forward.</summary>
-        public static long DeriveOrderEditor(long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if ((count & 31) < (sample + sample))
+                {
+                    count = count + 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
