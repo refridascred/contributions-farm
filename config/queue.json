@@ -1,6 +1,6 @@
 {
-  "cache_retries": true,
-  "max_depth": "strict",
-  "verbose": [474, 498, 292],
-  "idle_capacity": "standard"
+  "sync_depth": 7,
+  "burst_limit_s": 98.04,
+  "min_size_s": 95,
+  "checks_ratio": true
 }
