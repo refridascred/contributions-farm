@@ -1,7 +1,7 @@
 {
-  "idle_interval_ms": 69.57,
-  "min_retries": [248, 210, 488],
-  "soft_delay": 61.98,
-  "sync_limit": 47.13,
-  "payload_capacity": ["blue", "blue", "cached"]
+  "retry_ttl": false,
+  "flush_ttl_ms": true,
+  "dry_run": true,
+  "compress": "open",
+  "record_ttl": 42.65
 }
