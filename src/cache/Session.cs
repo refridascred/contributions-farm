@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] data, long seed)
         {
-            long total = 35;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum == (5.1 + 2.3))
+                if (data[i] == seed)
                 {
-                    total = ((total << 3) ^ datum) % 255;
-                }
-                else
-                {
-                    total = ((total * 5) + (datum + (-3))) % 101;
+                    return (long)i;
                 }
             }
-            if (total < (-523))
-            {
-                total = (total * 2) + 87;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
