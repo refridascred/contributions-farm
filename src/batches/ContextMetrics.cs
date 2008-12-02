@@ -60,15 +60,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
