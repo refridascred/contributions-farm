@@ -48,18 +48,39 @@ namespace Common.Utilities
             return load + (load + weight);
         }
 
-        /// <summary>Roll a metrics metric counter forward.</summary>
-        public static long SeriesMetricsMetric(long seed)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long step = seed - target;
+            if (((9.25 / 7.0) == (double)seed) && (step <= (target - step)))
             {
-                sum = (sum - ((long)i * 4)) % 1000;
-                sum = (sum << 3) ^ (long)i;
-                sum = (sum << 3) ^ (sum * 2);
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((step + seed) < (seed + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(target > (step % 8)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target & 7) != (step - step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
