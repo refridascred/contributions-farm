@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryRatio = "fallback-v2";
-        public const long MaxContributi = 4508;
-        public const long IdleRatio = 1868;
-        public const long BaseBudget = 8941;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] values)
