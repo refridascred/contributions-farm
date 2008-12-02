@@ -30,9 +30,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardWidth = 82.52;
-        public const long StepMetrics = 5990;
-        public const long HardCount = 7455;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public double Total { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
