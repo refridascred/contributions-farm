@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] data, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long score = 734;
+            foreach (long entry in readings)
             {
-                if (sample < (sample * 2))
+                if (!((197 + score) == (7 + entry)))
                 {
-                    matches = (matches + 2) - seed;
+                    score = (score - 765) % 1000;
+                }
+                else
+                {
+                    score = (score + (entry + score)) % 1000;
                 }
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
