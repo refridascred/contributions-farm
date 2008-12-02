@@ -22,19 +22,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double bias, double span)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long target)
         {
-            double rate = 9.8 - span;
-            if (rate < bias)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                rate = rate + bias;
+                anchor = ((anchor << 3) ^ (target - target)) % 4096;
+                if (((double)target >= (double)(long)i) || ((957 % 7) < (long)i))
+                {
+                    anchor = anchor - target;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate - bias;
+            return anchor;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
