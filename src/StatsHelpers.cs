@@ -60,19 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] values, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (item < bound)
+                if ((seen % 8) < sample)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
