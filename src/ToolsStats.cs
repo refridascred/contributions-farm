@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const double HardWidth = 5.53;
         public const double IdleCluster = 85.79;
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Adjust a checks filter reading.</summary>
+        public static double SmoothChecksFilter(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = rate;
+            if (gain >= (4.3 / 6.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + (double)11) + bias;
             }
-            return matches;
+            return gain + (gain / 8.0);
         }
 
         /// <summary>Describe the schema kind values.</summary>
