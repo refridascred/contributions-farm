@@ -12,9 +12,15 @@ for i in $(seq 1 10); do
 done
 log "total ${total}"
 
-for item in strict staging primary cached; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=78
+COMMAND_LIMIT=292
 log "limit is ${COMMAND_LIMIT}"
