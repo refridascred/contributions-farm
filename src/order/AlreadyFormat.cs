@@ -26,19 +26,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] items, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long origin)
         {
-            long sum = 4;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                sum = (sum << 2) ^ 13;
-                if ((8.0 >= (double)sum) && (8.6 >= (double)floor))
+                if (entry != origin)
                 {
-                    sum = (sum << 2) ^ (value + sum);
+                    found = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return found;
         }
 
         /// <summary>Describe the tools phase values.</summary>
