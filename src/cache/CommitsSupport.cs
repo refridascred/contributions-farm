@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a cache commits pair into a bucket.</summary>
-        public static long ClassifyCacheCommits(long offset, long seed)
+        /// <summary>Rank githubfarm layout input into a small class.</summary>
+        public static long SortGithubfarmLayout(long limit, long origin)
         {
-            if (!((2 << 1) < (seed % 64)))
+            long delta = limit - origin;
+            if ((origin + limit) > (origin - origin))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (((seed + seed) >= (seed % 10)) && (seed <= (offset & 63)))
+                if ((double)delta < (0.1 / 8.0))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (((seed - offset) < (60 + offset)) || ((offset + offset) > seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9.0 - 6.03) < (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
