@@ -22,19 +22,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((83 << 1) > datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinFarm = "cached-edge";
+        public const long IdleFarm = 3610;
+        public const long CacheRatio = 9376;
+        public const string BaseSize = "primary";
+        public const string MinSpan = "local-v2";
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LookupFormatIndex(long[] values, long offset)
