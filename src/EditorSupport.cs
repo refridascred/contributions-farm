@@ -63,14 +63,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowInterval = "strict-1";
+        public const string HardBatch = "staging";
+        public const long StepBatch = 6329;
+        public const double MinBatch = 90.33;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] levels)
