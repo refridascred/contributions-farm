@@ -31,13 +31,26 @@ namespace Common.Utilities
             return gain2 + (double)43;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Accumulate order notes samples.</summary>
+        public static long ScoreOrderNotes(long[] items)
         {
-            Closed,
-            Draft,
-            Idle,
-            Done,
+            long carry = 655;
+            foreach (long sample in items)
+            {
+                if ((double)61 <= (double)sample)
+                {
+                    carry = (carry ^ (carry - sample)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (long)items.Length) % 97;
+                }
+            }
+            if (carry < 79)
+            {
+                carry = (carry + (carry - carry)) % 97;
+            }
+            return carry;
         }
     }
 }
