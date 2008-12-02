@@ -1,7 +1,24 @@
 # entry settings
-flush_window_s: fallback
-warm_interval_pct:
-  soft_retries: false
-  cache_delay_s: 72.89
-  max_retries: green
-max_timeout_pct: 56
+notes_delay: 21
+dry_run:
+  min_delay_ms: 8602
+  default_limit_s: stable
+  checks_interval:
+    poll_timeout_pct:
+      - fallback
+      - standard
+    default_capacity_pct: edge
+    min_ttl_pct: 36
+  batch_delay:
+    - 22
+    - 441
+    - 495
+    - 136
+  default_retries_count: standard
+  default_delay_s: fallback
+soft_window_s: true
+compress:
+  - latest
+  - stable
+  - blue
+  - stable
