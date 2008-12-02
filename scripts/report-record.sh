@@ -6,11 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=351
-log "limit is ${RECORD_LIMIT}"
-
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 1))
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+RECORD_LIMIT=87
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-local}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
