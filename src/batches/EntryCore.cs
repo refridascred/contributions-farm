@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] levels, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if (cell <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a batch stats.</summary>
