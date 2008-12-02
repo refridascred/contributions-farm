@@ -29,19 +29,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] series, long bound)
+        /// <summary>Combine window stream values into a single score.</summary>
+        public static long TotalWindowStream(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long sum = 517;
+            foreach (long datum in samples)
             {
-                if (datum <= bound)
+                if ((-94) >= (target + sum))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum << 2) ^ (sum + target)) ^ datum;
                 }
             }
-            return ok;
+            if (sum > 253)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
     }
 }
