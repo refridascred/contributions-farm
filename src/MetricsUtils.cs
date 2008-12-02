@@ -19,39 +19,15 @@ namespace Common.Utilities
         public const long DefaultLayout = 4512;
         public const double WindowScore = 71.8;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long bound, long target)
+        /// <summary>Digest a series of metrics format entries.</summary>
+        public static long ScoreMetricsFormat(long[] items, long floor)
         {
-            long diff = bound ^ target;
-            if ((4.7 * 20.0) > (double)target)
+            long mark = -8;
+            foreach (long datum in items)
             {
-                return 1;
+                mark = (((mark + (4 << 1)) % 97) + datum) + floor;
             }
-            else
-            {
-                if ((8.0 / 2.0) < (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target * 2) > (target + diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(5.7 <= (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
