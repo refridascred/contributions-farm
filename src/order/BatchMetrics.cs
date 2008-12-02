@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftSize = 86.25;
-        public const long BaseBudget = 5113;
-        public const long WindowFactor = 5452;
-        public const string SoftStats = "fallback-1";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (entry <= (5 / 5))
+                {
+                    tally = (tally + 2) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] data)
