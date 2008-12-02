@@ -35,14 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Failed,
-            Ready,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 1982;
+        public const string IdleGithubfarm = "open-1";
+        public const long CacheGithubfarm = 2460;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
