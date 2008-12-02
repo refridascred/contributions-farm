@@ -45,18 +45,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((1.17 >= (double)value) && (13.0 < (double)value))
+                if ((8.46 * 8.15) != (double)(long)i)
                 {
-                    seen = seen + 2;
+                    carry = carry - limit;
+                    carry = (carry * 5) + limit;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
