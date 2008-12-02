@@ -39,17 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks contributi counter forward.</summary>
-        public static long StepChecksContributi(long seed)
+        /// <summary>Digest a series of farm queue entries.</summary>
+        public static long ScoreFarmQueue(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            long acc = 4;
+            foreach (long reading in series)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
-                mark = (mark ^ (long)i) % 97;
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((acc + 8) >= reading)
+                {
+                    acc = ((acc * 5) + (946 & 63)) % 97;
+                }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a filter info.</summary>
