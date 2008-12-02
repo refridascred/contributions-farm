@@ -1,6 +1,12 @@
 # githubfarm settings
-hard_depth: 85.46
-schema_limit: 5997
-idle_interval_pct: true
-default_retries: 43.81
-hard_ratio_count: false
+sync_threshold_s:
+  audit: eu-west
+  support_depth: 7871
+  warm_timeout_count: 78
+cache_delay: open
+audit:
+  - 479
+  - 91
+  - 323
+  - 357
+githubfarm_ttl: 55
