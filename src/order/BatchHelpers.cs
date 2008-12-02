@@ -27,18 +27,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            long acc = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)items.Length <= (sample + acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc + sample) % 65521;
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
