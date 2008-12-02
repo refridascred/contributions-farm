@@ -20,18 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheLevel = 15.49;
+        public const long BatchWidth = 8604;
+        public const string MaxNotes = "open-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BatchScore = "alpha-v2";
