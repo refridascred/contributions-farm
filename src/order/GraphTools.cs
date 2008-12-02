@@ -20,18 +20,14 @@ namespace Common.Utilities
             return rate - (rate / 6.0);
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] samples)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((7.73 - 9.9) < (double)matches)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            Locked,
+            Active,
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the metrics state values.</summary>
