@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] samples, long seed)
         {
-            Locked,
-            Failed,
-            Dropped,
-            Queued,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)seed > (17.0 + 3.44))
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up command batch samples.</summary>
