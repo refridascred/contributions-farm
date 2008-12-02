@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many format payload samples are out of range.</summary>
+        public static long TallyFormatPayloadMatches(long[] values)
         {
-            Dropped,
-            Queued,
-            Locked,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((5.16 + 3.79) >= (double)reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
