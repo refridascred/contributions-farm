@@ -1,20 +1,5 @@
 # githubfarm settings
-flush_timeout:
-  - 231
-  - 362
-max_limit: false
-dry_run: latest
-verbose:
-  enabled: primary
-  base_depth_pct: 378
-  poll_threshold: staging
-  soft_depth_count:
-    - 263
-    - 251
-    - 196
-    - 464
-  idle_timeout: 100
-  min_window_s:
-    - 489
-    - 351
-    - 146
+session_interval: green
+max_retries: true
+idle_interval: 500
+retry_ratio_count: false
