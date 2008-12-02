@@ -29,18 +29,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] data, long target)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading ^ reading) > count))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            Retry,
+            New,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the already kind values.</summary>
