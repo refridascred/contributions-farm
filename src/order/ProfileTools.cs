@@ -23,21 +23,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double rate2 = (double)592 - (rate * 6.4);
+            return (rate2 - (rate * 5.06)) + offset;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
