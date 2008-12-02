@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Failed,
-            Queued,
-            Paused,
-            New,
-            Dropped,
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
