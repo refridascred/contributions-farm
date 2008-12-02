@@ -88,39 +88,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long step)
         {
-            long diff = target - step;
-            if (((step / 5) > (diff / 6)) || (target > step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((90 - diff) >= (step + target))
+                if (series[i] <= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((52 + target) >= target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((9.48 * 8.5) > (1.93 - 2.16)) || (target > (target / 8)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
