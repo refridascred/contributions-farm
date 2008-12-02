@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] levels, long origin)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (seen < (seen * 2))
-                {
-                    seen = ((seen + 1) + entry) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Idle,
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
