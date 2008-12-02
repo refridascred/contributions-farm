@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double span)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            double bias2 = 0.9 + (bias * 12.0);
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = ((bias2 + bias) + (double)(long)i) + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias2 - (7.0 + 20.0);
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
