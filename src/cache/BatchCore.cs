@@ -68,10 +68,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepCount = "latest";
-        public const long BaseNotes = 5364;
-        public const long IdleNotes = 8701;
-        public const long RetryNotes = 6537;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((reading - reading) != (reading + reading)) && (((double)matches < (4.35 * 0.67)) || (matches > (matches - 0))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
