@@ -31,22 +31,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] values, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (80 >= (limit + entry))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
