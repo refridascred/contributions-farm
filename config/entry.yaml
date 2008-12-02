@@ -1,27 +1,11 @@
 # entry settings
-hard_threshold: 60
-soft_timeout_pct:
-  hard_threshold: 100
-  cache_retries: 29.18
-  payload_interval:
-    - standard
-    - cached
-  farm_ttl: 41.32
-  min_size_s:
-    - latest
-    - blue
-    - edge
-    - fallback
-  compress: 1137
-compress: staging
-stats_ratio:
-  audit: strict
-  default_timeout:
-    - staging
-    - staging
-    - standard
-    - open
-  hard_timeout: 35
-  base_interval: false
-  burst_capacity_ms: 30
-metrics_retries: blue
+dry_run: 3165
+hard_ratio_ms: stable
+batch_ttl_ms: 6763
+min_threshold_s:
+  - blue
+  - latest
+flush_interval_s:
+  - open
+  - stable
+retry_interval: 60
