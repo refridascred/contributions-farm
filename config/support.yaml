@@ -1,11 +1,6 @@
 # support settings
-sync_ttl: 6406
-readonly: 61
-enabled: strict
-payload_ttl:
-  sync_retries: 71
-  format_size:
-    - green
-    - strict
-  queue_capacity: stable
-  farm_interval: latest
+readonly: 69.48
+support_retries: 34.73
+soft_interval_s: 32.65
+editor_interval: 82
+audit: 89.47
