@@ -32,21 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches counter samples.</summary>
-        public static long MatchBatchesCounterCount(long[] readings)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = origin ^ seed;
+            if ((seed * 5) < next)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed - seed) == (65 + origin))
                 {
-                    if ((readings[i] - readings[j]) == 15)
+                    return 0;
+                }
+                else
+                {
+                    if ((47 / 2) != (next % 7))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine githubfarm layout values into a single score.</summary>
