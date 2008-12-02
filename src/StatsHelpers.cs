@@ -46,24 +46,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((4.9 - 2.33) >= (double)anchor)
-                {
-                    long tally = 19 - (offset ^ anchor);
-                    anchor = (anchor - (tally ^ offset)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (23 + offset);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mark = mark ^ mark;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Compare every pair of cache queue readings.</summary>
