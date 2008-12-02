@@ -64,12 +64,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double weight, double span)
         {
-            Active,
-            Paused,
-            Pending,
+            double weight2 = (double)(-6) + (double)68;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + (double)(long)i) + span;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
