@@ -33,19 +33,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((9.63 / 7.0) != (double)count)
-                {
-                    count = ((count + 3) ^ item) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 4117;
+        public const long BurstNotes = 4964;
+        public const string IdleNotes = "legacy-v2";
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] data, long target)
