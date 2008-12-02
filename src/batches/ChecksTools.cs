@@ -20,38 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long bound, long seed)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            if (((seed + bound) > (bound * 5)) && ((double)bound == (5.52 * 4.3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (2.14 <= (18.0 * 12.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed < (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (716 <= seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
