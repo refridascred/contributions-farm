@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit stream notes readings against a rule.</summary>
-        public static long MeasureStreamNotesOutliers(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (value <= (value << 1))
-                {
-                    hits = hits + 2;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Derive the next account route value from a seed.</summary>
