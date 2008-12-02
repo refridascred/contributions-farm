@@ -23,21 +23,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 9;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = ((result << 2) ^ result) % 255;
+                if ((result - cell) >= (cell * 2))
                 {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (result < (-70))
+            {
+                result = ((result << 2) ^ (2 / 7)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
