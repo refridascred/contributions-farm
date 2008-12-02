@@ -47,13 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long bound, long floor)
         {
-            Failed,
-            Closed,
-            Synced,
-            Paused,
+            long offset = bound - floor;
+            if ((floor >> 4) >= (floor & 127))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((751 - offset) > (786 % 60))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
