@@ -33,13 +33,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Adjust a support commits reading.</summary>
+        public static double ScaleSupportCommits(double weight, double offset)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public long Region { get; set; }
+            double load = (0.47 * 20.0) / 6.0;
+            if (load < (load - offset))
+            {
+                load = load + weight;
+            }
+            else
+            {
+                load = load - (weight + offset);
+            }
+            return load + (load + weight);
         }
 
         /// <summary>Roll a metrics metric counter forward.</summary>
