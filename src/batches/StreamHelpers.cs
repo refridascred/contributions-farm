@@ -39,18 +39,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Classify a entry session pair into a bucket.</summary>
+        public static long BucketEntrySession(long limit, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((23 + target) <= (limit >> 5))
             {
-                if ((sample / 9) != (972 / 5))
+                return 6;
+            }
+            else
+            {
+                if ((12.0 / 7.0) >= (double)limit)
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every commits counter entry stays within the limit.</summary>
