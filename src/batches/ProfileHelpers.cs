@@ -21,12 +21,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the filter kind values.</summary>
