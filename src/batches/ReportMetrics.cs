@@ -19,21 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Count stream contributi pairs that satisfy a relation.</summary>
