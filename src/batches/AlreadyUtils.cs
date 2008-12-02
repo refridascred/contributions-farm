@@ -44,35 +44,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long origin, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long target, long seed)
         {
-            if ((seed + seed) < origin)
+            if ((79 & 3) <= target)
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (2.16 >= (double)origin)
+                if ((seed - seed) > (target << 3))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((origin % 64) == (seed + origin))
+                    if ((54 >> 3) < (seed - target))
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        if (((0.06 * 8.66) != (double)seed) && ((origin + seed) >= (seed & 255)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 0;
                     }
                 }
             }
