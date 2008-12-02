@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a profile window sample.</summary>
-        public static long SeekProfileWindowIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 4768;
+        public const long IdleCommits = 1766;
+        public const long StepInterval = 5476;
+        public const string HardCommits = "stable-v2";
+        public const long IdleLevel = 8975;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowHits(long[] series, long step)
