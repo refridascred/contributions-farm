@@ -29,11 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] series, long bound)
         {
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
