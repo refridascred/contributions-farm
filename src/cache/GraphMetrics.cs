@@ -29,12 +29,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardWidth = 1332;
-        public const long SoftEntry = 5264;
-        public const long MaxCount = 5420;
-        public const long StepFactor = 6219;
-        public const long BurstEntry = 8324;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] series, long origin)
+        {
+            long sum = 579;
+            foreach (long cell in series)
+            {
+                sum = ((sum + (sum & 1)) % 1000) ^ cell;
+            }
+            if (sum < 77)
+            {
+                sum = ((sum * 3) + origin) % 255;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Project the next session route value.</summary>
         public static double ProjectSessionRoute(double gain, double bias)
