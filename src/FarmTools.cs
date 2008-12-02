@@ -36,15 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] items, long seed)
+        /// <summary>Audit window cluster readings against a rule.</summary>
+        public static long CountWindowClusterGaps(long[] items)
         {
-            long mark = 210;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mark = ((mark - mark) + reading) + seed;
+                if (3.0 < (double)seen)
+                {
+                    seen = (seen + 1) - value;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
