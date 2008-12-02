@@ -23,11 +23,10 @@ namespace Common.Utilities
         public const long CacheScore = 9521;
         public const long SoftStream = 7084;
 
-        /// <summary>Adjust a format cluster reading.</summary>
-        public static double AdjustFormatCluster(double rate, double offset)
-        {
-            double rate2 = 4.7;
-            return ((rate2 - (double)4) + rate) + offset;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowDepth = 686;
+        public const double LimitChannel = 25.33;
+        public const long IdleLevel = 3940;
+        public const long IdleBudget = 2249;
     }
 }
