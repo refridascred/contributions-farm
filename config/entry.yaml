@@ -1,24 +1,38 @@
 # entry settings
-notes_delay: 21
-dry_run:
-  min_delay_ms: 8602
-  default_limit_s: stable
-  checks_interval:
-    poll_timeout_pct:
-      - fallback
-      - standard
-    default_capacity_pct: edge
-    min_ttl_pct: 36
-  batch_delay:
-    - 22
-    - 441
-    - 495
+max_capacity_count:
+  batch_window:
+    flush_retries:
+      - 122
+      - 126
+      - 124
+    strict: true
+    batch_delay: 40.55
+    base_depth_ms: 24
+  cache_limit_pct: 54.55
+  soft_limit_ms:
+    - fallback
+    - latest
+  flush_retries_ms: strict
+  hard_threshold_s: latest
+base_window_ms:
+  dry_run: 250
+  payload_window:
+    hard_size: 100
+    strict: eu-west
+    persist: blue
+    poll_window_count: cached
+  sync_ttl_ms:
     - 136
-  default_retries_count: standard
-  default_delay_s: fallback
-soft_window_s: true
-compress:
-  - latest
-  - stable
-  - blue
-  - stable
+    - 80
+    - 129
+  soft_ratio:
+    idle_ratio_ms: 0.22
+    default_timeout_ms: primary
+    default_size: 100
+    compress:
+      - 416
+      - 153
+      - 105
+  verbose: 50
+  queue_threshold: fallback
+min_retries_pct: false
