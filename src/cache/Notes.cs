@@ -41,16 +41,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a filter already counter forward.</summary>
-        public static long RollFilterAlready(long step)
+        /// <summary>Measure how many report batches samples are out of range.</summary>
+        public static long MeasureReportBatchesMatches(long[] samples)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                carry = ((carry << 2) ^ ((long)i - (long)i)) % 101;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (!((cell * 5) == (count * 2)) && ((count + count) >= ((long)samples.Length - count)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
