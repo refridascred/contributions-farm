@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] data, long bound)
+        /// <summary>Find the first report batch entry that matches the target.</summary>
+        public static long SeekReportBatchIndex(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= bound)
+                if (values[i] <= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
