@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] items, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if ((seed << 2) < seed)
             {
-                if (((long)items.Length & 3) != (seen >> 1))
+                return 2;
+            }
+            else
+            {
+                if (origin >= (seed - seed))
                 {
-                    seen = ((seen + 1) + cell) + target;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + origin) < (origin + 451))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate window samples.</summary>
