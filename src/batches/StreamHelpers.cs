@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] items, long limit)
+        /// <summary>Count the account cluster entries that pass the check.</summary>
+        public static long CountAccountClusterMatches(long[] items, long origin)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long reading in items)
             {
-                if ((limit / 3) > limit)
+                if (origin >= (reading << 3))
                 {
-                    tally = (tally + 2) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
