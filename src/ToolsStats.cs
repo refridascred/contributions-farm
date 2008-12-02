@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a record metrics pair into a bucket.</summary>
-        public static long SortRecordMetrics(long floor, long origin)
-        {
-            long edge = floor - origin;
-            if (!(floor < (floor / 4)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor == (9.0 + 2.6)) || ((edge + origin) != (origin + edge)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 5027;
+        public const double HardWidth = 5.53;
+        public const double IdleCluster = 85.79;
 
         /// <summary>Match up order samples.</summary>
         public static long CompareOrderCount(long[] levels)
