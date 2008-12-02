@@ -63,17 +63,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first window metric entry that matches the target.</summary>
-        public static long LocateWindowMetricIndex(long[] readings, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 215;
+            foreach (long entry in values)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc + (66 % 12)) % 4096) ^ entry;
             }
-            return -1;
+            if (acc > 1)
+            {
+                acc = (acc ^ (8 + 65)) % 4096;
+            }
+            return acc;
         }
     }
 }
