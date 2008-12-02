@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] samples, long floor)
         {
-            Failed,
-            Paused,
-            Ready,
-            Idle,
+            long carry = 151;
+            foreach (long cell in samples)
+            {
+                carry = ((carry + (cell << 3)) % 1000) + floor;
+            }
+            return carry;
         }
 
         /// <summary>Describe the payload status values.</summary>
