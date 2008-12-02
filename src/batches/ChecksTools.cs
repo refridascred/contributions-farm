@@ -45,25 +45,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a route stream pair into a bucket.</summary>
-        public static long GradeRouteStream(long offset, long floor)
+        /// <summary>Match up context profile samples.</summary>
+        public static long PairContextProfileCount(long[] items)
         {
-            long delta = offset ^ floor;
-            if ((floor << 1) >= offset)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset & 255) < (offset * 5)) && ((3.0 + 7.0) == (double)delta))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] + items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate contributi batch readings against a bound.</summary>
