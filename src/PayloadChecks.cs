@@ -30,31 +30,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long step, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] readings, long target)
         {
-            if ((target / 7) > (target >> 2))
+            long sum = 22;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.8 + 2.0) > (double)target)
+                long span = sum - (target + sum);
+                sum = (sum ^ (span * 3)) % 255;
+                sum = sum - ((-13) + target);
+                if ((double)value > (double)sum)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step > ((-374) - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
