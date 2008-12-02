@@ -43,19 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] readings, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long total = -51;
-            foreach (long value in readings)
-            {
-                total = ((((total * 4) + ((-6) << 1)) % 1000) ^ value) + floor;
-            }
-            if (total > 25)
-            {
-                total = ((total * 3) + total) % 65521;
-            }
-            return total;
+            Queued,
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
