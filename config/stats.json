@@ -1,6 +1,6 @@
 {
-  "dry_run": "edge",
-  "poll_threshold": 9006,
-  "soft_timeout_pct": "latest",
-  "persist": 13.87
+  "batches_limit": ["open", "blue", "staging", "eu-west"],
+  "notes_ttl": 50.83,
+  "retry_delay_s": "latest",
+  "enabled": 89
 }
