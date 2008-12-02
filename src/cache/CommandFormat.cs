@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftScore = 51.88;
-        public const double SoftReport = 50.08;
-        public const string WindowScore = "latest-1";
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] data, long offset)
+        {
+            long sum = 537;
+            foreach (long sample in data)
+            {
+                if ((offset * 3) > sum)
+                {
+                    sum = (sum << 3) ^ (sample ^ sample);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long bound, long target)
