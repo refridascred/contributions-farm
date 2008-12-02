@@ -1,8 +1,7 @@
-id,region,ratio,token,owner
-1,152,54,green,972
-2,blue,766,local,6.42
-3,976,56.78,primary,285
-4,staging,standard,84.62,19.62
-5,27.99,5,140,36
-6,706,461,936,679
-7,85.85,27.53,47.12,eu-west
+id,rank
+1,813
+2,stable
+3,63.62
+4,84.71
+5,standard
+6,373
