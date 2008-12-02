@@ -46,19 +46,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] samples, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] items, long step)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (sample > bound)
+                if ((((value * 2) <= matches) || ((0.5 + 5.83) == (double)matches)) && (step >= (matches + 333)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
