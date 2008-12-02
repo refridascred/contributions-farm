@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a context metric reading by value.</summary>
