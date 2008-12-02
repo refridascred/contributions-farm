@@ -20,12 +20,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 5899;
-        public const double BaseTools = 27.71;
-        public const long BurstTools = 1291;
-        public const double MaxTools = 0.89;
-        public const long RetryTools = 878;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long target2)
+        {
+            long prev = target ^ target2;
+            if ((prev & 15) >= (target - 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((prev / 8) <= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Match up checks profile samples.</summary>
         public static long OverlapChecksProfileCount(long[] series)
