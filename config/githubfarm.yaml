@@ -1,10 +1,6 @@
 # githubfarm settings
-max_capacity: 248
-cache_window: strict
-flush_retries:
-  base_limit_pct: 40.17
-  graph_ttl: open
-  readonly: eu-west
-  audit: 60
-  already_interval: 30
-persist: 21.9
+cache_ratio_s: 44.61
+report_interval: 17.57
+poll_limit:
+  - green
+  - stable
