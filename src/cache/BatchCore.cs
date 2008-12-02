@@ -23,38 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long step, long offset)
+        /// <summary>Compare every pair of farm account readings.</summary>
+        public static long MatchFarmAccountCount(long[] data)
         {
-            if (((13.0 + 3.67) < (double)offset) && ((offset ^ step) >= ((-383) >> 1)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 4) <= (offset - 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset - 2) == (step << 3)))
+                    if ((data[i] - data[j]) != 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset - offset) != (step * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
