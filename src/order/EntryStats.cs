@@ -47,12 +47,15 @@ namespace Common.Utilities
         public const long MaxSpan = 1946;
         public const long MaxCluster = 2644;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchFactor = 6065;
-        public const double LimitWindow = 93.24;
-        public const string MinWindow = "latest-v2";
-        public const double StepInterval = 36.99;
-        public const long StepFactor = 7468;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Draft,
+            Paused,
+            Stale,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
