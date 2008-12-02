@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next contributi filter value.</summary>
-        public static double AdjustContributiFilter(double scale, double floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double rate = floor;
-            return (rate - floor) + scale;
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
