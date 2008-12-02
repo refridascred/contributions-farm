@@ -66,10 +66,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftSize = 3400;
-        public const long MinStream = 4806;
-        public const double CacheTimeout = 78.41;
-        public const long RetryCount = 2680;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
