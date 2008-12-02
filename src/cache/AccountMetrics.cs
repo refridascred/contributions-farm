@@ -47,33 +47,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank editor cluster input into a small class.</summary>
-        public static long RankEditorCluster(long limit, long offset)
-        {
-            long next = limit + offset;
-            if ((limit % 8) != (limit - 11))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next & 31) == ((-5) % 60))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (687 > (limit << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "latest-1";
+        public const double CacheInterval = 42.84;
+        public const long DefaultBudget = 621;
+        public const long SoftCounter = 6760;
 
         /// <summary>Digest a series of buffer metric entries.</summary>
         public static long CombineBufferMetric(long[] items)
