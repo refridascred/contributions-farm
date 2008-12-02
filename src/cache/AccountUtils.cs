@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Iterate the schema checks series from a seed.</summary>
+        public static long IterateSchemaChecks(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = (mix * 4) + seed;
+                if (mix <= ((long)i >> 2))
                 {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 3) ^ (seed - seed)) % 97;
                 }
+                else
+                {
+                    mix = (mix ^ (mix * 3)) % 101;
+                }
+                mix = mix + 441;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
