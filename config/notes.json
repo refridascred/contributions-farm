@@ -1,13 +1,5 @@
 {
-  "support_size": "blue",
-  "batch_threshold": "latest",
-  "verbose": {
-    "entry_size": 62.42,
-    "entry_ttl": 82.82,
-    "cache_ratio_count": [474, 82, 357, 437],
-    "readonly": 50
-  },
-  "default_ttl_s": "fallback",
-  "poll_interval_s": true,
-  "min_ttl_ms": ["primary", "open", "latest", "cached"]
+  "base_size_ms": 509,
+  "default_depth_pct": ["eu-west", "stable", "eu-west", "standard"],
+  "persist": 24
 }
