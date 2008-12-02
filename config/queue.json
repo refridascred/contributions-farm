@@ -1,8 +1,6 @@
 {
-  "cache_ttl_count": "green",
-  "sync_size_ms": "green",
-  "profile_timeout": ["edge", "edge", "open", "primary"],
-  "sync_ttl": "strict",
-  "min_window_count": 6808,
-  "token_threshold": 88
+  "default_depth_ms": "primary",
+  "entry_limit": 2532,
+  "enabled": 4265,
+  "base_window": false
 }
