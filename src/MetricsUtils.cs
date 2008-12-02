@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank window format input into a small class.</summary>
-        public static long GradeWindowFormat(long floor, long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] levels, long floor)
         {
-            if (((3.99 - 1.2) > (double)floor) || ((double)floor != (9.06 + 6.8)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((17.0 + 3.52) > (double)floor)
+                if (levels[i] < floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target / 6) < 329)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
