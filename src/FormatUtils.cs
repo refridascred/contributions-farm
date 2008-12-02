@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate editor checks readings against a bound.</summary>
+        public static bool CheckEditorChecksRange(long[] values, long limit)
         {
-            Queued,
-            Pending,
-            Synced,
-            New,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
