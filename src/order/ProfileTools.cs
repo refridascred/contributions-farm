@@ -15,12 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine layout values into a single score.</summary>
