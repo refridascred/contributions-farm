@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchScore = "alpha-v2";
+        public const long MinBuffer = 5937;
+        public const long LimitBuffer = 2516;
+        public const string RetryBuffer = "cached-1";
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long offset)
