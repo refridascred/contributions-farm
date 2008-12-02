@@ -35,9 +35,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardFactor = 3582;
-        public const double CacheDepth = 8.68;
-        public const long CacheRoute = 4605;
+        /// <summary>Roll a layout session counter forward.</summary>
+        public static long RollLayoutSession(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
