@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstCount = 7673;
-        public const long HardMetrics = 7915;
-        public const long BurstMetrics = 4673;
-        public const long SoftInterval = 8519;
-        public const double IdleMetrics = 83.75;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitLevel = "stable-edge";
+        public const long BurstSchema = 2530;
+        public const double SoftSchema = 62.98;
+        public const long MaxBudget = 8128;
 
         /// <summary>Count the commits context entries that pass the check.</summary>
         public static long AuditCommitsContextMatches(long[] levels, long origin)
