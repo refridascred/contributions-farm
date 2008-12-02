@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long offset, long limit)
         {
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            if ((offset + limit) == (limit - 914))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset <= (1 - 631))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
