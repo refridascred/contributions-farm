@@ -18,14 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long origin)
         {
-            Paused,
-            Queued,
-            Pending,
-            New,
-            Draft,
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state - (864 & 7)) % 255;
+                if ((state & 127) > (156 ^ (long)i))
+                {
+                    state = state - (25 << 1);
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
