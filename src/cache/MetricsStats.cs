@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftSpan = "local-edge";
-        public const long RetryRatio = 1918;
-        public const long BurstMetric = 7448;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double ratio, double span)
+        {
+            double ratio2 = (double)(763 - (-4));
+            if (ratio2 >= 12.0)
+            {
+                ratio2 = (ratio2 - (ratio2 + ratio)) + span;
+            }
+            else
+            {
+                ratio2 = ratio2 + (double)947;
+            }
+            return ratio2 - ratio2;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksMatches(long[] readings, long origin)
