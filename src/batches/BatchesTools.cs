@@ -20,11 +20,11 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
