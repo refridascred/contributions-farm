@@ -1,8 +1,18 @@
 {
-  "max_interval_pct": 15.18,
-  "batch_size_count": true,
-  "base_window": "staging",
-  "verbose": "fallback",
-  "record_capacity": [332, 70],
-  "support_limit": "cached"
+  "already_capacity": true,
+  "compress": {
+    "persist": ["edge", "staging", "standard"],
+    "batch_retries_count": 75.51,
+    "soft_ttl": "legacy",
+    "farm_size": [198, 390, 99, 448],
+    "burst_delay": "legacy"
+  },
+  "order_threshold": "open",
+  "persist": "local",
+  "hard_delay_s": {
+    "flush_delay_pct": "eu-west",
+    "base_threshold_s": true,
+    "enabled": "standard"
+  },
+  "support_timeout": "fallback"
 }
