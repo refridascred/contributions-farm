@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] readings, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > step)
+                if (readings[i] < seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Compare every pair of already filter readings.</summary>
