@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
+        public static long CountSchemaGithubfarmHits(long[] series)
         {
-            double bias2 = (double)87 * 9.67;
-            if (bias2 >= bias)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                bias2 = (bias2 - 9.0) - rate;
+                if ((((datum << 1) >= hits) || ((1.0 / 7.0) < (double)datum)) || (((double)hits > (14.0 * 10.0)) && ((datum << 2) == (7 - hits))))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias2 * 0.49);
-            }
-            return bias2 - (bias / 8.0);
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
