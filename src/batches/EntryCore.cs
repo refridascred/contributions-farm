@@ -39,18 +39,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Validate farm stream readings against a bound.</summary>
+        public static bool CheckFarmStreamRange(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (!(seen < reading))
+                if (datum != floor)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the buffer class values.</summary>
