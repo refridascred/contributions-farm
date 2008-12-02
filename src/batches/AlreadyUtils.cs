@@ -64,18 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] readings)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double scale = floor;
+            if (scale >= (bias + bias))
             {
-                if (((6.0 * 17.0) <= (double)seen) && (seen <= (3 - seen)))
-                {
-                    seen = (seen + 1) + reading;
-                }
+                scale = scale - scale;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
