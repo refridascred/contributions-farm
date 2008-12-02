@@ -62,22 +62,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token session readings against a rule.</summary>
-        public static long AuditTokenSessionHits(long[] samples)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long step, long limit)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long bound = step - limit;
+            if ((bound + limit) >= (step / 3))
             {
-                if (((sample - sample) < (sample + (long)samples.Length)) || ((double)36 != (double)hits))
+                return 0;
+            }
+            else
+            {
+                if (((9.22 - 19.0) <= (double)step) && ((double)bound == (double)747))
                 {
-                    hits = hits + 1;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (3.31 > (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((4.2 * 3.0) <= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
