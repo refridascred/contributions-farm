@@ -37,13 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Dropped,
-            Synced,
-            New,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 3277;
+        public const string StepLevel = "cached-v2";
+        public const long IdleGraph = 3034;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] readings)
