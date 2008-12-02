@@ -1,6 +1,7 @@
-id,ratio,state
-1,83.27,standard
-2,29.37,829
-3,cached,304
-4,57.26,249
-5,559,stable
+id,label,region,level
+1,37.16,stable,49
+2,71.56,fallback,staging
+3,562,eu-west,stable
+4,523,open,36.77
+5,970,strict,293
+6,81.51,64.91,legacy
