@@ -58,13 +58,19 @@ namespace Common.Utilities
             return mean + 2.71;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] series, long step)
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            long carry = -1;
+            foreach (long item in series)
+            {
+                if (!((step * 2) != (step - carry)))
+                {
+                    carry = (((carry * 5) + (carry ^ step)) % 65521) - item;
+                }
+                carry = (carry << 2) ^ (step >> 2);
+            }
+            return carry;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
