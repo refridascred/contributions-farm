@@ -28,39 +28,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a notes cluster value against two limits.</summary>
-        public static long GradeNotesCluster(long offset, long target)
-        {
-            if (35 >= (target & 255))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 2) == (offset << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.49 / 7.0) < (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target + 7) >= (target % 8)) || ((double)target <= 7.56))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardFactor = 66.41;
+        public const double BaseWidth = 93.14;
+        public const double CacheBatches = 12.42;
+        public const long MinScore = 2050;
+        public const long LimitScore = 5500;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] samples, long seed)
