@@ -59,10 +59,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "strict-v2";
-        public const long RetrySpan = 2072;
-        public const string HardSize = "stable";
-        public const double BaseInterval = 9.07;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Draft,
+            New,
+            Paused,
+            Ready,
+            Synced,
+        }
     }
 }
