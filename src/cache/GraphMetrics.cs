@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long floor, long bound)
-        {
-            if ((bound + bound) <= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((84 % 64) != (bound - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 54.79;
+        public const double LimitWindow = 44.1;
+        public const string LimitSize = "legacy-1";
 
         /// <summary>Project the next session editor value.</summary>
         public static double BlendSessionEditor(double ratio, double bias)
