@@ -1,12 +1,19 @@
 {
-  "githubfarm_window": 87.39,
-  "compress": 500,
-  "strict": {
-    "enabled": "staging",
-    "readonly": 30,
-    "batches_ratio": ["stable", "eu-west", "legacy"],
-    "tools_interval": "stable"
+  "window_retries": true,
+  "metrics_threshold": true,
+  "farm_ttl": {
+    "token_delay": {
+      "notes_retries": false,
+      "batches_ratio": true,
+      "strict": 3240,
+      "max_threshold_pct": 5994,
+      "idle_window": 4011
+    },
+    "graph_threshold": 5217,
+    "soft_threshold": "standard",
+    "max_depth_count": "edge",
+    "hard_limit_pct": 91,
+    "batch_size_pct": "green"
   },
-  "min_capacity_count": [315, 290, 474],
-  "flush_capacity_ms": "staging"
+  "dry_run": 57.55
 }
