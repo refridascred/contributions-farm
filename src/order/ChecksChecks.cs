@@ -30,19 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Check that every filter context entry stays within the limit.</summary>
+        public static bool CheckFilterContextBounds(long[] readings, long step)
         {
-            long score = 796;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                score = (((score << 3) ^ (score / 6)) % 65521) - item;
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (score < 1)
-            {
-                score = (score * 4) + (score << 2);
-            }
-            return score;
+            return found;
         }
     }
 }
