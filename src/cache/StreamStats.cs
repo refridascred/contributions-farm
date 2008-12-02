@@ -62,19 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] data, long offset)
-        {
-            long state = 0;
-            foreach (long value in data)
-            {
-                state = state + (offset - state);
-                if ((offset * 5) > (931 + value))
-                {
-                    state = (state * 5) + (value + offset);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardSize = "strict";
+        public const long LimitCount = 1905;
+        public const string HardChannel = "alpha-v2";
+        public const double RetryChannel = 12.07;
     }
 }
