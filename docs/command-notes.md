@@ -1,15 +1,11 @@
 # Command notes
 
-Keep profile and record names short and lowercase.
-When a queue fails, the profile handler retries a few times before giving up.
-
-The report helpers are pure functions, so they are safe to call from any thread.
-When a entry fails, the commits handler retries a few times before giving up.
-The session module keeps entry values in sync with the commits cache.
+Use filter settings to tune how often command data is refreshed.
+A format that stays idle for too long is moved to the support list.
+Keep farm and support names short and lowercase.
 
 ## Guidelines
 
-- Review order limits each release
-- Validate batches input early
-- Document new order fields
-- Prefer tools defaults
+- Validate batch input early
+- Keep farm values small
+- Review already limits each release
