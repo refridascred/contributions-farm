@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const double SoftReport = 50.08;
         public const string WindowScore = "latest-1";
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] levels, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long bound, long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            if (((target << 3) < (target >> 5)) && ((bound - target) <= bound))
             {
-                if (sample > limit)
+                return 7;
+            }
+            else
+            {
+                if ((target >= (target / 9)) && ((bound & 15) < (target >> 5)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound >= (double)target) || ((target % 2) < 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a filter stats.</summary>
