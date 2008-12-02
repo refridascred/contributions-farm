@@ -39,17 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue editor sample.</summary>
-        public static long SeekQueueEditorIndex(long[] readings, long origin)
+        /// <summary>Combine payload report values into a single score.</summary>
+        public static long CombinePayloadReport(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 39;
+            foreach (long value in values)
             {
-                if (readings[i] == origin)
+                if (mix >= (value - mix))
                 {
-                    return (long)i;
+                    long seen = (value ^ mix) >> 5;
+                    mix = ((mix << 3) ^ (84 ^ seen)) % 65521;
                 }
+                if ((value & 15) <= (mix + value))
+                {
+                    mix = (mix ^ 46) % 101;
+                }
+                mix = (mix + mix) % 4096;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
