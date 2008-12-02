@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long limit, long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] readings, long bound)
         {
-            if ((target & 31) > (limit >> 4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((14.0 / 4.0) > (double)target) && ((target - 4) != (1 >> 1)))
+                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next route value.</summary>
