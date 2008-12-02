@@ -21,13 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
