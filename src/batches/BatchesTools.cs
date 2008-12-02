@@ -37,19 +37,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache counter counter forward.</summary>
-        public static long StepCacheCounter(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((score + (long)i) == (limit >> 3)))
-                {
-                    score = ((score << 2) ^ (score & 127)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseScore = 36.11;
+        public const double MaxStats = 61.08;
+        public const string WindowStats = "cached-v2";
     }
 }
