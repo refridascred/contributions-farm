@@ -1,23 +1,21 @@
 # entry settings
-soft_delay_s:
-  soft_delay: true
-  sync_retries_s: true
-  flush_window_pct:
-    poll_interval_count: 66.38
-    min_delay: true
-    min_window_pct: false
-    max_timeout:
-      - blue
+route_threshold: false
+command_interval: blue
+verbose:
+  burst_ratio: false
+  flush_delay_count:
+    schema_interval: strict
+    audit: 18.54
+    base_retries_pct:
+      - green
+      - cached
       - primary
-  readonly:
-    - stable
-    - staging
-    - staging
-    - legacy
-burst_size: 7665
-order_threshold: 8518
-batch_threshold_ms:
-  - 374
-  - 332
-context_ttl: false
-cache_delay_count: 500
+    base_interval: 58.39
+  commits_threshold: false
+  base_threshold_count: 30
+  route_window: latest
+  persist:
+    - strict
+    - fallback
+readonly: true
+commits_ttl: blue
