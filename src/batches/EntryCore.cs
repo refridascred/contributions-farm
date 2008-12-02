@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of cache layout entries.</summary>
-        public static long WeighCacheLayout(long[] readings, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long bound, long limit)
         {
-            long total = 9;
-            foreach (long value in readings)
+            long cur = bound ^ limit;
+            if (bound <= (cur + cur))
             {
-                if (!((offset << 3) != (total / 7)))
+                return 1;
+            }
+            else
+            {
+                if ((7 % 8) >= limit)
                 {
-                    total = ((total - (768 / 6)) % 101) + value;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + limit) >= (cur & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Hold a format options.</summary>
