@@ -19,32 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long limit, long offset)
+        /// <summary>Count the format entry entries that pass the check.</summary>
+        public static long CountFormatEntryHits(long[] items)
         {
-            long step = limit - offset;
-            if ((offset >> 2) < limit)
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 5) < step)
+                if ((cell * 3) > count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((5.3 - 12.0) >= (double)limit) || ((double)offset > (double)258))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
