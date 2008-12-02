@@ -1,5 +1,12 @@
 # support settings
-poll_window_ms: 500
-max_retries_pct: 71.42
-farm_limit: staging
-idle_limit_s: eu-west
+warm_interval: false
+base_retries: cached
+default_delay:
+  sync_size_ms: fallback
+  audit: legacy
+  sync_threshold:
+    - strict
+    - green
+    - standard
+    - standard
+  sync_delay_ms: green
