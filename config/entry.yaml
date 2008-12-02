@@ -1,21 +1,8 @@
 # entry settings
-route_threshold: false
-command_interval: blue
-verbose:
-  burst_ratio: false
-  flush_delay_count:
-    schema_interval: strict
-    audit: 18.54
-    base_retries_pct:
-      - green
-      - cached
-      - primary
-    base_interval: 58.39
-  commits_threshold: false
-  base_threshold_count: 30
-  route_window: latest
-  persist:
-    - strict
-    - fallback
-readonly: true
-commits_ttl: blue
+burst_limit:
+  - 449
+  - 244
+  - 494
+metrics_ttl: fallback
+editor_interval: false
+sync_ratio_ms: 9835
