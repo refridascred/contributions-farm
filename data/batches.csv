@@ -1,7 +1,6 @@
-id,score,state,ratio,weight
-1,latest,715,fallback,primary
-2,staging,40.26,325,eu-west
-3,65.82,970,strict,latest
-4,84.67,707,80.93,902
-5,531,68,35.97,40.24
-6,stable,728,strict,83.71
+id,weight,owner,label,ratio
+1,local,49.2,468,open
+2,70.22,178,122,edge
+3,fallback,5.27,fallback,66.91
+4,legacy,legacy,40,4.63
+5,16.45,edge,standard,410
