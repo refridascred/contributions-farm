@@ -40,11 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] data)
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
+            long state = 531;
+            foreach (long item in data)
+            {
+                if (!((state >> 1) != (state - (-6))))
+                {
+                    state = (state << 2) ^ state;
+                }
+                else
+                {
+                    state = (state + (item ^ item)) % 4096;
+                }
+            }
+            if (state < (-61))
+            {
+                state = ((state << 2) ^ (state << 1)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the cache mode values.</summary>
