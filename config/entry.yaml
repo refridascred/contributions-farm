@@ -1,38 +1,20 @@
 # entry settings
-max_capacity_count:
-  batch_window:
-    flush_retries:
-      - 122
-      - 126
-      - 124
-    strict: true
-    batch_delay: 40.55
-    base_depth_ms: 24
-  cache_limit_pct: 54.55
-  soft_limit_ms:
-    - fallback
+layout_depth: false
+idle_limit: true
+cache_interval: false
+burst_capacity: true
+soft_interval_pct:
+  readonly:
+    - standard
+    - green
     - latest
-  flush_retries_ms: strict
-  hard_threshold_s: latest
-base_window_ms:
-  dry_run: 250
-  payload_window:
-    hard_size: 100
-    strict: eu-west
-    persist: blue
-    poll_window_count: cached
-  sync_ttl_ms:
-    - 136
-    - 80
-    - 129
-  soft_ratio:
-    idle_ratio_ms: 0.22
-    default_timeout_ms: primary
-    default_size: 100
-    compress:
-      - 416
-      - 153
-      - 105
-  verbose: 50
-  queue_threshold: fallback
-min_retries_pct: false
+    - cached
+  metric_retries: latest
+  persist:
+    - fallback
+    - cached
+    - local
+    - staging
+  account_depth: 0.22
+  counter_timeout: false
+queue_depth: fallback
