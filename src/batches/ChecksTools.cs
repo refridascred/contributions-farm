@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the window batches series from a seed.</summary>
-        public static long DeriveWindowBatches(long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state + (target >> 2);
-                state = state + ((long)i % 12);
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
