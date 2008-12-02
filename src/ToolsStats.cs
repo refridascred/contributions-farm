@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double ratio, double span)
         {
-            Pending,
-            New,
-            Draft,
-            Paused,
-            Closed,
+            double drift = span + (span - 9.61);
+            if (drift >= drift)
+            {
+                drift = (drift + (drift * 9.8)) - ratio;
+            }
+            return drift + span;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
