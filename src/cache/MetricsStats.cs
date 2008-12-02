@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long offset, long offset2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = offset + offset2;
+            if ((double)offset < (0.31 + 5.2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (offset >= offset2)
                 {
-                    if ((series[i] ^ series[j]) == 9)
+                    return 5;
+                }
+                else
+                {
+                    if (((delta & 15) >= (delta - offset)) && ((delta ^ 4) <= (-637)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((3.2 - 2.44) > (double)delta)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
