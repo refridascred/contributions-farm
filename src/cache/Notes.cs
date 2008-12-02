@@ -20,21 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((255 / 5) >= anchor)
-                {
-                    anchor = (anchor * 5) + ((-110) - (long)i);
-                    anchor = (anchor * 2) + (step + step);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryCount = 2643;
+        public const double HardSchema = 63.1;
+        public const double WindowSchema = 1.42;
+        public const double MinSchema = 29.75;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
