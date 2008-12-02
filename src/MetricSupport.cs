@@ -17,11 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 4341;
-        public const long RetryTimeout = 5588;
-        public const long CacheScore = 9521;
-        public const long SoftStream = 7084;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long WindowDepth = 686;
