@@ -15,17 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first layout batches entry that matches the target.</summary>
-        public static long LookupLayoutBatchesIndex(long[] data, long target)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Roll a account counter forward.</summary>
