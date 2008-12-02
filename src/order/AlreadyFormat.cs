@@ -63,12 +63,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] data, long target)
         {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
