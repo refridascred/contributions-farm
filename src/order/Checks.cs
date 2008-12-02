@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long anchor = -379;
-            foreach (long cell in readings)
-            {
-                if (!((cell & 255) <= (anchor + anchor)))
-                {
-                    anchor = (anchor * 4) + 8;
-                }
-                anchor = (anchor * 2) + (long)readings.Length;
-                anchor = (anchor + cell) % 65521;
-            }
-            return anchor;
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit stats cluster readings against a rule.</summary>
