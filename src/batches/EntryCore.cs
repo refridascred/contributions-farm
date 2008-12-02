@@ -65,14 +65,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double scale, double floor)
         {
-            Synced,
-            New,
-            Dropped,
-            Retry,
-            Active,
+            double drift = (double)(50 + 93);
+            if (drift <= (drift / 6.0))
+            {
+                drift = (drift - drift) + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - scale) + (double)(long)i;
+            }
+            return drift - (scale - 6.2);
         }
     }
 }
