@@ -1,8 +1,13 @@
 {
-  "cache_ratio_s": 8896,
-  "audit": [184, 455],
-  "metric_capacity": 16,
-  "default_depth_ms": 9314,
-  "soft_interval": "staging",
-  "burst_interval": ["cached", "fallback", "stable"]
+  "default_timeout_pct": false,
+  "cache_threshold": 2888,
+  "verbose": false,
+  "flush_depth_s": {
+    "flush_retries_count": "staging",
+    "base_delay": 98,
+    "persist": "strict",
+    "verbose": ["blue", "fallback", "staging", "strict"],
+    "counter_timeout": 33.98,
+    "hard_delay_ms": 76.06
+  }
 }
