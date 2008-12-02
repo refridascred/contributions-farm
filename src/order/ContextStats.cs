@@ -20,18 +20,31 @@ namespace Common.Utilities
             return mean - 3.85;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] levels, long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if ((seed << 1) >= (bound + bound))
             {
-                if (cell > (155 - step))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound >= 9.9)
                 {
-                    hits = hits + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed % 5) == (seed - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next editor value.</summary>
