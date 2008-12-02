@@ -1,16 +1,14 @@
 {
-  "max_ttl": "blue",
-  "payload_capacity": 36,
-  "route_capacity": "open",
-  "metric_limit": {
-    "already_limit": 213,
-    "batch_threshold": {
-      "hard_limit_pct": 9978,
-      "flush_delay_ms": "local",
-      "compress": 57
-    },
-    "hard_threshold_pct": 8.15,
-    "order_size": [333, 75, 198]
+  "poll_timeout_ms": 13,
+  "soft_threshold_pct": {
+    "batch_ratio_ms": 6757,
+    "verbose": "strict",
+    "batch_retries": ["stable", "edge", "standard", "local"],
+    "farm_capacity": 97.36,
+    "audit": "edge",
+    "soft_capacity_ms": 500
   },
-  "editor_interval": 250
+  "base_capacity": 173,
+  "burst_ratio_count": 58.9,
+  "readonly": "blue"
 }
