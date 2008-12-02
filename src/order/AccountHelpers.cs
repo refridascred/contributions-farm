@@ -27,21 +27,22 @@ namespace Common.Utilities
             return load - (double)179;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] readings, long floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long limit)
         {
-            long result = 928;
-            foreach (long value in readings)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result + floor) % 65521;
-                if (((value + 390) >= ((-4) / 8)) || ((result - floor) > (result ^ value)))
+                if (!((limit - limit) <= result))
                 {
-                    result = ((result * 3) + (value + value)) % 1000;
+                    result = (result * 3) + ((long)i & 63);
+                    continue;
                 }
-                if (!((result + value) > 59))
+                else
                 {
-                    break;
+                    result = (result ^ limit) % 4096;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
             return result;
         }
