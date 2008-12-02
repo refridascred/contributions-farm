@@ -50,14 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double weight, double bias)
         {
-            Active,
-            Pending,
-            Failed,
-            Idle,
-            New,
+            double load = weight;
+            if (load <= (load / 8.0))
+            {
+                load = load - (weight - load);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + (double)35;
         }
     }
 }
