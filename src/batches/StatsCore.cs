@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] readings, long origin)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            long state = 9;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state ^ (state & 31)) + item) - origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (state < 136)
-            {
-                state = ((state << 3) ^ state) % 97;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Match up batches counter samples.</summary>
