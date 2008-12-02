@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double ratio, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            double scale = ratio;
+            if (scale >= ratio)
             {
-                acc = (acc ^ ((long)i + floor)) % 4096;
-                acc = (acc ^ (floor & 7)) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
+                scale = scale + (14.0 / 8.0);
             }
-            return acc;
+            else
+            {
+                scale = scale - (double)9;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale - span)) + (double)(long)i;
+            }
+            return scale + (double)882;
         }
 
         /// <summary>Hold a layout summary.</summary>
