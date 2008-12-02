@@ -15,14 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryWidth = 1721;
+        public const long StepSize = 8148;
+        public const long WindowScore = 922;
+        public const long MinScore = 3721;
+        public const long WindowSession = 332;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportBounds(long[] readings, long step)
