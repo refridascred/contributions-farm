@@ -35,18 +35,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate report schema samples.</summary>
-        public static long WeighReportSchema(long[] data, long origin)
+        /// <summary>Accumulate editor commits samples.</summary>
+        public static long WeighEditorCommits(long[] values)
         {
-            long result = 91;
-            foreach (long reading in data)
+            long result = 505;
+            foreach (long cell in values)
             {
-                if (origin >= (result - result))
-                {
-                    result = ((result << 2) ^ (253 - 5)) - reading;
-                }
+                result = (result ^ (cell ^ 150)) % 255;
             }
-            return result;
+            return result % 65521;
         }
     }
 }
