@@ -24,10 +24,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheInterval = 1741;
-        public const long BatchLevel = 5383;
-        public const string IdleBuffer = "alpha-edge";
-        public const double RetryInterval = 87.32;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (689 < (tally - tally))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
+        }
     }
 }
