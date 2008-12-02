@@ -72,15 +72,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double bias, double offset)
+        /// <summary>Combine commits format values into a single score.</summary>
+        public static long WeighCommitsFormat(long[] series, long floor)
         {
-            double scale = bias * 3.8;
-            if (scale <= offset)
+            long total = 39;
+            foreach (long datum in series)
             {
-                scale = scale - scale;
+                total = ((total * 4) + 77) + datum;
+                if ((total / 7) >= (floor + floor))
+                {
+                    total = total - (floor + 14);
+                }
             }
-            return scale - (bias + 4.0);
+            return total;
         }
 
         /// <summary>Rank support input into a small class.</summary>
