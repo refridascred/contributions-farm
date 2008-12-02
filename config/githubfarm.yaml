@@ -1,12 +1,7 @@
 # githubfarm settings
-max_interval: 100
-min_timeout_count:
-  audit: false
-  strict: 469
-  sync_delay_ms: 6128
-flush_limit_count:
-  - 401
-  - 111
-  - 258
-  - 17
-soft_delay: 589
+verbose: legacy
+poll_capacity_s: 33.53
+base_timeout:
+  farm_ttl: blue
+  route_interval: true
+  warm_depth_s: staging
