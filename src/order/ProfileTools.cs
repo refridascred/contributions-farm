@@ -23,20 +23,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of token filter readings.</summary>
-        public static long WeighTokenFilter(long[] series)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long seed)
         {
-            long carry = 358;
-            foreach (long reading in series)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    carry = ((carry << 3) ^ (reading + carry)) - (long)i;
-                    carry = (carry - (reading - 520)) % 1000;
-                }
-                carry = (carry - (carry + 19)) % 1000;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
