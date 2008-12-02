@@ -50,12 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
