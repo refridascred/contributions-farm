@@ -47,19 +47,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long state = 0;
+            foreach (long item in samples)
             {
-                if (mix < (offset * 5))
+                state = (state * 5) + (state >> 2);
+                if (!(state < (item << 1)))
                 {
-                    mix = ((mix << 3) ^ (-50)) % 1000;
+                    state = (state << 2) ^ (state >> 1);
                 }
-                mix = ((mix * 4) + (long)i) % 101;
+                state = state - (421 - item);
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
