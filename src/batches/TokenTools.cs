@@ -20,21 +20,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up profile payload samples.</summary>
-        public static long MatchProfilePayloadCount(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 56;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = total + (entry + (-8));
+                total = total - (entry - seed);
             }
-            return count;
+            if (total < (-4))
+            {
+                total = (total * 4) + (total % 60);
+            }
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
