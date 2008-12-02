@@ -34,10 +34,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 2952;
-        public const long MinSpan = 8139;
-        public const long MinFactor = 5620;
-        public const long BatchLevel = 6256;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long offset, long limit)
+        {
+            long delta = offset + limit;
+            if ((double)offset > (15.0 * 4.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (8.1 <= (double)delta)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (913 >= (15 - delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit > (double)2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
