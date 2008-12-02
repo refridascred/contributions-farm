@@ -31,16 +31,39 @@ namespace Common.Utilities
             return drift + (bias / 7.0);
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Rank counter payload input into a small class.</summary>
+        public static long RankCounterPayload(long offset, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long delta = offset + bound;
+            if ((8.7 + 6.0) >= (double)delta)
             {
-                mix = mix - ((long)i << 2);
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((bound - delta) > (683 + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound) <= (619 ^ offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)delta >= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
