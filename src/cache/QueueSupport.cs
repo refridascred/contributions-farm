@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] values, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (datum >= offset)
+                if ((hits >> 2) <= (hits + value))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
