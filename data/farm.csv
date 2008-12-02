@@ -1,10 +1,7 @@
-id,token,ratio,owner
-1,251,169,85.54
-2,74.44,staging,401
-3,127,eu-west,333
-4,347,26.94,primary
-5,139,42.4,182
-6,strict,local,20.16
-7,eu-west,blue,73.67
-8,105,green,203
-9,790,51.44,67.57
+id,level,state
+1,305,68.41
+2,316,50.36
+3,green,34.66
+4,strict,latest
+5,65,stable
+6,green,251
