@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Pending,
-            Queued,
-            Retry,
-            Closed,
-            New,
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
