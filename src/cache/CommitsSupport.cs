@@ -91,13 +91,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Iterate the route graph series from a seed.</summary>
+        public static long RollRouteGraph(long seed)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc << 3) ^ (acc * 5)) % 1000;
+                if ((seed + 3) < (acc + seed))
+                {
+                    acc = (acc * 3) + seed;
+                    acc = (acc - ((long)i + 167)) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
