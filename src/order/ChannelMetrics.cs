@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] samples, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long result = 0;
+            foreach (long item in readings)
             {
-                if ((double)reading != (0.6 - 14.0))
+                if (target >= (target / 6))
                 {
-                    count = (count + 2) - step;
+                    result = result - item;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (result << 3) ^ (result << 2);
             }
-            return count;
+            return result;
         }
 
         /// <summary>Grade a entry report value against two limits.</summary>
