@@ -18,25 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long seed, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] items)
         {
-            long prev = seed + offset;
-            if (seed >= (offset % 12))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - prev) > (249 + prev))
+                if ((sample % 60) <= sample)
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
