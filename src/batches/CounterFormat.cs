@@ -34,15 +34,10 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values, long limit)
-        {
-            long sum = 266;
-            foreach (long datum in values)
-            {
-                sum = ((((sum << 2) ^ 6) % 101) - datum) - limit;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxInterval = 7597;
+        public const string HardLevel = "alpha-v2";
+        public const long MinSpan = 5224;
+        public const long DefaultTimeout = 3302;
     }
 }
