@@ -40,9 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "standard-v2";
-        public const string BaseNotes = "latest-v2";
-        public const long IdleFactor = 9186;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 9637;
+        public const long CacheOrder = 5892;
+        public const long IdleTimeout = 394;
+        public const long BatchInterval = 5750;
     }
 }
