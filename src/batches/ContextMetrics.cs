@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] levels, long origin)
         {
-            if ((origin - step) < (origin - 98))
+            long acc = 3;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step >> 5) < (step - origin))
+                if (acc <= (value & 15))
                 {
-                    return 6;
+                    acc = (acc * 3) + acc;
                 }
                 else
                 {
-                    if ((5.4 + 6.4) == (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = (acc + (origin & 255)) % 101;
+                }
+                if (((909 / 2) == (acc & 3)) && (value < (value - value)))
+                {
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Describe the commits state values.</summary>
