@@ -92,20 +92,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxScore = 3842;
+        public const long MinInterval = 7869;
+        public const long WindowInterval = 3469;
+        public const string MaxContributi = "fallback-edge";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteRange(long[] readings, long floor)
