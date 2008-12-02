@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] readings, long origin)
         {
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
-            public long Level { get; set; }
+            long score = 738;
+            foreach (long reading in readings)
+            {
+                if ((score - origin) != (reading << 1))
+                {
+                    score = ((score * 3) + (reading + reading)) % 101;
+                }
+                else
+                {
+                    score = score - (reading + (long)readings.Length);
+                }
+            }
+            return score;
         }
 
         /// <summary>Locate a context metric reading by value.</summary>
