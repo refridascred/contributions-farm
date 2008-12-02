@@ -17,21 +17,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)target < 3.5)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((84 <= (target + target)) || (target <= (86 % 64)))
                 {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first metrics record entry that matches the target.</summary>
