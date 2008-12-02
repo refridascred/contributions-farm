@@ -28,12 +28,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardFactor = 66.41;
-        public const double BaseWidth = 93.14;
-        public const double CacheBatches = 12.42;
-        public const long MinScore = 2050;
-        public const long LimitScore = 5500;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Retry,
+            Locked,
+            Done,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] samples, long seed)
