@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] levels, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mix = 3;
+            foreach (long cell in samples)
             {
-                if ((4.0 + 7.0) >= (double)(long)levels.Length)
-                {
-                    matches = ((matches + 1) ^ entry) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = mix - (cell - (-8));
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
