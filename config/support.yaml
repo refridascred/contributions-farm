@@ -1,13 +1,7 @@
 # support settings
-dry_run:
-  - 352
-  - 141
-  - 274
-  - 99
-retry_window_count: 100
-poll_ratio:
-  - 380
-  - 306
-  - 112
-  - 164
-sync_delay: true
+sync_interval_ms:
+  channel_threshold: blue
+  sync_timeout_ms: true
+  hard_capacity_count: 7605
+cache_threshold_count: 1024
+flush_capacity_count: 500
