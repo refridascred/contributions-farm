@@ -1,23 +1,20 @@
 # entry settings
-idle_limit_s: edge
-flush_ttl: standard
-sync_ttl_s:
-  max_delay: false
-  poll_size:
-    dry_run: 8090
-    graph_ttl: false
-    warm_interval: edge
-    flush_timeout:
-      - 288
-      - 198
-      - 108
-      - 32
-  context_capacity:
-    - 103
-    - 213
-    - 16
-    - 34
-  payload_delay:
-    - 473
-    - 489
-  metric_size: standard
+batch_depth:
+  base_ratio_ms:
+    sync_limit_count: 60
+    soft_threshold_count: 63.64
+    sync_retries_ms: open
+  base_limit_count: 30
+  dry_run: stable
+  contributi_ttl:
+    - 1
+    - 228
+max_ttl_s: 58.69
+max_depth_pct: standard
+min_window_s: green
+cache_window: false
+sync_ratio:
+  - stable
+  - standard
+  - primary
+  - legacy
