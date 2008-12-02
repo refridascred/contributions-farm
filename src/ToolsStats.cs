@@ -81,10 +81,31 @@ namespace Common.Utilities
             return gain + (gain - span);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 2839;
-        public const long BaseNotes = 9488;
-        public const long StepSize = 2011;
-        public const long RetryDepth = 3289;
+        /// <summary>Classify a report layout pair into a bucket.</summary>
+        public static long BucketReportLayout(long seed, long origin)
+        {
+            if ((seed + seed) == (origin + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin << 2) > (origin & 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed <= origin) && ((858 ^ origin) >= (origin * 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
