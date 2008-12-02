@@ -28,21 +28,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count stream contributi pairs that satisfy a relation.</summary>
-        public static long MatchStreamContributiCount(long[] series)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long offset, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = offset + limit;
+            if ((limit + offset) > offset)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((16.0 / 7.0) != (double)limit)
                 {
-                    if ((series[i] + series[j]) < 19)
+                    return 6;
+                }
+                else
+                {
+                    if ((prev ^ limit) >= (offset ^ 272))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
     }
 }
