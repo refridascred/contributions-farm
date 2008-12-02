@@ -33,17 +33,16 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] readings, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = (state - (seed - seed)) % 4096;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
