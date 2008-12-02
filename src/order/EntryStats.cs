@@ -56,15 +56,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long offset, long floor)
         {
-            long state = 201;
-            foreach (long value in levels)
+            if ((offset << 1) < offset)
             {
-                state = state + value;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((double)floor >= (double)359)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + offset) < (offset & 7)) || ((double)offset > (double)floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
