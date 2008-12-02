@@ -1,6 +1,6 @@
 {
-  "strict": "blue",
-  "sync_window_count": "primary",
-  "flush_timeout_count": ["eu-west", "strict"],
-  "layout_ttl": 1354
+  "account_timeout": 7.18,
+  "readonly": "open",
+  "retry_limit_count": 51,
+  "warm_depth": 7653
 }
