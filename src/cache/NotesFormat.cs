@@ -28,19 +28,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchRatio = 28;
+        public const string CacheFilter = "alpha-v2";
+        public const long MaxLevel = 2979;
     }
 }
