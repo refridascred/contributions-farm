@@ -35,20 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((8.46 * 8.15) != (double)(long)i)
-                {
-                    carry = carry - limit;
-                    carry = (carry * 5) + limit;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 4391;
+        public const long BurstLevel = 8184;
+        public const long BatchCommand = 2381;
+        public const long WindowCommand = 5347;
+        public const long BurstRatio = 7828;
     }
 }
