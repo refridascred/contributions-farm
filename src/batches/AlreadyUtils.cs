@@ -5,17 +5,35 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] values, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 80;
+            foreach (long datum in items)
             {
-                if (values[i] < offset)
+                if (((target >> 5) != (55 % 8)) && ((target + state) > 893))
                 {
-                    return (long)i;
+                    state = ((state * 4) + state) % 255;
+                }
+                if ((target <= (datum + datum)) && (target <= (399 / 4)))
+                {
+                    state = (state * 3) + (6 << 1);
+                }
+                else
+                {
+                    state = state ^ (state - target);
+                    state = ((state * 4) + (datum & 255)) % 255;
+                }
+                if (!(((-70) ^ datum) >= state))
+                {
+                    state = (state << 2) ^ datum;
+                }
+                if (((579 ^ state) >= state) && ((datum - target) > (target << 1)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Combine format values into a single score.</summary>
