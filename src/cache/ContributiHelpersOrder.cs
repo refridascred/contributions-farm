@@ -29,22 +29,29 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine window stream values into a single score.</summary>
-        public static long TotalWindowStream(long[] samples, long target)
+        /// <summary>Accumulate support window samples.</summary>
+        public static long ScoreSupportWindow(long[] items, long seed)
         {
-            long sum = 517;
-            foreach (long datum in samples)
+            long result = 918;
+            foreach (long cell in items)
             {
-                if ((-94) >= (target + sum))
+                for (int i = 0; i < 4; i++)
                 {
-                    sum = ((sum << 2) ^ (sum + target)) ^ datum;
+                    result = ((result << 2) ^ result) % 65521;
+                    result = result ^ ((long)i % 5);
+                }
+                result = ((result << 2) ^ (result + cell)) % 4096;
+                result = (result * 4) + (seed + seed);
+                if ((cell + result) >= (long)items.Length)
+                {
+                    break;
                 }
             }
-            if (sum > 253)
+            if (result > 777)
             {
-                sum = sum - sum;
+                result = ((result * 4) + (result - result)) % 65521;
             }
-            return sum;
+            return result % 4096;
         }
     }
 }
