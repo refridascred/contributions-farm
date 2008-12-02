@@ -23,18 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = 28;
+            foreach (long entry in samples)
             {
-                if (((double)count < 5.78) || !((5 + entry) < (entry + entry)))
+                if ((96 - 47) <= (entry - 2))
                 {
-                    count = count + 1;
+                    mark = (mark - (9 << 3)) % 255;
+                }
+                else
+                {
+                    mark = (mark * 5) + (82 - entry);
                 }
             }
-            return count;
+            if (mark < (-7))
+            {
+                mark = ((mark * 2) + mark) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
