@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 43.8;
+        public const double LimitCount = 24.14;
+        public const long HardSpan = 265;
+        public const string MaxInterval = "open-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MaxMetrics = 59.84;
