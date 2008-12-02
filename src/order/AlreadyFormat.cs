@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Count the stats batches entries that pass the check.</summary>
+        public static long TallyStatsBatchesMatches(long[] values)
         {
-            Failed,
-            Closed,
-            Paused,
-            Done,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((sample + sample) != (count << 1)) || (count > (sample * 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
