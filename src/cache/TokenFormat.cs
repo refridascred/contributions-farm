@@ -35,22 +35,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor command samples are out of range.</summary>
-        public static long CountEditorCommandMatches(long[] data, long offset)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((12.0 * 3.1) >= (double)offset)
-                {
-                    count = (count + 1) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Done,
+            Closed,
+            Paused,
         }
     }
 }
