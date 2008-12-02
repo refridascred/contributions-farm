@@ -24,22 +24,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] data, long offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item ^ item) > (offset + item))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
