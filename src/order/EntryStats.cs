@@ -22,12 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long origin)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = ((score - 67) % 65521) + (long)i2;
+                    score = (score << 3) ^ (score + score);
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a account entry.</summary>
