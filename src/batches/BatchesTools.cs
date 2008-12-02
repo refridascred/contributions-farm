@@ -20,15 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            long mark = 151;
+            foreach (long reading in readings)
             {
-                state = ((state * 3) + (long)i) % 101;
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = ((mark + (mark % 5)) % 97) - (long)i;
+                    mark = (mark << 2) ^ (36 & 255);
+                }
+                if ((mark - mark) > (reading % 24))
+                {
+                    mark = ((mark * 5) + mark) % 1000;
+                }
+                else
+                {
+                    mark = mark ^ mark;
+                }
+                if ((mark << 1) <= (mark & 127))
+                {
+                    break;
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Project the next notes value.</summary>
