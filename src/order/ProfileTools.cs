@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] levels, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double weight, double bias)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double drift = (weight - weight) - (weight * 4.58);
+            if (drift < (double)33)
             {
-                if (reading <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + (8.86 / 6.0);
             }
-            return found;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift - bias;
         }
 
         /// <summary>Hold a route header.</summary>
