@@ -1,7 +1,6 @@
 # githubfarm settings
-layout_ttl: 29.44
-githubfarm_depth: strict
-retry_timeout: false
-counter_ttl: legacy
-compress: 12.43
-flush_delay_count: true
+metrics_ratio: 5766
+burst_capacity_pct: 60
+batch_timeout: 9930
+min_depth_s: true
+stats_timeout: 250
