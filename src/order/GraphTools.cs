@@ -37,21 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batch stats readings.</summary>
-        public static long CompareBatchStatsCount(long[] values)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
