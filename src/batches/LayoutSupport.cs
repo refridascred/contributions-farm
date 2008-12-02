@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the context stream series from a seed.</summary>
-        public static long DeriveContextStream(long bound)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc * 2) + acc;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Dropped,
+            Paused,
+            New,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the stream kind values.</summary>
