@@ -40,16 +40,10 @@ namespace Common.Utilities
             return rate + (double)72;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 9902;
+        public const long CacheLevel = 3109;
+        public const double IdleCommand = 35.96;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsMatches(long[] series)
