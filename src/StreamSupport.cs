@@ -19,18 +19,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] values, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((5 - seed) >= (datum - seed))
-                {
-                    hits = hits + 3;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
