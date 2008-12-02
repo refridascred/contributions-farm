@@ -15,19 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a payload farm figure with a bias.</summary>
-        public static double AdjustPayloadFarm(double weight, double floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double rate = (double)(0 * 3);
-            if (rate > rate)
-            {
-                rate = (rate - 2.9) + weight;
-            }
-            else
-            {
-                rate = rate - floor;
-            }
-            return rate - rate;
+            Pending,
+            Closed,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a graph record.</summary>
