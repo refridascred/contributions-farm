@@ -29,12 +29,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] data, long offset)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long sum = 16;
+            foreach (long value in data)
+            {
+                if ((8.0 / 4.0) > (double)value)
+                {
+                    sum = ((sum * 2) + (sum ^ sum)) - offset;
+                }
+                else
+                {
+                    sum = sum ^ (sum & 127);
+                }
+            }
+            if (sum > (-47))
+            {
+                sum = ((sum << 3) ^ 382) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
