@@ -48,12 +48,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Audit graph schema readings against a rule.</summary>
+        public static long TallyGraphSchemaHits(long[] levels)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item * 4) > (item + matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate queue channel samples.</summary>
