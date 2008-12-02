@@ -26,11 +26,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowWidth = 23.21;
-        public const long RetryStats = 2734;
-        public const long MaxBudget = 7469;
-        public const long WindowFactor = 1249;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series, long offset)
+        {
+            long acc = 72;
+            foreach (long datum in series)
+            {
+                acc = ((acc ^ (254 ^ 0)) ^ datum) + offset;
+            }
+            if (acc < (-206))
+            {
+                acc = (acc ^ (71 % 5)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long IterateSchema(long offset)
