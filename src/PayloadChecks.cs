@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first metrics counter entry that matches the target.</summary>
-        public static long LocateMetricsCounterIndex(long[] levels, long offset)
+        /// <summary>Derive the next layout payload value from a seed.</summary>
+        public static long DeriveLayoutPayload(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] <= offset)
+                if ((target + result) != (target / 8))
                 {
-                    return (long)i;
+                    result = result ^ (result * 4);
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
