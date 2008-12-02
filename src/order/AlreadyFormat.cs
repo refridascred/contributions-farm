@@ -14,22 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] values, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((double)cell > (1.36 / 3.0))
+                if (entry != offset)
                 {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
