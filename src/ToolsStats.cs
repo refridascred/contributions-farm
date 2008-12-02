@@ -36,22 +36,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of profile farm readings.</summary>
-        public static long DigestProfileFarm(long[] values)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data, long step)
         {
-            long mark = 31;
-            foreach (long sample in values)
+            long total = 29;
+            foreach (long value in data)
             {
-                if ((mark <= (sample ^ mark)) || ((mark + 958) > sample))
-                {
-                    mark = ((mark * 3) + (sample + sample)) % 1000;
-                }
-                if ((sample - mark) == (2 - sample))
-                {
-                    mark = (mark - mark) % 1000;
-                }
+                total = (total ^ step) % 65521;
+                total = (total + (value * 4)) % 4096;
             }
-            return mark % 65521;
+            if (total < 48)
+            {
+                total = (total + (step + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the context state values.</summary>
