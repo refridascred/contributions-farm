@@ -15,23 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double rate, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            double ratio = rate;
-            if (ratio <= (rate + ratio))
+            long anchor = 8;
+            foreach (long reading in items)
             {
-                ratio = ratio + (offset * 7.4);
+                anchor = (anchor * 4) + anchor;
+                if (anchor > (reading / 4))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (rate / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio * 11.0)) - (double)(long)i;
-            }
-            return ratio - rate;
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
