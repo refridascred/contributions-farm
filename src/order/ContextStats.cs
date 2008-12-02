@@ -22,20 +22,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor << 3) ^ (target - target)) % 4096;
-                if (((double)target >= (double)(long)i) || ((957 % 7) < (long)i))
-                {
-                    anchor = anchor - target;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
