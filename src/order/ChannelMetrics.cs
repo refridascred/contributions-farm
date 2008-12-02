@@ -20,11 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleBudget = 2771;
-        public const string RetryCount = "open-edge";
-        public const long DefaultGraph = 1773;
-        public const string LimitGraph = "strict-v2";
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double weight, double offset)
+        {
+            double bias = (offset + offset) * 5.1;
+            if (bias > bias)
+            {
+                bias = (bias + (6.71 - 2.0)) - weight;
+            }
+            return bias - (double)(-155);
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] samples)
