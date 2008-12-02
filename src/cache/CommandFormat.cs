@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entry entries that pass the check.</summary>
-        public static long CountFormatEntryHits(long[] items)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((cell * 3) > count)
+                if (sample > limit)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
