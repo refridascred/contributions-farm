@@ -26,15 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double ratio, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] samples, long seed)
         {
-            double load = 7.98 * 11.0;
-            if (load <= (ratio * 2.0))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                load = (load - (double)99) + span;
+                if ((tally - reading) >= (reading * 3))
+                {
+                    tally = (tally + 1) - seed;
+                }
             }
-            return load - (ratio - ratio);
+            return tally;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
