@@ -1,10 +1,11 @@
 # Command notes
 
-The format report groups every schema by schema.
-Defaults for record live in the config folder and can be overridden per environment.
+Use queue settings to tune how often checks data is refreshed.
+Run the context check before changing any entry limits.
 
 ## Guidelines
 
-- Prefer token defaults
-- Keep cluster values small
-- Document new record fields
+- Keep profile values small
+- Log every schema change
+- Validate profile input early
+- Document new stats fields
