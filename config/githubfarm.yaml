@@ -1,6 +1,32 @@
 # githubfarm settings
-metrics_ratio: 5766
-burst_capacity_pct: 60
-batch_timeout: 9930
-min_depth_s: true
-stats_timeout: 250
+idle_delay_count: 2912
+max_ttl_pct: 1024
+context_delay: 88.77
+farm_capacity:
+  context_ttl: eu-west
+  channel_timeout: cached
+  sync_size: green
+profile_threshold:
+  format_depth:
+    sync_retries_count: open
+    hard_timeout_s: open
+    verbose:
+      - fallback
+      - strict
+      - edge
+    base_ttl_count:
+      - 497
+      - 80
+    route_size: fallback
+  audit:
+    profile_limit: edge
+    default_interval: 94.85
+    idle_window_count: 43
+    default_capacity_ms: 4618
+    default_threshold_pct: false
+    flush_ttl_ms: open
+  poll_ratio:
+    - 280
+    - 203
+    - 154
+    - 371
