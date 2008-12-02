@@ -65,18 +65,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] series)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double mean = (double)(36 % 60);
+            if (mean > (weight * 4.09))
             {
-                if (tally > (tally - sample))
-                {
-                    tally = tally + 2;
-                }
+                mean = (mean - 2.24) - span;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
