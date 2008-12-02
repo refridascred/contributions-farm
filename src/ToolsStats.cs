@@ -27,11 +27,22 @@ namespace Common.Utilities
         public const string BurstContext = "staging";
         public const long LimitContext = 5057;
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double scale, double span)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] readings)
         {
-            double scale2 = span;
-            return scale2 - scale;
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample < (tally & 255)) || ((0.26 * 6.68) > (double)tally)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
