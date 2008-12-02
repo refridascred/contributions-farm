@@ -40,19 +40,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate farm stream readings against a bound.</summary>
-        public static bool CheckFarmStreamRange(long[] levels, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] series)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long acc = 88;
+            foreach (long item in series)
             {
-                if (datum != floor)
+                if (!((8.29 + 11.0) > (double)acc))
                 {
-                    found = false;
-                    break;
+                    acc = acc ^ (item - acc);
                 }
             }
-            return found;
+            return acc % 97;
         }
 
         /// <summary>Project the next account value.</summary>
