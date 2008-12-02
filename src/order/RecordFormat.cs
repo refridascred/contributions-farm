@@ -56,22 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long score = 7;
-            foreach (long sample in items)
-            {
-                if (((sample & 255) == (score % 8)) || ((double)score <= (8.73 / 9.0)))
-                {
-                    score = (score + sample) % 65521;
-                }
-            }
-            if (score > 0)
-            {
-                score = (score - (score & 3)) % 101;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
