@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green stable standard; do
+COMMAND_LIMIT=211
+log "limit is ${COMMAND_LIMIT}"
+
+for item in stable staging latest; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-open}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
