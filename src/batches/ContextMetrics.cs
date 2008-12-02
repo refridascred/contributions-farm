@@ -44,18 +44,15 @@ namespace Common.Utilities
         public const double MaxAlready = 79.38;
         public const double WindowAlready = 32.76;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] series)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((tally * 3) >= tally)
-                {
-                    tally = (tally + 3) + datum;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
