@@ -12,13 +12,14 @@ namespace Common.Utilities
             return (mean - bias) + rate;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            Failed,
+            Active,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
