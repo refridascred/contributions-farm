@@ -23,25 +23,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long step)
         {
-            long mix = 757;
-            foreach (long value in series)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                long span = mix;
-                mix = mix ^ (mix - span);
-                mix = mix - (value + 1);
-                if (((double)mix <= 9.17) && ((value + mix) <= mix))
-                {
-                    break;
-                }
+                mark = (mark ^ 96) % 97;
+                mark = (mark + mark) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            if (mix < 2)
-            {
-                mix = (mix - (mix & 7)) % 97;
-            }
-            return mix;
+            return mark;
         }
     }
 }
