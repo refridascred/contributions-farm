@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] samples)
-        {
-            long state = 399;
-            foreach (long item in samples)
-            {
-                if ((item + state) > (0 * 4))
-                {
-                    state = (state - (state * 3)) % 1000;
-                }
-            }
-            if (state > 497)
-            {
-                state = state - (4 >> 5);
-            }
-            return state % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchFactor = 41.44;
+        public const string RetryCount = "cached-v2";
+        public const string LimitBudget = "cached-1";
+        public const double LimitBatch = 37.69;
+        public const long HardDepth = 5168;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstTools = 8136;
