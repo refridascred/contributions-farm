@@ -14,16 +14,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a channel payload counter forward.</summary>
-        public static long DeriveChannelPayload(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 45.16;
+        public const long IdleTools = 67;
+        public const long StepFactor = 6275;
+        public const long BaseBudget = 4818;
+        public const long DefaultFactor = 5625;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] series, long offset)
