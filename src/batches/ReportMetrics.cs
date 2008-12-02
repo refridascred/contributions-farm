@@ -26,22 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long sum = 2;
-            foreach (long cell in items)
-            {
-                if ((7.64 - 7.4) == (double)sum)
-                {
-                    sum = (((sum << 3) ^ 622) % 255) ^ cell;
-                }
-            }
-            if (sum > 53)
-            {
-                sum = (sum << 2) ^ (long)items.Length;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
