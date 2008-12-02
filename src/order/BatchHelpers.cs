@@ -24,21 +24,19 @@ namespace Common.Utilities
             return rate - (ratio + ratio);
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item > limit)
                 {
-                    if ((values[i] + values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Grade a githubfarm payload value against two limits.</summary>
