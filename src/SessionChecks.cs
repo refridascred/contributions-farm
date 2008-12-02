@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double bias, double offset)
+        /// <summary>Derive the next already graph value from a seed.</summary>
+        public static long DeriveAlreadyGraph(long floor)
         {
-            double weight = bias;
-            if (weight >= 7.9)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                weight = weight + (weight / 5.0);
+                if ((floor > ((long)i - floor)) && ((9.6 * 12.0) >= (double)floor))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = ((score * 2) + (score % 7)) % 255;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + offset) - (double)(long)i;
-            }
-            return weight + offset;
+            return score;
         }
 
         /// <summary>Audit stream metric readings against a rule.</summary>
