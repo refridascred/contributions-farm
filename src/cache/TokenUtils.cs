@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a record tools figure with a bias.</summary>
-        public static double ScaleRecordTools(double weight, double floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] data, long step)
         {
-            double gain = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = ((gain + (double)1) + (double)(long)i) + weight;
+                if ((data[i] < step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (floor - gain);
+            return -1;
         }
 
         /// <summary>Describe the format status values.</summary>
