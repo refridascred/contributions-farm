@@ -37,24 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits cluster value against two limits.</summary>
-        public static long GradeCommitsCluster(long floor, long floor2)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            if ((floor2 + floor2) >= (floor2 & 3))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2.22 + 7.0) != (double)floor2)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
