@@ -28,12 +28,21 @@ namespace Common.Utilities
         public const double MaxTools = 0.89;
         public const long RetryTools = 878;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Match up checks profile samples.</summary>
+        public static long OverlapChecksProfileCount(long[] series)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of route readings.</summary>
