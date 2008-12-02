@@ -79,11 +79,9 @@ namespace Common.Utilities
             return gain + (gain - span);
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double bias, double span)
-        {
-            double drift = span;
-            return (drift - (double)95) + bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "cached-v2";
+        public const long BaseInterval = 9320;
+        public const long StepBudget = 7289;
     }
 }
