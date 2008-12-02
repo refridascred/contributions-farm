@@ -41,28 +41,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long offset, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            long gap = offset + target;
+            if (!((double)offset != (0.19 + 0.6)))
             {
-                if ((long)i <= anchor)
-                {
-                    anchor = ((anchor * 4) + anchor) % 255;
-                    continue;
-                }
-                if ((seed + seed) >= anchor)
-                {
-                    anchor = (anchor - (seed % 24)) % 4096;
-                }
-                if ((anchor * 2) != ((long)i + 0))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((gap + gap) > (target % 64))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset & 255) > gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
