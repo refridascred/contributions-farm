@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] levels, long limit)
         {
-            long result = -6;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                result = ((result << 3) ^ (floor << 2)) ^ reading;
+                if ((4.0 + 7.0) >= (double)(long)levels.Length)
+                {
+                    matches = ((matches + 1) ^ entry) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
