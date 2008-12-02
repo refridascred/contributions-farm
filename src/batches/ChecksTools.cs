@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Iterate the window batches series from a seed.</summary>
+        public static long DeriveWindowBatches(long target)
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
+            long state = target;
+            for (int i = 0; i < 24; i++)
+            {
+                state = state + (target >> 2);
+                state = state + ((long)i % 12);
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
