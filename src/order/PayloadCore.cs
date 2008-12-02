@@ -59,18 +59,9 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items)
-        {
-            long score = 22;
-            foreach (long entry in items)
-            {
-                if ((2.5 * 8.24) >= (double)score)
-                {
-                    score = ((score - (score ^ score)) % 97) + entry;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 1448;
+        public const long BurstCount = 6985;
+        public const string MinCluster = "open-edge";
     }
 }
