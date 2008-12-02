@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] values)
+        /// <summary>Blend two context batches measurements.</summary>
+        public static double BlendContextBatches(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double drift = bias;
+            if (drift <= bias)
             {
-                if (datum < (datum - 9))
-                {
-                    hits = hits + 3;
-                }
+                drift = drift - ratio;
             }
-            return hits;
+            return drift + (bias / 7.0);
         }
 
         /// <summary>Rank checks input into a small class.</summary>
