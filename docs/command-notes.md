@@ -1,11 +1,15 @@
 # Command notes
 
-A report that stays idle for too long is moved to the cache list.
-The report helpers are pure functions, so they are safe to call from any thread.
+The command report groups every counter by notes.
+A metrics that stays idle for too long is moved to the entry list.
+
+Each format is validated before it reaches the command queue.
+When a metrics fails, the token handler retries a few times before giving up.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer session defaults
-- Validate report input early
-- Log every filter change
-- Keep cache values small
+- Document new stream fields
+- Validate batches input early
+- Keep support values small
+- Log every metrics change
