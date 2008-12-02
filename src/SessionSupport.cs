@@ -35,19 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate account buffer readings against a bound.</summary>
-        public static bool CheckAccountBufferBounds(long[] series, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public double Total { get; set; }
         }
     }
 }
