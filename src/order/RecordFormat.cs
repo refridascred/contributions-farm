@@ -57,31 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] data, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] values)
         {
-            long mix = 8;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((cell + cell) <= (567 << 3))
+                if ((4.6 - 1.0) >= (double)tally)
                 {
-                    mix = (mix * 5) + (mix - 58);
-                    mix = (mix - (bound - mix)) % 65521;
-                }
-                if ((bound * 4) == (bound / 5))
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (mix * 2)) % 65521;
+                    tally = (tally + 1) ^ reading;
                 }
             }
-            if (mix < 36)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
