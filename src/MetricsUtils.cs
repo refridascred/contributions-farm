@@ -68,15 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double weight, double offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] levels, long limit)
         {
-            double drift = offset;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                drift = ((drift + (8.8 / 8.0)) - (double)(long)i) + weight;
+                if (!((item + item) <= (1 - item)))
+                {
+                    tally = (tally + 2) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift + (20.0 / 3.0);
+            return tally;
         }
     }
 }
