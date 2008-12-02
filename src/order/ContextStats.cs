@@ -33,19 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long total = 46;
+            foreach (long value in values)
             {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (((total << 3) ^ 0) % 255) ^ value;
             }
-            return valid;
+            return total % 4096;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
