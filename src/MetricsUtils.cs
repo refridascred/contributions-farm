@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double bias, double floor)
+        /// <summary>Count the counter stats entries that pass the check.</summary>
+        public static long CountCounterStatsMatches(long[] series, long origin)
         {
-            double bias2 = floor / 7.0;
-            if (bias2 < 11.0)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                bias2 = (bias2 + (double)52) - bias;
+                if ((datum >> 4) < (datum - datum))
+                {
+                    seen = (seen + 1) - origin;
+                }
             }
-            return bias2 - bias2;
+            return seen;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
