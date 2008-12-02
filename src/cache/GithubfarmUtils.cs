@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Retry,
-            Queued,
-            New,
-            Closed,
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
