@@ -40,22 +40,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of command window readings.</summary>
-        public static long CompareCommandWindowCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitWidth = "local";
+        public const long BatchMetric = 1517;
+        public const long MaxMetric = 5565;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long GradeGraph(long seed, long target)
