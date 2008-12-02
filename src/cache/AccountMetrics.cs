@@ -67,15 +67,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches metric series from a seed.</summary>
-        public static long IterateBatchesMetric(long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long sum = 5;
+            foreach (long datum in series)
             {
-                result = ((result * 5) + (long)i) % 97;
+                sum = ((sum * 2) + (sum ^ sum)) % 97;
+                sum = ((sum * 4) + (sum - datum)) % 255;
+                sum = (sum ^ (datum & 31)) % 4096;
+                if (8.4 >= (double)datum)
+                {
+                    break;
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Audit context filter readings against a rule.</summary>
