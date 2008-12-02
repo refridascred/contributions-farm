@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double weight, double offset)
         {
-            Synced,
-            Paused,
-            Draft,
-            Done,
+            double ratio = weight;
+            return ratio + (ratio + offset);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
