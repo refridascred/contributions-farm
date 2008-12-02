@@ -31,17 +31,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftInterval = "strict";
+        public const double DefaultRatio = 25.82;
+        public const string DefaultLevel = "fallback-v2";
     }
 }
