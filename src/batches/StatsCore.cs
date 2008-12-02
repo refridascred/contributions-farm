@@ -58,21 +58,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster commits samples.</summary>
-        public static long MatchClusterCommitsCount(long[] items)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor ^ (28 - seed)) % 97) - (long)i2;
                 }
+                if (seed < (seed * 2))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
