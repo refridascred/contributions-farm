@@ -34,21 +34,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 3)
+                    if ((readings[i] + readings[j]) > 16)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Scale a order batches figure with a bias.</summary>
