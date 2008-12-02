@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] series, long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((976 & 3) < datum)
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
