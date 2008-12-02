@@ -32,21 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a window buffer reading.</summary>
