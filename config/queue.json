@@ -1,19 +1,8 @@
 {
-  "tools_delay": false,
-  "flush_limit_pct": 12.44,
-  "githubfarm_delay": {
-    "schema_window": true,
-    "filter_ratio": {
-      "flush_depth": "green",
-      "stats_depth": 25,
-      "audit": 57.55
-    },
-    "compress": "stable",
-    "default_ttl": "green",
-    "cache_depth_count": {
-      "strict": [198, 357, 112, 25],
-      "batch_capacity_s": "green",
-      "default_retries": "legacy"
-    }
-  }
+  "route_capacity": ["stable", "eu-west", "green"],
+  "batch_depth": 6.36,
+  "githubfarm_threshold": 4412,
+  "default_limit_s": 95.84,
+  "cache_delay": 1,
+  "sync_window_s": true
 }
