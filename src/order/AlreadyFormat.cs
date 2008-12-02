@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the stats batches entries that pass the check.</summary>
-        public static long TallyStatsBatchesMatches(long[] values)
+        /// <summary>Project the next contributi batches value.</summary>
+        public static double ProjectContributiBatches(double weight, double bias)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double ratio = 9.52 - (double)(-452);
+            for (int i = 0; i < 9; i++)
             {
-                if (((sample + sample) != (count << 1)) || (count > (sample * 3)))
-                {
-                    count = count + 2;
-                }
+                ratio = ((ratio - weight) + (double)(long)i) + bias;
             }
-            return count;
+            return ratio + (double)428;
         }
 
         /// <summary>Describe the channel level values.</summary>
