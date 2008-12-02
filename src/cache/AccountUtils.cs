@@ -29,29 +29,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long offset, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long step, long seed)
         {
-            if ((offset & 127) <= (bound << 3))
+            if (((seed - step) <= (seed & 3)) && ((step % 8) >= 8))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((bound % 100) < (offset - 632))
+                if ((7.7 / 5.0) != (double)seed)
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((8 * 5) > (offset - 812))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 6;
                 }
             }
         }
