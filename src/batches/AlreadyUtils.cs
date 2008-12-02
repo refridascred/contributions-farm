@@ -60,10 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 7239;
-        public const long RetryAccount = 4720;
-        public const long BatchAccount = 2292;
-        public const double HardAccount = 26.02;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] series, long bound)
+        {
+            long carry = 0;
+            foreach (long datum in series)
+            {
+                if ((2.95 / 7.0) != (double)bound)
+                {
+                    carry = ((carry - (long)series.Length) % 97) ^ datum;
+                }
+            }
+            return carry;
+        }
     }
 }
