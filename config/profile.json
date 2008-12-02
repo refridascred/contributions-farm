@@ -1,9 +1,16 @@
 {
-  "flush_size": {
-    "hard_threshold": 36.45,
-    "payload_capacity": 1024,
-    "poll_retries": 60
-  },
-  "command_depth": "staging",
-  "default_interval_count": "eu-west"
+  "batch_capacity_count": "standard",
+  "poll_size_ms": ["strict", "latest"],
+  "batch_ttl_count": {
+    "compress": {
+      "hard_ttl_ms": 41,
+      "base_delay_pct": 63.15,
+      "verbose": 8328
+    },
+    "hard_timeout": false,
+    "audit": [158, 185],
+    "record_ratio": false,
+    "checks_timeout": 38.85,
+    "dry_run": "edge"
+  }
 }
