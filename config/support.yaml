@@ -1,18 +1,5 @@
 # support settings
-batch_ratio_s: 5259
-session_window: cached
-compress: 1254
-burst_timeout:
-  - 164
-  - 14
-graph_depth:
-  default_ttl: 40.7
-  min_delay_count:
-    - stable
-    - stable
-    - edge
-    - eu-west
-  min_ttl_ms:
-    - local
-    - primary
-  strict: 500
+farm_ratio: true
+verbose: stable
+strict: green
+context_ttl: true
