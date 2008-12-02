@@ -41,18 +41,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first tools metric entry that matches the target.</summary>
-        public static long SeekToolsMetricIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 4881;
+        public const long LimitFactor = 2382;
+        public const double LimitSize = 55.15;
+        public const long LimitWidth = 5279;
 
         /// <summary>Project the next already value.</summary>
         public static double SmoothAlready(double rate, double span)
