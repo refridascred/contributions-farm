@@ -15,13 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
