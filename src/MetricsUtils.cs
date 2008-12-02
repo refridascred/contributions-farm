@@ -52,18 +52,19 @@ namespace Common.Utilities
             return drift - (double)17;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] samples)
+        /// <summary>Check that every entry record entry stays within the limit.</summary>
+        public static bool ValidateEntryRecordRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (sample > ((long)samples.Length + matches))
+                if (reading < bound)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
