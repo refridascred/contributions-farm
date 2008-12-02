@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
