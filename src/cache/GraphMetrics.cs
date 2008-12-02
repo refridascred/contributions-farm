@@ -34,17 +34,39 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] readings, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long origin, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = origin ^ limit;
+            if ((lane << 1) >= (limit / 5))
             {
-                if (readings[i] <= limit)
+                return 4;
+            }
+            else
+            {
+                if (((origin - origin) != (lane << 1)) || ((origin & 63) < 9))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (origin >= (limit + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((lane + limit) < (lane & 63))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
