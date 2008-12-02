@@ -56,14 +56,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long floor)
         {
-            Stale,
-            Done,
-            Synced,
-            New,
-            Retry,
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)(long)i == (17.0 / 8.0))
+                {
+                    anchor = ((anchor * 4) + ((long)i << 1)) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
