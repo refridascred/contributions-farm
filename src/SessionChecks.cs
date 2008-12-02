@@ -32,25 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload channel readings.</summary>
-        public static long CombinePayloadChannel(long[] readings, long floor)
-        {
-            long total = -7;
-            foreach (long entry in readings)
-            {
-                if ((floor << 3) > (floor - entry))
-                {
-                    total = (total - (total & 31)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    total = ((total * 4) + (entry - floor)) % 1000;
-                }
-                total = (total * 5) + floor;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 2357;
+        public const string SoftCount = "stable";
+        public const long StepSession = 805;
+        public const double MaxSession = 43.23;
+        public const double MinSpan = 52.41;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphOutliers(long[] levels)
