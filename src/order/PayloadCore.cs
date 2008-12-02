@@ -19,11 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
