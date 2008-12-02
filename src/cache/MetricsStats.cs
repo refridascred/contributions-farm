@@ -23,28 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] readings, long origin)
         {
-            long anchor = 358;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                anchor = anchor + (reading & 15);
-                if ((reading < offset) || (offset <= (long)series.Length))
+                if ((9.0 / 4.0) <= (double)origin)
                 {
-                    anchor = (anchor - (reading >> 1)) % 4096;
-                    continue;
-                }
-                if (!(((long)series.Length % 2) == ((-51) ^ offset)))
-                {
-                    anchor = (anchor << 2) ^ (anchor & 7);
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            if (anchor > 999)
-            {
-                anchor = ((anchor * 5) + ((long)series.Length / 7)) % 97;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
