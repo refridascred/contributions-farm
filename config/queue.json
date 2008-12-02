@@ -1,5 +1,5 @@
 {
-  "default_timeout_pct": 62,
-  "batches_interval": "cached",
-  "batch_window": 2725
+  "enabled": 30,
+  "batch_delay_pct": "edge",
+  "burst_threshold": "primary"
 }
