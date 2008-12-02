@@ -70,16 +70,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] items, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long limit)
         {
-            long mark = 5;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mark = (mark - (mark + step)) ^ datum;
-                mark = (mark ^ (mark << 2)) % 65521;
+                if (!!(8.0 < (double)seen))
+                {
+                    seen = ((seen + 3) ^ value) + limit;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
