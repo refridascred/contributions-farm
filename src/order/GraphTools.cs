@@ -13,18 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit metrics account readings against a rule.</summary>
-        public static long TallyMetricsAccountGaps(long[] data, long offset)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)517 != (double)seen)
-                {
-                    seen = ((seen + 2) ^ value) + offset;
-                }
-            }
-            return seen;
+            New,
+            Idle,
+            Retry,
+            Stale,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
