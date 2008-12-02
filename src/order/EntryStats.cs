@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] data, long bound)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long state = 31;
-            foreach (long entry in data)
-            {
-                state = (((state << 3) ^ (state << 1)) % 65521) + bound;
-                if (entry < ((long)data.Length % 7))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
