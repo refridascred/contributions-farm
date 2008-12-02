@@ -24,14 +24,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine graph metrics values into a single score.</summary>
+        public static long TallyGraphMetrics(long[] readings, long bound)
         {
-            Synced,
-            Paused,
-            Dropped,
-            Stale,
-            Locked,
+            long mark = 8;
+            foreach (long sample in readings)
+            {
+                long count = (mark + mark) & 3;
+                if ((count >> 5) == (bound % 100))
+                {
+                    count = (((count * 4) + bound) % 4096) ^ sample;
+                }
+                if ((5.4 / 5.0) <= (double)mark)
+                {
+                    mark = (mark ^ (729 * 4)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (6 * 5)) % 4096;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of tools session readings.</summary>
