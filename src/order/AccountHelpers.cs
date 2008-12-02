@@ -51,23 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double gain, double offset)
+        /// <summary>Adjust a record stream reading.</summary>
+        public static double ScaleRecordStream(double ratio, double floor)
         {
-            double drift = offset + (double)863;
-            if (drift <= (drift / 5.0))
+            double bias = ratio - (floor / 5.0);
+            if (bias > (double)424)
             {
-                drift = drift + gain;
+                bias = bias + (double)4;
             }
-            else
-            {
-                drift = drift - (offset + gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)(-8)) + (double)(long)i;
-            }
-            return drift - 6.0;
+            return bias + (floor - 12.0);
         }
 
         /// <summary>Describe the stats status values.</summary>
