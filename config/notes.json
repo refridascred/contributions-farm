@@ -1,5 +1,16 @@
 {
-  "sync_limit": [72, 483],
-  "warm_threshold": "edge",
-  "checks_ratio": 27.63
+  "base_threshold": true,
+  "compress": 2755,
+  "hard_interval_count": {
+    "githubfarm_timeout": 6541,
+    "idle_retries_ms": ["edge", "legacy", "eu-west"],
+    "support_ttl": {
+      "queue_size": 9.86,
+      "flush_depth": 67,
+      "max_ratio_count": 30,
+      "flush_interval_ms": ["open", "legacy", "local", "eu-west"]
+    },
+    "idle_window_count": 500
+  },
+  "dry_run": 95
 }
