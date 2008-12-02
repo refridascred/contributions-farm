@@ -39,12 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            New,
-            Done,
-            Ready,
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
