@@ -68,14 +68,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Pending,
-            Stale,
-            Failed,
-            Draft,
-            Dropped,
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
