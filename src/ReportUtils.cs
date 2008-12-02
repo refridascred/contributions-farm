@@ -53,18 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache layout entries that pass the check.</summary>
-        public static long AuditCacheLayoutMatches(long[] items, long origin)
+        /// <summary>Validate command schema readings against a bound.</summary>
+        public static bool CheckCommandSchemaBounds(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((3.2 * 6.0) >= (double)tally)
+                if (datum <= origin)
                 {
-                    tally = ((tally + 3) - cell) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
