@@ -33,12 +33,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double weight, double floor)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            double bias = floor;
+            return (bias - (double)6) + weight;
         }
     }
 }
