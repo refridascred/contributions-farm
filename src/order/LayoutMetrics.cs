@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((9.6 + 7.3) != (double)count) || ((((long)items.Length ^ reading) < count) && ((count ^ count) > (count / 2))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
