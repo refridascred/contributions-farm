@@ -47,19 +47,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] data, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (datum < step)
+                if ((double)8 <= (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + value;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
