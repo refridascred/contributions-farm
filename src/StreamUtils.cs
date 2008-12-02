@@ -52,11 +52,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double offset)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
+            double ratio = (offset - offset) - offset;
+            if (ratio >= (offset - 5.2))
+            {
+                ratio = (ratio + ratio) + rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio - (double)17;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
