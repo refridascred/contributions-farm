@@ -13,11 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinInterval = 5887;
-        public const long DefaultBuffer = 2291;
-        public const long MaxBuffer = 7424;
-        public const string BurstBuffer = "fallback-v2";
+        /// <summary>Audit metrics account readings against a rule.</summary>
+        public static long TallyMetricsAccountGaps(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)517 != (double)seen)
+                {
+                    seen = ((seen + 2) ^ value) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long DeriveChannel(long step)
