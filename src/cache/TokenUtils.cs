@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload cluster samples are out of range.</summary>
-        public static long TallyPayloadClusterMatches(long[] readings, long floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)reading == (double)matches) || ((reading + reading) > (25 % 10)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many layout graph samples are out of range.</summary>
