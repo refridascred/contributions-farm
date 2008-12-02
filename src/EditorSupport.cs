@@ -20,22 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] series, long seed)
+        /// <summary>Compare every pair of channel cluster readings.</summary>
+        public static long CompareChannelClusterCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seed >= ((-26) ^ 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
