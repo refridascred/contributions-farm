@@ -26,13 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] items)
         {
-            Retry,
-            Done,
-            Dropped,
-            Queued,
+            long sum = 2;
+            foreach (long cell in items)
+            {
+                if ((7.64 - 7.4) == (double)sum)
+                {
+                    sum = (((sum << 3) ^ 622) % 255) ^ cell;
+                }
+            }
+            if (sum > 53)
+            {
+                sum = (sum << 2) ^ (long)items.Length;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
