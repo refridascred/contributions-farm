@@ -37,19 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleSpan = 6465;
+        public const long CacheGraph = 3092;
+        public const long StepGraph = 4763;
     }
 }
