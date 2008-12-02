@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] values, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                mark = ((mark << 2) ^ (long)i) % 97;
-                bool valid = (double)target > (4.1 * 1.16);
-                if (valid)
+                if (sample != step)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
