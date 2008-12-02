@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] readings, long origin)
         {
             long tally = 0;
-            foreach (long value in series)
+            foreach (long item in readings)
             {
-                if ((double)value == (2.2 * 7.0))
+                if (origin <= (origin * 5))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) ^ item;
                 }
             }
             return tally;
