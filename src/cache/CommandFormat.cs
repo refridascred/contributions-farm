@@ -44,11 +44,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 5396;
-        public const double SoftCommand = 85.51;
-        public const string DefaultRatio = "stable";
-        public const long LimitWidth = 4497;
-        public const double StepRatio = 9.71;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Stale,
+            Done,
+            Synced,
+            New,
+            Retry,
+        }
     }
 }
