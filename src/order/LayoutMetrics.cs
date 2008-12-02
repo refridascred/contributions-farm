@@ -37,18 +37,13 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] samples)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((double)value <= 2.2) && ((double)value < 11.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Stale,
+            Active,
+            Locked,
         }
     }
 }
