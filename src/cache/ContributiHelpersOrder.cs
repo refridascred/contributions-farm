@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Blend two cluster notes measurements.</summary>
+        public static double BlendClusterNotes(double ratio, double floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            double rate = ratio + (double)3;
+            if (rate >= ratio)
             {
-                anchor = ((anchor * 5) + anchor) % 97;
-                if (!((16.0 + 4.7) != (double)anchor))
-                {
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                rate = (rate + 6.4) - floor;
             }
-            return anchor;
+            return rate + (0.8 - 1.0);
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
