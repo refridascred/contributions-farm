@@ -37,11 +37,18 @@ namespace Common.Utilities
             return load - (ratio - ratio);
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double ratio, double span)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] data, long offset)
         {
-            double weight = ratio;
-            return weight + (span - span);
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading % 100) != (offset * 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
