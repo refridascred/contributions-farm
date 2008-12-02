@@ -32,10 +32,16 @@ namespace Common.Utilities
         public const long MaxBudget = 7469;
         public const long WindowFactor = 1249;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowSpan = 7941;
-        public const long BatchInterval = 3658;
-        public const string BurstGraph = "standard-v2";
-        public const string MaxScore = "latest-edge";
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark << 2) ^ (mark + offset)) % 255;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
