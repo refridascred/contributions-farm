@@ -1,5 +1,11 @@
 # support settings
-poll_ttl: 500
-burst_threshold_count: fallback
-compress: standard
-hard_window_s: true
+cache_timeout_pct:
+  report_depth: 100
+  audit: primary
+  command_window: 46
+  hard_depth:
+    - 403
+    - 467
+max_retries: 1024
+flush_limit_count: blue
+channel_limit: cached
