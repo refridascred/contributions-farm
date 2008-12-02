@@ -49,17 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long floor)
+        /// <summary>Combine githubfarm layout values into a single score.</summary>
+        public static long WeighGithubfarmLayout(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 23;
+            foreach (long cell in values)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum * 3) + (origin + origin)) % 1000) ^ cell;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a commits stats.</summary>
