@@ -1,8 +1,7 @@
 {
-  "min_interval": "cached",
-  "idle_retries": 6455,
-  "max_window": 2.72,
-  "soft_interval_ms": [205, 422, 462, 238],
-  "burst_delay_pct": 250,
-  "readonly": 30
+  "window_limit": "standard",
+  "verbose": 63,
+  "metric_depth": 84.29,
+  "batch_limit_s": "cached",
+  "hard_capacity_count": ["cached", "legacy", "cached", "stable"]
 }
