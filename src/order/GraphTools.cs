@@ -41,13 +41,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepBudget = 13.13;
+        public const double BaseAlready = 45.74;
+        public const string BatchAlready = "legacy-edge";
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
