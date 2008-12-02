@@ -37,10 +37,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitWidth = "local";
-        public const long BatchMetric = 1517;
-        public const long MaxMetric = 5565;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Paused,
+            New,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long GradeGraph(long seed, long target)
