@@ -64,21 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardDepth = 8355;
+        public const long SoftCommand = 3370;
+        public const long HardBudget = 2753;
+        public const long IdleCommand = 9919;
+        public const string IdleScore = "fallback-v2";
     }
 }
