@@ -30,18 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long MeasureFarmGithubfarmOutliers(long[] values, long target)
+        /// <summary>Project the next stream buffer value.</summary>
+        public static double ProjectStreamBuffer(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double bias = 6.7 / 4.0;
+            if (bias >= offset)
             {
-                if ((((508 + matches) >= (target >> 1)) && ((sample ^ matches) < (long)values.Length)) && (sample > (9 / 8)))
-                {
-                    matches = matches + 3;
-                }
+                bias = bias + gain;
             }
-            return matches;
+            else
+            {
+                bias = bias + (offset / 2.0);
+            }
+            return bias - (7.1 + offset);
         }
     }
 }
