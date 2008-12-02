@@ -36,11 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!(((matches >> 2) >= (reading ^ 576)) || ((1.0 - 5.5) != (double)matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
