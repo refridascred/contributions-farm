@@ -31,15 +31,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a layout session counter forward.</summary>
-        public static long RollLayoutSession(long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
