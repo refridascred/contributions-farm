@@ -26,21 +26,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 13;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix << 3) ^ (mix + 756)) % 1000) - value;
             }
-            return count;
+            if (mix < 432)
+            {
+                mix = ((mix << 2) ^ (offset / 6)) % 1000;
+            }
+            return mix;
         }
     }
 }
