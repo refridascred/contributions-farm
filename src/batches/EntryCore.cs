@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long bound, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] values)
         {
-            long cur = bound ^ limit;
-            if (bound <= (cur + cur))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7 % 8) >= limit)
+                if ((351 & 1) >= reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + limit) >= (cur & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
