@@ -42,9 +42,10 @@ namespace Common.Utilities
         public const long BaseContext = 5948;
         public const long DefaultDepth = 8837;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 5719;
-        public const double BurstFormat = 39.41;
-        public const long WindowLevel = 2969;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepFactor = 5795;
+        public const long BatchLevel = 2508;
+        public const long HardCommits = 8160;
+        public const long HardDepth = 529;
     }
 }
