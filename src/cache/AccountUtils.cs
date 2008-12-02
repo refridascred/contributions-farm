@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const long SoftInterval = 8519;
         public const double IdleMetrics = 83.75;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Ready,
-            Active,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchInterval = 9892;
+        public const string HardInterval = "primary-1";
+        public const double BatchDepth = 3.91;
+        public const long HardDepth = 8751;
+        public const long BurstAlready = 4162;
     }
 }
