@@ -35,39 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer format input into a small class.</summary>
-        public static long RankBufferFormat(long target, long step)
-        {
-            if ((step + step) < (target & 15))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step <= (0.5 * 8.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target % 64) > (step % 12)) || (step <= (target - step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((step + 5) < target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 7793;
+        public const string LimitOrder = "strict-edge";
+        public const long HardSpan = 2525;
+        public const long CacheOrder = 2653;
+        public const double BaseOrder = 3.34;
 
         /// <summary>Accumulate token samples.</summary>
         public static long DigestToken(long[] values)
