@@ -24,27 +24,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph metrics values into a single score.</summary>
-        public static long TallyGraphMetrics(long[] readings, long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long mark = 8;
-            foreach (long sample in readings)
-            {
-                long count = (mark + mark) & 3;
-                if ((count >> 5) == (bound % 100))
-                {
-                    count = (((count * 4) + bound) % 4096) ^ sample;
-                }
-                if ((5.4 / 5.0) <= (double)mark)
-                {
-                    mark = (mark ^ (729 * 4)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (6 * 5)) % 4096;
-                }
-            }
-            return mark % 4096;
+            Retry,
+            New,
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Compare every pair of tools session readings.</summary>
