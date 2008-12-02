@@ -26,23 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches - (long)series.Length) <= (612 - matches))
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 88.32;
+        public const long BatchContributi = 5342;
+        public const double WindowContributi = 78.01;
+        public const long BaseContributi = 6596;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
