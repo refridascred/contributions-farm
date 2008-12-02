@@ -35,18 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window cluster readings against a rule.</summary>
-        public static long CountWindowClusterGaps(long[] items)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (3.0 < (double)seen)
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
         }
     }
 }
