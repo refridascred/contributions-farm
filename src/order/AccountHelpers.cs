@@ -80,11 +80,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            Draft,
+            Ready,
+            Active,
+            Synced,
         }
     }
 }
