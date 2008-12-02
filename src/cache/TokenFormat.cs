@@ -19,24 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] series)
-        {
-            long result = 9;
-            foreach (long cell in series)
-            {
-                result = ((result << 2) ^ result) % 255;
-                if ((result - cell) >= (cell * 2))
-                {
-                    break;
-                }
-            }
-            if (result < (-70))
-            {
-                result = ((result << 2) ^ (2 / 7)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepScore = 33.52;
+        public const double BurstFormat = 41.47;
+        public const string MinRatio = "stable-v2";
+        public const double LimitFormat = 65.18;
 
         /// <summary>Count the filter commits entries that pass the check.</summary>
         public static long CountFilterCommitsHits(long[] samples, long limit)
