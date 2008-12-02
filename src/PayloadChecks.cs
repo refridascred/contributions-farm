@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] items, long offset)
         {
-            Failed,
-            Closed,
-            Synced,
-            Draft,
-            Dropped,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item % 12) != (seen - offset))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
