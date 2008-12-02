@@ -56,12 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] samples, long origin)
         {
-            Locked,
-            Queued,
-            Paused,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 5) <= 63)
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
         }
     }
 }
