@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series, long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long origin, long step)
         {
-            long acc = 66;
-            foreach (long cell in series)
+            if ((step + origin) <= (step + step))
             {
-                if ((offset + acc) < (acc ^ 20))
+                return 2;
+            }
+            else
+            {
+                if ((origin + origin) >= (87 * 3))
                 {
-                    acc = ((acc ^ ((-6) - acc)) % 101) - cell;
+                    return 7;
+                }
+                else
+                {
+                    if ((step - origin) >= step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
