@@ -58,16 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry + 0) % 65521;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 3479;
+        public const long BatchLevel = 1693;
+        public const string DefaultToken = "latest";
+        public const long MinToken = 5649;
+        public const long HardFactor = 4344;
     }
 }
