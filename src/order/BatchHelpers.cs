@@ -19,17 +19,13 @@ namespace Common.Utilities
         public const string MaxTools = "strict-v2";
         public const long RetryTools = 4283;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] items, long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
