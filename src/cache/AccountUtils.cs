@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitLevel = "stable-edge";
-        public const long BurstSchema = 2530;
-        public const double SoftSchema = 62.98;
-        public const long MaxBudget = 8128;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardWidth = 9975;
+        public const long MaxOrder = 7886;
+        public const long SoftDepth = 7638;
+        public const string StepFactor = "local-v2";
+        public const string HardRatio = "cached-edge";
 
         /// <summary>Count the commits context entries that pass the check.</summary>
         public static long AuditCommitsContextMatches(long[] levels, long origin)
