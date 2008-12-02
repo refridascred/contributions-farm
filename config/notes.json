@@ -1,7 +1,8 @@
 {
-  "audit": 34.2,
-  "idle_timeout": 1024,
-  "max_ttl_pct": [158, 368, 441, 390],
-  "readonly": "eu-west",
-  "report_capacity": 60
+  "idle_retries_pct": 4182,
+  "poll_interval_count": true,
+  "stats_depth": false,
+  "idle_window_ms": "edge",
+  "min_window_s": 79,
+  "readonly": true
 }
