@@ -45,9 +45,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardLevel = 71.46;
-        public const string HardRatio = "cached";
-        public const long StepMetrics = 5682;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
