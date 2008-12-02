@@ -49,15 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double rate, double bias)
         {
-            long acc = 6;
-            foreach (long value in levels)
+            double mean = bias;
+            if (mean > bias)
             {
-                acc = (acc - (value & 127)) % 255;
+                mean = (mean - (bias - bias)) - rate;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + 7.8) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
