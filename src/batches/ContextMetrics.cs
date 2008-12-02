@@ -61,19 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    anchor = ((anchor << 2) ^ (offset / 4)) ^ (long)i3;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 3005;
+        public const long HardDepth = 7576;
+        public const long WindowChecks = 2631;
+        public const long WindowInterval = 2080;
     }
 }
