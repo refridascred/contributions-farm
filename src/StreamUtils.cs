@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const long HardFactor = 4529;
         public const long DefaultEntry = 8014;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Find the first command batches entry that matches the target.</summary>
+        public static long LocateCommandBatchesIndex(long[] readings, long offset)
         {
-            Retry,
-            Active,
-            Queued,
-            Closed,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
