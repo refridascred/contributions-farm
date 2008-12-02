@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] readings, long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            long result = 16;
-            foreach (long item in readings)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((item + step) <= (step << 3))
+                if ((target << 2) < mark)
                 {
-                    result = result + (step + step);
+                    mark = mark + target;
                 }
+                mark = mark - (mark << 3);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return result % 4096;
+            return mark;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
