@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next already graph value from a seed.</summary>
-        public static long DeriveAlreadyGraph(long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((floor > ((long)i - floor)) && ((9.6 * 12.0) >= (double)floor))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = ((score * 2) + (score % 7)) % 255;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit stream metric readings against a rule.</summary>
