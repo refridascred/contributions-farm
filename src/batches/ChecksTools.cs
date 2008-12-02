@@ -29,23 +29,37 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long target, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long target, long floor)
         {
-            long offset = target ^ step;
-            if ((20.0 >= (double)step) || ((offset & 7) != (step >> 3)))
+            long lane = target ^ floor;
+            if ((double)target > (double)floor)
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (((offset + step) < (target / 9)) && ((535 / 5) != (267 + step)))
+                if ((floor - lane) <= (target + target))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    if (((18.0 * 17.0) < (double)lane) && ((floor / 5) < floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target <= lane)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
