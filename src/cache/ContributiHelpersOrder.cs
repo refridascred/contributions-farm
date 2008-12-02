@@ -32,10 +32,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 8335;
-        public const long BurstTools = 5792;
-        public const long SoftTools = 6657;
-        public const double BaseTools = 73.59;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardFactor = 3582;
+        public const double CacheDepth = 8.68;
+        public const long CacheRoute = 4605;
     }
 }
