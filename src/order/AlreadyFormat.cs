@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const long BurstNotes = 4964;
         public const string IdleNotes = "legacy-v2";
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] data, long target)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
