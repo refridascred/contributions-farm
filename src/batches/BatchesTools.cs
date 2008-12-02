@@ -33,21 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of layout route readings.</summary>
-        public static long MatchLayoutRouteCount(long[] samples)
+        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
+        public static long MeasureFarmGithubfarmOutliers(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((508 + matches) >= (target >> 1)) && ((sample ^ matches) < (long)values.Length)) && (sample > (9 / 8)))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
