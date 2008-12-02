@@ -76,14 +76,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Stale,
-            Synced,
-            Ready,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultFactor = 6172;
+        public const long SoftContributi = 5648;
+        public const double BurstFactor = 94.72;
+        public const string BaseWidth = "strict-edge";
+        public const double BatchContributi = 87.3;
     }
 }
