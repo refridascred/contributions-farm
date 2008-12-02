@@ -43,21 +43,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Fold a list of stream record readings.</summary>
+        public static long TallyStreamRecord(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 3;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor >> 3) >= (origin % 7))
                 {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor + (anchor - anchor)) % 97;
+                }
+                anchor = (anchor ^ origin) % 255;
+                if ((2.9 / 2.0) < (double)anchor)
+                {
+                    anchor = ((anchor * 5) + (72 - datum)) % 1000;
                 }
             }
-            return tally;
+            if (anchor < 56)
+            {
+                anchor = (anchor - (origin + 75)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a notes cache counter forward.</summary>
