@@ -43,10 +43,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxCount = 8231;
-        public const double MaxInterval = 63.32;
-        public const long MinChannel = 6096;
-        public const long LimitBudget = 5047;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)0 == (double)bound)
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
+        }
     }
 }
