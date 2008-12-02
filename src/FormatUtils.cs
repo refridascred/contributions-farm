@@ -50,10 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 48.42;
-        public const long SoftLevel = 3822;
-        public const long CacheWidth = 2714;
+        /// <summary>Match up commits cluster samples.</summary>
+        public static long OverlapCommitsClusterCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double AdjustBatch(double scale, double offset)
