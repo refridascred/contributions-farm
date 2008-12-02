@@ -28,14 +28,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            Failed,
-            Locked,
-            Synced,
-            Draft,
-            Ready,
+            long total = step;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Classify a route stream pair into a bucket.</summary>
