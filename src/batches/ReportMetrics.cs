@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] data)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)count < (double)item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the notes state values.</summary>
