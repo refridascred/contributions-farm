@@ -34,13 +34,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((51 * 4) >= (entry & 7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
