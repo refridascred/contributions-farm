@@ -19,17 +19,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] levels, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
+                if ((5 - seed) >= (datum - seed))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
