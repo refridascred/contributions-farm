@@ -24,14 +24,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long origin, long offset)
         {
-            Retry,
-            New,
-            Ready,
-            Idle,
-            Pending,
+            if ((origin < (offset << 1)) && ((double)origin < (17.0 * 8.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin % 7) <= (offset + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Compare every pair of tools session readings.</summary>
