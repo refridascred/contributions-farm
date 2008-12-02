@@ -37,17 +37,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a stats window reading by value.</summary>
-        public static long FindStatsWindowIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 5047;
+        public const string BurstFilter = "primary";
+        public const double LimitTimeout = 17.13;
+        public const long CacheFilter = 182;
     }
 }
