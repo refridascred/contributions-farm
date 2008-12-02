@@ -13,11 +13,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 88.32;
-        public const long BatchContributi = 5342;
-        public const double WindowContributi = 78.01;
-        public const long BaseContributi = 6596;
+        /// <summary>Rank notes queue input into a small class.</summary>
+        public static long ClassifyNotesQueue(long step, long target)
+        {
+            if (step <= (target ^ target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step - target) > (target >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double SmoothFarm(double ratio, double offset)
