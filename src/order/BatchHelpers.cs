@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
