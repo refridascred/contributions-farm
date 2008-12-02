@@ -1,11 +1,10 @@
 # entry settings
-dry_run: 3165
-hard_ratio_ms: stable
-batch_ttl_ms: 6763
-min_threshold_s:
-  - blue
-  - latest
-flush_interval_s:
-  - open
-  - stable
-retry_interval: 60
+retry_window_ms: 1117
+max_ratio: strict
+batch_size: false
+batch_delay_count:
+  farm_ratio: staging
+  default_capacity_ms: 62.66
+  hard_size_pct: standard
+  soft_ttl: primary
+  burst_ratio: latest
