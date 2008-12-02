@@ -1,6 +1,6 @@
 # githubfarm settings
-cache_ratio_s: 44.61
-report_interval: 17.57
-poll_limit:
-  - green
-  - stable
+batch_size: edge
+warm_timeout: false
+window_ratio: legacy
+batch_window: 8095
+warm_interval: true
