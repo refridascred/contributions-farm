@@ -13,12 +13,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "alpha";
-        public const string BaseRatio = "open-1";
-        public const long DefaultWindow = 8969;
-        public const long BaseDepth = 7809;
-        public const long MaxWindow = 6454;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items)
+        {
+            long sum = 4;
+            foreach (long value in items)
+            {
+                sum = (sum + 715) + value;
+            }
+            if (sum > 7)
+            {
+                sum = (sum ^ (sum + sum)) % 1000;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
