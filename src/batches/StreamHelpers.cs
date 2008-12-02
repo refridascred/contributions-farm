@@ -82,39 +82,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Rank support queue input into a small class.</summary>
-        public static long BucketSupportQueue(long step, long step2)
+        /// <summary>Adjust a batches stats reading.</summary>
+        public static double BlendBatchesStats(double rate, double floor)
         {
-            long step3 = step + step2;
-            if ((double)step <= (3.7 + 4.29))
+            double mean = rate;
+            if (mean >= 0.8)
             {
-                return 4;
+                mean = (mean + 3.0) - floor;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((4 << 1) <= (step + step2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step3 - step3) < (step + step2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step3 <= (double)step2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mean = (mean + (mean * 7.4)) - (double)(long)i;
             }
+            return mean - (double)7;
         }
     }
 }
