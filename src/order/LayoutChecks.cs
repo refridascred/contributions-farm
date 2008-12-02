@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total + (total >> 3)) % 97;
-                if ((step ^ total) >= (total + (-464)))
-                {
-                    total = total ^ step;
-                    break;
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 18.73;
+        public const long SoftTimeout = 5813;
+        public const long StepEntry = 3626;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
