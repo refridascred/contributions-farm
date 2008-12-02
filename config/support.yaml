@@ -1,18 +1,16 @@
 # support settings
-batch_interval: strict
-soft_limit_s: 73.96
-burst_capacity_pct:
-  retry_limit_s: 1024
-  sync_size_pct: 9280
-  cache_retries:
-    default_threshold_s:
-      - local
-      - legacy
-      - edge
-      - local
-    route_capacity: cached
-    commits_interval: 25.38
-    compress: 30
-    batch_depth_count: 57.22
-  order_retries: true
-compress: false
+compress: primary
+context_delay:
+  audit: 91.41
+  poll_timeout: blue
+  poll_delay_ms:
+    - fallback
+    - strict
+  cache_depth_s: 1220
+  dry_run: 44
+  retry_ttl:
+    - open
+    - cached
+    - stable
+readonly: 7101
+payload_delay: true
