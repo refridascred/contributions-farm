@@ -52,17 +52,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
