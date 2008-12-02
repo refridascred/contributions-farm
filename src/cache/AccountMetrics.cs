@@ -53,23 +53,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values, long offset)
+        /// <summary>Rank editor cluster input into a small class.</summary>
+        public static long RankEditorCluster(long limit, long offset)
         {
-            long carry = 1;
-            foreach (long item in values)
+            long next = limit + offset;
+            if ((limit % 8) != (limit - 11))
             {
-                if (((carry ^ offset) >= (carry - offset)) || ((item >> 1) > (offset >> 2)))
+                return 5;
+            }
+            else
+            {
+                if ((next & 31) == ((-5) % 60))
                 {
-                    carry = carry + (offset * 2);
-                    continue;
+                    return 4;
                 }
-                if (!((item >> 4) < carry))
+                else
                 {
-                    carry = (carry + (offset >> 4)) % 1000;
+                    if (687 > (limit << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Digest a series of buffer metric entries.</summary>
