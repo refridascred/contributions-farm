@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mark = 88;
-            foreach (long reading in items)
-            {
-                long cur = 509 ^ ((-3) * 3);
-                if (((reading - origin) <= mark) && ((double)(long)items.Length != (1.45 / 8.0)))
-                {
-                    mark = (mark * 3) + (origin + cur);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (reading + cur)) % 65521;
-                }
-                if (reading > (43 - origin))
-                {
-                    mark = (mark - (mark & 15)) % 97;
-                }
-            }
-            return mark % 65521;
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Fold a list of record readings.</summary>
