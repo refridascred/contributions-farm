@@ -1,12 +1,14 @@
 # Command notes
 
-The batches report groups every schema by layout.
-Use batch settings to tune how often report data is refreshed.
-Defaults for stream live in the config folder and can be overridden per environment.
+Run the token check before changing any farm limits.
+The account module keeps schema values in sync with the record cache.
+Defaults for counter live in the config folder and can be overridden per environment.
+
+Keep schema and graph names short and lowercase.
+The session report groups every format by command.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Document new context fields
-- Keep order values small
-- Review command limits each release
+- Prefer stats defaults
+- Document new session fields
+- Validate entry input early
