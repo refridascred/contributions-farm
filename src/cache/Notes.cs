@@ -26,14 +26,14 @@ namespace Common.Utilities
         public const double WindowSchema = 1.42;
         public const double MinSchema = 29.75;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Ready,
             Failed,
-            Dropped,
-            Idle,
             Retry,
+            Queued,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the report phase values.</summary>
