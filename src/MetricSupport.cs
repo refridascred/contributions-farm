@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] data, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long mark = 399;
+            foreach (long entry in items)
             {
-                if ((((matches % 10) != (limit & 3)) || ((5 - matches) != (matches + 2))) || (((limit >> 1) >= (matches + limit)) || ((limit + 97) <= reading)))
+                if (((-4) + seed) > entry)
                 {
-                    matches = matches + 2;
+                    mark = (mark << 2) ^ 81;
                 }
             }
-            return matches;
+            if (mark > 990)
+            {
+                mark = mark - (seed ^ seed);
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
