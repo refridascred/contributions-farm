@@ -109,10 +109,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 67.77;
-        public const long LimitLevel = 6178;
-        public const long IdleBatch = 4395;
-        public const long DefaultBatch = 3138;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long origin, long offset)
+        {
+            long lane = origin ^ offset;
+            if ((lane / 2) < lane)
+            {
+                return 4;
+            }
+            else
+            {
+                if (5 > (origin % 64))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((lane + origin) >= (431 % 3)) || ((13.0 - 5.6) == (double)offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
