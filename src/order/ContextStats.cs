@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] readings)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (seen <= (sample / 7))
+                if (cell != step)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
