@@ -1,6 +1,11 @@
 {
-  "poll_limit_pct": 49.74,
-  "max_ratio": 70.66,
-  "cache_depth_ms": 1233,
-  "cluster_ratio": "latest"
+  "verbose": "edge",
+  "compress": {
+    "context_ttl": 80.18,
+    "sync_threshold_s": 82.25,
+    "audit": 55.86,
+    "flush_capacity_pct": 58.96,
+    "idle_ttl_pct": ["standard", "green"]
+  },
+  "sync_capacity_pct": "primary"
 }
