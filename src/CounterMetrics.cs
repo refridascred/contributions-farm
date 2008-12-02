@@ -38,24 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)(long)i <= (3.95 / 5.0))
-                {
-                    result = (result * 5) + result;
-                }
-                else
-                {
-                    long count = (result + floor) >> 2;
-                    result = (result * 2) + (result + count);
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Failed,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a filter header.</summary>
