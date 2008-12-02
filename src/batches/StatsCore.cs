@@ -64,19 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long total = 6;
-            foreach (long reading in items)
-            {
-                total = ((total << 2) ^ (326 << 3)) + reading;
-            }
-            if (total > 4)
-            {
-                total = (total ^ (long)items.Length) % 97;
-            }
-            return total;
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a stream header.</summary>
