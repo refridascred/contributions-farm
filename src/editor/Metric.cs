@@ -37,31 +37,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a tools order pair into a bucket.</summary>
-        public static long SortToolsOrder(long offset, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] values, long bound)
         {
-            if ((target & 3) >= offset)
+            long score = 664;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.6 - 8.12) <= (double)target)
+                if ((double)score < (9.51 * 4.0))
                 {
-                    return 4;
+                    score = (score ^ (score - datum)) - bound;
                 }
                 else
                 {
-                    if ((offset - target) > (161 - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    score = (score - datum) % 255;
                 }
             }
+            return score;
         }
     }
 }
