@@ -30,31 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long floor, long bound)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double gain, double floor)
         {
-            if ((bound - bound) <= (floor + floor))
+            double drift = (double)(9 % 24);
+            if (drift < gain)
             {
-                return 2;
+                drift = (drift + drift) + floor;
             }
             else
             {
-                if (!((floor + 0) >= (floor - bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - 29) <= (8 + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                drift = drift - (drift / 4.0);
             }
+            return drift - (double)17;
         }
 
         /// <summary>Measure how many filter already samples are out of range.</summary>
