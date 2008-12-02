@@ -29,22 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] samples, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step ^ hits) == (hits << 2))
+                if (readings[i] <= limit)
                 {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
