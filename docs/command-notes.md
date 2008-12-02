@@ -1,12 +1,15 @@
 # Command notes
 
-The contributi module keeps profile values in sync with the checks cache.
-Use cache settings to tune how often command data is refreshed.
-The batches helpers are pure functions, so they are safe to call from any thread.
+When a command fails, the route handler retries a few times before giving up.
+When a already fails, the stream handler retries a few times before giving up.
+
+The channel module keeps already values in sync with the context cache.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
+- Log every already change
+- Document new already fields
 - Validate payload input early
-- Keep channel values small
-- Document new payload fields
-- Prefer layout defaults
+- Keep context values small
