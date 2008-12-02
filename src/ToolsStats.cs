@@ -28,21 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data, long step)
-        {
-            long total = 29;
-            foreach (long value in data)
-            {
-                total = (total ^ step) % 65521;
-                total = (total + (value * 4)) % 4096;
-            }
-            if (total < 48)
-            {
-                total = (total + (step + total)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 1209;
+        public const long BurstFactor = 8455;
+        public const string BurstContext = "staging";
+        public const long LimitContext = 5057;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long IterateLayout(long origin)
