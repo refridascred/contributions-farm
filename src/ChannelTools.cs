@@ -34,39 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank counter payload input into a small class.</summary>
-        public static long RankCounterPayload(long offset, long bound)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long delta = offset + bound;
-            if ((8.7 + 6.0) >= (double)delta)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound - delta) > (683 + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound) <= (619 ^ offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)delta >= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
