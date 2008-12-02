@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (mean - bias) + rate;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] samples, long bound)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
