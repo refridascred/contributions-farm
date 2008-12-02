@@ -14,18 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] samples)
+        /// <summary>Roll a context entry counter forward.</summary>
+        public static long DeriveContextEntry(long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((tally + sample) > (sample + sample))
-                {
-                    tally = tally + 3;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Project the next account value.</summary>
