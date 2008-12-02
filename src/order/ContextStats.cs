@@ -20,32 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long bound, long seed)
-        {
-            if ((seed << 1) >= (bound + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound >= 9.9)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed % 5) == (seed - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardWidth = "local-edge";
+        public const long BurstToken = 8628;
+        public const string WindowToken = "local-v2";
+        public const long CacheToken = 8189;
+        public const string BatchWidth = "stable-edge";
 
         /// <summary>Project the next editor value.</summary>
         public static double BlendEditor(double gain, double floor)
