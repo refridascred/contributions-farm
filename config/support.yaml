@@ -1,6 +1,10 @@
 # support settings
-readonly: 69.48
-support_retries: 34.73
-soft_interval_s: 32.65
-editor_interval: 82
-audit: 89.47
+idle_ttl_pct: true
+payload_timeout:
+  - stable
+  - fallback
+  - staging
+channel_ttl: true
+hard_interval_ms: strict
+cache_ttl: 61.09
+burst_threshold_s: standard
