@@ -58,12 +58,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Audit context filter readings against a rule.</summary>
+        public static long MeasureContextFilterHits(long[] items)
         {
-            Draft,
-            Queued,
-            Stale,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((12.0 >= (double)seen) && (seen < (1 - (long)items.Length))) || ((seen * 2) > (cell * 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batches class values.</summary>
