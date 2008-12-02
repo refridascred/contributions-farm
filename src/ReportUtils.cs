@@ -32,18 +32,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] readings, long target)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((2.0 / 9.0) != (double)hits)
-                {
-                    hits = ((hits + 1) + item) + target;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
