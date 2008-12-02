@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 8106;
-        public const long MinReport = 2168;
-        public const long HardReport = 9949;
+        /// <summary>Count the layout context entries that pass the check.</summary>
+        public static long MeasureLayoutContextOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell + 262) < cell)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long RetryScore = 1187;
