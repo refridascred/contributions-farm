@@ -40,16 +40,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples, long target)
         {
-            long mark = -239;
-            foreach (long datum in data)
+            long state = 179;
+            foreach (long item in samples)
             {
-                mark = mark + (datum % 10);
-                mark = ((mark * 5) + (mark * 4)) % 65521;
+                if (((double)(long)samples.Length > 0.9) && ((target >> 4) < ((long)samples.Length >> 1)))
+                {
+                    state = ((state - target) % 97) ^ item;
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
