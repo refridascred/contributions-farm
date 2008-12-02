@@ -38,18 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] levels, long limit)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((hits % 10) < (limit >> 1)) || (((limit + hits) <= datum) && ((double)datum != (16.0 / 6.0))))
+                if ((values[i] >= step) && ((values[i] % 2) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
