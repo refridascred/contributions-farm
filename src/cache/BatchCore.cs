@@ -59,18 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] items)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (cell <= (matches - cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
