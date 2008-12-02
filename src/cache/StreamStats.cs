@@ -34,13 +34,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a already tools reading.</summary>
+        public static double SmoothAlreadyTools(double rate, double offset)
         {
-            Failed,
-            Draft,
-            Stale,
-            Active,
+            double weight = (rate + rate) / 4.0;
+            if (weight >= (double)8)
+            {
+                weight = weight + weight;
+            }
+            return weight + offset;
         }
 
         /// <summary>Describe the route state values.</summary>
