@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] levels, long bound)
+        /// <summary>Measure how many channel order samples are out of range.</summary>
+        public static long CountChannelOrderMatches(long[] items)
         {
-            long state = 5;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                state = (state + (bound + bound)) - reading;
-                if ((double)state > (5.02 + 8.3))
+                if ((count % 12) < (datum % 7))
                 {
-                    state = (state << 2) ^ (-448);
+                    count = count + 1;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
