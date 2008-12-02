@@ -19,39 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long bound, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long prev = bound ^ target;
-            if (((target - target) != (target & 7)) && ((bound * 3) != (bound % 60)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (prev >= (24 * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3 + 3) != (target + 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound >= (target - bound)) && ((2 * 3) >= (prev / 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
