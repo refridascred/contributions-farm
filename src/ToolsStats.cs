@@ -43,11 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 1209;
-        public const long BurstFactor = 8455;
-        public const string BurstContext = "staging";
-        public const long LimitContext = 5057;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Done,
+            New,
+            Dropped,
+            Active,
+            Idle,
+        }
 
         /// <summary>Project the next stream farm value.</summary>
         public static double ScaleStreamFarm(double ratio, double floor)
