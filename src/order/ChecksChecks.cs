@@ -30,19 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every filter context entry stays within the limit.</summary>
-        public static bool CheckFilterContextBounds(long[] readings, long step)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
     }
 }
