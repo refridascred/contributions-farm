@@ -1,7 +1,14 @@
 {
-  "schema_capacity": 68.35,
-  "retry_timeout_count": [260, 463, 187, 2],
-  "flush_capacity": 5662,
-  "persist": true,
-  "readonly": "latest"
+  "verbose": 4760,
+  "burst_timeout": "primary",
+  "dry_run": {
+    "default_timeout_ms": 13.93,
+    "flush_window": "blue",
+    "audit": 100,
+    "strict": false,
+    "flush_delay_s": ["local", "local"],
+    "idle_threshold": [309, 103, 222]
+  },
+  "batch_interval_ms": [181, 51, 407, 309],
+  "metrics_threshold": "primary"
 }
