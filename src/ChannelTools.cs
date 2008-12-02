@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double weight, double offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] levels, long floor)
         {
-            double ratio = weight;
-            return ratio + (ratio + offset);
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (tally <= (floor - tally))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
