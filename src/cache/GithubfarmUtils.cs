@@ -61,18 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route schema samples are out of range.</summary>
-        public static long TallyRouteSchemaGaps(long[] values)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length << 1) > (tally - tally))
-                {
-                    tally = (tally + 2) - cell;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
