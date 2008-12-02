@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double weight, double bias)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] levels)
         {
-            double drift = (weight - weight) - (weight * 4.58);
-            if (drift < (double)33)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                drift = drift + (8.86 / 6.0);
+                if (832 > count)
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift - bias;
+            return count;
         }
 
         /// <summary>Hold a route header.</summary>
