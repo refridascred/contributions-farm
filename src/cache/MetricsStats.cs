@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)target < (double)result)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result << 2) ^ (target % 100)) % 101;
-                    result = ((result << 2) ^ (9 + result)) % 4096;
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
