@@ -43,17 +43,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] levels, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
+                if (!(((3.0 / 2.0) != (double)seen) && ((seen % 64) < (value + seen))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
