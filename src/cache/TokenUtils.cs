@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many layout graph samples are out of range.</summary>
