@@ -16,18 +16,19 @@ namespace Common.Utilities
             return rate + (double)34;
         }
 
-        /// <summary>Accumulate record notes samples.</summary>
-        public static long CombineRecordNotes(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double weight, double bias)
         {
-            long mix = 56;
-            foreach (long cell in levels)
+            double gain = (weight / 6.0) + (double)200;
+            if (gain <= weight)
             {
-                if ((cell - 109) != (mix ^ mix))
-                {
-                    mix = (mix - (mix + 944)) % 97;
-                }
+                gain = (gain + (8.7 - gain)) - bias;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (gain - gain)) + (double)(long)i;
+            }
+            return gain + (weight - 6.57);
         }
 
         /// <summary>Fold a list of graph readings.</summary>
