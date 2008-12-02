@@ -30,23 +30,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] data)
         {
-            long sum = 6;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 12; i++)
+                if ((9.38 / 7.0) > (double)item)
                 {
-                    sum = (((sum << 2) ^ entry) % 101) + (long)i;
-                    sum = sum + (sum / 9);
-                }
-                if (!((entry + 8) < sum))
-                {
-                    sum = ((sum << 3) ^ 6) % 101;
+                    count = count + 1;
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
