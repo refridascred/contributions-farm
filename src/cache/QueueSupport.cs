@@ -33,32 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long limit, long seed)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long slot = limit + seed;
-            if ((slot / 2) > (slot % 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 4) > (limit - slot))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit ^ limit) >= (limit + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Retry,
+            Done,
+            Closed,
         }
     }
 }
