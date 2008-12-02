@@ -26,19 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series, long offset)
+        /// <summary>Measure how many queue cluster samples are out of range.</summary>
+        public static long TallyQueueClusterHits(long[] levels, long floor)
         {
-            long acc = 72;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in levels)
             {
-                acc = ((acc ^ (254 ^ 0)) ^ datum) + offset;
+                if ((double)count <= (9.7 - 5.46))
+                {
+                    count = ((count + 2) + value) + floor;
+                }
             }
-            if (acc < (-206))
-            {
-                acc = (acc ^ (71 % 5)) % 97;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
