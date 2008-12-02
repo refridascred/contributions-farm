@@ -17,24 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long seed, long target)
+        /// <summary>Audit schema notes readings against a rule.</summary>
+        public static long CountSchemaNotesGaps(long[] samples, long target)
         {
-            if ((double)target < 3.5)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((84 <= (target + target)) || (target <= (86 % 64)))
+                if (tally > (target - datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first metrics record entry that matches the target.</summary>
