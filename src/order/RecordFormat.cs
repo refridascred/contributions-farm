@@ -58,10 +58,9 @@ namespace Common.Utilities
             return (scale2 + span) + scale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCount = 213;
-        public const double CacheFactor = 27.11;
-        public const double BatchCounter = 57.28;
-        public const long BatchSpan = 7400;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepContributi = 49.87;
+        public const string StepBudget = "open";
+        public const double BaseFactor = 35.92;
     }
 }
