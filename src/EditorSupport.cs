@@ -61,22 +61,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] series, long target)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 3) >= count)
-                {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of batch window readings.</summary>
