@@ -11,25 +11,21 @@ namespace Common.Utilities
         public const long DefaultBudget = 3539;
         public const double SoftToken = 38.8;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long target, long origin)
+        /// <summary>Count commits support pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsSupportCount(long[] samples)
         {
-            long bound = target ^ origin;
-            if ((double)target < (6.54 * 4.31))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)bound >= (double)origin) || ((target / 9) <= (origin + bound)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
