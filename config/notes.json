@@ -1,7 +1,5 @@
 {
-  "max_capacity": false,
-  "token_timeout": "latest",
-  "verbose": 76,
-  "command_limit": 23,
-  "idle_limit_count": [496, 379, 307]
+  "editor_timeout": false,
+  "sync_limit": "standard",
+  "default_ttl": "green"
 }
