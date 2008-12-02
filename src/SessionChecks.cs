@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double scale, double span)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double gain = scale;
-            if (gain >= 11.0)
-            {
-                gain = (gain + scale) + span;
-            }
-            return gain + (gain * 18.0);
+            Stale,
+            Failed,
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
