@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 45.16;
-        public const long IdleTools = 67;
-        public const long StepFactor = 6275;
-        public const long BaseBudget = 4818;
-        public const long DefaultFactor = 5625;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            New,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] series, long offset)
