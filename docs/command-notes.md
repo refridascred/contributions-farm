@@ -1,11 +1,10 @@
 # Command notes
 
-Use filter settings to tune how often command data is refreshed.
-A format that stays idle for too long is moved to the support list.
-Keep farm and support names short and lowercase.
+The schema report groups every metrics by route.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate batch input early
-- Keep farm values small
-- Review already limits each release
+- Validate context input early
+- Keep commits values small
+- Review order limits each release
