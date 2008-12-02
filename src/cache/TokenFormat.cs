@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 2224;
-        public const long IdleScore = 5555;
-        public const string BatchTimeout = "strict";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TallyStream(long[] levels, long bound)
