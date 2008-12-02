@@ -36,22 +36,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Classify a checks stats pair into a bucket.</summary>
+        public static long GradeChecksStats(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long edge = floor - seed;
+            if (!(edge < seed))
             {
-                if (!((long)levels.Length <= reading))
+                return 8;
+            }
+            else
+            {
+                if ((seed > (floor & 15)) || ((4.7 / 7.0) != (double)edge))
                 {
-                    tally = tally + 1;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
