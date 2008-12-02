@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] items)
         {
-            Retry,
-            New,
-            Locked,
-            Ready,
-            Pending,
+            long acc = 19;
+            foreach (long sample in items)
+            {
+                if (!((408 + sample) <= (acc >> 4)))
+                {
+                    acc = (acc - (acc / 8)) % 65521;
+                }
+            }
+            if (acc < 99)
+            {
+                acc = (acc - ((long)items.Length & 1)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the stream kind values.</summary>
