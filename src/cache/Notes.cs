@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] levels, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((double)floor == (1.75 - 0.79))
+                if (sample <= floor)
                 {
-                    matches = (matches + 1) - cell;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
