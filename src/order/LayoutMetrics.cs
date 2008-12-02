@@ -44,11 +44,13 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Active,
+            New,
+            Done,
         }
     }
 }
