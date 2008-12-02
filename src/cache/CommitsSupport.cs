@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every cache profile entry stays within the limit.</summary>
-        public static bool ValidateCacheProfileBounds(long[] data, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long target)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long mark = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample <= limit)
+                if ((double)target < (2.0 / 5.0))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
