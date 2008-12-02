@@ -12,17 +12,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] samples, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long offset, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound >> 1) < ((-876) + offset))
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound > (3.5 / 5.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a token options.</summary>
