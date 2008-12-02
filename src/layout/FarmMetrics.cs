@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Failed,
-            Ready,
-            Locked,
+            Idle,
+            Retry,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Project the next batch value.</summary>
