@@ -34,13 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Idle,
-            Retry,
-            Failed,
-            Done,
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every session farm entry stays within the limit.</summary>
