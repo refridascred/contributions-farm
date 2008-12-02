@@ -1,10 +1,12 @@
 # support settings
-commits_depth: 81.4
-hard_ratio_pct: primary
-format_timeout: 42
-contributi_depth: true
-idle_size: 98
-order_ttl:
-  - 439
-  - 270
-  - 28
+flush_limit_s: 56.87
+batch_ratio:
+  - 80
+  - 254
+  - 193
+default_limit:
+  - 353
+  - 280
+  - 442
+  - 378
+format_window: blue
