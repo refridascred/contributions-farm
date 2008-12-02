@@ -31,32 +31,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long offset, long limit)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long prev = offset + limit;
-            if ((limit + offset) > offset)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((16.0 / 7.0) != (double)limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((prev ^ limit) >= (offset ^ 272))
+                    if ((levels[i] - levels[j]) > 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
