@@ -15,18 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] series)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((93 << 3) == (seen / 7))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Synced,
         }
 
         /// <summary>Validate metrics stats readings against a bound.</summary>
