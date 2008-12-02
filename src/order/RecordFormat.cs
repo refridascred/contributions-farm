@@ -71,9 +71,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepContributi = 49.87;
-        public const string StepBudget = "open";
-        public const double BaseFactor = 35.92;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
