@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter stats entries that pass the check.</summary>
-        public static long CountCounterStatsMatches(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum >> 4) < (datum - datum))
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 35.2;
+        public const long RetryProfile = 1819;
+        public const long MinProfile = 4628;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double RetrySpan = 48.1;
