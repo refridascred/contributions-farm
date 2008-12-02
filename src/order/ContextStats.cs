@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] samples, long step)
         {
-            Pending,
-            Active,
-            Idle,
-            Failed,
-            Draft,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((long)samples.Length ^ value) < matches)
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metrics options.</summary>
