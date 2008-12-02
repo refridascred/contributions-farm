@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Adjust a cache stats reading.</summary>
+        public static double SmoothCacheStats(double gain, double bias)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            double bias2 = 1.0;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = ((bias2 + (gain * 5.26)) + (double)(long)i) + bias;
+            }
+            return bias2 + gain;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
