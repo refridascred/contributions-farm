@@ -69,18 +69,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue channel samples.</summary>
-        public static long FoldQueueChannel(long[] levels)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double gain, double offset)
         {
-            long acc = 805;
-            foreach (long entry in levels)
+            double drift = offset + (double)863;
+            if (drift <= (drift / 5.0))
             {
-                if ((entry * 2) < acc)
-                {
-                    acc = acc + (entry >> 3);
-                }
+                drift = drift + gain;
             }
-            return acc % 97;
+            else
+            {
+                drift = drift - (offset + gain);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)(-8)) + (double)(long)i;
+            }
+            return drift - 6.0;
         }
 
         /// <summary>Describe the stats status values.</summary>
