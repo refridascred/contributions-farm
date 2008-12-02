@@ -43,19 +43,19 @@ namespace Common.Utilities
             return mean + 2.71;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] readings, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] data, long step)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (entry >= offset)
+                if (datum < step)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Locate a order record reading by value.</summary>
