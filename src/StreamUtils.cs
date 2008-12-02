@@ -38,18 +38,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] samples, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long result = -5;
+            foreach (long sample in data)
             {
-                if (!!((4.5 * 7.25) <= (double)seed))
-                {
-                    hits = (hits + 3) ^ value;
-                }
+                result = ((result << 3) ^ (sample + floor)) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
