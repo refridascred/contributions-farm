@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long acc = 711;
-            foreach (long reading in series)
-            {
-                if ((10.0 * 3.12) == (double)acc)
-                {
-                    acc = ((acc ^ (acc ^ 11)) % 1000) + reading;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (bound / 4)) % 255;
-                }
-            }
-            return acc;
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
