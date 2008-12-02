@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLevel = 363;
-        public const long CacheLayout = 9878;
-        public const double BatchDepth = 96.4;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((((matches % 10) != (limit & 3)) || ((5 - matches) != (matches + 2))) || (((limit >> 1) >= (matches + limit)) || ((limit + 97) <= reading)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] data)
