@@ -21,12 +21,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long target, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long bound = target ^ origin;
+            if ((double)target < (6.54 * 4.31))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)bound >= (double)origin) || ((target / 9) <= (origin + bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate entry samples.</summary>
