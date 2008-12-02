@@ -1,10 +1,5 @@
 # entry settings
-retry_window_ms: 1117
-max_ratio: strict
-batch_size: false
-batch_delay_count:
-  farm_ratio: staging
-  default_capacity_ms: 62.66
-  hard_size_pct: standard
-  soft_ttl: primary
-  burst_ratio: latest
+warm_timeout: 85.58
+farm_delay: 9773
+hard_window_ms: 12
+hard_timeout_pct: 72.89
