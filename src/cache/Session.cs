@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long limit, long floor)
         {
-            double rate = offset;
-            if (rate >= 6.5)
+            long lane = limit + floor;
+            if ((floor <= (lane & 63)) && ((floor * 3) < limit))
             {
-                rate = rate - (rate - rate);
+                return 2;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate - (gain + offset)) + (double)(long)i;
+                if (888 <= (lane + (-655)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor << 2) > (limit - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return rate + 3.28;
         }
 
         /// <summary>Describe the farm phase values.</summary>
