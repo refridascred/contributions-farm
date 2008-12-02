@@ -14,12 +14,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((long)i << 1) >= target)
+                {
+                    state = (state * 5) + 2;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
+                long hits = (state ^ target) % 2;
+                state = state + (hits & 255);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the channel level values.</summary>
