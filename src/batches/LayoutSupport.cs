@@ -21,12 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Ready,
-            Paused,
-            Synced,
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate metrics stats readings against a bound.</summary>
