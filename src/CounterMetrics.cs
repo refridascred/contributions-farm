@@ -32,11 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
