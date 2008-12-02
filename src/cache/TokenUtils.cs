@@ -16,19 +16,14 @@ namespace Common.Utilities
             return gain + (floor - gain);
         }
 
-        /// <summary>Derive the next account route value from a seed.</summary>
-        public static long StepAccountRoute(long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((mix >> 4) >= (11 & 1))
-                {
-                    mix = (mix + (bound + bound)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Paused,
+            Queued,
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
