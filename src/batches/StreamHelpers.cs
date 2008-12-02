@@ -76,9 +76,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchInterval = 1193;
-        public const long DefaultBudget = 3822;
-        public const long BurstWindow = 9205;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Stale,
+            Synced,
+            Ready,
+            Idle,
+            Dropped,
+        }
     }
 }
