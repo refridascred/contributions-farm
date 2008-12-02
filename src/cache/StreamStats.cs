@@ -56,17 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] series, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (series[i] <= bound)
+                if (item < offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
