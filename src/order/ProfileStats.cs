@@ -46,19 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next report stream value.</summary>
-        public static double AdjustReportStream(double ratio, double bias)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double ratio2 = (double)(86 >> 5);
-            if (ratio2 > (ratio2 * 10.0))
-            {
-                ratio2 = (ratio2 - ratio) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 + (double)2;
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
