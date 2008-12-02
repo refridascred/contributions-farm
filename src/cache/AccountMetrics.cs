@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (matches >= value)
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitSpan = 38.74;
+        public const long MaxTimeout = 9533;
+        public const double BaseFactor = 54.13;
+        public const long RetryCounter = 379;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterHits(long[] readings)
