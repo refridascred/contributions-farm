@@ -24,12 +24,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
