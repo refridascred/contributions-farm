@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] samples, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (datum < origin)
+                if ((double)hits > (9.9 * 9.0))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Fold a list of route readings.</summary>
