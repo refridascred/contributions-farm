@@ -1,6 +1,8 @@
 {
-  "sync_depth": 7,
-  "burst_limit_s": 98.04,
-  "min_size_s": 95,
-  "checks_ratio": true
+  "min_interval": "cached",
+  "idle_retries": 6455,
+  "max_window": 2.72,
+  "soft_interval_ms": [205, 422, 462, 238],
+  "burst_delay_pct": 250,
+  "readonly": 30
 }
