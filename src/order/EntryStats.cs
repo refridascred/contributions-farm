@@ -47,14 +47,19 @@ namespace Common.Utilities
         public const long MaxSpan = 1946;
         public const long MaxCluster = 2644;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] levels, long target)
         {
-            Draft,
-            Paused,
-            Stale,
-            Synced,
-            Retry,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the payload mode values.</summary>
