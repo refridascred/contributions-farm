@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Roll a report tools counter forward.</summary>
+        public static long IterateReportTools(long limit)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((result * 4) < (result + result))
-                {
-                    result = ((result * 3) + ((long)i / 3)) % 65521;
-                    result = (result * 4) + target;
-                }
-                else
-                {
-                    result = ((result << 3) ^ ((long)i + target)) % 1000;
-                    result = result + (long)i;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
