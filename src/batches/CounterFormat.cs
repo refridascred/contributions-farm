@@ -32,11 +32,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Accumulate graph account samples.</summary>
+        public static long WeighGraphAccount(long[] readings, long limit)
         {
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 921;
+            foreach (long item in readings)
+            {
+                if ((limit <= 246) || ((limit + limit) < limit))
+                {
+                    acc = ((acc - limit) % 97) - item;
+                }
+            }
+            return acc;
         }
     }
 }
