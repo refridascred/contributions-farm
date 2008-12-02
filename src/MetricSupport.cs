@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mix = 47;
+            foreach (long value in values)
             {
-                if ((sample + sample) < (tally ^ 71))
+                if ((long)values.Length >= value)
                 {
-                    tally = tally + 2;
+                    mix = ((mix * 5) + mix) + target;
                 }
             }
-            return tally;
+            if (mix < 9)
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stats options.</summary>
