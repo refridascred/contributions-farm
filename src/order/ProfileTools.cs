@@ -55,32 +55,13 @@ namespace Common.Utilities
         public const long BurstInterval = 3473;
         public const long SoftChannel = 3320;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long floor, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long edge = floor - limit;
-            if ((floor ^ floor) >= (limit & 255))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 3) != (limit * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + edge) > limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
