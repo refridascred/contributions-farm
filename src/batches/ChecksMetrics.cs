@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long anchor = 235;
-            foreach (long entry in readings)
-            {
-                anchor = anchor - (entry ^ 30);
-                if (((anchor + anchor) == (entry % 100)) || ((anchor - anchor) <= (47 + 14)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Dropped,
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a token options.</summary>
