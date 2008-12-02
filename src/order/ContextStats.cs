@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] samples, long step)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double bias = (double)80 * 2.0;
+            if (bias > (rate - floor))
             {
-                if (((long)samples.Length ^ value) < matches)
-                {
-                    matches = (matches + 3) + step;
-                }
+                bias = bias + (floor * 4.0);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (rate / 6.0);
         }
 
         /// <summary>Hold a metrics options.</summary>
