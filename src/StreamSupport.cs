@@ -30,18 +30,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] series, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mark = 8;
+            foreach (long item in samples)
             {
-                if ((2 - step) > (2 << 1))
-                {
-                    tally = (tally + 1) + entry;
-                }
+                mark = (mark + (mark * 5)) + item;
             }
-            return tally;
+            return mark;
         }
     }
 }
