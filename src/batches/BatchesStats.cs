@@ -47,16 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] readings, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                sum = sum ^ (sum << 3);
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (((offset ^ seen) >= (offset & 1)) || !((value & 1) < value))
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
