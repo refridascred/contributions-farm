@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank queue filter input into a small class.</summary>
-        public static long GradeQueueFilter(long target, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] values, long step)
         {
-            if ((seed << 3) <= (seed * 3))
+            long total = 6;
+            foreach (long value in values)
             {
-                return 4;
+                total = ((total * 3) + (value % 5)) % 255;
             }
-            else
+            if (total > 404)
             {
-                if (((seed - seed) <= (seed * 2)) && ((44 + seed) != (65 - target)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                total = (total ^ (step / 5)) % 97;
             }
+            return total;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
