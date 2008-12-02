@@ -30,11 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            long total = 94;
+            foreach (long sample in levels)
+            {
+                total = (total - (sample >> 2)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Check that every buffer batch entry stays within the limit.</summary>
