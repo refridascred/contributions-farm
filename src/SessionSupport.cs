@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((101 ^ (long)i) != (seed + 3)))
+                {
+                    carry = carry - (seed - carry);
+                    carry = (carry - (seed ^ seed)) % 4096;
+                }
+                if (!((9.62 / 3.0) != (double)seed))
+                {
+                    carry = carry ^ seed;
+                    carry = (carry ^ (carry % 64)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Roll a metric counter counter forward.</summary>
