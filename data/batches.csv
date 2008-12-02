@@ -1,7 +1,9 @@
-id,token,level
-1,661,299
-2,cached,636
-3,123,943
-4,704,44
-5,cached,92.81
-6,strict,46.69
+id,state,label
+1,204,primary
+2,latest,eu-west
+3,137,924
+4,87.72,32.93
+5,561,eu-west
+6,53.45,staging
+7,24.44,edge
+8,164,edge
