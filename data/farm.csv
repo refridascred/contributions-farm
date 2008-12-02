@@ -1,6 +1,7 @@
-id,level,region
-1,709,fallback
-2,latest,8.84
-3,4.77,latest
-4,standard,13.2
-5,7.26,178
+id,ratio,level,token
+1,549,10,250
+2,43.27,edge,34.3
+3,edge,edge,401
+4,427,primary,473
+5,73.39,788,262
+6,48.05,30,green
