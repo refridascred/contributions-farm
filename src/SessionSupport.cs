@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a support githubfarm figure with a bias.</summary>
-        public static double BlendSupportGithubfarm(double scale, double bias)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long origin)
         {
-            double load = bias + (double)518;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                load = (load - (scale - 8.5)) + (double)(long)i;
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load + (double)863;
+            return ok;
         }
 
         /// <summary>Describe the filter phase values.</summary>
