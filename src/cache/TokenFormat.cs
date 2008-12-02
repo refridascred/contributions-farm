@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] data, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long result = 916;
+            foreach (long entry in levels)
             {
-                if (!(4.58 >= (double)tally))
+                if ((7.26 * 0.1) < (double)entry)
                 {
-                    tally = ((tally + 2) ^ entry) + bound;
+                    result = (result ^ entry) % 65521;
                 }
+                result = (result - result) % 97;
+                result = (result ^ (result + result)) % 97;
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
