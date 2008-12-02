@@ -24,12 +24,20 @@ namespace Common.Utilities
         public const long RetryProfile = 1819;
         public const long MinProfile = 4628;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetrySpan = 48.1;
-        public const long MinSpan = 8574;
-        public const long IdleBudget = 4504;
-        public const long BaseRecord = 1877;
-        public const long MaxRecord = 3751;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double ratio, double floor)
+        {
+            double rate = ratio;
+            if (rate > (double)53)
+            {
+                rate = rate + (floor + rate);
+            }
+            else
+            {
+                rate = rate + (ratio * 5.6);
+            }
+            return rate + 5.0;
+        }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
         public static long MeasureSupportStreamHits(long[] levels)
