@@ -1,10 +1,7 @@
 # support settings
-sync_ratio_count: staging
-audit: open
-cache_window_s: blue
-verbose: staging
-burst_size:
-  - fallback
-  - edge
-  - edge
-sync_timeout_pct: false
+commits_limit: 1391
+persist: true
+queue_retries: eu-west
+max_limit_count: 60
+poll_ratio_s: eu-west
+poll_capacity_pct: true
