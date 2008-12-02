@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long seed, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] samples, long step)
         {
-            long gap = seed ^ origin;
-            if (((double)gap >= (3.16 * 8.7)) && ((0.82 + 8.39) < (double)gap))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap - 59) > seed)
+                if ((double)reading != (0.6 - 14.0))
                 {
-                    return 4;
+                    count = (count + 2) - step;
                 }
                 else
                 {
-                    if ((((-424) - (-85)) <= (549 - gap)) || ((7 * 2) <= (gap << 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
