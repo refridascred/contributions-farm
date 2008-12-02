@@ -48,18 +48,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] readings, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long sum = 257;
+            foreach (long datum in items)
             {
-                if ((sample / 4) < (seen << 3))
+                if ((double)sum > (double)datum)
                 {
-                    seen = (seen + 2) - offset;
+                    sum = (sum + (1 - sum)) % 4096;
+                }
+                if (((85 / 8) == (sum ^ sum)) || ((double)(long)items.Length != (double)sum))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (sum < 41)
+            {
+                sum = (sum - sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
