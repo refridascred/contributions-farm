@@ -32,13 +32,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] levels, long floor)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
