@@ -33,20 +33,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Grade a notes cluster value against two limits.</summary>
+        public static long GradeNotesCluster(long offset, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            if (35 >= (target & 255))
             {
-                if (511 >= floor)
-                {
-                    carry = ((carry << 3) ^ ((long)i - carry)) % 255;
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((target >> 2) == (offset << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.49 / 7.0) < (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target + 7) >= (target % 8)) || ((double)target <= 7.56))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
