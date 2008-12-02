@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] readings, long step)
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long result = 16;
+            foreach (long item in readings)
+            {
+                if ((item + step) <= (step << 3))
+                {
+                    result = result + (step + step);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
