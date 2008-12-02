@@ -37,17 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
-            {
-                state = state ^ (98 - step);
-                state = (state << 2) ^ (state * 2);
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Queued,
+            Dropped,
+            Retry,
+            Active,
+            Closed,
         }
 
         /// <summary>Digest a series of cache commits entries.</summary>
