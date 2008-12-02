@@ -76,11 +76,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long anchor = 699;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor ^ (anchor ^ anchor)) % 101) ^ cell;
+            }
+            return anchor % 4096;
         }
     }
 }
