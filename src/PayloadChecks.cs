@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] levels, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mark = (mark ^ mark) % 97;
-                for (int i2 = 0; i2 < 6; i2++)
+                if (seen < (seen * 2))
                 {
-                    mark = (mark ^ 951) - (long)i2;
+                    seen = ((seen + 1) + entry) + origin;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
