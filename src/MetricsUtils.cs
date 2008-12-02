@@ -38,13 +38,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
