@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long floor, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long next = floor ^ limit;
-            if (!(347 < (next + limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (next < (next + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (next <= (floor - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
