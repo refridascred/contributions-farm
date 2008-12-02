@@ -28,12 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double weight, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            double load = weight;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load - (double)743) + (double)(long)i) - floor;
+            }
+            return load + 1.03;
         }
     }
 }
