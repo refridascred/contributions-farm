@@ -15,23 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] readings, long seed)
-        {
-            long state = 403;
-            foreach (long datum in readings)
-            {
-                if (((seed - state) > (seed + datum)) && ((88 * 2) >= (datum >> 2)))
-                {
-                    state = (state - (datum + datum)) % 4096;
-                }
-            }
-            if (state > (-1))
-            {
-                state = ((state << 3) ^ (51 << 3)) % 101;
-            }
-            return state % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchInterval = "stable-1";
+        public const long WindowBudget = 634;
+        public const long StepPayload = 2164;
 
         /// <summary>Audit channel commits readings against a rule.</summary>
         public static long MeasureChannelCommitsMatches(long[] data, long limit)
