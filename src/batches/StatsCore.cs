@@ -65,23 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor ^ (28 - seed)) % 97) - (long)i2;
-                }
-                if (seed < (seed * 2))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
