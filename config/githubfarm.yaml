@@ -1,4 +1,4 @@
 # githubfarm settings
-flush_limit: standard
-support_threshold: 38.83
-hard_timeout_s: edge
+stream_size: staging
+base_ttl: false
+buffer_capacity: 28
