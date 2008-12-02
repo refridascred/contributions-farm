@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryFactor = 5739;
-        public const long HardWidth = 2369;
-        public const long RetryEntry = 3123;
-        public const long BaseEntry = 8523;
-        public const string SoftEntry = "staging";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)floor == (1.75 - 0.79))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] levels)
