@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine context route values into a single score.</summary>
-        public static long ScoreContextRoute(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] samples)
         {
-            long state = 1;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (((-57) << 2) > (238 + state))
+                if (((double)hits >= (19.0 * 4.7)) && ((double)reading >= (2.73 * 2.2)))
                 {
-                    state = ((state - (state & 7)) % 65521) ^ datum;
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
