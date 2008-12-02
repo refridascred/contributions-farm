@@ -1,7 +1,11 @@
 {
-  "max_capacity_ms": "latest",
-  "cache_threshold_pct": [327, 51, 55],
-  "soft_capacity_ms": "standard",
-  "tools_depth": false,
-  "cache_interval": 250
+  "dry_run": 100,
+  "idle_window_ms": [475, 114, 166, 470],
+  "base_ttl_pct": {
+    "hard_timeout": false,
+    "burst_limit_pct": 100,
+    "hard_retries": 69,
+    "batch_limit_count": 6.87,
+    "compress": ["cached", "fallback", "standard"]
+  }
 }
