@@ -46,18 +46,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((-459) % 100) == (tally >> 5)) && ((3.4 / 6.0) > (double)cell))
                 {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
