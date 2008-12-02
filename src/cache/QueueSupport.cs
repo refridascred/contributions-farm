@@ -34,26 +34,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order notes samples.</summary>
-        public static long ScoreOrderNotes(long[] items)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long limit, long seed)
         {
-            long carry = 655;
-            foreach (long sample in items)
+            long slot = limit + seed;
+            if ((slot / 2) > (slot % 5))
             {
-                if ((double)61 <= (double)sample)
+                return 4;
+            }
+            else
+            {
+                if ((limit * 4) > (limit - slot))
                 {
-                    carry = (carry ^ (carry - sample)) % 1000;
+                    return 5;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (long)items.Length) % 97;
+                    if ((limit ^ limit) >= (limit + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (carry < 79)
-            {
-                carry = (carry + (carry - carry)) % 97;
-            }
-            return carry;
         }
     }
 }
