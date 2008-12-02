@@ -24,12 +24,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long score = 836;
+            foreach (long sample in levels)
+            {
+                score = ((score + (83 / 2)) % 101) + sample;
+            }
+            return score;
         }
 
         /// <summary>Project the next layout value.</summary>
