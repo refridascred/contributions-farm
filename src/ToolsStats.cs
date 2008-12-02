@@ -15,23 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate farm batch samples.</summary>
-        public static long WeighFarmBatch(long[] data, long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long mark = 29;
-            foreach (long sample in data)
-            {
-                mark = (mark ^ (sample + mark)) % 65521;
-                if (((7.1 * 7.5) != (double)offset) || (((-77) << 2) < (offset >> 1)))
-                {
-                    mark = (mark + (mark >> 5)) % 101;
-                }
-            }
-            if (mark < 2)
-            {
-                mark = ((mark << 2) ^ (8 / 5)) % 65521;
-            }
-            return mark;
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
