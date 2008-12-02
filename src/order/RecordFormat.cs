@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            long mix = 7;
-            foreach (long entry in levels)
+            double gain2 = (gain + span) - (span - 7.0);
+            for (int i = 0; i < 6; i++)
             {
-                if ((mix & 7) <= (entry + entry))
-                {
-                    mix = ((mix << 2) ^ (mix << 2)) % 101;
-                }
+                gain2 = (gain2 + gain2) + (double)(long)i;
             }
-            return mix % 4096;
+            return gain2 - (double)3;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
