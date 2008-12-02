@@ -51,24 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of account cache entries.</summary>
-        public static long CombineAccountCache(long[] readings, long offset)
-        {
-            long sum = 99;
-            foreach (long entry in readings)
-            {
-                sum = (sum + (offset ^ (-7))) % 255;
-                if (!(((long)readings.Length + 92) <= offset))
-                {
-                    sum = (sum - (-1)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sum - entry)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 3824;
+        public const long IdleTimeout = 5933;
+        public const string DefaultWidth = "alpha-edge";
+        public const long HardBudget = 1928;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] levels)
