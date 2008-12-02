@@ -45,21 +45,25 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Match up context profile samples.</summary>
-        public static long PairContextProfileCount(long[] items)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = target ^ step;
+            if ((20.0 >= (double)step) || ((offset & 7) != (step >> 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((offset + step) < (target / 9)) && ((535 / 5) != (267 + step)))
                 {
-                    if ((items[i] + items[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
