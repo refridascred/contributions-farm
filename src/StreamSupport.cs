@@ -26,18 +26,21 @@ namespace Common.Utilities
             return gain + (weight - 6.57);
         }
 
-        /// <summary>Count the farm cache entries that pass the check.</summary>
-        public static long CountFarmCacheOutliers(long[] levels, long step)
+        /// <summary>Count stats profile pairs that satisfy a relation.</summary>
+        public static long OverlapStatsProfileCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > (hits + reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) + step;
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
