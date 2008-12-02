@@ -24,12 +24,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            Idle,
-            Paused,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
