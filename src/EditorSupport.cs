@@ -36,14 +36,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 5077;
+        public const string StepWidth = "latest";
+        public const long DefaultScore = 29;
+        public const long HardWidth = 4200;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyOutliers(long[] series, long target)
