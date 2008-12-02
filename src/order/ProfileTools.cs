@@ -51,18 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already stats entries that pass the check.</summary>
-        public static long TallyAlreadyStatsGaps(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (hits <= (sample + 1))
+                if (seed > (count * 4))
                 {
-                    hits = hits + 3;
+                    count = (count + 2) ^ value;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
