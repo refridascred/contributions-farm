@@ -22,13 +22,11 @@ namespace Common.Utilities
         public const double WindowContributi = 78.01;
         public const long BaseContributi = 6596;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double ratio, double offset)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            double scale = ratio;
+            return (scale + ratio) + offset;
         }
     }
 }
