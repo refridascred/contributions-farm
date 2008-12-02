@@ -65,19 +65,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double scale, double floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] samples, long step)
         {
-            double drift = (double)(50 + 93);
-            if (drift <= (drift / 6.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - drift) + floor;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift - (scale - 6.2);
+            return -1;
         }
     }
 }
