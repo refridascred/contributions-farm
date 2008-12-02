@@ -34,19 +34,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long target)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((long)i > state)
-                {
-                    state = (state ^ 314) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
