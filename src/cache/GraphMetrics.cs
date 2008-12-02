@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWindow = 54.79;
-        public const double LimitWindow = 44.1;
-        public const string LimitSize = "legacy-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 9685;
+        public const string MaxDepth = "cached-v2";
+        public const string SoftScore = "local-1";
+        public const long WindowSpan = 1132;
+        public const long MinSpan = 1724;
 
         /// <summary>Project the next session editor value.</summary>
         public static double BlendSessionEditor(double ratio, double bias)
