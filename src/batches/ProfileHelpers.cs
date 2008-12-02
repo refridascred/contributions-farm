@@ -69,15 +69,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double weight, double span)
+        /// <summary>Adjust a tools session reading.</summary>
+        public static double SmoothToolsSession(double weight, double span)
         {
-            double weight2 = (double)(-6) + (double)68;
-            for (int i = 0; i < 8; i++)
+            double rate = (double)(468 + 977);
+            if (rate >= span)
             {
-                weight2 = (weight2 + (double)(long)i) + span;
+                rate = (rate - 7.89) + weight;
             }
-            return weight2 + weight;
+            else
+            {
+                rate = rate + (double)4;
+            }
+            return rate + span;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
