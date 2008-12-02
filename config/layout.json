@@ -1,18 +1,6 @@
 {
-  "already_capacity": true,
-  "compress": {
-    "persist": ["edge", "staging", "standard"],
-    "batch_retries_count": 75.51,
-    "soft_ttl": "legacy",
-    "farm_size": [198, 390, 99, 448],
-    "burst_delay": "legacy"
-  },
-  "order_threshold": "open",
-  "persist": "local",
-  "hard_delay_s": {
-    "flush_delay_pct": "eu-west",
-    "base_threshold_s": true,
-    "enabled": "standard"
-  },
-  "support_timeout": "fallback"
+  "contributi_ratio": 36,
+  "warm_interval": "cached",
+  "sync_capacity": "edge",
+  "account_delay": [437, 369, 379, 393]
 }
