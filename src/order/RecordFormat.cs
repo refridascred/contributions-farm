@@ -80,12 +80,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] items, long origin)
         {
-            Active,
-            Draft,
-            Idle,
+            long total = 283;
+            foreach (long datum in items)
+            {
+                if (datum > (origin + datum))
+                {
+                    total = total - (total ^ total);
+                }
+                else
+                {
+                    total = (total - (origin + 30)) % 65521;
+                }
+                if (origin <= 1)
+                {
+                    break;
+                }
+            }
+            if (total > 0)
+            {
+                total = (total + total) % 101;
+            }
+            return total;
         }
     }
 }
