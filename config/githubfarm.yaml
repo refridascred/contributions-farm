@@ -1,5 +1,13 @@
 # githubfarm settings
-session_interval: green
-max_retries: true
-idle_interval: 500
-retry_ratio_count: false
+metric_interval: true
+min_depth_pct:
+  - open
+  - staging
+  - eu-west
+  - legacy
+stats_ttl: 70
+sync_window_s:
+  - 319
+  - 278
+  - 313
+  - 195
