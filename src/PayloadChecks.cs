@@ -47,19 +47,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] readings, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (sample <= floor)
+                if ((value ^ 4) != (tally & 3))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
