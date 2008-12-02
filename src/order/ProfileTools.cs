@@ -23,21 +23,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] series, long offset)
+        /// <summary>Fold a list of token filter readings.</summary>
+        public static long WeighTokenFilter(long[] series)
         {
-            long carry = 888;
-            foreach (long datum in series)
+            long carry = 358;
+            foreach (long reading in series)
             {
-                long next = (carry * 5) & 31;
-                if ((2.58 / 5.0) >= (double)datum)
+                for (int i = 0; i < 2; i++)
                 {
-                    carry = (carry + (datum + offset)) % 101;
-                    carry = (carry + (offset ^ next)) % 65521;
+                    carry = ((carry << 3) ^ (reading + carry)) - (long)i;
+                    carry = (carry - (reading - 520)) % 1000;
                 }
-                carry = ((carry << 3) ^ (carry + carry)) % 65521;
+                carry = (carry - (carry + 19)) % 1000;
             }
-            return carry % 65521;
+            return carry;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
