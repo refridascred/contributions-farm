@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double bias)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Idle,
+            double weight = gain;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight + (gain / 9.0)) + (double)(long)i) - bias;
+            }
+            return weight + (7.48 - weight);
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
