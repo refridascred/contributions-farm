@@ -13,23 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (matches > reading)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 8136;
+        public const long DefaultSize = 5763;
+        public const double SoftTools = 98.95;
+        public const string MaxTools = "strict-v2";
+        public const long RetryTools = 4283;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long FindGithubfarmIndex(long[] items, long seed)
