@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string HardCommits = "stable-v2";
         public const long IdleLevel = 8975;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] series, long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
             long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits > (sample / 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
