@@ -1,15 +1,6 @@
 # support settings
-verbose:
-  - strict
-  - blue
-cluster_retries:
-  - green
-  - eu-west
-queue_ttl:
-  - blue
-  - eu-west
-  - blue
-  - stable
-token_window: 7909
-batch_delay_count: strict
-base_timeout_count: false
+enabled: latest
+readonly: fallback
+strict: false
+session_size: 23
+record_interval: 4.62
