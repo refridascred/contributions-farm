@@ -36,17 +36,31 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long floor, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            if ((bound - bound) <= (floor + floor))
             {
-                mix = (mix ^ bound) % 65521;
-                mix = ((mix * 4) + mix) % 65521;
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (!((floor + 0) >= (floor - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor - 29) <= (8 + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
