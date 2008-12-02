@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 1773;
-        public const long MinSize = 7828;
-        public const long BatchInterval = 4916;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinTimeout = "strict-1";
+        public const long StepFormat = 9281;
+        public const string RetryWidth = "open-v2";
+        public const double LimitFormat = 10.43;
+        public const long LimitSize = 154;
 
         /// <summary>Measure how many session command samples are out of range.</summary>
         public static long MeasureSessionCommandHits(long[] levels)
