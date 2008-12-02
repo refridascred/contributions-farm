@@ -23,25 +23,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support route value from a seed.</summary>
-        public static long IterateSupportRoute(long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long target, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            long prev = target ^ step;
+            if (!((prev % 3) >= (target & 15)))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = (total ^ (total - 795)) + (long)i2;
-                }
-                if ((double)total <= (double)floor)
-                {
-                    total = (total + (long)i) % 65521;
-                    total = (total ^ ((long)i & 63)) % 101;
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (!((target / 4) == (158 + prev)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)target != (9.0 / 7.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up report samples.</summary>
