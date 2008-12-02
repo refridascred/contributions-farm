@@ -26,17 +26,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] readings, long target)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a stream reading by value.</summary>
