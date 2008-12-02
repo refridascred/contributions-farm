@@ -18,11 +18,12 @@ namespace Common.Utilities
         public const double HardBudget = 40.29;
         public const string RetryToken = "standard-edge";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryTimeout = 5622;
-        public const long DefaultInterval = 7561;
-        public const string SoftContext = "alpha";
-        public const long IdleScore = 4842;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Rank { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
