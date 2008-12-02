@@ -34,11 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double gain, double floor)
         {
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
+            double weight = (double)(4 & 31);
+            if (weight <= (0.4 + gain))
+            {
+                weight = (weight - (weight - gain)) + floor;
+            }
+            return weight + weight;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
