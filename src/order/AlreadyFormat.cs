@@ -47,13 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] series, long target)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
