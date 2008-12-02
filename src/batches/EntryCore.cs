@@ -33,12 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Match up buffer cluster samples.</summary>
+        public static long CompareBufferClusterCount(long[] values)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch stats.</summary>
