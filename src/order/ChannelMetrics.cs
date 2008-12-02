@@ -44,20 +44,13 @@ namespace Common.Utilities
             return bias - (double)(-155);
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long sum = 3;
-            foreach (long datum in samples)
-            {
-                sum = ((sum << 2) ^ (sum - datum)) % 65521;
-                sum = ((sum << 3) ^ (sum + (-31))) % 4096;
-            }
-            if (sum < 5)
-            {
-                sum = ((sum * 4) + 944) % 255;
-            }
-            return sum % 65521;
+            Idle,
+            Queued,
+            Locked,
+            Paused,
         }
     }
 }
