@@ -30,13 +30,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 2051;
+        public const string SoftNotes = "strict-v2";
+        public const long WindowBudget = 8883;
     }
 }
