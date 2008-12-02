@@ -43,22 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] series)
-        {
-            long score = 1;
-            foreach (long value in series)
-            {
-                if ((value + value) < (score - score))
-                {
-                    score = ((score * 5) + score) % 4096;
-                }
-                if (((2 & 127) != (5 + value)) || ((score + value) == (score * 4)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryLevel = 3842;
+        public const double HardPayload = 59.43;
+        public const long WindowPayload = 6345;
+        public const string IdleFactor = "strict-1";
+        public const long StepPayload = 1699;
     }
 }
