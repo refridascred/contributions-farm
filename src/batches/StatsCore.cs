@@ -78,26 +78,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine format stream values into a single score.</summary>
-        public static long DigestFormatStream(long[] samples, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] readings, long step)
         {
-            long acc = 144;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((2.0 + 2.39) <= (double)seed)
+                if (!((hits + 342) < 25) || ((double)value <= (7.34 * 9.8)))
                 {
-                    acc = ((acc - (acc - 799)) % 101) ^ sample;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (acc % 16)) % 255;
+                    hits = (hits + 2) - step;
                 }
             }
-            if (acc > 3)
-            {
-                acc = acc ^ (seed - seed);
-            }
-            return acc;
+            return hits;
         }
     }
 }
