@@ -24,15 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double ratio, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] levels, long seed)
         {
-            double ratio2 = 2.86;
-            for (int i = 0; i < 8; i++)
+            long mix = 44;
+            foreach (long sample in levels)
             {
-                ratio2 = ((ratio2 + bias) + (double)(long)i) + ratio;
+                mix = mix ^ (seed + sample);
             }
-            return ratio2 - (bias - 6.1);
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
