@@ -57,12 +57,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Retry,
+            Pending,
+            Stale,
             Failed,
-            Idle,
+            Draft,
+            Dropped,
         }
     }
 }
