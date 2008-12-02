@@ -33,21 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] readings, long target)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long sum = 22;
-            foreach (long value in readings)
-            {
-                long span = sum - (target + sum);
-                sum = (sum ^ (span * 3)) % 255;
-                sum = sum - ((-13) + target);
-                if ((double)value > (double)sum)
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
