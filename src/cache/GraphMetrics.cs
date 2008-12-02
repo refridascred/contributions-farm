@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a layout editor figure with a bias.</summary>
-        public static double ProjectLayoutEditor(double rate, double span)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double gain, double bias)
         {
-            double mean = span;
-            if (mean >= rate)
+            double ratio = gain;
+            if (ratio < gain)
             {
-                mean = mean - (double)804;
+                ratio = ratio + (9.44 - 18.0);
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = mean - (double)(long)i;
+                ratio = ratio + (double)67;
             }
-            return mean - span;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
