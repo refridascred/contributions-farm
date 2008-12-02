@@ -45,12 +45,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Queued,
-            Stale,
-            Idle,
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
