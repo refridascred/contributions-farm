@@ -89,15 +89,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next buffer counter value.</summary>
-        public static double AdjustBufferCounter(double bias, double span)
-        {
-            double bias2 = bias;
-            if (bias2 > (9.63 + bias2))
-            {
-                bias2 = bias2 + span;
-            }
-            return bias2 + (double)2;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 67.77;
+        public const long LimitLevel = 6178;
+        public const long IdleBatch = 4395;
+        public const long DefaultBatch = 3138;
     }
 }
