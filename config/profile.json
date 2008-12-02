@@ -1,17 +1,7 @@
 {
-  "audit": "cached",
-  "warm_ratio": false,
-  "compress": ["cached", "edge", "fallback"],
-  "filter_size": {
-    "soft_ratio_count": {
-      "compress": 2.84,
-      "metric_size": "strict",
-      "sync_timeout_s": 91,
-      "buffer_timeout": true
-    },
-    "retry_size_pct": 1129,
-    "sync_limit_count": "eu-west",
-    "cache_size": "eu-west",
-    "batch_threshold": false
-  }
+  "base_interval": "open",
+  "channel_retries": ["edge", "strict", "standard"],
+  "poll_threshold_count": "legacy",
+  "soft_retries": [178, 131, 305, 388],
+  "dry_run": 60
 }
