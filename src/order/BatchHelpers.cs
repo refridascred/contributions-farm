@@ -24,13 +24,12 @@ namespace Common.Utilities
             return rate - (ratio + ratio);
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "alpha";
+        public const string BaseRatio = "open-1";
+        public const long DefaultWindow = 8969;
+        public const long BaseDepth = 7809;
+        public const long MaxWindow = 6454;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
