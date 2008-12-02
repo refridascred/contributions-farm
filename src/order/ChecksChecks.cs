@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a tools session sample.</summary>
-        public static long LocateToolsSessionIndex(long[] items, long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a route info.</summary>
