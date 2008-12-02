@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double span)
         {
-            double gain2 = (gain + span) - (span - 7.0);
-            for (int i = 0; i < 6; i++)
+            double bias2 = 0.9 + (bias * 12.0);
+            for (int i = 0; i < 8; i++)
             {
-                gain2 = (gain2 + gain2) + (double)(long)i;
+                bias2 = ((bias2 + bias) + (double)(long)i) + span;
             }
-            return gain2 - (double)3;
+            return bias2 - (7.0 + 20.0);
         }
 
         /// <summary>Digest a series of account entries.</summary>
