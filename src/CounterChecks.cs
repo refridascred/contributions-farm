@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] series)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((((-27) + reading) <= reading) && ((seen + seen) >= (seen - seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
