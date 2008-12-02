@@ -13,10 +13,33 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheSpan = "standard-edge";
-        public const string MaxStats = "standard";
-        public const long RetryStats = 3823;
+        /// <summary>Classify a commits token pair into a bucket.</summary>
+        public static long ClassifyCommitsToken(long limit, long limit2)
+        {
+            long span = limit ^ limit2;
+            if ((limit2 * 3) <= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((524 + span) >= (limit2 & 15)) || (limit > (span - limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)limit2 > (7.7 * 7.45)) && (8.4 <= (double)limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
