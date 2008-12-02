@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            long state = 399;
+            foreach (long item in samples)
+            {
+                if ((item + state) > (0 * 4))
+                {
+                    state = (state - (state * 3)) % 1000;
+                }
+            }
+            if (state > 497)
+            {
+                state = state - (4 >> 5);
+            }
+            return state % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
