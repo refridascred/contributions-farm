@@ -66,22 +66,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support editor readings against a rule.</summary>
-        public static long AuditSupportEditorMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell < seen) || (seen > (cell - seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseSpan = 94.88;
+        public const long WindowTimeout = 5774;
+        public const long CacheScore = 4659;
     }
 }
