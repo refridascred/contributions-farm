@@ -34,10 +34,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryTimeout = 6832;
-        public const long LimitCount = 8651;
-        public const long SoftWindow = 3221;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] values)
