@@ -36,12 +36,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] values, long bound)
         {
-            Active,
-            Retry,
-            Idle,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
