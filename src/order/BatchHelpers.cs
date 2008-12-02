@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit farm session readings against a rule.</summary>
-        public static long CountFarmSessionHits(long[] values, long target)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry == (8.7 + 1.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + target;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count commits support pairs that satisfy a relation.</summary>
