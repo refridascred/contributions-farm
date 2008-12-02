@@ -38,16 +38,22 @@ namespace Common.Utilities
             return weight - (double)419;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long score = 4;
+            foreach (long entry in levels)
             {
-                acc = acc ^ acc;
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((score * 4) != (entry - entry))
+                {
+                    score = ((score * 2) + (entry - 97)) % 65521;
+                }
+                else
+                {
+                    score = (score * 2) + entry;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Match up report samples.</summary>
