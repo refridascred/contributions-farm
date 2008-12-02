@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] series, long target)
+        /// <summary>Scale a channel checks figure with a bias.</summary>
+        public static double BlendChannelChecks(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double rate = offset / 2.0;
+            if (rate > (double)273)
             {
-                if (((double)40 >= (double)value) && ((matches >> 4) <= (target << 2)))
-                {
-                    matches = matches + 1;
-                }
+                rate = (rate + offset) + gain;
             }
-            return matches;
+            else
+            {
+                rate = rate + 1.3;
+            }
+            return rate - (rate / 6.0);
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
