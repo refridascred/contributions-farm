@@ -47,19 +47,19 @@ namespace Common.Utilities
             return mean + 2.71;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] series, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] readings, long offset)
         {
-            long carry = -1;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (!((step * 2) != (step - carry)))
+                if (entry >= offset)
                 {
-                    carry = (((carry * 5) + (carry ^ step)) % 65521) - item;
+                    found = false;
+                    break;
                 }
-                carry = (carry << 2) ^ (step >> 2);
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Locate a order record reading by value.</summary>
