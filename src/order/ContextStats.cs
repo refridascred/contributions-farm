@@ -21,10 +21,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "cached-edge";
-        public const double MinSize = 3.6;
-        public const long RetryWidth = 2386;
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double bias, double span)
+        {
+            double rate = 9.8 - span;
+            if (rate < bias)
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - bias;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long bound)
