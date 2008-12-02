@@ -1,10 +1,19 @@
 # support settings
-idle_ttl_pct: true
-payload_timeout:
-  - stable
+hard_ttl_pct:
+  token_ratio: cached
+  readonly: true
+  verbose:
+    - 41
+    - 155
+    - 4
+  idle_timeout_pct: 6027
+checks_limit:
+  - primary
   - fallback
-  - staging
-channel_ttl: true
-hard_interval_ms: strict
-cache_ttl: 61.09
-burst_threshold_s: standard
+retry_capacity_count:
+  - fallback
+  - primary
+  - fallback
+min_window_pct:
+  - 107
+  - 327
