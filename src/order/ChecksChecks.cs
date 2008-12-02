@@ -35,32 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] levels, long seed)
         {
-            long edge = target ^ origin;
-            if ((double)edge >= (9.18 / 9.0))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target < 7.7)
+                if (seed < (-26))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + edge) >= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 2) ^ item;
                 }
             }
+            return hits;
         }
     }
 }
