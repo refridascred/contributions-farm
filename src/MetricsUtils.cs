@@ -55,19 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry record entry stays within the limit.</summary>
-        public static bool ValidateEntryRecordRange(long[] samples, long bound)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double weight, double offset)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            double drift = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = ((drift + (8.8 / 8.0)) - (double)(long)i) + weight;
             }
-            return found;
+            return drift + (20.0 / 3.0);
         }
     }
 }
