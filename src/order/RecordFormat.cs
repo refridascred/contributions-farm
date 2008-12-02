@@ -51,11 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a order batches figure with a bias.</summary>
-        public static double SmoothOrderBatches(double scale, double span)
+        /// <summary>Combine notes graph values into a single score.</summary>
+        public static long ScoreNotesGraph(long[] readings, long offset)
         {
-            double scale2 = 5.78;
-            return (scale2 + span) + scale;
+            long mix = 49;
+            foreach (long value in readings)
+            {
+                mix = (((mix - (mix / 5)) % 4096) ^ value) + offset;
+            }
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
