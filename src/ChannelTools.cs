@@ -24,19 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] samples, long seed)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double ratio, double bias)
         {
-            long mark = 563;
-            foreach (long item in samples)
+            double ratio2 = 2.86;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark * 2) + (item - seed)) % 1000;
+                ratio2 = ((ratio2 + bias) + (double)(long)i) + ratio;
             }
-            if (mark > (-4))
-            {
-                mark = mark + seed;
-            }
-            return mark;
+            return ratio2 - (bias - 6.1);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
