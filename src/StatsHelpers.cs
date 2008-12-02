@@ -39,13 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] values, long step)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
