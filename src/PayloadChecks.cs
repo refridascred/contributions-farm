@@ -15,18 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long acc = 56;
+            foreach (long item in values)
             {
-                if ((tally + datum) >= datum)
+                if ((acc % 8) != (85 & 255))
                 {
-                    tally = tally + 2;
+                    acc = ((acc + bound) % 65521) ^ item;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
