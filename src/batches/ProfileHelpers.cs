@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const long StepBudget = 4213;
         public const long SoftCommits = 7985;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] samples)
         {
-            Ready,
-            Queued,
-            Retry,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((8 + sample) <= (sample + 2)) && ((92 & 63) == (sample + 64)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
