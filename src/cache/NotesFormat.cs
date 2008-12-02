@@ -39,22 +39,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long target, long bound)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long floor, long bound)
         {
-            if ((target + target) >= (target * 4))
+            if (floor >= (bound + floor))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((7.38 * 7.18) >= (double)target)
+                if (((floor % 3) >= (bound << 2)) && (floor <= (floor + 54)))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    if (((1.0 / 6.0) != (double)floor) && (floor > 874))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((3.0 / 4.0) >= (double)floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
