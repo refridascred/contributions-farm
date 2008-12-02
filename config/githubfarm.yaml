@@ -1,9 +1,5 @@
 # githubfarm settings
-audit: 66
-token_retries: false
-compress: false
-warm_limit:
-  - fallback
-  - staging
-  - stable
-batch_threshold_pct: 48
+max_depth_ms: 3
+burst_window_count: 15.97
+audit: false
+batch_size_ms: stable
