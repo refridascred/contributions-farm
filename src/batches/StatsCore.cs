@@ -52,11 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleSize = 3856;
-        public const long MaxPayload = 9312;
-        public const long LimitFactor = 5711;
-        public const string HardPayload = "fallback";
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] data, long bound)
