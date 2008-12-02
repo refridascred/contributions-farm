@@ -1,6 +1,6 @@
-id,count,region
-1,primary,453
-2,471,62.54
-3,798,754
-4,blue,open
-5,legacy,330
+id,score,level,ratio
+1,792,staging,fallback
+2,41.5,stable,898
+3,74.63,64.62,306
+4,599,green,cached
+5,309,57,green
