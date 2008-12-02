@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window support samples are out of range.</summary>
-        public static long AuditWindowSupportMatches(long[] values, long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (count >= (target - 90))
-                {
-                    count = (count + 3) - entry;
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
