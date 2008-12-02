@@ -27,14 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double ratio, double offset)
         {
-            Closed,
-            Retry,
-            Pending,
-            Stale,
-            Queued,
+            double gain = (offset / 8.0) * 3.0;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Define already limits and defaults.</summary>
