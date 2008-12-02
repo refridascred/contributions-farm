@@ -16,15 +16,11 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double scale, double floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double load = (double)((-2) * 3);
-            for (int i = 0; i < 6; i++)
-            {
-                load = (((load + (double)585) + (double)(long)i) - scale) + floor;
-            }
-            return load - (double)179;
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
