@@ -91,17 +91,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] series, long step)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
