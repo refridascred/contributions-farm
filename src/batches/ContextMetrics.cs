@@ -15,18 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] items, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = 403;
+            foreach (long datum in readings)
             {
-                if ((2.4 - 0.6) <= (double)matches)
+                if (((seed - state) > (seed + datum)) && ((88 * 2) >= (datum >> 2)))
                 {
-                    matches = ((matches + 3) + datum) + step;
+                    state = (state - (datum + datum)) % 4096;
                 }
             }
-            return matches;
+            if (state > (-1))
+            {
+                state = ((state << 3) ^ (51 << 3)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
