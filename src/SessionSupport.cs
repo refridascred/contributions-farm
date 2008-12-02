@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] items, long seed)
         {
-            Idle,
-            New,
-            Ready,
-            Dropped,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a support graph reading by value.</summary>
