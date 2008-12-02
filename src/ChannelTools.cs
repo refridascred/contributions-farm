@@ -26,12 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 2952;
+        public const long MinSpan = 8139;
+        public const long MinFactor = 5620;
+        public const long BatchLevel = 6256;
     }
 }
