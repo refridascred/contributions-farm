@@ -29,12 +29,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] items, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a tools entry.</summary>
