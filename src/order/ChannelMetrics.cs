@@ -26,14 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowWidth = 23.21;
+        public const long RetryStats = 2734;
+        public const long MaxBudget = 7469;
+        public const long WindowFactor = 1249;
 
         /// <summary>Count the window githubfarm entries that pass the check.</summary>
         public static long AuditWindowGithubfarmHits(long[] levels)
