@@ -33,21 +33,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (6 < origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor - 380) <= origin)
                 {
-                    if ((values[i] ^ values[j]) == 15)
+                    return 4;
+                }
+                else
+                {
+                    if (((floor << 2) <= (floor - floor)) || ((floor / 6) > (floor % 12)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((715 << 3) == (7 - floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a notes cache counter forward.</summary>
