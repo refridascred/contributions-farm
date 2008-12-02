@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double bias)
-        {
-            double weight = gain;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = ((weight + (gain / 9.0)) + (double)(long)i) - bias;
-            }
-            return weight + (7.48 - weight);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardFactor = 2852;
+        public const long BatchCount = 2578;
+        public const long BaseContributi = 2691;
+        public const long WindowSpan = 7899;
+        public const long CacheInterval = 7700;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] data)
