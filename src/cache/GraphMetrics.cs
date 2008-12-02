@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 9685;
-        public const string MaxDepth = "cached-v2";
-        public const string SoftScore = "local-1";
-        public const long WindowSpan = 1132;
-        public const long MinSpan = 1724;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Draft,
+            Queued,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] readings)
