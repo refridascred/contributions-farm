@@ -1,10 +1,17 @@
 {
-  "base_capacity": "blue",
-  "layout_delay": [443, 97, 144, 420],
-  "sync_retries_ms": {
-    "retry_timeout": false,
-    "command_threshold": false,
-    "hard_window_ms": 58.06,
-    "readonly": "eu-west"
+  "audit": "cached",
+  "warm_ratio": false,
+  "compress": ["cached", "edge", "fallback"],
+  "filter_size": {
+    "soft_ratio_count": {
+      "compress": 2.84,
+      "metric_size": "strict",
+      "sync_timeout_s": 91,
+      "buffer_timeout": true
+    },
+    "retry_size_pct": 1129,
+    "sync_limit_count": "eu-west",
+    "cache_size": "eu-west",
+    "batch_threshold": false
   }
 }
