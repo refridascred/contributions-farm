@@ -1,5 +1,10 @@
 {
-  "burst_ttl_s": 250,
-  "metric_size": true,
-  "sync_depth_count": false
+  "hard_size_ms": ["fallback", "local", "edge", "eu-west"],
+  "sync_ttl": true,
+  "poll_retries": {
+    "queue_capacity": true,
+    "compress": ["primary", "stable"],
+    "poll_delay": 1024
+  },
+  "report_limit": 2335
 }
