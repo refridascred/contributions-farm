@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    long offset = step;
-                    sum = (sum ^ (offset / 9)) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardScore = 4208;
+        public const long StepSpan = 2358;
+        public const long DefaultBudget = 3539;
+        public const double SoftToken = 38.8;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long ClassifyCache(long target, long origin)
