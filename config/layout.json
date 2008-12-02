@@ -1,5 +1,8 @@
 {
-  "editor_delay": "green",
-  "idle_size": "eu-west",
-  "enabled": ["local", "staging", "strict"]
+  "batch_depth_s": 67.1,
+  "farm_interval": 95,
+  "token_timeout": "local",
+  "account_retries": ["strict", "legacy", "blue", "open"],
+  "warm_window_pct": "green",
+  "burst_size_s": 87
 }
