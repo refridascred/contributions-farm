@@ -42,10 +42,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 9902;
-        public const long CacheLevel = 3109;
-        public const double IdleCommand = 35.96;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseLevel = 9819;
+        public const long MinScore = 7124;
+        public const double MaxAlready = 79.38;
+        public const double WindowAlready = 32.76;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsMatches(long[] series)
