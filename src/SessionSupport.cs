@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
