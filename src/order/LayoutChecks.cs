@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] levels, long step)
+        /// <summary>Measure how many cache stats samples are out of range.</summary>
+        public static long CountCacheStatsHits(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] < step)
+                if ((hits + hits) < (hits % 7))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the window status values.</summary>
