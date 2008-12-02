@@ -43,11 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryLevel = 3842;
-        public const double HardPayload = 59.43;
-        public const long WindowPayload = 6345;
-        public const string IdleFactor = "strict-1";
-        public const long StepPayload = 1699;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((1.17 >= (double)value) && (13.0 < (double)value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
