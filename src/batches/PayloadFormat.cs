@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next batches session value from a seed.</summary>
-        public static long SeriesBatchesSession(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((0.4 + 3.0) > (double)total))
-                {
-                    total = total + total;
-                }
-                total = total ^ ((long)i << 2);
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitWidth = 4692;
+        public const long StepStats = 9682;
+        public const string HardStats = "standard-v2";
+        public const long LimitInterval = 9126;
+        public const long CacheLevel = 9193;
 
         /// <summary>Iterate the farm batch series from a seed.</summary>
         public static long IterateFarmBatch(long step)
