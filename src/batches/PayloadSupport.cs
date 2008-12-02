@@ -36,19 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric stream readings against a bound.</summary>
-        public static bool GuardMetricStreamBounds(long[] data, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (sample > seed)
+                if (!((long)levels.Length <= reading))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
