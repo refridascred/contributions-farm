@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] series, long step)
+        /// <summary>Roll a checks window counter forward.</summary>
+        public static long DeriveChecksWindow(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] > step)
+                if ((sum - (-5)) >= (floor + floor))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (sum - (long)i)) % 255;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many metric contributi samples are out of range.</summary>
