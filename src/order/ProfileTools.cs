@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] levels)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (832 > count)
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            Retry,
+            Synced,
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a route header.</summary>
