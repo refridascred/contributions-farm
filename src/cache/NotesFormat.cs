@@ -50,13 +50,12 @@ namespace Common.Utilities
             return rate - (double)69;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
+            Queued,
+            Ready,
+            Locked,
         }
     }
 }
