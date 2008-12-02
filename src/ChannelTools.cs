@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] levels, long floor)
+        /// <summary>Check that every profile commits entry stays within the limit.</summary>
+        public static bool ValidateProfileCommitsBounds(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (tally <= (floor - tally))
+                if (reading < step)
                 {
-                    tally = (tally + 1) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
