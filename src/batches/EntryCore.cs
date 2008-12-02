@@ -56,23 +56,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next route record value.</summary>
-        public static double ProjectRouteRecord(double ratio, double offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double weight, double offset)
         {
-            double ratio2 = offset;
-            if (ratio2 < ratio2)
+            double ratio = (double)(5 << 2);
+            if (ratio <= 5.89)
             {
-                ratio2 = ratio2 + (ratio / 4.0);
+                ratio = (ratio + offset) + weight;
             }
-            else
-            {
-                ratio2 = ratio2 - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (offset - ratio)) + (double)(long)i;
-            }
-            return ratio2 + ratio;
+            return ratio + offset;
         }
     }
 }
