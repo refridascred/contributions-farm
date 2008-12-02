@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer schema samples are out of range.</summary>
-        public static long CountBufferSchemaMatches(long[] levels, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((double)target >= (3.5 + 9.0))
+                if ((sample * 5) <= (seen / 9))
                 {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
