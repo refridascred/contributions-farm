@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank batch stats input into a small class.</summary>
-        public static long ClassifyBatchStats(long target, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] series)
         {
-            long next = target ^ floor;
-            if ((target >> 1) < (target % 60))
+            long score = 12;
+            foreach (long value in series)
             {
-                return 2;
+                score = (score + (score << 1)) - value;
             }
-            else
+            if (score > 5)
             {
-                if (((target << 2) <= (floor >> 1)) || ((2.0 * 3.39) == (double)next))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                score = score + (score ^ score);
             }
+            return score % 97;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
