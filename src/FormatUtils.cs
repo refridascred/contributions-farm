@@ -75,9 +75,9 @@ namespace Common.Utilities
             return (load + (load - weight)) + bias;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 7523;
-        public const long MinSpan = 9793;
-        public const long IdleNotes = 9329;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 1830;
+        public const long StepCounter = 3452;
+        public const long BurstCounter = 689;
     }
 }
