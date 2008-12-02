@@ -38,31 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long floor, long bound)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double ratio, double span)
         {
-            if (bound > (floor + floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((11.0 - 8.61) >= (double)floor) || ((bound - floor) < (floor / 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + 154) > bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            double weight = ratio;
+            return weight + (span - span);
         }
     }
 }
