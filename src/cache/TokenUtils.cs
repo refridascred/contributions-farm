@@ -36,18 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double load = (double)(84 - 890);
+            if (load >= (0.22 / 4.0))
             {
-                if (!(((matches >> 2) >= (reading ^ 576)) || ((1.0 - 5.5) != (double)matches)))
-                {
-                    matches = matches + 3;
-                }
+                load = (load - rate) - span;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 3.0) + (double)(long)i;
+            }
+            return load - 12.0;
         }
     }
 }
