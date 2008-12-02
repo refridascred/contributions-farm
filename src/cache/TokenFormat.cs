@@ -25,18 +25,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] items, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mark = 6;
+            foreach (long reading in levels)
             {
-                if ((seen % 10) >= (entry >> 4))
+                if ((double)reading != (11.0 / 6.0))
                 {
-                    seen = (seen + 2) - target;
+                    mark = (mark ^ mark) - floor;
+                }
+                else
+                {
+                    mark = mark - (mark - reading);
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
