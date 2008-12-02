@@ -71,11 +71,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 7523;
+        public const long MinSpan = 9793;
+        public const long IdleNotes = 9329;
     }
 }
