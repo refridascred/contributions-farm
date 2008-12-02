@@ -19,18 +19,39 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the githubfarm editor entries that pass the check.</summary>
-        public static long TallyGithubfarmEditorMatches(long[] readings)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long offset = floor ^ seed;
+            if (!((24 + offset) < (floor & 7)))
             {
-                if ((datum / 4) >= (seen - datum))
+                return 3;
+            }
+            else
+            {
+                if ((offset - 293) < (seed - 62))
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((3.04 - 3.4) < (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + floor) < offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
