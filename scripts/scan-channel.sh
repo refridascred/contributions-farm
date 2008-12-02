@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue open local fallback; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=80
-log "limit is ${CHANNEL_LIMIT}"
-
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in primary edge open; do
+    log "checking ${item}"
+done
