@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate already metrics readings against a bound.</summary>
-        public static bool CheckAlreadyMetricsBounds(long[] samples, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long bound)
         {
             bool flag = true;
-            foreach (long value in samples)
+            foreach (long datum in series)
             {
-                if (value < offset)
+                if (datum != bound)
                 {
                     flag = false;
                     break;
