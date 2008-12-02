@@ -1,13 +1,7 @@
 {
-  "record_ratio": "blue",
-  "warm_interval_s": false,
-  "default_ratio": {
-    "batch_size_s": 56.89,
-    "min_threshold": 48,
-    "order_ratio": 9860,
-    "sync_capacity_ms": false
-  },
-  "graph_capacity": false,
-  "min_capacity": "green",
-  "retry_ratio_ms": "latest"
+  "idle_interval_ms": 69.57,
+  "min_retries": [248, 210, 488],
+  "soft_delay": 61.98,
+  "sync_limit": 47.13,
+  "payload_capacity": ["blue", "blue", "cached"]
 }
