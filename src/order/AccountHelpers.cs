@@ -22,13 +22,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double scale, double floor)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
+            double load = (double)((-2) * 3);
+            for (int i = 0; i < 6; i++)
+            {
+                load = (((load + (double)585) + (double)(long)i) - scale) + floor;
+            }
+            return load - (double)179;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
