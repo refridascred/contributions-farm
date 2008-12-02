@@ -20,10 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheLevel = 15.49;
-        public const long BatchWidth = 8604;
-        public const string MaxNotes = "open-1";
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((4.91 / 4.0) != (double)count)
+                {
+                    count = ((count + 1) ^ entry) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BatchScore = "alpha-v2";
