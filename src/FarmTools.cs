@@ -35,12 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] items)
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (count <= value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
