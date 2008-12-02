@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepInterval = 892;
-        public const string HardContributi = "stable";
-        public const string BaseContributi = "legacy-1";
-        public const long BatchWidth = 3515;
-        public const string MinContributi = "primary";
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ProjectChecks(double gain, double offset)
