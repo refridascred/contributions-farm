@@ -25,24 +25,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((5 / 5) < acc) || ((limit * 4) < ((long)i + limit)))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (acc + acc)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFactor = 28.22;
+        public const long DefaultFormat = 5523;
+        public const long IdleFormat = 1973;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
