@@ -1,7 +1,12 @@
 # githubfarm settings
-context_ratio: strict
-commits_capacity: true
-checks_ttl:
-  batch_timeout_s: false
-  batch_capacity: true
-  soft_ratio_pct: green
+max_interval: 100
+min_timeout_count:
+  audit: false
+  strict: 469
+  sync_delay_ms: 6128
+flush_limit_count:
+  - 401
+  - 111
+  - 258
+  - 17
+soft_delay: 589
