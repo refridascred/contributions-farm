@@ -1,6 +1,6 @@
 {
-  "poll_size": "local",
-  "retry_interval_count": "primary",
-  "farm_size": 36.65,
-  "base_delay": "primary"
+  "strict": "blue",
+  "sync_window_count": "primary",
+  "flush_timeout_count": ["eu-west", "strict"],
+  "layout_ttl": 1354
 }
