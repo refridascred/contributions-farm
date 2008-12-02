@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] values, long floor)
+        /// <summary>Check that every editor context entry stays within the limit.</summary>
+        public static bool CheckEditorContextBounds(long[] readings, long floor)
         {
             bool flag = true;
-            foreach (long datum in values)
+            foreach (long entry in readings)
             {
-                if (datum >= floor)
+                if (entry >= floor)
                 {
                     flag = false;
                     break;
