@@ -1,12 +1,8 @@
 # entry settings
-token_retries: 60
-cache_capacity_s: 7781
-soft_retries_s: cached
-compress:
-  retry_threshold_ms: eu-west
-  cache_size:
-    idle_window_pct: 96.45
-    cache_ttl_count: latest
-    schema_timeout: 7265
-    batches_delay: false
-  checks_delay: strict
+default_interval_ms: 88.24
+report_size:
+  - latest
+  - stable
+  - primary
+  - fallback
+batch_ttl: green
