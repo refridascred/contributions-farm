@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Audit support stream readings against a rule.</summary>
+        public static long AuditSupportStreamHits(long[] series, long step)
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!((seen >> 5) > sample))
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate metric stream readings against a bound.</summary>
