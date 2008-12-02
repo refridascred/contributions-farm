@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor schema entry that matches the target.</summary>
-        public static long LookupEditorSchemaIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 9340;
+        public const long CacheContributi = 1692;
+        public const long BatchContributi = 1363;
+        public const double SoftContributi = 47.66;
+        public const long CacheInterval = 4728;
 
         /// <summary>Rank editor cluster input into a small class.</summary>
         public static long RankEditorCluster(long limit, long offset)
