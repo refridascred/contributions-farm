@@ -46,19 +46,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            long anchor = 5;
+            foreach (long reading in data)
             {
-                if ((double)(long)i == (17.0 / 8.0))
+                anchor = ((anchor - anchor) % 4096) ^ reading;
+                if ((double)anchor < (7.62 - 4.0))
                 {
-                    anchor = ((anchor * 4) + ((long)i << 1)) % 101;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return anchor % 97;
         }
     }
 }
