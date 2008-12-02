@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count route batches pairs that satisfy a relation.</summary>
-        public static long MatchRouteBatchesCount(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample + sample) < (tally ^ 71))
                 {
-                    if ((data[i] - data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
