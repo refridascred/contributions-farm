@@ -32,12 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 2357;
-        public const string SoftCount = "stable";
-        public const long StepSession = 805;
-        public const double MaxSession = 43.23;
-        public const double MinSpan = 52.41;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Stale,
+            Closed,
+            Active,
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphOutliers(long[] levels)
