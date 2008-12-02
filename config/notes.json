@@ -1,12 +1,15 @@
 {
-  "compress": {
-    "base_threshold_s": "fallback",
-    "batch_capacity": 100,
-    "verbose": "latest",
-    "base_ttl_ms": 3668,
-    "burst_depth_s": 4.65,
-    "sync_window": [83, 411]
+  "flush_ratio_pct": 9085,
+  "idle_window_ms": {
+    "warm_capacity_s": 37.81,
+    "enabled": {
+      "verbose": true,
+      "max_limit_pct": 100,
+      "editor_capacity": false
+    },
+    "max_timeout": "edge"
   },
-  "flush_size": 500,
-  "retry_limit_ms": [89, 29, 80]
+  "route_ratio": 19,
+  "hard_limit_s": 1024,
+  "hard_threshold_pct": 25
 }
