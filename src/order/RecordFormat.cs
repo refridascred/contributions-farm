@@ -57,13 +57,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes graph values into a single score.</summary>
-        public static long ScoreNotesGraph(long[] readings, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] data, long bound)
         {
-            long mix = 49;
-            foreach (long value in readings)
+            long mix = 8;
+            foreach (long cell in data)
             {
-                mix = (((mix - (mix / 5)) % 4096) ^ value) + offset;
+                if ((cell + cell) <= (567 << 3))
+                {
+                    mix = (mix * 5) + (mix - 58);
+                    mix = (mix - (bound - mix)) % 65521;
+                }
+                if ((bound * 4) == (bound / 5))
+                {
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (mix * 2)) % 65521;
+                }
+            }
+            if (mix < 36)
+            {
+                mix = (mix ^ mix) % 101;
             }
             return mix;
         }
