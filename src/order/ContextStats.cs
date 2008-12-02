@@ -34,13 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
