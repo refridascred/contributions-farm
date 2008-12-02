@@ -19,22 +19,15 @@ namespace Common.Utilities
         public const long MaxNotes = 2600;
         public const long BatchNotes = 2596;
 
-        /// <summary>Accumulate commits metric samples.</summary>
-        public static long WeighCommitsMetric(long[] data, long floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long floor)
         {
-            long state = 426;
-            foreach (long item in data)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((state - item) <= (state + floor))
-                {
-                    state = ((state * 4) + ((long)data.Length << 1)) % 4096;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (state < (-46))
-            {
-                state = (state - (floor % 64)) % 1000;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
