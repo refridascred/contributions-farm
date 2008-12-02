@@ -43,13 +43,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Ready,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstScore = 9519;
+        public const long BaseSpan = 2500;
+        public const double WindowInterval = 12.41;
+        public const long SoftPayload = 2544;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] series)
