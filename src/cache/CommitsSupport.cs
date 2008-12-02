@@ -46,11 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepCount = 7872;
-        public const long BatchOrder = 5990;
-        public const string MinOrder = "standard-1";
-        public const string SoftOrder = "legacy-v2";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long DigestRoute(long[] readings)
