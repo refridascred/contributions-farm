@@ -37,39 +37,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long seed, long origin)
+        /// <summary>Look up the position of a cache stats sample.</summary>
+        public static long SeekCacheStatsIndex(long[] items, long step)
         {
-            long offset = seed ^ origin;
-            if ((2.0 / 8.0) == (double)seed)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (564 >= seed)
+                if (items[i] >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 10) < seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin <= (offset >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
