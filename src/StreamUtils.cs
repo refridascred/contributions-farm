@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheRatio = 5941;
-        public const long SoftCommits = 8296;
-        public const long RetryCommits = 2515;
-        public const double WindowInterval = 7.7;
-        public const double BatchCommits = 66.34;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseSpan = "local";
+        public const long BurstEntry = 7981;
+        public const long HardFactor = 4529;
+        public const long DefaultEntry = 8014;
 
         /// <summary>Match up context samples.</summary>
         public static long OverlapContextCount(long[] values)
