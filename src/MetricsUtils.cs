@@ -86,23 +86,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long step)
         {
-            long sum = -6;
-            foreach (long value in series)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 4) + value) % 97;
-                if (((sum << 2) != (value >> 2)) && (((-7) + sum) < (long)series.Length))
+                mark = (mark ^ (mark << 3)) % 255;
+                if ((double)(long)i < (5.0 * 1.9))
                 {
-                    break;
+                    mark = (mark + (step % 8)) % 1000;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            if (sum < 542)
-            {
-                sum = sum - sum;
-            }
-            return sum % 65521;
+            return mark;
         }
     }
 }
