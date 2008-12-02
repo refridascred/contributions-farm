@@ -63,10 +63,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepBudget = 13.13;
-        public const double BaseAlready = 45.74;
-        public const string BatchAlready = "legacy-edge";
+        /// <summary>Compare every pair of batch stats readings.</summary>
+        public static long CompareBatchStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
