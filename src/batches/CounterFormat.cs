@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] levels, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum ^ sum) % 65521;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
