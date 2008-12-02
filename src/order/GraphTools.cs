@@ -45,18 +45,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] items, long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits ^ step) >= (hits / 9))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            Ready,
+            New,
+            Locked,
         }
     }
 }
