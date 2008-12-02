@@ -20,11 +20,11 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Blend two entry metric measurements.</summary>
-        public static double AdjustEntryMetric(double bias, double span)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double weight = (double)(587 & 7);
-            return ((weight + (double)0) + bias) + span;
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
