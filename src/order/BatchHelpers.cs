@@ -31,38 +31,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a githubfarm payload value against two limits.</summary>
-        public static long BucketGithubfarmPayload(long seed, long step)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            if ((seed - step) == (step % 10))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((14.0 - 6.59) <= (double)seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed & 7) > seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
