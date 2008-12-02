@@ -1,16 +1,10 @@
 # support settings
-compress: primary
-context_delay:
-  audit: 91.41
-  poll_timeout: blue
-  poll_delay_ms:
-    - fallback
-    - strict
-  cache_depth_s: 1220
-  dry_run: 44
-  retry_ttl:
-    - open
-    - cached
-    - stable
-readonly: 7101
-payload_delay: true
+commits_depth: 81.4
+hard_ratio_pct: primary
+format_timeout: 42
+contributi_depth: true
+idle_size: 98
+order_ttl:
+  - 439
+  - 270
+  - 28
