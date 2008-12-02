@@ -1,9 +1,6 @@
-id,state,label
-1,204,primary
-2,latest,eu-west
-3,137,924
-4,87.72,32.93
-5,561,eu-west
-6,53.45,staging
-7,24.44,edge
-8,164,edge
+id,token,level,score
+1,primary,248,563
+2,strict,cached,511
+3,93.39,268,36.99
+4,976,13.68,staging
+5,76.98,79.4,416
