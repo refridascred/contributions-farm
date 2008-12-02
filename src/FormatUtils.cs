@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every editor context entry stays within the limit.</summary>
-        public static bool CheckEditorContextBounds(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "alpha-v2";
+        public const long LimitBudget = 4071;
+        public const long MaxBudget = 9397;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] levels, long target)
