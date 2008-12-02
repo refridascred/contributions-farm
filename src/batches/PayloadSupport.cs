@@ -20,22 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] readings, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long score = 738;
-            foreach (long reading in readings)
-            {
-                if ((score - origin) != (reading << 1))
-                {
-                    score = ((score * 3) + (reading + reading)) % 101;
-                }
-                else
-                {
-                    score = score - (reading + (long)readings.Length);
-                }
-            }
-            return score;
+            Locked,
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Match up command batch samples.</summary>
