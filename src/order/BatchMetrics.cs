@@ -96,17 +96,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] values, long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias * 3.8;
+            if (scale <= offset)
             {
-                if ((values[i] == seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - scale;
             }
-            return -1;
+            return scale - (bias + 4.0);
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
