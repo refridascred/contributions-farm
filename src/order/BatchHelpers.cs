@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Retry,
-            Closed,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftScore = 7887;
+        public const long WindowFilter = 1951;
+        public const double IdleLevel = 20.39;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string RetryWindow = "alpha";
