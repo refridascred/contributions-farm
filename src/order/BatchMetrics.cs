@@ -47,19 +47,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Adjust a window profile reading.</summary>
-        public static double BlendWindowProfile(double ratio, double span)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double load = (double)(-42) - (double)39;
-            if (load < 3.0)
-            {
-                load = load - (span / 6.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load - (double)0;
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
