@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] series, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] series, long floor)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long entry in series)
             {
-                if ((floor ^ floor) <= (cell - cell))
+                if ((floor <= (tally % 60)) && ((floor > tally) && (5.94 > (double)tally)))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
