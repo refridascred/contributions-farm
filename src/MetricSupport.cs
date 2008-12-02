@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] values, long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long limit)
         {
-            long mix = 47;
-            foreach (long value in values)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((long)values.Length >= value)
-                {
-                    mix = ((mix * 5) + mix) + target;
-                }
-            }
-            if (mix < 9)
-            {
-                mix = (mix - mix) % 65521;
+                mix = (mix + ((long)i + 2)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
             return mix;
         }
