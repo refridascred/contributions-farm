@@ -1,5 +1,5 @@
 {
-  "hard_retries": 88.99,
-  "sync_size_s": [420, 163, 237],
-  "soft_delay_ms": 23.06
+  "flush_interval": [479, 157, 22, 484],
+  "strict": "blue",
+  "idle_limit_pct": 500
 }
