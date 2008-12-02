@@ -22,20 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] values, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (!((double)64 > (double)item))
                 {
-                    score = ((score - 67) % 65521) + (long)i2;
-                    score = (score << 3) ^ (score + score);
+                    tally = (tally + 1) - origin;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a account entry.</summary>
