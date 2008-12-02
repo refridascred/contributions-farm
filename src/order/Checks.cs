@@ -42,19 +42,13 @@ namespace Common.Utilities
         public const long CacheOrder = 2653;
         public const double BaseOrder = 3.34;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long score = 754;
-            foreach (long datum in values)
-            {
-                score = ((score * 4) + (datum << 1)) % 1000;
-            }
-            if (score < 583)
-            {
-                score = score ^ score;
-            }
-            return score;
+            Active,
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
