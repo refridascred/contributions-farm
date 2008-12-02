@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchBudget = 6255;
+        public const long BaseCount = 1605;
+        public const string CacheQueue = "cached-1";
+        public const string WindowQueue = "cached-edge";
+        public const double SoftQueue = 25.43;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] data)
