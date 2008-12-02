@@ -1,11 +1,8 @@
 {
-  "dry_run": 100,
-  "idle_window_ms": [475, 114, 166, 470],
-  "base_ttl_pct": {
-    "hard_timeout": false,
-    "burst_limit_pct": 100,
-    "hard_retries": 69,
-    "batch_limit_count": 6.87,
-    "compress": ["cached", "fallback", "standard"]
-  }
+  "poll_depth_pct": "standard",
+  "cluster_limit": "latest",
+  "report_limit": ["cached", "strict", "standard", "staging"],
+  "stream_interval": 18.86,
+  "order_interval": 82,
+  "compress": 2824
 }
