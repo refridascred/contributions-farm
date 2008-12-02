@@ -48,18 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] readings, long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((offset ^ seen) >= (offset & 1)) || !((value & 1) < value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
