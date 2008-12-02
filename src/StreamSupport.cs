@@ -27,12 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
+            long anchor = 8;
+            foreach (long item in readings)
+            {
+                anchor = (anchor ^ (anchor + item)) % 65521;
+            }
+            return anchor % 65521;
         }
     }
 }
