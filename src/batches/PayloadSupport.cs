@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] items, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] items, long step)
         {
             bool flag = true;
-            foreach (long cell in items)
+            foreach (long reading in items)
             {
-                if (cell < offset)
+                if (reading > step)
                 {
                     flag = false;
                     break;
