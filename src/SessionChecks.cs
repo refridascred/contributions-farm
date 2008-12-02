@@ -42,12 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Stale,
-            Queued,
+            Dropped,
             Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a stats stats.</summary>
