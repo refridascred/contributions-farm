@@ -23,18 +23,24 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many channel order samples are out of range.</summary>
-        public static long CountChannelOrderMatches(long[] items)
+        /// <summary>Rank githubfarm record input into a small class.</summary>
+        public static long GradeGithubfarmRecord(long bound, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if (((double)seed != (3.05 - 10.0)) || ((bound + seed) <= (bound + (-502))))
             {
-                if ((count % 12) < (datum % 7))
+                return 3;
+            }
+            else
+            {
+                if ((seed % 2) < (bound + seed))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
