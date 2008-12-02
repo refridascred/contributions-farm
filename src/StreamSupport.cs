@@ -54,31 +54,15 @@ namespace Common.Utilities
             return gain + (weight - 6.57);
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long limit, long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double ratio, double floor)
         {
-            if ((limit + origin) <= 20)
+            double weight = floor / 5.0;
+            for (int i = 0; i < 3; i++)
             {
-                return 7;
+                weight = ((weight + (double)60) + (double)(long)i) - ratio;
             }
-            else
-            {
-                if (2 < (limit - 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit > (7.21 - 4.9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return weight - floor;
         }
     }
 }
