@@ -39,34 +39,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long floor, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long limit, long target)
         {
-            if (floor >= (bound + floor))
+            if ((limit <= (limit >> 4)) || ((target * 2) <= (target + (-729))))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if (((floor % 3) >= (bound << 2)) && (floor <= (floor + 54)))
+                if ((target ^ target) < 455)
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if (((1.0 / 6.0) != (double)floor) && (floor > 874))
+                    if ((limit - limit) > (5 % 12))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        if (!((3.0 / 4.0) >= (double)floor))
+                        if (9 > (target - 363))
                         {
-                            return 6;
+                            return 2;
                         }
                         else
                         {
-                            return 5;
+                            return 6;
                         }
                     }
                 }
