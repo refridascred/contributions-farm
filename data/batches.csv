@@ -1,8 +1,6 @@
-id,state,ratio,active,label
-1,240,46.3,63,132
-2,967,65.39,legacy,121
-3,blue,9.54,192,271
-4,451,12.82,legacy,stable
-5,128,261,3.59,open
-6,latest,staging,84.7,822
-7,76.14,48.02,standard,68.26
+id,count,score,token,active
+1,57.55,fallback,550,56.23
+2,edge,staging,44,green
+3,308,250,959,178
+4,green,352,primary,strict
+5,323,legacy,285,310
