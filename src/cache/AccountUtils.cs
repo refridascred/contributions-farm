@@ -48,22 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] data)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long carry = 76;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)carry <= 3.4)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry ^ carry) % 101) + reading;
-                }
-                if (((long)data.Length % 7) == (carry * 2))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
