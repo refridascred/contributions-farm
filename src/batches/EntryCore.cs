@@ -27,21 +27,13 @@ namespace Common.Utilities
         public const long SoftCache = 3400;
         public const double DefaultTimeout = 65.4;
 
-        /// <summary>Compare every pair of token batch readings.</summary>
-        public static long MatchTokenBatchCount(long[] values)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
