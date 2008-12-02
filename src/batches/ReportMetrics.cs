@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Retry,
-            Queued,
+            Locked,
             Done,
-            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
