@@ -1,8 +1,8 @@
 {
-  "min_threshold": 77.39,
-  "batch_timeout_s": 9554,
-  "batch_window": 98,
-  "batch_threshold": 1771,
-  "hard_timeout_ms": 6639,
-  "cache_ttl_count": true
+  "entry_ratio": 10,
+  "report_delay": 2532,
+  "strict": ["standard", "strict"],
+  "enabled": "stable",
+  "token_limit": 19.54,
+  "flush_size": 30
 }
