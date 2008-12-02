@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate editor checks readings against a bound.</summary>
-        public static bool CheckEditorChecksRange(long[] values, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (cell < limit)
+                if (datum >= floor)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
