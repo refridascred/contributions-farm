@@ -37,15 +37,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double bias)
+        /// <summary>Locate a stats window reading by value.</summary>
+        public static long FindStatsWindowIndex(long[] series, long target)
         {
-            double mean = (double)20 - (gain + gain);
-            if (mean > 2.7)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - bias;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return mean + bias;
+            return -1;
         }
     }
 }
