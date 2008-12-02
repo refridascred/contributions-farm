@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLevel = 363;
+        public const long CacheLayout = 9878;
+        public const double BatchDepth = 96.4;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] data)
