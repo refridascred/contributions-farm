@@ -1,5 +1,23 @@
 # entry settings
-min_capacity: fallback
-sync_window: strict
-max_ttl_count: 9.95
-idle_ratio_s: 88.2
+idle_limit_s: edge
+flush_ttl: standard
+sync_ttl_s:
+  max_delay: false
+  poll_size:
+    dry_run: 8090
+    graph_ttl: false
+    warm_interval: edge
+    flush_timeout:
+      - 288
+      - 198
+      - 108
+      - 32
+  context_capacity:
+    - 103
+    - 213
+    - 16
+    - 34
+  payload_delay:
+    - 473
+    - 489
+  metric_size: standard
