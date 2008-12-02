@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 79.78;
-        public const string MaxCount = "open-1";
-        public const long CacheChannel = 126;
-        public const double DefaultRatio = 69.11;
-        public const long MinChannel = 7669;
+        /// <summary>Compare every pair of already profile readings.</summary>
+        public static long CompareAlreadyProfileCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of support format readings.</summary>
         public static long OverlapSupportFormatCount(long[] values)
