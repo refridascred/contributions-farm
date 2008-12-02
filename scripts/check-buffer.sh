@@ -6,19 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=109
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-staging}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in fallback staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
