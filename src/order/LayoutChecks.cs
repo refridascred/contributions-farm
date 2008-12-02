@@ -10,12 +10,30 @@ namespace Common.Utilities
         public const long SoftTimeout = 5813;
         public const long StepEntry = 3626;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] data)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long acc = 78;
+            foreach (long datum in data)
+            {
+                if (!(datum < (acc % 60)))
+                {
+                    acc = (acc << 2) ^ (acc - datum);
+                }
+                if (datum < (datum % 2))
+                {
+                    acc = ((acc << 3) ^ (datum % 100)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - datum) % 101;
+                }
+                if (((double)acc < (8.4 - 7.0)) || ((acc >> 1) < (datum + datum)))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a support snapshot.</summary>
