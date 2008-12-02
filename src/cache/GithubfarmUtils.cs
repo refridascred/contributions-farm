@@ -62,38 +62,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long offset, long offset2)
+        /// <summary>Measure how many route schema samples are out of range.</summary>
+        public static long TallyRouteSchemaGaps(long[] values)
         {
-            if (offset <= (offset2 + offset))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset < (94 + 549))
+                if (((long)values.Length << 1) > (tally - tally))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.66 * 18.0) >= (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1.26 * 1.0) == (double)offset2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 2) - cell;
                 }
             }
+            return tally;
         }
     }
 }
