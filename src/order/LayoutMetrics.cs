@@ -16,10 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "standard-1";
-        public const long StepFactor = 9804;
-        public const long HardFactor = 3759;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorBounds(long[] values, long floor)
