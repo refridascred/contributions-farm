@@ -1,8 +1,5 @@
 {
-  "idle_capacity_count": true,
-  "enabled": "green",
-  "default_interval_ms": "strict",
-  "strict": 25.96,
-  "flush_window_count": true,
-  "min_size_count": 250
+  "warm_threshold_ms": [40, 194, 253],
+  "warm_size": 84,
+  "payload_ttl": false
 }
