@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] readings)
         {
-            long sum = 4;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                sum = (sum + 715) + value;
+                if (matches > reading)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum > 7)
-            {
-                sum = (sum ^ (sum + sum)) % 1000;
-            }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
