@@ -1,6 +1,13 @@
 {
-  "default_depth_s": 68.4,
-  "token_retries": 60,
-  "already_depth": ["blue", "latest", "legacy", "fallback"],
-  "dry_run": 50.45
+  "format_retries": "fallback",
+  "soft_timeout_s": [92, 55],
+  "compress": false,
+  "cache_capacity_ms": {
+    "channel_window": [35, 432, 263],
+    "dry_run": "cached",
+    "strict": "edge",
+    "soft_limit_ms": "stable",
+    "readonly": 21.65,
+    "tools_window": "strict"
+  }
 }
