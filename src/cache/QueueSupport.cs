@@ -20,14 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] items)
         {
-            Synced,
-            Done,
-            Ready,
-            Idle,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits - cell) == (845 + cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate order notes samples.</summary>
