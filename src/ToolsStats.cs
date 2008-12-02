@@ -44,13 +44,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            Locked,
-            Paused,
-            Ready,
-            Closed,
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Validate checks format readings against a bound.</summary>
