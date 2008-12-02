@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] samples)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)hits >= (19.0 * 4.7)) && ((double)reading >= (2.73 * 2.2)))
-                {
-                    hits = hits + 2;
-                }
+                mix = (mix - ((long)i + bound)) % 255;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
