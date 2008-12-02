@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 9746;
-        public const string WindowLevel = "alpha";
-        public const long BurstTimeout = 7071;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] samples)
+        {
+            long result = 66;
+            foreach (long item in samples)
+            {
+                if (((item / 7) < ((long)samples.Length / 7)) && ((item << 1) < ((long)samples.Length >> 2)))
+                {
+                    result = ((result << 2) ^ (result + result)) % 1000;
+                }
+            }
+            if (result > 9)
+            {
+                result = result + (result % 64);
+            }
+            return result;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
