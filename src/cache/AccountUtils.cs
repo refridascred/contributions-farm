@@ -41,12 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] data)
         {
-            Locked,
-            Stale,
-            Idle,
+            long carry = 76;
+            foreach (long reading in data)
+            {
+                if ((double)carry <= 3.4)
+                {
+                    carry = ((carry ^ carry) % 101) + reading;
+                }
+                if (((long)data.Length % 7) == (carry * 2))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
