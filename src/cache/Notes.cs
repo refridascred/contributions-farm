@@ -29,15 +29,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Failed,
-            Retry,
-            Queued,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryFactor = 5739;
+        public const long HardWidth = 2369;
+        public const long RetryEntry = 3123;
+        public const long BaseEntry = 8523;
+        public const string SoftEntry = "staging";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] levels)
