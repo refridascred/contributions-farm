@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double rate, double offset)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double rate2 = offset;
-            if (rate2 >= (offset * 6.88))
-            {
-                rate2 = (rate2 + rate2) - rate;
-            }
-            else
-            {
-                rate2 = rate2 - 4.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + (20.0 / 4.0)) + (double)(long)i;
-            }
-            return rate2 + (double)3;
+            Draft,
+            Queued,
+            Synced,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
