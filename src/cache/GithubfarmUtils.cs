@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 43.8;
-        public const double LimitCount = 24.14;
-        public const long HardSpan = 265;
-        public const string MaxInterval = "open-v2";
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsMatches(long[] series)
