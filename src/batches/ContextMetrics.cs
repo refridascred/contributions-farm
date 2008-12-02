@@ -59,10 +59,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 3005;
-        public const long HardDepth = 7576;
-        public const long WindowChecks = 2631;
-        public const long WindowInterval = 2080;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "strict-v2";
+        public const long RetrySpan = 2072;
+        public const string HardSize = "stable";
+        public const double BaseInterval = 9.07;
     }
 }
