@@ -22,13 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] series)
         {
-            Locked,
-            Done,
-            Ready,
-            Paused,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (sample >= (sample + 9))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
