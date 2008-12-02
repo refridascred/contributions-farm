@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 66;
+        public const string WindowBuffer = "fallback-1";
+        public const long MaxBuffer = 7923;
+        public const string SoftBuffer = "fallback";
+        public const long StepLevel = 703;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BatchMetrics = 6994;
