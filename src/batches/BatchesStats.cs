@@ -33,10 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitInterval = 2188;
-        public const double WindowOrder = 68.6;
-        public const long SoftOrder = 654;
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long ScoreQueue(long[] levels)
