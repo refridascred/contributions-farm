@@ -48,19 +48,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] series, long step)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Queued,
+            New,
+            Closed,
+            Active,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
