@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
+            New,
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
