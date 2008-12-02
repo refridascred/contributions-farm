@@ -1,7 +1,13 @@
 {
-  "buffer_interval": [106, 370],
-  "sync_delay": 4.57,
-  "persist": "latest",
-  "flush_depth_pct": ["primary", "edge", "local", "primary"],
-  "base_retries_ms": 63.1
+  "readonly": 2.94,
+  "soft_size_count": true,
+  "layout_size": "open",
+  "session_delay": {
+    "idle_threshold": 38,
+    "batch_delay_ms": "standard",
+    "profile_capacity": 30,
+    "enabled": "primary"
+  },
+  "cluster_threshold": 250,
+  "poll_interval": "local"
 }
