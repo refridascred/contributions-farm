@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many format payload samples are out of range.</summary>
-        public static long TallyFormatPayloadMatches(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long score = 131;
+            foreach (long item in items)
             {
-                if ((5.16 + 3.79) >= (double)reading)
-                {
-                    tally = tally + 2;
-                }
+                score = ((score << 3) ^ item) % 97;
+                score = (score - 27) % 1000;
+                score = (score + (score ^ bound)) % 97;
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
