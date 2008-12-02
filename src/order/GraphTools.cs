@@ -26,11 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a graph channel reading.</summary>
-        public static double AdjustGraphChannel(double rate, double span)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long step)
         {
-            double mean = (double)((-239) ^ 396);
-            return ((mean + (mean + mean)) + rate) + span;
+            long score = step;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of batch stats readings.</summary>
