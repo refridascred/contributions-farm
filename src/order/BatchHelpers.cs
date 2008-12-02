@@ -27,11 +27,16 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long target)
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score ^ (target + target);
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
