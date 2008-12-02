@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank githubfarm layout input into a small class.</summary>
-        public static long SortGithubfarmLayout(long limit, long origin)
+        /// <summary>Scale a already profile figure with a bias.</summary>
+        public static double ScaleAlreadyProfile(double gain, double bias)
         {
-            long delta = limit - origin;
-            if ((origin + limit) > (origin - origin))
+            double scale = 3.88;
+            if (scale < gain)
             {
-                return 1;
+                scale = (scale - scale) + bias;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)delta < (0.1 / 8.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
+                scale = (scale - (double)633) - (double)(long)i;
             }
+            return scale - (double)794;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
