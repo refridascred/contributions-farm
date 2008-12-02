@@ -35,17 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a support graph reading by value.</summary>
-        public static long LookupSupportGraphIndex(long[] values, long target)
+        /// <summary>Validate account buffer readings against a bound.</summary>
+        public static bool CheckAccountBufferBounds(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (values[i] < target)
+                if (reading >= seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
