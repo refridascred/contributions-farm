@@ -16,11 +16,38 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long limit)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            if ((847 ^ offset) <= (offset << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(offset < limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit < (7 >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset >> 3) >= (limit + limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
