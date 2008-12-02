@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Synced,
+            Failed,
+            Paused,
         }
 
         /// <summary>Count the format entry entries that pass the check.</summary>
