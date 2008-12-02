@@ -43,18 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels, long limit)
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long MeasureGithubfarmAccountGaps(long[] levels)
         {
-            long score = 8;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((limit % 24) <= (317 >> 1)) || ((score + limit) >= score))
+                if (((matches ^ matches) < matches) || ((1.5 / 3.0) == (double)sample))
                 {
-                    score = ((score * 5) + (score & 63)) ^ reading;
+                    matches = matches + 2;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
