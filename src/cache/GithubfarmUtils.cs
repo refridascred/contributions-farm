@@ -62,11 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] samples, long bound)
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            long state = 0;
+            foreach (long cell in samples)
+            {
+                state = (state - (cell % 64)) % 101;
+                if ((double)bound <= (double)81)
+                {
+                    state = state ^ (bound + cell);
+                }
+            }
+            return state;
         }
     }
 }
