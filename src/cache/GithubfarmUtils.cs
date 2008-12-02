@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long seed, long offset)
+        /// <summary>Grade a entry layout value against two limits.</summary>
+        public static long GradeEntryLayout(long origin, long bound)
         {
-            if ((offset - 17) <= seed)
+            if (origin <= (origin - bound))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((double)seed > (double)offset)
+                if ((origin / 6) <= (22 - origin))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((9.3 + 9.95) <= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset / 3) >= (6 + seed)) && ((seed / 4) > (seed - 45)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
