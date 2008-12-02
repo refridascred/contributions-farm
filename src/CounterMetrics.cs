@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings, long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long step)
         {
-            long score = 520;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score - (sample ^ bound)) % 1000;
+                if ((values[i] > step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 65)
-            {
-                score = (score ^ (bound >> 5)) % 101;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Rank cache farm input into a small class.</summary>
