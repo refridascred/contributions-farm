@@ -17,14 +17,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long seed, long offset)
         {
-            Active,
-            Failed,
-            Dropped,
-            Draft,
-            Ready,
+            long prev = seed + offset;
+            if (seed >= (offset % 12))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed - prev) > (249 + prev))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Accumulate graph account samples.</summary>
