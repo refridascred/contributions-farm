@@ -1,13 +1,6 @@
 {
-  "default_timeout_pct": false,
-  "cache_threshold": 2888,
-  "verbose": false,
-  "flush_depth_s": {
-    "flush_retries_count": "staging",
-    "base_delay": 98,
-    "persist": "strict",
-    "verbose": ["blue", "fallback", "staging", "strict"],
-    "counter_timeout": 33.98,
-    "hard_delay_ms": 76.06
-  }
+  "cache_timeout_count": "eu-west",
+  "cache_delay": "open",
+  "burst_window": 74,
+  "editor_interval": ["legacy", "green"]
 }
