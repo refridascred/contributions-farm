@@ -1,11 +1,33 @@
 # support settings
-cache_timeout_pct:
-  report_depth: 100
-  audit: primary
-  command_window: 46
-  hard_depth:
-    - 403
-    - 467
-max_retries: 1024
-flush_limit_count: blue
-channel_limit: cached
+readonly:
+  already_limit:
+    - strict
+    - blue
+  record_window: 24.31
+  persist:
+    record_threshold: 250
+    cache_retries: 30
+    batch_ttl: 3779
+    idle_window_s: 83
+  min_depth_count: staging
+  command_delay:
+    persist:
+      - eu-west
+      - eu-west
+      - cached
+    flush_timeout_ms: edge
+    burst_ratio: local
+    max_retries_s: 60
+  profile_window: standard
+verbose: open
+default_window:
+  - primary
+  - edge
+route_delay: 9523
+default_ttl_count: 74.05
+compress:
+  retry_window_count: staging
+  enabled: legacy
+  compress: edge
+  base_ttl: 46.96
+  sync_retries: 6
