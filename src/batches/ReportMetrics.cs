@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] data)
         {
-            Dropped,
-            Ready,
-            Stale,
-            Pending,
-            New,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)count < (double)item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up format samples.</summary>
