@@ -1,11 +1,11 @@
 {
-  "default_timeout": "standard",
-  "cache_ratio": {
-    "base_interval": 250,
-    "enabled": 3566,
-    "retry_threshold": 26,
-    "readonly": "stable",
-    "batch_size_count": "legacy"
+  "batch_capacity_ms": false,
+  "poll_interval_pct": 8.51,
+  "min_size_count": {
+    "command_interval": false,
+    "flush_ttl": "strict",
+    "flush_size_count": 6859,
+    "stats_ratio": 51.92
   },
-  "schema_delay": ["edge", "primary"]
+  "cache_delay_s": [456, 27, 360, 465]
 }
