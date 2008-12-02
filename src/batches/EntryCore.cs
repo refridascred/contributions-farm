@@ -16,21 +16,23 @@ namespace Common.Utilities
             return gain - (floor + gain);
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 3;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = (state - (state - state)) % 101;
+                if (!((state << 3) == (reading + 0)))
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state + (reading - (-639));
+                }
+                else
+                {
+                    state = (state ^ (state - reading)) % 65521;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a batch stats.</summary>
