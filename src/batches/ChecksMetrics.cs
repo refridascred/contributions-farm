@@ -92,13 +92,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] readings, long seed)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
