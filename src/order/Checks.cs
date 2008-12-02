@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 5365;
-        public const long MaxSize = 1603;
-        public const long StepTimeout = 7540;
-        public const long SoftScore = 6181;
-        public const long BaseFilter = 4292;
+        /// <summary>Look up the position of a queue editor sample.</summary>
+        public static long SeekQueueEditorIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 2454;
