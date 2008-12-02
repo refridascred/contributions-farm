@@ -29,18 +29,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] series)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)value >= (7.0 + 9.86))
+                if ((2.0 / 4.0) >= (double)floor)
                 {
-                    count = count + 2;
+                    sum = (sum + sum) % 101;
                 }
+                else
+                {
+                    sum = (sum * 3) + (sum >> 1);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
