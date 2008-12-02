@@ -46,10 +46,15 @@ namespace Common.Utilities
         public const double WindowOrder = 68.6;
         public const long SoftOrder = 654;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 5047;
-        public const string BurstFilter = "primary";
-        public const double LimitTimeout = 17.13;
-        public const long CacheFilter = 182;
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double offset)
+        {
+            double gain = (double)(54 + 709);
+            if (gain <= (offset + gain))
+            {
+                gain = gain - rate;
+            }
+            return gain - (double)942;
+        }
     }
 }
