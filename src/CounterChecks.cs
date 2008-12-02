@@ -15,18 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] samples, long limit)
+        /// <summary>Find the first layout batches entry that matches the target.</summary>
+        public static long LookupLayoutBatchesIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)limit < (double)seen)
+                if ((data[i] < target) && ((data[i] % 5) == 0))
                 {
-                    seen = (seen + 1) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a account counter forward.</summary>
