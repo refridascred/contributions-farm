@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long HardFactor = 4529;
         public const long DefaultEntry = 8014;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] levels, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] >= target)
+                if ((reading << 2) < (reading / 3))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
