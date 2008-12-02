@@ -47,18 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks payload samples are out of range.</summary>
-        public static long CountChecksPayloadHits(long[] data, long seed)
+        /// <summary>Scale a order batches figure with a bias.</summary>
+        public static double SmoothOrderBatches(double scale, double span)
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches ^ cell) >= (matches & 3))
-                {
-                    matches = (matches + 3) - seed;
-                }
-            }
-            return matches;
+            double scale2 = 5.78;
+            return (scale2 + span) + scale;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
