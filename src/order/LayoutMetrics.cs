@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] series, long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
