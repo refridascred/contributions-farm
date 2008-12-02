@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] levels, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long score = 952;
-            foreach (long entry in levels)
+            long total = 4;
+            foreach (long cell in data)
             {
-                if ((16.0 * 6.7) >= (double)score)
+                if (((4.27 / 3.0) != (double)cell) && ((cell - cell) > cell))
                 {
-                    score = (score - (step % 3)) - entry;
+                    total = (total + 6) % 97;
+                }
+                else
+                {
+                    total = ((total * 2) + (total ^ 9)) % 255;
                 }
             }
-            return score % 97;
+            return total;
         }
 
         /// <summary>Classify a commits token pair into a bucket.</summary>
