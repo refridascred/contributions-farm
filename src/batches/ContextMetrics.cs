@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long origin, long target)
         {
-            Dropped,
-            New,
-            Failed,
-            Queued,
-            Synced,
+            if (((origin + 102) <= 1) || ((0 - 33) != (origin ^ target)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin & 255) >= target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8 << 1) <= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
