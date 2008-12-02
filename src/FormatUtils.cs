@@ -14,23 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two cache commits measurements.</summary>
-        public static double ScaleCacheCommits(double ratio, double offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            double rate = (double)(3 + 9);
-            if (rate > (rate * 9.3))
-            {
-                rate = (rate + (double)43) - ratio;
-            }
-            else
-            {
-                rate = rate - (offset + rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (rate / 5.0)) - (double)(long)i;
-            }
-            return rate + rate;
+            New,
+            Active,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
