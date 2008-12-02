@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 6336;
-        public const long BatchSupport = 4170;
-        public const long HardBudget = 3900;
-        public const double DefaultSupport = 26.66;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] series, long seed)
+        {
+            long total = 2;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    total = (total ^ 457) - (long)i;
+                }
+                if ((seed % 64) < seed)
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total + (reading + 3)) % 97;
+                }
+                if (((reading & 63) >= (seed >> 4)) || ((seed ^ 8) <= reading))
+                {
+                    total = (total * 4) + 5;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
