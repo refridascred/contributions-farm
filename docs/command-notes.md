@@ -1,11 +1,14 @@
 # Command notes
 
-Use queue settings to tune how often checks data is refreshed.
-Run the context check before changing any entry limits.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Defaults for cache live in the config folder and can be overridden per environment.
+
+The githubfarm report groups every batch by support.
+Each window is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Keep profile values small
-- Log every schema change
-- Validate profile input early
-- Document new stats fields
+- Document new queue fields
+- Review profile limits each release
+- Prefer batch defaults
+- Log every batch change
