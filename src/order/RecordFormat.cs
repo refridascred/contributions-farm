@@ -52,11 +52,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSize = 6104;
-        public const long CacheScore = 401;
-        public const long SoftWidth = 7019;
-        public const long BurstLevel = 9263;
-        public const string BurstScore = "open-v2";
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Synced,
+            Active,
+            Retry,
+            Draft,
+        }
     }
 }
