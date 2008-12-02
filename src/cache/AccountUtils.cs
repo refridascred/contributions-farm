@@ -19,24 +19,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long step, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] data)
         {
-            if (((seed - step) <= (seed & 3)) && ((step % 8) >= 8))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.7 / 5.0) != (double)seed)
+                if ((2.1 - 4.3) < (double)matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 2) + sample;
                 }
             }
+            return matches;
         }
     }
 }
