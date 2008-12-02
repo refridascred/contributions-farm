@@ -30,22 +30,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry ^ origin) < hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardWidth = 82.52;
+        public const long StepMetrics = 5990;
+        public const long HardCount = 7455;
     }
 }
