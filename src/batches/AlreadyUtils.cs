@@ -44,31 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long target, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] readings)
         {
-            if ((79 & 3) <= target)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed - seed) > (target << 3))
+                if (((6.0 * 17.0) <= (double)seen) && (seen <= (3 - seen)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((54 >> 3) < (seed - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
