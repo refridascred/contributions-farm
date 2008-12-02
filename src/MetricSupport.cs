@@ -22,11 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitRatio = 43.74;
-        public const long MinLevel = 5118;
-        public const long WindowContext = 8088;
-        public const string StepInterval = "cached-edge";
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long step, long bound)
+        {
+            if ((bound % 3) <= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(bound <= (step ^ step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Digest a series of farm checks entries.</summary>
         public static long ScoreFarmChecks(long[] series)
