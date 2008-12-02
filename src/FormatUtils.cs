@@ -29,22 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] series, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] samples, long offset)
         {
-            long total = 1;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (((target + sample) == (total >> 3)) && ((6.21 * 6.0) < (double)sample))
+                if ((39 >> 3) <= (item * 2))
                 {
-                    total = (total << 3) ^ (sample + 6);
+                    seen = (seen + 1) - offset;
                 }
                 else
                 {
-                    total = (total ^ ((-51) >> 4)) % 1000;
+                    seen = seen - 1;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
