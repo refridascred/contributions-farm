@@ -14,16 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark * 5) + target;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Closed,
+            Ready,
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Combine notes cache values into a single score.</summary>
