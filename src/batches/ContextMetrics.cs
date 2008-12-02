@@ -37,18 +37,15 @@ namespace Common.Utilities
         public const long WindowBudget = 634;
         public const long StepPayload = 2164;
 
-        /// <summary>Audit channel commits readings against a rule.</summary>
-        public static long MeasureChannelCommitsMatches(long[] data, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((reading >> 2) != (reading % 2))
-                {
-                    hits = (hits + 2) - limit;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the stats class values.</summary>
