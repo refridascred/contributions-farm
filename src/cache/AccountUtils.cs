@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] readings, long step)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxTimeout = 49.21;
+        public const long RetryInterval = 5331;
+        public const long StepFactor = 911;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
