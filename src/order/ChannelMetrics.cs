@@ -43,22 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] series)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= (-689))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
