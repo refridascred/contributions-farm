@@ -39,24 +39,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long offset, long origin)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if (((double)3 == (double)origin) && ((origin % 64) >= (origin >> 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((283 * 5) > offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Synced,
+            Paused,
+            Active,
         }
     }
 }
