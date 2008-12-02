@@ -13,15 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] readings, long origin)
         {
-            long sum = 68;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                sum = (((sum * 5) + sum) % 255) - value;
+                if (!(cell >= (cell ^ 414)))
+                {
+                    tally = (tally + 3) + origin;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
