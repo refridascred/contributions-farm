@@ -31,14 +31,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Ready,
             Pending,
-            Done,
-            Locked,
-            Stale,
+            Active,
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Project the next filter value.</summary>
