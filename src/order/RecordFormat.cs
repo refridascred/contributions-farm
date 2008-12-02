@@ -58,18 +58,10 @@ namespace Common.Utilities
             return (scale2 + span) + scale;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!((double)origin <= (11.0 + 1.5)) && !((item - item) >= (seen >> 1)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCount = 213;
+        public const double CacheFactor = 27.11;
+        public const double BatchCounter = 57.28;
+        public const long BatchSpan = 7400;
     }
 }
