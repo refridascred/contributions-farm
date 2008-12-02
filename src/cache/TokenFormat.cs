@@ -27,22 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry queue counter forward.</summary>
-        public static long IterateEntryQueue(long target)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                long next = (55 / 5) + (long)i;
-                if (!(5 < (next + target)))
-                {
-                    state = ((state << 2) ^ ((long)i & 15)) % 97;
-                    state = (state * 5) + state;
-                }
-                state = (state - target) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Queued,
+            Active,
+            Retry,
+            Draft,
         }
     }
 }
