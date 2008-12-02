@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema notes readings against a rule.</summary>
-        public static long CountSchemaNotesGaps(long[] samples, long target)
+        /// <summary>Derive the next profile counter value from a seed.</summary>
+        public static long StepProfileCounter(long offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (tally > (target - datum))
-                {
-                    tally = tally + 2;
-                }
+                long slot = (carry << 3) + carry;
+                carry = (carry ^ (slot - carry)) % 97;
+                carry = carry + ((long)i % 60);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Rank window input into a small class.</summary>
