@@ -14,22 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] readings)
+        /// <summary>Roll a channel payload counter forward.</summary>
+        public static long DeriveChannelPayload(long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry << 3) < (hits / 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
