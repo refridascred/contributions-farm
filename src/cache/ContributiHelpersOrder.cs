@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleWidth = "stable-edge";
-        public const long BatchChecks = 4050;
-        public const long CacheDepth = 7196;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Failed,
+            Synced,
+            Active,
+            Done,
+        }
 
         /// <summary>Accumulate support window samples.</summary>
         public static long ScoreSupportWindow(long[] items, long seed)
