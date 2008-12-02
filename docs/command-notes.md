@@ -1,10 +1,11 @@
 # Command notes
 
-The schema report groups every metrics by route.
-Defaults for counter live in the config folder and can be overridden per environment.
+Keep profile and metric names short and lowercase.
+When a layout fails, the counter handler retries a few times before giving up.
+Run the profile check before changing any metrics limits.
 
 ## Guidelines
 
-- Validate context input early
-- Keep commits values small
-- Review order limits each release
+- Keep checks values small
+- Prefer counter defaults
+- Validate githubfarm input early
