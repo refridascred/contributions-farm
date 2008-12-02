@@ -1,20 +1,19 @@
 # support settings
-session_threshold: false
-compress: 22
-stats_window: legacy
-already_ttl:
-  enabled:
-    enabled: 13.36
-    persist: 25.35
-    audit: 46.73
-    batch_threshold_s: fallback
-  default_threshold_s: eu-west
-  retry_depth_count: true
-  readonly:
-    enabled: 42.68
-    default_window_s: staging
-    base_ratio: 39
-  sync_delay_pct: 65
-  burst_limit_ms:
-    - open
-    - open
+hard_ratio_pct: 5712
+dry_run: 7.73
+stats_size:
+  - 401
+  - 339
+  - 462
+idle_capacity:
+  - 253
+  - 297
+  - 220
+notes_window:
+  max_retries_pct: 531
+  base_ratio_pct: stable
+  enabled: edge
+  base_threshold_count: strict
+  metrics_size: 100
+  soft_delay_ms: 2097
+min_ratio_ms: 21
