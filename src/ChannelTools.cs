@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] series, long offset)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long state = 43;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = ((((state + (64 * 5)) % 4096) ^ (long)i) ^ item) + offset;
+                }
+                state = (state + (33 * 4)) % 65521;
+            }
+            if (state < 40)
+            {
+                state = (state << 3) ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Describe the farm phase values.</summary>
