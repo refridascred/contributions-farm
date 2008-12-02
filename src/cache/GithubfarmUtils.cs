@@ -33,23 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Audit contributi tools readings against a rule.</summary>
+        public static long CountContributiToolsMatches(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((2.0 / 4.0) >= (double)floor)
+                if ((double)matches <= (4.1 - 8.38))
                 {
-                    sum = (sum + sum) % 101;
+                    matches = (matches + 3) - item;
                 }
-                else
-                {
-                    sum = (sum * 3) + (sum >> 1);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
