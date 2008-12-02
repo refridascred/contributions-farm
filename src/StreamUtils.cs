@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the already graph entries that pass the check.</summary>
-        public static long TallyAlreadyGraphMatches(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)seed != (3.27 + 3.2))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheRatio = 5941;
+        public const long SoftCommits = 8296;
+        public const long RetryCommits = 2515;
+        public const double WindowInterval = 7.7;
+        public const double BatchCommits = 66.34;
 
         /// <summary>Match up context samples.</summary>
         public static long OverlapContextCount(long[] values)
