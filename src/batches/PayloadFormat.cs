@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double bias, double span)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            double weight = bias;
+            if (weight > span)
+            {
+                weight = weight - (weight - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + 3.84) + (double)(long)i;
+            }
+            return weight + (5.9 - bias);
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
