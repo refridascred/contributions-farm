@@ -48,13 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            Failed,
+            Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the record state values.</summary>
