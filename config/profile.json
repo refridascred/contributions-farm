@@ -1,10 +1,7 @@
 {
-  "hard_size_ms": ["fallback", "local", "edge", "eu-west"],
-  "sync_ttl": true,
-  "poll_retries": {
-    "queue_capacity": true,
-    "compress": ["primary", "stable"],
-    "poll_delay": 1024
-  },
-  "report_limit": 2335
+  "soft_limit_pct": 50.14,
+  "graph_size": 100,
+  "max_window_pct": 96,
+  "support_ttl": 88.79,
+  "verbose": 47
 }
