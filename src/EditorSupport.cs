@@ -38,12 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long seed)
         {
-            Idle,
-            Locked,
-            Active,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
