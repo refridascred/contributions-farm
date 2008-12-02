@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Digest a series of already cache entries.</summary>
+        public static long TotalAlreadyCache(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long score = 76;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                score = score - (item << 1);
             }
-            return anchor;
+            if (score < 39)
+            {
+                score = (score ^ (score & 15)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a queue record.</summary>
