@@ -42,15 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm checks entries.</summary>
-        public static long ScoreFarmChecks(long[] series)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long anchor = -997;
-            foreach (long datum in series)
-            {
-                anchor = ((anchor + (anchor % 100)) % 1000) - datum;
-            }
-            return anchor;
+            Retry,
+            Stale,
+            Dropped,
+            Draft,
+            Pending,
         }
     }
 }
