@@ -37,17 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache stats sample.</summary>
-        public static long SeekCacheStatsIndex(long[] items, long step)
+        /// <summary>Iterate the metrics route series from a seed.</summary>
+        public static long RollMetricsRoute(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a report snapshot.</summary>
