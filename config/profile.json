@@ -1,5 +1,6 @@
 {
-  "warm_timeout_count": "cached",
-  "strict": "standard",
-  "base_threshold_pct": 1355
+  "idle_window_pct": [177, 164],
+  "strict": 60,
+  "notes_ttl": 60,
+  "min_size_ms": 14.71
 }
