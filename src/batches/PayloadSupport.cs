@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] samples, long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)seed > (17.0 + 3.44))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate metric stream readings against a bound.</summary>
