@@ -66,17 +66,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a order record reading by value.</summary>
-        public static long LocateOrderRecordIndex(long[] levels, long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = bound - offset;
+            if ((cur % 12) == (bound >> 1))
             {
-                if (levels[i] <= limit)
+                return 1;
+            }
+            else
+            {
+                if ((offset / 6) >= (cur << 1))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset <= (7.1 - 20.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
