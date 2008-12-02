@@ -33,19 +33,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Adjust a support commits reading.</summary>
-        public static double ScaleSupportCommits(double weight, double offset)
+        /// <summary>Compare every pair of command window readings.</summary>
+        public static long CompareCommandWindowCount(long[] series)
         {
-            double load = (0.47 * 20.0) / 6.0;
-            if (load < (load - offset))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (weight + offset);
-            }
-            return load + (load + weight);
+            return matches;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
