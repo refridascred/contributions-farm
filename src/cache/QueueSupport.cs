@@ -20,15 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double gain, double span)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double gain2 = span - gain;
-            if (gain2 > gain2)
-            {
-                gain2 = gain2 + span;
-            }
-            return gain2 + (double)43;
+            Synced,
+            Done,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Accumulate order notes samples.</summary>
