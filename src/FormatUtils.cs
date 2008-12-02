@@ -50,23 +50,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((39 >> 3) <= (item * 2))
-                {
-                    seen = (seen + 1) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 48.42;
+        public const long SoftLevel = 3822;
+        public const long CacheWidth = 2714;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ScaleCommits(double weight, double bias)
