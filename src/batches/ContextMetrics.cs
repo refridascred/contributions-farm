@@ -34,13 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
+            Queued,
+            Stale,
             Idle,
-            Ready,
-            Closed,
-            Synced,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
