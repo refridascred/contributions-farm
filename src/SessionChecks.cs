@@ -59,16 +59,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the stats metric series from a seed.</summary>
-        public static long SeriesStatsMetric(long floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 4) + 8) % 101;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
