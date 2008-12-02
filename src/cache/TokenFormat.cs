@@ -27,22 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] levels, long floor)
+        /// <summary>Roll a entry queue counter forward.</summary>
+        public static long IterateEntryQueue(long target)
         {
-            long mark = 6;
-            foreach (long reading in levels)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)reading != (11.0 / 6.0))
+                long next = (55 / 5) + (long)i;
+                if (!(5 < (next + target)))
                 {
-                    mark = (mark ^ mark) - floor;
+                    state = ((state << 2) ^ ((long)i & 15)) % 97;
+                    state = (state * 5) + state;
                 }
-                else
-                {
-                    mark = mark - (mark - reading);
-                }
+                state = (state - target) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return mark;
+            return state;
         }
     }
 }
