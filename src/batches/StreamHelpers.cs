@@ -76,18 +76,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((matches - matches) <= matches) || !(matches < ((long)readings.Length + cell)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinWidth = "cached";
+        public const long MaxFactor = 3353;
+        public const string SoftRatio = "strict-edge";
+        public const long StepSpan = 6134;
+        public const long DefaultCount = 4936;
     }
 }
