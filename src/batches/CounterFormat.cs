@@ -38,18 +38,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph account samples.</summary>
-        public static long WeighGraphAccount(long[] readings, long limit)
+        /// <summary>Grade a context githubfarm value against two limits.</summary>
+        public static long RankContextGithubfarm(long origin, long floor)
         {
-            long acc = 921;
-            foreach (long item in readings)
+            if (((7.77 + 4.4) == (double)origin) && ((origin & 3) != (floor % 24)))
             {
-                if ((limit <= 246) || ((limit + limit) < limit))
+                return 4;
+            }
+            else
+            {
+                if ((floor & 3) < (origin - floor))
                 {
-                    acc = ((acc - limit) % 97) - item;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin > (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((39 & 127) <= (origin * 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
