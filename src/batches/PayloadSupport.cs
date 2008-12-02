@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support stream readings against a rule.</summary>
-        public static long AuditSupportStreamHits(long[] series, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (!((seen >> 5) > sample))
+                if (reading <= limit)
                 {
-                    seen = (seen + 2) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Classify a checks stats pair into a bucket.</summary>
