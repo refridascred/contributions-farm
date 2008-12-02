@@ -1,10 +1,21 @@
 # githubfarm settings
-soft_timeout: true
-retry_ttl: green
-batch_retries: 60
-session_timeout: 30
-channel_depth:
-  - local
-  - cached
-  - standard
-  - green
+base_threshold: open
+hard_ratio:
+  - edge
+  - eu-west
+editor_depth:
+  counter_ttl:
+    strict: false
+    flush_threshold:
+      - eu-west
+      - eu-west
+      - fallback
+    batch_ttl_ms:
+      - 336
+      - 229
+    flush_size_count: 59.7
+  soft_ttl_count: 86.82
+  default_limit: 27.33
+  batch_size: 4401
+  dry_run: 5188
+cache_capacity_pct: 96.89
