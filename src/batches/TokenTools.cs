@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long origin)
+        /// <summary>Fold a list of contributi metric readings.</summary>
+        public static long TallyContributiMetric(long[] levels, long floor)
         {
-            if ((seed << 2) < seed)
+            long result = -23;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin >= (seed - seed))
+                if ((6.8 * 9.2) <= (double)result)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + origin) < (origin + 451))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = (((result * 5) + 7) + sample) + floor;
                 }
             }
+            return result;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
