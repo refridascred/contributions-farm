@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardWidth = 9975;
-        public const long MaxOrder = 7886;
-        public const long SoftDepth = 7638;
-        public const string StepFactor = "local-v2";
-        public const string HardRatio = "cached-edge";
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Ready,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
