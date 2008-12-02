@@ -1,6 +1,5 @@
 {
-  "payload_retries": 41,
-  "strict": 5736,
-  "base_window_count": 3866,
-  "commits_window": 2794
+  "cache_delay_pct": 96.23,
+  "min_delay_s": "stable",
+  "channel_size": false
 }
