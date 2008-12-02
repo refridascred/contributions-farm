@@ -39,15 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools layout measurements.</summary>
-        public static double SmoothToolsLayout(double scale, double offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long bound, long target)
         {
-            double rate = (double)(93 - 49);
-            if (rate >= offset)
+            long prev = bound ^ target;
+            if (((target - target) != (target & 7)) && ((bound * 3) != (bound % 60)))
             {
-                rate = rate - scale;
+                return 8;
             }
-            return rate - (double)69;
+            else
+            {
+                if (prev >= (24 * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3 + 3) != (target + 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound >= (target - bound)) && ((2 * 3) >= (prev / 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel class values.</summary>
