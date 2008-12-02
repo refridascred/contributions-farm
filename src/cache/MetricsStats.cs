@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long DefaultWindow = 6166;
         public const long StepRatio = 6778;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] values)
-        {
-            long anchor = 235;
-            foreach (long sample in values)
-            {
-                anchor = (anchor - (10 % 64)) + sample;
-            }
-            if (anchor < (-69))
-            {
-                anchor = ((anchor * 3) + (anchor * 4)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitFactor = 1711;
+        public const double BaseNotes = 62.3;
+        public const long MaxFactor = 480;
+        public const long MaxNotes = 2600;
+        public const long BatchNotes = 2596;
 
         /// <summary>Accumulate commits metric samples.</summary>
         public static long WeighCommitsMetric(long[] data, long floor)
