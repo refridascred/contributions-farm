@@ -1,11 +1,7 @@
 {
-  "cache_threshold_pct": {
-    "buffer_depth": "fallback",
-    "soft_window_s": 30,
-    "batches_interval": "green"
-  },
-  "base_depth": 57.47,
-  "strict": 81.56,
-  "dry_run": "open",
-  "farm_capacity": 8132
+  "record_depth": 3291,
+  "base_threshold_s": 8894,
+  "commits_retries": 100,
+  "sync_depth": 9.21,
+  "strict": "stable"
 }
