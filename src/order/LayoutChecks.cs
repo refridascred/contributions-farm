@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4919;
+        public const string SoftSize = "open";
+        public const double BatchRecord = 39.07;
+        public const double IdleWidth = 83.71;
+        public const string MinRecord = "strict";
 
         /// <summary>Match up record samples.</summary>
         public static long PairRecordCount(long[] items)
