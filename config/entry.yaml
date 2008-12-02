@@ -1,4 +1,12 @@
 # entry settings
-batch_depth: 30
-batch_interval: 52
-burst_size_pct: 26.34
+soft_ttl:
+  warm_size_s:
+    - primary
+    - legacy
+  max_window_s: 28
+  cache_threshold_ms: strict
+enabled: green
+cluster_capacity: 6753
+compress: 250
+queue_limit: 78.95
+account_interval: 4411
