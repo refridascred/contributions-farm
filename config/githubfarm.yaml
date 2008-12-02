@@ -1,6 +1,20 @@
 # githubfarm settings
-batch_size_ms: true
-sync_limit_s: 250
-dry_run: 84.85
-default_capacity_pct: eu-west
-sync_interval_pct: 60
+flush_timeout:
+  - 231
+  - 362
+max_limit: false
+dry_run: latest
+verbose:
+  enabled: primary
+  base_depth_pct: 378
+  poll_threshold: staging
+  soft_depth_count:
+    - 263
+    - 251
+    - 196
+    - 464
+  idle_timeout: 100
+  min_window_s:
+    - 489
+    - 351
+    - 146
