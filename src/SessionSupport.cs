@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] values, long seed)
+        /// <summary>Measure how many tools layout samples are out of range.</summary>
+        public static long MeasureToolsLayoutOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (reading >= seed)
+                if ((hits - item) <= item)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
