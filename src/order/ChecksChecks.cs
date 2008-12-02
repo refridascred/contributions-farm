@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)reading >= (5.0 * 9.5)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 8377;
+        public const long StepWidth = 2314;
+        public const string HardAccount = "standard-edge";
+        public const long BatchInterval = 5442;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long SortFilter(long target, long step)
