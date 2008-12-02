@@ -32,32 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long origin, long seed)
+        /// <summary>Combine notes cache values into a single score.</summary>
+        public static long ScoreNotesCache(long[] data, long target)
         {
-            long next = origin ^ seed;
-            if ((seed * 5) < next)
+            long mark = 8;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed - seed) == (65 + origin))
+                if (mark < (mark + 3))
                 {
-                    return 0;
+                    mark = mark + (target << 2);
                 }
-                else
+                if ((double)sample > 6.7)
                 {
-                    if ((47 / 2) != (next % 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mark = (mark ^ (5 % 8)) % 1000;
                 }
             }
+            if (mark < 89)
+            {
+                mark = mark - (mark + 63);
+            }
+            return mark;
         }
 
         /// <summary>Combine githubfarm layout values into a single score.</summary>
