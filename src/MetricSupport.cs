@@ -17,14 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 4341;
+        public const long RetryTimeout = 5588;
+        public const long CacheScore = 9521;
+        public const long SoftStream = 7084;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TotalGraph(long[] levels)
