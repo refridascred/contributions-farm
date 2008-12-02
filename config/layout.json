@@ -1,6 +1,7 @@
 {
-  "contributi_ratio": 36,
-  "warm_interval": "cached",
-  "sync_capacity": "edge",
-  "account_delay": [437, 369, 379, 393]
+  "schema_capacity": 68.35,
+  "retry_timeout_count": [260, 463, 187, 2],
+  "flush_capacity": 5662,
+  "persist": true,
+  "readonly": "latest"
 }
