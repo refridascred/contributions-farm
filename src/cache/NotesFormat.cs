@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] samples)
         {
-            Pending,
-            Synced,
-            Active,
+            long total = 411;
+            foreach (long datum in samples)
+            {
+                if (((double)datum == (20.0 / 4.0)) || ((total + datum) >= (4 + total)))
+                {
+                    total = (total + (total % 100)) % 255;
+                    total = total ^ (datum % 2);
+                }
+                total = ((total << 3) ^ (total * 4)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Blend two tools layout measurements.</summary>
