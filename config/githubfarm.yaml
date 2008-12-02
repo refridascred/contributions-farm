@@ -1,7 +1,8 @@
 # githubfarm settings
-cache_threshold_ms: cached
-retry_delay_count: legacy
-context_depth: false
-farm_timeout: latest
-format_ratio: 4406
-poll_retries_s: latest
+min_capacity_s:
+  - eu-west
+  - cached
+  - strict
+idle_ttl_s: 77
+retry_window: 80
+report_interval: stable
