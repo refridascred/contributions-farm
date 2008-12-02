@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] samples, long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double drift = (floor - rate) - 9.0;
+            if (drift < (rate * 13.0))
             {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - (double)48;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)743) + (double)(long)i;
+            }
+            return drift - (double)806;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
