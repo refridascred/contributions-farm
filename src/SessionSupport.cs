@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a editor payload value against two limits.</summary>
-        public static long ClassifyEditorPayload(long origin, long origin2)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long bound = origin + origin2;
-            if ((origin + origin2) != (bound & 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin & 1) <= (origin << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin <= (2.0 - 9.54))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
