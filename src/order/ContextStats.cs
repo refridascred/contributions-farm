@@ -48,18 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count ^ reading) < count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 1609;
+        public const long WindowCount = 8681;
+        public const long BurstBudget = 3196;
     }
 }
