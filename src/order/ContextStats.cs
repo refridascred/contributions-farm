@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Blend two channel stats measurements.</summary>
+        public static double ScaleChannelStats(double rate, double span)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            double mean = rate - rate;
+            if (mean < (double)2)
+            {
+                mean = mean - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - rate) - (double)(long)i;
+            }
+            return mean - 3.85;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
