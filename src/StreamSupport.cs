@@ -19,21 +19,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell != target)
                 {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
