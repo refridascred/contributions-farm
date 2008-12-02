@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const long BaseFarm = 4372;
         public const long BurstFarm = 8160;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
