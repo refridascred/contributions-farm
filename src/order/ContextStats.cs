@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine queue command values into a single score.</summary>
-        public static long WeighQueueCommand(long[] samples, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double rate, double bias)
         {
-            long result = 4;
-            foreach (long value in samples)
-            {
-                result = ((result * 4) + (result + value)) - offset;
-            }
-            return result;
+            double mean = (double)(115 % 10);
+            return (mean - bias) + rate;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
