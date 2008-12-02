@@ -1,5 +1,15 @@
 # githubfarm settings
-max_depth_ms: 3
-burst_window_count: 15.97
-audit: false
-batch_size_ms: stable
+min_ttl: 8.75
+poll_size_s: 36
+burst_timeout_pct: 66.24
+warm_size: 2955
+audit:
+  sync_interval: 30
+  hard_limit: 60
+  flush_size_s: false
+  audit: local
+  strict:
+    - primary
+    - strict
+    - stable
+    - blue
