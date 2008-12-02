@@ -22,24 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long step, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] items, long seed)
         {
-            if ((bound % 3) <= bound)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(bound <= (step ^ step)))
+                if (cell <= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Blend two checks measurements.</summary>
