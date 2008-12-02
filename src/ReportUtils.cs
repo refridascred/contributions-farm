@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] items, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (!(((-45) & 127) < (target % 7)) && (((55 ^ target) == (matches + datum)) || ((target << 3) > datum)))
+                if ((13.0 / 9.0) < (double)tally)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = ((tally + 2) + datum) - offset;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
