@@ -63,12 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] data)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen + (-24)) < (seen ^ seen))
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
