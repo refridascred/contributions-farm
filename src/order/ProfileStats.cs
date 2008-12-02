@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next profile counter value from a seed.</summary>
-        public static long StepProfileCounter(long offset)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long slot = (carry << 3) + carry;
-                carry = (carry ^ (slot - carry)) % 97;
-                carry = carry + ((long)i % 60);
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Look up the position of a cache stats sample.</summary>
