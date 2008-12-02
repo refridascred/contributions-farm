@@ -1,12 +1,11 @@
 # Command notes
 
-Run the window check before changing any batches limits.
-Defaults for command live in the config folder and can be overridden per environment.
-Run the support check before changing any queue limits.
+Run the counter check before changing any format limits.
+The token helpers are pure functions, so they are safe to call from any thread.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep buffer values small
-- Document new already fields
-- Log every editor change
-- Review cluster limits each release
+- Log every support change
+- Review buffer limits each release
+- Validate channel input early
