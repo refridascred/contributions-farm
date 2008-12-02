@@ -24,11 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double bias, double floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] items, long seed)
         {
-            double scale = (double)(2 >> 4);
-            return (scale + floor) + bias;
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a buffer stats.</summary>
