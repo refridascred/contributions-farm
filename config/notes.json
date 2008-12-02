@@ -1,7 +1,5 @@
 {
-  "soft_limit_ms": true,
-  "window_timeout": 250,
-  "warm_threshold": "open",
-  "cache_retries_count": "staging",
-  "strict": 31.68
+  "hard_retries": 88.99,
+  "sync_size_s": [420, 163, 237],
+  "soft_delay_ms": 23.06
 }
