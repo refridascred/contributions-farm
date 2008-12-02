@@ -5,35 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] items, long target)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long target)
         {
-            long state = 80;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((target >> 5) != (55 % 8)) && ((target + state) > 893))
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
                 {
-                    state = ((state * 4) + state) % 255;
-                }
-                if ((target <= (datum + datum)) && (target <= (399 / 4)))
-                {
-                    state = (state * 3) + (6 << 1);
-                }
-                else
-                {
-                    state = state ^ (state - target);
-                    state = ((state * 4) + (datum & 255)) % 255;
-                }
-                if (!(((-70) ^ datum) >= state))
-                {
-                    state = (state << 2) ^ datum;
-                }
-                if (((579 ^ state) >= state) && ((datum - target) > (target << 1)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Combine format values into a single score.</summary>
