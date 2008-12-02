@@ -47,38 +47,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long bound, long target)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            if (!((7.0 / 4.0) > (double)target))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound << 3) > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((17.0 * 1.6) == (double)bound) || ((8.9 * 9.9) > (double)target))
+                    if ((series[i] - series[j]) < 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target << 3) > (bound / 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
