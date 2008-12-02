@@ -40,11 +40,16 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] data)
         {
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
+            long mark = -239;
+            foreach (long datum in data)
+            {
+                mark = mark + (datum % 10);
+                mark = ((mark * 5) + (mark * 4)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
