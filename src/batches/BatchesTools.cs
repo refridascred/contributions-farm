@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((19 + seen) != (seen + sample))
+                if ((11.0 - 1.06) == (double)floor)
                 {
-                    seen = seen + 3;
+                    matches = (matches + 3) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
