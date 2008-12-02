@@ -46,16 +46,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                score = ((score << 3) ^ score) % 97;
-                score = ((score * 5) + (long)i) % 65521;
+                mix = (mix ^ bound) % 65521;
+                mix = ((mix * 4) + mix) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
