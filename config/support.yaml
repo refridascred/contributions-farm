@@ -1,10 +1,5 @@
 # support settings
-sync_interval_s:
-  - 80
-  - 250
-  - 275
-compress: 500
-soft_capacity: 1229
-min_capacity: strict
-persist: primary
-retry_capacity: 631
+poll_ttl: 500
+burst_threshold_count: fallback
+compress: standard
+hard_window_s: true
