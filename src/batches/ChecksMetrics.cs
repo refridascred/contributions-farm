@@ -92,19 +92,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] readings, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            double drift = 15.0 - 13.0;
+            if (drift < (drift * 0.2))
             {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - 19.0;
             }
-            return ok;
+            else
+            {
+                drift = drift + (scale + bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift / 8.0)) + (double)(long)i;
+            }
+            return drift - (scale * 4.06);
         }
     }
 }
