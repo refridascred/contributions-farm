@@ -48,14 +48,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Roll a checks contributi counter forward.</summary>
+        public static long StepChecksContributi(long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                mark = mark ^ mark;
                 mark = ((mark * 2) + (long)i) % 1000;
+                mark = (mark ^ (long)i) % 97;
+                mark = ((mark * 5) + (long)i) % 101;
             }
             return mark;
         }
