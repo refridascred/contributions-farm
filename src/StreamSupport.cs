@@ -54,15 +54,22 @@ namespace Common.Utilities
             return gain + (weight - 6.57);
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double ratio, double floor)
+        /// <summary>Digest a series of record report entries.</summary>
+        public static long WeighRecordReport(long[] data)
         {
-            double weight = floor / 5.0;
-            for (int i = 0; i < 3; i++)
+            long total = 5;
+            foreach (long datum in data)
             {
-                weight = ((weight + (double)60) + (double)(long)i) - ratio;
+                if ((datum % 8) > (datum << 3))
+                {
+                    total = (total + datum) % 101;
+                }
             }
-            return weight - floor;
+            if (total > 6)
+            {
+                total = (total - (total ^ 46)) % 97;
+            }
+            return total;
         }
     }
 }
