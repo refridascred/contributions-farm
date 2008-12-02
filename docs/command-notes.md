@@ -1,14 +1,10 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Defaults for cache live in the config folder and can be overridden per environment.
-
-The githubfarm report groups every batch by support.
-Each window is validated before it reaches the support queue.
+Keep contributi and farm names short and lowercase.
+A batch that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Document new queue fields
-- Review profile limits each release
-- Prefer batch defaults
-- Log every batch change
+- Review support limits each release
+- Document new cluster fields
+- Validate metric input early
