@@ -26,16 +26,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a metric counter counter forward.</summary>
-        public static long DeriveMetricCounter(long limit)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double ratio, double span)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            double load = 7.98 * 11.0;
+            if (load <= (ratio * 2.0))
             {
-                mark = mark + (limit % 8);
-                mark = ((mark * 5) + (long)i) % 65521;
+                load = (load - (double)99) + span;
             }
-            return mark;
+            return load - (ratio - ratio);
         }
 
         /// <summary>Project the next entry value.</summary>
