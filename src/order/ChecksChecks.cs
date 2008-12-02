@@ -18,16 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long floor, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            if ((9.62 + 15.0) > (double)floor)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
-                mix = ((mix * 4) + (long)i) % 1000;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (origin < (floor ^ floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((70 >> 1) < floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter stats.</summary>
