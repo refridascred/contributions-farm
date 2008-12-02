@@ -27,13 +27,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] readings, long bound)
         {
-            public double Total { get; set; }
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
