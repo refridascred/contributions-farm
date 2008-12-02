@@ -22,19 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long anchor = 8;
-            foreach (long reading in items)
-            {
-                anchor = (anchor * 4) + anchor;
-                if (anchor > (reading / 4))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Active,
+            Failed,
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a editor options.</summary>
