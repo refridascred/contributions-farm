@@ -55,18 +55,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] data, long bound)
+        /// <summary>Find the first cluster context entry that matches the target.</summary>
+        public static long LookupClusterContextIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)0 == (double)bound)
+                if (levels[i] > target)
                 {
-                    count = (count + 2) - sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
