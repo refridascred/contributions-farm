@@ -25,17 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] items, long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Queued,
+            Paused,
+            New,
+            Dropped,
         }
 
         /// <summary>Accumulate token samples.</summary>
