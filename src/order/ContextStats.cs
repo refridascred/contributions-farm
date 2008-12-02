@@ -20,12 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardWidth = "local-edge";
-        public const long BurstToken = 8628;
-        public const string WindowToken = "local-v2";
-        public const long CacheToken = 8189;
-        public const string BatchWidth = "stable-edge";
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next editor value.</summary>
         public static double BlendEditor(double gain, double floor)
