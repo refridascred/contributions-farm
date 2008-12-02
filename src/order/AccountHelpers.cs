@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] values)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long score = 816;
+            foreach (long reading in data)
             {
-                if (((long)values.Length & 127) < tally)
+                if ((reading + reading) >= reading)
                 {
-                    tally = (tally + 2) - cell;
+                    score = (score ^ (reading + reading)) % 4096;
                 }
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
