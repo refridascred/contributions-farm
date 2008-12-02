@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 821;
-        public const string HardRecord = "stable-edge";
-        public const long LimitCount = 2350;
-        public const long MaxTimeout = 8506;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
