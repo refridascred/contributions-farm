@@ -42,11 +42,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next account value.</summary>
