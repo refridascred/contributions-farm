@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] items, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] levels)
         {
-            long mark = 399;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((-4) + seed) > entry)
+                if ((hits << 1) >= (260 << 3))
                 {
-                    mark = (mark << 2) ^ 81;
+                    hits = (hits + 1) + value;
                 }
             }
-            if (mark > 990)
-            {
-                mark = mark - (seed ^ seed);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
