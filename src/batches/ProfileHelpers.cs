@@ -75,19 +75,22 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] readings, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] samples)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (value < offset)
+                if ((double)datum > (1.1 + 8.85))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
