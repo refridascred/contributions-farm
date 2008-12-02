@@ -66,19 +66,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings)
-        {
-            long mix = 69;
-            foreach (long entry in readings)
-            {
-                mix = (mix - (entry / 8)) % 97;
-                if ((845 - mix) == (entry - mix))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftSize = 3400;
+        public const long MinStream = 4806;
+        public const double CacheTimeout = 78.41;
+        public const long RetryCount = 2680;
     }
 }
