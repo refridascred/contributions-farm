@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data)
-        {
-            long result = 792;
-            foreach (long reading in data)
-            {
-                if (result < (reading << 2))
-                {
-                    result = (result - (reading + result)) % 255;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryCount = 3353;
+        public const string HardLayout = "stable-1";
+        public const long BatchSize = 671;
 
         /// <summary>Accumulate record notes samples.</summary>
         public static long CombineRecordNotes(long[] levels)
