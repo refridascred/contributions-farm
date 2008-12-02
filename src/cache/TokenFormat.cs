@@ -38,10 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 9637;
-        public const long CacheOrder = 5892;
-        public const long IdleTimeout = 394;
-        public const long BatchInterval = 5750;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
