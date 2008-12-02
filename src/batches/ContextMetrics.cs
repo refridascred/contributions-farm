@@ -45,11 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] series)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally * 3) >= tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
