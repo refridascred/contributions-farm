@@ -14,23 +14,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] series, long step)
         {
-            long mix = 812;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(item > (item % 64)))
+                if (series[i] > step)
                 {
-                    mix = (mix + (mix + item)) % 255;
+                    return (long)i;
                 }
-                mix = mix + (item * 2);
             }
-            if (mix > 3)
-            {
-                mix = (mix + (mix % 24)) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many metric contributi samples are out of range.</summary>
