@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] levels, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score + floor) <= score)
+                if (levels[i] <= bound)
                 {
-                    score = score - (score - floor);
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
