@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache farm input into a small class.</summary>
-        public static long BucketCacheFarm(long limit, long limit2)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] samples)
         {
-            long offset = limit ^ limit2;
-            if ((limit2 > limit) && ((double)offset >= (5.61 - 4.56)))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + 49) > (limit >> 4))
+                if ((29 + entry) >= (count + entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit2 < limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
