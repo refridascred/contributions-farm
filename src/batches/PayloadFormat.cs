@@ -17,19 +17,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long seed, long floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            if (((floor % 12) == (floor << 3)) && ((floor + floor) == (seed + floor)))
             {
-                if (reading != floor)
+                return 2;
+            }
+            else
+            {
+                if ((1 + floor) == (663 ^ floor))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - 9) == (5 & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (13.0 <= (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
