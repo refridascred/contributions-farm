@@ -1,7 +1,5 @@
 # entry settings
-persist: 39.92
-dry_run:
-  - 84
-  - 295
-  - 206
-hard_ttl: 13
+min_capacity: fallback
+sync_window: strict
+max_ttl_count: 9.95
+idle_ratio_s: 88.2
