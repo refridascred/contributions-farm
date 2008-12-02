@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(5 << 2);
+            if (ratio > bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio + (bias - 1.0)) - gain;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (double)8;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
