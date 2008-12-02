@@ -33,15 +33,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two route report measurements.</summary>
-        public static double BlendRouteReport(double ratio, double floor)
+        /// <summary>Audit channel commits readings against a rule.</summary>
+        public static long MeasureChannelCommitsMatches(long[] data, long limit)
         {
-            double bias = floor / 7.0;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                bias = ((bias - (bias - bias)) + (double)(long)i) + ratio;
+                if ((reading >> 2) != (reading % 2))
+                {
+                    hits = (hits + 2) - limit;
+                }
             }
-            return bias + bias;
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
