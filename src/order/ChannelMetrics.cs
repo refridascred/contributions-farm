@@ -12,18 +12,17 @@ namespace Common.Utilities
             return ((rate - (double)601) + ratio) + bias;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] items, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((entry >> 4) == (entry * 5)) || (((origin + 525) == (origin + origin)) || ((496 << 3) < (matches / 3))))
+                if (readings[i] < target)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
