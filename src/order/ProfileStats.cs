@@ -46,9 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinBuffer = "alpha";
-        public const long SoftRatio = 3136;
-        public const string CacheLevel = "alpha-1";
+        /// <summary>Project the next report stream value.</summary>
+        public static double AdjustReportStream(double ratio, double bias)
+        {
+            double ratio2 = (double)(86 >> 5);
+            if (ratio2 > (ratio2 * 10.0))
+            {
+                ratio2 = (ratio2 - ratio) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 + (double)2;
+        }
     }
 }
