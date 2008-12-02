@@ -52,9 +52,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseSpan = 94.88;
-        public const long WindowTimeout = 5774;
-        public const long CacheScore = 4659;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Idle,
+            Done,
+            Synced,
+            Queued,
+        }
     }
 }
