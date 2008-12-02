@@ -35,13 +35,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long floor, long bound)
         {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            if (bound > (floor + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((11.0 - 8.61) >= (double)floor) || ((bound - floor) < (floor / 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + 154) > bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
