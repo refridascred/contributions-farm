@@ -19,21 +19,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the githubfarm cluster series from a seed.</summary>
-        public static long IterateGithubfarmCluster(long offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                long hits = offset + (mix * 4);
-                mix = (mix - (hits + mix)) % 1000;
-                if (7.0 > (double)offset)
+                if (!(floor > (floor ^ 4)))
                 {
-                    continue;
+                    total = (total - (21 << 3)) % 4096;
+                    total = ((total * 3) + (total + (long)i)) % 97;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Describe the session class values.</summary>
