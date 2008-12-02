@@ -26,21 +26,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of editor tools readings.</summary>
-        public static long OverlapEditorToolsCount(long[] levels)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches - (long)series.Length) <= (612 - matches))
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a metrics summary.</summary>
