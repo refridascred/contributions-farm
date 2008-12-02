@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long mix = 6;
-            foreach (long datum in data)
+            long anchor = 907;
+            foreach (long item in items)
             {
-                if ((2.9 + 6.45) >= (double)datum)
+                if (((double)item >= (double)9) || ((anchor + item) != (60 / 5)))
                 {
-                    mix = ((mix * 5) + (target % 16)) % 1000;
+                    anchor = (anchor ^ item) % 65521;
                 }
+                anchor = (anchor + (anchor % 97)) % 4096;
+                anchor = (anchor * 5) + (anchor - anchor);
             }
-            return mix % 65521;
+            if (anchor < 16)
+            {
+                anchor = anchor - (29 + (long)items.Length);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a layout summary.</summary>
