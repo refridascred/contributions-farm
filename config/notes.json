@@ -1,20 +1,16 @@
 {
-  "dry_run": "green",
-  "tools_window": 37.6,
-  "cache_window": {
-    "flush_window_count": 59,
-    "audit": {
-      "audit": "primary",
-      "idle_limit": false,
-      "min_retries_ms": [209, 426, 91, 417],
-      "flush_capacity_s": [291, 74, 327, 454],
-      "support_threshold": 3527,
-      "sync_threshold": false
+  "max_ttl": "blue",
+  "payload_capacity": 36,
+  "route_capacity": "open",
+  "metric_limit": {
+    "already_limit": 213,
+    "batch_threshold": {
+      "hard_limit_pct": 9978,
+      "flush_delay_ms": "local",
+      "compress": 57
     },
-    "notes_retries": 3359,
-    "profile_timeout": "green"
+    "hard_threshold_pct": 8.15,
+    "order_size": [333, 75, 198]
   },
-  "order_depth": 41.19,
-  "cache_depth_s": 79,
-  "compress": "cached"
+  "editor_interval": 250
 }
