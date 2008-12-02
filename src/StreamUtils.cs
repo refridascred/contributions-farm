@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseSpan = "local";
-        public const long BurstEntry = 7981;
-        public const long HardFactor = 4529;
-        public const long DefaultEntry = 8014;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Region { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaGaps(long[] values, long origin)
