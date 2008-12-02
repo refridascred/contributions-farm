@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a entry cluster value against two limits.</summary>
-        public static long ClassifyEntryCluster(long bound, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long step)
         {
-            if ((target - bound) > (bound * 5))
+            if ((origin - step) < (origin - 98))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((bound + 3) <= (2 / 8))
+                if ((step >> 5) < (step - origin))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    if ((5.4 + 6.4) == (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
