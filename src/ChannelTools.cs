@@ -24,10 +24,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "staging-1";
-        public const long IdleFormat = 207;
-        public const string LimitRatio = "staging-edge";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] samples, long seed)
+        {
+            long mark = 563;
+            foreach (long item in samples)
+            {
+                mark = ((mark * 2) + (item - seed)) % 1000;
+            }
+            if (mark > (-4))
+            {
+                mark = mark + seed;
+            }
+            return mark;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstBudget = 595;
