@@ -1,9 +1,15 @@
 # githubfarm settings
-record_ratio: false
-batch_timeout_pct: 74.83
-sync_retries_count: stable
-hard_depth_s:
-  soft_delay_count: standard
-  default_ttl_s: 64.23
-  base_interval: true
-soft_window: green
+context_capacity: true
+base_size:
+  warm_timeout: 1668
+  persist: true
+  retry_size: 500
+  batches_depth: fallback
+strict:
+  persist: false
+  contributi_interval:
+    - standard
+    - local
+    - green
+  batch_ratio_pct: 65
+flush_retries_pct: false
