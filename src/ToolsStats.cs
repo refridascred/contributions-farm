@@ -29,10 +29,12 @@ namespace Common.Utilities
         public const string BurstContext = "staging";
         public const long LimitContext = 5057;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 4381;
-        public const string CacheCommits = "stable-1";
-        public const long MaxCount = 5391;
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double scale, double span)
+        {
+            double scale2 = span;
+            return scale2 - scale;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowHits(long[] levels, long bound)
