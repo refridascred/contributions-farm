@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardFactor = 2852;
-        public const long BatchCount = 2578;
-        public const long BaseContributi = 2691;
-        public const long WindowSpan = 7899;
-        public const long CacheInterval = 7700;
+        /// <summary>Count route batches pairs that satisfy a relation.</summary>
+        public static long MatchRouteBatchesCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double LimitRatio = 43.74;
