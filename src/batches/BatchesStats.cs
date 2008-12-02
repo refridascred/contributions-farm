@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate metric route samples.</summary>
-        public static long CombineMetricRoute(long[] values, long seed)
-        {
-            long result = 344;
-            foreach (long sample in values)
-            {
-                result = ((result << 3) ^ seed) ^ sample;
-            }
-            if (result < (-84))
-            {
-                result = ((result * 3) + result) % 101;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 523;
+        public const long IdleAlready = 5534;
+        public const long BatchFactor = 8478;
+        public const long MinCount = 6368;
+        public const long IdleTimeout = 3802;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long CompareQueueCount(long[] readings)
