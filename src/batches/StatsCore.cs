@@ -46,15 +46,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine githubfarm layout values into a single score.</summary>
-        public static long WeighGithubfarmLayout(long[] values, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            long sum = 23;
-            foreach (long cell in values)
+            long acc = -953;
+            foreach (long entry in data)
             {
-                sum = (((sum * 3) + (origin + origin)) % 1000) ^ cell;
+                if ((entry + acc) >= (-283))
+                {
+                    acc = ((acc << 3) ^ (acc << 1)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 255;
+                }
+                if ((acc >> 4) != (868 << 1))
+                {
+                    break;
+                }
             }
-            return sum;
+            return acc % 1000;
         }
 
         /// <summary>Hold a commits stats.</summary>
