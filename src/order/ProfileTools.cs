@@ -47,18 +47,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many notes filter samples are out of range.</summary>
-        public static long TallyNotesFilterOutliers(long[] series, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long edge = floor - limit;
+            if ((floor ^ floor) >= (limit & 255))
             {
-                if ((datum & 63) <= (tally ^ tally))
+                return 3;
+            }
+            else
+            {
+                if ((limit << 3) != (limit * 3))
                 {
-                    tally = (tally + 1) - seed;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + edge) > limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
