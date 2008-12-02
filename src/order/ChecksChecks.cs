@@ -18,31 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long floor, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            if ((9.62 + 15.0) > (double)floor)
+            long total = 31;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin < (floor ^ floor))
+                if (!((6.7 * 18.0) <= (double)total))
                 {
-                    return 8;
+                    total = (total ^ (sample + total)) % 4096;
+                    total = ((total * 3) + (sample ^ total)) % 1000;
+                }
+                if (((long)levels.Length / 6) <= (total & 1))
+                {
+                    total = (total - sample) % 1000;
                 }
                 else
                 {
-                    if ((70 >> 1) < floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = total + total;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Hold a counter stats.</summary>
