@@ -63,12 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
