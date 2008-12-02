@@ -31,24 +31,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a entry session pair into a bucket.</summary>
-        public static long BucketEntrySession(long limit, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if ((23 + target) <= (limit >> 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((12.0 / 7.0) >= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Synced,
+            Locked,
+            Paused,
         }
 
         /// <summary>Validate entry checks readings against a bound.</summary>
