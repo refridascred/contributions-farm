@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long target, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            if ((double)target < (7.9 + 3.98))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (13.0 > (double)seed)
+                if (535 > count)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed & 1) >= 2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed * 5) <= (732 / 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 2) + cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
