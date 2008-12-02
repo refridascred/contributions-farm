@@ -41,15 +41,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a layout context figure with a bias.</summary>
-        public static double BlendLayoutContext(double rate, double bias)
+        /// <summary>Rank buffer format input into a small class.</summary>
+        public static long RankBufferFormat(long target, long step)
         {
-            double rate2 = 7.12;
-            if (rate2 <= (rate / 7.0))
+            if ((step + step) < (target & 15))
             {
-                rate2 = rate2 - rate;
+                return 8;
             }
-            return rate2 + bias;
+            else
+            {
+                if ((double)step <= (0.5 * 8.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target % 64) > (step % 12)) || (step <= (target - step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((step + 5) < target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate token samples.</summary>
