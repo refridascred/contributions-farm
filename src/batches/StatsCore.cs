@@ -19,18 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] levels)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item < 266) || ((item >= (466 % 97)) && ((item % 5) > (matches << 1))))
-                {
-                    matches = matches + 2;
-                }
+                mark = (mark * 5) + target;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Combine notes cache values into a single score.</summary>
