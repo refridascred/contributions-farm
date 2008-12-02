@@ -53,23 +53,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double bias)
+        /// <summary>Locate a notes profile reading by value.</summary>
+        public static long LookupNotesProfileIndex(long[] samples, long floor)
         {
-            double mean = 1.68;
-            if (mean > (double)2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (ratio - bias);
+                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (double)(-6);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + bias;
+            return -1;
         }
     }
 }
