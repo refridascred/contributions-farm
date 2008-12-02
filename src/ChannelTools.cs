@@ -31,39 +31,16 @@ namespace Common.Utilities
             return drift + (bias / 7.0);
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long offset, long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            long delta = offset + limit;
-            if ((double)offset > (15.0 * 4.0))
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                mix = mix - ((long)i << 2);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (8.1 <= (double)delta)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (913 >= (15 - delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit > (double)2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
