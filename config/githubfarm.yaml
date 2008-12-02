@@ -1,13 +1,7 @@
 # githubfarm settings
-metric_interval: true
-min_depth_pct:
-  - open
-  - staging
-  - eu-west
-  - legacy
-stats_ttl: 70
-sync_window_s:
-  - 319
-  - 278
-  - 313
-  - 195
+layout_ttl: 29.44
+githubfarm_depth: strict
+retry_timeout: false
+counter_ttl: legacy
+compress: 12.43
+flush_delay_count: true
