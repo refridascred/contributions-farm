@@ -1,9 +1,14 @@
 # support settings
-strict: true
-queue_limit: 57.02
-payload_delay: 1173
-hard_ratio:
-  - legacy
-  - local
-  - legacy
-dry_run: 250
+hard_size_s: 23.15
+record_threshold: false
+notes_threshold:
+  checks_delay: 62
+  burst_limit_count: 1910
+  enabled: 12
+  soft_size_count: green
+  soft_limit_s:
+    - local
+    - fallback
+    - green
+    - staging
+dry_run: fallback
