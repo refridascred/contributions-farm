@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] values, long step)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            double rate = (gain + bias) / 2.0;
+            if (rate < (double)63)
             {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - gain;
             }
-            return ok;
+            return rate + gain;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
