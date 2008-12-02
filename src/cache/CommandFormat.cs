@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] samples)
         {
-            long sum = 5;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((7.27 / 7.0) < (double)sum)
+                if ((double)count != (3.6 + 7.0))
                 {
-                    sum = ((sum - (datum + datum)) % 65521) - limit;
+                    count = (count + 1) + cell;
                 }
-                sum = (sum ^ (sum + datum)) % 4096;
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
