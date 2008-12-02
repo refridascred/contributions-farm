@@ -19,21 +19,24 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count stats profile pairs that satisfy a relation.</summary>
-        public static long OverlapStatsProfileCount(long[] levels)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 1;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((long)readings.Length <= 66)
                 {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 3) ^ value) % 97;
+                    state = (state * 3) + (521 + value);
+                    break;
+                }
+                if (((value % 2) <= value) || ((9.1 - 8.0) == (double)value))
+                {
+                    state = (state << 2) ^ value;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
