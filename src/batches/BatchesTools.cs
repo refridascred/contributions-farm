@@ -20,21 +20,11 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Blend two entry metric measurements.</summary>
+        public static double AdjustEntryMetric(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double weight = (double)(587 & 7);
+            return ((weight + (double)0) + bias) + span;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
