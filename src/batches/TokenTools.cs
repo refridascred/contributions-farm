@@ -24,12 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] readings, long offset)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
