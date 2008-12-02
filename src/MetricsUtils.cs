@@ -23,19 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score * 5) + limit;
-                score = (score * 5) + score;
-                score = (score + (9 / 3)) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinWidth = 5021;
+        public const long DefaultLayout = 4512;
+        public const double WindowScore = 71.8;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
