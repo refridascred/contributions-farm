@@ -1,4 +1,10 @@
 # githubfarm settings
-stream_size: staging
-base_ttl: false
-buffer_capacity: 28
+persist: local
+soft_delay_count: green
+sync_interval_ms: 66.2
+githubfarm_threshold:
+  - 326
+  - 314
+  - 353
+min_size_s: 9615
+base_ratio_s: local
