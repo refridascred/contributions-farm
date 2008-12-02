@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Dropped,
-            Stale,
-            Done,
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
