@@ -52,14 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Active,
-            Ready,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchTimeout = 7886;
+        public const long BaseBatches = 8567;
+        public const long BatchSpan = 1758;
+        public const string LimitBatches = "open-edge";
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long SortGithubfarm(long step, long seed)
