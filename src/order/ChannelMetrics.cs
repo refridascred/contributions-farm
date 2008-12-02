@@ -32,18 +32,10 @@ namespace Common.Utilities
         public const long MaxBudget = 7469;
         public const long WindowFactor = 1249;
 
-        /// <summary>Count the window githubfarm entries that pass the check.</summary>
-        public static long AuditWindowGithubfarmHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches - matches) <= (matches + reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowSpan = 7941;
+        public const long BatchInterval = 3658;
+        public const string BurstGraph = "standard-v2";
+        public const string MaxScore = "latest-edge";
     }
 }
