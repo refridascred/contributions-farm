@@ -24,12 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4919;
-        public const string SoftSize = "open";
-        public const double BatchRecord = 39.07;
-        public const double IdleWidth = 83.71;
-        public const string MinRecord = "strict";
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long PairRecordCount(long[] items)
