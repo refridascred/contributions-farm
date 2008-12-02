@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftScore = 7887;
-        public const long WindowFilter = 1951;
-        public const double IdleLevel = 20.39;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Dropped,
+            Stale,
+            Done,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string RetryWindow = "alpha";
