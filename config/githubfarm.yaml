@@ -1,12 +1,10 @@
 # githubfarm settings
-sync_threshold_s:
-  audit: eu-west
-  support_depth: 7871
-  warm_timeout_count: 78
-cache_delay: open
-audit:
-  - 479
-  - 91
-  - 323
-  - 357
-githubfarm_ttl: 55
+soft_timeout: true
+retry_ttl: green
+batch_retries: 60
+session_timeout: 30
+channel_depth:
+  - local
+  - cached
+  - standard
+  - green
