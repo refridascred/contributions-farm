@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] values, long offset)
         {
-            Closed,
-            Failed,
-            New,
+            long score = 26;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    score = (((score ^ offset) % 255) + (long)i) + item;
+                }
+                if ((score + 1) >= (score * 5))
+                {
+                    score = ((score * 5) + (offset * 2)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
