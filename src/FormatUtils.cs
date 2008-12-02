@@ -66,12 +66,19 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long step)
         {
-            New,
-            Synced,
-            Retry,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
