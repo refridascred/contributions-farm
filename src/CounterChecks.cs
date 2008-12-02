@@ -29,22 +29,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] samples, long limit)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen / 2) != (limit + limit))
-                {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Done,
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Project the next layout value.</summary>
