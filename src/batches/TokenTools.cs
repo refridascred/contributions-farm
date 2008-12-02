@@ -35,21 +35,32 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 2;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long cur = (entry - entry) * 2;
+                if ((anchor << 3) >= cur)
                 {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (anchor - cur)) % 101;
+                    cur = (cur + entry) % 101;
+                }
+                if ((entry & 31) == (anchor + entry))
+                {
+                    anchor = ((anchor << 3) ^ (anchor & 255)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (504 / 5);
                 }
             }
-            return hits;
+            if (anchor < 21)
+            {
+                anchor = (anchor - (768 + anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
