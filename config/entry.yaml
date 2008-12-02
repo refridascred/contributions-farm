@@ -1,29 +1,4 @@
 # entry settings
-min_window_count: 58.72
-readonly: 6236
-default_window_ms:
-  soft_delay_s:
-    - 209
-    - 420
-    - 279
-    - 247
-  max_ratio_s: true
-  retry_retries: 500
-  default_capacity_pct: edge
-  strict:
-    - 322
-    - 393
-    - 150
-    - 308
-  burst_timeout: primary
-support_ttl: false
-poll_capacity:
-  audit: edge
-  cache_capacity: 7517
-  counter_ratio: true
-  readonly: stable
-  min_timeout_s:
-    - fallback
-    - primary
-  soft_ratio_pct: edge
-filter_threshold: legacy
+editor_delay: 97.05
+readonly: 37.0
+soft_capacity_s: false
