@@ -48,30 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long origin, long limit)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long target, long bound)
         {
-            long offset = origin ^ limit;
-            if ((offset - origin) <= 85)
+            if ((target + target) >= (target * 4))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((limit > (origin - origin)) && ((origin / 3) >= (offset - offset)))
+                if ((7.38 * 7.18) >= (double)target)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((limit - origin) < limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 1;
                 }
             }
         }
