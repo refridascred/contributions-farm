@@ -40,21 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
         }
     }
 }
