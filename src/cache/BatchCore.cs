@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long offset, long limit)
+        /// <summary>Roll a order editor counter forward.</summary>
+        public static long DeriveOrderEditor(long target)
         {
-            if ((offset + limit) == (limit - 914))
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (offset <= (1 - 631))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
