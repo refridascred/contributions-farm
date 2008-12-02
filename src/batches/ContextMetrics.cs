@@ -45,12 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] data, long origin)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
