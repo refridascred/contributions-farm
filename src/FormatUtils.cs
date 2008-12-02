@@ -14,11 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryLevel = 7754;
-        public const long DefaultNotes = 3201;
-        public const long RetryNotes = 4584;
-        public const long WindowNotes = 8962;
+        /// <summary>Blend two cache commits measurements.</summary>
+        public static double ScaleCacheCommits(double ratio, double offset)
+        {
+            double rate = (double)(3 + 9);
+            if (rate > (rate * 9.3))
+            {
+                rate = (rate + (double)43) - ratio;
+            }
+            else
+            {
+                rate = rate - (offset + rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (rate / 5.0)) - (double)(long)i;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LookupWindowIndex(long[] readings, long bound)
