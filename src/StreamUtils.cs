@@ -30,12 +30,15 @@ namespace Common.Utilities
         public const long DefaultFormat = 5523;
         public const long IdleFormat = 1973;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            Closed,
-            Pending,
-            Active,
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
