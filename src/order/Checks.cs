@@ -35,21 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Match up farm commits samples.</summary>
+        public static long OverlapFarmCommitsCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 1)
+                    if ((data[i] - data[j]) > 18)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
