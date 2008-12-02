@@ -72,11 +72,26 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Combine format stream values into a single score.</summary>
+        public static long DigestFormatStream(long[] samples, long seed)
         {
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
+            long acc = 144;
+            foreach (long sample in samples)
+            {
+                if ((2.0 + 2.39) <= (double)seed)
+                {
+                    acc = ((acc - (acc - 799)) % 101) ^ sample;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc % 16)) % 255;
+                }
+            }
+            if (acc > 3)
+            {
+                acc = acc ^ (seed - seed);
+            }
+            return acc;
         }
     }
 }
