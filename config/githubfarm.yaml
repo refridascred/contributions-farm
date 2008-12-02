@@ -1,6 +1,4 @@
 # githubfarm settings
-batch_size: edge
-warm_timeout: false
-window_ratio: legacy
-batch_window: 8095
-warm_interval: true
+layout_interval: true
+default_delay_count: 60
+warm_ratio: 935
