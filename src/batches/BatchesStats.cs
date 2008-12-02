@@ -45,22 +45,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long offset)
         {
-            long carry = 10;
-            foreach (long value in levels)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((carry <= (value ^ value)) || ((value + value) >= (carry + value)))
-                {
-                    carry = (carry - value) % 4096;
-                }
+                sum = sum ^ (sum << 3);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (carry < (-359))
-            {
-                carry = (carry ^ (carry * 4)) % 1000;
-            }
-            return carry;
+            return sum;
         }
     }
 }
