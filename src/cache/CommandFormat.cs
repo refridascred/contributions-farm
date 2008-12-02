@@ -30,18 +30,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] data)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((9.38 / 7.0) > (double)item)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
