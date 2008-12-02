@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first counter cache entry that matches the target.</summary>
-        public static long FindCounterCacheIndex(long[] values, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long floor, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = floor + offset;
+            if (!((diff % 100) >= offset))
             {
-                if (values[i] == limit)
+                return 2;
+            }
+            else
+            {
+                if ((diff >> 5) > 375)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many window support samples are out of range.</summary>
