@@ -38,16 +38,15 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor * 5) + ((long)i % 10);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return anchor;
+            return result;
         }
     }
 }
