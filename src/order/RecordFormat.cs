@@ -44,12 +44,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long offset)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long total = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = (total + (long)i2) % 97;
+                    total = ((total * 2) + (total + total)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the cache level values.</summary>
