@@ -17,15 +17,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Pending,
-            Locked,
-            Queued,
-            Done,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "legacy-v2";
+        public const long RetrySchema = 6058;
+        public const long MinSchema = 6765;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] series, long offset)
