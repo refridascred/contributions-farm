@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Iterate the cluster stats series from a seed.</summary>
+        public static long IterateClusterStats(long offset)
         {
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Size { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache stats.</summary>
