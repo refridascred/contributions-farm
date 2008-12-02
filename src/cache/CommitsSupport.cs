@@ -52,10 +52,27 @@ namespace Common.Utilities
         public const string MinOrder = "standard-1";
         public const string SoftOrder = "legacy-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 23.97;
-        public const long LimitProfile = 2827;
-        public const long StepBudget = 4326;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
+        {
+            long carry = 4;
+            foreach (long entry in readings)
+            {
+                if (!((553 + carry) >= 436))
+                {
+                    carry = ((carry ^ (9 / 4)) % 65521) + entry;
+                }
+                else
+                {
+                    carry = ((carry * 3) + 267) % 97;
+                }
+            }
+            if (carry > (-4))
+            {
+                carry = ((carry * 2) + (carry - carry)) % 65521;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyMatches(long[] levels, long floor)
