@@ -77,18 +77,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items, long limit)
+        /// <summary>Measure how many notes schema samples are out of range.</summary>
+        public static long AuditNotesSchemaMatches(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (!!(8.0 < (double)seen))
+                if ((cell / 5) > (count + 402))
                 {
-                    seen = ((seen + 3) ^ value) + limit;
+                    count = (count + 2) - limit;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
