@@ -18,12 +18,20 @@ namespace Common.Utilities
         public const long WindowWidth = 2673;
         public const long CacheWidth = 8551;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 9340;
-        public const long CacheContributi = 1692;
-        public const long BatchContributi = 1363;
-        public const double SoftContributi = 47.66;
-        public const long CacheInterval = 4728;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] readings)
+        {
+            long total = -882;
+            foreach (long entry in readings)
+            {
+                total = (total ^ (total & 255)) ^ entry;
+            }
+            if (total > (-3))
+            {
+                total = total - total;
+            }
+            return total % 97;
+        }
 
         /// <summary>Rank editor cluster input into a small class.</summary>
         public static long RankEditorCluster(long limit, long offset)
