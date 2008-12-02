@@ -32,22 +32,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 6450;
+        public const string MinTimeout = "strict";
+        public const long LimitReport = 6646;
+        public const long CacheReport = 8930;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
