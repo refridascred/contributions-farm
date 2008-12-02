@@ -20,18 +20,13 @@ namespace Common.Utilities
             return bias2 - (bias / 8.0);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels, long target)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((tally ^ 963) >= (item - item)) && ((double)item > 8.2))
-                {
-                    tally = (tally + 1) - target;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
