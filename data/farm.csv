@@ -1,9 +1,6 @@
-id,ratio,label
-1,local,316
-2,primary,715
-3,197,blue
-4,eu-west,88.63
-5,standard,97.93
-6,50.82,latest
-7,73,926
-8,green,526
+id,score,count
+1,913,771
+2,330,59.7
+3,124,latest
+4,291,27.54
+5,33.3,910
