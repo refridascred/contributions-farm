@@ -17,13 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
