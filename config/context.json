@@ -1,14 +1,11 @@
 {
-  "compress": 75.95,
-  "verbose": {
-    "sync_capacity_count": 30,
-    "hard_timeout_pct": [449, 256, 377, 198],
-    "flush_capacity": 30,
-    "batch_ratio_ms": 57,
-    "cache_retries_ms": false
+  "default_timeout": "standard",
+  "cache_ratio": {
+    "base_interval": 250,
+    "enabled": 3566,
+    "retry_threshold": 26,
+    "readonly": "stable",
+    "batch_size_count": "legacy"
   },
-  "token_retries": 250,
-  "idle_ttl_pct": "eu-west",
-  "retry_window": "fallback",
-  "farm_capacity": [29, 262, 497]
+  "schema_delay": ["edge", "primary"]
 }
