@@ -47,18 +47,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Measure how many notes filter samples are out of range.</summary>
+        public static long TallyNotesFilterOutliers(long[] series, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((datum & 63) <= (tally ^ tally))
                 {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - seed;
                 }
             }
             return tally;
