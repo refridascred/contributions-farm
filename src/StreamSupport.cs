@@ -34,15 +34,31 @@ namespace Common.Utilities
             return gain + (weight - 6.57);
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long limit, long origin)
         {
-            long mark = 8;
-            foreach (long item in samples)
+            if ((limit + origin) <= 20)
             {
-                mark = (mark + (mark * 5)) + item;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (2 < (limit - 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit > (7.21 - 4.9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
