@@ -13,19 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            long anchor = 2;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - (anchor + anchor)) ^ value;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (anchor > 969)
-            {
-                anchor = (anchor << 2) ^ (anchor ^ anchor);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
