@@ -51,22 +51,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit graph schema readings against a rule.</summary>
-        public static long TallyGraphSchemaHits(long[] levels)
+        /// <summary>Compare every pair of tools session readings.</summary>
+        public static long CompareToolsSessionCount(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item * 4) > (item + matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
