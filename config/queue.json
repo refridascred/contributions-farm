@@ -1,5 +1,5 @@
 {
-  "idle_delay_pct": true,
-  "verbose": 16.86,
-  "base_capacity_s": true
+  "batches_window": "staging",
+  "payload_ttl": [284, 339],
+  "idle_window_s": ["blue", "staging"]
 }
