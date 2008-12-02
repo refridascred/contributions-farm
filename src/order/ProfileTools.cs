@@ -23,15 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] samples, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
