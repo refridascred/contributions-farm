@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Ready,
-            Idle,
-            New,
-            Synced,
-            Pending,
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of window batches readings.</summary>
