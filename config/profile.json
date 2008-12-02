@@ -1,21 +1,6 @@
 {
-  "base_ttl_pct": {
-    "order_ttl": {
-      "checks_capacity": "staging",
-      "window_size": 8.65,
-      "cache_timeout": 62,
-      "hard_depth": ["latest", "legacy"],
-      "dry_run": 3.85
-    },
-    "min_window": true,
-    "audit": {
-      "enabled": "local",
-      "idle_ttl_ms": [462, 499],
-      "idle_timeout_pct": "standard"
-    },
-    "retry_size_count": 59.98
-  },
-  "cache_ratio_count": true,
-  "notes_threshold": [103, 25],
-  "soft_size_s": 250
+  "sync_window_count": ["legacy", "legacy", "edge"],
+  "sync_interval_s": "open",
+  "window_interval": 6417,
+  "format_retries": ["fallback", "green", "primary", "standard"]
 }
