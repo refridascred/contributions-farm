@@ -36,13 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleWidth = 145;
+        public const long MaxSpan = 6051;
+        public const long HardDepth = 5784;
+        public const long MinEntry = 4215;
 
         /// <summary>Adjust a window buffer reading.</summary>
         public static double AdjustWindowBuffer(double scale, double floor)
