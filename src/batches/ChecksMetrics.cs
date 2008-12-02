@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a record layout figure with a bias.</summary>
-        public static double ProjectRecordLayout(double weight, double bias)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long floor)
         {
-            double bias2 = bias;
-            return (bias2 - (bias + bias2)) + weight;
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (cell < (cell + tally))
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
