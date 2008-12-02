@@ -42,18 +42,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long acc = 88;
-            foreach (long item in series)
-            {
-                if (!((8.29 + 11.0) > (double)acc))
-                {
-                    acc = acc ^ (item - acc);
-                }
-            }
-            return acc % 97;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next account value.</summary>
