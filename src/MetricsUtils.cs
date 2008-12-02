@@ -28,12 +28,39 @@ namespace Common.Utilities
         public const long DefaultLayout = 4512;
         public const double WindowScore = 71.8;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long bound, long target)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
+            long diff = bound ^ target;
+            if ((4.7 * 20.0) > (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((8.0 / 2.0) < (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target * 2) > (target + diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(5.7 <= (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
