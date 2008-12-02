@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] readings, long bound)
+        /// <summary>Count the entry format entries that pass the check.</summary>
+        public static long MeasureEntryFormatHits(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (item <= bound)
+                if ((3.4 - 1.6) == (double)limit)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) - cell;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
