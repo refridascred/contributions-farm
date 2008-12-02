@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double ratio, double span)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double scale = ratio;
-            if (scale >= ratio)
-            {
-                scale = scale + (14.0 / 8.0);
-            }
-            else
-            {
-                scale = scale - (double)9;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale - span)) + (double)(long)i;
-            }
-            return scale + (double)882;
+            Dropped,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a layout summary.</summary>
