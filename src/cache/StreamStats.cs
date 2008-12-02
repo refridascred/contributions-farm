@@ -36,13 +36,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long floor)
         {
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
