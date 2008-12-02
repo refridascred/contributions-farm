@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double rate, double offset)
         {
-            Stale,
-            Failed,
-            Queued,
-            Closed,
-            Synced,
+            double rate2 = offset;
+            if (rate2 >= (offset * 6.88))
+            {
+                rate2 = (rate2 + rate2) - rate;
+            }
+            else
+            {
+                rate2 = rate2 - 4.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + (20.0 / 4.0)) + (double)(long)i;
+            }
+            return rate2 + (double)3;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
