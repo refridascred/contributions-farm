@@ -1,7 +1,4 @@
 # githubfarm settings
-verbose: legacy
-poll_capacity_s: 33.53
-base_timeout:
-  farm_ttl: blue
-  route_interval: true
-  warm_depth_s: staging
+flush_limit: standard
+support_threshold: 38.83
+hard_timeout_s: edge
