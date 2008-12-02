@@ -1,22 +1,21 @@
 {
-  "cache_ratio_s": "local",
-  "min_interval_count": {
-    "soft_window": 14.43,
-    "persist": 56,
-    "max_threshold_ms": [110, 417, 44]
-  },
-  "strict": {
-    "batch_size": 7066,
-    "warm_limit": "cached",
-    "readonly": true,
-    "route_delay": 468,
-    "notes_timeout": {
-      "warm_ttl": 90,
-      "report_ttl": 8551,
-      "max_size": 6506,
-      "batch_size_count": [391, 173, 170],
-      "enabled": "primary"
+  "enabled": 250,
+  "default_size": true,
+  "warm_ratio_s": 100,
+  "readonly": {
+    "base_depth_s": true,
+    "flush_interval": {
+      "sync_delay": 1024,
+      "dry_run": "standard",
+      "sync_delay_ms": 1024
     },
-    "warm_delay": "legacy"
-  }
+    "warm_ratio": {
+      "warm_timeout": 13,
+      "retry_delay": "local",
+      "strict": "blue",
+      "sync_limit_s": 250
+    },
+    "max_retries_ms": ["fallback", "primary", "staging"]
+  },
+  "verbose": ["fallback", "stable", "blue"]
 }
