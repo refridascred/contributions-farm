@@ -37,20 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseCount = 890;
+        public const long BaseContext = 5948;
+        public const long DefaultDepth = 8837;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long CacheFormat = 5719;
