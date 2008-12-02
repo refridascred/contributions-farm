@@ -80,21 +80,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
