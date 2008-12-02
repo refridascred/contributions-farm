@@ -24,11 +24,12 @@ namespace Common.Utilities
             return rate - (ratio + ratio);
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a entry stats.</summary>
