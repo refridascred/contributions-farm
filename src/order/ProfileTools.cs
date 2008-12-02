@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Retry,
-            Synced,
-            Failed,
-            Done,
-            Closed,
+            public bool Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Rank cluster already input into a small class.</summary>
