@@ -34,13 +34,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Dropped,
-            Ready,
-            Queued,
-            Locked,
+            public bool Region { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
