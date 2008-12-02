@@ -35,11 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseRatio = 37.13;
-        public const double MaxBuffer = 28.94;
-        public const double BaseBuffer = 0.58;
-        public const string RetryRatio = "staging-1";
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            New,
+            Retry,
+            Done,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
