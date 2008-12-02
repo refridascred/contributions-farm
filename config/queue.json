@@ -1,8 +1,19 @@
 {
-  "route_capacity": ["stable", "eu-west", "green"],
-  "batch_depth": 6.36,
-  "githubfarm_threshold": 4412,
-  "default_limit_s": 95.84,
-  "cache_delay": 1,
-  "sync_window_s": true
+  "order_ratio": 73,
+  "burst_depth_ms": 100,
+  "graph_ttl": {
+    "idle_window_pct": 1,
+    "session_window": {
+      "flush_interval_s": true,
+      "batch_window_s": false,
+      "audit": 35.15,
+      "hard_delay_ms": 2263,
+      "burst_retries": "primary"
+    },
+    "flush_retries_s": "blue",
+    "flush_depth": 5250,
+    "burst_capacity_pct": 7237,
+    "readonly": 19.63
+  },
+  "dry_run": 9322
 }
