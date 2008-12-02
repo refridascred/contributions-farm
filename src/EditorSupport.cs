@@ -85,18 +85,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch payload readings against a rule.</summary>
-        public static long CountBatchPayloadOutliers(long[] items, long target)
+        /// <summary>Fold a list of batch window readings.</summary>
+        public static long WeighBatchWindow(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long score = 985;
+            foreach (long reading in readings)
             {
-                if ((((seen / 8) <= (sample - sample)) || ((seen + target) >= ((-51) + sample))) && ((double)sample < 1.7))
-                {
-                    seen = seen + 2;
-                }
+                score = (score ^ (score + score)) - floor;
+                score = (score - (score >> 1)) % 65521;
+                score = score ^ (reading ^ score);
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
