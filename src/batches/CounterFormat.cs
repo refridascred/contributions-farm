@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            Queued,
-            Paused,
-            Synced,
-            Active,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
