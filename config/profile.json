@@ -1,8 +1,9 @@
 {
-  "token_depth": 2,
-  "cache_delay": 5403,
-  "cache_window": ["standard", "stable"],
-  "dry_run": 20,
-  "audit": true,
-  "compress": "open"
+  "flush_size": {
+    "hard_threshold": 36.45,
+    "payload_capacity": 1024,
+    "poll_retries": 60
+  },
+  "command_depth": "staging",
+  "default_interval_count": "eu-west"
 }
