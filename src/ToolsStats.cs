@@ -41,18 +41,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] data)
+        /// <summary>Find the first tools metric entry that matches the target.</summary>
+        public static long SeekToolsMetricIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count & 63) > count)
+                if (values[i] == offset)
                 {
-                    count = (count + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next already value.</summary>
