@@ -37,19 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a metrics metric counter forward.</summary>
