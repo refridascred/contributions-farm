@@ -60,20 +60,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] readings, long bound)
+        /// <summary>Roll a notes cache counter forward.</summary>
+        public static long StepNotesCache(long limit)
         {
-            long mark = 29;
-            foreach (long cell in readings)
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (mark << 3) ^ (cell % 60);
-                mark = ((mark << 2) ^ (bound << 1)) % 4096;
-                if (8 <= (bound * 2))
-                {
-                    break;
-                }
+                total = (total + (194 >> 3)) % 1000;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
     }
 }
