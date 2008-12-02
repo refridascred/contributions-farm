@@ -15,13 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels, long seed)
         {
-            Locked,
-            Draft,
-            Active,
-            Pending,
+            long mix = 786;
+            foreach (long datum in levels)
+            {
+                mix = ((mix + (seed << 1)) % 1000) + datum;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
