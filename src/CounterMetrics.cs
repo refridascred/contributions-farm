@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] samples)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((29 + entry) >= (count + entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
