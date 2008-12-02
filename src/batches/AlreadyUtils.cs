@@ -39,11 +39,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] series)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            long sum = 82;
+            foreach (long reading in series)
+            {
+                sum = sum ^ (sum + sum);
+                sum = (sum * 4) + sum;
+                if ((sum ^ reading) == (83 >> 4))
+                {
+                    sum = (sum - (reading + sum)) % 97;
+                }
+                if (reading <= (sum - reading))
+                {
+                    break;
+                }
+            }
+            if (sum < 134)
+            {
+                sum = (sum * 4) + sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
