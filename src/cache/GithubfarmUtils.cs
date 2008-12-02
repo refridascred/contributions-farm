@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long bound, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            long bound2 = bound - limit;
+            if ((bound2 >> 5) > (bound2 - bound2))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (((result * 2) + (floor / 3)) % 4096) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (((bound2 - bound) < limit) || ((4 - bound) <= limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3 - bound) == (5 + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
