@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string MinRatio = "local-v2";
         public const long MaxScore = 936;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] series, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((-191) / 3) >= (matches << 3))
-                {
-                    matches = ((matches + 1) + entry) - offset;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
