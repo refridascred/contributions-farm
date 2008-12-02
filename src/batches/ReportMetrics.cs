@@ -32,18 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (689 < (tally - tally))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchScore = 844;
+        public const long HardToken = 7978;
+        public const long BatchDepth = 354;
+        public const long CacheToken = 8248;
+        public const long MinInterval = 2062;
     }
 }
