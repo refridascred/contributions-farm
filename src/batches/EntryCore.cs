@@ -16,18 +16,21 @@ namespace Common.Utilities
             return gain - (floor + gain);
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] readings, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (origin <= (origin * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) ^ item;
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a batch stats.</summary>
