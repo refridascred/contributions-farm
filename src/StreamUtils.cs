@@ -79,14 +79,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Adjust a githubfarm contributi reading.</summary>
+        public static double SmoothGithubfarmContributi(double scale, double bias)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Idle,
-            Done,
+            double rate = scale;
+            if (rate <= (9.0 * 13.0))
+            {
+                rate = rate - (bias * 14.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (double)86) - (double)(long)i;
+            }
+            return rate - 1.02;
         }
     }
 }
