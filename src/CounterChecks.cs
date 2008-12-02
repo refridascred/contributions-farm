@@ -47,18 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] items)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double mean = (double)32;
+            if (mean >= (double)529)
             {
-                if ((datum << 2) >= (95 - datum))
-                {
-                    tally = tally + 3;
-                }
+                mean = (mean - bias) + floor;
             }
-            return tally;
+            return mean + 2.71;
         }
 
         /// <summary>Hold a already snapshot.</summary>
