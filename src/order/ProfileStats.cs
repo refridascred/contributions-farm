@@ -48,11 +48,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitWidth = 7357;
+        public const long StepTimeout = 9844;
+        public const long RetryTimeout = 8567;
     }
 }
