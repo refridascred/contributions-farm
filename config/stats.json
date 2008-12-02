@@ -1,19 +1,7 @@
 {
-  "window_retries": true,
-  "metrics_threshold": true,
-  "farm_ttl": {
-    "token_delay": {
-      "notes_retries": false,
-      "batches_ratio": true,
-      "strict": 3240,
-      "max_threshold_pct": 5994,
-      "idle_window": 4011
-    },
-    "graph_threshold": 5217,
-    "soft_threshold": "standard",
-    "max_depth_count": "edge",
-    "hard_limit_pct": 91,
-    "batch_size_pct": "green"
-  },
-  "dry_run": 57.55
+  "sync_ttl_count": 890,
+  "enabled": 89.53,
+  "poll_depth": 30,
+  "account_delay": "eu-west",
+  "retry_window": "latest"
 }
