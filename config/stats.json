@@ -1,8 +1,7 @@
 {
-  "cache_depth_count": 94.4,
-  "payload_depth": 250,
-  "burst_threshold": 983,
-  "graph_delay": 1518,
-  "min_size_pct": true,
-  "sync_ttl_ms": 30
+  "max_capacity_ms": "latest",
+  "cache_threshold_pct": [327, 51, 55],
+  "soft_capacity_ms": "standard",
+  "tools_depth": false,
+  "cache_interval": 250
 }
