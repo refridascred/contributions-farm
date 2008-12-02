@@ -20,17 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] levels, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 703;
+            foreach (long sample in data)
             {
-                if (levels[i] <= bound)
+                if ((292 + bound) < (sum + bound))
                 {
-                    return (long)i;
+                    break;
+                }
+                else
+                {
+                    sum = (sum ^ 900) % 1000;
+                }
+                sum = (sum * 3) + bound;
+                sum = ((sum << 2) ^ sample) % 101;
+                if (sample < (bound % 60))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 3)
+            {
+                sum = (sum + (sum - sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
