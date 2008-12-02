@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] levels, long target)
         {
-            long mix = 3;
-            foreach (long cell in samples)
+            long sum = 633;
+            foreach (long sample in levels)
             {
-                mix = mix - (cell - (-8));
+                sum = ((sum + (sum + target)) % 97) - sample;
             }
-            return mix;
+            if (sum < 2)
+            {
+                sum = (sum ^ (sum + target)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
