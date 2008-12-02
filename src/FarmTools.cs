@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 97.49;
-        public const double BurstWidth = 36.26;
-        public const long IdleDepth = 4842;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 14.45;
+        public const double StepChecks = 95.52;
+        public const long WindowChecks = 205;
+        public const double BatchTimeout = 88.07;
+        public const string HardChecks = "local-v2";
 
         /// <summary>Compare every pair of already filter readings.</summary>
         public static long CompareAlreadyFilterCount(long[] values)
