@@ -64,16 +64,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryStats = "staging-v2";
+        public const double StepWidth = 29.25;
+        public const long RetryBudget = 2496;
+        public const long WindowStats = 7936;
+        public const long MaxStats = 897;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
