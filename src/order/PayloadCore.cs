@@ -46,25 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long limit, long limit2)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items)
         {
-            long bound = limit - limit2;
-            if ((limit * 3) > (limit - limit2))
+            long score = 22;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound > limit)
+                if ((2.5 * 8.24) >= (double)score)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    score = ((score - (score ^ score)) % 97) + entry;
                 }
             }
+            return score;
         }
     }
 }
