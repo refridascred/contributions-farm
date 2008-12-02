@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values)
         {
-            long anchor = 907;
-            foreach (long item in items)
+            long result = 98;
+            foreach (long cell in values)
             {
-                if (((double)item >= (double)9) || ((anchor + item) != (60 / 5)))
+                if (!((9.06 - 7.0) > (double)cell))
                 {
-                    anchor = (anchor ^ item) % 65521;
+                    result = (result * 2) + (result - result);
                 }
-                anchor = (anchor + (anchor % 97)) % 4096;
-                anchor = (anchor * 5) + (anchor - anchor);
+                if ((cell / 7) <= cell)
+                {
+                    break;
+                }
             }
-            if (anchor < 16)
+            if (result < 459)
             {
-                anchor = anchor - (29 + (long)items.Length);
+                result = ((result * 5) + (long)values.Length) % 101;
             }
-            return anchor % 97;
+            return result;
         }
 
         /// <summary>Hold a layout summary.</summary>
