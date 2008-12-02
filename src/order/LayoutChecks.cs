@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 18.73;
-        public const long SoftTimeout = 5813;
-        public const long StepEntry = 3626;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 72.16;
+        public const long CacheBudget = 6748;
+        public const long StepSupport = 8266;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] data)
