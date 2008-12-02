@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long MaxRatio = 3344;
         public const string DefaultRecord = "alpha";
 
-        /// <summary>Compare every pair of support format readings.</summary>
-        public static long OverlapSupportFormatCount(long[] values)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((6 - 35) == (long)i) || (origin < (596 + carry)))
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
