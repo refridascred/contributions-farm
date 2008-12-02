@@ -22,21 +22,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count commits support pairs that satisfy a relation.</summary>
-        public static long CompareCommitsSupportCount(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 512;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = ((acc << 2) ^ (acc ^ acc)) % 1000;
+                acc = (acc ^ (7 - cell)) % 255;
+                if ((cell + 8) > (acc + cell))
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - acc) % 65521;
+                }
+                else
+                {
+                    acc = acc - (acc / 5);
+                }
+                if (((7.0 / 2.0) > (double)acc) && ((cell + cell) <= (788 - cell)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
