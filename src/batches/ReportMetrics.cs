@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long floor, long offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long diff = floor + offset;
-            if (!((diff % 100) >= offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((diff >> 5) > 375)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Ready,
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a layout info.</summary>
