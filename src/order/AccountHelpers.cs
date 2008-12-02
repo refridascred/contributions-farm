@@ -67,18 +67,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] data)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value + value) > value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
