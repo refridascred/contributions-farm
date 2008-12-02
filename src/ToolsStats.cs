@@ -43,14 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Done,
-            New,
+            Paused,
             Dropped,
-            Active,
-            Idle,
+            New,
         }
 
         /// <summary>Project the next stream farm value.</summary>
