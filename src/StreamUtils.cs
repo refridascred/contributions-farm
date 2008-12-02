@@ -52,13 +52,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            Dropped,
+            Ready,
+            Draft,
+            Idle,
+            Done,
         }
     }
 }
