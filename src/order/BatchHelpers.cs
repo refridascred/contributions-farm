@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchFactor = 41.44;
-        public const string RetryCount = "cached-v2";
-        public const string LimitBudget = "cached-1";
-        public const double LimitBatch = 37.69;
-        public const long HardDepth = 5168;
+        /// <summary>Audit farm session readings against a rule.</summary>
+        public static long CountFarmSessionHits(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry == (8.7 + 1.0))
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstTools = 8136;
