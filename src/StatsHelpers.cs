@@ -52,19 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue graph values into a single score.</summary>
-        public static long FoldQueueGraph(long[] items, long limit)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] values, long bound)
         {
-            long sum = 9;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long item in values)
             {
-                sum = (sum - (sample & 3)) % 65521;
-                if ((limit - limit) < (sample * 4))
+                if (item < bound)
                 {
-                    sum = (sum * 3) + (sample >> 2);
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
     }
 }
