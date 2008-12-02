@@ -37,12 +37,17 @@ namespace Common.Utilities
             return rate - (rate / 4.0);
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Find the first account buffer entry that matches the target.</summary>
+        public static long LocateAccountBufferIndex(long[] values, long origin)
         {
-            Paused,
-            Dropped,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
