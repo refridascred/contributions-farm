@@ -59,14 +59,19 @@ namespace Common.Utilities
         public const string RetryCount = "open-1";
         public const long RetryMetrics = 6503;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] values)
         {
-            Ready,
-            Retry,
-            Active,
-            Dropped,
-            Closed,
+            long score = 754;
+            foreach (long datum in values)
+            {
+                score = ((score * 4) + (datum << 1)) % 1000;
+            }
+            if (score < 583)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Find the first cluster context entry that matches the target.</summary>
