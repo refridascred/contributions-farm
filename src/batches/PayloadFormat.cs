@@ -47,20 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftSpan = 81.0;
+        public const long BasePayload = 833;
+        public const long IdleSize = 5739;
+        public const double RetryInterval = 13.13;
+        public const long IdleLevel = 2678;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long MatchStatsCount(long[] readings)
