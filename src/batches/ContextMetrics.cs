@@ -38,11 +38,13 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseLevel = 9819;
-        public const long MinScore = 7124;
-        public const double MaxAlready = 79.38;
-        public const double WindowAlready = 32.76;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long target)
