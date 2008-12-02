@@ -25,25 +25,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long bound, long floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long offset = bound - floor;
-            if ((floor >> 4) >= (floor & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((751 - offset) > (786 % 60))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
