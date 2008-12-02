@@ -36,23 +36,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] levels, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] series, long offset)
         {
-            long total = 9;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + (item % 10)) % 65521;
-                if (!((item & 3) > 689))
+                if ((series[i] == offset) && ((series[i] % 3) != 0))
                 {
-                    total = (total << 2) ^ seed;
+                    return (long)i;
                 }
             }
-            if (total > 9)
-            {
-                total = total - (8 ^ seed);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
