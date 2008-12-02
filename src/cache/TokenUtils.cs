@@ -34,17 +34,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] readings, long offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long seed, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((seed + step) < (step >> 2)))
             {
-                if (readings[i] > offset)
+                return 7;
+            }
+            else
+            {
+                if (step <= (step % 10))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
