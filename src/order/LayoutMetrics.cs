@@ -23,11 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 74.84;
-        public const long MaxDepth = 8152;
-        public const long MinCount = 8141;
-        public const double HardCount = 85.72;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "standard-1";
+        public const long StepFactor = 9804;
+        public const long HardFactor = 3759;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long GradeChannel(long offset, long limit)
