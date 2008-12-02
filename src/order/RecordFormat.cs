@@ -56,18 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long score = 7;
+            foreach (long sample in items)
             {
-                if ((4.6 - 1.0) >= (double)tally)
+                if (((sample & 255) == (score % 8)) || ((double)score <= (8.73 / 9.0)))
                 {
-                    tally = (tally + 1) ^ reading;
+                    score = (score + sample) % 65521;
                 }
             }
-            return tally;
+            if (score > 0)
+            {
+                score = (score - (score & 3)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
