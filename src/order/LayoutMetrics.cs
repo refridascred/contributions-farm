@@ -39,9 +39,14 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftInterval = "strict";
-        public const double DefaultRatio = 25.82;
-        public const string DefaultLevel = "fallback-v2";
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Dropped,
+            Retry,
+            Ready,
+            Synced,
+            Draft,
+        }
     }
 }
