@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next account route value from a seed.</summary>
