@@ -59,12 +59,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] levels)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading > (39 + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
