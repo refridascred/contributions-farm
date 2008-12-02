@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Scale a layout editor figure with a bias.</summary>
+        public static double ProjectLayoutEditor(double rate, double span)
         {
-            Draft,
-            Queued,
-            Paused,
-            Pending,
+            double mean = span;
+            if (mean >= rate)
+            {
+                mean = mean - (double)804;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - span;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
