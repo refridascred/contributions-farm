@@ -92,11 +92,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxScore = 3842;
-        public const long MinInterval = 7869;
-        public const long WindowInterval = 3469;
-        public const string MaxContributi = "fallback-edge";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteRange(long[] readings, long floor)
