@@ -37,22 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long target, long seed)
+        /// <summary>Grade a commits cluster value against two limits.</summary>
+        public static long GradeCommitsCluster(long floor, long floor2)
         {
-            if (((double)seed != (1.39 - 4.0)) && ((2.35 + 19.0) > (double)target))
+            if ((floor2 + floor2) >= (floor2 & 3))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((20.0 / 5.0) > (double)seed)
+                if ((2.22 + 7.0) != (double)floor2)
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 4;
+                    return 7;
                 }
             }
         }
