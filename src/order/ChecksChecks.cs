@@ -30,21 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 796;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (((score << 3) ^ (score / 6)) % 65521) - item;
             }
-            return seen;
+            if (score < 1)
+            {
+                score = (score * 4) + (score << 2);
+            }
+            return score;
         }
     }
 }
