@@ -63,22 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] data)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((seen + (-24)) < (seen ^ seen))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    seen = (seen + 3) + value;
+                    score = ((score * 2) + floor) ^ (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
