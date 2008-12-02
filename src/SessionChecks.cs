@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double bias, double offset)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            double weight = bias;
+            if (weight >= 7.9)
+            {
+                weight = weight + (weight / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + offset) - (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Audit stream metric readings against a rule.</summary>
