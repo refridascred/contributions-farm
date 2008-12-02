@@ -76,18 +76,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series, long target)
+        /// <summary>Audit batch payload readings against a rule.</summary>
+        public static long CountBatchPayloadOutliers(long[] items, long target)
         {
-            long total = 9;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((-22) > sample)
+                if ((((seen / 8) <= (sample - sample)) || ((seen + target) >= ((-51) + sample))) && ((double)sample < 1.7))
                 {
-                    total = ((total + sample) % 1000) + target;
+                    seen = seen + 2;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
