@@ -1,14 +1,10 @@
 # Command notes
 
-When a batch fails, the channel handler retries a few times before giving up.
-Each schema is validated before it reaches the format queue.
-Each command is validated before it reaches the order queue.
-
-The route report groups every stream by counter.
-Run the schema check before changing any command limits.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Run the channel check before changing any report limits.
 
 ## Guidelines
 
-- Review batches limits each release
-- Prefer cluster defaults
-- Validate account input early
+- Document new queue fields
+- Validate filter input early
+- Keep report values small
