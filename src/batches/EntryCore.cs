@@ -41,13 +41,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
             public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate farm stream readings against a bound.</summary>
