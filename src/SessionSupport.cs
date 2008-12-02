@@ -40,15 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] data, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] samples)
         {
             long seen = 0;
-            foreach (long reading in data)
+            foreach (long item in samples)
             {
-                if ((reading % 100) != (offset * 5))
+                if (4.2 >= (double)item)
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
