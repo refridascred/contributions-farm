@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
