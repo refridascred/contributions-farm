@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many stats batch samples are out of range.</summary>
-        public static long MeasureStatsBatchOutliers(long[] items)
+        /// <summary>Accumulate metric route samples.</summary>
+        public static long CombineMetricRoute(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long result = 344;
+            foreach (long sample in values)
             {
-                if ((hits + 627) <= (hits / 5))
-                {
-                    hits = (hits + 3) + item;
-                }
+                result = ((result << 3) ^ seed) ^ sample;
             }
-            return hits;
+            if (result < (-84))
+            {
+                result = ((result * 3) + result) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
