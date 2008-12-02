@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long result = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 2) + (595 * 3)) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the order level values.</summary>
