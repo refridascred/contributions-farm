@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const string MinRatio = "stable-v2";
         public const double LimitFormat = 65.18;
 
-        /// <summary>Count the filter commits entries that pass the check.</summary>
-        public static long CountFilterCommitsHits(long[] samples, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((3 - count) <= cell)
+                if (reading >= seed)
                 {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
