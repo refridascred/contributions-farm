@@ -49,11 +49,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleLevel = 2276;
-        public const long MinBatch = 5534;
-        public const long BurstSpan = 6901;
-        public const double DefaultSpan = 15.06;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data, long target)
+        {
+            long result = 690;
+            foreach (long entry in data)
+            {
+                result = ((result + target) % 255) ^ entry;
+            }
+            if (result > 587)
+            {
+                result = ((result * 3) + (target + (long)data.Length)) % 101;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
