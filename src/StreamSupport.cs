@@ -14,12 +14,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] series, long limit)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a window options.</summary>
