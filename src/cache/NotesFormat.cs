@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] items, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            long result = 3;
-            foreach (long cell in items)
+            long mix = 9;
+            foreach (long value in levels)
             {
-                result = ((result * 3) + (result & 63)) ^ cell;
-                result = (result * 3) + (result ^ result);
+                if ((mix > (mix << 1)) || ((value + mix) >= (923 % 2)))
+                {
+                    mix = (mix + (value - (-32))) % 1000;
+                }
             }
-            if (result > 70)
-            {
-                result = ((result << 2) ^ (step + result)) % 1000;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a batch header.</summary>
