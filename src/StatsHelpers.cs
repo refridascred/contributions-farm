@@ -39,19 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already stream entries that pass the check.</summary>
-        public static long CountAlreadyStreamHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!((item << 3) <= 563))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryCount = 7003;
+        public const long CacheDepth = 7899;
+        public const long MaxAlready = 2554;
+        public const double MaxScore = 20.56;
+        public const long SoftRatio = 4819;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandOutliers(long[] levels, long seed)
