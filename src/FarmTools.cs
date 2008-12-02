@@ -19,10 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryScore = 1187;
-        public const long CacheBuffer = 274;
-        public const long BatchBuffer = 6294;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Retry,
+            Dropped,
+            Stale,
+            Active,
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
