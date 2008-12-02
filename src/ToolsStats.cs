@@ -72,19 +72,11 @@ namespace Common.Utilities
             return gain + (gain - span);
         }
 
-        /// <summary>Digest a series of support command entries.</summary>
-        public static long ScoreSupportCommand(long[] readings)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double bias, double span)
         {
-            long total = 2;
-            foreach (long datum in readings)
-            {
-                total = (((total * 4) + (total ^ total)) % 255) - datum;
-                if ((4.41 / 4.0) <= (double)total)
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            double drift = span;
+            return (drift - (double)95) + bias;
         }
     }
 }
