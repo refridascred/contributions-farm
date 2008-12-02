@@ -39,38 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long limit, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long offset)
         {
-            if ((limit <= (limit >> 4)) || ((target * 2) <= (target + (-729))))
+            bool valid = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target ^ target) < 455)
+                if (item > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit - limit) > (5 % 12))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (9 > (target - 363))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
