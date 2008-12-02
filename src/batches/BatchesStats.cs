@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 523;
-        public const long IdleAlready = 5534;
-        public const long BatchFactor = 8478;
-        public const long MinCount = 6368;
-        public const long IdleTimeout = 3802;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long CompareQueueCount(long[] readings)
