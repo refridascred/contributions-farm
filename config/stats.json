@@ -1,5 +1,6 @@
 {
-  "warm_size": "staging",
-  "format_window": ["cached", "blue", "edge", "green"],
-  "enabled": 33.85
+  "default_depth_s": 68.4,
+  "token_retries": 60,
+  "already_depth": ["blue", "latest", "legacy", "fallback"],
+  "dry_run": 50.45
 }
