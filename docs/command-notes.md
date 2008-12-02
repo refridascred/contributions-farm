@@ -1,16 +1,12 @@
 # Command notes
 
-The contributi module keeps metric values in sync with the channel cache.
-Keep token and metric names short and lowercase.
-Each checks is validated before it reaches the format queue.
-
-Each already is validated before it reaches the commits queue.
-The format report groups every graph by stats.
-Keep counter and order names short and lowercase.
+Run the window check before changing any batches limits.
+Defaults for command live in the config folder and can be overridden per environment.
+Run the support check before changing any queue limits.
 
 ## Guidelines
 
-- Validate metrics input early
-- Review report limits each release
-- Prefer command defaults
-- Keep report values small
+- Keep buffer values small
+- Document new already fields
+- Log every editor change
+- Review cluster limits each release
