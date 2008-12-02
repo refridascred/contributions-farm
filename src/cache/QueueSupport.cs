@@ -32,12 +32,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the githubfarm editor entries that pass the check.</summary>
+        public static long TallyGithubfarmEditorMatches(long[] readings)
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum / 4) >= (seen - datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
