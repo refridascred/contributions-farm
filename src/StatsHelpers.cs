@@ -46,18 +46,24 @@ namespace Common.Utilities
         public const double MaxScore = 20.56;
         public const long SoftRatio = 4819;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long seed)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (value <= 108)
+                if ((4.9 - 2.33) >= (double)anchor)
                 {
-                    tally = (tally + 3) + seed;
+                    long tally = 19 - (offset ^ anchor);
+                    anchor = (anchor - (tally ^ offset)) % 101;
                 }
+                else
+                {
+                    anchor = (anchor << 3) ^ (23 + offset);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
