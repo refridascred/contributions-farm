@@ -38,15 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] levels, long target)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long anchor = 935;
+            foreach (long sample in levels)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((5.0 > (double)anchor) && (sample > (target & 31)))
+                {
+                    anchor = ((anchor * 5) + (sample / 7)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (target << 1)) % 101;
+                }
             }
-            return result;
+            return anchor % 65521;
         }
     }
 }
