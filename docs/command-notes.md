@@ -1,12 +1,12 @@
 # Command notes
 
-Each checks is validated before it reaches the filter queue.
-Each payload is validated before it reaches the metrics queue.
-Defaults for batch live in the config folder and can be overridden per environment.
+Run the account check before changing any batch limits.
+A account that stays idle for too long is moved to the metric list.
+The metric report groups every notes by notes.
 
 ## Guidelines
 
-- Log every record change
 - Keep githubfarm values small
-- Prefer channel defaults
-- Validate notes input early
+- Validate stream input early
+- Prefer command defaults
+- Review batch limits each release
