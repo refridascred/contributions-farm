@@ -43,11 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double rate, double bias)
+        /// <summary>Check that every session farm entry stays within the limit.</summary>
+        public static bool ValidateSessionFarmLimits(long[] levels, long origin)
         {
-            double drift = rate * 4.7;
-            return (drift - (drift - 10.0)) + bias;
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
