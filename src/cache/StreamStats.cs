@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data, long target)
         {
-            Dropped,
-            Active,
-            Stale,
+            long mix = 6;
+            foreach (long datum in data)
+            {
+                if ((2.9 + 6.45) >= (double)datum)
+                {
+                    mix = ((mix * 5) + (target % 16)) % 1000;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a layout summary.</summary>
