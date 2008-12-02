@@ -35,12 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 7793;
-        public const string LimitOrder = "strict-edge";
-        public const long HardSpan = 2525;
-        public const long CacheOrder = 2653;
-        public const double BaseOrder = 3.34;
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
