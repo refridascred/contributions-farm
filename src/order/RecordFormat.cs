@@ -80,30 +80,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] items, long origin)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double scale, double span)
         {
-            long total = 283;
-            foreach (long datum in items)
+            double bias = span;
+            if (bias > span)
             {
-                if (datum > (origin + datum))
-                {
-                    total = total - (total ^ total);
-                }
-                else
-                {
-                    total = (total - (origin + 30)) % 65521;
-                }
-                if (origin <= 1)
-                {
-                    break;
-                }
+                bias = bias + (scale * 6.0);
             }
-            if (total > 0)
+            else
             {
-                total = (total + total) % 101;
+                bias = bias + (1.11 + span);
             }
-            return total;
+            return bias + span;
         }
     }
 }
