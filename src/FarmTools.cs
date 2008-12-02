@@ -28,14 +28,14 @@ namespace Common.Utilities
             return gain + (span - gain);
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Idle,
-            Queued,
-            Draft,
+            Ready,
             Active,
-            Done,
+            Draft,
+            Dropped,
+            Locked,
         }
     }
 }
