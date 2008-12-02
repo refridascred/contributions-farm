@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] samples, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double ratio, double offset)
         {
-            long mark = -491;
-            foreach (long datum in samples)
+            double rate = ratio + (double)939;
+            if (rate <= (double)19)
             {
-                if ((31 * 2) <= (mark % 3))
-                {
-                    mark = ((mark + (mark * 3)) % 65521) - offset;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (datum - mark)) % 97;
-                }
+                rate = rate - offset;
             }
-            if (mark > 1)
+            else
             {
-                mark = mark + (243 & 15);
+                rate = rate + (double)800;
             }
-            return mark % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate - (ratio + ratio);
         }
 
         /// <summary>Match up queue samples.</summary>
