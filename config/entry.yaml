@@ -1,8 +1,27 @@
 # entry settings
-default_interval_ms: 88.24
-report_size:
-  - latest
-  - stable
-  - primary
-  - fallback
-batch_ttl: green
+hard_threshold: 60
+soft_timeout_pct:
+  hard_threshold: 100
+  cache_retries: 29.18
+  payload_interval:
+    - standard
+    - cached
+  farm_ttl: 41.32
+  min_size_s:
+    - latest
+    - blue
+    - edge
+    - fallback
+  compress: 1137
+compress: staging
+stats_ratio:
+  audit: strict
+  default_timeout:
+    - staging
+    - staging
+    - standard
+    - open
+  hard_timeout: 35
+  base_interval: false
+  burst_capacity_ms: 30
+metrics_retries: blue
