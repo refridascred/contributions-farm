@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + 476) < (tally & 31))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Failed,
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Blend two cluster measurements.</summary>
