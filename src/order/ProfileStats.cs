@@ -50,22 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels)
-        {
-            long anchor = 61;
-            foreach (long sample in levels)
-            {
-                if ((sample - 1) < sample)
-                {
-                    anchor = (anchor * 4) + (38 + sample);
-                }
-            }
-            if (anchor < 2)
-            {
-                anchor = anchor + (anchor & 127);
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8990;
+        public const string SoftBatches = "latest-1";
+        public const long RetryBatches = 1295;
+        public const string StepBatches = "standard-edge";
+        public const long DefaultBatches = 9563;
     }
 }
