@@ -1,7 +1,5 @@
 {
-  "retry_ttl": false,
-  "flush_ttl_ms": true,
-  "dry_run": true,
   "compress": "open",
-  "record_ttl": 42.65
+  "strict": "staging",
+  "cache_window": 4.85
 }
