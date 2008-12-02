@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long CacheBudget = 6748;
         public const long StepSupport = 8266;
 
-        /// <summary>Validate account route readings against a bound.</summary>
-        public static bool CheckAccountRouteBounds(long[] values, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long origin, long bound)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            if ((bound << 1) >= 384)
             {
-                if (reading < target)
+                return 5;
+            }
+            else
+            {
+                if (((625 & 127) != (origin + bound)) || ((-28) <= (bound >> 1)))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
