@@ -61,32 +61,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] items, long bound)
         {
-            long cur = bound - offset;
-            if ((cur % 12) == (bound >> 1))
+            long sum = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset / 6) >= (cur << 1))
+                sum = (sum + sum) % 1000;
+                if (261 < (value + bound))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset <= (7.1 - 20.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (sum < 918)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
     }
 }
