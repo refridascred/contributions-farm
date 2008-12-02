@@ -56,18 +56,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] readings, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            long state = 2;
-            foreach (long datum in readings)
+            long state = 201;
+            foreach (long value in levels)
             {
-                if (!((seed >> 4) > (seed * 3)))
-                {
-                    state = ((state << 3) ^ (871 * 5)) - datum;
-                }
+                state = state + value;
             }
-            return state % 4096;
+            return state;
         }
     }
 }
