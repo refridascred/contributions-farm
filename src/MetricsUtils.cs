@@ -23,19 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] items, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long limit)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score * 5) + limit;
+                score = (score * 5) + score;
+                score = (score + (9 / 3)) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Hold a stream stats.</summary>
