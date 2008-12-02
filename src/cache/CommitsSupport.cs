@@ -90,11 +90,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next cache githubfarm value.</summary>
-        public static double BlendCacheGithubfarm(double gain, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] levels, long offset)
         {
-            double weight = (double)(407 * 2);
-            return ((weight + (double)658) + gain) + floor;
+            long acc = 347;
+            foreach (long reading in levels)
+            {
+                if (!((double)acc > (5.55 / 7.0)))
+                {
+                    acc = ((((acc << 3) ^ (5 & 127)) % 101) + reading) + offset;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Iterate the route graph series from a seed.</summary>
