@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Rank queue filter input into a small class.</summary>
+        public static long GradeQueueFilter(long target, long seed)
         {
-            Paused,
-            New,
-            Stale,
-            Done,
+            if ((seed << 3) <= (seed * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((seed - seed) <= (seed * 2)) && ((44 + seed) != (65 - target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
