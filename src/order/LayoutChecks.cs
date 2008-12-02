@@ -54,31 +54,13 @@ namespace Common.Utilities
         public const string WindowReport = "open-v2";
         public const long MaxReport = 4060;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long limit, long origin)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            if (!(origin >= (origin << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((origin - origin) >= origin) && ((6.0 * 9.0) < (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit << 3) <= (origin - limit)) || (15.0 >= (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Failed,
+            Locked,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
