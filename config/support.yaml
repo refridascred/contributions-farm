@@ -1,19 +1,18 @@
 # support settings
-hard_ttl_pct:
-  token_ratio: cached
-  readonly: true
-  verbose:
-    - 41
-    - 155
-    - 4
-  idle_timeout_pct: 6027
-checks_limit:
-  - primary
-  - fallback
-retry_capacity_count:
-  - fallback
-  - primary
-  - fallback
-min_window_pct:
-  - 107
-  - 327
+batch_ratio_s: 5259
+session_window: cached
+compress: 1254
+burst_timeout:
+  - 164
+  - 14
+graph_depth:
+  default_ttl: 40.7
+  min_delay_count:
+    - stable
+    - stable
+    - edge
+    - eu-west
+  min_ttl_ms:
+    - local
+    - primary
+  strict: 500
