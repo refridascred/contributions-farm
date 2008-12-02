@@ -26,26 +26,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] data, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] items, long floor)
         {
-            long sum = 16;
-            foreach (long value in data)
+            long sum = 4;
+            foreach (long value in items)
             {
-                if ((8.0 / 4.0) > (double)value)
+                sum = (sum << 2) ^ 13;
+                if ((8.0 >= (double)sum) && (8.6 >= (double)floor))
                 {
-                    sum = ((sum * 2) + (sum ^ sum)) - offset;
-                }
-                else
-                {
-                    sum = sum ^ (sum & 127);
+                    sum = (sum << 2) ^ (value + sum);
                 }
             }
-            if (sum > (-47))
-            {
-                sum = ((sum << 3) ^ 382) % 4096;
-            }
-            return sum;
+            return sum % 4096;
         }
 
         /// <summary>Describe the tools phase values.</summary>
