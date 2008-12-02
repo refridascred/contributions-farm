@@ -61,19 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits counter entry stays within the limit.</summary>
-        public static bool CheckCommitsCounterBounds(long[] samples, long seed)
+        /// <summary>Validate entry checks readings against a bound.</summary>
+        public static bool CheckEntryChecksLimits(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (sample >= seed)
+                if (datum >= limit)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Hold a queue info.</summary>
