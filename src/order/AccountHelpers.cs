@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] series, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (series[i] <= seed)
+                if (((long)values.Length & 127) < tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a record stream reading.</summary>
