@@ -20,22 +20,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema tools samples are out of range.</summary>
-        public static long MeasureSchemaToolsMatches(long[] levels)
+        /// <summary>Match up profile payload samples.</summary>
+        public static long MatchProfilePayloadCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((seen - 2) == (entry + (-53))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
