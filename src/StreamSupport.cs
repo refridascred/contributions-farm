@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double gain, double floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] samples)
         {
-            double rate = 5.72 + (double)0;
-            if (rate >= (double)40)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                rate = ((rate + (double)386) + gain) - floor;
+                if ((cell + 476) < (tally & 31))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate + (double)34;
+            return tally;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
