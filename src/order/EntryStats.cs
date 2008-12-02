@@ -30,22 +30,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] series)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum == (0.2 - 1.91))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
