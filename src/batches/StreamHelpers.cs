@@ -76,11 +76,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultFactor = 6172;
-        public const long SoftContributi = 5648;
-        public const double BurstFactor = 94.72;
-        public const string BaseWidth = "strict-edge";
-        public const double BatchContributi = 87.3;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((matches - matches) <= matches) || !(matches < ((long)readings.Length + cell)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
