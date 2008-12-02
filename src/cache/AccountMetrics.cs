@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a githubfarm already counter forward.</summary>
-        public static long RollGithubfarmAlready(long bound)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double gain, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            double weight = (offset / 6.0) * 13.0;
+            if (weight < (gain / 8.0))
             {
-                if ((4.19 * 7.87) != (double)bound)
-                {
-                    anchor = anchor - (bound ^ anchor);
-                }
-                if ((double)(long)i < (0.1 + 5.0))
-                {
-                    anchor = (anchor * 3) + (bound + bound);
-                    continue;
-                }
-                anchor = anchor + (long)i;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                weight = weight - offset;
             }
-            return anchor;
+            else
+            {
+                weight = weight - (offset + gain);
+            }
+            return weight + (gain * 4.4);
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
