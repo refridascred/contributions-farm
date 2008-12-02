@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long result = 916;
-            foreach (long entry in levels)
-            {
-                if ((7.26 * 0.1) < (double)entry)
-                {
-                    result = (result ^ entry) % 65521;
-                }
-                result = (result - result) % 97;
-                result = (result ^ (result + result)) % 97;
-            }
-            return result % 65521;
+            New,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the session mode values.</summary>
