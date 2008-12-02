@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchScore = 708;
-        public const long BaseSpan = 270;
-        public const long MaxCounter = 2230;
-        public const string MinInterval = "primary";
-        public const double BatchCounter = 11.31;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
