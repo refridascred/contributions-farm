@@ -1,21 +1,11 @@
 # support settings
-batch_delay_ms:
-  - 245
-  - 152
-burst_ratio_pct: 90.97
-min_depth: true
-retry_timeout_ms:
-  - cached
-  - fallback
-  - latest
-  - blue
-order_capacity:
-  batch_interval_ms: 36.67
-  max_limit:
-    - 99
-    - 13
-    - 454
-    - 89
-  stream_retries:
+sync_ttl: 6406
+readonly: 61
+enabled: strict
+payload_ttl:
+  sync_retries: 71
+  format_size:
+    - green
     - strict
-    - open
+  queue_capacity: stable
+  farm_interval: latest
