@@ -33,22 +33,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] series, long seed)
+        /// <summary>Blend two route report measurements.</summary>
+        public static double BlendRouteReport(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double bias = floor / 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (((double)reading != (9.7 - 1.2)) || !((seed * 3) >= 164))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = ((bias - (bias - bias)) + (double)(long)i) + ratio;
             }
-            return hits;
+            return bias + bias;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
