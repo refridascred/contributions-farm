@@ -1,13 +1,7 @@
 {
-  "readonly": 2.94,
-  "soft_size_count": true,
-  "layout_size": "open",
-  "session_delay": {
-    "idle_threshold": 38,
-    "batch_delay_ms": "standard",
-    "profile_capacity": 30,
-    "enabled": "primary"
-  },
-  "cluster_threshold": 250,
-  "poll_interval": "local"
+  "checks_delay": "cached",
+  "readonly": 100,
+  "flush_window_s": "open",
+  "sync_capacity_pct": true,
+  "retry_ratio_ms": 500
 }
