@@ -96,12 +96,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] values, long seed)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
