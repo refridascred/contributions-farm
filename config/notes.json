@@ -1,5 +1,7 @@
 {
-  "warm_threshold_ms": [40, 194, 253],
-  "warm_size": 84,
-  "payload_ttl": false
+  "soft_limit_ms": true,
+  "window_timeout": 250,
+  "warm_threshold": "open",
+  "cache_retries_count": "staging",
+  "strict": 31.68
 }
