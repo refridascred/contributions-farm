@@ -1,11 +1,13 @@
 {
-  "verbose": "edge",
-  "compress": {
-    "context_ttl": 80.18,
-    "sync_threshold_s": 82.25,
-    "audit": 55.86,
-    "flush_capacity_pct": 58.96,
-    "idle_ttl_pct": ["standard", "green"]
+  "queue_interval": {
+    "base_interval_ms": "local",
+    "filter_delay": true,
+    "verbose": "primary",
+    "audit": 49.45,
+    "poll_retries_pct": 61
   },
-  "sync_capacity_pct": "primary"
+  "idle_limit": false,
+  "account_retries": ["strict", "edge", "blue", "open"],
+  "audit": 4835,
+  "min_retries": 78.33
 }
