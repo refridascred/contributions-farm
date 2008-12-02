@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchBudget = 6255;
-        public const long BaseCount = 1605;
-        public const string CacheQueue = "cached-1";
-        public const string WindowQueue = "cached-edge";
-        public const double SoftQueue = 25.43;
+        /// <summary>Measure how many checks command samples are out of range.</summary>
+        public static long AuditChecksCommandGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)seen == (double)sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] data)
