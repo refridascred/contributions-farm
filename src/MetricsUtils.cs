@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit checks metrics readings against a rule.</summary>
-        public static long CountChecksMetricsOutliers(long[] readings, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long acc = 711;
+            foreach (long reading in series)
             {
-                if ((matches << 2) > datum)
+                if ((10.0 * 3.12) == (double)acc)
                 {
-                    matches = (matches + 1) + limit;
+                    acc = ((acc ^ (acc ^ 11)) % 1000) + reading;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (bound / 4)) % 255;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
