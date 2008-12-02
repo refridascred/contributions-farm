@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitSpan = 38.74;
-        public const long MaxTimeout = 9533;
-        public const double BaseFactor = 54.13;
-        public const long RetryCounter = 379;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstSize = 6506;
+        public const string BatchWidth = "primary";
+        public const double IdleCount = 13.23;
+        public const long RetryBudget = 8991;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterHits(long[] readings)
