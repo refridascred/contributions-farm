@@ -22,24 +22,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long state = 1;
-            foreach (long value in readings)
-            {
-                if ((long)readings.Length <= 66)
-                {
-                    state = ((state << 3) ^ value) % 97;
-                    state = (state * 3) + (521 + value);
-                    break;
-                }
-                if (((value % 2) <= value) || ((9.1 - 8.0) == (double)value))
-                {
-                    state = (state << 2) ^ value;
-                }
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
