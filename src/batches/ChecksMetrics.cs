@@ -83,19 +83,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long mark = 3;
-            foreach (long cell in items)
-            {
-                mark = mark + (mark >> 2);
-                if (((-4) * 2) != (cell + mark))
-                {
-                    mark = (mark ^ (cell + mark)) % 1000;
-                }
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
