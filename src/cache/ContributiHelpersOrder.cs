@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits + hits) > (hits << 2))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
