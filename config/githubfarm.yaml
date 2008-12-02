@@ -1,13 +1,8 @@
 # githubfarm settings
-buffer_limit: staging
-retry_threshold: 5174
-cache_threshold: 4
-batch_size_count:
-  flush_capacity_ms: edge
-  sync_size_count: 71.21
-  min_capacity_pct:
-    - green
-    - cached
-    - latest
-  soft_depth_s: open
-  strict: 30
+flush_delay_pct:
+  - 196
+  - 94
+dry_run: green
+base_size: 6798
+compress: cached
+cache_ratio_s: 56.4
