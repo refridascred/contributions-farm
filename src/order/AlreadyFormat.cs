@@ -29,10 +29,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 4117;
-        public const long BurstNotes = 4964;
-        public const string IdleNotes = "legacy-v2";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((5 ^ value) == (value - value))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
