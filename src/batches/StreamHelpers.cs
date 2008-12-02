@@ -105,19 +105,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches stats reading.</summary>
-        public static double BlendBatchesStats(double rate, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] data)
         {
-            double mean = rate;
-            if (mean >= 0.8)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mean = (mean + 3.0) - floor;
+                if (((double)136 == (double)hits) && ((((-937) + reading) >= (41 / 2)) || ((986 + reading) >= (reading / 9))))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean * 7.4)) - (double)(long)i;
-            }
-            return mean - (double)7;
+            return hits;
         }
     }
 }
