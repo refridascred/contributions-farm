@@ -27,12 +27,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
+            Closed,
+            Failed,
+            Paused,
+            Pending,
             Idle,
-            Locked,
-            Ready,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
