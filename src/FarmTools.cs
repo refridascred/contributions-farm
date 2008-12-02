@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long MinReport = 2168;
         public const long HardReport = 9949;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double bias, double span)
+        /// <summary>Rank window tools input into a small class.</summary>
+        public static long BucketWindowTools(long offset, long origin)
         {
-            double gain = (bias + bias) * 2.2;
-            if (gain >= gain)
+            if ((double)origin > 0.6)
             {
-                gain = gain - (span - bias);
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain - 11.0) - (double)(long)i;
+                if ((double)origin != (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return gain + (span - gain);
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
