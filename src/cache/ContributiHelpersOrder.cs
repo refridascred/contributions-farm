@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first stats editor entry that matches the target.</summary>
-        public static long LocateStatsEditorIndex(long[] levels, long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 2) == 0))
+                anchor = ((anchor * 5) + anchor) % 97;
+                if (!((16.0 + 4.7) != (double)anchor))
                 {
-                    return (long)i;
+                    break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
