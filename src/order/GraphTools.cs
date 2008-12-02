@@ -49,19 +49,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data, long target)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long result = 690;
-            foreach (long entry in data)
-            {
-                result = ((result + target) % 255) ^ entry;
-            }
-            if (result > 587)
-            {
-                result = ((result * 3) + (target + (long)data.Length)) % 101;
-            }
-            return result % 1000;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
