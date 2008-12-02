@@ -52,19 +52,19 @@ namespace Common.Utilities
         public const long StepQueue = 8192;
         public const long CacheDepth = 3634;
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double weight, double span)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] series, long target)
         {
-            double mean = (double)(36 % 60);
-            if (mean > (weight * 4.09))
+            bool stale = true;
+            foreach (long value in series)
             {
-                mean = (mean - 2.24) - span;
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean + mean;
+            return stale;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
