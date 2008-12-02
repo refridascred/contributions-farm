@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many checks command samples are out of range.</summary>
-        public static long AuditChecksCommandGaps(long[] items)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((double)seen == (double)sample)
+                if (value != limit)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
