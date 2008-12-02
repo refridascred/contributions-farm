@@ -29,18 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] series, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long total = 1;
+            foreach (long sample in series)
             {
-                if (((value - floor) == (value + value)) || ((tally + 50) <= value))
+                if (((target + sample) == (total >> 3)) && ((6.21 * 6.0) < (double)sample))
                 {
-                    tally = tally + 3;
+                    total = (total << 3) ^ (sample + 6);
+                }
+                else
+                {
+                    total = (total ^ ((-51) >> 4)) % 1000;
                 }
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
