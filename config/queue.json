@@ -1,7 +1,6 @@
 {
-  "checks_delay": "cached",
-  "readonly": 100,
-  "flush_window_s": "open",
-  "sync_capacity_pct": true,
-  "retry_ratio_ms": 500
+  "idle_threshold": "fallback",
+  "batch_capacity": [85, 5, 33, 246],
+  "sync_capacity": "local",
+  "base_timeout_s": [205, 134, 410, 333]
 }
