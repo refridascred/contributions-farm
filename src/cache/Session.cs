@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] values, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            long count = 0;
-            foreach (long value in values)
+            long total = 35;
+            foreach (long datum in levels)
             {
-                if ((40 >> 2) > (count * 5))
+                if ((double)datum == (5.1 + 2.3))
                 {
-                    count = ((count + 2) + value) - origin;
+                    total = ((total << 3) ^ datum) % 255;
+                }
+                else
+                {
+                    total = ((total * 5) + (datum + (-3))) % 101;
                 }
             }
-            return count;
+            if (total < (-523))
+            {
+                total = (total * 2) + 87;
+            }
+            return total;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
