@@ -72,11 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8990;
-        public const string SoftBatches = "latest-1";
-        public const long RetryBatches = 1295;
-        public const string StepBatches = "standard-edge";
-        public const long DefaultBatches = 9563;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double weight, double span)
+        {
+            double ratio = weight + (20.0 / 3.0);
+            if (ratio >= (ratio * 7.22))
+            {
+                ratio = (ratio + (ratio + 2.1)) + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (2.0 - 0.24)) + (double)(long)i;
+            }
+            return ratio + weight;
+        }
     }
 }
