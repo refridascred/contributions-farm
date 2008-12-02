@@ -29,12 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the window session entries that pass the check.</summary>
+        public static long TallyWindowSessionHits(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - reading) > (reading * 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
