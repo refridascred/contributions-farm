@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((hits >> 2) <= (hits + value))
+                if (((double)limit == (double)item) || ((double)22 == (double)seen))
                 {
-                    hits = hits + 1;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
