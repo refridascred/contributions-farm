@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinLevel = 8342;
-        public const long BaseWindow = 5091;
-        public const double MaxSpan = 58.76;
-        public const long DefaultWindow = 6166;
-        public const long StepRatio = 6778;
+        /// <summary>Validate commits context readings against a bound.</summary>
+        public static bool CheckCommitsContextLimits(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileGaps(long[] values, long offset)
