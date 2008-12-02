@@ -33,12 +33,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Match up batches layout samples.</summary>
+        public static long PairBatchesLayoutCount(long[] items)
         {
-            Idle,
-            New,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit format channel readings against a rule.</summary>
