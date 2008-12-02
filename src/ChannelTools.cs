@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark ^ (offset * 4)) % 97;
-                mark = mark ^ ((long)i / 9);
-                mark = (mark << 3) ^ mark;
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((data[i] < step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a entry record.</summary>
