@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long seed, long step)
-        {
-            long next = seed + step;
-            if (((double)next >= (5.0 - 7.12)) || ((seed - seed) < (seed / 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((17.0 + 3.44) <= (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((next <= (step + seed)) && ((seed + (-2)) > (356 - seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((next - step) != (seed + next))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftSize = 86.25;
+        public const long BaseBudget = 5113;
+        public const long WindowFactor = 5452;
+        public const string SoftStats = "fallback-1";
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] data)
