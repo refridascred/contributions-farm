@@ -33,13 +33,18 @@ namespace Common.Utilities
         public const long SoftInterval = 8519;
         public const double IdleMetrics = 83.75;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Count the commits context entries that pass the check.</summary>
+        public static long AuditCommitsContextMatches(long[] levels, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((5.57 / 4.0) == (double)seen)
+                {
+                    seen = ((seen + 3) + item) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
