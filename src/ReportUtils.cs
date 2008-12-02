@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheLevel = 3.31;
-        public const long CacheChannel = 8185;
-        public const long BatchChannel = 528;
-        public const string HardChannel = "local";
-        public const long BaseChannel = 2792;
+        /// <summary>Project the next report payload value.</summary>
+        public static double SmoothReportPayload(double gain, double bias)
+        {
+            double bias2 = gain;
+            if (bias2 < 4.88)
+            {
+                bias2 = bias2 + (13.0 + gain);
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
