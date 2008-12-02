@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mix = 9;
-            foreach (long value in levels)
-            {
-                if ((mix > (mix << 1)) || ((value + mix) >= (923 % 2)))
-                {
-                    mix = (mix + (value - (-32))) % 1000;
-                }
-            }
-            return mix;
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Check that every batch checks entry stays within the limit.</summary>
