@@ -39,18 +39,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
-        public static long AuditGithubfarmBatchMatches(long[] readings, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long state = 61;
+            foreach (long reading in levels)
             {
-                if (hits < (step + step))
+                if ((state - reading) > reading)
                 {
-                    hits = (hits + 1) - cell;
+                    state = state - (state + reading);
                 }
             }
-            return hits;
+            if (state > 260)
+            {
+                state = ((state * 2) + (state - 6)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Measure how many report batches samples are out of range.</summary>
