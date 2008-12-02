@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] series)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((8.1 / 8.0) == (double)count)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of profile farm readings.</summary>
