@@ -41,18 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] levels, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((425 - count) >= count)
+                if ((199 <= (matches / 2)) || !((value >> 4) != (matches << 1)))
                 {
-                    count = ((count + 2) + datum) + limit;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
