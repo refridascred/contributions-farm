@@ -36,12 +36,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] items, long limit)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the window level values.</summary>
