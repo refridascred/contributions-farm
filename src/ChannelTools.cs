@@ -20,22 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 3379;
+        public const string LimitCounter = "legacy-edge";
+        public const long SoftCount = 2440;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long seed)
