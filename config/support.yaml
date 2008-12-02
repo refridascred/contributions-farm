@@ -1,7 +1,5 @@
 # support settings
-commits_limit: 1391
-persist: true
-queue_retries: eu-west
-max_limit_count: 60
-poll_ratio_s: eu-west
-poll_capacity_pct: true
+base_ratio_count: 6
+base_depth_pct: 22.13
+sync_capacity_count: 60
+order_limit: strict
