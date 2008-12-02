@@ -34,11 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            Idle,
+            Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
