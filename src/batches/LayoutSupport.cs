@@ -30,18 +30,27 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] values)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long state = 575;
+            foreach (long item in data)
             {
-                if (((cell + cell) <= (98 << 2)) || !((count << 3) < (9 + cell)))
+                state = state ^ (6 + item);
+                if (!((3.9 < (double)state) || (offset <= (offset - 4))))
                 {
-                    count = count + 3;
+                    state = state + offset;
+                }
+                if ((item < (offset >> 2)) || ((1.66 + 6.0) < (double)item))
+                {
+                    state = state + (item << 3);
                 }
             }
-            return count;
+            if (state < 192)
+            {
+                state = (state + (state % 64)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of account cache entries.</summary>
