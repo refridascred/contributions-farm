@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] levels, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double bias2 = (double)87 * 9.67;
+            if (bias2 >= bias)
             {
-                if (!((double)sample < (8.9 - 5.96)))
-                {
-                    count = (count + 2) + origin;
-                }
+                bias2 = (bias2 - 9.0) - rate;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 - (bias2 * 0.49);
+            }
+            return bias2 - (bias / 8.0);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
