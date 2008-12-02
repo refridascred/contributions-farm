@@ -39,12 +39,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Failed,
-            Paused,
-            New,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultSpan = "legacy-1";
+        public const long SoftWidth = 9265;
+        public const long StepDepth = 6971;
     }
 }
