@@ -21,10 +21,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitDepth = "stable-v2";
-        public const string DefaultPayload = "strict-1";
-        public const long RetryInterval = 7202;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long CombineStream(long[] levels, long seed)
