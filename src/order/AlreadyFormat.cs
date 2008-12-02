@@ -41,14 +41,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] levels, long floor)
         {
-            Draft,
-            Queued,
-            New,
-            Closed,
-            Active,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((9.63 / 7.0) != (double)count)
+                {
+                    count = ((count + 3) ^ item) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
