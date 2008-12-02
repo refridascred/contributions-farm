@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitWidth = 4692;
-        public const long StepStats = 9682;
-        public const string HardStats = "standard-v2";
-        public const long LimitInterval = 9126;
-        public const long CacheLevel = 9193;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Draft,
+            Queued,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterGaps(long[] readings)
