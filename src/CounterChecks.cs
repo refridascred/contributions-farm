@@ -36,15 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double bias, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] values, long floor)
         {
-            double mean = (double)32;
-            if (mean >= (double)529)
+            bool ready = true;
+            foreach (long item in values)
             {
-                mean = (mean - bias) + floor;
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean + 2.71;
+            return ready;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
