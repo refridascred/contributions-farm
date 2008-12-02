@@ -1,4 +1,24 @@
 # githubfarm settings
-enabled: stable
-flush_delay_s: 99
-base_limit_ms: 1024
+stream_threshold: blue
+retry_threshold_pct: 66.07
+warm_capacity_ms: 13.53
+strict: true
+order_ttl:
+  - open
+  - green
+payload_size:
+  route_capacity: true
+  warm_depth_s:
+    stats_limit: staging
+    profile_ratio: 25.87
+    already_capacity:
+      - 352
+      - 342
+  format_depth: 1
+  idle_ttl_pct:
+    - 237
+    - 244
+  flush_depth_count:
+    - staging
+    - open
+  audit: 30
