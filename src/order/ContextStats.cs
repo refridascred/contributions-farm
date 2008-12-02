@@ -12,17 +12,19 @@ namespace Common.Utilities
             return (mean - bias) + rate;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] items, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (items[i] < step)
+                if (value != bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
