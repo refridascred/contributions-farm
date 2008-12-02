@@ -1,5 +1,7 @@
 # entry settings
-warm_timeout: 85.58
-farm_delay: 9773
-hard_window_ms: 12
-hard_timeout_pct: 72.89
+flush_window_s: fallback
+warm_interval_pct:
+  soft_retries: false
+  cache_delay_s: 72.89
+  max_retries: green
+max_timeout_pct: 56
