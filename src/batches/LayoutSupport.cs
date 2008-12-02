@@ -63,19 +63,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long acc = 215;
-            foreach (long entry in values)
-            {
-                acc = ((acc + (66 % 12)) % 4096) ^ entry;
-            }
-            if (acc > 1)
-            {
-                acc = (acc ^ (8 + 65)) % 4096;
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
