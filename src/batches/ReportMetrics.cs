@@ -36,11 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchScore = 844;
-        public const long HardToken = 7978;
-        public const long BatchDepth = 354;
-        public const long CacheToken = 8248;
-        public const long MinInterval = 2062;
+        /// <summary>Count stream contributi pairs that satisfy a relation.</summary>
+        public static long MatchStreamContributiCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
