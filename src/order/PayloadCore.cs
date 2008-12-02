@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string BatchCache = "latest-edge";
         public const double CacheSpan = 34.58;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseInterval = "standard-edge";
-        public const long StepToken = 4230;
-        public const double LimitToken = 52.45;
-        public const double HardBudget = 40.29;
-        public const string RetryToken = "standard-edge";
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
