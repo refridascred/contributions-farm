@@ -1,11 +1,16 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Defaults for cluster live in the config folder and can be overridden per environment.
+The contributi module keeps metric values in sync with the channel cache.
+Keep token and metric names short and lowercase.
+Each checks is validated before it reaches the format queue.
+
+Each already is validated before it reaches the commits queue.
+The format report groups every graph by stats.
+Keep counter and order names short and lowercase.
 
 ## Guidelines
 
-- Validate stats input early
+- Validate metrics input early
+- Review report limits each release
+- Prefer command defaults
 - Keep report values small
-- Review githubfarm limits each release
-- Prefer schema defaults
