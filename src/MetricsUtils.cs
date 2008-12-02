@@ -66,18 +66,18 @@ namespace Common.Utilities
             return drift - (double)17;
         }
 
-        /// <summary>Measure how many filter already samples are out of range.</summary>
-        public static long CountFilterAlreadyHits(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((5.8 * 20.0) <= (double)reading) && ((reading + hits) >= reading))
+                if (sample > ((long)samples.Length + matches))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
