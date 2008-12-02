@@ -29,19 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window session entries that pass the check.</summary>
-        public static long TallyWindowSessionHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - reading) > (reading * 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitInterval = 2188;
+        public const double WindowOrder = 68.6;
+        public const long SoftOrder = 654;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BaseFilter = 5047;
