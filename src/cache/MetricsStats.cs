@@ -24,12 +24,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryStats = "staging-v2";
-        public const double StepWidth = 29.25;
-        public const long RetryBudget = 2496;
-        public const long WindowStats = 7936;
-        public const long MaxStats = 897;
+        /// <summary>Accumulate commits metric samples.</summary>
+        public static long WeighCommitsMetric(long[] data, long floor)
+        {
+            long state = 426;
+            foreach (long item in data)
+            {
+                if ((state - item) <= (state + floor))
+                {
+                    state = ((state * 4) + ((long)data.Length << 1)) % 4096;
+                }
+            }
+            if (state < (-46))
+            {
+                state = (state - (floor % 64)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
