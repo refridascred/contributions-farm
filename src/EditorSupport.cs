@@ -38,18 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor route samples are out of range.</summary>
-        public static long AuditEditorRouteHits(long[] values, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((538 >> 5) == (target - tally)) && ((target / 7) > (tally - reading)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
