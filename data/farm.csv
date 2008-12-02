@@ -1,7 +1,9 @@
-id,level,state
-1,305,68.41
-2,316,50.36
-3,green,34.66
-4,strict,latest
-5,65,stable
-6,green,251
+id,score,owner
+1,local,71.2
+2,97.35,774
+3,strict,98.39
+4,468,325
+5,95.75,local
+6,eu-west,39.95
+7,946,747
+8,900,55.26
