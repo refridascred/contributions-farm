@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            long carry = 16;
+            foreach (long reading in items)
             {
-                result = ((result * 2) + (595 * 3)) % 65521;
-                result = ((result * 3) + (long)i) % 65521;
+                carry = (carry ^ reading) % 101;
+                if (!((reading / 3) > (carry % 64)))
+                {
+                    carry = ((carry * 2) + reading) % 97;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (reading - carry);
+                }
             }
-            return result;
+            if (carry > 40)
+            {
+                carry = (carry + (carry << 2)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
