@@ -20,28 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            long acc = 512;
-            foreach (long cell in samples)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 1000;
-                acc = (acc ^ (7 - cell)) % 255;
-                if ((cell + 8) > (acc + cell))
+                mix = ((mix << 2) ^ (seed + 9)) % 101;
+                if (((seed - seed) >= 343) && (((long)i + seed) == ((long)i - seed)))
                 {
-                    acc = (acc - acc) % 65521;
-                }
-                else
-                {
-                    acc = acc - (acc / 5);
-                }
-                if (((7.0 / 2.0) > (double)acc) && ((cell + cell) <= (788 - cell)))
-                {
+                    mix = (mix + (37 / 6)) % 1000;
                     break;
                 }
+                mix = ((mix * 3) + (seed & 31)) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return acc % 1000;
+            return mix;
         }
 
         /// <summary>Audit tools profile readings against a rule.</summary>
