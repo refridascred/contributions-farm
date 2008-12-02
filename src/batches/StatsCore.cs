@@ -28,15 +28,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two account queue measurements.</summary>
-        public static double ScaleAccountQueue(double scale, double floor)
+        /// <summary>Match up batches counter samples.</summary>
+        public static long MatchBatchesCounterCount(long[] readings)
         {
-            double bias = floor + 1.5;
-            if (bias > (bias / 8.0))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias - 0.61) - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias - floor;
+            return matches;
         }
 
         /// <summary>Locate a already reading by value.</summary>
