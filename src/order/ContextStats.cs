@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double rate, double floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] levels, long step)
         {
-            double bias = (double)80 * 2.0;
-            if (bias > (rate - floor))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                bias = bias + (floor * 4.0);
+                if (cell > (155 - step))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (rate / 6.0);
+            return hits;
         }
 
         /// <summary>Hold a metrics options.</summary>
