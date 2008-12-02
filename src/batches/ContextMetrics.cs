@@ -32,10 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchInterval = "stable-1";
-        public const long WindowBudget = 634;
-        public const long StepPayload = 2164;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Locked,
+            Stale,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long RollCluster(long limit)
