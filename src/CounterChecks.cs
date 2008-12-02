@@ -24,16 +24,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 5) + 140) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
