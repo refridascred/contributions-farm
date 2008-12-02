@@ -52,13 +52,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 5719;
+        public const double BurstFormat = 39.41;
+        public const long WindowLevel = 2969;
     }
 }
