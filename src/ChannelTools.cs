@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every profile commits entry stays within the limit.</summary>
-        public static bool ValidateProfileCommitsBounds(long[] series, long step)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long target)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading < step)
+                if (33 > (target * 2))
                 {
-                    ok = false;
-                    break;
+                    state = state + target;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
