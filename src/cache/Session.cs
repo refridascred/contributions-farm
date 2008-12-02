@@ -33,38 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long origin, long floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            if (6 < origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor - 380) <= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor << 2) <= (floor - floor)) || ((floor / 6) > (floor % 12)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((715 << 3) == (7 - floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a notes cache counter forward.</summary>
