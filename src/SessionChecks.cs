@@ -46,18 +46,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] levels)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long diff = seed - bound;
+            if (((9.0 - 8.7) <= (double)seed) && ((diff >> 5) < (diff + bound)))
             {
-                if (reading > (39 + tally))
+                return 7;
+            }
+            else
+            {
+                if ((bound >> 1) != (diff + diff))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (bound < seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed >= (4 ^ bound)) || ((seed - 97) < (bound * 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
