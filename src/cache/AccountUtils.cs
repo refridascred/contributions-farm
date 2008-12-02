@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstCount = 7673;
+        public const long HardMetrics = 7915;
+        public const long BurstMetrics = 4673;
+        public const long SoftInterval = 8519;
+        public const double IdleMetrics = 83.75;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
