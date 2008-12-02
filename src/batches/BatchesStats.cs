@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] samples, long offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double scale, double span)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double scale2 = (scale - scale) / 9.0;
+            if (scale2 >= (scale + scale2))
             {
-                if ((offset <= (tally + reading)) || ((reading - reading) == (3 - reading)))
-                {
-                    tally = tally + 2;
-                }
+                scale2 = scale2 - scale;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - span) + (double)(long)i;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
