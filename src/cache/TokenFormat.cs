@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepScore = 33.52;
-        public const double BurstFormat = 41.47;
-        public const string MinRatio = "stable-v2";
-        public const double LimitFormat = 65.18;
+        /// <summary>Measure how many buffer schema samples are out of range.</summary>
+        public static long CountBufferSchemaMatches(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)target >= (3.5 + 9.0))
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool VerifyMetricLimits(long[] series, long seed)
