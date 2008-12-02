@@ -32,10 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 44.63;
-        public const long BaseScore = 9977;
-        public const long MaxBatch = 4517;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Dropped,
+            Synced,
+            New,
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] readings)
