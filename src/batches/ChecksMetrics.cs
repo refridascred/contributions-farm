@@ -37,14 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Paused,
-            New,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "alpha";
+        public const double RetrySession = 1.7;
+        public const long WindowSession = 7493;
+        public const string BaseSession = "stable";
+        public const double RetryScore = 55.42;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long GradeGraph(long seed, long target)
