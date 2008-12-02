@@ -47,19 +47,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] data, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (item > offset)
+                if ((sample / 4) < (seen << 3))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
