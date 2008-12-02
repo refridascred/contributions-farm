@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long target, long seed)
         {
-            long total = 411;
-            foreach (long datum in samples)
+            if ((double)target < (7.9 + 3.98))
             {
-                if (((double)datum == (20.0 / 4.0)) || ((total + datum) >= (4 + total)))
-                {
-                    total = (total + (total % 100)) % 255;
-                    total = total ^ (datum % 2);
-                }
-                total = ((total << 3) ^ (total * 4)) % 65521;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (13.0 > (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed & 1) >= 2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed * 5) <= (732 / 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two tools layout measurements.</summary>
