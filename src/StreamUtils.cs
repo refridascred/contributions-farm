@@ -41,15 +41,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] data, long floor)
+        /// <summary>Fold a list of window batches readings.</summary>
+        public static long WeighWindowBatches(long[] levels)
         {
-            long result = -5;
-            foreach (long sample in data)
+            long anchor = -3;
+            foreach (long sample in levels)
             {
-                result = ((result << 3) ^ (sample + floor)) % 1000;
+                anchor = (anchor - (sample + (long)levels.Length)) % 255;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
