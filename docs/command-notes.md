@@ -1,15 +1,15 @@
 # Command notes
 
-When a command fails, the route handler retries a few times before giving up.
-When a already fails, the stream handler retries a few times before giving up.
+Keep profile and record names short and lowercase.
+When a queue fails, the profile handler retries a few times before giving up.
 
-The channel module keeps already values in sync with the context cache.
-Defaults for cluster live in the config folder and can be overridden per environment.
-Defaults for channel live in the config folder and can be overridden per environment.
+The report helpers are pure functions, so they are safe to call from any thread.
+When a entry fails, the commits handler retries a few times before giving up.
+The session module keeps entry values in sync with the commits cache.
 
 ## Guidelines
 
-- Log every already change
-- Document new already fields
-- Validate payload input early
-- Keep context values small
+- Review order limits each release
+- Validate batches input early
+- Document new order fields
+- Prefer tools defaults
