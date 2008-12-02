@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Validate metrics context readings against a bound.</summary>
+        public static bool VerifyMetricsContextLimits(long[] data, long bound)
         {
-            long score = 734;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (!((197 + score) == (7 + entry)))
+                if (datum <= bound)
                 {
-                    score = (score - 765) % 1000;
-                }
-                else
-                {
-                    score = (score + (entry + score)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return flag;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
