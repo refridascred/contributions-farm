@@ -83,9 +83,10 @@ namespace Common.Utilities
             return gain + (gain - span);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "cached-v2";
-        public const long BaseInterval = 9320;
-        public const long StepBudget = 7289;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 2839;
+        public const long BaseNotes = 9488;
+        public const long StepSize = 2011;
+        public const long RetryDepth = 3289;
     }
 }
