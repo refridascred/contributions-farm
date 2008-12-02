@@ -13,13 +13,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Ready,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheSpan = "standard-edge";
+        public const string MaxStats = "standard";
+        public const long RetryStats = 3823;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
