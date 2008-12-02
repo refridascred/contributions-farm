@@ -25,10 +25,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowDepth = 686;
-        public const double LimitChannel = 25.33;
-        public const long IdleLevel = 3940;
-        public const long IdleBudget = 2249;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
