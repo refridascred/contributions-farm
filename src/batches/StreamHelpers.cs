@@ -76,12 +76,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double scale, double bias)
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            double ratio = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (scale * 5.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define session limits and defaults.</summary>
