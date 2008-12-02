@@ -27,15 +27,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double ratio, double offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] levels)
         {
-            double gain = (offset / 8.0) * 3.0;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                gain = (gain + ratio) + (double)(long)i;
+                if ((4.0 - 13.0) <= (3.0 + 6.9))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain + offset;
+            return hits;
         }
 
         /// <summary>Hold a schema header.</summary>
