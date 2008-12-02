@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Locked,
-            Dropped,
-            Closed,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Check that every batch checks entry stays within the limit.</summary>
