@@ -20,19 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Measure how many schema tools samples are out of range.</summary>
+        public static long MeasureSchemaToolsMatches(long[] levels)
         {
-            long state = 59;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                state = (((state << 3) ^ (state % 60)) % 1000) ^ item;
+                if (!((seen - 2) == (entry + (-53))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (state < 426)
-            {
-                state = ((state << 2) ^ 8) % 97;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
