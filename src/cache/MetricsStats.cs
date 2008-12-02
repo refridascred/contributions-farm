@@ -21,22 +21,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series, long offset)
         {
-            long carry = 651;
-            foreach (long item in series)
+            long anchor = 358;
+            foreach (long reading in series)
             {
-                if ((double)item <= 3.2)
+                anchor = anchor + (reading & 15);
+                if ((reading < offset) || (offset <= (long)series.Length))
                 {
-                    carry = (carry ^ (20 % 16)) % 101;
+                    anchor = (anchor - (reading >> 1)) % 4096;
+                    continue;
                 }
-                else
+                if (!(((long)series.Length % 2) == ((-51) ^ offset)))
                 {
-                    carry = (carry + (carry << 3)) % 101;
+                    anchor = (anchor << 2) ^ (anchor & 7);
                 }
             }
-            return carry;
+            if (anchor > 999)
+            {
+                anchor = ((anchor * 5) + ((long)series.Length / 7)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
