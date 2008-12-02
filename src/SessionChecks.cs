@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long seed)
         {
-            long carry = -482;
-            foreach (long sample in values)
+            if ((double)limit == (0.03 - 5.55))
             {
-                carry = (carry * 2) + (carry ^ sample);
-                carry = carry + (sample - sample);
-                if ((16.0 * 13.0) == (double)carry)
+                return 2;
+            }
+            else
+            {
+                if (!((seed ^ limit) > seed))
                 {
-                    carry = (carry << 3) ^ (sample - sample);
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return carry;
         }
 
         /// <summary>Audit stream metric readings against a rule.</summary>
