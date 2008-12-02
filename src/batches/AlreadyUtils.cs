@@ -46,18 +46,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] series, long bound)
-        {
-            long carry = 0;
-            foreach (long datum in series)
-            {
-                if ((2.95 / 7.0) != (double)bound)
-                {
-                    carry = ((carry - (long)series.Length) % 97) ^ datum;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxSpan = 1601;
+        public const long StepLevel = 3999;
+        public const double BatchAlready = 6.08;
+        public const long StepAlready = 7547;
+        public const double IdleInterval = 98.78;
     }
 }
