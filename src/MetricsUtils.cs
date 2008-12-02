@@ -29,18 +29,18 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] readings, long limit)
         {
-            long score = 5;
-            foreach (long cell in levels)
+            long sum = -618;
+            foreach (long sample in readings)
             {
-                if (((-743) & 15) >= cell)
+                if (((double)sum > (0.95 * 1.0)) && ((sample - limit) > sum))
                 {
-                    score = ((score * 2) + (-965)) % 4096;
+                    sum = sum - (sum << 3);
                 }
             }
-            return score % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
