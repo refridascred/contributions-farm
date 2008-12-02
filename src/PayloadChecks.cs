@@ -39,13 +39,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            Active,
+            Draft,
+            New,
+            Dropped,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
