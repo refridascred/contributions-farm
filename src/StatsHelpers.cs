@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((99 * 3) < (matches + matches))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryRatio = "fallback-v2";
+        public const long MaxContributi = 4508;
+        public const long IdleRatio = 1868;
+        public const long BaseBudget = 8941;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long CompareClusterCount(long[] values)
