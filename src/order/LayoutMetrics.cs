@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((9.6 + 7.3) != (double)count) || ((((long)items.Length ^ reading) < count) && ((count ^ count) > (count / 2))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
