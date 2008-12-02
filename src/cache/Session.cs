@@ -43,27 +43,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of stream record readings.</summary>
-        public static long TallyStreamRecord(long[] samples, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long floor)
         {
-            long anchor = 3;
-            foreach (long datum in samples)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((anchor >> 3) >= (origin % 7))
+                if (!!((double)875 > (double)floor))
                 {
-                    anchor = (anchor + (anchor - anchor)) % 97;
+                    mark = ((mark << 2) ^ ((long)i + floor)) % 65521;
                 }
-                anchor = (anchor ^ origin) % 255;
-                if ((2.9 / 2.0) < (double)anchor)
-                {
-                    anchor = ((anchor * 5) + (72 - datum)) % 1000;
-                }
+                mark = ((mark * 3) + (floor / 5)) % 97;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (anchor < 56)
-            {
-                anchor = (anchor - (origin + 75)) % 65521;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Roll a notes cache counter forward.</summary>
