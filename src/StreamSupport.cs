@@ -28,22 +28,18 @@ namespace Common.Utilities
             return gain + (weight - 6.57);
         }
 
-        /// <summary>Digest a series of record report entries.</summary>
-        public static long WeighRecordReport(long[] data)
+        /// <summary>Count the farm cache entries that pass the check.</summary>
+        public static long CountFarmCacheOutliers(long[] levels, long step)
         {
-            long total = 5;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((datum % 8) > (datum << 3))
+                if (reading > (hits + reading))
                 {
-                    total = (total + datum) % 101;
+                    hits = (hits + 3) + step;
                 }
             }
-            if (total > 6)
-            {
-                total = (total - (total ^ 46)) % 97;
-            }
-            return total;
+            return hits;
         }
     }
 }
