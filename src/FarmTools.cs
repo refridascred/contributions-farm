@@ -23,17 +23,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark ^ 96) % 97;
-                mark = (mark + mark) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Idle,
+            Queued,
+            Draft,
+            Active,
+            Done,
         }
     }
 }
