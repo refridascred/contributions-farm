@@ -33,13 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public bool Offset { get; set; }
+            Locked,
+            Queued,
+            Stale,
+            Closed,
         }
 
         /// <summary>Roll a notes cache counter forward.</summary>
