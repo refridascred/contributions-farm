@@ -33,22 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] values, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long mix = 29;
-            foreach (long datum in values)
-            {
-                if (((long)values.Length <= (mix + seed)) && ((104 * 2) >= (seed ^ 0)))
-                {
-                    mix = (mix ^ datum) % 101;
-                }
-                if ((seed - 64) == (mix / 3))
-                {
-                    mix = (mix << 2) ^ (datum / 5);
-                }
-            }
-            return mix;
+            Synced,
+            Paused,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Compare every pair of tools session readings.</summary>
