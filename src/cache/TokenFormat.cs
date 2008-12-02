@@ -35,9 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleSpan = 6465;
-        public const long CacheGraph = 3092;
-        public const long StepGraph = 4763;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum > count) || (((double)origin < (14.0 * 2.89)) && ((count << 3) >= (3 ^ count))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
