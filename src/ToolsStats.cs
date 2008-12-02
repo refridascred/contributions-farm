@@ -48,18 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] levels, long bound)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double gain = (double)(852 * 3);
+            if (gain >= span)
             {
-                if ((bound + bound) >= value)
-                {
-                    seen = seen + 2;
-                }
+                gain = gain - (gain / 2.0);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (rate * 4.0)) + (double)(long)i;
+            }
+            return gain + (gain - span);
         }
 
         /// <summary>Digest a series of support command entries.</summary>
