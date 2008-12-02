@@ -34,11 +34,15 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 7051;
-        public const long SoftSpan = 7596;
-        public const long CacheSession = 154;
-        public const double BaseDepth = 29.17;
-        public const long BurstCount = 7216;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values, long limit)
+        {
+            long sum = 266;
+            foreach (long datum in values)
+            {
+                sum = ((((sum << 2) ^ 6) % 101) - datum) - limit;
+            }
+            return sum % 4096;
+        }
     }
 }
