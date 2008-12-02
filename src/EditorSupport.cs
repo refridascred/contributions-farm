@@ -38,21 +38,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((hits % 10) < (limit >> 1)) || (((limit + hits) <= datum) && ((double)datum != (16.0 / 6.0))))
                 {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
