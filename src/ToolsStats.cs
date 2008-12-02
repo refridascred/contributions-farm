@@ -16,39 +16,10 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long limit)
-        {
-            if ((847 ^ offset) <= (offset << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(offset < limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit < (7 >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset >> 3) >= (limit + limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchBudget = 3104;
+        public const long BaseEntry = 9415;
+        public const string HardEntry = "stable-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinContext = 1209;
