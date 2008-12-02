@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] data)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long origin, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            if ((target / 8) >= (origin * 5))
             {
-                if (((-9) << 3) >= (item << 2))
+                return 3;
+            }
+            else
+            {
+                if (((double)target >= (9.0 / 2.0)) && ((double)target <= (double)origin))
                 {
-                    tally = tally + 3;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((target * 3) >= (origin + target)) || (8.4 < (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin % 2) <= (8 + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
