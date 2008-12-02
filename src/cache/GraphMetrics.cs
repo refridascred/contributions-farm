@@ -25,21 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor cache readings.</summary>
-        public static long CompareEditorCacheCount(long[] data)
+        /// <summary>Project the next session editor value.</summary>
+        public static double BlendSessionEditor(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = bias;
+            if (weight > ratio)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + (double)27;
             }
-            return hits;
+            else
+            {
+                weight = weight - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (bias * 3.0)) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
