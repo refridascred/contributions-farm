@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west primary fallback; do
-    log "checking ${item}"
-done
+mode="${1:-strict}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=463
+COMMAND_LIMIT=385
 log "limit is ${COMMAND_LIMIT}"
