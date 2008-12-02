@@ -1,6 +1,6 @@
-id,level,score,label
-1,96.61,220,440
-2,87.84,869,eu-west
-3,91.84,860,752
-4,staging,cached,394
-5,14,legacy,973
+id,count,label
+1,206,3.88
+2,staging,local
+3,standard,124
+4,719,0.25
+5,52.24,440
