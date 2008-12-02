@@ -43,11 +43,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstScore = 9519;
-        public const long BaseSpan = 2500;
-        public const double WindowInterval = 12.41;
-        public const long SoftPayload = 2544;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score << 3) ^ score) % 97;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] series)
