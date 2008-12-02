@@ -1,4 +1,7 @@
 # entry settings
-hard_ttl: 45.86
-idle_retries_pct: true
-cache_size_ms: 7682
+default_window_ms: latest
+base_window_pct: 1024
+soft_size: latest
+dry_run: true
+window_retries: false
+warm_retries: 2.3
