@@ -21,17 +21,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] items, long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Dropped,
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
