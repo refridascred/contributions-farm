@@ -1,14 +1,12 @@
 # Command notes
 
-Run the token check before changing any farm limits.
-The account module keeps schema values in sync with the record cache.
-Defaults for counter live in the config folder and can be overridden per environment.
-
-Keep schema and graph names short and lowercase.
-The session report groups every format by command.
+Each checks is validated before it reaches the filter queue.
+Each payload is validated before it reaches the metrics queue.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Document new session fields
-- Validate entry input early
+- Log every record change
+- Keep githubfarm values small
+- Prefer channel defaults
+- Validate notes input early
