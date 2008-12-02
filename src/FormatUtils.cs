@@ -78,19 +78,21 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
