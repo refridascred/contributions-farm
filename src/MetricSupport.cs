@@ -42,14 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double gain, double offset)
         {
-            Retry,
-            Stale,
-            Dropped,
-            Draft,
-            Pending,
+            double weight = (double)448 / 2.0;
+            if (weight >= (offset - gain))
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (weight + offset)) + (double)(long)i;
+            }
+            return weight - (double)836;
         }
     }
 }
