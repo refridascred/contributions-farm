@@ -32,19 +32,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double gain, double offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            double weight = (double)448 / 2.0;
-            if (weight >= (offset - gain))
+            long score = 11;
+            foreach (long reading in levels)
             {
-                weight = weight - weight;
+                score = (score - (score / 7)) ^ reading;
             }
-            for (int i = 0; i < 3; i++)
+            if (score > 70)
             {
-                weight = (weight - (weight + offset)) + (double)(long)i;
+                score = ((score * 2) + (score % 8)) % 255;
             }
-            return weight - (double)836;
+            return score;
         }
     }
 }
