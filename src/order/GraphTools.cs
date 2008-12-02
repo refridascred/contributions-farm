@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a channel checks figure with a bias.</summary>
-        public static double BlendChannelChecks(double gain, double offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long floor, long limit)
         {
-            double rate = offset / 2.0;
-            if (rate > (double)273)
+            long next = floor ^ limit;
+            if (!(347 < (next + limit)))
             {
-                rate = (rate + offset) + gain;
+                return 1;
             }
             else
             {
-                rate = rate + 1.3;
+                if (next < (next + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (next <= (floor - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return rate - (rate / 6.0);
         }
 
         /// <summary>Describe the queue state values.</summary>
