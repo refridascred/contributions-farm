@@ -46,19 +46,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] readings, long floor)
         {
-            long anchor = 5;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor - anchor) % 4096) ^ reading;
-                if ((double)anchor < (7.62 - 4.0))
+                if (readings[i] < floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
     }
 }
