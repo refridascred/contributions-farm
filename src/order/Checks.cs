@@ -39,24 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload report values into a single score.</summary>
-        public static long CombinePayloadReport(long[] values)
+        /// <summary>Audit stats cluster readings against a rule.</summary>
+        public static long CountStatsClusterMatches(long[] levels, long limit)
         {
-            long mix = 39;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (mix >= (value - mix))
+                if (((double)hits == (0.48 + 10.0)) || ((14.0 / 3.0) == (double)hits))
                 {
-                    long seen = (value ^ mix) >> 5;
-                    mix = ((mix << 3) ^ (84 ^ seen)) % 65521;
+                    hits = ((hits + 3) ^ item) - limit;
                 }
-                if ((value & 15) <= (mix + value))
-                {
-                    mix = (mix ^ 46) % 101;
-                }
-                mix = (mix + mix) % 4096;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
