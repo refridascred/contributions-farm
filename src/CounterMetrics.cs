@@ -39,19 +39,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a window buffer reading.</summary>
-        public static double AdjustWindowBuffer(double scale, double floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long offset, long origin)
         {
-            double scale2 = scale;
-            if (scale2 > scale)
+            if (((double)3 == (double)origin) && ((origin % 64) >= (origin >> 4)))
             {
-                scale2 = (scale2 - (scale2 / 8.0)) + floor;
+                return 2;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale2 = scale2 - (double)(long)i;
+                if (!((283 * 5) > offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return scale2 + scale;
         }
     }
 }
