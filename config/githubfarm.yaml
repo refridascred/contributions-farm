@@ -1,8 +1,9 @@
 # githubfarm settings
-flush_delay_pct:
-  - 196
-  - 94
-dry_run: green
-base_size: 6798
-compress: cached
-cache_ratio_s: 56.4
+default_threshold_ms: 60.22
+min_window: 51.16
+compress: standard
+verbose:
+  - legacy
+  - latest
+  - eu-west
+  - local
