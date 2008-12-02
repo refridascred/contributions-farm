@@ -13,25 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank notes queue input into a small class.</summary>
-        public static long ClassifyNotesQueue(long step, long target)
-        {
-            if (step <= (target ^ target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step - target) > (target >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleBudget = 2771;
+        public const string RetryCount = "open-edge";
+        public const long DefaultGraph = 1773;
+        public const string LimitGraph = "strict-v2";
 
         /// <summary>Blend two farm measurements.</summary>
         public static double SmoothFarm(double ratio, double offset)
