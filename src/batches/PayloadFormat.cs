@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a channel payload counter forward.</summary>
