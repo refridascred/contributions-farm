@@ -1,15 +1,12 @@
 # Command notes
 
-Keep report and context names short and lowercase.
-When a batches fails, the farm handler retries a few times before giving up.
-
-Use metrics settings to tune how often profile data is refreshed.
-Defaults for buffer live in the config folder and can be overridden per environment.
-When a already fails, the metrics handler retries a few times before giving up.
+The contributi module keeps profile values in sync with the checks cache.
+Use cache settings to tune how often command data is refreshed.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer order defaults
-- Document new profile fields
-- Validate format input early
-- Log every queue change
+- Validate payload input early
+- Keep channel values small
+- Document new payload fields
+- Prefer layout defaults
