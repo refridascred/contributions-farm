@@ -1,22 +1,5 @@
 {
-  "warm_interval_count": 250,
-  "dry_run": 5.15,
-  "counter_threshold": true,
-  "payload_depth": "staging",
-  "poll_window_pct": 2131,
-  "retry_ttl": {
-    "account_timeout": [434, 436, 162, 382],
-    "base_ratio_s": 710,
-    "hard_interval_ms": 31,
-    "default_retries_ms": "legacy",
-    "readonly": {
-      "verbose": [280, 409, 226, 2],
-      "hard_timeout": 58,
-      "soft_threshold_s": true,
-      "base_ratio": "cached",
-      "default_timeout_ms": "eu-west",
-      "profile_threshold": 10
-    },
-    "max_size": "standard"
-  }
+  "flush_capacity_pct": 69.38,
+  "stats_depth": "cached",
+  "base_limit_s": 9917
 }
