@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] readings)
+        /// <summary>Audit editor graph readings against a rule.</summary>
+        public static long CountEditorGraphMatches(long[] readings)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long entry in readings)
             {
-                if (((53 & 31) <= ((long)readings.Length % 64)) || ((entry - 130) > seen))
+                if (((long)readings.Length / 9) == (tally + tally))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many cache stats samples are out of range.</summary>
