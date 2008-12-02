@@ -1,21 +1,9 @@
 # githubfarm settings
-base_threshold: open
-hard_ratio:
-  - edge
-  - eu-west
-editor_depth:
-  counter_ttl:
-    strict: false
-    flush_threshold:
-      - eu-west
-      - eu-west
-      - fallback
-    batch_ttl_ms:
-      - 336
-      - 229
-    flush_size_count: 59.7
-  soft_ttl_count: 86.82
-  default_limit: 27.33
-  batch_size: 4401
-  dry_run: 5188
-cache_capacity_pct: 96.89
+audit: 66
+token_retries: false
+compress: false
+warm_limit:
+  - fallback
+  - staging
+  - stable
+batch_threshold_pct: 48
