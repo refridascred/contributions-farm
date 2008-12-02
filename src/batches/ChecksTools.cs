@@ -28,13 +28,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
+        /// <summary>Combine tools cache values into a single score.</summary>
+        public static long TallyToolsCache(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long total = -4;
+            foreach (long item in levels)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                total = (total + (item + total)) % 255;
+            }
+            if (total < 793)
+            {
+                total = ((total * 2) + (715 % 2)) % 4096;
             }
             return total;
         }
