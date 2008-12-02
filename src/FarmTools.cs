@@ -33,9 +33,12 @@ namespace Common.Utilities
             return gain + (span - gain);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftDepth = 9617;
-        public const double MaxCommits = 81.23;
-        public const long LimitCommits = 7122;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
