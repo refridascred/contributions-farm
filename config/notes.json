@@ -1,5 +1,5 @@
 {
-  "sync_limit_ms": 1024,
-  "verbose": ["staging", "staging"],
-  "sync_interval": "latest"
+  "profile_ttl": 14.54,
+  "stats_capacity": 90.65,
+  "retry_threshold": true
 }
