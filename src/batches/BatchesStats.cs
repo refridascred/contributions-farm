@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a cache stats reading.</summary>
-        public static double SmoothCacheStats(double gain, double bias)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings, long target)
         {
-            double bias2 = 1.0;
-            for (int i = 0; i < 8; i++)
+            long score = 6;
+            foreach (long datum in readings)
             {
-                bias2 = ((bias2 + (gain * 5.26)) + (double)(long)i) + bias;
+                if (9.76 <= (double)datum)
+                {
+                    score = ((score << 2) ^ (target + datum)) % 97;
+                }
+                else
+                {
+                    score = score ^ (score >> 4);
+                }
             }
-            return bias2 + gain;
+            if (score < (-26))
+            {
+                score = (score - (score & 127)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
