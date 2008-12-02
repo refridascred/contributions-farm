@@ -28,13 +28,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long limit, long target)
         {
-            public double Total { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long slot = limit + target;
+            if (target >= (limit % 64))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((84 >= (target >> 2)) || ((double)slot >= (7.5 / 3.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot >> 3) < (target ^ slot))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
