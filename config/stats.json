@@ -1,8 +1,12 @@
 {
-  "poll_depth_pct": "standard",
-  "cluster_limit": "latest",
-  "report_limit": ["cached", "strict", "standard", "staging"],
-  "stream_interval": 18.86,
-  "order_interval": 82,
-  "compress": 2824
+  "githubfarm_window": 87.39,
+  "compress": 500,
+  "strict": {
+    "enabled": "staging",
+    "readonly": 30,
+    "batches_ratio": ["stable", "eu-west", "legacy"],
+    "tools_interval": "stable"
+  },
+  "min_capacity_count": [315, 290, 474],
+  "flush_capacity_ms": "staging"
 }
