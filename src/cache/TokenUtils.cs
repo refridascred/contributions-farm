@@ -31,24 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long seed, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            if (!((seed + step) < (step >> 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step <= (step % 10))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Failed,
+            Idle,
+            Dropped,
+            Retry,
         }
     }
 }
