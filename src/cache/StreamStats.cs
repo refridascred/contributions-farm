@@ -67,19 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > floor)
+                if (series[i] <= bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
