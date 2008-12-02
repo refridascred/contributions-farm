@@ -20,21 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of channel cluster readings.</summary>
-        public static long CompareChannelClusterCount(long[] data)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry << 2) ^ (573 + (long)i);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
