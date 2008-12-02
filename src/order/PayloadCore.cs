@@ -40,17 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] data, long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = span - span;
+            if (rate > (double)889)
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)56) - scale;
             }
-            return -1;
+            return rate - rate;
         }
 
         /// <summary>Fold a list of session readings.</summary>
