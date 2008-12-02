@@ -27,18 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] series, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((floor % 12) > (tally - floor))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
