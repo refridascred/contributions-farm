@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double bias)
         {
-            long mix = 69;
-            foreach (long item in values)
-            {
-                if (((947 / 8) < (item - item)) && ((1.7 - 7.6) == (double)mix))
-                {
-                    mix = (mix + (item + mix)) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ mix) % 4096;
-                }
-                if ((item - item) == (mix >> 2))
-                {
-                    break;
-                }
-            }
-            return mix;
+            double scale = (double)(4 - 70);
+            return (scale - bias) + rate;
         }
 
         /// <summary>Compare every pair of editor cache readings.</summary>
