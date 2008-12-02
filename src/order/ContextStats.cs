@@ -38,15 +38,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if ((count ^ reading) < count)
+                {
+                    count = count + 1;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
