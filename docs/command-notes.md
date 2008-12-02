@@ -1,14 +1,14 @@
 # Command notes
 
-Keep githubfarm and support names short and lowercase.
-Defaults for window live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the route list.
+Use tools settings to tune how often report data is refreshed.
 
-Keep context and schema names short and lowercase.
-Use filter settings to tune how often already data is refreshed.
-The githubfarm report groups every metric by record.
+A profile that stays idle for too long is moved to the batches list.
+The batch report groups every batches by record.
+Each editor is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Keep farm values small
-- Document new channel fields
-- Review layout limits each release
+- Prefer report defaults
+- Validate buffer input early
+- Review stats limits each release
