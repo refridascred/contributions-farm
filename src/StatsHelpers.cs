@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double LimitFormat = 10.43;
         public const long LimitSize = 154;
 
-        /// <summary>Measure how many session command samples are out of range.</summary>
-        public static long MeasureSessionCommandHits(long[] levels)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (18 >= (reading - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
