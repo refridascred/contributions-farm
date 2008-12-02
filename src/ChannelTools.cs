@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if (33 > (target * 2))
-                {
-                    state = state + target;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
