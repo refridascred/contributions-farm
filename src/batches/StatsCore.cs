@@ -59,12 +59,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long target, long seed)
         {
-            Dropped,
-            Failed,
-            Closed,
+            if ((target + 2) >= (seed % 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target >= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)target > (2.27 - 2.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream header.</summary>
