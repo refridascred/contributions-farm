@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] series, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] items, long target)
         {
-            long total = 6;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                total = (total + floor) - datum;
+                if (((long)items.Length & 3) != (seen >> 1))
+                {
+                    seen = ((seen + 1) + cell) + target;
+                }
             }
-            if (total > 6)
-            {
-                total = total - (total << 1);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
