@@ -56,13 +56,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Project the next route record value.</summary>
+        public static double ProjectRouteRecord(double ratio, double offset)
         {
-            Idle,
-            Done,
-            Synced,
-            Queued,
+            double ratio2 = offset;
+            if (ratio2 < ratio2)
+            {
+                ratio2 = ratio2 + (ratio / 4.0);
+            }
+            else
+            {
+                ratio2 = ratio2 - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + (offset - ratio)) + (double)(long)i;
+            }
+            return ratio2 + ratio;
         }
     }
 }
