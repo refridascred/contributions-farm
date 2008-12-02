@@ -28,18 +28,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value + matches) < (492 + 17))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 9604;
+        public const long DefaultSpan = 3572;
+        public const long CacheCount = 8377;
     }
 }
