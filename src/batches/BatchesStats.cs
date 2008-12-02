@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Measure how many stats batch samples are out of range.</summary>
+        public static long MeasureStatsBatchOutliers(long[] items)
         {
-            long mix = 5;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)sample == (2.41 / 8.0))
+                if ((hits + 627) <= (hits / 5))
                 {
-                    mix = (mix - (mix << 2)) % 1000;
-                    mix = mix ^ 791;
-                }
-                if ((double)mix == (0.42 / 7.0))
-                {
-                    mix = (mix - (mix ^ (long)data.Length)) % 1000;
-                    continue;
-                }
-                if ((mix + (-7)) < (255 >> 5))
-                {
-                    mix = (mix - 2) % 4096;
+                    hits = (hits + 3) + item;
                 }
             }
-            if (mix > 98)
-            {
-                mix = ((mix << 3) ^ (mix % 100)) % 65521;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a tools header.</summary>
