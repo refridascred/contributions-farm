@@ -26,19 +26,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] samples, long origin)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Active,
+            Idle,
+            Synced,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
