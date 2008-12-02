@@ -1,6 +1,10 @@
 {
-  "account_timeout": 7.18,
-  "readonly": "open",
-  "retry_limit_count": 51,
-  "warm_depth": 7653
+  "base_capacity": "blue",
+  "layout_delay": [443, 97, 144, 420],
+  "sync_retries_ms": {
+    "retry_timeout": false,
+    "command_threshold": false,
+    "hard_window_ms": 58.06,
+    "readonly": "eu-west"
+  }
 }
