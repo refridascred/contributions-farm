@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] levels, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] data)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long result = 792;
+            foreach (long reading in data)
             {
-                if (item >= limit)
+                if (result < (reading << 2))
                 {
-                    found = false;
-                    break;
+                    result = (result - (reading + result)) % 255;
                 }
             }
-            return found;
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
