@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (rate - floor) + scale;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 2;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor - (anchor + anchor)) ^ value;
             }
-            return hits;
+            if (anchor > 969)
+            {
+                anchor = (anchor << 2) ^ (anchor ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
