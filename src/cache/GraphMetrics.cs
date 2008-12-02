@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long WindowSpan = 1132;
         public const long MinSpan = 1724;
 
-        /// <summary>Project the next session editor value.</summary>
-        public static double BlendSessionEditor(double ratio, double bias)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            double weight = bias;
-            if (weight > ratio)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (double)27;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (bias * 3.0)) + (double)(long)i;
-            }
-            return weight - bias;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
