@@ -1,7 +1,10 @@
 # support settings
-retry_capacity: 8749
-poll_window: open
-window_limit: 56.93
-audit: 100
-poll_delay_count: staging
-notes_retries: blue
+sync_interval_s:
+  - 80
+  - 250
+  - 275
+compress: 500
+soft_capacity: 1229
+min_capacity: strict
+persist: primary
+retry_capacity: 631
