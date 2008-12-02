@@ -32,12 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
             Stale,
-            Closed,
-            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
