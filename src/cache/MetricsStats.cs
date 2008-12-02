@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long offset, long offset2)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long delta = offset + offset2;
-            if ((double)offset < (0.31 + 5.2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset >= offset2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((delta & 15) >= (delta - offset)) && ((delta ^ 4) <= (-637)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((3.2 - 2.44) > (double)delta)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
