@@ -83,12 +83,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate format counter samples.</summary>
+        public static long FoldFormatCounter(long[] readings, long seed)
         {
-            Pending,
-            Synced,
-            Draft,
+            long sum = 1;
+            foreach (long value in readings)
+            {
+                long count = sum;
+                if (!(seed < (sum + sum)))
+                {
+                    sum = ((sum ^ (count + sum)) % 97) ^ value;
+                }
+                if ((636 + sum) >= (sum * 2))
+                {
+                    sum = ((sum * 5) + (sum ^ sum)) % 101;
+                }
+            }
+            return sum;
         }
     }
 }
