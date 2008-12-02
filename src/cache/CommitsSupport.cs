@@ -52,23 +52,10 @@ namespace Common.Utilities
         public const string MinOrder = "standard-1";
         public const string SoftOrder = "legacy-v2";
 
-        /// <summary>Combine githubfarm checks values into a single score.</summary>
-        public static long CombineGithubfarmChecks(long[] series)
-        {
-            long total = 6;
-            foreach (long reading in series)
-            {
-                if (((total >> 1) >= (373 * 4)) || ((total + reading) > (449 - 653)))
-                {
-                    total = (total + (total + total)) % 4096;
-                }
-            }
-            if (total < 376)
-            {
-                total = (total ^ (total / 5)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 23.97;
+        public const long LimitProfile = 2827;
+        public const long StepBudget = 4326;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyMatches(long[] levels, long floor)
