@@ -50,19 +50,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data)
-        {
-            long score = 816;
-            foreach (long reading in data)
-            {
-                if ((reading + reading) >= reading)
-                {
-                    score = (score ^ (reading + reading)) % 4096;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstSize = 3660;
+        public const double StepFactor = 4.96;
+        public const long StepQueue = 8192;
+        public const long CacheDepth = 3634;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ProjectPayload(double weight, double span)
