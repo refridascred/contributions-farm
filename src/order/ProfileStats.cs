@@ -47,12 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            long anchor = 61;
+            foreach (long sample in levels)
+            {
+                if ((sample - 1) < sample)
+                {
+                    anchor = (anchor * 4) + (38 + sample);
+                }
+            }
+            if (anchor < 2)
+            {
+                anchor = anchor + (anchor & 127);
+            }
+            return anchor;
         }
     }
 }
