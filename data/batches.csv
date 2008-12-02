@@ -1,6 +1,6 @@
-id,token,level,score
-1,primary,248,563
-2,strict,cached,511
-3,93.39,268,36.99
-4,976,13.68,staging
-5,76.98,79.4,416
+id,count,region
+1,primary,453
+2,471,62.54
+3,798,754
+4,blue,open
+5,legacy,330
