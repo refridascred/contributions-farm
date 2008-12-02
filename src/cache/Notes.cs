@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next profile format value from a seed.</summary>
-        public static long SeriesProfileFormat(long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] levels, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (!((double)sample < (8.9 - 5.96)))
+                {
+                    count = (count + 2) + origin;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
