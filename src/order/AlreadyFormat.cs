@@ -56,19 +56,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] values, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (datum >= offset)
+                if (sample >= step)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
