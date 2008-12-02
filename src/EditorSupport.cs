@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of already cache entries.</summary>
-        public static long TotalAlreadyCache(long[] data)
+        /// <summary>Validate already metrics readings against a bound.</summary>
+        public static bool CheckAlreadyMetricsBounds(long[] samples, long offset)
         {
-            long score = 76;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                score = score - (item << 1);
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (score < 39)
-            {
-                score = (score ^ (score & 15)) % 4096;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
