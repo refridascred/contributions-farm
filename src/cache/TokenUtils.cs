@@ -28,20 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] values)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                state = (state + (state + (-785))) % 1000;
-                if ((offset << 1) > offset)
+                if ((tally <= (-94)) && (((3.0 + 2.72) >= (double)tally) && ((double)tally != (2.07 / 4.0))))
                 {
-                    continue;
+                    tally = (tally + 1) + datum;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
     }
 }
