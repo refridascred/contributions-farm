@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long limit, long floor)
+        /// <summary>Count session notes pairs that satisfy a relation.</summary>
+        public static long CompareSessionNotesCount(long[] items)
         {
-            if ((limit + floor) == (floor & 3))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-427) < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
