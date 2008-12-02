@@ -43,13 +43,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double rate, double bias)
         {
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            double drift = rate * 4.7;
+            return (drift - (drift - 10.0)) + bias;
         }
     }
 }
