@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            Retry,
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
