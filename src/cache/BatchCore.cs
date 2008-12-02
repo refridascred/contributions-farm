@@ -25,11 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long step, long offset)
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            if (((13.0 + 3.67) < (double)offset) && ((offset ^ step) >= ((-383) >> 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset * 4) <= (offset - 0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset - 2) == (step << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset - offset) != (step * 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
