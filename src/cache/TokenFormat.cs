@@ -21,18 +21,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] readings, long floor)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample * 5) <= (seen / 9))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            Queued,
+            Idle,
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the command status values.</summary>
