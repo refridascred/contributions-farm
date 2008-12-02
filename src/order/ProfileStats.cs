@@ -37,17 +37,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metrics record entry that matches the target.</summary>
-        public static long LocateMetricsRecordIndex(long[] readings, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long seed, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = seed ^ origin;
+            if ((2.0 / 8.0) == (double)seed)
             {
-                if (readings[i] == limit)
+                return 0;
+            }
+            else
+            {
+                if (564 >= seed)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed % 10) < seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin <= (offset >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
