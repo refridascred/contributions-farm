@@ -33,22 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetrySpan = 48.1;
+        public const long MinSpan = 8574;
+        public const long IdleBudget = 4504;
+        public const long BaseRecord = 1877;
+        public const long MaxRecord = 3751;
 
         /// <summary>Measure how many support stream samples are out of range.</summary>
         public static long MeasureSupportStreamHits(long[] levels)
