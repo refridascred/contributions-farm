@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate filter layout samples.</summary>
-        public static long TallyFilterLayout(long[] values, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long result = 0;
-            foreach (long reading in values)
-            {
-                if (678 >= bound)
-                {
-                    result = ((result - bound) % 97) - reading;
-                }
-            }
-            if (result < 9)
-            {
-                result = (result ^ (bound / 8)) % 65521;
-            }
-            return result;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
