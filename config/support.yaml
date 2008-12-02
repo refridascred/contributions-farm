@@ -1,16 +1,5 @@
 # support settings
-flush_window_pct:
-  - 315
-  - 72
-  - 454
-payload_interval:
-  readonly: 4.81
-  profile_ttl: 60
-  graph_window:
-    farm_window: fallback
-    cache_retries_ms: green
-    order_window: true
-burst_window: 30
-persist: eu-west
-burst_capacity_ms: stable
-min_window: eu-west
+poll_window_ms: 500
+max_retries_pct: 71.42
+farm_limit: staging
+idle_limit_s: eu-west
