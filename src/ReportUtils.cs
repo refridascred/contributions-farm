@@ -15,12 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Active,
-            Idle,
-            Failed,
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
