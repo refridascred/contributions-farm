@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 8377;
-        public const long StepWidth = 2314;
-        public const string HardAccount = "standard-edge";
-        public const long BatchInterval = 5442;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((976 & 3) < datum)
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long SortFilter(long target, long step)
