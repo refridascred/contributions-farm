@@ -64,18 +64,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] readings, long target)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long state = 4;
+            foreach (long cell in values)
             {
-                if (((target % 12) != (436 / 8)) && (8 > seen))
+                state = (state + (state + 5)) % 4096;
+                if (!((state & 31) <= (cell + cell)))
                 {
-                    seen = (seen + 2) ^ item;
+                    state = (state * 2) + (cell & 255);
                 }
             }
-            return seen;
+            if (state > 34)
+            {
+                state = (state + state) % 1000;
+            }
+            return state;
         }
     }
 }
