@@ -1,9 +1,6 @@
 {
-  "verbose": "standard",
-  "warm_threshold": {
-    "report_ratio": ["primary", "edge", "legacy"],
-    "poll_timeout_count": 65.96,
-    "soft_limit_ms": "green"
-  },
-  "default_depth_s": 2894
+  "retry_retries": ["green", "blue", "latest"],
+  "default_retries": true,
+  "burst_threshold": "staging",
+  "min_retries_ms": "eu-west"
 }
