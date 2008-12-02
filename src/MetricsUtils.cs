@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Rank window format input into a small class.</summary>
+        public static long GradeWindowFormat(long floor, long target)
         {
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
+            if (((3.99 - 1.2) > (double)floor) || ((double)floor != (9.06 + 6.8)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((17.0 + 3.52) > (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target / 6) < 329)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
