@@ -49,39 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long offset, long offset2)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long gap = offset + offset2;
-            if ((gap - offset2) > (gap >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset - 799) < offset2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset2 + offset2) != (offset << 3)) && ((offset2 ^ 433) > offset2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((20.0 / 7.0) < (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Retry,
+            Draft,
+            Queued,
         }
     }
 }
