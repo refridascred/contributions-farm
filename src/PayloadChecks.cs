@@ -40,13 +40,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] readings, long floor)
         {
-            Active,
-            Draft,
-            New,
-            Dropped,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
