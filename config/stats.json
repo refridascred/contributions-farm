@@ -1,7 +1,18 @@
 {
-  "readonly": 36.12,
-  "commits_timeout": [436, 84, 374, 210],
-  "min_capacity_count": 100,
-  "hard_capacity_count": "legacy",
-  "dry_run": 54
+  "verbose": 500,
+  "default_ratio_count": ["fallback", "edge", "strict", "cached"],
+  "already_retries": {
+    "batch_ratio_s": 30,
+    "dry_run": 5.37,
+    "cache_interval_ms": {
+      "idle_threshold": 64.42,
+      "token_capacity": "legacy",
+      "verbose": "legacy",
+      "tools_threshold": false
+    },
+    "min_interval_count": 5172,
+    "window_window": "standard",
+    "soft_interval_pct": true
+  },
+  "base_delay_count": 99
 }
