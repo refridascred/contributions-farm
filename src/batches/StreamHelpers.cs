@@ -25,13 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] items, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((limit / 3) > limit)
+                {
+                    tally = (tally + 2) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order phase values.</summary>
