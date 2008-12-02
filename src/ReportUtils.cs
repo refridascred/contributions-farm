@@ -49,15 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile account figure with a bias.</summary>
-        public static double BlendProfileAccount(double gain, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] levels)
         {
-            double drift = offset;
-            if (drift <= gain)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift + (double)9;
+            return tally;
         }
     }
 }
