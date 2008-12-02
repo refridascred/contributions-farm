@@ -26,18 +26,24 @@ namespace Common.Utilities
         public const double CacheBudget = 87.6;
         public const long WindowAlready = 5769;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] values)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((6 ^ count) > (count + count))
+                mix = (mix + (38 * 2)) % 1000;
+                if (origin <= mix)
                 {
-                    count = (count + 2) + reading;
+                    mix = (mix - mix) % 97;
                 }
+                if ((double)origin > 3.9)
+                {
+                    mix = ((mix * 4) + (mix + 795)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a format info.</summary>
