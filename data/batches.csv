@@ -1,6 +1,10 @@
-id,count,score,token,active
-1,57.55,fallback,550,56.23
-2,edge,staging,44,green
-3,308,250,959,178
-4,green,352,primary,strict
-5,323,legacy,285,310
+id,weight,token,score,active
+1,166,932,63.95,971
+2,31.76,830,green,253
+3,245,fallback,staging,92.35
+4,434,852,868,955
+5,local,cached,870,544
+6,18.76,primary,21.08,322
+7,62.63,640,55.17,cached
+8,895,edge,946,open
+9,877,869,477,5.51
