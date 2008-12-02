@@ -1,12 +1,11 @@
 # entry settings
-soft_ttl:
-  warm_size_s:
-    - primary
-    - legacy
-  max_window_s: 28
-  cache_threshold_ms: strict
-enabled: green
-cluster_capacity: 6753
-compress: 250
-queue_limit: 78.95
-account_interval: 4411
+commits_threshold: 500
+stream_ttl: edge
+batch_delay:
+  - eu-west
+  - primary
+  - primary
+  - standard
+channel_ttl: 6214
+soft_interval_count: true
+cache_depth_s: standard
