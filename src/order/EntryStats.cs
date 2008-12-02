@@ -41,14 +41,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchBudget = 9604;
+        public const string MinBudget = "cached-v2";
+        public const long MaxSpan = 1946;
+        public const long MaxCluster = 2644;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchFactor = 6065;
