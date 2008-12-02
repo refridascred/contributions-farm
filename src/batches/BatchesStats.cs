@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Adjust a batch buffer reading.</summary>
+        public static double ProjectBatchBuffer(double ratio, double span)
         {
-            Paused,
-            Ready,
-            Done,
+            double bias = ratio / 4.0;
+            return (bias - 9.93) + span;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
