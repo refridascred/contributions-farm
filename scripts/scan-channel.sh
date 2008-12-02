@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=430
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in latest blue; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-latest}"
+mode="${1:-legacy}"
 case "${mode}" in
-    fallback)
+    open)
         log "fast path"
         ;;
     *)
