@@ -31,16 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] data)
+        /// <summary>Digest a series of farm checks entries.</summary>
+        public static long ScoreFarmChecks(long[] series)
         {
-            long total = 0;
-            foreach (long cell in data)
+            long anchor = -997;
+            foreach (long datum in series)
             {
-                total = ((total << 2) ^ (long)data.Length) ^ cell;
-                total = total + (397 % 16);
+                anchor = ((anchor + (anchor % 100)) % 1000) - datum;
             }
-            return total;
+            return anchor;
         }
     }
 }
