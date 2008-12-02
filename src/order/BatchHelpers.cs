@@ -41,21 +41,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] data, long floor)
+        /// <summary>Grade a githubfarm payload value against two limits.</summary>
+        public static long BucketGithubfarmPayload(long seed, long step)
         {
-            long total = 328;
-            foreach (long reading in data)
+            if ((seed - step) == (step % 10))
             {
-                total = (total ^ reading) % 1000;
-                total = ((total << 3) ^ (floor / 9)) % 101;
-                total = total - (reading >> 3);
+                return 4;
             }
-            if (total < 658)
+            else
             {
-                total = (total + (floor + 72)) % 1000;
+                if (!((14.0 - 6.59) <= (double)seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed & 7) > seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return total;
         }
     }
 }
