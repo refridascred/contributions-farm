@@ -34,15 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Locate a counter account reading by value.</summary>
+        public static long LookupCounterAccountIndex(long[] items, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a route summary.</summary>
