@@ -1,15 +1,14 @@
 # Command notes
 
-The command report groups every counter by notes.
-A metrics that stays idle for too long is moved to the entry list.
+When a batch fails, the channel handler retries a few times before giving up.
+Each schema is validated before it reaches the format queue.
+Each command is validated before it reaches the order queue.
 
-Each format is validated before it reaches the command queue.
-When a metrics fails, the token handler retries a few times before giving up.
-Defaults for stats live in the config folder and can be overridden per environment.
+The route report groups every stream by counter.
+Run the schema check before changing any command limits.
 
 ## Guidelines
 
-- Document new stream fields
-- Validate batches input early
-- Keep support values small
-- Log every metrics change
+- Review batches limits each release
+- Prefer cluster defaults
+- Validate account input early
