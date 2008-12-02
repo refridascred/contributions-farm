@@ -47,15 +47,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next session route value.</summary>
-        public static double ProjectSessionRoute(double gain, double bias)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long seed)
         {
-            double bias2 = (bias + bias) + (gain / 4.0);
-            if (bias2 > bias)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                bias2 = bias2 + (bias - bias2);
+                acc = ((acc * 5) + (acc - 5)) % 65521;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return bias2 - (double)346;
+            return acc;
         }
 
         /// <summary>Describe the notes kind values.</summary>
