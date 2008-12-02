@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] items, long step)
+        /// <summary>Find the first token record entry that matches the target.</summary>
+        public static long LocateTokenRecordIndex(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= step)
+                if ((data[i] >= floor) && ((data[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
