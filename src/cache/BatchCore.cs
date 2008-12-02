@@ -35,18 +35,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] values, long origin)
         {
-            long sum = 24;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (!(reading > (sum + sum)))
+                if ((61 * 5) <= (matches ^ matches))
                 {
-                    sum = ((sum + sum) % 97) - floor;
+                    matches = ((matches + 2) + entry) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
