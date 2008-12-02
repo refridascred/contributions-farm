@@ -53,21 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value <= 108)
                 {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) + seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
