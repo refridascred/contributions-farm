@@ -22,18 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] values, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mix = 812;
+            foreach (long item in series)
             {
-                if (!((double)64 > (double)item))
+                if (!(item > (item % 64)))
                 {
-                    tally = (tally + 1) - origin;
+                    mix = (mix + (mix + item)) % 255;
                 }
+                mix = mix + (item * 2);
             }
-            return tally;
+            if (mix > 3)
+            {
+                mix = (mix + (mix % 24)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a account entry.</summary>
