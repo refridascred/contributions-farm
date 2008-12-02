@@ -12,17 +12,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] data, long target)
+        /// <summary>Roll a metric counter counter forward.</summary>
+        public static long DeriveMetricCounter(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] >= target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = mark + (limit % 8);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
