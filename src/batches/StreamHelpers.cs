@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit + floor) == (floor & 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((-427) < limit)
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a batches header.</summary>
