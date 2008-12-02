@@ -21,15 +21,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Failed,
-            Dropped,
-            Pending,
-            Idle,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchWindow = "cached-edge";
+        public const double MinSize = 3.6;
+        public const long RetryWidth = 2386;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long bound)
