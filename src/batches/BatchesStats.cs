@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] samples, long offset)
         {
-            long score = 12;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                score = (score + (score << 1)) - value;
+                if ((offset <= (tally + reading)) || ((reading - reading) == (3 - reading)))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (score > 5)
-            {
-                score = score + (score ^ score);
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
