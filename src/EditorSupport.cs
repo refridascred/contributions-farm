@@ -38,17 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] values, long step)
+        /// <summary>Measure how many editor route samples are out of range.</summary>
+        public static long AuditEditorRouteHits(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((values[i] >= step) && ((values[i] % 2) == 0))
+                if (((538 >> 5) == (target - tally)) && ((target / 7) > (tally - reading)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
