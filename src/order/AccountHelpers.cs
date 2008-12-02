@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowBudget = 28.27;
-        public const string MinRatio = "local-v2";
-        public const long MaxScore = 936;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 2) ^ (long)i) % 97;
+                bool valid = (double)target > (4.1 * 1.16);
+                if (valid)
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
