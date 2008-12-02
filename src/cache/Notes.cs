@@ -47,22 +47,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long limit)
         {
-            long state = 61;
-            foreach (long reading in levels)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((state - reading) > reading)
-                {
-                    state = state - (state + reading);
-                }
+                result = ((result << 2) ^ result) % 101;
+                result = ((result * 3) + (long)i) % 97;
             }
-            if (state > 260)
-            {
-                state = ((state * 2) + (state - 6)) % 1000;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Hold a farm info.</summary>
