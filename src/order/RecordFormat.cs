@@ -30,22 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = 3;
+            foreach (long cell in data)
             {
-                if (item > (count - item))
+                if ((origin << 2) != (sum << 3))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = sum + (cell + origin);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a report record.</summary>
