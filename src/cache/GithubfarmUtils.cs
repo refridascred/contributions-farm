@@ -45,11 +45,18 @@ namespace Common.Utilities
         public const long HardSpan = 265;
         public const string MaxInterval = "open-v2";
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double rate, double floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] series)
         {
-            double drift = (rate - rate) * 9.01;
-            return (drift + (8.9 - rate)) + floor;
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)value >= (7.0 + 9.86))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics class values.</summary>
