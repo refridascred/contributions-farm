@@ -39,9 +39,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultSpan = "legacy-1";
-        public const long SoftWidth = 9265;
-        public const long StepDepth = 6971;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] readings, long bound)
+        {
+            long mark = 29;
+            foreach (long cell in readings)
+            {
+                mark = (mark << 3) ^ (cell % 60);
+                mark = ((mark << 2) ^ (bound << 1)) % 4096;
+                if (8 <= (bound * 2))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
