@@ -1,5 +1,18 @@
 # support settings
-verbose: blue
-order_ratio: 97
-queue_ratio: 500
-default_ttl: staging
+batch_interval: strict
+soft_limit_s: 73.96
+burst_capacity_pct:
+  retry_limit_s: 1024
+  sync_size_pct: 9280
+  cache_retries:
+    default_threshold_s:
+      - local
+      - legacy
+      - edge
+      - local
+    route_capacity: cached
+    commits_interval: 25.38
+    compress: 30
+    batch_depth_count: 57.22
+  order_retries: true
+compress: false
