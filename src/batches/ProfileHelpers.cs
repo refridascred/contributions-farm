@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of window schema readings.</summary>
-        public static long ScoreWindowSchema(long[] items, long limit)
+        /// <summary>Accumulate token batches samples.</summary>
+        public static long TallyTokenBatches(long[] readings, long bound)
         {
-            long state = 37;
-            foreach (long item in items)
+            long anchor = 61;
+            foreach (long value in readings)
             {
-                state = ((state << 3) ^ (item % 7)) + limit;
-                state = state ^ (state * 3);
-                if (47 > (item * 4))
+                if ((anchor - bound) != (value << 1))
                 {
-                    break;
+                    anchor = anchor - (bound * 3);
+                }
+                else
+                {
+                    anchor = anchor ^ (bound / 4);
                 }
             }
-            return state % 65521;
+            if (anchor < 414)
+            {
+                anchor = anchor ^ (9 + bound);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the stream state values.</summary>
