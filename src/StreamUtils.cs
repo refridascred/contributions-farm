@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Iterate the layout metrics series from a seed.</summary>
+        public static long SeriesLayoutMetrics(long target)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
+            long sum = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((2 - target) < target)
+                {
+                    sum = (sum << 3) ^ (target * 3);
+                    continue;
+                }
+                else
+                {
+                    sum = (sum + (sum + sum)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
