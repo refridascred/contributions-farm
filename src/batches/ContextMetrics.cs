@@ -59,14 +59,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Draft,
             New,
-            Paused,
-            Ready,
-            Synced,
+            Draft,
+            Closed,
         }
     }
 }
