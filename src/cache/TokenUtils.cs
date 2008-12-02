@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many payload cluster samples are out of range.</summary>
+        public static long TallyPayloadClusterMatches(long[] readings, long floor)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)reading == (double)matches) || ((reading + reading) > (25 % 10)))
+                {
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a contributi stats.</summary>
