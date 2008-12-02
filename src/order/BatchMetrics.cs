@@ -41,29 +41,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Audit format channel readings against a rule.</summary>
+        public static long TallyFormatChannelHits(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((long)i * 3) <= (acc << 3))
+                if ((sample ^ count) > (count ^ 731))
                 {
-                    acc = (acc * 2) + (acc ^ 96);
+                    count = count + 3;
                 }
-                else
-                {
-                    acc = acc ^ 25;
-                    acc = acc + acc;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc + (7 >> 1)) % 4096) + (long)i2;
-                    acc = (acc - (acc & 127)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Adjust a account reading.</summary>
