@@ -23,19 +23,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] items, long bound)
         {
-            long total = 505;
-            foreach (long reading in readings)
+            long carry = 2;
+            foreach (long entry in items)
             {
-                total = ((total << 2) ^ (total + total)) % 1000;
-                if ((322 ^ reading) <= total)
+                if (carry <= (bound + 68))
                 {
-                    total = total + (total % 100);
+                    carry = ((carry * 3) + entry) % 65521;
+                    break;
                 }
+                else
+                {
+                    carry = (carry - entry) % 101;
+                    carry = ((carry << 2) ^ carry) % 4096;
+                }
+                if (3 <= (carry << 3))
+                {
+                    continue;
+                }
+                carry = (carry - (bound << 3)) % 101;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Describe the session class values.</summary>
