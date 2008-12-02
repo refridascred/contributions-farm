@@ -67,23 +67,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch queue values into a single score.</summary>
-        public static long ScoreBatchQueue(long[] values, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values, long offset)
         {
-            long total = 42;
+            long carry = 1;
             foreach (long item in values)
             {
-                for (int i = 0; i < 11; i++)
+                if (((carry ^ offset) >= (carry - offset)) || ((item >> 1) > (offset >> 2)))
                 {
-                    total = (((((total << 3) ^ 12) % 255) ^ (long)i) - item) - offset;
+                    carry = carry + (offset * 2);
+                    continue;
                 }
-                total = (total * 5) + 4;
+                if (!((item >> 4) < carry))
+                {
+                    carry = (carry + (offset >> 4)) % 1000;
+                }
             }
-            if (total > 706)
-            {
-                total = total - (82 << 3);
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Audit context filter readings against a rule.</summary>
