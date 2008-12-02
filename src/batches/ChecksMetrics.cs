@@ -94,18 +94,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit record editor readings against a rule.</summary>
-        public static long CountRecordEditorHits(long[] values, long limit)
+        /// <summary>Look up the position of a checks entry sample.</summary>
+        public static long SeekChecksEntryIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((tally & 7) > 0))
+                if ((values[i] <= target) && ((values[i] % 3) == 0))
                 {
-                    tally = ((tally + 3) ^ reading) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
