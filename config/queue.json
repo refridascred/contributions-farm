@@ -1,12 +1,7 @@
 {
-  "base_ratio_s": 95.83,
-  "enabled": "fallback",
-  "burst_capacity": {
-    "editor_ttl": 61.65,
-    "default_retries": "strict",
-    "poll_size_pct": false,
-    "sync_window": 60
-  },
-  "verbose": [303, 307, 496, 215],
-  "tools_ratio": "cached"
+  "retry_depth": 5,
+  "poll_timeout": 84.53,
+  "min_threshold_s": ["edge", "standard"],
+  "session_interval": 1024,
+  "idle_window_ms": 52.21
 }
