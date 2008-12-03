@@ -30,32 +30,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a already filter pair into a bucket.</summary>
-        public static long RankAlreadyFilter(long target, long target2)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            long slot = target + target2;
-            if ((target - target) > target2)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((16.0 > (double)slot) || ((slot + target2) < (target2 + 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.1 + 2.09) < (double)slot)
+                    if ((levels[i] - levels[j]) < 18)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the checks level values.</summary>
