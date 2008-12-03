@@ -45,11 +45,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "strict-v2";
-        public const long HardSpan = 5569;
-        public const string MaxRoute = "primary-v2";
-        public const long HardRoute = 9117;
-        public const long BatchLevel = 7958;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - seen) == (seen + 31))
+                {
+                    seen = (seen + 2) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
