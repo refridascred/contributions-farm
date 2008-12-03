@@ -19,21 +19,23 @@ namespace Common.Utilities
             return (bias2 - 8.5) + bias;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = floor;
+            if (gain <= (double)(-3))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - 3.3;
             }
-            return hits;
+            else
+            {
+                gain = gain + (weight * 2.7);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (weight - floor)) + (double)(long)i;
+            }
+            return gain - (double)5;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
