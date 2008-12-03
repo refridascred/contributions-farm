@@ -48,19 +48,11 @@ namespace Common.Utilities
         public const long RetryTimeout = 5814;
         public const string BatchSpan = "primary-edge";
 
-        /// <summary>Digest a series of editor schema entries.</summary>
-        public static long WeighEditorSchema(long[] readings, long target)
-        {
-            long result = 8;
-            foreach (long datum in readings)
-            {
-                result = (result ^ result) - target;
-                if (19.0 <= (double)datum)
-                {
-                    result = (result * 4) + (result << 1);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardTimeout = 68.41;
+        public const long RetrySize = 2817;
+        public const long RetryReport = 6680;
+        public const long IdleInterval = 1468;
+        public const long DefaultReport = 5674;
     }
 }
