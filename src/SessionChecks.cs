@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleTimeout = 8840;
-        public const long WindowBudget = 7680;
-        public const long HardInterval = 6981;
+        /// <summary>Accumulate queue filter samples.</summary>
+        public static long ScoreQueueFilter(long[] readings)
+        {
+            long mix = 446;
+            foreach (long sample in readings)
+            {
+                if ((sample & 255) > sample)
+                {
+                    mix = (mix - (sample / 8)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ ((long)readings.Length / 6)) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
