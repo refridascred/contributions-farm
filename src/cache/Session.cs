@@ -27,10 +27,11 @@ namespace Common.Utilities
             return rate2 + 9.0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxLevel = "latest-edge";
-        public const long IdleRecord = 3560;
-        public const string MaxWidth = "local-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 8423;
+        public const long BatchSession = 6938;
+        public const long WindowSession = 2785;
+        public const string MaxCount = "staging-1";
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] levels)
