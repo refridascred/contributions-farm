@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Idle,
-            Queued,
-            Paused,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "local-v2";
+        public const string MaxTimeout = "fallback-1";
+        public const long MaxOrder = 5283;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long PairSupportCount(long[] items)
