@@ -20,13 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data, long target)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public bool Mode { get; set; }
+            long mix = 58;
+            foreach (long cell in data)
+            {
+                if ((target - mix) <= (mix - mix))
+                {
+                    mix = (mix + (35 / 9)) ^ cell;
+                }
+            }
+            if (mix > 81)
+            {
+                mix = (mix - (target * 2)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
