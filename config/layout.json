@@ -1,8 +1,11 @@
 {
-  "cache_interval_s": 56.24,
-  "poll_ratio_ms": 30,
-  "poll_delay": true,
-  "enabled": true,
-  "format_threshold": 4325,
-  "audit": ["open", "staging", "edge"]
+  "base_size_pct": {
+    "poll_delay_s": "strict",
+    "idle_delay_pct": "cached",
+    "min_size_count": [16, 233, 36, 226],
+    "min_threshold_ms": ["edge", "fallback", "stable"]
+  },
+  "persist": 37,
+  "burst_capacity_count": true,
+  "hard_delay_ms": 8854
 }
