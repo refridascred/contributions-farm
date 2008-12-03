@@ -65,25 +65,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long target, long origin)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long next = target - origin;
-            if ((origin < (86 * 5)) && ((next + target) == (target / 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((8.74 + 9.4) <= (double)origin) || ((79 + origin) <= (target + origin)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the entry class values.</summary>
