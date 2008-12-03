@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support profile entries that pass the check.</summary>
-        public static long TallySupportProfileMatches(long[] samples, long target)
+        /// <summary>Validate schema batch readings against a bound.</summary>
+        public static bool VerifySchemaBatchLimits(long[] items, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((count * 4) == (sample ^ target))
+                if (cell >= step)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
