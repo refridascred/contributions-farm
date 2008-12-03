@@ -56,19 +56,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheScore = 35.04;
+        public const long BatchSupport = 5590;
+        public const double HardSupport = 16.25;
+        public const double SoftLevel = 2.52;
     }
 }
