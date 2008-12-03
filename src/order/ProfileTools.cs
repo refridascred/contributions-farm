@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long floor)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long result = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)(long)i != (double)28)
+                {
+                    result = (result * 2) + (floor >> 4);
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
