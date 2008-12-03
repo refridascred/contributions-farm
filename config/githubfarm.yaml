@@ -1,5 +1,22 @@
 # githubfarm settings
-verbose: edge
-route_ttl: 62
-sync_interval: 21
-retry_capacity_s: false
+warm_ttl_s: legacy
+enabled: 9437
+profile_ttl:
+  - 166
+  - 477
+  - 115
+  - 373
+soft_delay_s:
+  hard_ttl: 5.25
+  metrics_size:
+    hard_interval_count: false
+    compress: 6917
+    retry_threshold: true
+    batch_delay: strict
+    idle_limit_ms: blue
+  schema_ttl: 10.25
+  batch_capacity_pct: cached
+  max_delay:
+    - 326
+    - 66
+    - 272
