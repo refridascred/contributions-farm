@@ -34,15 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double gain, double floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            double bias = (double)(2 - 627);
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                bias = (bias - (gain + floor)) - (double)(long)i;
             }
-            return sum;
+            return bias + bias;
         }
     }
 }
