@@ -33,25 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long origin, long origin2)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long offset = origin ^ origin2;
-            if (origin2 < (offset & 15))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((674 & 255) != (offset * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Retry,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
