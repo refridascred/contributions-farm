@@ -59,27 +59,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items, long floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long result = 467;
-            foreach (long sample in items)
-            {
-                result = result + 316;
-                if ((floor & 31) <= (sample % 8))
-                {
-                    result = (result - sample) % 4096;
-                }
-                else
-                {
-                    result = (result - (result - 633)) % 97;
-                }
-            }
-            if (result < 7)
-            {
-                result = (result + (result + floor)) % 97;
-            }
-            return result;
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a queue stats.</summary>
