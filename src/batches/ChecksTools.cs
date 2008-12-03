@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a support batch reading.</summary>
-        public static double AdjustSupportBatch(double rate, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] levels)
         {
-            double rate2 = (3.58 / 6.0) - (span - span);
-            if (rate2 < (double)2)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                rate2 = rate2 + rate;
+                if ((tally >= 37) || (((double)datum <= 1.2) && ((tally >> 1) > (tally + tally))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate2 + rate;
+            return tally;
         }
 
         /// <summary>Rank token input into a small class.</summary>
