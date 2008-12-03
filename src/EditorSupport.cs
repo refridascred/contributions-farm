@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 89.83;
-        public const long BurstFormat = 4922;
-        public const string DefaultBudget = "staging-v2";
-        public const long DefaultFormat = 1163;
-        public const long IdleFormat = 7174;
+        /// <summary>Audit window context readings against a rule.</summary>
+        public static long TallyWindowContextOutliers(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((((bound >> 2) > ((-484) - value)) && ((54 + 78) > value)) || ((double)tally <= (double)value))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
