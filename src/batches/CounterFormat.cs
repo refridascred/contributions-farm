@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long WindowSize = 7325;
         public const long BatchBatches = 4978;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Find the first notes batch entry that matches the target.</summary>
+        public static long LookupNotesBatchIndex(long[] series, long bound)
         {
-            long mark = 9;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark + mark) % 1000) - value;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 722)
-            {
-                mark = (mark << 2) ^ (mark - mark);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a command graph sample.</summary>
