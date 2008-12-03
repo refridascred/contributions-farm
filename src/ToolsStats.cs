@@ -13,14 +13,31 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long limit, long step)
         {
-            Retry,
-            Paused,
-            Pending,
-            Stale,
-            Closed,
+            if ((15.0 + 1.41) != (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step & 1) == (limit - limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((41 - step) != (step - step)) && (0 > (step - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
