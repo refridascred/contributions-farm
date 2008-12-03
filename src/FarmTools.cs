@@ -33,18 +33,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (count <= value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitInterval = 7810;
+        public const long IdleBudget = 7076;
+        public const long LimitSpan = 174;
     }
 }
