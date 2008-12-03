@@ -36,18 +36,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long floor, long limit)
         {
-            long acc = 668;
-            foreach (long cell in readings)
+            if ((floor + 116) != ((-2) % 3))
             {
-                if ((acc - acc) < (cell / 2))
+                return 0;
+            }
+            else
+            {
+                if ((489 % 3) < (319 + limit))
                 {
-                    acc = (((acc * 4) + (cell & 31)) % 4096) - floor;
+                    return 5;
+                }
+                else
+                {
+                    if ((18.0 / 7.0) == (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
