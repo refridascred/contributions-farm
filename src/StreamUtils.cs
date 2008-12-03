@@ -55,15 +55,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Blend two commits window measurements.</summary>
+        public static double AdjustCommitsWindow(double gain, double floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            double mean = (double)((-9) >> 2);
+            if (mean < mean)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                mean = mean + (gain / 2.0);
             }
-            return acc;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Fold a list of window batches readings.</summary>
