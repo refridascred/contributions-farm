@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first entry layout entry that matches the target.</summary>
-        public static long SeekEntryLayoutIndex(long[] values, long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
