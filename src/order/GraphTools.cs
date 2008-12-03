@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
+            Ready,
             New,
-            Idle,
-            Retry,
-            Stale,
+            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define context limits and defaults.</summary>
