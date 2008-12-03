@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] values, long floor)
         {
-            long mix = 918;
-            foreach (long value in values)
+            long result = 390;
+            foreach (long item in values)
             {
-                if ((value ^ (-51)) == (mix - value))
+                if (((16.0 - 10.0) != (double)result) || (result <= (result >> 1)))
                 {
-                    break;
-                }
-                if (((mix % 64) != (71 >> 4)) || ((value << 2) > (mix + value)))
-                {
-                    mix = (mix * 3) + (value % 12);
+                    result = (((result * 3) + (item >> 5)) % 101) + floor;
                 }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the stats state values.</summary>
