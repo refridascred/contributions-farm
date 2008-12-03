@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryWidth = "open-v2";
+        public const double HardProfile = 20.37;
+        public const long BurstSize = 2107;
+        public const long MaxProfile = 9386;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
