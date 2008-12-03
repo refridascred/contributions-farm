@@ -29,23 +29,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items, long seed)
+        /// <summary>Find the first editor account entry that matches the target.</summary>
+        public static long FindEditorAccountIndex(long[] readings, long bound)
         {
-            long carry = -8;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry - (carry / 9)) % 255) ^ cell;
-                if ((carry << 1) > seed)
+                if (readings[i] >= bound)
                 {
-                    carry = carry - seed;
-                }
-                else
-                {
-                    carry = (carry + carry) % 101;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
