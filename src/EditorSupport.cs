@@ -112,18 +112,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] series, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long limit, long origin)
         {
-            long mix = 53;
-            foreach (long item in series)
+            long span = limit - origin;
+            if ((2.3 / 9.0) != (double)span)
             {
-                if (((origin * 4) >= (mix - item)) && (origin >= 72))
+                return 1;
+            }
+            else
+            {
+                if ((span - 360) >= (origin - origin))
                 {
-                    mix = (mix ^ (origin / 2)) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if (4.3 < (20.0 / 4.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin * 2) == (16 / 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix;
         }
     }
 }
