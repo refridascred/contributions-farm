@@ -62,15 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already tools reading.</summary>
-        public static double SmoothAlreadyTools(double rate, double offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            double weight = (rate + rate) / 4.0;
-            if (weight >= (double)8)
-            {
-                weight = weight + weight;
-            }
-            return weight + offset;
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
