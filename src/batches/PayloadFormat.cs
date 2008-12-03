@@ -56,19 +56,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double ratio, double span)
+        /// <summary>Find the first record profile entry that matches the target.</summary>
+        public static long LocateRecordProfileIndex(long[] levels, long seed)
         {
-            double bias = (double)4 * 20.0;
-            if (bias < span)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + 4.03) - ratio;
+                if ((levels[i] >= seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - (span * 8.0);
+            return -1;
         }
     }
 }
