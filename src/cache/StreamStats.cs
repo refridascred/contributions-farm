@@ -47,23 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor stream samples.</summary>
-        public static long WeighEditorStream(long[] items, long offset)
+        /// <summary>Find the first filter token entry that matches the target.</summary>
+        public static long LocateFilterTokenIndex(long[] data, long limit)
         {
-            long total = 504;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total << 3) ^ (offset & 3)) % 4096;
-                if (cell >= (cell >> 2))
+                if (data[i] == limit)
                 {
-                    total = ((total << 2) ^ offset) % 1000;
-                }
-                else
-                {
-                    total = (total << 3) ^ (offset << 2);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
