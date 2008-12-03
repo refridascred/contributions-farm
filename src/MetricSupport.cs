@@ -51,12 +51,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first window tools entry that matches the target.</summary>
-        public static long FindWindowToolsIndex(long[] data, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] <= limit)
+                if (levels[i] > seed)
                 {
                     return (long)i;
                 }
