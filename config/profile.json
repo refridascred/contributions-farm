@@ -1,14 +1,8 @@
 {
-  "support_size": ["primary", "legacy"],
-  "flush_interval": {
-    "tools_ratio": true,
-    "soft_threshold": "staging",
-    "hard_window": 22.76,
-    "already_interval": false,
-    "max_threshold_s": 100,
-    "filter_capacity": "stable"
-  },
-  "route_size": 60.62,
-  "default_size_count": "cached",
-  "hard_timeout_count": "latest"
+  "base_threshold_s": 500,
+  "warm_ratio": "stable",
+  "dry_run": "fallback",
+  "batch_depth_pct": 7223,
+  "verbose": ["staging", "standard"],
+  "default_ratio_ms": 20.82
 }
