@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long floor, long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long slot = floor + seed;
-            if ((4.43 - 3.3) >= (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed <= (double)slot)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
