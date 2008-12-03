@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] samples, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (score < (offset - offset))
+                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
                 {
-                    score = (score - (offset % 60)) % 4096;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
