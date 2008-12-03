@@ -1,6 +1,9 @@
 {
-  "session_retries": "fallback",
-  "burst_retries_s": [223, 197],
-  "batch_delay": 58,
-  "sync_window": [379, 440]
+  "poll_window": 500,
+  "farm_limit": "primary",
+  "soft_interval_pct": {
+    "batch_threshold": "fallback",
+    "soft_capacity_pct": true,
+    "poll_delay": "primary"
+  }
 }
