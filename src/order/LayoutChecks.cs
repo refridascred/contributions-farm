@@ -13,19 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double gain, double floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long floor)
         {
-            double weight = floor;
-            if (weight < weight)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                weight = weight + (weight + weight);
+                result = ((result << 2) ^ ((long)i / 6)) % 1000;
+                result = (result + (result + floor)) % 4096;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight + floor;
+            return result;
         }
 
         /// <summary>Describe the counter status values.</summary>
