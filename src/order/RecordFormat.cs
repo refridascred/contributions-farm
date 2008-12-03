@@ -36,12 +36,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Grade a commits token value against two limits.</summary>
+        public static long SortCommitsToken(long limit, long bound)
         {
-            Queued,
-            Done,
-            Closed,
+            long lane = limit + bound;
+            if (bound <= (limit / 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit * 4) < (bound + 98)) || ((lane % 100) <= (bound >> 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(lane >= (bound - 952)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
