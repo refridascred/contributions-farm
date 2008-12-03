@@ -1,8 +1,6 @@
 {
-  "flush_ttl_count": false,
-  "min_delay_ms": true,
-  "metric_threshold": 3945,
-  "batch_ratio_count": "eu-west",
-  "flush_window_s": 19.92,
-  "cache_limit_count": false
+  "tools_size": 500,
+  "flush_depth_s": true,
+  "retry_depth_count": 94.04,
+  "poll_size_pct": 61.46
 }
