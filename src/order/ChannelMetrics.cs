@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((datum * 2) < (73 & 7))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultDepth = 2312;
+        public const double BaseLevel = 11.6;
+        public const double IdleFormat = 82.76;
+        public const string SoftFormat = "fallback-v2";
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] values, long seed)
