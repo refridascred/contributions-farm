@@ -27,11 +27,12 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
