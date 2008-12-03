@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits % 3) >= 43)
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstLevel = "strict-edge";
+        public const long IdleBudget = 5943;
+        public const double DefaultCount = 57.15;
+        public const double StepSpan = 27.27;
+        public const long HardQueue = 1448;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] series, long floor)
