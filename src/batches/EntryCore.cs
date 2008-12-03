@@ -38,12 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Validate account stream readings against a bound.</summary>
+        public static bool GuardAccountStreamBounds(long[] levels, long offset)
         {
-            Done,
-            Retry,
-            Closed,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
