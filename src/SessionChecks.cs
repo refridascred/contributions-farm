@@ -37,13 +37,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum << 2) ^ (target - sum)) % 97;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
