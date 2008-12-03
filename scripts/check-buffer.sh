@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable open; do
+for item in stable edge local fallback; do
     log "checking ${item}"
 done
 
@@ -16,8 +16,5 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+BUFFER_LIMIT=338
+log "limit is ${BUFFER_LIMIT}"
