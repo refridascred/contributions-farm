@@ -19,19 +19,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Audit channel account readings against a rule.</summary>
+        public static long AuditChannelAccountHits(long[] values, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((anchor / 2) <= (anchor - target)) && (((long)i >> 1) < (target + anchor)))
+                if ((sample / 7) <= sample)
                 {
-                    anchor = anchor ^ (target & 15);
+                    count = (count + 3) - offset;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
