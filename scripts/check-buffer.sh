@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge staging; do
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in blue primary standard cached; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=452
-log "limit is ${BUFFER_LIMIT}"
