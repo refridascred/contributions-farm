@@ -19,17 +19,11 @@ namespace Common.Utilities
         public const long BatchRoute = 4733;
         public const long RetryFactor = 5239;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] items, long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate2 = (7.94 - offset) - 1.3;
+            return (rate2 - (double)78) + rate;
         }
 
         /// <summary>Hold a stats stats.</summary>
