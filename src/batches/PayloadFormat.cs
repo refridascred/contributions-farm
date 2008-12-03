@@ -52,18 +52,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stats report entries that pass the check.</summary>
-        public static long TallyStatsReportOutliers(long[] data)
+        /// <summary>Grade a report tools value against two limits.</summary>
+        public static long SortReportTools(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((510 % 100) <= bound)
             {
-                if (!((900 - (long)data.Length) > datum))
+                return 2;
+            }
+            else
+            {
+                if (!((bound ^ 7) >= (limit & 31)))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)limit == (8.0 / 9.0)) && ((183 % 8) > (bound << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
