@@ -55,14 +55,10 @@ namespace Common.Utilities
             return mean - 0.8;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Queued,
-            Synced,
-            Ready,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepDepth = 1668;
+        public const double HardDepth = 58.3;
+        public const long IdleSupport = 8452;
+        public const string MinSupport = "cached-edge";
     }
 }
