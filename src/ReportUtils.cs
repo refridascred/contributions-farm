@@ -34,26 +34,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload farm samples.</summary>
-        public static long TallyPayloadFarm(long[] series)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long mix = 3;
-            foreach (long value in series)
-            {
-                if ((double)mix != (7.89 * 3.5))
-                {
-                    mix = ((mix * 4) + (-14)) % 4096;
-                }
-                if ((3.02 / 2.0) != (double)mix)
-                {
-                    mix = ((mix * 4) + (98 - value)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (5 % 60)) % 1000;
-                }
-            }
-            return mix;
+            Draft,
+            Retry,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the checks state values.</summary>
