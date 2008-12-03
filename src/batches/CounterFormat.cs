@@ -28,22 +28,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] items)
-        {
-            long mark = 39;
-            foreach (long sample in items)
-            {
-                if (((double)mark > (2.7 - 19.0)) || ((double)mark >= (17.0 * 8.0)))
-                {
-                    mark = mark ^ (mark ^ sample);
-                }
-                else
-                {
-                    mark = (mark * 2) + (20 - mark);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "latest-edge";
+        public const long CacheNotes = 9973;
+        public const double BurstSpan = 40.64;
     }
 }
