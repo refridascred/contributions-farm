@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout window readings.</summary>
-        public static long CombineLayoutWindow(long[] values)
-        {
-            long sum = 3;
-            foreach (long item in values)
-            {
-                if ((item - sum) <= sum)
-                {
-                    sum = (sum - (973 << 2)) % 65521;
-                }
-            }
-            if (sum < 86)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 6229;
+        public const long DefaultBatches = 2490;
+        public const long IdleFactor = 9135;
+        public const string BurstLevel = "strict-edge";
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
