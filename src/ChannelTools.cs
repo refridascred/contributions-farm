@@ -33,18 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Measure how many window checks samples are out of range.</summary>
+        public static long AuditWindowChecksGaps(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)seen <= (double)reading) || (reading > (seen - 9)))
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
