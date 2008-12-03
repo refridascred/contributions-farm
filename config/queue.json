@@ -1,10 +1,5 @@
 {
-  "hard_depth_ms": false,
-  "flush_depth_count": {
-    "sync_interval_s": "cached",
-    "burst_retries_count": "edge",
-    "cache_size_pct": 100,
-    "readonly": 250
-  },
-  "persist": ["eu-west", "stable", "stable", "cached"]
+  "compress": "local",
+  "sync_capacity_count": 71.32,
+  "cache_ttl": "cached"
 }
