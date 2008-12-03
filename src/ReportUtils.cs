@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitSpan = "fallback";
-        public const long MaxBudget = 8409;
-        public const string LimitLevel = "strict-1";
-        public const string IdleRatio = "local-edge";
-        public const long MaxBuffer = 2841;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate route counter samples.</summary>
         public static long WeighRouteCounter(long[] values)
