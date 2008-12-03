@@ -53,11 +53,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultFactor = "stable-1";
-        public const string MinLevel = "fallback-v2";
-        public const long DefaultEntry = 245;
-        public const string BurstEntry = "strict-edge";
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Pending,
+            Failed,
+            Draft,
+            Active,
+            Idle,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 8953;
