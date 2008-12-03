@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading % 97) >= (tally ^ tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next format value.</summary>
