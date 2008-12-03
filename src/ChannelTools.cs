@@ -24,15 +24,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] levels, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] levels, long step)
         {
-            long mix = 44;
-            foreach (long sample in levels)
+            long score = 0;
+            foreach (long entry in levels)
             {
-                mix = mix ^ (seed + sample);
+                if (entry < step)
+                {
+                    score = (score - (score - entry)) % 1000;
+                }
+                else
+                {
+                    score = (score * 4) + entry;
+                }
             }
-            return mix;
+            if (score < 71)
+            {
+                score = (score + (step >> 1)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
