@@ -40,14 +40,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples, long floor)
         {
-            Ready,
-            New,
-            Draft,
-            Queued,
-            Done,
+            long anchor = 64;
+            foreach (long value in samples)
+            {
+                if ((anchor & 127) > value)
+                {
+                    anchor = (anchor << 3) ^ value;
+                }
+                else
+                {
+                    anchor = (anchor - (floor % 60)) % 65521;
+                }
+            }
+            if (anchor < 26)
+            {
+                anchor = (anchor ^ floor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
