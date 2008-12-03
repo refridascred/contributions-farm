@@ -1,5 +1,9 @@
 # support settings
-farm_ratio: true
-verbose: stable
-strict: green
-context_ttl: true
+warm_depth_count:
+  idle_interval: 100
+  burst_depth_count: standard
+  warm_timeout_ms: 60
+  githubfarm_timeout: 18.6
+  default_ttl: true
+counter_retries: 4094
+strict: 80
