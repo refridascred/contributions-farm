@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] levels, long floor)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the context mode values.</summary>
