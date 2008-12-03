@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long carry = 910;
-            foreach (long value in readings)
-            {
-                carry = ((carry + (carry + 264)) % 97) + value;
-                if ((135 - carry) >= (537 * 3))
-                {
-                    carry = (carry - (carry + carry)) % 101;
-                }
-            }
-            return carry;
+            Closed,
+            Synced,
+            Idle,
+            Active,
+            Paused,
         }
 
         /// <summary>Check that every session command entry stays within the limit.</summary>
