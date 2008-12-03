@@ -19,12 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Rank context entry input into a small class.</summary>
+        public static long SortContextEntry(long offset, long limit)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long offset2 = offset - limit;
+            if ((double)offset2 > (6.0 * 9.05))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((6.4 / 9.0) < (double)offset2) || ((offset2 << 1) == (466 + limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit << 3) != (6 << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
