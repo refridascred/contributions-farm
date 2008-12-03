@@ -40,15 +40,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of contributi payload entries.</summary>
-        public static long WeighContributiPayload(long[] samples)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mark = 85;
-            foreach (long value in samples)
-            {
-                mark = ((mark + mark) % 97) + value;
-            }
-            return mark;
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
