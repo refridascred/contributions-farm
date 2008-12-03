@@ -28,32 +28,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] series)
-        {
-            long anchor = 2;
-            foreach (long entry in series)
-            {
-                long cur = (entry - entry) * 2;
-                if ((anchor << 3) >= cur)
-                {
-                    anchor = ((anchor << 2) ^ (anchor - cur)) % 101;
-                    cur = (cur + entry) % 101;
-                }
-                if ((entry & 31) == (anchor + entry))
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 255)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (504 / 5);
-                }
-            }
-            if (anchor < 21)
-            {
-                anchor = (anchor - (768 + anchor)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheDepth = 52.04;
+        public const double MinRatio = 29.43;
+        public const long CacheBudget = 4488;
+        public const long StepReport = 901;
+        public const double HardReport = 33.58;
     }
 }
