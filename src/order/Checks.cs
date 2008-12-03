@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] values)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public long Size { get; set; }
+            long mix = 918;
+            foreach (long value in values)
+            {
+                if ((value ^ (-51)) == (mix - value))
+                {
+                    break;
+                }
+                if (((mix % 64) != (71 >> 4)) || ((value << 2) > (mix + value)))
+                {
+                    mix = (mix * 3) + (value % 12);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the stats state values.</summary>
