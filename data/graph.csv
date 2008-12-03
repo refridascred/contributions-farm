@@ -1,9 +1,6 @@
-id,count,score
-1,eu-west,10.78
-2,8.57,edge
-3,28.66,eu-west
-4,374,384
-5,local,498
-6,84.18,509
-7,54.72,98.32
-8,latest,249
+id,active,count,state
+1,149,69.81,staging
+2,staging,53.97,8
+3,latest,84.69,local
+4,88.44,legacy,eu-west
+5,green,cached,30.25
