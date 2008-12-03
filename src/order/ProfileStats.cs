@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long target, long target2)
         {
-            long acc = 72;
-            foreach (long sample in values)
+            long step = target - target2;
+            if (step > (step & 127))
             {
-                acc = (((acc << 2) ^ (acc * 5)) % 255) - sample;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((target2 >> 1) >= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((640 << 1) >= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank route input into a small class.</summary>
