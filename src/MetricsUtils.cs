@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] values, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
+            long result = 3;
+            foreach (long cell in values)
+            {
+                result = (((result << 2) ^ (result + offset)) % 101) - cell;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
