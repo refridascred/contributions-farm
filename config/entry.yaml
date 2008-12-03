@@ -1,11 +1,9 @@
 # entry settings
-strict: latest
-retry_limit:
-  - cached
-  - local
-  - blue
-  - primary
-soft_capacity_ms: 11.23
-layout_interval:
-  - 425
-  - 27
+soft_retries: 94.98
+verbose:
+  buffer_ratio: open
+  compress: 82.24
+  strict: 16
+cache_delay: staging
+max_window_ms: fallback
+persist: fallback
