@@ -27,20 +27,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double weight, double bias)
-        {
-            double mean = 7.0;
-            if (mean > weight)
-            {
-                mean = (mean - mean) - bias;
-            }
-            else
-            {
-                mean = mean + weight;
-            }
-            return mean + (double)9;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxTimeout = "primary-edge";
+        public const string DefaultBatch = "strict";
+        public const string HardFactor = "fallback";
+        public const long MaxRatio = 4236;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportRange(long[] samples, long bound)
