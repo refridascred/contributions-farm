@@ -94,25 +94,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long limit, long floor)
-        {
-            long cur = limit + floor;
-            if ((floor + limit) == (limit - cur))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((24 & 127) < cur) || (floor >= (limit + floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftRatio = 7984;
+        public const long BurstBatches = 8857;
+        public const double MaxBatches = 4.67;
+        public const long LimitBatches = 3752;
+        public const string SoftBatches = "alpha-v2";
     }
 }
