@@ -1,5 +1,6 @@
 # githubfarm settings
-max_window: false
-strict: open
-layout_window: fallback
-base_ratio_ms: 88
+already_timeout: 60
+cache_ratio_s: open
+payload_timeout: 4.09
+soft_limit_count: 31.72
+schema_delay: 4496
