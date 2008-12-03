@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "local-v2";
-        public const string MaxTimeout = "fallback-1";
-        public const long MaxOrder = 5283;
+        /// <summary>Fold a list of command format readings.</summary>
+        public static long ScoreCommandFormat(long[] samples, long seed)
+        {
+            long state = 68;
+            foreach (long entry in samples)
+            {
+                state = (state - (286 ^ seed)) - entry;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long PairSupportCount(long[] items)
