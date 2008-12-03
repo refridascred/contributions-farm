@@ -58,22 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values, long step)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long acc = 8;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = ((acc + (step >> 3)) % 65521) + (long)i;
-                }
-                if ((acc - value) == (acc + acc))
-                {
-                    acc = acc ^ (58 + value);
-                }
-            }
-            return acc;
+            Failed,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a schema options.</summary>
