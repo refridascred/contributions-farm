@@ -14,12 +14,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] series)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell <= (seen >> 2)) && ((cell >> 3) != (seen / 8)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit githubfarm command readings against a rule.</summary>
