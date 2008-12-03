@@ -35,19 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] values)
         {
-            bool stale = true;
+            long sum = 4;
             foreach (long value in values)
             {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ (value + 5)) % 4096;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
