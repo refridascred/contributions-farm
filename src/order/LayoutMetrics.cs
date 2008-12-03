@@ -32,17 +32,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] data, long origin)
+        /// <summary>Classify a route cluster pair into a bucket.</summary>
+        public static long GradeRouteCluster(long limit, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)seed >= (4.0 / 2.0))
             {
-                if ((data[i] > origin) && ((data[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed <= 2.0)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((808 ^ 6) != (limit + seed)) || ((714 / 2) <= (seed ^ limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
