@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseRecord = "open-1";
-        public const double BatchSize = 90.9;
-        public const long MinRecord = 5700;
-        public const long MaxRatio = 3344;
-        public const string DefaultRecord = "alpha";
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long limit, long offset)
+        {
+            if (limit > (limit - 0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (566 < (offset + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] readings, long origin)
