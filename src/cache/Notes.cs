@@ -13,18 +13,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] levels, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            if (origin <= origin2)
             {
-                if ((step << 1) > (entry % 64))
+                return 0;
+            }
+            else
+            {
+                if (!((2.2 / 3.0) != (double)origin))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin ^ origin2) >= (67 << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a farm info.</summary>
