@@ -1,8 +1,17 @@
 # entry settings
-editor_timeout: true
-min_ratio_ms: cached
-warm_depth_pct:
-  - open
-  - blue
-  - fallback
-  - staging
+idle_retries_count: edge
+context_capacity: true
+soft_delay_s: false
+poll_ttl_s: local
+base_timeout_count:
+  window_threshold: false
+  stats_depth: local
+  counter_size:
+    batches_capacity: 8371
+    buffer_limit:
+      - 59
+      - 346
+      - 146
+    verbose: fallback
+    base_timeout_s: 100
+  channel_timeout: 60
