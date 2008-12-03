@@ -64,18 +64,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] levels, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long acc = 8;
+            foreach (long value in values)
             {
-                if ((entry > (entry << 1)) && ((count + 3) < (entry / 8)))
+                for (int i = 0; i < 11; i++)
                 {
-                    count = (count + 3) - seed;
+                    acc = ((acc + (step >> 3)) % 65521) + (long)i;
+                }
+                if ((acc - value) == (acc + acc))
+                {
+                    acc = acc ^ (58 + value);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a record info.</summary>
