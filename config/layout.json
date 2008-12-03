@@ -1,6 +1,5 @@
 {
-  "batch_timeout": 1024,
-  "min_limit": ["strict", "legacy"],
-  "min_delay_s": 96.56,
-  "flush_ttl_count": 70
+  "warm_threshold_pct": 70.29,
+  "verbose": 4517,
+  "warm_interval_pct": 17.69
 }
