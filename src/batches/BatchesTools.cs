@@ -29,14 +29,19 @@ namespace Common.Utilities
         public const double BurstReport = 51.71;
         public const string WindowReport = "legacy-edge";
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long floor)
         {
-            Retry,
-            Active,
-            Dropped,
-            Failed,
-            Queued,
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (((mix * 4) + (0 << 2)) % 101) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
