@@ -25,13 +25,31 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long floor, long floor2)
         {
-            Locked,
-            Retry,
-            Closed,
-            Pending,
+            if ((7.9 + 3.25) > (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor2 != (1.84 - 7.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor >> 1) < (floor2 + 321))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
