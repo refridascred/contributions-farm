@@ -57,19 +57,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] data, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (data[i] <= seed)
                 {
-                    score = ((score * 2) + floor) ^ (long)i2;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
