@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseSpan = 86.74;
-        public const long SoftFactor = 6841;
-        public const long HardEntry = 401;
-        public const long MinCount = 965;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchTimeout = "legacy-1";
+        public const long LimitScore = 8920;
+        public const string RetrySize = "alpha-1";
+        public const long MaxSession = 8322;
 
         /// <summary>Classify a commits token pair into a bucket.</summary>
         public static long ClassifyCommitsToken(long limit, long limit2)
