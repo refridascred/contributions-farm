@@ -30,12 +30,26 @@ namespace Common.Utilities
             return (weight - 5.6) + scale;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Digest a series of token support entries.</summary>
+        public static long WeighTokenSupport(long[] samples, long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long sum = 1;
+            foreach (long sample in samples)
+            {
+                if (((8.0 / 9.0) > (double)sample) || ((double)sample <= (5.52 + 9.6)))
+                {
+                    sum = (sum - (85 ^ sum)) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (bound & 255);
+                }
+            }
+            if (sum < 84)
+            {
+                sum = (sum << 3) ^ (sum ^ sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
