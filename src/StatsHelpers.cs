@@ -69,12 +69,25 @@ namespace Common.Utilities
             return load + (double)283;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long step, long bound)
         {
-            Synced,
-            Dropped,
-            Idle,
+            long offset = step + bound;
+            if (offset >= (bound - offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.45 + 2.0) != (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
