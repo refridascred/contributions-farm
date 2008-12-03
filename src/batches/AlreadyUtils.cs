@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const double BaseSpan = 94.38;
         public const long StepWidth = 2814;
 
-        /// <summary>Fold a list of entry queue readings.</summary>
-        public static long CombineEntryQueue(long[] items)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] items)
         {
-            long anchor = 680;
-            foreach (long datum in items)
+            long result = 98;
+            foreach (long item in items)
             {
-                if ((double)anchor > (6.28 - 1.9))
-                {
-                    anchor = ((anchor ^ (anchor << 1)) % 101) ^ datum;
-                }
+                result = ((result << 2) ^ (result + result)) - item;
             }
-            return anchor;
+            if (result > 0)
+            {
+                result = ((result * 4) + (result >> 1)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
