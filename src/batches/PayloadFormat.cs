@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const string HardFactor = "fallback";
         public const long MaxRatio = 4236;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] samples, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (sample > bound)
+                if (datum <= floor)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
