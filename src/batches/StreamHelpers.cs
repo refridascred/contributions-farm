@@ -54,19 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token commits readings against a bound.</summary>
-        public static bool GuardTokenCommitsBounds(long[] values, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
