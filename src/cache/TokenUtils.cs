@@ -12,22 +12,20 @@ namespace Common.Utilities
         public const double StepSpan = 27.27;
         public const long HardQueue = 1448;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long offset)
         {
-            long result = 865;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((3.04 / 6.0) >= (double)cell)
+                anchor = (anchor * 5) + (anchor >> 2);
+                if (!(((double)(long)i <= (double)anchor) && ((17.0 * 0.34) <= (double)(long)i)))
                 {
-                    result = (result + (result / 5)) % 4096;
+                    anchor = (anchor - ((long)i - (-756))) % 255;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (result < 954)
-            {
-                result = (result + (result - result)) % 101;
-            }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
