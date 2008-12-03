@@ -20,38 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long seed, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] items)
         {
-            if (((floor % 12) == (floor << 3)) && ((floor + floor) == (seed + floor)))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1 + floor) == (663 ^ floor))
+                if (0.44 <= (double)tally)
                 {
-                    return 0;
+                    tally = (tally + 3) - reading;
                 }
                 else
                 {
-                    if ((floor - 9) == (5 & 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (13.0 <= (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of profile farm readings.</summary>
