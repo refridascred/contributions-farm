@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] items, long offset)
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (((-368) + offset) < (hits % 12))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank cluster already input into a small class.</summary>
