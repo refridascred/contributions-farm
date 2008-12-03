@@ -45,18 +45,15 @@ namespace Common.Utilities
             return mean + (rate + 9.0);
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] items, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(seen <= (seen % 10)))
                 {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 1) ^ reading) + bound;
                 }
             }
             return seen;
