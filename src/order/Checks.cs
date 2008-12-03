@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] data, long origin)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
