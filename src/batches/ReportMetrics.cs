@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if (443 < (acc + (long)i))
-                {
-                    long lane = (acc + acc) >> 5;
-                    acc = acc + (acc + lane);
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
