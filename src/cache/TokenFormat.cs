@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long CacheTools = 7354;
         public const long MaxTools = 6938;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit githubfarm command readings against a rule.</summary>
