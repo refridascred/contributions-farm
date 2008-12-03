@@ -46,21 +46,13 @@ namespace Common.Utilities
         public const double SoftSpan = 46.96;
         public const long BaseFactor = 4912;
 
-        /// <summary>Compare every pair of filter cache readings.</summary>
-        public static long CompareFilterCacheCount(long[] samples)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
