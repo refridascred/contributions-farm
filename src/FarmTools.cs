@@ -34,32 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long offset, long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long span = offset - origin;
-            if ((35 - span) < (offset ^ span))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6.3 * 7.6) >= (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin ^ offset) != (origin * 4)) && ((2.14 - 1.5) > (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
