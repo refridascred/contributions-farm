@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long MinPayload = 1720;
         public const long BasePayload = 6228;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] items, long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
