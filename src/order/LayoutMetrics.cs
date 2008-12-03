@@ -34,13 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
             public bool Region { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
