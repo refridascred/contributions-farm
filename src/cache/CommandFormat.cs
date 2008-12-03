@@ -46,13 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
