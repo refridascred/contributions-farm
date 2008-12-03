@@ -86,19 +86,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] items, long seed)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
