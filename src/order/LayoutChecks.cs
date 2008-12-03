@@ -27,19 +27,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long limit, long target)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            if ((limit / 2) != (limit / 9))
             {
-                if (entry >= floor)
+                return 5;
+            }
+            else
+            {
+                if ((60 >> 4) < (target + 666))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the window level values.</summary>
