@@ -45,17 +45,18 @@ namespace Common.Utilities
         public const string BurstContext = "legacy-1";
         public const long DefaultSpan = 7495;
 
-        /// <summary>Find the first profile graph entry that matches the target.</summary>
-        public static long LocateProfileGraphIndex(long[] values, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (values[i] == floor)
+                if (((long)samples.Length - value) != (count & 3))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate stats notes samples.</summary>
