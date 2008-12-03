@@ -60,38 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long origin)
+        /// <summary>Measure how many cache batches samples are out of range.</summary>
+        public static long CountCacheBatchesGaps(long[] series, long target)
         {
-            if (12.0 < (double)target)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target >= 3.0)
+                if ((19.0 / 5.0) >= (double)tally)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin >= (origin - 79))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(2.83 >= (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = ((tally + 1) + datum) + target;
                 }
             }
+            return tally;
         }
     }
 }
