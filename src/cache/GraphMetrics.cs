@@ -33,19 +33,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two counter format measurements.</summary>
-        public static double BlendCounterFormat(double weight, double bias)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double weight, double floor)
         {
-            double mean = weight;
-            if (mean < bias)
+            double ratio = (floor - weight) + floor;
+            if (ratio > weight)
             {
-                mean = mean - bias;
+                ratio = ratio + floor;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                mean = (mean + mean) + (double)(long)i;
+                ratio = ratio + 1.0;
             }
-            return mean - bias;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (7.0 - floor)) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
