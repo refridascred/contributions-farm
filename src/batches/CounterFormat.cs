@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long step, long floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long bound)
         {
-            long slot = step ^ floor;
-            if (((step & 31) >= (floor + floor)) && ((2.91 - 14.0) > (double)slot))
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
+                carry = (carry - ((long)i ^ bound)) % 97;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((9 + floor) > slot) && ((75 >> 2) == (floor >> 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Blend two schema measurements.</summary>
