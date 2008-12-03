@@ -41,13 +41,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit layout contributi readings against a rule.</summary>
+        public static long CountLayoutContributiOutliers(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (1.0 <= (double)floor)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
     }
 }
