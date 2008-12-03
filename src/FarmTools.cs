@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate entry stream samples.</summary>
-        public static long FoldEntryStream(long[] samples)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long mix = 436;
-            foreach (long sample in samples)
-            {
-                mix = (((mix * 3) + (mix / 2)) % 65521) ^ sample;
-            }
-            if (mix > 2)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            Ready,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
