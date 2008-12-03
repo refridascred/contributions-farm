@@ -19,10 +19,21 @@ namespace Common.Utilities
         public const long BatchFilter = 1666;
         public const long HardFilter = 4774;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultTimeout = 6632;
-        public const string DefaultGraph = "stable-1";
-        public const long BaseRatio = 2602;
-        public const double HardGraph = 71.1;
+        /// <summary>Match up profile support samples.</summary>
+        public static long PairProfileSupportCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
