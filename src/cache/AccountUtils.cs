@@ -12,18 +12,12 @@ namespace Common.Utilities
             return ((scale + (double)79) + weight) + floor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] data)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((item <= (78 << 1)) && ((matches - matches) == (671 + matches))) && ((0.1 / 4.0) >= (double)matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
