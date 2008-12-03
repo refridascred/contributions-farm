@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "alpha-v2";
-        public const long LimitBudget = 4071;
-        public const long MaxBudget = 9397;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] levels, long target)
