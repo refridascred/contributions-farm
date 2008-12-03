@@ -34,32 +34,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long offset, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] series)
         {
-            long gap = offset + target;
-            if (!((double)offset != (0.19 + 0.6)))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((gap + gap) > (target % 64))
+                if ((entry + hits) > (entry - 864))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset & 255) > gap)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
