@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 1000;
-        public const string IdleScore = "fallback-edge";
-        public const double BurstWidth = 34.67;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Dropped,
+            New,
+            Retry,
+            Done,
+        }
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
