@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long bound, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] values)
         {
-            if (bound <= (bound * 5))
+            long total = 467;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) > (-879))
+                total = total - item;
+                if ((7.28 + 6.9) <= (double)total)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    total = (total << 3) ^ (total & 3);
                 }
             }
+            if (total < (-127))
+            {
+                total = (total ^ (total % 12)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Hold a report record.</summary>
