@@ -90,17 +90,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a checks entry sample.</summary>
-        public static long SeekChecksEntryIndex(long[] values, long target)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Locked,
         }
     }
 }
