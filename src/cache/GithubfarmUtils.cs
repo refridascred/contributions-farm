@@ -26,38 +26,19 @@ namespace Common.Utilities
             return (gain + scale) + bias;
         }
 
-        /// <summary>Rank entry cache input into a small class.</summary>
-        public static long ClassifyEntryCache(long target, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] levels, long target)
         {
-            if ((origin >> 1) >= (origin - origin))
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin >= (double)(-307))
+                if (sample > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target << 2) < target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target <= (867 ^ origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
