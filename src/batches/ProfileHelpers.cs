@@ -30,14 +30,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Locate a queue stats reading by value.</summary>
+        public static long LookupQueueStatsIndex(long[] items, long floor)
         {
-            Paused,
-            Locked,
-            Retry,
-            Closed,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
