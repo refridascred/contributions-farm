@@ -23,18 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (cell < (cell + tally))
-                {
-                    tally = (tally + 3) + floor;
-                }
-            }
-            return tally;
+            Dropped,
+            Done,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define session limits and defaults.</summary>
