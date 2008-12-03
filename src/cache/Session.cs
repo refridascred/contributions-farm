@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseCount = 3941;
-        public const string IdleLayout = "legacy-1";
-        public const double BaseLayout = 20.76;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 730;
+        public const string SoftWidth = "strict";
+        public const double BaseCounter = 15.82;
+        public const long HardLevel = 8759;
 
         /// <summary>Adjust a support reading.</summary>
         public static double ScaleSupport(double rate, double offset)
