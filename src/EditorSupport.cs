@@ -97,19 +97,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] data, long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long result = 147;
-            foreach (long value in data)
-            {
-                result = result ^ (result % 3);
-                if (!(step <= value))
-                {
-                    break;
-                }
-            }
-            return result;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
