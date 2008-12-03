@@ -47,27 +47,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels, long origin)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            long mark = 4;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 2) + (origin << 2)) + value;
-                if ((double)origin >= (5.9 * 7.42))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark + (origin - mark)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark + mark)) % 1000;
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 832)
-            {
-                mark = mark + mark;
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
