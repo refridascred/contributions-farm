@@ -1,11 +1,14 @@
 # Command notes
 
-Each cache is validated before it reaches the stats queue.
-The record report groups every counter by stream.
+A tools that stays idle for too long is moved to the profile list.
+The order module keeps payload values in sync with the order cache.
+The channel helpers are pure functions, so they are safe to call from any thread.
+
+The graph helpers are pure functions, so they are safe to call from any thread.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review profile limits each release
-- Keep context values small
-- Log every cache change
-- Document new window fields
+- Keep order values small
+- Log every metrics change
+- Validate window input early
