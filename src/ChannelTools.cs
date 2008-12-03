@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first command token entry that matches the target.</summary>
-        public static long LookupCommandTokenIndex(long[] samples, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (floor - gain) - (floor / 7.0);
+            if (mean > (floor - mean))
             {
-                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - 13.0;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + floor) - (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Measure how many tools record samples are out of range.</summary>
