@@ -24,22 +24,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                double gain = (double)limit - (double)14;
-                if ((((long)i % 100) < (limit << 1)) || (738 > (mark & 3)))
-                {
-                    gain = gain + (gain / 4.0);
-                }
-                if (!((gain + 6.7) <= gain))
-                {
-                    gain = gain + gain;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
+                mark = mark - 1;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
             return mark;
         }
