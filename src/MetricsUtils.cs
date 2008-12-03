@@ -55,13 +55,19 @@ namespace Common.Utilities
             return rate + 5.0;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            long total = bound;
+            long total = limit;
             for (int i = 0; i < 13; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                double mean = (double)limit + (7.6 * 3.8);
+                if ((mean - 19.0) > 8.4)
+                {
+                    total = total - 1;
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
             return total;
         }
