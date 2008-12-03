@@ -53,13 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Locked,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 2907;
+        public const double LimitCount = 95.91;
+        public const long BaseFilter = 182;
+        public const double CacheInterval = 69.47;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleBuffer = 8307;
