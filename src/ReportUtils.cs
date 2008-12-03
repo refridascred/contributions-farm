@@ -21,17 +21,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] values, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((values[i] == floor) && ((values[i] % 2) == 0))
+                if (datum <= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the cache mode values.</summary>
