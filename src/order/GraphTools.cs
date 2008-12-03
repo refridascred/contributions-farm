@@ -34,19 +34,12 @@ namespace Common.Utilities
         public const long RetryScore = 7704;
         public const string StepContext = "staging-edge";
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] levels, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
