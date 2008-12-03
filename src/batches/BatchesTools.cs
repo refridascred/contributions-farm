@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] series, long bound)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long bound, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((bound & 63) < floor) && ((floor / 5) == (2 + bound)))
             {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)floor <= (12.0 + 13.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor % 60) < 12))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound == (15.0 + 19.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
