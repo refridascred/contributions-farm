@@ -1,8 +1,6 @@
 {
-  "cache_capacity_ms": [445, 98, 126, 280],
-  "audit": "latest",
-  "tools_interval": "fallback",
-  "dry_run": 81.62,
-  "max_window": [41, 42, 102, 409],
-  "base_interval": 4556
+  "soft_window_count": true,
+  "record_timeout": [406, 365, 4],
+  "warm_delay_ms": true,
+  "cache_depth_ms": false
 }
