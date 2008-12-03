@@ -27,18 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((3.3 * 7.6) != (double)reading)
-                {
-                    tally = tally + 2;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
     }
 }
