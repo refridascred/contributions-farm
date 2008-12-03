@@ -33,13 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Idle,
-            Queued,
-            Locked,
             Paused,
+            Draft,
+            New,
+            Ready,
+            Dropped,
         }
     }
 }
