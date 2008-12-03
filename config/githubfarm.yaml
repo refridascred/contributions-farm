@@ -1,4 +1,25 @@
 # githubfarm settings
-queue_capacity: 53
-profile_ttl: 83
-cache_delay_count: stable
+poll_timeout: true
+audit:
+  batches_ttl:
+    - 280
+    - 18
+    - 38
+  layout_ttl:
+    - blue
+    - blue
+    - fallback
+    - staging
+  readonly: cached
+  poll_ttl: edge
+  payload_ttl: true
+  retry_interval_pct: false
+soft_timeout_count:
+  layout_retries: eu-west
+  batch_limit: 40.86
+  max_delay:
+    - 323
+    - 262
+  max_ttl_s: primary
+  farm_depth: 4432
+  persist: primary
