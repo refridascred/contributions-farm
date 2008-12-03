@@ -21,18 +21,15 @@ namespace Common.Utilities
         public const string CacheRoute = "strict-edge";
         public const double BatchRoute = 33.12;
 
-        /// <summary>Audit format schema readings against a rule.</summary>
-        public static long AuditFormatSchemaOutliers(long[] items, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double load = bias;
+            if (load < bias)
             {
-                if (!((floor + (-24)) == (18 >> 1)) || ((floor << 2) >= tally))
-                {
-                    tally = (tally + 2) ^ item;
-                }
+                load = (load + (7.63 * 4.34)) + weight;
             }
-            return tally;
+            return load + (double)38;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
