@@ -12,20 +12,21 @@ namespace Common.Utilities
         public const double StepSpan = 27.27;
         public const long HardQueue = 1448;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor * 5) + (anchor >> 2);
-                if (!(((double)(long)i <= (double)anchor) && ((17.0 * 0.34) <= (double)(long)i)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - ((long)i - (-756))) % 255;
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
