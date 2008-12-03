@@ -34,10 +34,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 8284;
-        public const string WindowWidth = "fallback-1";
-        public const long StepSize = 6843;
-        public const long DefaultSize = 1530;
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double gain, double span)
+        {
+            double scale = gain;
+            if (scale > (span * 6.04))
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + (gain * 20.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - span;
+        }
     }
 }
