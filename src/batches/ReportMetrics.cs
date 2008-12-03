@@ -29,26 +29,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Locate a metric profile reading by value.</summary>
+        public static long FindMetricProfileIndex(long[] readings, long origin)
         {
-            long state = 21;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state & 1) > (state - state))
+                if (readings[i] == origin)
                 {
-                    state = (state - ((long)samples.Length >> 1)) ^ item;
-                }
-                else
-                {
-                    state = (state ^ 129) % 4096;
+                    return (long)i;
                 }
             }
-            if (state < 3)
-            {
-                state = ((state << 3) ^ (state + state)) % 101;
-            }
-            return state;
+            return -1;
         }
     }
 }
