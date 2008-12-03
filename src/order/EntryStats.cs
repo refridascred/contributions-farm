@@ -36,10 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftFactor = "standard-1";
-        public const long BurstMetrics = 7383;
-        public const long MaxMetrics = 354;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Validate payload graph readings against a bound.</summary>
         public static bool VerifyPayloadGraphRange(long[] levels, long seed)
