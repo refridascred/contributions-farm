@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the filter graph series from a seed.</summary>
-        public static long IterateFilterGraph(long target)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor - (anchor + anchor);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a already header.</summary>
