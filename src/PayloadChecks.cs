@@ -40,24 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long offset, long origin)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long step)
         {
-            if ((origin >> 5) <= (origin - offset))
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                result = result + ((-100) & 31);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (5 <= (offset << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return result;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
