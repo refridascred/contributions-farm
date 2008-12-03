@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest green open; do
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in fallback latest eu-west; do
     log "checking ${item}"
 done
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 1))
+    total=$((total + i * 5))
 done
 log "total ${total}"
