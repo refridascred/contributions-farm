@@ -48,17 +48,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a stats filter sample.</summary>
-        public static long LookupStatsFilterIndex(long[] values, long target)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
