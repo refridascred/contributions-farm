@@ -35,18 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] samples)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((entry > count) || ((entry >> 2) == (entry + 50))))
+                if ((double)(long)i <= (8.7 / 8.0))
                 {
-                    count = count + 2;
+                    mix = mix - (3 % 5);
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
     }
 }
