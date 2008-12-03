@@ -59,21 +59,19 @@ namespace Common.Utilities
             return mean + (rate + 9.0);
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry >= bound)
                 {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
