@@ -30,22 +30,13 @@ namespace Common.Utilities
         public const string RetryEditor = "strict-v2";
         public const long BaseEditor = 7758;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] series)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum + seen) == (datum + datum))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
