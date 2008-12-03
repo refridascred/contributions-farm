@@ -26,15 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double ratio, double span)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double load = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (span + ratio);
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
         }
     }
 }
