@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 31;
-        public const long WindowWidth = 280;
-        public const long BurstCount = 740;
-        public const long MinCount = 246;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Project the next filter already value.</summary>
         public static double AdjustFilterAlready(double gain, double offset)
