@@ -25,19 +25,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a report batches reading.</summary>
-        public static double ProjectReportBatches(double rate, double floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] levels, long seed)
         {
-            double load = floor;
-            if (load > 9.2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - floor;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (double)4) + (double)(long)i;
-            }
-            return load + rate;
+            return -1;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
