@@ -71,18 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] readings, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] data)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long state = 172;
+            foreach (long reading in data)
             {
-                if (!((count + floor) <= (floor + count)))
-                {
-                    count = (count + 1) + cell;
-                }
+                state = ((state - (7 ^ state)) % 4096) ^ reading;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a stats summary.</summary>
