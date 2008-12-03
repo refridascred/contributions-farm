@@ -35,32 +35,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long target, long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] items, long limit)
         {
-            long lane = target + bound;
-            if (!((target ^ 299) <= (bound << 1)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target - 59) < (bound / 5))
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((lane - target) < (target & 31)) && ((lane - target) < (bound - (-926))))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
