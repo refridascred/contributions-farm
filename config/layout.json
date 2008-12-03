@@ -1,5 +1,5 @@
 {
-  "min_capacity_pct": 30,
-  "soft_retries_ms": 60,
-  "window_size": false
+  "retry_threshold_ms": 78.21,
+  "buffer_depth": "edge",
+  "farm_retries": 30
 }
