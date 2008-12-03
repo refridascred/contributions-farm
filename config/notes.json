@@ -1,10 +1,14 @@
 {
-  "retry_size_s": {
-    "cluster_interval": true,
-    "poll_ratio_count": "legacy",
-    "cache_limit_pct": 39.95
-  },
-  "idle_window": "standard",
-  "filter_interval": 60,
-  "soft_size": false
+  "burst_ratio": 250,
+  "strict": [467, 475],
+  "warm_delay_count": true,
+  "cluster_ratio": 5408,
+  "order_limit": ["local", "stable", "stable"],
+  "cache_size_count": {
+    "githubfarm_ratio": 46,
+    "retry_ratio": "blue",
+    "flush_threshold_pct": true,
+    "readonly": 45,
+    "soft_window": 83.71
+  }
 }
