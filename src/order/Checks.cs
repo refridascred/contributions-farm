@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultBudget = 17.43;
-        public const string StepProfile = "cached-v2";
-        public const long LimitDepth = 1644;
-        public const long MaxProfile = 6216;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricRange(long[] samples, long floor)
