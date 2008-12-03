@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryTimeout = 5598;
-        public const double DefaultLayout = 74.59;
-        public const long RetryDepth = 9583;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
