@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 6669;
-        public const long SoftSession = 843;
-        public const long DefaultInterval = 5111;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double ratio, double offset)
+        {
+            double load = (ratio * 4.2) / 4.0;
+            if (load <= offset)
+            {
+                load = load - (load + offset);
+            }
+            else
+            {
+                load = load - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 4.78) + (double)(long)i;
+            }
+            return load + (ratio / 8.0);
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] samples, long limit)
