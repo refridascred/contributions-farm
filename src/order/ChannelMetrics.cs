@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit cache graph readings against a rule.</summary>
-        public static long CountCacheGraphGaps(long[] samples)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample & 7) >= (267 >> 5))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
