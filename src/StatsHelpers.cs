@@ -39,20 +39,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] series, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)bound <= (9.53 * 14.0))
+                if ((series[i] >= floor) && ((series[i] % 5) != 0))
                 {
-                    state = state ^ (bound >> 1);
+                    return (long)i;
                 }
-                state = ((state << 2) ^ state) % 255;
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
