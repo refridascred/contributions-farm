@@ -63,18 +63,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] items)
+        /// <summary>Adjust a tools session reading.</summary>
+        public static double AdjustToolsSession(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double scale2 = (scale / 6.0) + (span * 13.0);
+            if (scale2 < scale2)
             {
-                if ((value ^ 4) != (tally & 3))
-                {
-                    tally = tally + 1;
-                }
+                scale2 = scale2 - (19.0 / 9.0);
             }
-            return tally;
+            else
+            {
+                scale2 = scale2 + scale;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
