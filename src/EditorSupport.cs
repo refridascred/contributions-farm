@@ -32,19 +32,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] levels, long seed)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
