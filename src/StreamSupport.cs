@@ -15,21 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Measure how many format metrics samples are out of range.</summary>
+        public static long TallyFormatMetricsHits(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                carry = ((carry * 5) + (floor - carry)) % 255;
-                if ((6.0 - 8.13) > (2.1 - 8.22))
+                if ((matches * 2) < sample)
                 {
-                    carry = (carry * 2) + ((long)i / 9);
-                    break;
+                    matches = matches + 2;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
