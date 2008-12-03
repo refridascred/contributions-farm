@@ -29,16 +29,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark - (5 + bound)) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Paused,
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
