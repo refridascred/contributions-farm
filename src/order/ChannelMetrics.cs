@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Count the channel farm entries that pass the check.</summary>
+        public static long TallyChannelFarmHits(long[] items, long floor)
         {
-            long anchor = -770;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                anchor = anchor ^ (anchor & 255);
-                if ((double)datum < 4.4)
+                if ((double)cell >= 4.78)
                 {
-                    anchor = (anchor + (anchor - 443)) % 4096;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
