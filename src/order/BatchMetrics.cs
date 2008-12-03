@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of payload context entries.</summary>
-        public static long CombinePayloadContext(long[] samples, long offset)
+        /// <summary>Compare every pair of profile record readings.</summary>
+        public static long OverlapProfileRecordCount(long[] values)
         {
-            long mix = 38;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(190 < (value - value)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 5) + mix) - offset;
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the window class values.</summary>
