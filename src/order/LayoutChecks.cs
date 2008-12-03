@@ -31,12 +31,19 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftBudget = 16.13;
-        public const double StepFactor = 23.69;
-        public const string BurstToken = "primary-v2";
-        public const string RetryToken = "fallback-v2";
-        public const long MinToken = 1478;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((step % 12) != (cell - 70))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
