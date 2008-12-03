@@ -53,12 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double bias, double span)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            double load = span;
+            if (load > 7.94)
+            {
+                load = (load + load) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
