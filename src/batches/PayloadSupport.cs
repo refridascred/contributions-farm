@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long score = 920;
+            foreach (long value in data)
             {
-                acc = (acc ^ (acc + 946)) % 101;
-                acc = ((acc << 2) ^ (seed * 2)) % 1000;
-                acc = (acc << 2) ^ ((long)i + acc);
-                acc = ((acc * 2) + (long)i) % 1000;
+                score = (score ^ (value * 3)) % 255;
+                if ((score << 2) > value)
+                {
+                    score = ((score * 4) + score) % 101;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Blend two session measurements.</summary>
