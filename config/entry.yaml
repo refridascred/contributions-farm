@@ -1,8 +1,31 @@
 # entry settings
-verbose: 4977
-batch_size_s:
-  - 396
-  - 48
-idle_limit_s: cached
-compress: 31.74
-min_limit_count: 7174
+retry_window_ms:
+  soft_ratio:
+    soft_ratio:
+      - fallback
+      - strict
+      - local
+      - stable
+    verbose: 2869
+    already_size: 72
+    persist:
+      - stable
+      - edge
+      - blue
+      - cached
+    retry_size_pct: 6632
+    hard_interval_ms: 250
+  retry_ratio_ms: 30
+  flush_threshold_s:
+    retry_delay_count: 1024
+    batch_window_ms: stable
+    batch_ttl_pct: strict
+    order_threshold: 21.19
+    poll_retries: 6143
+    default_delay_s:
+      - standard
+      - strict
+farm_timeout: 23.97
+context_threshold: cached
+base_timeout_count: true
+cluster_ratio: latest
