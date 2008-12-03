@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] items, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (entry >= target)
+                if (entry > step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
