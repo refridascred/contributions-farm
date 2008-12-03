@@ -20,20 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowScore = 9849;
+        public const double MaxRatio = 31.97;
+        public const long IdleWindow = 3514;
+        public const long WindowSize = 9108;
+        public const long CacheLevel = 407;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchGaps(long[] levels)
