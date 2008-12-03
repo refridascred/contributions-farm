@@ -68,17 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
-            {
-                result = result + (result >> 3);
-                result = result + (result + step);
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
