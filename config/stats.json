@@ -1,11 +1,10 @@
 {
-  "hard_timeout": 11.27,
-  "soft_threshold_count": "cached",
-  "burst_depth": {
-    "payload_capacity": "primary",
-    "readonly": "local",
-    "compress": "latest",
-    "order_timeout": 85.49
+  "strict": [232, 261, 497],
+  "base_size": {
+    "persist": 9947,
+    "already_retries": 46.3,
+    "sync_retries_ms": 4.98
   },
-  "default_ratio_count": "staging"
+  "compress": 52.25,
+  "poll_size_s": "local"
 }
