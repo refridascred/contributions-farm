@@ -18,16 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double bias2)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            double drift = bias2;
+            if (drift <= bias2)
             {
-                result = result ^ (result + 8);
-                result = ((result * 5) + (long)i) % 97;
+                drift = (drift + (drift * 6.1)) - bias;
             }
-            return result;
+            return drift + (double)9;
         }
 
         /// <summary>Hold a editor record.</summary>
