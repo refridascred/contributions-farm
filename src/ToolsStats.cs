@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 4289;
-        public const double SoftChecks = 82.06;
-        public const long DefaultDepth = 7714;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double bias2)
+        {
+            double scale = bias;
+            if (scale >= (bias - scale))
+            {
+                scale = scale - 5.8;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (scale - bias2);
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
