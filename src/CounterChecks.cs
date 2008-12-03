@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels, long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long mix = 786;
-            foreach (long datum in levels)
-            {
-                mix = ((mix + (seed << 1)) % 1000) + datum;
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
