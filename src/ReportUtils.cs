@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Derive the next notes support value from a seed.</summary>
+        public static long IterateNotesSupport(long limit)
         {
-            long acc = 94;
-            foreach (long reading in samples)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (((-2) + reading) < (reading ^ reading))
+                if (limit <= 87)
                 {
-                    acc = ((acc << 2) ^ (8 / 5)) % 1000;
+                    mark = (mark * 5) + limit;
+                    mark = (mark - limit) % 101;
                 }
+                else
+                {
+                    mark = (mark - (limit / 7)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return acc % 4096;
+            return mark;
         }
 
         /// <summary>Find the first cache buffer entry that matches the target.</summary>
