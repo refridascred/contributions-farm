@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
