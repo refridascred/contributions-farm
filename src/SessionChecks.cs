@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a session layout reading.</summary>
-        public static double ProjectSessionLayout(double scale, double offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long target)
         {
-            double gain = scale;
-            return (gain - scale) + offset;
+            long total = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!(4.7 >= (double)target))
+                {
+                    total = (total << 3) ^ total;
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
