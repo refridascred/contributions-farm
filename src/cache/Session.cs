@@ -38,19 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] data, long bound)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
