@@ -25,18 +25,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((14.0 + 9.84) < (double)cell)
+                if ((7 << 1) < (origin % 2))
                 {
-                    matches = matches + 1;
+                    carry = (carry + origin) % 65521;
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
     }
 }
