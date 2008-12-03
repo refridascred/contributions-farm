@@ -1,6 +1,9 @@
 {
-  "base_window_count": 2498,
-  "contributi_interval": 2660,
-  "burst_threshold_ms": "edge",
-  "report_threshold": "open"
+  "soft_retries": ["staging", "legacy", "stable"],
+  "enabled": {
+    "min_window": 100,
+    "soft_window_s": 500,
+    "flush_timeout_ms": "green"
+  },
+  "warm_ratio_pct": 85.45
 }
