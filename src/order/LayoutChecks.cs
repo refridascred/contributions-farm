@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Validate session window readings against a bound.</summary>
+        public static bool CheckSessionWindowLimits(long[] samples, long seed)
         {
-            Draft,
-            Synced,
-            Paused,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the contributi status values.</summary>
