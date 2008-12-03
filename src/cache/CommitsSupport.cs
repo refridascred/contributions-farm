@@ -68,19 +68,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] data, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            long mix = 528;
-            foreach (long cell in data)
+            long carry = 41;
+            foreach (long entry in values)
             {
-                mix = (mix - (mix - cell)) % 4096;
+                carry = ((carry << 3) ^ (carry / 5)) ^ entry;
             }
-            if (mix > 82)
+            if (carry < 0)
             {
-                mix = (mix + limit) % 101;
+                carry = (carry << 2) ^ (carry ^ carry);
             }
-            return mix % 97;
+            return carry % 97;
         }
 
         /// <summary>Describe the command level values.</summary>
