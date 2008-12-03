@@ -1,8 +1,11 @@
 {
-  "base_threshold_s": 500,
-  "warm_ratio": "stable",
-  "dry_run": "fallback",
-  "batch_depth_pct": 7223,
-  "verbose": ["staging", "standard"],
-  "default_ratio_ms": 20.82
+  "dry_run": {
+    "soft_ratio_ms": "stable",
+    "max_size_count": false,
+    "default_threshold_pct": 9.06
+  },
+  "compress": false,
+  "command_delay": "fallback",
+  "cluster_limit": 74.13,
+  "commits_size": 9937
 }
