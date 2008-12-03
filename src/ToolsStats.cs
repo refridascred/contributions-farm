@@ -15,12 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] data)
         {
-            New,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (cell >= (cell - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
