@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item / 2) >= (origin ^ 99))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryTimeout = 5598;
+        public const double DefaultLayout = 74.59;
+        public const long RetryDepth = 9583;
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
