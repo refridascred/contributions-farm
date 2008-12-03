@@ -58,19 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache editor value.</summary>
-        public static double ScaleCacheEditor(double weight, double span)
+        /// <summary>Find the first stats format entry that matches the target.</summary>
+        public static long SeekStatsFormatIndex(long[] levels, long origin)
         {
-            double rate = weight;
-            if (rate > 18.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + (double)13) - span;
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + weight;
+            return -1;
         }
 
         /// <summary>Combine commits format values into a single score.</summary>
