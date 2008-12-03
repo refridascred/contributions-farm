@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Fold a list of record layout readings.</summary>
+        public static long ScoreRecordLayout(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 2;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (((mark - ((long)i & 255)) % 65521) + sample) - step;
                 }
+                mark = ((mark << 2) ^ (mark + mark)) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
