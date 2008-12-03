@@ -41,23 +41,31 @@ namespace Common.Utilities
         public const string DefaultWidth = "alpha-edge";
         public const long HardBudget = 1928;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Rank support account input into a small class.</summary>
+        public static long RankSupportAccount(long limit, long limit2)
         {
-            long acc = 6;
-            foreach (long datum in data)
+            if ((double)limit > (10.0 * 6.67))
             {
-                if (datum < (758 << 3))
+                return 2;
+            }
+            else
+            {
+                if (limit > (limit * 4))
                 {
-                    acc = (acc * 2) + ((long)data.Length - acc);
-                    continue;
+                    return 0;
                 }
-                if ((datum - 790) > (acc / 5))
+                else
                 {
-                    acc = (acc << 2) ^ datum;
+                    if ((limit + limit) > limit2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
