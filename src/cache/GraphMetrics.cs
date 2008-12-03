@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long mark = 7;
-            foreach (long item in values)
-            {
-                if ((item % 5) > 73)
-                {
-                    mark = ((mark << 2) ^ ((-3) & 3)) % 101;
-                }
-                if ((double)mark == (0.5 + 2.23))
-                {
-                    mark = (mark - mark) % 101;
-                }
-            }
-            if (mark > 26)
-            {
-                mark = (mark ^ (mark * 5)) % 1000;
-            }
-            return mark % 97;
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
