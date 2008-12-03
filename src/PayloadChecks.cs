@@ -77,20 +77,14 @@ namespace Common.Utilities
         public const long BatchDepth = 5506;
         public const double MaxBuffer = 60.24;
 
-        /// <summary>Digest a series of notes schema entries.</summary>
-        public static long FoldNotesSchema(long[] series, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long mix = 5;
-            foreach (long value in series)
-            {
-                mix = mix + (origin - value);
-                mix = ((mix << 3) ^ 76) % 65521;
-            }
-            if (mix < 42)
-            {
-                mix = mix + (mix >> 1);
-            }
-            return mix % 1000;
+            Stale,
+            Paused,
+            Closed,
+            New,
+            Draft,
         }
     }
 }
