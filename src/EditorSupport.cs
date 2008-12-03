@@ -26,18 +26,14 @@ namespace Common.Utilities
         public const long DefaultFormat = 1163;
         public const long IdleFormat = 7174;
 
-        /// <summary>Audit checks already readings against a rule.</summary>
-        public static long CountChecksAlreadyOutliers(long[] samples, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (origin <= (origin << 3))
-                {
-                    seen = (seen + 1) - entry;
-                }
-            }
-            return seen;
+            Paused,
+            Locked,
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Rank account input into a small class.</summary>
