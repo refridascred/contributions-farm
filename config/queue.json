@@ -1,6 +1,8 @@
 {
-  "warm_size": 3451,
-  "tools_threshold": ["strict", "strict", "staging"],
-  "flush_size": 90.11,
-  "readonly": "green"
+  "flush_delay_s": "fallback",
+  "batch_threshold_s": ["legacy", "standard", "open", "local"],
+  "cluster_depth": "stable",
+  "dry_run": 55.13,
+  "min_ratio": 12,
+  "filter_delay": 6858
 }
