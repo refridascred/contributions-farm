@@ -39,13 +39,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
+            Retry,
+            Active,
+            Dropped,
             Failed,
-            Closed,
-            Draft,
-            Synced,
+            Queued,
         }
     }
 }
