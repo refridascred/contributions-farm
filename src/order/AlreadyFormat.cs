@@ -14,18 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] samples, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] data, long step)
         {
-            long acc = 15;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((acc / 2) >= (target * 5))
+                if (seen < (6 - 533))
                 {
-                    acc = (((acc * 5) + (acc << 1)) % 65521) + sample;
+                    seen = ((seen + 2) + item) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
