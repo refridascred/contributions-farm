@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const long HardEditor = 141;
         public const double WindowTimeout = 8.09;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] items, long seed)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
