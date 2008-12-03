@@ -20,21 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] levels)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next channel value.</summary>
