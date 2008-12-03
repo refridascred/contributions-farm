@@ -29,18 +29,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metric contributi samples are out of range.</summary>
-        public static long AuditMetricContributiOutliers(long[] readings)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((892 + 7) > (seen >> 3)) || (((reading >> 4) > seen) || (((-2) + 553) > ((long)readings.Length ^ seen))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
