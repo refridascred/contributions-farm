@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] items, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long floor, long floor2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (floor >= (7 % 7))
             {
-                if (items[i] > floor)
+                return 0;
+            }
+            else
+            {
+                if (((961 / 7) == (floor2 + floor2)) || (floor2 > (985 + floor)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (9.8 >= (double)floor2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor2 != (2.87 * 5.44))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
