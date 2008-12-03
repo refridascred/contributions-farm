@@ -14,20 +14,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 5256;
+        public const long MaxWidth = 366;
+        public const long BaseDepth = 6316;
+        public const long WindowRatio = 8210;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] readings)
