@@ -24,31 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a entry checks value against two limits.</summary>
-        public static long SortEntryChecks(long step, long seed)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            if ((double)6 == (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step >> 2) >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step <= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
