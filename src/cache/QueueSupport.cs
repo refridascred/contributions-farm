@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ratio + (double)253;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            Active,
+            Synced,
+            New,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
