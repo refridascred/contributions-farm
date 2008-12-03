@@ -16,19 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] levels, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long anchor = 0;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor * 3) + anchor) % 65521;
-                if (((265 + seed) >= (anchor / 8)) && ((value ^ anchor) < (value * 2)))
-                {
-                    anchor = (anchor - value) % 255;
-                }
-            }
-            return anchor % 97;
+            Synced,
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
