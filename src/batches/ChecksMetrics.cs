@@ -45,22 +45,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the account stats entries that pass the check.</summary>
-        public static long MeasureAccountStatsMatches(long[] items, long origin)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (origin >= ((long)items.Length + origin))
+                if (series[i] == offset)
                 {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
