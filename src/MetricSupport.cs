@@ -18,21 +18,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count graph order pairs that satisfy a relation.</summary>
-        public static long MatchGraphOrderCount(long[] values)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
