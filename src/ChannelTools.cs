@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account payload figure with a bias.</summary>
-        public static double AdjustAccountPayload(double bias, double span)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
         {
-            double bias2 = (double)(7 - 98);
-            if (bias2 <= (bias2 + bias))
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                bias2 = bias2 + (bias - span);
+                result = result ^ (result + 8);
+                result = ((result * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + bias) - (double)(long)i;
-            }
-            return bias2 + bias;
+            return result;
         }
 
         /// <summary>Hold a editor record.</summary>
