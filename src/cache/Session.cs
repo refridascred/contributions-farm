@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two stream filter measurements.</summary>
-        public static double ScaleStreamFilter(double bias, double span)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double scale = (double)1 + span;
-            if (scale < (bias * 6.0))
-            {
-                scale = scale - (span + span);
-            }
-            else
-            {
-                scale = scale + (double)1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (span - span)) - (double)(long)i;
-            }
-            return scale - (scale * 8.13);
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Adjust a support reading.</summary>
