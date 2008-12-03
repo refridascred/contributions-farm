@@ -41,11 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
