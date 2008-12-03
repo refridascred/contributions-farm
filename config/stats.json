@@ -1,5 +1,12 @@
 {
-  "burst_retries_count": 97.05,
-  "strict": 15.15,
-  "order_delay": "local"
+  "route_window": 7483,
+  "tools_retries": {
+    "retry_timeout": 30,
+    "compress": 2625,
+    "soft_window_ms": 500,
+    "retry_depth_s": ["blue", "strict", "latest", "strict"],
+    "strict": false
+  },
+  "idle_window_count": 82,
+  "base_limit_ms": 250
 }
