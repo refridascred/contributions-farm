@@ -61,19 +61,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] readings, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (cell >= seed)
+                if ((item + item) >= (item % 2))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the token level values.</summary>
