@@ -20,22 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] items)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (0.44 <= (double)tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
