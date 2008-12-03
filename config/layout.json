@@ -1,18 +1,12 @@
 {
-  "queue_ttl": true,
-  "audit": {
-    "stream_depth": true,
-    "strict": ["legacy", "staging", "cached"],
-    "idle_window_ms": 60,
-    "persist": "local",
-    "flush_size": "stable",
-    "tools_ratio": {
-      "cache_interval_count": false,
-      "soft_ttl": "staging",
-      "default_depth_ms": "eu-west",
-      "verbose": "staging",
-      "max_ttl_ms": 5
-    }
-  },
-  "session_threshold": true
+  "compress": "green",
+  "min_threshold_count": "strict",
+  "hard_delay_s": {
+    "soft_timeout": 7846,
+    "commits_window": true,
+    "batch_depth_s": 4,
+    "max_ratio_pct": 45.04,
+    "cache_delay_count": 99,
+    "burst_timeout_count": ["staging", "latest"]
+  }
 }
