@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many report support samples are out of range.</summary>
-        public static long TallyReportSupportHits(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if (((4 - offset) >= (offset & 15)) || ((offset / 5) < ((-218) ^ floor)))
             {
-                if (!!(matches >= reading))
+                return 4;
+            }
+            else
+            {
+                if ((double)137 > (double)floor)
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor % 12) > 2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two queue counter measurements.</summary>
