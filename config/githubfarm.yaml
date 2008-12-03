@@ -1,4 +1,7 @@
 # githubfarm settings
-strict: 16.57
-audit: false
-entry_interval: true
+readonly: blue
+warm_window: true
+min_depth_pct: 7.77
+audit:
+  - 363
+  - 216
