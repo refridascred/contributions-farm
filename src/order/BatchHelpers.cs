@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 8995;
-        public const string CacheMetric = "stable-v2";
-        public const long RetryMetric = 8768;
-        public const long HardFactor = 9063;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] data, long floor)
+        {
+            long anchor = 27;
+            foreach (long datum in data)
+            {
+                if ((anchor - datum) < anchor)
+                {
+                    anchor = anchor + floor;
+                }
+            }
+            if (anchor < 7)
+            {
+                anchor = (anchor + floor) % 97;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double scale, double floor)
