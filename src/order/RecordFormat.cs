@@ -53,19 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph batch samples are out of range.</summary>
-        public static long AuditGraphBatchMatches(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((step / 2) >= (matches ^ 9))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBudget = 5623;
+        public const long BurstFactor = 3690;
+        public const long BurstBatches = 5725;
+        public const long DefaultBatches = 5996;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
