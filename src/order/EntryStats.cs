@@ -87,12 +87,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long seed)
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = (sum - ((long)i << 1)) % 97;
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
