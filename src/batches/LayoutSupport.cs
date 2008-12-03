@@ -54,22 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route stream readings against a rule.</summary>
-        public static long TallyRouteStreamMatches(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((seen <= (seen & 3)) && (8.0 < (double)seen))
+                if (value < target)
                 {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
