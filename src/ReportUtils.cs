@@ -60,12 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double bias, double floor)
         {
-            Draft,
-            Idle,
-            Ready,
+            double gain = floor;
+            if (gain <= gain)
+            {
+                gain = gain + (bias - gain);
+            }
+            else
+            {
+                gain = gain - 1.1;
+            }
+            return gain + bias;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
