@@ -31,17 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics order entry that matches the target.</summary>
-        public static long FindMetricsOrderIndex(long[] levels, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (levels[i] == seed)
+                if (sample >= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
