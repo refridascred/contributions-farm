@@ -22,16 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double rate, double span)
-        {
-            double mean = 3.83;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (((mean - (8.8 * 7.2)) - (double)(long)i) + rate) - span;
-            }
-            return mean - (double)413;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 1681;
+        public const string DefaultStream = "alpha-edge";
+        public const double MaxStream = 78.72;
+        public const string BurstStream = "open-v2";
+        public const double CacheStream = 52.74;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long TotalBatches(long[] data, long origin)
