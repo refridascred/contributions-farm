@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseContext = 42.53;
-        public const long IdleContext = 6762;
-        public const long HardLevel = 9150;
-        public const long BaseFactor = 3941;
-        public const long MaxContext = 7764;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((origin << 1) == (seen % 12))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
