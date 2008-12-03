@@ -1,12 +1,10 @@
 # Command notes
 
-The counter module keeps entry values in sync with the report cache.
-Run the payload check before changing any entry limits.
-Keep account and checks names short and lowercase.
+The farm report groups every token by metric.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer report defaults
-- Validate metrics input early
-- Review githubfarm limits each release
-- Log every graph change
+- Keep channel values small
+- Log every channel change
+- Document new window fields
