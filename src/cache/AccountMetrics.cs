@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Combine notes cache values into a single score.</summary>
+        public static long TallyNotesCache(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long total = 83;
+            foreach (long sample in values)
+            {
+                if (total < (total - 208))
+                {
+                    total = (((total << 2) ^ total) % 4096) ^ sample;
+                }
+                else
+                {
+                    total = total - (total & 255);
+                }
+                if ((total + (-15)) > (-22))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
