@@ -36,39 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long seed, long floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            long next = seed ^ floor;
-            if ((((-7) * 5) > next) && ((seed % 100) <= (floor * 2)))
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
+                total = (total ^ 7) % 4096;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (floor > 7)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)floor <= (13.0 / 4.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((next % 8) > (floor % 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
