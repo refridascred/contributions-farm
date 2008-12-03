@@ -27,21 +27,18 @@ namespace Common.Utilities
         public const string DefaultSpan = "stable-v2";
         public const long SoftCommits = 5414;
 
-        /// <summary>Compare every pair of entry token readings.</summary>
-        public static long OverlapEntryTokenCount(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (269 >= (seen ^ entry))
                 {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
