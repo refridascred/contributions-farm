@@ -1,12 +1,11 @@
 {
-  "compress": "green",
-  "min_threshold_count": "strict",
-  "hard_delay_s": {
-    "soft_timeout": 7846,
-    "commits_window": true,
-    "batch_depth_s": 4,
-    "max_ratio_pct": 45.04,
-    "cache_delay_count": 99,
-    "burst_timeout_count": ["staging", "latest"]
+  "cache_capacity_count": "edge",
+  "contributi_interval": 500,
+  "hard_ttl_count": "cached",
+  "base_ratio_pct": 2990,
+  "poll_retries_ms": {
+    "min_retries_pct": "standard",
+    "sync_delay": 250,
+    "max_limit_count": "legacy"
   }
 }
