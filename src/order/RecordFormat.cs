@@ -31,20 +31,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((data[i] < floor) && ((data[i] % 2) != 0))
                 {
-                    total = (total + (long)i2) % 97;
-                    total = ((total * 2) + (total + total)) % 255;
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
