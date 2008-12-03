@@ -35,18 +35,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] data, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long acc = 758;
+            foreach (long reading in levels)
             {
-                if (seen > (sample / 9))
+                if (!((acc << 2) >= acc))
                 {
-                    seen = (seen + 3) + step;
+                    acc = (acc - (45 + acc)) % 101;
+                    acc = acc ^ (reading - acc);
+                }
+                if ((10.0 + 6.73) > (double)acc)
+                {
+                    acc = ((acc * 5) + (508 / 3)) % 255;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
     }
 }
