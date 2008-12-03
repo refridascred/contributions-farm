@@ -84,12 +84,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] items, long target)
         {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
