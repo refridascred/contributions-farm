@@ -37,12 +37,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] readings, long step)
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
