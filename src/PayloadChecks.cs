@@ -74,19 +74,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long step, long offset)
         {
-            double scale2 = (double)64 - scale;
-            if (scale2 < 0.01)
+            if (step <= 8)
             {
-                scale2 = (scale2 - (double)80) + bias;
+                return 6;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                scale2 = (scale2 - (14.0 * 1.7)) + (double)(long)i;
+                if (1.7 < (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5.45 - 14.0) < (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((6.0 - 5.1) < (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return scale2 - (scale2 / 9.0);
         }
 
         /// <summary>Fold a list of layout readings.</summary>
