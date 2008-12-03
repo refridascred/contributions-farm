@@ -18,11 +18,21 @@ namespace Common.Utilities
         public const double CacheCount = 13.29;
         public const long DefaultRatio = 1313;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "open-v2";
-        public const string MaxRecord = "fallback-edge";
-        public const double DefaultScore = 35.96;
-        public const string BurstRecord = "latest-1";
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)6 == (double)offset)
+                {
+                    carry = (carry + offset) % 97;
+                }
+                carry = (carry - (carry + (long)i)) % 255;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
