@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] samples, long bound)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)hits >= (8.9 / 5.0))
+                {
+                    hits = ((hits + 1) + datum) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats kind values.</summary>
