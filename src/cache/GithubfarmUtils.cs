@@ -59,11 +59,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            Paused,
+            Synced,
+            Stale,
+            Ready,
+            Done,
         }
     }
 }
