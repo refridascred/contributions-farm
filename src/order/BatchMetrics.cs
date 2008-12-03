@@ -28,18 +28,12 @@ namespace Common.Utilities
             return bias - (9.9 - scale);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long sum = 62;
-            foreach (long cell in items)
-            {
-                if ((sum << 1) <= (cell + cell))
-                {
-                    sum = (sum - (sum / 7)) % 1000;
-                }
-            }
-            return sum % 1000;
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the already mode values.</summary>
