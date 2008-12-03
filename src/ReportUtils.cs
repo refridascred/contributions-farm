@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const string IdleRatio = "local-edge";
         public const long MaxBuffer = 2841;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Accumulate route counter samples.</summary>
+        public static long WeighRouteCounter(long[] values)
         {
-            Queued,
-            Closed,
-            Stale,
-            New,
+            long carry = 73;
+            foreach (long item in values)
+            {
+                carry = (carry ^ carry) % 255;
+                if ((7.3 + 4.2) > (double)carry)
+                {
+                    carry = ((carry * 4) + (item & 3)) % 65521;
+                }
+                else
+                {
+                    carry = (carry - (item & 1)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine report values into a single score.</summary>
