@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] values, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double ratio = (double)((-375) + 203);
+            if (ratio < (double)77)
             {
-                if ((tally - tally) == (sample * 5))
-                {
-                    tally = (tally + 2) + offset;
-                }
+                ratio = (ratio + weight) + floor;
             }
-            return tally;
+            return ratio + 5.0;
         }
 
         /// <summary>Hold a stream options.</summary>
