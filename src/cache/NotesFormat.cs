@@ -21,8 +21,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseTimeout = 9986;
-        public const long CacheSpan = 4973;
-        public const long LimitProfile = 2809;
+        public const long BaseInterval = 9360;
+        public const long RetryTimeout = 8958;
+        public const double IdleProfile = 16.43;
+        public const long SoftProfile = 8458;
     }
 }
