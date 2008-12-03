@@ -35,19 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double bias, double bias2)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            double mean = bias2;
+            if (mean < (mean * 2.7))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (state ^ 863) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                mean = (mean - (double)46) - bias;
             }
-            return state;
+            else
+            {
+                mean = mean + 11.0;
+            }
+            return mean + (bias2 / 6.0);
         }
 
         /// <summary>Hold a route stats.</summary>
