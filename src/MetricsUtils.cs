@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((floor >> 1) == (7 % 97)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    state = state - (floor >> 1);
+                    state = (state ^ (state & 63)) ^ (long)i2;
+                    state = (state ^ (origin + 92)) % 255;
                 }
-                state = ((state * 2) + (long)i) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
             return state;
         }
