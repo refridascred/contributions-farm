@@ -23,22 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many format metrics samples are out of range.</summary>
-        public static long TallyFormatMetricsHits(long[] values)
+        /// <summary>Count the route entry entries that pass the check.</summary>
+        public static long MeasureRouteEntryMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((matches * 2) < sample)
+                if ((tally & 3) >= sample)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
