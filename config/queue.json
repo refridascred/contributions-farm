@@ -1,11 +1,20 @@
 {
-  "window_window": true,
-  "cache_window_ms": "cached",
-  "payload_ttl": {
-    "githubfarm_threshold": true,
-    "verbose": 44,
-    "strict": false
-  },
   "persist": true,
-  "max_ttl": "edge"
+  "already_ttl": 83.74,
+  "sync_timeout_count": "open",
+  "audit": ["edge", "eu-west", "fallback", "blue"],
+  "idle_interval_pct": {
+    "soft_retries_count": {
+      "readonly": ["edge", "blue"],
+      "hard_retries_count": "strict",
+      "flush_threshold_ms": "eu-west"
+    },
+    "channel_ttl": 3196,
+    "command_delay": {
+      "metrics_delay": true,
+      "record_size": ["standard", "fallback", "cached", "cached"],
+      "strict": "fallback",
+      "format_interval": 41
+    }
+  }
 }
