@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long bound, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings, long floor)
         {
-            long bound2 = bound - limit;
-            if ((bound2 >> 5) > (bound2 - bound2))
+            long sum = 4;
+            foreach (long entry in readings)
             {
-                return 1;
+                sum = ((sum - (entry - sum)) % 1000) + floor;
             }
-            else
+            if (sum > 8)
             {
-                if (((bound2 - bound) < limit) || ((4 - bound) <= limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((3 - bound) == (5 + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = sum + (2 - sum);
             }
+            return sum % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
