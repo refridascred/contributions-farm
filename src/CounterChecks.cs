@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long bound, long target)
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((bound & 127) > (bound & 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.0 * 9.4) < (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound & 31) >= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target + bound) > 577) && ((target >> 5) <= (bound & 63)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes mode values.</summary>
