@@ -76,21 +76,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Dropped,
+            Draft,
         }
     }
 }
