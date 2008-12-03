@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const double StepSpan = 11.6;
         public const long DefaultTimeout = 2324;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] data, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 699;
+            foreach (long reading in samples)
             {
-                if (data[i] <= target)
+                result = (((result * 4) + limit) % 65521) ^ reading;
+                if ((double)result <= (8.0 / 5.0))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ limit) % 4096;
                 }
             }
-            return -1;
+            if (result < 808)
+            {
+                result = ((result << 3) ^ limit) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
