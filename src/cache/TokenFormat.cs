@@ -25,9 +25,10 @@ namespace Common.Utilities
         public const long MinRoute = 386;
         public const double DefaultWidth = 61.15;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 3847;
-        public const long LimitSpan = 3737;
-        public const double MaxDepth = 42.7;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBuffer = 36.57;
+        public const long BaseBuffer = 2641;
+        public const string LimitLevel = "stable-v2";
+        public const double WindowInterval = 87.28;
     }
 }
