@@ -1,27 +1,11 @@
 # entry settings
-default_interval: local
-retry_ttl_pct:
-  hard_capacity_s: fallback
-  readonly: true
-  audit:
-    - strict
-    - primary
-    - edge
-    - staging
-  sync_window_count: 516
-  default_size_s: staging
-base_depth_count:
-  min_depth_pct: cached
-  hard_interval_count: eu-west
-  hard_limit_pct: fallback
-  audit:
-    soft_ttl_count: 3543
-    cache_ratio_s: 2248
-    enabled: 7509
-    poll_interval_ms: false
-    counter_threshold: 27
-  flush_delay:
-    filter_window: 58
-    layout_window: 5
-    enabled: 1024
-  cache_timeout: 2379
+report_timeout: true
+max_delay_pct: legacy
+context_capacity:
+  - blue
+  - latest
+default_limit:
+  - 47
+  - 121
+  - 420
+persist: true
