@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Done,
-            Ready,
-            Queued,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 4289;
+        public const double SoftChecks = 82.06;
+        public const long DefaultDepth = 7714;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
