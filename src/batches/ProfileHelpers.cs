@@ -74,13 +74,20 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Derive the next commits stream value from a seed.</summary>
+        public static long DeriveCommitsStream(long step)
         {
-            Idle,
-            Failed,
-            Locked,
-            Pending,
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state ^ (state & 15)) % 4096;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = ((state ^ state) % 101) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
