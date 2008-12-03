@@ -23,19 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Validate notes buffer readings against a bound.</summary>
+        public static bool VerifyNotesBufferLimits(long[] data, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((long)i != (seed & 31))
+                if (entry > step)
                 {
-                    mix = mix - (mix & 7);
+                    valid = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
