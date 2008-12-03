@@ -64,19 +64,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] items, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
