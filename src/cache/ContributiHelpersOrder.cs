@@ -22,18 +22,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] items, long origin)
+        /// <summary>Count route stats pairs that satisfy a relation.</summary>
+        public static long MatchRouteStatsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(count <= value) && (((value * 4) >= (origin * 5)) && ((5.1 / 2.0) <= (double)origin)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
