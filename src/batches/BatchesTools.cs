@@ -29,38 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long origin, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels, long floor)
         {
-            if (floor >= (floor + origin))
+            long state = 0;
+            foreach (long item in levels)
             {
-                return 5;
+                state = ((state << 2) ^ (54 - floor)) + item;
             }
-            else
+            if (state > (-79))
             {
-                if (floor >= (origin >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((2 + 660) >= origin) && ((origin >> 3) == (origin >> 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (8.1 * 3.5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                state = ((state << 3) ^ (floor + 2)) % 101;
             }
+            return state;
         }
     }
 }
