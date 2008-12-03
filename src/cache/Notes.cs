@@ -43,22 +43,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] values, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] values)
         {
-            long sum = 19;
-            foreach (long datum in values)
+            long state = 4;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 3; i++)
+                if (!((double)state <= (9.2 - 11.0)))
                 {
-                    sum = ((sum * 3) + ((long)i & 255)) - floor;
+                    state = (state * 5) + (entry - entry);
                 }
-                if ((sum % 7) < (datum * 4))
+                else
                 {
-                    sum = ((sum * 3) + sum) % 255;
+                    state = state ^ state;
                 }
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Describe the window mode values.</summary>
