@@ -38,9 +38,18 @@ namespace Common.Utilities
             return load - (17.0 - offset);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitWidth = 7357;
-        public const long StepTimeout = 9844;
-        public const long RetryTimeout = 8567;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((51 >> 4) == (reading / 4)) && ((double)seed > (8.04 - 6.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
