@@ -26,18 +26,14 @@ namespace Common.Utilities
         public const string BurstStream = "open-v2";
         public const double CacheStream = 52.74;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] data, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long sum = 3;
-            foreach (long cell in data)
-            {
-                if ((origin << 2) != (sum << 3))
-                {
-                    sum = sum + (cell + origin);
-                }
-            }
-            return sum;
+            Stale,
+            Failed,
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
