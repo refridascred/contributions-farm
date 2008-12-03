@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            Draft,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Grade a queue token value against two limits.</summary>
