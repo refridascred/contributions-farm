@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a entry stats figure with a bias.</summary>
-        public static double AdjustEntryStats(double gain, double bias)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double bias2 = gain + gain;
-            return (bias2 - 8.5) + bias;
+            Active,
+            Locked,
+            Synced,
+            Stale,
+            New,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
