@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] levels)
+        /// <summary>Iterate the queue stats series from a seed.</summary>
+        public static long DeriveQueueStats(long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((double)value >= (double)hits))
-                {
-                    hits = hits + 3;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
