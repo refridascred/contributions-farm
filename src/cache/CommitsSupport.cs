@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] items, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long step, long offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long edge = step - offset;
+            if (step <= (offset - edge))
             {
-                if (entry <= origin)
+                return 2;
+            }
+            else
+            {
+                if ((double)edge == (0.5 * 19.0))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((edge ^ step) < (96 + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
