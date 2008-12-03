@@ -52,24 +52,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate commits entry samples.</summary>
-        public static long DigestCommitsEntry(long[] items)
-        {
-            long mark = 66;
-            foreach (long entry in items)
-            {
-                mark = (mark * 3) + (mark - entry);
-                mark = (mark ^ (97 << 3)) % 255;
-                if ((1.8 + 8.72) != (double)mark)
-                {
-                    mark = mark + (mark & 127);
-                }
-                else
-                {
-                    mark = mark - (entry ^ mark);
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 41.14;
+        public const long CacheScore = 8373;
+        public const long HardScore = 7439;
+        public const long DefaultBudget = 4744;
     }
 }
