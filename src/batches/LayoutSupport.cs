@@ -67,31 +67,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank support account input into a small class.</summary>
-        public static long RankSupportAccount(long limit, long limit2)
+        /// <summary>Audit route stream readings against a rule.</summary>
+        public static long TallyRouteStreamMatches(long[] samples)
         {
-            if ((double)limit > (10.0 * 6.67))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit > (limit * 4))
+                if ((seen <= (seen & 3)) && (8.0 < (double)seen))
                 {
-                    return 0;
+                    seen = (seen + 1) + sample;
                 }
                 else
                 {
-                    if ((limit + limit) > limit2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
