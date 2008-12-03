@@ -16,20 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the session metric series from a seed.</summary>
-        public static long StepSessionMetric(long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((anchor + limit) < ((long)i - anchor))
-                {
-                    anchor = (anchor + anchor) % 4096;
-                }
-                anchor = (anchor - (limit + (long)i)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Idle,
+            Pending,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Fold a list of route readings.</summary>
