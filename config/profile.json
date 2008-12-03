@@ -1,7 +1,5 @@
 {
-  "default_size_pct": true,
-  "batch_timeout_ms": 87.71,
-  "filter_interval": "eu-west",
-  "command_ttl": false,
-  "cache_threshold": 70.23
+  "idle_timeout": [220, 10],
+  "readonly": true,
+  "poll_timeout_pct": ["blue", "open"]
 }
