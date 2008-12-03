@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long step, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long bound, long seed)
         {
-            if ((floor * 4) == (step + floor))
+            if (!((bound & 3) < bound))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (((step * 4) <= step) || ((step + step) == (floor - step)))
+                if ((seed < (969 + bound)) || ((seed - seed) <= (7 * 4)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
