@@ -51,10 +51,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultLevel = 4958;
-        public const long RetryWindow = 2817;
-        public const double LimitRatio = 79.59;
-        public const string MaxWindow = "stable-edge";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] series, long seed)
+        {
+            long carry = 72;
+            foreach (long datum in series)
+            {
+                carry = (carry + (seed * 4)) % 65521;
+                if (3.58 <= (double)carry)
+                {
+                    carry = (carry * 5) + (datum - seed);
+                }
+            }
+            if (carry > 504)
+            {
+                carry = (carry + (756 + carry)) % 1000;
+            }
+            return carry;
+        }
     }
 }
