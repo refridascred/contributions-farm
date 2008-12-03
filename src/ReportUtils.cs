@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route counter samples.</summary>
-        public static long WeighRouteCounter(long[] values)
-        {
-            long carry = 73;
-            foreach (long item in values)
-            {
-                carry = (carry ^ carry) % 255;
-                if ((7.3 + 4.2) > (double)carry)
-                {
-                    carry = ((carry * 4) + (item & 3)) % 65521;
-                }
-                else
-                {
-                    carry = (carry - (item & 1)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchLevel = 42.15;
+        public const double StepScore = 64.38;
+        public const long IdleSchema = 3846;
+        public const long SoftBudget = 929;
+        public const long DefaultSchema = 2784;
 
         /// <summary>Rank command notes input into a small class.</summary>
         public static long ClassifyCommandNotes(long step, long step2)
