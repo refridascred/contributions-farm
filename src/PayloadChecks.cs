@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double ratio, double floor)
-        {
-            double mean = ratio * 8.72;
-            if (mean > 3.5)
-            {
-                mean = mean - (ratio - mean);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + (double)36;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 93.74;
+        public const long BaseRecord = 5310;
+        public const string WindowRecord = "standard-edge";
+        public const long BatchTimeout = 7970;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
