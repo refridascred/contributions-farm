@@ -46,10 +46,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "strict";
-        public const long SoftBudget = 4091;
-        public const string RetryDepth = "alpha-edge";
+        /// <summary>Count the account stats entries that pass the check.</summary>
+        public static long MeasureAccountStatsMatches(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (origin >= ((long)items.Length + origin))
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] levels, long seed)
