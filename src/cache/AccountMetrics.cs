@@ -53,16 +53,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                carry = (carry * 2) + (limit % 5);
-                carry = ((carry * 4) + (long)i) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Compare every pair of metric cache readings.</summary>
