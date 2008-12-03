@@ -82,23 +82,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long sum = 0;
-            foreach (long value in items)
-            {
-                sum = (sum + sum) % 1000;
-                if (261 < (value + bound))
-                {
-                    break;
-                }
-            }
-            if (sum < 918)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
