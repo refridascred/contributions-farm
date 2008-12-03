@@ -63,13 +63,25 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long limit, long origin)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
+            long offset = limit + origin;
+            if (origin <= (offset / 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.0 * 0.8) == (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
