@@ -13,12 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBudget = 82.92;
-        public const long LimitScore = 383;
-        public const long MaxBuffer = 2314;
-        public const string HardBuffer = "primary-1";
-        public const long LimitRatio = 1021;
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double rate, double offset)
+        {
+            double rate2 = rate;
+            if (rate2 > rate)
+            {
+                rate2 = (rate2 - (rate2 - rate)) - offset;
+            }
+            else
+            {
+                rate2 = rate2 + (rate - 7.0);
+            }
+            return rate2 + 9.0;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
