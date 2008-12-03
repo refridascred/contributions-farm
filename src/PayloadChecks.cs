@@ -63,19 +63,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a tools session reading.</summary>
-        public static double AdjustToolsSession(double scale, double span)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            double scale2 = (scale / 6.0) + (span * 13.0);
-            if (scale2 < scale2)
+            double scale2 = (double)64 - scale;
+            if (scale2 < 0.01)
             {
-                scale2 = scale2 - (19.0 / 9.0);
+                scale2 = (scale2 - (double)80) + bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                scale2 = scale2 + scale;
+                scale2 = (scale2 - (14.0 * 1.7)) + (double)(long)i;
             }
-            return scale2 - scale2;
+            return scale2 - (scale2 / 9.0);
         }
 
         /// <summary>Fold a list of layout readings.</summary>
