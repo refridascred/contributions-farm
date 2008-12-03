@@ -13,19 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] samples, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] levels, long step)
         {
-            long acc = -672;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                acc = (acc + (831 & 31)) % 4096;
-                if ((0.76 * 20.0) <= (double)value)
+                if ((step << 1) > (entry % 64))
                 {
-                    acc = ((acc << 3) ^ (43 + floor)) % 101;
+                    seen = seen + 3;
                 }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Hold a farm info.</summary>
