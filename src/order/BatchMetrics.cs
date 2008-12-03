@@ -41,21 +41,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up batches layout samples.</summary>
-        public static long PairBatchesLayoutCount(long[] items)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) < 14)
+                    if ((values[i] + values[j]) != 20)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next cache editor value.</summary>
