@@ -23,20 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings, long offset)
-        {
-            long mix = -364;
-            foreach (long sample in readings)
-            {
-                if ((double)sample <= (5.07 - 13.0))
-                {
-                    mix = (mix + (sample >> 2)) % 101;
-                }
-                mix = ((mix * 2) + (offset + offset)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultScore = 4618;
+        public const long MaxFarm = 5189;
+        public const long IdleSize = 6184;
+        public const string LimitFarm = "open-v2";
 
         /// <summary>Blend two commits window measurements.</summary>
         public static double AdjustCommitsWindow(double gain, double floor)
