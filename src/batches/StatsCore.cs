@@ -34,18 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] series, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (entry >= (401 - hits))
+                if ((((4.0 - 9.8) != (double)seen) && ((seen - (-541)) > reading)) && (((reading >> 1) < (seen + reading)) && ((seen << 3) == (reading - seen))))
                 {
-                    hits = (hits + 1) + bound;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
