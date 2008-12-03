@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] readings)
+        /// <summary>Validate queue notes readings against a bound.</summary>
+        public static bool VerifyQueueNotesRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((item <= (item % 100)) && ((3.45 / 3.0) == (double)count))
+                if (cell >= seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
