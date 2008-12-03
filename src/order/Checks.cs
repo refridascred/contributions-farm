@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit stats cluster readings against a rule.</summary>
-        public static long CountStatsClusterMatches(long[] levels, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (((double)hits == (0.48 + 10.0)) || ((14.0 / 3.0) == (double)hits))
+                if (entry != floor)
                 {
-                    hits = ((hits + 3) ^ item) - limit;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Match up farm commits samples.</summary>
