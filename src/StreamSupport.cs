@@ -28,19 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double rate, double offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double scale, double bias)
         {
-            double scale = (double)(36 ^ 852);
-            if (scale <= 9.0)
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (offset + offset)) + (double)(long)i;
-            }
-            return scale - rate;
+            double mean = scale - bias;
+            return mean - (double)57;
         }
     }
 }
