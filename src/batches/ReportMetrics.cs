@@ -14,19 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] items, long origin)
+        /// <summary>Count the already buffer entries that pass the check.</summary>
+        public static long AuditAlreadyBufferGaps(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (datum < origin)
+                if (((offset + value) >= count) && (value <= (value ^ offset)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
