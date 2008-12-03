@@ -34,12 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Audit format schema readings against a rule.</summary>
+        public static long AuditFormatSchemaOutliers(long[] items, long floor)
         {
-            Queued,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((floor + (-24)) == (18 >> 1)) || ((floor << 2) >= tally))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools mode values.</summary>
