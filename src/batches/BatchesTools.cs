@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const double DefaultAccount = 50.86;
         public const double BatchAccount = 70.13;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] samples, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings, long floor)
         {
-            long score = 7;
-            foreach (long entry in samples)
+            long result = 247;
+            foreach (long sample in readings)
             {
-                if (!((entry & 127) <= (step % 24)))
-                {
-                    score = (score + (2 + step)) % 4096;
-                }
+                result = ((((result << 2) ^ result) % 255) ^ sample) + floor;
             }
-            return score % 1000;
+            return result % 4096;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
