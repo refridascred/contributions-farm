@@ -26,31 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long origin, long origin2)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            if (((origin + origin) == (origin2 / 6)) && ((double)origin <= (4.7 + 2.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (9 < (origin >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin2 ^ 691) <= origin2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the batches mode values.</summary>
