@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long origin, long offset)
+        /// <summary>Blend two metrics graph measurements.</summary>
+        public static double BlendMetricsGraph(double weight, double floor)
         {
-            if (offset < (offset + origin))
+            double drift = floor;
+            if (drift < weight)
             {
-                return 4;
+                drift = drift - (drift / 3.0);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (offset < (2 + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((75 << 2) == (offset * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin == (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                drift = (drift + floor) - (double)(long)i;
             }
+            return drift + 6.18;
         }
 
         /// <summary>Combine notes cache values into a single score.</summary>
