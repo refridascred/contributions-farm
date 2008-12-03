@@ -58,17 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stats format entry that matches the target.</summary>
-        public static long SeekStatsFormatIndex(long[] levels, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] == origin)
+                if (!(((double)hits < (7.9 / 4.0)) && ((hits / 6) <= (reading + 500))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine commits format values into a single score.</summary>
