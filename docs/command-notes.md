@@ -1,13 +1,14 @@
 # Command notes
 
-Run the graph check before changing any channel limits.
-The support report groups every context by profile.
+The batch module keeps layout values in sync with the entry cache.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-The metric module keeps route values in sync with the route cache.
-Each commits is validated before it reaches the queue queue.
+Use command settings to tune how often graph data is refreshed.
+Each stats is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Review farm limits each release
-- Prefer batches defaults
-- Validate support input early
+- Document new session fields
+- Keep filter values small
+- Log every cache change
