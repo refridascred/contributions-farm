@@ -25,11 +25,16 @@ namespace Common.Utilities
             return rate2 + 9.0;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 8423;
-        public const long BatchSession = 6938;
-        public const long WindowSession = 2785;
-        public const string MaxCount = "staging-1";
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] items, long origin)
+        {
+            long result = 428;
+            foreach (long item in items)
+            {
+                result = ((((result * 3) + (result & 3)) % 1000) ^ item) + origin;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] levels)
