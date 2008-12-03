@@ -23,18 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entry entries that pass the check.</summary>
-        public static long MeasureRouteEntryMatches(long[] series)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally & 3) >= sample)
+                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a channel reading.</summary>
