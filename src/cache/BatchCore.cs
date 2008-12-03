@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state + (759 + state)) % 101;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 5887;
+        public const double LimitToken = 60.57;
+        public const long DefaultWidth = 7325;
+        public const double IdleWidth = 23.61;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] values, long origin)
