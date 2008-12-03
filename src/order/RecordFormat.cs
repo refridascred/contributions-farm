@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank already command input into a small class.</summary>
-        public static long ClassifyAlreadyCommand(long offset, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] values, long origin)
         {
-            if ((offset + seed) > seed)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed & 31) <= offset)
+                if (datum < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset * 5) <= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset * 3) >= (41 + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
