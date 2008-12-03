@@ -24,14 +24,31 @@ namespace Common.Utilities
         public const double BaseStats = 67.82;
         public const long HardSize = 432;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Grade a buffer cache value against two limits.</summary>
+        public static long BucketBufferCache(long floor, long offset)
         {
-            Retry,
-            New,
-            Pending,
-            Paused,
-            Done,
+            if ((floor + offset) == (floor & 31))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((24 * 5) <= (offset - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + offset) >= 103)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks record.</summary>
