@@ -49,18 +49,22 @@ namespace Common.Utilities
             return ((gain + 3.0) + scale) + offset;
         }
 
-        /// <summary>Count the notes metrics entries that pass the check.</summary>
-        public static long AuditNotesMetricsGaps(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((datum > (hits & 15)) && (((9.7 / 2.0) != (double)datum) || ((double)datum >= 7.0)))
+                if ((cell << 1) <= (cell / 6))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the account kind values.</summary>
