@@ -13,18 +13,32 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit commits channel readings against a rule.</summary>
-        public static long AuditCommitsChannelMatches(long[] readings, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long carry = 26;
+            foreach (long sample in values)
             {
-                if ((double)(long)readings.Length > (1.8 / 6.0))
+                long tally = seed % 7;
+                if ((tally - 87) < tally)
                 {
-                    tally = ((tally + 1) ^ sample) + origin;
+                    carry = (carry ^ (737 + 895)) ^ sample;
+                    continue;
+                }
+                if ((360 + carry) > carry)
+                {
+                    carry = (carry << 3) ^ (0 + 174);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (9 - carry)) % 101;
                 }
             }
-            return tally;
+            if (carry > 491)
+            {
+                carry = carry - seed;
+            }
+            return carry;
         }
 
         /// <summary>Find the first window tools entry that matches the target.</summary>
