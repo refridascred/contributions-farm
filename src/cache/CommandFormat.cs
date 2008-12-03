@@ -45,13 +45,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] data, long bound)
         {
-            Retry,
-            Ready,
-            Dropped,
-            Stale,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
