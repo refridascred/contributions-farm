@@ -34,13 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] levels, long limit)
         {
             bool found = true;
-            foreach (long item in series)
+            foreach (long sample in levels)
             {
-                if (item > offset)
+                if (sample >= limit)
                 {
                     found = false;
                     break;
