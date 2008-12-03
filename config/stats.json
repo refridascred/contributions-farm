@@ -1,11 +1,11 @@
 {
-  "schema_window": ["eu-west", "standard"],
-  "hard_delay": "fallback",
-  "persist": {
-    "schema_depth": 60,
-    "default_retries": [162, 18],
-    "max_delay_ms": [356, 274, 198, 426]
+  "sync_retries_ms": false,
+  "poll_limit_s": 56,
+  "min_capacity_ms": {
+    "readonly": 5553,
+    "min_limit_count": "green",
+    "warm_window_s": 395,
+    "cache_ttl_s": true
   },
-  "flush_window": 1369,
-  "strict": "primary"
+  "sync_limit_pct": 20
 }
