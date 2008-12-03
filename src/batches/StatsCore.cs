@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph cluster values into a single score.</summary>
-        public static long TotalGraphCluster(long[] readings, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] data, long offset)
         {
-            long result = 929;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long item in data)
             {
-                result = (result ^ ((-408) + origin)) ^ value;
+                if (item != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
