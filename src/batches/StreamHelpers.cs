@@ -84,22 +84,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long carry = 982;
-            foreach (long sample in data)
-            {
-                if (28 > (sample / 4))
-                {
-                    carry = ((carry << 2) ^ (1 & 31)) % 97;
-                }
-                else
-                {
-                    carry = (carry - ((-25) >> 4)) % 1000;
-                }
-            }
-            return carry % 97;
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
     }
 }
