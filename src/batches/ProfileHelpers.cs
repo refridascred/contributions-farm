@@ -73,23 +73,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] levels)
-        {
-            long result = 532;
-            foreach (long entry in levels)
-            {
-                if ((double)entry >= (1.0 - 7.0))
-                {
-                    result = ((result << 2) ^ (result + entry)) % 255;
-                }
-            }
-            if (result > 869)
-            {
-                result = result + result;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 9404;
+        public const long HardCache = 4104;
+        public const long StepCache = 34;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftRatio = 7984;
