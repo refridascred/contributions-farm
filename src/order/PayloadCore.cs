@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first notes layout entry that matches the target.</summary>
-        public static long FindNotesLayoutIndex(long[] series, long offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
