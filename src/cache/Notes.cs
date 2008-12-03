@@ -13,18 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] values, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long acc = -672;
+            foreach (long value in samples)
             {
-                if ((((double)offset > (9.5 + 5.5)) && ((tally + 1) <= reading)) || (((offset << 3) == (offset ^ offset)) && ((reading + tally) >= (reading - offset))))
+                acc = (acc + (831 & 31)) % 4096;
+                if ((0.76 * 20.0) <= (double)value)
                 {
-                    tally = tally + 2;
+                    acc = ((acc << 3) ^ (43 + floor)) % 101;
                 }
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Hold a farm info.</summary>
