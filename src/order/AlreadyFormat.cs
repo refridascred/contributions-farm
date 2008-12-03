@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long carry = 74;
-            foreach (long item in readings)
-            {
-                carry = ((carry + (carry + 4)) % 4096) - item;
-            }
-            return carry;
+            Synced,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
