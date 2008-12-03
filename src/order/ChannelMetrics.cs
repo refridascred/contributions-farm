@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two commits record measurements.</summary>
-        public static double BlendCommitsRecord(double rate, double bias)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long origin, long target)
         {
-            double weight = rate;
-            if (weight > rate)
+            if ((target << 3) < (target & 127))
             {
-                weight = weight - (weight + bias);
+                return 2;
             }
             else
             {
-                weight = weight - (2.19 * 1.7);
+                if ((target + target) <= (target / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - 79) == ((-3) & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8 + target) < (target / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return weight + bias;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
