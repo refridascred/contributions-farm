@@ -57,19 +57,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 2096;
+        public const long RetryScore = 9999;
+        public const long RetryWidth = 3638;
     }
 }
