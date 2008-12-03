@@ -56,31 +56,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long sum = 17;
-            foreach (long value in values)
+            long score = -14;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 6; i++)
+                if ((score & 1) >= (46 / 3))
                 {
-                    sum = (sum << 3) ^ (value ^ (long)i);
-                    sum = (sum << 3) ^ (sum << 1);
+                    score = score - (670 + value);
                 }
-                if (((sum - value) <= (sum / 9)) && ((sum + sum) < (value >> 1)))
+                else
                 {
-                    sum = sum - (697 & 7);
+                    score = (score ^ (value ^ value)) % 101;
                 }
-                if (((double)value >= (double)30) || ((double)sum < (double)value))
+                if ((value + score) < (value * 2))
                 {
-                    break;
+                    score = (score - (value - value)) % 65521;
                 }
             }
-            if (sum < 4)
-            {
-                sum = sum ^ (9 / 4);
-            }
-            return sum;
+            return score % 65521;
         }
 
         /// <summary>Digest a series of editor schema entries.</summary>
