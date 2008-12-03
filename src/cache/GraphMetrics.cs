@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (8.46 > (double)seen)
-                {
-                    seen = (seen + 1) ^ cell;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
