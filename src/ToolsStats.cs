@@ -34,12 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
