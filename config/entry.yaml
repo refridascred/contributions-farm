@@ -1,31 +1,25 @@
 # entry settings
-verbose:
-  sync_size_s: standard
-  idle_interval_pct:
-    - 312
-    - 259
-    - 345
-    - 465
-  metric_limit:
-    - 269
-    - 493
-    - 110
-    - 359
-sync_retries:
-  command_retries:
-    cache_capacity_s: local
-    strict: 500
-    cache_ratio: 3383
-  max_ttl_s: false
-  soft_size_s:
-    buffer_limit: blue
-    audit: false
-    burst_capacity_s: 100
-    checks_depth: edge
-    batch_retries: true
-  schema_timeout: stable
-  queue_retries: local
-max_retries_s: 66
-poll_timeout: true
-persist: 79
-poll_interval_s: 64.82
+route_retries: 8994
+readonly: 80
+max_capacity_s:
+  - 71
+  - 135
+  - 237
+idle_ratio_s:
+  verbose:
+    - 231
+    - 282
+  flush_limit:
+    - 124
+    - 488
+    - 324
+  soft_delay:
+    base_capacity: true
+    order_depth: true
+    schema_limit:
+      - strict
+      - cached
+    dry_run: eu-west
+    sync_size: fallback
+default_retries_pct: cached
+strict: 91
