@@ -63,25 +63,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long limit, long origin)
-        {
-            long offset = limit + origin;
-            if (origin <= (offset / 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.0 * 0.8) == (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 170;
+        public const long CacheScore = 626;
+        public const long WindowAlready = 9780;
+        public const long SoftSize = 810;
     }
 }
