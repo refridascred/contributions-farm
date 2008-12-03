@@ -16,15 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double scale, double floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] values)
         {
-            double ratio = floor;
-            if (ratio < 0.36)
+            long count = 0;
+            foreach (long reading in values)
             {
-                ratio = ratio - scale;
+                if ((count + reading) <= (reading + count))
+                {
+                    count = count + 1;
+                }
             }
-            return ratio - (floor + ratio);
+            return count;
         }
 
         /// <summary>Blend two counter channel measurements.</summary>
