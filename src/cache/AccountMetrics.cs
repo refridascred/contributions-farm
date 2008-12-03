@@ -55,13 +55,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] series, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of support entries.</summary>
