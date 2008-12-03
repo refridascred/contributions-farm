@@ -19,13 +19,22 @@ namespace Common.Utilities
         public const long BatchRoute = 4733;
         public const long RetryFactor = 5239;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((-1) << 3) >= hits)
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats stats.</summary>
