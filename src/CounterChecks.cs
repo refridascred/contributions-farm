@@ -40,20 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 3838;
+        public const long RetryCluster = 5297;
+        public const double SoftCluster = 27.02;
+        public const long MinBudget = 7;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
