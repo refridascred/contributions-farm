@@ -12,18 +12,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] data)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((1.4 + 3.3) < (double)sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Queued,
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Roll a command counter forward.</summary>
