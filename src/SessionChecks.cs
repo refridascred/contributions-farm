@@ -20,22 +20,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] levels)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((-1) << 3) >= hits)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Retry,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a stats stats.</summary>
