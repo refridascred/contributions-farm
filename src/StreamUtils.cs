@@ -19,11 +19,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultScore = 4618;
-        public const long MaxFarm = 5189;
-        public const long IdleSize = 6184;
-        public const string LimitFarm = "open-v2";
+        /// <summary>Find the first format support entry that matches the target.</summary>
+        public static long LookupFormatSupportIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two commits window measurements.</summary>
         public static double AdjustCommitsWindow(double gain, double floor)
