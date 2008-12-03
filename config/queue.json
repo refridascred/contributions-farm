@@ -1,5 +1,5 @@
 {
-  "default_window_s": 65.27,
-  "queue_delay": 250,
-  "stream_interval": 38.38
+  "min_size_s": "strict",
+  "sync_delay_pct": "local",
+  "min_limit_s": "latest"
 }
