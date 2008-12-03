@@ -47,11 +47,33 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 5045;
-        public const long RetrySize = 189;
-        public const string MaxCommand = "fallback";
-        public const long BatchLevel = 7977;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long floor, long step)
+        {
+            long gap = floor + step;
+            if (7 < floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step ^ 904) > (floor >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + step) < (step ^ gap))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowAccount = 9257;
