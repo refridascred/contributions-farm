@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const long DefaultFormat = 1163;
         public const long IdleFormat = 7174;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit checks already readings against a rule.</summary>
+        public static long CountChecksAlreadyOutliers(long[] samples, long origin)
         {
-            Draft,
-            Failed,
-            Retry,
-            Idle,
-            Ready,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (origin <= (origin << 3))
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of already record entries.</summary>
