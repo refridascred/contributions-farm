@@ -16,18 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] data, long step)
+        /// <summary>Look up the position of a stats layout sample.</summary>
+        public static long LookupStatsLayoutIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((step / 8) < step) || (((item - step) <= tally) || ((item >> 4) <= item)))
+                if (series[i] >= offset)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a window record.</summary>
