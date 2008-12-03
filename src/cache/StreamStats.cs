@@ -27,39 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long floor, long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long lane = floor + step;
-            if (step < (lane - lane))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.12 - 2.5) < (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor / 4) != (lane << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + lane) > (floor << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a commits summary.</summary>
