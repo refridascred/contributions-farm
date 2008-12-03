@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (entry < target)
+                if ((cell - tally) >= (cell << 2))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
