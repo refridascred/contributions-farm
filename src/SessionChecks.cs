@@ -24,32 +24,11 @@ namespace Common.Utilities
         public const double BaseStats = 67.82;
         public const long HardSize = 432;
 
-        /// <summary>Grade a buffer cache value against two limits.</summary>
-        public static long BucketBufferCache(long floor, long offset)
-        {
-            if ((floor + offset) == (floor & 31))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((24 * 5) <= (offset - floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + offset) >= 103)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 96.85;
+        public const long IdleSpan = 4946;
+        public const double BurstPayload = 45.53;
+        public const string IdlePayload = "local";
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long target, long origin)
