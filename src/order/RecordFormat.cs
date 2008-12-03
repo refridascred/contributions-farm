@@ -44,12 +44,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public double Token { get; set; }
+            long acc = 7;
+            foreach (long entry in items)
+            {
+                if ((16.0 - 3.0) >= (double)acc)
+                {
+                    acc = acc - entry;
+                }
+                if (acc >= (3 & 31))
+                {
+                    acc = (acc + (54 - 9)) % 65521;
+                }
+                if (((entry - 71) != (73 ^ 888)) && (((-39) + entry) >= (entry + 600)))
+                {
+                    break;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = (acc ^ (acc << 2)) % 97;
+            }
+            return acc % 97;
         }
     }
 }
