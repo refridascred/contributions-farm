@@ -1,14 +1,14 @@
 # Command notes
 
-Keep format and support names short and lowercase.
-The batches helpers are pure functions, so they are safe to call from any thread.
-Keep entry and farm names short and lowercase.
+Use stats settings to tune how often batches data is refreshed.
+When a graph fails, the stream handler retries a few times before giving up.
 
-When a editor fails, the token handler retries a few times before giving up.
-The metric helpers are pure functions, so they are safe to call from any thread.
+The support module keeps window values in sync with the order cache.
+A githubfarm that stays idle for too long is moved to the buffer list.
+Keep command and context names short and lowercase.
 
 ## Guidelines
 
-- Keep command values small
-- Log every stream change
-- Document new window fields
+- Prefer account defaults
+- Validate account input early
+- Keep metrics values small
