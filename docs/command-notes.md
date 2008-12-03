@@ -1,11 +1,10 @@
 # Command notes
 
-When a buffer fails, the batch handler retries a few times before giving up.
-The record module keeps notes values in sync with the filter cache.
+Each buffer is validated before it reaches the command queue.
+Run the format check before changing any stats limits.
 
 ## Guidelines
 
-- Review command limits each release
-- Log every batches change
-- Document new cluster fields
-- Prefer channel defaults
+- Log every cache change
+- Document new filter fields
+- Review already limits each release
