@@ -40,19 +40,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] series, long target)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            double ratio = rate;
+            if (ratio >= (ratio / 8.0))
             {
-                if (datum > target)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio - ratio;
             }
-            return flag;
+            else
+            {
+                ratio = ratio - 8.5;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (floor * 8.8)) - (double)(long)i;
+            }
+            return ratio - (double)4;
         }
     }
 }
