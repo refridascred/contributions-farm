@@ -16,12 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the session metric series from a seed.</summary>
+        public static long StepSessionMetric(long limit)
         {
-            Ready,
-            Dropped,
-            Queued,
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((anchor + limit) < ((long)i - anchor))
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+                anchor = (anchor - (limit + (long)i)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of route readings.</summary>
