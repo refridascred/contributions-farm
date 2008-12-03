@@ -28,24 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long bound, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if (((-9) * 2) >= (origin << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + 4) >= (641 ^ (-23)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Digest a series of account entries.</summary>
