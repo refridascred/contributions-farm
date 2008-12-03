@@ -29,13 +29,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Paused,
+            Draft,
+            Idle,
             Ready,
-            Done,
-            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
