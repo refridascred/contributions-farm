@@ -1,11 +1,14 @@
 {
-  "soft_delay": "latest",
-  "flush_delay_count": 96,
-  "buffer_limit": false,
-  "idle_size_s": 3422,
-  "githubfarm_ttl": {
-    "strict": 56,
-    "stats_limit": "local",
-    "base_window_pct": "primary"
+  "default_capacity_pct": "fallback",
+  "default_depth_s": "stable",
+  "sync_timeout_ms": {
+    "soft_depth_ms": "eu-west",
+    "sync_window_ms": 92.6,
+    "contributi_delay": "latest",
+    "compress": {
+      "base_interval_s": "green",
+      "max_window_pct": "staging",
+      "readonly": true
+    }
   }
 }
