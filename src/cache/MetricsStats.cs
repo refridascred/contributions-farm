@@ -68,18 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!(((double)item >= (4.8 - 12.0)) || ((3.1 + 8.0) > (double)seen)))
+                if (!((cell + matches) == (matches >> 5)))
                 {
-                    seen = seen + 2;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
