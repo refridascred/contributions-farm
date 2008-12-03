@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count * 2) <= (count + value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheBatches = 6.35;
+        public const double BatchBatches = 76.78;
+        public const long CacheLevel = 7497;
+        public const long StepLevel = 4037;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long TotalBatches(long[] data, long origin)
