@@ -1,10 +1,20 @@
 # support settings
-warm_limit_pct: 19.08
-idle_limit: 1024
-soft_threshold_count:
-  - 380
-  - 67
-  - 482
-  - 417
-strict: 167
-max_threshold_ms: 3523
+checks_interval:
+  entry_size:
+    dry_run: 500
+    warm_threshold_ms: local
+    hard_timeout_s: green
+    compress: eu-west
+    batch_interval: false
+  compress: open
+  editor_delay:
+    - strict
+    - cached
+  poll_capacity: latest
+  batch_retries_count: eu-west
+min_retries_s:
+  - 386
+  - 227
+  - 193
+layout_delay: eu-west
+contributi_delay: 8983
