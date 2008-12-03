@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate stats support readings against a bound.</summary>
-        public static bool VerifyStatsSupportRange(long[] samples, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry >= step)
+                if (((mark + mark) >= (mark * 5)) && (mark >= seed))
                 {
-                    stale = false;
-                    break;
+                    continue;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
