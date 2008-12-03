@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of metric buffer readings.</summary>
-        public static long CompareMetricBufferCount(long[] samples)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor << 3) ^ 4;
+                anchor = (anchor - (70 & 15)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
