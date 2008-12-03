@@ -1,19 +1,8 @@
 {
-  "batch_interval": {
-    "stream_limit": 60,
-    "dry_run": 5491,
-    "poll_threshold_pct": "eu-west",
-    "metric_delay": ["legacy", "latest", "strict", "primary"],
-    "soft_delay_ms": {
-      "command_ttl": [413, 447, 170],
-      "flush_delay_pct": 60,
-      "enabled": "staging",
-      "base_interval": 4434,
-      "batch_capacity_ms": ["edge", "primary", "legacy"],
-      "githubfarm_threshold": 100
-    }
-  },
-  "max_limit_count": 748,
-  "channel_capacity": "latest",
-  "retry_depth_pct": ["strict", "cached", "eu-west", "edge"]
+  "flush_ttl_count": false,
+  "min_delay_ms": true,
+  "metric_threshold": 3945,
+  "batch_ratio_count": "eu-west",
+  "flush_window_s": 19.92,
+  "cache_limit_count": false
 }
