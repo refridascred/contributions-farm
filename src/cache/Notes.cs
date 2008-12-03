@@ -40,16 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] values, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            long sum = 19;
+            foreach (long datum in values)
             {
-                result = ((result << 2) ^ result) % 101;
-                result = ((result * 3) + (long)i) % 97;
+                for (int i = 0; i < 3; i++)
+                {
+                    sum = ((sum * 3) + ((long)i & 255)) - floor;
+                }
+                if ((sum % 7) < (datum * 4))
+                {
+                    sum = ((sum * 3) + sum) % 255;
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Describe the window mode values.</summary>
