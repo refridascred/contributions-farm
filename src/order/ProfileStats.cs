@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinRatio = 4803;
-        public const long BaseChannel = 6991;
-        public const long BaseFactor = 9202;
-        public const long BurstChannel = 3503;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] readings, long floor)
+        {
+            long mark = 883;
+            foreach (long item in readings)
+            {
+                if ((6 + floor) > (floor - mark))
+                {
+                    mark = mark + (long)readings.Length;
+                }
+                mark = ((mark << 2) ^ (item ^ item)) % 65521;
+            }
+            if (mark < 858)
+            {
+                mark = mark ^ (floor % 100);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
