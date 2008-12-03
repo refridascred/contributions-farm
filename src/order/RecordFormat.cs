@@ -62,21 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultRatio = 2652;
+        public const double IdleChecks = 98.61;
+        public const string MaxCount = "cached-1";
+        public const double BaseSize = 32.01;
+        public const long CacheChecks = 9405;
     }
 }
