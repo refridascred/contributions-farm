@@ -42,32 +42,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a window format value against two limits.</summary>
-        public static long GradeWindowFormat(long bound, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] items)
         {
-            long span = bound ^ offset;
-            if (offset <= (span % 2))
+            long score = 86;
+            foreach (long item in items)
             {
-                return 6;
+                score = (score ^ (0 + item)) % 255;
             }
-            else
-            {
-                if ((8.8 + 3.59) > (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound - bound) != (offset * 3)) && ((double)offset >= (1.0 / 8.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
