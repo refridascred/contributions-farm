@@ -1,7 +1,4 @@
 # support settings
-base_capacity_count:
-  - fallback
-  - strict
-format_delay: 4391
-tools_timeout: false
-poll_timeout_count: latest
+graph_timeout: 44
+sync_timeout_pct: 60.77
+batches_delay: true
