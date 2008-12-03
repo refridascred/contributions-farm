@@ -12,31 +12,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] readings, long limit)
         {
-            long mark = 151;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if (value >= (matches / 6))
                 {
-                    mark = ((mark + (mark % 5)) % 97) - (long)i;
-                    mark = (mark << 2) ^ (36 & 255);
-                }
-                if ((mark - mark) > (reading % 24))
-                {
-                    mark = ((mark * 5) + mark) % 1000;
+                    matches = (matches + 1) - limit;
                 }
                 else
                 {
-                    mark = mark ^ mark;
-                }
-                if ((mark << 1) <= (mark & 127))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
