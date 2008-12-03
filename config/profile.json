@@ -1,11 +1,6 @@
 {
-  "dry_run": {
-    "soft_ratio_ms": "stable",
-    "max_size_count": false,
-    "default_threshold_pct": 9.06
-  },
-  "compress": false,
-  "command_delay": "fallback",
-  "cluster_limit": 74.13,
-  "commits_size": 9937
+  "cache_capacity_count": "stable",
+  "soft_ttl": "standard",
+  "poll_delay_count": "open",
+  "idle_ttl_pct": false
 }
