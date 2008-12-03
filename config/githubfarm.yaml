@@ -1,9 +1,14 @@
 # githubfarm settings
-enabled: 80
-retry_depth_ms:
-  - 483
-  - 56
-stream_limit: 43
-default_retries_count: 14
-context_interval: false
-flush_threshold_pct: true
+sync_ratio: 89.74
+batch_retries: cached
+warm_window_count: false
+strict: 42.3
+verbose:
+  - 93
+  - 274
+  - 5
+flush_delay:
+  retry_retries: 31.29
+  base_retries: primary
+  max_limit_s: cached
+  sync_size_s: true
