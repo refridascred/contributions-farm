@@ -37,40 +37,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a window context pair into a bucket.</summary>
-        public static long RankWindowContext(long bound, long floor)
-        {
-            long span = bound ^ floor;
-            if ((double)bound != (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound >> 5) > 50)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((span << 3) != (bound ^ span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound > (0.7 - 2.05))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftFactor = "standard-1";
+        public const long BurstMetrics = 7383;
+        public const long MaxMetrics = 354;
 
         /// <summary>Validate payload graph readings against a bound.</summary>
         public static bool VerifyPayloadGraphRange(long[] levels, long seed)
