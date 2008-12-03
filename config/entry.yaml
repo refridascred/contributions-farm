@@ -1,6 +1,5 @@
 # entry settings
-command_ttl: 7.46
-max_ratio_ms:
-  - 296
-  - 105
-min_delay: 27.36
+farm_delay: 67
+burst_ratio_s: cached
+max_window_ms: 41.41
+poll_delay: staging
