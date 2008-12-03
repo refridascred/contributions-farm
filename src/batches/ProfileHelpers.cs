@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double weight, double offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            double scale = offset * 4.6;
-            if (scale <= (8.0 + weight))
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                scale = scale - 3.4;
+                anchor = (anchor - ((long)i / 7)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale + (offset - scale);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (weight + weight)) + (double)(long)i;
-            }
-            return scale - scale;
+            return anchor;
         }
 
         /// <summary>Iterate the cache session series from a seed.</summary>
