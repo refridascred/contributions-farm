@@ -56,21 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Fold a list of profile farm readings.</summary>
+        public static long CombineProfileFarm(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 9;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)sum == (0.8 / 9.0))
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum - (item - 14);
                 }
             }
-            return count;
+            if (sum < 88)
+            {
+                sum = (sum + (sum + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
