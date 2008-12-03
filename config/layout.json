@@ -1,5 +1,13 @@
 {
-  "strict": 4208,
-  "warm_window_ms": 55.73,
-  "filter_timeout": 52
+  "batch_depth": "open",
+  "persist": {
+    "batches_ttl": 11.44,
+    "base_delay": 1206,
+    "poll_retries": 66.49,
+    "default_capacity_ms": 45.97,
+    "poll_retries_count": 30,
+    "batch_capacity": true
+  },
+  "dry_run": "open",
+  "enabled": 81.68
 }
