@@ -13,19 +13,25 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double rate, double span)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long bound, long seed)
         {
-            double drift = rate;
-            if (drift > (drift + 2.2))
+            long edge = bound - seed;
+            if (((seed & 3) <= edge) && ((bound / 3) >= (bound - bound)))
             {
-                drift = drift - rate;
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift - rate) + (double)(long)i;
+                if ((double)edge >= 12.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return drift - span;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
