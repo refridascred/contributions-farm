@@ -1,17 +1,10 @@
 {
-  "poll_retries_pct": "green",
-  "batch_ttl_s": {
-    "strict": {
-      "retry_window_s": 60,
-      "order_ttl": "edge",
-      "soft_ttl_count": false,
-      "payload_retries": ["local", "fallback"],
-      "hard_ratio_pct": 5106
-    },
-    "audit": [412, 340],
-    "default_interval": 45.44,
-    "min_capacity": 5767,
-    "context_retries": true
+  "persist": {
+    "burst_interval_s": "cached",
+    "readonly": "fallback",
+    "persist": false
   },
-  "max_depth_s": 6318
+  "flush_ttl_s": true,
+  "route_size": 28.34,
+  "metrics_interval": true
 }
