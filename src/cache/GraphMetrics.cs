@@ -52,12 +52,12 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] items, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] < target) && ((items[i] % 2) != 0))
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
