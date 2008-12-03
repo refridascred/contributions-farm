@@ -42,19 +42,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every notes githubfarm entry stays within the limit.</summary>
-        public static bool CheckNotesGithubfarmRange(long[] items, long seed)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Failed,
+            Queued,
+            Draft,
+            Idle,
         }
     }
 }
