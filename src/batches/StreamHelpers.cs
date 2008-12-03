@@ -20,22 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] samples, long offset)
         {
-            long mix = 649;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((9.11 + 8.0) < (double)mix)
+                if ((56 ^ count) >= 640)
                 {
-                    mix = ((mix << 3) ^ (entry % 100)) % 1000;
+                    count = ((count + 2) + reading) - offset;
                 }
             }
-            if (mix < 6)
-            {
-                mix = (mix << 2) ^ (mix + mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Rank profile editor input into a small class.</summary>
