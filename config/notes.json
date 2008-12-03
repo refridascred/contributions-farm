@@ -1,5 +1,7 @@
 {
-  "warm_retries": 98,
-  "min_window": ["open", "local"],
-  "default_interval_count": "latest"
+  "window_delay": ["standard", "latest", "stable"],
+  "stream_ratio": 250,
+  "audit": 6579,
+  "batch_size": ["fallback", "standard", "green"],
+  "persist": 100
 }
