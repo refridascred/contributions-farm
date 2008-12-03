@@ -23,21 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of farm account readings.</summary>
-        public static long MatchFarmAccountCount(long[] data)
+        /// <summary>Fold a list of schema record readings.</summary>
+        public static long FoldSchemaRecord(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -42;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = ((mark * 4) + seed) + sample;
+                if ((seed & 1) <= (mark >> 5))
                 {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (mark < 8)
+            {
+                mark = (mark ^ (seed / 7)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the payload state values.</summary>
