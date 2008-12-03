@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double bias, double floor)
-        {
-            double ratio = floor;
-            if (ratio <= floor)
-            {
-                ratio = (ratio + 2.15) - bias;
-            }
-            return ratio + 13.0;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 6189;
+        public const long SoftTools = 1486;
+        public const long LimitDepth = 6230;
 
         /// <summary>Check that every window stats entry stays within the limit.</summary>
         public static bool VerifyWindowStatsBounds(long[] series, long offset)
