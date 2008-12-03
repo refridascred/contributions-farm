@@ -26,11 +26,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitInterval = 8365;
-        public const double BaseToken = 84.58;
-        public const long HardLevel = 793;
-        public const double BurstToken = 94.04;
-        public const long MaxToken = 2094;
+        /// <summary>Find the first window tools entry that matches the target.</summary>
+        public static long FindWindowToolsIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
