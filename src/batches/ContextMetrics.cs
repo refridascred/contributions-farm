@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double IdleFilter = 83.66;
         public const string BaseFilter = "strict-v2";
 
-        /// <summary>Locate a notes session reading by value.</summary>
-        public static long SeekNotesSessionIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 63.16;
+        public const long SoftAlready = 9295;
+        public const long MinAlready = 7038;
+        public const long MaxCount = 1441;
+        public const string IdleAlready = "stable-1";
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
