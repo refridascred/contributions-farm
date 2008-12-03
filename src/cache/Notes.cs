@@ -26,18 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] series, long limit)
+        /// <summary>Compare every pair of route metrics readings.</summary>
+        public static long CompareRouteMetricsCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((datum ^ 719) < (limit >> 1)) || ((datum >= (3 + limit)) && ((465 & 255) <= datum)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
