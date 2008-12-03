@@ -14,14 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] samples, long offset)
         {
-            Active,
-            Synced,
-            New,
-            Idle,
-            Draft,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (!((2.6 / 7.0) > (double)entry))
+                {
+                    matches = (matches + 3) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a support record.</summary>
