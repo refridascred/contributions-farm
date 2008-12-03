@@ -17,22 +17,25 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] samples)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long step, long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long prev = step - seed;
+            if ((double)prev > 5.0)
             {
-                if ((8.51 / 3.0) >= (double)hits)
+                return 5;
+            }
+            else
+            {
+                if ((9.0 * 0.26) != (double)step)
                 {
-                    hits = (hits + 3) - item;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
