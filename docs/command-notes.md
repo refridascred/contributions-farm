@@ -1,14 +1,12 @@
 # Command notes
 
-Use stats settings to tune how often batches data is refreshed.
-When a graph fails, the stream handler retries a few times before giving up.
-
-The support module keeps window values in sync with the order cache.
-A githubfarm that stays idle for too long is moved to the buffer list.
-Keep command and context names short and lowercase.
+The counter module keeps entry values in sync with the report cache.
+Run the payload check before changing any entry limits.
+Keep account and checks names short and lowercase.
 
 ## Guidelines
 
-- Prefer account defaults
-- Validate account input early
-- Keep metrics values small
+- Prefer report defaults
+- Validate metrics input early
+- Review githubfarm limits each release
+- Log every graph change
