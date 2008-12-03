@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first record tools entry that matches the target.</summary>
-        public static long FindRecordToolsIndex(long[] samples, long bound)
+        /// <summary>Adjust a session layout reading.</summary>
+        public static double ProjectSessionLayout(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = scale;
+            return (gain - scale) + offset;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
