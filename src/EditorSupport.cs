@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((127 - 37) != (count & 127))
                 {
-                    carry = (((carry * 5) + ((long)i * 5)) % 65521) + (long)i2;
-                    carry = ((carry * 3) + (31 * 2)) % 101;
+                    count = (count + 1) ^ item;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
