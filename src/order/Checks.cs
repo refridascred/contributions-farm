@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const long HardInterval = 6048;
         public const string RetryCluster = "strict-v2";
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of batches support readings.</summary>
+        public static long TallyBatchesSupport(long[] readings)
         {
-            Idle,
-            Retry,
-            Ready,
-            Paused,
+            long sum = 956;
+            foreach (long cell in readings)
+            {
+                sum = (sum ^ ((long)readings.Length - cell)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
