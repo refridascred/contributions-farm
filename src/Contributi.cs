@@ -16,21 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
