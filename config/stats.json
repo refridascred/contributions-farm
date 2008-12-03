@@ -1,6 +1,17 @@
 {
-  "report_ratio": 250,
-  "idle_capacity_count": true,
-  "report_interval": 1054,
-  "payload_limit": "blue"
+  "format_timeout": true,
+  "cluster_limit": {
+    "persist": 2787,
+    "soft_depth_s": "green",
+    "min_retries_pct": [17, 180, 399, 203],
+    "notes_timeout": "latest",
+    "editor_depth": {
+      "cache_ttl": 6964,
+      "warm_ttl_s": true,
+      "hard_timeout_count": "green",
+      "hard_interval_s": [240, 234],
+      "compress": "cached"
+    }
+  },
+  "hard_interval_s": 54.45
 }
