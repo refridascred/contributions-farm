@@ -25,13 +25,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine graph cluster values into a single score.</summary>
+        public static long TotalGraphCluster(long[] readings, long origin)
         {
-            Closed,
-            Synced,
-            Idle,
-            New,
+            long result = 929;
+            foreach (long value in readings)
+            {
+                result = (result ^ ((-408) + origin)) ^ value;
+            }
+            return result;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
