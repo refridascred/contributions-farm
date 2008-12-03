@@ -67,22 +67,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] levels, long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!((item + item) <= (1 - item)))
-                {
-                    tally = (tally + 2) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
