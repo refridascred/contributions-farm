@@ -1,7 +1,6 @@
 # support settings
-batch_ttl_ms:
-  - 434
-  - 127
-route_capacity: 85.12
-payload_delay: false
-layout_retries: true
+checks_depth: 94.1
+soft_interval_s: stable
+sync_limit_count: standard
+dry_run: 1024
+contributi_ttl: fallback
