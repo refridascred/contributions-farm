@@ -25,22 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings, long origin)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long carry = 85;
-            foreach (long entry in readings)
-            {
-                if ((double)12 < (double)entry)
-                {
-                    carry = (carry + (origin ^ origin)) % 97;
-                }
-            }
-            if (carry < 950)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
