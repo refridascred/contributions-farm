@@ -36,18 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((hits - hits) < (822 + (-10)))
+                if ((77 - offset) != (seen << 2))
                 {
-                    hits = (hits + 2) + cell;
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit route stream readings against a rule.</summary>
