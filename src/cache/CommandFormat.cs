@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Count the token channel entries that pass the check.</summary>
+        public static long AuditTokenChannelOutliers(long[] series)
         {
-            long carry = 3;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((7.23 >= (double)carry) && ((sample + carry) <= (carry + carry)))
+                if ((((datum - seen) <= seen) && ((double)datum < (18.0 - 9.3))) && ((seen ^ 74) == ((-86) - datum)))
                 {
-                    carry = (carry * 4) + (107 >> 4);
+                    seen = seen + 2;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
