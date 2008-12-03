@@ -1,13 +1,24 @@
 {
-  "report_capacity": "strict",
-  "session_ttl": {
-    "batch_ratio_ms": ["strict", "green", "primary", "cached"],
-    "verbose": false,
-    "compress": "primary",
-    "command_retries": 77,
-    "max_threshold_pct": 68.04,
-    "contributi_delay": 6
+  "buffer_window": {
+    "burst_ratio_count": 84.55,
+    "idle_retries_s": 63,
+    "max_depth": 100,
+    "flush_size": true,
+    "warm_ratio": 500
   },
-  "retry_window_s": 4574,
-  "checks_size": true
+  "min_capacity_ms": {
+    "cache_threshold_s": 3223,
+    "burst_depth": [263, 256],
+    "verbose": "local",
+    "dry_run": true,
+    "batch_size_ms": "local"
+  },
+  "warm_retries_ms": "primary",
+  "verbose": {
+    "batch_capacity_ms": "fallback",
+    "base_size_s": true,
+    "cluster_timeout": "blue",
+    "schema_capacity": 84.02
+  },
+  "min_ratio_pct": false
 }
