@@ -36,10 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 2557;
-        public const long StepChannel = 6927;
-        public const long BatchScore = 4196;
-        public const long CacheFactor = 7906;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] values, long floor)
+        {
+            long sum = 964;
+            foreach (long entry in values)
+            {
+                if ((392 <= (sum + sum)) || ((4.0 / 5.0) == (double)sum))
+                {
+                    sum = (((sum + sum) % 1000) + entry) + floor;
+                }
+            }
+            return sum;
+        }
     }
 }
