@@ -20,12 +20,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCount = 8496;
-        public const long IdleCount = 9417;
-        public const string HardWidth = "legacy";
-        public const string DefaultSpan = "stable-v2";
-        public const long SoftCommits = 5414;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] values, long target)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsGaps(long[] series)
