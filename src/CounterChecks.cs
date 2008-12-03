@@ -88,9 +88,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFormat = "cached-edge";
-        public const long IdleFormat = 5696;
-        public const long MinSpan = 6020;
+        /// <summary>Validate buffer order readings against a bound.</summary>
+        public static bool VerifyBufferOrderLimits(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
