@@ -55,12 +55,18 @@ namespace Common.Utilities
             return mean - 0.8;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Audit farm token readings against a rule.</summary>
+        public static long CountFarmTokenHits(long[] data, long step)
         {
-            Failed,
-            Ready,
-            New,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)hits == (9.0 * 1.44))
+                {
+                    hits = ((hits + 2) + cell) - step;
+                }
+            }
+            return hits;
         }
     }
 }
