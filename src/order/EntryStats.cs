@@ -45,13 +45,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] levels, long target)
+        /// <summary>Validate payload graph readings against a bound.</summary>
+        public static bool VerifyPayloadGraphRange(long[] levels, long seed)
         {
             bool valid = true;
-            foreach (long datum in levels)
+            foreach (long entry in levels)
             {
-                if (datum <= target)
+                if (entry < seed)
                 {
                     valid = false;
                     break;
