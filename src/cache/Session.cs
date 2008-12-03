@@ -70,19 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm payload entry stays within the limit.</summary>
-        public static bool GuardGithubfarmPayloadBounds(long[] series, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (cell <= seed)
+                if (seen > (sample / 9))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) + step;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
