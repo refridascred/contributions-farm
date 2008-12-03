@@ -52,22 +52,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] samples, long limit)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double ratio, double offset)
         {
-            long total = 867;
-            foreach (long value in samples)
+            double mean = (ratio - offset) / 7.0;
+            if (mean < (mean * 4.8))
             {
-                if ((6.1 + 15.0) == (double)total)
-                {
-                    total = (total + 14) - value;
-                }
+                mean = mean - (double)967;
             }
-            if (total < 3)
+            for (int i = 0; i < 5; i++)
             {
-                total = (total - limit) % 65521;
+                mean = (mean + offset) - (double)(long)i;
             }
-            return total % 97;
+            return mean - (double)(-564);
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
