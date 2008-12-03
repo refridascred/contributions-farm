@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] items)
-        {
-            long score = 4;
-            foreach (long reading in items)
-            {
-                if ((((long)items.Length * 3) <= ((long)items.Length % 7)) || ((double)reading != (3.53 + 9.2)))
-                {
-                    score = (score << 3) ^ score;
-                }
-            }
-            if (score > 403)
-            {
-                score = (score * 3) + score;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftDepth = "strict-edge";
+        public const double LimitRatio = 30.26;
+        public const long StepMetrics = 7470;
+        public const long CacheMetrics = 854;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsRange(long[] levels, long floor)
