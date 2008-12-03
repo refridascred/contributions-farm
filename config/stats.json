@@ -1,7 +1,11 @@
 {
-  "base_delay": 9700,
-  "account_limit": "blue",
-  "hard_limit_count": 500,
-  "hard_capacity_pct": true,
-  "queue_ratio": [23, 56, 28, 242]
+  "sync_ttl_pct": {
+    "record_capacity": 57,
+    "idle_ratio_ms": 500,
+    "checks_limit": 9798,
+    "idle_limit_ms": 60
+  },
+  "retry_limit_ms": true,
+  "idle_limit_ms": 68,
+  "stats_interval": 7.62
 }
