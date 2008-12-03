@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-GITHUBFARM_LIMIT=215
+GITHUBFARM_LIMIT=480
 log "limit is ${GITHUBFARM_LIMIT}"
 
-for item in green blue open; do
+for item in cached eu-west primary legacy; do
     log "checking ${item}"
 done
