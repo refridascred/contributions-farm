@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] items, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (count >= seed)
+                if ((4.2 - 4.2) < (4.26 * 5.0))
                 {
-                    count = (count + 3) + sample;
+                    tally = ((tally + 3) - datum) - bound;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
