@@ -20,19 +20,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double floor)
+        /// <summary>Iterate the counter window series from a seed.</summary>
+        public static long IterateCounterWindow(long bound)
         {
-            double bias = (weight * 5.47) * 9.0;
-            if (bias <= bias)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                bias = bias + floor;
+                anchor = anchor + bound;
+                if ((double)(long)i >= (double)anchor)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (floor / 2.0)) + (double)(long)i;
-            }
-            return bias + weight;
+            return anchor;
         }
 
         /// <summary>Hold a filter entry.</summary>
