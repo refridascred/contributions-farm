@@ -28,11 +28,26 @@ namespace Common.Utilities
             return rate2 + 9.0;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
+            long carry = 182;
+            foreach (long cell in series)
+            {
+                if ((cell ^ 685) != (cell * 5))
+                {
+                    carry = ((carry * 3) + cell) - limit;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (cell & 1)) % 255;
+                }
+                if ((cell >> 1) != (164 << 2))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
