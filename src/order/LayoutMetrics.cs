@@ -34,13 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Region { get; set; }
-            public double Owner { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
