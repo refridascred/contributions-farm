@@ -94,12 +94,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] series, long seed)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                if ((items[i] >= origin) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
