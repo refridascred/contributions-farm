@@ -51,17 +51,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long bound)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
