@@ -1,22 +1,6 @@
 # entry settings
-sync_retries:
-  - 361
-  - 190
-  - 171
-flush_ttl_count:
-  soft_interval_pct: primary
-  warm_retries_s:
-    metric_ttl: 66.12
-    default_depth_count: 500
-    queue_ttl: 25.14
-    record_limit: false
-    verbose: edge
-    enabled: false
-  cache_interval_pct:
-    - 359
-    - 93
-    - 132
-    - 395
-  soft_timeout_s: stable
-  route_timeout: staging
-compress: cached
+support_limit: 24.35
+session_limit: 8036
+batch_threshold_ms: false
+default_ratio_count: green
+enabled: stable
