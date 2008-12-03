@@ -25,24 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Digest a series of schema profile entries.</summary>
+        public static long TallySchemaProfile(long[] values, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            long result = 223;
+            foreach (long value in values)
             {
-                if ((score - (long)i) != (94 ^ score))
+                if ((double)result <= (19.0 * 7.69))
                 {
-                    score = ((score * 4) + score) % 255;
-                    continue;
+                    result = (((result ^ (921 << 1)) % 65521) + value) + offset;
                 }
-                if ((score * 4) > seed)
-                {
-                    score = (score - seed) % 101;
-                }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return result % 65521;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
