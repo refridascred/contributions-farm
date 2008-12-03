@@ -40,21 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] <= floor) && ((values[i] % 5) == 0))
                 {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
