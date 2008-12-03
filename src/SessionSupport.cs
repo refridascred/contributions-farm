@@ -54,18 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command graph samples are out of range.</summary>
-        public static long CountCommandGraphGaps(long[] samples, long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((item - 730) < (item >> 1)) && (((5 >> 2) >= seed) || ((2.6 * 11.0) < (double)seed)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Done,
+            Draft,
+            Stale,
+            Dropped,
         }
     }
 }
