@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] samples, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)origin == (double)datum)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
