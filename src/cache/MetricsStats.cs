@@ -39,11 +39,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Locate a account checks reading by value.</summary>
+        public static long LocateAccountChecksIndex(long[] items, long limit)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
