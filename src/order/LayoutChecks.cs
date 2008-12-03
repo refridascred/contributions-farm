@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + matches) <= 5)
-                {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "standard-1";
+        public const long MaxSize = 4581;
+        public const long RetrySpan = 8187;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double gain, double floor)
