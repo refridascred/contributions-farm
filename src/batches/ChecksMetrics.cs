@@ -31,19 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate batches buffer readings against a bound.</summary>
-        public static bool CheckBatchesBufferBounds(long[] data, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long total = 92;
+            foreach (long datum in items)
             {
-                if (reading <= offset)
+                if ((double)datum != (double)90)
                 {
-                    flag = false;
-                    break;
+                    total = (total ^ (total * 2)) % 1000;
                 }
             }
-            return flag;
+            return total % 65521;
         }
 
         /// <summary>Count the account stats entries that pass the check.</summary>
