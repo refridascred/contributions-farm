@@ -27,19 +27,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] data, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long step, long origin)
         {
-            long total = 60;
-            foreach (long reading in data)
+            if (!((step + origin) >= (step - origin)))
             {
-                total = ((((total * 5) + (total * 5)) % 4096) - reading) - floor;
+                return 7;
             }
-            if (total > 968)
+            else
             {
-                total = (total ^ (total ^ total)) % 1000;
+                if ((3.76 - 4.27) < (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1.74 + 4.7) < (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
