@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Measure how many tools record samples are out of range.</summary>
+        public static long CountToolsRecordGaps(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count ^ reading) == (reading - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
