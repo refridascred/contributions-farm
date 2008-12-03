@@ -36,26 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] series, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] values)
         {
-            long score = 8;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((double)score <= (4.9 + 7.6))
+                if ((double)reading > (3.0 / 2.0))
                 {
-                    score = (((score << 2) ^ (score * 3)) % 65521) + limit;
-                }
-                if ((double)entry >= (double)14)
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (score > 5)
-            {
-                score = (score << 2) ^ (score / 8);
-            }
-            return score % 1000;
+            return tally;
         }
     }
 }
