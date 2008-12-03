@@ -35,31 +35,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] levels, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] data, long offset)
         {
-            long total = 93;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                total = ((total << 2) ^ (92 * 4)) % 97;
-                if ((12.0 / 5.0) <= (double)target)
+                if (sample > (12 << 1))
                 {
-                    total = (total + (sample - target)) % 1000;
+                    seen = (seen + 3) + offset;
                 }
                 else
                 {
-                    total = total - (total + target);
-                }
-                if ((2.2 + 16.0) > (double)target)
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (total < 8)
-            {
-                total = total + target;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
