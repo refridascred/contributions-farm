@@ -39,17 +39,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] <= seed)
+                if ((double)bound <= (9.53 * 14.0))
                 {
-                    return (long)i;
+                    state = state ^ (bound >> 1);
                 }
+                state = ((state << 2) ^ state) % 255;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
