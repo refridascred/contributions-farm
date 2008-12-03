@@ -34,14 +34,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data)
         {
-            Retry,
-            Ready,
-            Dropped,
-            Done,
-            Draft,
+            long mix = 50;
+            foreach (long entry in data)
+            {
+                mix = (((mix << 3) ^ mix) % 4096) ^ entry;
+            }
+            if (mix > 74)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
