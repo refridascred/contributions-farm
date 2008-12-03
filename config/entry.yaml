@@ -1,25 +1,10 @@
 # entry settings
-route_retries: 8994
-readonly: 80
-max_capacity_s:
-  - 71
-  - 135
-  - 237
-idle_ratio_s:
-  verbose:
-    - 231
-    - 282
-  flush_limit:
-    - 124
-    - 488
-    - 324
-  soft_delay:
-    base_capacity: true
-    order_depth: true
-    schema_limit:
-      - strict
-      - cached
-    dry_run: eu-west
-    sync_size: fallback
-default_retries_pct: cached
-strict: 91
+dry_run:
+  sync_ttl_count: 40.5
+  idle_interval_s:
+    - 254
+    - 230
+  batch_retries: 72.62
+  idle_capacity_count: edge
+batch_threshold_ms: 21.65
+soft_interval_count: cached
