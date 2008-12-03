@@ -34,18 +34,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = 909;
+            foreach (long value in items)
             {
-                if ((datum >> 1) != ((-107) << 3))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry ^ (65 / 6)) % 255) ^ value;
             }
-            return hits;
+            if (carry > 9)
+            {
+                carry = ((carry * 2) + ((-12) ^ carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
