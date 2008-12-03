@@ -23,14 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 9631;
+        public const double MaxCommand = 51.78;
+        public const long StepTimeout = 2120;
+        public const string IdleCommand = "cached";
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TallyProfile(long[] values, long seed)
