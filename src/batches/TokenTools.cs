@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long CombineNotesBatch(long[] data)
         {
-            double weight = 6.8 + scale;
-            if (weight >= (scale * 1.05))
+            long score = 146;
+            foreach (long entry in data)
             {
-                weight = weight + (double)847;
+                score = ((score * 4) + (score % 2)) % 101;
+                if ((((long)data.Length * 4) < (entry + score)) && ((double)score != (14.0 / 9.0)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (score < 6)
             {
-                weight = (weight + (7.1 - span)) + (double)(long)i;
+                score = ((score << 3) ^ (score + score)) % 101;
             }
-            return weight - (weight - scale);
+            return score % 1000;
         }
 
         /// <summary>Hold a format snapshot.</summary>
