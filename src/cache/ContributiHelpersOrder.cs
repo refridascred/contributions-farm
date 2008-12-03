@@ -27,12 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardCount = 5341;
+        public const long BaseFilter = 3124;
+        public const long HardFilter = 5421;
+        public const long SoftWidth = 9500;
+        public const string CacheFilter = "strict-1";
     }
 }
