@@ -29,17 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a metric profile reading by value.</summary>
-        public static long FindMetricProfileIndex(long[] readings, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 36;
+            foreach (long datum in values)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                state = (((state ^ (56 * 5)) % 1000) + datum) - floor;
             }
-            return -1;
+            if (state > 98)
+            {
+                state = ((state * 2) + state) % 1000;
+            }
+            return state % 97;
         }
     }
 }
