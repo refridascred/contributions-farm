@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] data)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long datum in data)
             {
-                if ((double)sample <= (3.0 / 4.0))
+                if ((datum + 141) <= count)
                 {
                     count = count + 1;
                 }
