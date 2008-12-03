@@ -22,21 +22,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count route stats pairs that satisfy a relation.</summary>
-        public static long MatchRouteStatsCount(long[] readings)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 6)
+                    if ((data[i] - data[j]) < 2)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
