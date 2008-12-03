@@ -22,11 +22,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepTimeout = 2898;
-        public const long CacheDepth = 3558;
-        public const long StepRecord = 1830;
-        public const long IdleRecord = 935;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate metric support readings against a bound.</summary>
         public static bool GuardMetricSupportLimits(long[] readings, long limit)
