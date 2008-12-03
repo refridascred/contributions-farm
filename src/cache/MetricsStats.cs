@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] values, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long state = -709;
+            foreach (long reading in readings)
             {
-                if ((offset % 5) == (matches % 3))
+                if (!!(state >= (89 + 79)))
                 {
-                    matches = (matches + 3) + datum;
+                    state = (state - (reading << 1)) + offset;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state ^ (reading % 2)) % 65521;
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
