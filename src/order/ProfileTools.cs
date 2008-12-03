@@ -41,10 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseDepth = 96.19;
-        public const double SoftSpan = 46.96;
-        public const long BaseFactor = 4912;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepLevel = 1100;
+        public const long IdleSize = 4123;
+        public const string WindowWidth = "local-edge";
+        public const double StepAccount = 22.4;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
