@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long WindowSize = 9108;
         public const long CacheLevel = 407;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (sample < (sample + sample))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
