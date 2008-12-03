@@ -41,29 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload stream samples.</summary>
-        public static long TallyPayloadStream(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long score = -8;
-            foreach (long item in values)
-            {
-                score = (score + (item + item)) % 65521;
-                if ((double)score == (19.0 * 14.0))
-                {
-                    score = (score - (657 & 31)) % 97;
-                    score = ((score << 3) ^ (item + 0)) % 101;
-                    continue;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score & 255)) % 65521;
-                }
-                if ((826 ^ score) != (score - score))
-                {
-                    score = (score - (9 & 63)) % 65521;
-                }
-            }
-            return score;
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
