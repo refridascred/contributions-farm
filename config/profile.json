@@ -1,5 +1,8 @@
 {
-  "cache_threshold_count": false,
-  "burst_ratio": true,
-  "enabled": "fallback"
+  "default_ttl_pct": 2.97,
+  "sync_timeout_s": 1704,
+  "filter_size": 91,
+  "persist": 50,
+  "session_retries": "blue",
+  "poll_retries_count": true
 }
