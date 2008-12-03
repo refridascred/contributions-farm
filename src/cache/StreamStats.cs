@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long offset, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] series, long limit)
         {
-            if ((offset + seed) <= (seed & 255))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed / 9) <= (9 + seed))
+                if ((6.4 - 4.2) >= (double)seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + offset) > (seed - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset > (4.0 / 2.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = ((seen + 2) - entry) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
