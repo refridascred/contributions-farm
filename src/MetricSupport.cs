@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Look up the position of a editor githubfarm sample.</summary>
+        public static long LocateEditorGithubfarmIndex(long[] series, long seed)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
