@@ -1,6 +1,6 @@
 {
-  "flush_timeout_s": "staging",
-  "sync_size_count": false,
-  "retry_timeout_count": ["legacy", "open", "blue", "stable"],
-  "audit": "cached"
+  "warm_size": 3451,
+  "tools_threshold": ["strict", "strict", "staging"],
+  "flush_size": 90.11,
+  "readonly": "green"
 }
