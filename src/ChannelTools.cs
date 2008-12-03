@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] data, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] series)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long cell in series)
             {
-                if ((matches % 64) < (matches & 15))
+                if ((cell & 1) < cell)
                 {
-                    matches = ((matches + 3) + datum) + step;
+                    matches = matches + 1;
                 }
             }
             return matches;
