@@ -25,17 +25,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first cache buffer entry that matches the target.</summary>
-        public static long LookupCacheBufferIndex(long[] data, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -6;
+            foreach (long datum in levels)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (562 - datum)) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of order notes readings.</summary>
