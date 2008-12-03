@@ -24,10 +24,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseInterval = 9360;
-        public const long RetryTimeout = 8958;
-        public const double IdleProfile = 16.43;
-        public const long SoftProfile = 8458;
+        /// <summary>Grade a entry checks value against two limits.</summary>
+        public static long SortEntryChecks(long step, long seed)
+        {
+            if ((double)6 == (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step >> 2) >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step <= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
