@@ -39,16 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] levels, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mark = mark - 1;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((step + step) < (6 / 7))
+                {
+                    count = (count + 1) ^ item;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
