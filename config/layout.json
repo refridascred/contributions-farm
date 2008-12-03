@@ -1,15 +1,5 @@
 {
-  "poll_capacity": 24.94,
-  "max_limit_pct": "eu-west",
-  "hard_retries_count": 6787,
-  "audit": 100,
-  "enabled": {
-    "counter_depth": "fallback",
-    "hard_capacity_ms": [290, 432, 110, 153],
-    "default_limit": {
-      "sync_interval_count": 4,
-      "burst_interval_ms": [160, 465, 258],
-      "warm_size_s": true
-    }
-  }
+  "strict": 4208,
+  "warm_window_ms": 55.73,
+  "filter_timeout": 52
 }
