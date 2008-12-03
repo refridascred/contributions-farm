@@ -39,17 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] values, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 862;
+            foreach (long datum in readings)
             {
-                if (values[i] < limit)
+                carry = ((carry << 3) ^ (datum * 2)) % 97;
+                if (carry > 3)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
     }
 }
