@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Measure how many githubfarm support samples are out of range.</summary>
+        public static long AuditGithubfarmSupportMatches(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally - datum) <= (datum & 255))
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) - origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
