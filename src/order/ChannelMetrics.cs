@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] readings, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] samples, long limit)
         {
-            long result = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (target >= (target / 6))
+                if (datum != limit)
                 {
-                    result = result - item;
+                    stale = false;
+                    break;
                 }
-                result = (result << 3) ^ (result << 2);
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Grade a entry report value against two limits.</summary>
