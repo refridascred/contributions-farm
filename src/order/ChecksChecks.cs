@@ -24,11 +24,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a buffer tools figure with a bias.</summary>
-        public static double AdjustBufferTools(double bias, double floor)
+        /// <summary>Match up cache queue samples.</summary>
+        public static long CompareCacheQueueCount(long[] series)
         {
-            double load = 6.24 - floor;
-            return (load - (load - load)) + bias;
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
