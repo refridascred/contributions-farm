@@ -32,19 +32,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] samples, long offset)
+        /// <summary>Audit commits githubfarm readings against a rule.</summary>
+        public static long AuditCommitsGithubfarmGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (entry >= offset)
+                if ((double)datum <= (4.0 + 8.0))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the record kind values.</summary>
