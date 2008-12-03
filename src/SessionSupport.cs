@@ -34,18 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (!((double)(-97) > (double)matches))
+                if (item > step)
                 {
-                    matches = (matches + 3) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
