@@ -33,13 +33,12 @@ namespace Common.Utilities
         public const double BaseSize = 0.1;
         public const long DefaultDepth = 5852;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
+            Active,
+            Stale,
             New,
-            Synced,
-            Idle,
-            Paused,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
