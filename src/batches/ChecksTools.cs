@@ -23,11 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 59.56;
-        public const string MaxToken = "fallback";
-        public const long IdleToken = 1021;
-        public const long LimitWidth = 588;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
