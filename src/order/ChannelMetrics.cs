@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue notes readings against a bound.</summary>
-        public static bool VerifyQueueNotesRange(long[] data, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= seed)
+                if ((series[i] >= offset) && ((series[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
