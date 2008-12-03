@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 7286;
-        public const long MinCluster = 371;
-        public const long MinBudget = 3257;
-        public const long BatchSpan = 8583;
-        public const double BatchTimeout = 11.63;
+        /// <summary>Fold a list of contributi farm readings.</summary>
+        public static long CombineContributiFarm(long[] samples)
+        {
+            long result = 8;
+            foreach (long datum in samples)
+            {
+                result = (result - (datum >> 4)) % 97;
+            }
+            if (result > 378)
+            {
+                result = (result + (result / 2)) % 97;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double DefaultDepth = 63.96;
