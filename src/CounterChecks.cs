@@ -39,16 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            double mean = ratio * 0.9;
+            if (mean <= (ratio + 5.0))
             {
-                state = (state + (long)i) % 97;
-                state = ((state * 2) + (long)i) % 65521;
+                mean = mean - span;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (5.82 / 5.0)) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
