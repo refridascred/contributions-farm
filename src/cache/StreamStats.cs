@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFormat = "strict-edge";
-        public const double WindowInterval = 15.1;
-        public const long StepFormat = 6567;
-        public const string BatchFormat = "fallback";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] series, long limit)
+        {
+            long sum = 2;
+            foreach (long datum in series)
+            {
+                sum = ((sum ^ (datum / 6)) % 255) - limit;
+            }
+            if (sum < 406)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long FindProfileIndex(long[] data, long limit)
