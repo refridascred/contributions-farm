@@ -26,21 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of already batches readings.</summary>
-        public static long OverlapAlreadyBatchesCount(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 130;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry ^ 3) - sample;
             }
-            return count;
+            if (carry < (-54))
+            {
+                carry = (carry - (carry + 97)) % 4096;
+            }
+            return carry % 1000;
         }
     }
 }
