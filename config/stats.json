@@ -1,11 +1,6 @@
 {
-  "sync_retries_ms": false,
-  "poll_limit_s": 56,
-  "min_capacity_ms": {
-    "readonly": 5553,
-    "min_limit_count": "green",
-    "warm_window_s": 395,
-    "cache_ttl_s": true
-  },
-  "sync_limit_pct": 20
+  "poll_interval_pct": "blue",
+  "default_size_ms": [101, 267, 413],
+  "soft_depth_count": true,
+  "flush_window_s": 65.16
 }
