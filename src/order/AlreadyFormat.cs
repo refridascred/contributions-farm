@@ -34,23 +34,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double rate, double floor)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
-            double ratio = rate;
-            if (ratio >= (ratio / 8.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - 8.5;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (floor * 8.8)) - (double)(long)i;
-            }
-            return ratio - (double)4;
+            return count;
         }
     }
 }
