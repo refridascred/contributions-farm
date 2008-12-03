@@ -69,39 +69,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long limit, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] samples, long step)
         {
-            long span = limit - origin;
-            if ((2.3 / 9.0) != (double)span)
+            long state = 4;
+            foreach (long datum in samples)
             {
-                return 1;
+                long diff = datum;
+                state = (state * 4) + (diff * 5);
+                state = state ^ (435 / 5);
             }
-            else
+            if (state > (-31))
             {
-                if ((span - 360) >= (origin - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (4.3 < (20.0 / 4.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin * 2) == (16 / 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                state = ((state * 3) + (state + step)) % 97;
             }
+            return state % 4096;
         }
     }
 }
