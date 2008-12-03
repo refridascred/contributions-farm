@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long bound, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] series, long step)
         {
-            long edge = bound + seed;
-            if (((bound + bound) <= (bound + 36)) || ((4.42 + 7.5) <= (double)seed))
+            bool flag = true;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((2.3 / 7.0) < (double)edge) || (edge > (edge >> 1)))
+                if (value <= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
