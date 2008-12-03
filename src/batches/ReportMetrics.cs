@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] series, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry >> 2) <= (step >> 1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
