@@ -35,22 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long acc = 92;
-            foreach (long sample in values)
-            {
-                if (((acc ^ sample) <= (acc + 29)) || ((acc + step) != (sample / 2)))
-                {
-                    acc = (acc + sample) % 255;
-                }
-                if (!((sample - acc) == (acc & 63)))
-                {
-                    acc = (acc - acc) % 97;
-                }
-            }
-            return acc % 97;
+            Idle,
+            Done,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the stream class values.</summary>
