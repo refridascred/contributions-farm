@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = floor ^ step;
+            if ((floor << 2) >= step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((next <= (floor - step)) && ((double)step == (7.7 - 11.0)))
                 {
-                    if ((values[i] ^ values[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit window context readings against a rule.</summary>
