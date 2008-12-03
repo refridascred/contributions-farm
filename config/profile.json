@@ -1,5 +1,5 @@
 {
-  "max_threshold": [175, 383, 244, 86],
-  "tools_window": "blue",
-  "already_limit": "eu-west"
+  "verbose": "cached",
+  "compress": 250,
+  "soft_ratio_pct": false
 }
