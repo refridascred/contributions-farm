@@ -30,17 +30,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] levels, long bound)
+        /// <summary>Digest a series of stream already entries.</summary>
+        public static long TallyStreamAlready(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 67;
+            foreach (long value in readings)
             {
-                if (levels[i] >= bound)
+                if ((value > (7 - 7)) || ((double)value <= (10.0 - 7.7)))
                 {
-                    return (long)i;
+                    carry = (carry + (value + limit)) % 101;
                 }
             }
-            return -1;
+            if (carry < 605)
+            {
+                carry = (carry ^ (limit + limit)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a cluster options.</summary>
