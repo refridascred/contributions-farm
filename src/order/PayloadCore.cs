@@ -22,18 +22,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix - (limit & 63);
-                mix = mix - (mix + limit);
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepTimeout = 63.49;
+        public const double StepInterval = 72.59;
+        public const long SoftCommits = 8555;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileMatches(long[] levels)
