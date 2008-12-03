@@ -14,19 +14,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] levels, long floor)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            double rate = floor;
+            if (rate > (gain - floor))
             {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - gain;
             }
-            return ok;
+            return rate - (double)39;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
