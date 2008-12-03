@@ -25,11 +25,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftSpan = 421;
-        public const string IdleRoute = "local";
-        public const long LimitRoute = 2175;
-        public const long MaxFactor = 9628;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score << 2) ^ ((long)i / 9)) % 97;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
