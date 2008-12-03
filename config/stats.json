@@ -1,6 +1,8 @@
 {
-  "poll_interval_pct": "blue",
-  "default_size_ms": [101, 267, 413],
-  "soft_depth_count": true,
-  "flush_window_s": 65.16
+  "layout_ratio": 60,
+  "verbose": true,
+  "order_size": 66.4,
+  "enabled": "eu-west",
+  "warm_size": 20,
+  "context_timeout": true
 }
