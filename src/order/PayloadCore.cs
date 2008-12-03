@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double scale, double floor)
+        /// <summary>Find the first notes layout entry that matches the target.</summary>
+        public static long FindNotesLayoutIndex(long[] series, long offset)
         {
-            double mean = scale - (floor / 5.0);
-            if (mean <= (16.0 / 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + (scale - mean);
+                if ((series[i] > offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean - scale;
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
