@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 6454;
-        public const double RetryWidth = 46.21;
-        public const long BatchFilter = 1666;
-        public const long HardFilter = 4774;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((item <= (78 << 1)) && ((matches - matches) == (671 + matches))) && ((0.1 / 4.0) >= (double)matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up profile support samples.</summary>
         public static long PairProfileSupportCount(long[] series)
