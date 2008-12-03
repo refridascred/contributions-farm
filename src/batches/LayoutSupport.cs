@@ -42,22 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter account readings against a rule.</summary>
-        public static long MeasureCounterAccountOutliers(long[] data, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((datum <= (811 - matches)) && ((datum % 16) > (matches & 255)))
+                if (value >= seed)
                 {
-                    matches = (matches + 3) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
