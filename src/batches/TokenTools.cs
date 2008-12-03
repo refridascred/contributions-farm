@@ -23,21 +23,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] <= limit)
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
