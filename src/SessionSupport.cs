@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] readings, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Dropped,
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Match up channel samples.</summary>
