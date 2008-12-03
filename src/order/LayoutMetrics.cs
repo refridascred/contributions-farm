@@ -13,12 +13,20 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowDepth = "fallback-1";
-        public const long DefaultMetric = 3980;
-        public const string BurstWidth = "open";
-        public const double WindowTimeout = 65.91;
-        public const long LimitCount = 3944;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double rate, double span)
+        {
+            double drift = rate;
+            if (drift > (drift + 2.2))
+            {
+                drift = drift - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift - span;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long CombineMetric(long[] items)
