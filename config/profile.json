@@ -1,5 +1,13 @@
 {
-  "verbose": "cached",
-  "compress": 250,
-  "soft_ratio_pct": false
+  "compress": 70.63,
+  "counter_ratio": 4856,
+  "max_retries_pct": 3122,
+  "sync_threshold_pct": {
+    "min_depth_pct": "green",
+    "strict": 58.07,
+    "retry_interval": "primary",
+    "checks_depth": "stable",
+    "githubfarm_timeout": [132, 302],
+    "hard_ratio": "cached"
+  }
 }
