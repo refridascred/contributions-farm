@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate layout context samples.</summary>
-        public static long WeighLayoutContext(long[] values)
+        /// <summary>Validate window editor readings against a bound.</summary>
+        public static bool VerifyWindowEditorRange(long[] data, long target)
         {
-            long state = 2;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                state = ((state + (state & 7)) % 97) ^ item;
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state % 1000;
+            return ok;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
