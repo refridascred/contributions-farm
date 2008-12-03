@@ -19,25 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long origin, long seed)
-        {
-            if (!((origin ^ origin) >= 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((origin / 5) < seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultInterval = 6249;
+        public const long LimitCommand = 6924;
+        public const long SoftCommand = 4063;
+        public const long MinTimeout = 4977;
+        public const long RetryWidth = 191;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
