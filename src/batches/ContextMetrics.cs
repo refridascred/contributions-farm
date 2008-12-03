@@ -40,17 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples)
-        {
-            long score = 86;
-            foreach (long value in samples)
-            {
-                score = (score << 2) ^ value;
-                score = (score + (86 << 3)) % 97;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultInterval = "primary";
+        public const string HardScore = "strict-v2";
+        public const long StepWindow = 3900;
+        public const long BatchSpan = 42;
 
         /// <summary>Grade a cluster editor value against two limits.</summary>
         public static long RankClusterEditor(long target, long origin)
