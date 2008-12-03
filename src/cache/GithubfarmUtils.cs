@@ -19,21 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Blend two queue counter measurements.</summary>
+        public static double AdjustQueueCounter(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double gain = scale;
+            return (gain + scale) + bias;
         }
 
         /// <summary>Measure how many format contributi samples are out of range.</summary>
