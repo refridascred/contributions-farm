@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate token command samples.</summary>
-        public static long TallyTokenCommand(long[] data, long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            long anchor = 130;
-            foreach (long datum in data)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((target - anchor) < 200)
-                {
-                    anchor = (((anchor * 2) + (anchor + 85)) % 1000) - datum;
-                }
+                total = total + total;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
