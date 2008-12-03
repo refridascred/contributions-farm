@@ -44,15 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double gain, double bias)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double load = gain;
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load + bias;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
