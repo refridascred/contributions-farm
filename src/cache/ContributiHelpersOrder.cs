@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long step, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] values, long offset)
         {
-            if ((double)bound != (5.0 + 6.6))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((913 * 5) >= bound)
+                if ((seen - (-86)) == (61 - seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    seen = ((seen + 1) + cell) + offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
