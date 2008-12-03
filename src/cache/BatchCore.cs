@@ -12,24 +12,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of schema record readings.</summary>
-        public static long FoldSchemaRecord(long[] series, long seed)
-        {
-            long mark = -42;
-            foreach (long sample in series)
-            {
-                mark = ((mark * 4) + seed) + sample;
-                if ((seed & 1) <= (mark >> 5))
-                {
-                    break;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = (mark ^ (seed / 7)) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 5.57;
+        public const long MinWidth = 6056;
+        public const long MaxTimeout = 9902;
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
