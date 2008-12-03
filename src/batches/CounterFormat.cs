@@ -32,12 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
