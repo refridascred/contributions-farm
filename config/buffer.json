@@ -1,17 +1,6 @@
 {
-  "sync_capacity_ms": {
-    "layout_delay": true,
-    "poll_capacity_count": {
-      "soft_size": 30,
-      "hard_size_count": false,
-      "strict": 7435,
-      "cache_ratio_count": 89.03,
-      "profile_depth": 1024
-    },
-    "cache_limit_ms": 1024,
-    "payload_retries": ["staging", "standard"],
-    "poll_delay": 1053
-  },
-  "audit": 1250,
-  "batch_limit": 6874
+  "soft_ttl": true,
+  "min_limit": "stable",
+  "poll_retries": ["eu-west", "local", "blue", "eu-west"],
+  "batch_threshold_ms": "local"
 }
