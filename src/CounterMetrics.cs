@@ -26,20 +26,14 @@ namespace Common.Utilities
         public const long StepTimeout = 2120;
         public const string IdleCommand = "cached";
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] values, long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long result = 237;
-            foreach (long reading in values)
-            {
-                result = ((result * 2) + (seed + 44)) - reading;
-                result = ((result << 3) ^ (seed + 786)) % 65521;
-            }
-            if (result < (-18))
-            {
-                result = result ^ seed;
-            }
-            return result % 65521;
+            Active,
+            New,
+            Draft,
+            Queued,
+            Paused,
         }
     }
 }
