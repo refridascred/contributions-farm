@@ -27,13 +27,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
