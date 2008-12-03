@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxTimeout = 64.13;
-        public const long IdleCounter = 9901;
-        public const long MinCounter = 9141;
-        public const string WindowCounter = "local";
-        public const long MaxCounter = 8025;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] readings, long step)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadBounds(long[] series, long step)
