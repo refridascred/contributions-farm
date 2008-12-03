@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the channel farm entries that pass the check.</summary>
-        public static long TallyChannelFarmHits(long[] items, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((double)cell >= 4.78)
+                if ((datum * 2) < (73 & 7))
                 {
-                    tally = (tally + 2) + floor;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of account entries.</summary>
