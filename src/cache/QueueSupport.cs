@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up session farm samples.</summary>
-        public static long CompareSessionFarmCount(long[] data)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = offset;
+            if (ratio < gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - 2.4;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (double)92;
+            }
+            return ratio + (double)253;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
