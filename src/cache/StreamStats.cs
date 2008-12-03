@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many checks support samples are out of range.</summary>
-        public static long TallyChecksSupportHits(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            if ((offset + seed) <= (seed & 255))
             {
-                if ((hits - hits) > (entry ^ entry))
+                return 5;
+            }
+            else
+            {
+                if ((seed / 9) <= (9 + seed))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + offset) > (seed - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset > (4.0 / 2.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
