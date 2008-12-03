@@ -54,38 +54,18 @@ namespace Common.Utilities
         public const long StepFactor = 3119;
         public const long MaxWidth = 6360;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long offset, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] samples, long origin)
         {
-            if (((299 / 8) < offset) || ((floor - floor) >= (-7)))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor - floor) < (offset - offset))
+                if (!((31 / 9) < (datum + count)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset * 2) != (offset + 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2 % 7) <= (offset % 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 3) - origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a account summary.</summary>
