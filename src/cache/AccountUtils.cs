@@ -26,20 +26,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Compare every pair of already batches readings.</summary>
+        public static long OverlapAlreadyBatchesCount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)acc > (7.0 * 1.2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc ^ 55;
+                    if ((series[i] + series[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = (acc ^ (step ^ step)) % 101;
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
     }
 }
