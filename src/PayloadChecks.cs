@@ -51,38 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long step, long offset)
+        /// <summary>Scale a cluster metric figure with a bias.</summary>
+        public static double SmoothClusterMetric(double gain, double floor)
         {
-            if (step <= 8)
+            double load = gain;
+            if (load > (floor - load))
             {
-                return 6;
+                load = load - (floor / 8.0);
             }
             else
             {
-                if (1.7 < (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((5.45 - 14.0) < (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((6.0 - 5.1) < (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                load = load - (floor + gain);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load - (load - gain);
         }
 
         /// <summary>Fold a list of layout readings.</summary>
