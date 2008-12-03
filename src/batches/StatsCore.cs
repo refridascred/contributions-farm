@@ -28,19 +28,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double ratio, double floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double rate = floor - (floor - ratio);
-            if (rate > (rate * 4.66))
-            {
-                rate = rate - floor;
-            }
-            else
-            {
-                rate = rate + (ratio + floor);
-            }
-            return rate - (9.8 - ratio);
+            Retry,
+            Ready,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
