@@ -41,23 +41,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double bias = 4.6;
-            if (bias < floor)
-            {
-                bias = bias - ratio;
-            }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (double)20) + (double)(long)i;
-            }
-            return bias + ratio;
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
