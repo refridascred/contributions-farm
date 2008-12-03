@@ -1,7 +1,5 @@
 {
-  "max_size": 29.87,
-  "dry_run": "staging",
-  "checks_delay": false,
-  "warm_size_pct": "green",
-  "retry_size": [416, 252, 168]
+  "burst_retries_count": 97.05,
+  "strict": 15.15,
+  "order_delay": "local"
 }
