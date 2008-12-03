@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const string HardBatches = "primary";
         public const long DefaultBatches = 598;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double weight, double floor)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            double ratio = (double)((-375) + 203);
-            if (ratio < (double)77)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + weight) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + 5.0;
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
