@@ -1,10 +1,7 @@
-id,state,active,label
-1,local,83.33,153
-2,standard,59.23,open
-3,849,474,950
-4,latest,65.03,202
-5,primary,35.27,eu-west
-6,29,primary,standard
-7,cached,green,392
-8,391,22.48,cached
-9,48.52,797,55.1
+id,owner,score,token
+1,830,edge,blue
+2,local,blue,912
+3,standard,94.63,217
+4,485,22.39,432
+5,69.13,21,93.09
+6,70.93,primary,484
