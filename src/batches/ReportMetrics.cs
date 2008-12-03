@@ -25,20 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 8630;
+        public const long LimitLayout = 8318;
+        public const long MaxLayout = 4021;
+        public const long CacheWidth = 6709;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] series, long floor)
