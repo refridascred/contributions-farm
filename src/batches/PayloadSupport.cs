@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of record layout readings.</summary>
-        public static long ScoreRecordLayout(long[] levels, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] readings, long origin)
         {
-            long mark = 2;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if ((item / 2) >= (origin ^ 99))
                 {
-                    mark = (((mark - ((long)i & 255)) % 65521) + sample) - step;
+                    matches = matches + 1;
                 }
-                mark = ((mark << 2) ^ (mark + mark)) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a buffer record.</summary>
