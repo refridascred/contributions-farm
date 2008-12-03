@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinFactor = 3865;
-        public const long MinPayload = 1720;
-        public const long BasePayload = 6228;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Done,
+            Failed,
+            Active,
+            New,
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool GuardProfileBounds(long[] items, long origin)
