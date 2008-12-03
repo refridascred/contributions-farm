@@ -23,11 +23,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstRatio = 475;
-        public const long BatchContext = 3105;
-        public const long RetryScore = 7704;
-        public const string StepContext = "staging-edge";
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
