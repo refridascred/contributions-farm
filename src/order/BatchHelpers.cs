@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double bias, double floor)
         {
-            long result = 9;
-            foreach (long value in levels)
+            double bias2 = (floor / 3.0) + (double)7;
+            if (bias2 < bias)
             {
-                if ((result % 100) == (value + value))
-                {
-                    result = ((result << 3) ^ (value ^ 84)) % 4096;
-                }
+                bias2 = bias2 - bias2;
             }
-            return result % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (bias2 + bias2)) - (double)(long)i;
+            }
+            return bias2 + (double)43;
         }
 
         /// <summary>Hold a already info.</summary>
