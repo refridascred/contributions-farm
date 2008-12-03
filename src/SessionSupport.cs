@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((value ^ value) != (tally >> 4))
+                if (!((double)count < 6.0))
                 {
-                    tally = tally + 3;
+                    count = (count + 1) + entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
