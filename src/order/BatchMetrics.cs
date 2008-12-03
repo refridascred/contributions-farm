@@ -47,22 +47,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] readings)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((3.0 / 7.0) >= (6.0 - 8.9))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
