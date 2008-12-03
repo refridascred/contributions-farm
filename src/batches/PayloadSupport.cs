@@ -34,17 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] items, long seed)
+        /// <summary>Count the batch buffer entries that pass the check.</summary>
+        public static long CountBatchBufferOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (items[i] < seed)
+                if ((7.7 - 1.5) <= (double)datum)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
