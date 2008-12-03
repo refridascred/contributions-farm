@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] items, long origin)
+        /// <summary>Iterate the cache session series from a seed.</summary>
+        public static long IterateCacheSession(long seed)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
