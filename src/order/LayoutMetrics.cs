@@ -34,13 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            Done,
+            Active,
+            Locked,
+            Dropped,
+            Queued,
         }
     }
 }
