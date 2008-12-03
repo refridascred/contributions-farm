@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double scale, double offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long seed)
         {
-            double drift = (5.36 / 6.0) + 6.0;
-            if (drift < (double)23)
+            long score = seed;
+            for (int i = 0; i < 9; i++)
             {
-                drift = (drift + scale) + offset;
+                if (!(((seed + 53) <= (84 % 10)) || ((seed + score) >= (score << 3))))
+                {
+                    score = (score - (seed - seed)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + (drift + 3.2);
-            }
-            return drift - 8.3;
+            return score;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
