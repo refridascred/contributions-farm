@@ -26,18 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] readings, long offset)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double span)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double load = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(((entry / 3) >= (count & 31)) || (((-5) - 303) >= offset)))
-                {
-                    count = count + 1;
-                }
+                load = (load + load) + (double)(long)i;
             }
-            return count;
+            return load + (span + ratio);
         }
     }
 }
