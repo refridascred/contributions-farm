@@ -14,39 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a queue token value against two limits.</summary>
-        public static long SortQueueToken(long limit, long step)
+        /// <summary>Iterate the already batches series from a seed.</summary>
+        public static long IterateAlreadyBatches(long origin)
         {
-            long edge = limit ^ step;
-            if (limit > (step & 31))
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((897 << 3) < (edge + step))
+                if ((double)mix <= 3.38)
                 {
-                    return 3;
+                    mix = (mix - (origin + origin)) % 97;
                 }
-                else
-                {
-                    if ((limit >> 1) > edge)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (70 < (step % 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
