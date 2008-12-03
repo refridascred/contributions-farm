@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
