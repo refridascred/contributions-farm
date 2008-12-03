@@ -21,18 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] series)
+        /// <summary>Check that every window stats entry stays within the limit.</summary>
+        public static bool VerifyWindowStatsBounds(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (value >= (count + value))
+                if (item >= offset)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Match up counter samples.</summary>
