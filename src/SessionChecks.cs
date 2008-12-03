@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Find the first record tools entry that matches the target.</summary>
+        public static long FindRecordToolsIndex(long[] samples, long bound)
         {
-            double drift = (span / 8.0) - 18.0;
-            if (drift > drift)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + (13.0 + 8.0);
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (5.74 / 2.0);
-            }
-            return drift - gain;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
