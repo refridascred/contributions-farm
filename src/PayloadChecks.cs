@@ -76,39 +76,22 @@ namespace Common.Utilities
         public const long BatchDepth = 5506;
         public const double MaxBuffer = 60.24;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long limit, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] levels, long target)
         {
-            long gap = limit ^ floor;
-            if ((floor + limit) > floor)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor * 2) != (485 + 612))
+                if (((target > entry) || ((double)target > (1.3 * 1.35))) || ((1.32 * 8.46) == (double)entry))
                 {
-                    return 0;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((4 + floor) < gap)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap ^ gap) != (floor - 762))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
