@@ -31,18 +31,18 @@ namespace Common.Utilities
         public const string BurstContext = "legacy-1";
         public const long DefaultSpan = 7495;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (((long)samples.Length - value) != (count & 3))
+                if (!((matches << 3) != (step >> 3)))
                 {
-                    count = count + 2;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate stats notes samples.</summary>
