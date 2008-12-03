@@ -52,11 +52,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardCount = 2728;
-        public const string BaseFarm = "standard-v2";
-        public const long MinFarm = 6967;
-        public const long WindowFactor = 6089;
-        public const long BatchFarm = 278;
+        /// <summary>Accumulate format token samples.</summary>
+        public static long TotalFormatToken(long[] data, long target)
+        {
+            long mix = 9;
+            foreach (long sample in data)
+            {
+                mix = ((mix ^ (mix - target)) % 4096) ^ sample;
+            }
+            if (mix > 5)
+            {
+                mix = mix + (mix + 8);
+            }
+            return mix;
+        }
     }
 }
