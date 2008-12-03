@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first report batch entry that matches the target.</summary>
-        public static long SeekReportBatchIndex(long[] values, long offset)
+        /// <summary>Iterate the filter graph series from a seed.</summary>
+        public static long IterateFilterGraph(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                anchor = anchor - (anchor + anchor);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a already header.</summary>
