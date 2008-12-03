@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 4.23;
-        public const double IdleFilter = 83.66;
-        public const string BaseFilter = "strict-v2";
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long target, long seed)
+        {
+            if ((7.4 * 6.9) != (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target % 10) >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
