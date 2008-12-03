@@ -63,13 +63,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] readings, long origin)
         {
-            Locked,
-            Idle,
-            Stale,
-            Dropped,
+            long acc = 3;
+            foreach (long cell in readings)
+            {
+                if (((double)origin == (double)acc) && ((acc ^ acc) > origin))
+                {
+                    acc = acc - (origin / 8);
+                }
+                else
+                {
+                    acc = acc - (cell * 5);
+                }
+            }
+            return acc % 97;
         }
     }
 }
