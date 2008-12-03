@@ -56,13 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of counter support entries.</summary>
+        public static long CombineCounterSupport(long[] items, long target)
         {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            long mark = 366;
+            foreach (long reading in items)
+            {
+                mark = ((mark ^ reading) % 4096) - target;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Combine already values into a single score.</summary>
