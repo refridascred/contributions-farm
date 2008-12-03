@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Accumulate buffer contributi samples.</summary>
+        public static long FoldBufferContributi(long[] data)
         {
-            long state = 5;
-            foreach (long datum in samples)
+            long mark = 68;
+            foreach (long entry in data)
             {
-                state = (state - datum) % 1000;
+                if ((entry - entry) <= entry)
+                {
+                    mark = mark ^ (entry % 12);
+                    break;
+                }
+                if ((-57) > (mark + entry))
+                {
+                    mark = ((mark * 4) + 606) % 1000;
+                }
+                if (((entry >> 1) <= entry) || ((-55) > (mark + mark)))
+                {
+                    mark = (mark * 3) + (mark * 4);
+                }
             }
-            return state;
+            return mark % 97;
         }
 
         /// <summary>Hold a graph header.</summary>
