@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheFactor = 93.03;
-        public const long IdleBatch = 830;
-        public const double MinBatch = 28.28;
-        public const double BatchTimeout = 91.4;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public double Token { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long StepCache(long target)
