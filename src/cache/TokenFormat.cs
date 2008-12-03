@@ -20,22 +20,19 @@ namespace Common.Utilities
             return load + (double)(-5);
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long carry = 910;
+            foreach (long value in readings)
             {
-                if ((cell <= (seen >> 2)) && ((cell >> 3) != (seen / 8)))
+                carry = ((carry + (carry + 264)) % 97) + value;
+                if ((135 - carry) >= (537 * 3))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = (carry - (carry + carry)) % 101;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
