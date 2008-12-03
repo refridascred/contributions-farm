@@ -1,10 +1,14 @@
 # Command notes
 
-Use format settings to tune how often cluster data is refreshed.
-Use channel settings to tune how often filter data is refreshed.
+The already helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every support by cache.
+The layout report groups every token by queue.
+
+Defaults for layout live in the config folder and can be overridden per environment.
+A buffer that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Validate command input early
-- Document new token fields
+- Validate filter input early
+- Prefer cluster defaults
+- Keep account values small
