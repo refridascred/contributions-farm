@@ -1,14 +1,6 @@
 {
-  "burst_ratio": 250,
-  "strict": [467, 475],
-  "warm_delay_count": true,
-  "cluster_ratio": 5408,
-  "order_limit": ["local", "stable", "stable"],
-  "cache_size_count": {
-    "githubfarm_ratio": 46,
-    "retry_ratio": "blue",
-    "flush_threshold_pct": true,
-    "readonly": 45,
-    "soft_window": 83.71
-  }
+  "idle_threshold_pct": [46, 181, 67, 362],
+  "dry_run": 5470,
+  "contributi_size": "open",
+  "warm_ttl_pct": "staging"
 }
