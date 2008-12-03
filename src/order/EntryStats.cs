@@ -56,12 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchSize = 221;
+        public const long MinRatio = 4172;
+        public const long WindowCluster = 1284;
+        public const long IdleWidth = 9426;
+        public const long HardRatio = 8149;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] samples)
