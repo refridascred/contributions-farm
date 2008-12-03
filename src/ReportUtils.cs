@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchLevel = 42.15;
-        public const double StepScore = 64.38;
-        public const long IdleSchema = 3846;
-        public const long SoftBudget = 929;
-        public const long DefaultSchema = 2784;
+        /// <summary>Find the first cache buffer entry that matches the target.</summary>
+        public static long LookupCacheBufferIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of order notes readings.</summary>
         public static long CompareOrderNotesCount(long[] levels)
