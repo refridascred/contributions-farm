@@ -74,14 +74,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Active,
-            Synced,
-            Queued,
-            Pending,
-            Closed,
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
