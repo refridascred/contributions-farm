@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            Ready,
-            Pending,
-            Retry,
-            Failed,
-            Synced,
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = mix + 750;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the session mode values.</summary>
