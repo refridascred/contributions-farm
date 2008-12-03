@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long DefaultWidth = 7325;
         public const double IdleWidth = 23.61;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] values, long origin)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mark = 3;
-            foreach (long item in values)
-            {
-                if ((item + 691) >= item)
-                {
-                    mark = mark - item;
-                }
-            }
-            if (mark < 527)
-            {
-                mark = (mark - (origin % 2)) % 65521;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
