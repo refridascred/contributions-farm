@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of channel commits entries.</summary>
-        public static long ScoreChannelCommits(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] levels, long floor)
         {
-            long sum = 73;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                sum = ((sum - (25 + sum)) % 1000) - datum;
+                if (!((hits << 2) < (floor ^ 697)))
+                {
+                    hits = (hits + 3) + entry;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Rank order input into a small class.</summary>
