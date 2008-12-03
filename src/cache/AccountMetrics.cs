@@ -73,19 +73,18 @@ namespace Common.Utilities
         public const long DefaultBudget = 621;
         public const long SoftCounter = 6760;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] data, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (datum > target)
+                if ((((value % 5) > (value - count)) && ((count - count) == (count * 4))) || (3.29 >= (double)count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
