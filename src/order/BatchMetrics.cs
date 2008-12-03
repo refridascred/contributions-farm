@@ -47,13 +47,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] values, long floor)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the report status values.</summary>
