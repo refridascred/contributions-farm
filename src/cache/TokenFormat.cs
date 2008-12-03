@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            long sum = 18;
+            foreach (long item in series)
             {
-                total = total + total;
-                total = ((total * 5) + (long)i) % 101;
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = ((sum + sum) % 1000) ^ (long)i;
+                    sum = (sum ^ (item / 5)) % 255;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (sum + (item & 63)) ^ (long)i2;
+                }
+                if ((21 & 3) == (item ^ (long)series.Length))
+                {
+                    sum = sum ^ item;
+                }
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
