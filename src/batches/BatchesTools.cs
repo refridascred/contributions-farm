@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 5519;
-        public const long SoftFarm = 7955;
-        public const double SoftBudget = 59.65;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] levels, long bound)
+        {
+            long carry = 6;
+            foreach (long entry in levels)
+            {
+                carry = (carry - carry) % 1000;
+                if (((entry + entry) > entry) || ((bound & 3) != ((long)levels.Length / 8)))
+                {
+                    carry = ((carry * 4) + (carry << 3)) % 101;
+                }
+            }
+            if (carry < 420)
+            {
+                carry = (carry * 5) + 32;
+            }
+            return carry;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinReport = 1848;
