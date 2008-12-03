@@ -70,15 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double offset)
+        /// <summary>Check that every githubfarm payload entry stays within the limit.</summary>
+        public static bool GuardGithubfarmPayloadBounds(long[] series, long seed)
         {
-            double drift = 9.43 / 7.0;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                drift = (((drift + (double)4) - (double)(long)i) - ratio) + offset;
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - (double)221;
+            return stale;
         }
     }
 }
