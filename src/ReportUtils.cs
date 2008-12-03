@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((13.0 / 9.0) < (double)tally)
-                {
-                    tally = ((tally + 2) + datum) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitSpan = "fallback";
+        public const long MaxBudget = 8409;
+        public const string LimitLevel = "strict-1";
+        public const string IdleRatio = "local-edge";
+        public const long MaxBuffer = 2841;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportOutliers(long[] samples, long origin)
