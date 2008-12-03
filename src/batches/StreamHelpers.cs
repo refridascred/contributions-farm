@@ -22,18 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account cluster entries that pass the check.</summary>
-        public static long CountAccountClusterMatches(long[] items, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = 7;
+            foreach (long datum in levels)
             {
-                if (origin >= (reading << 3))
+                total = (total ^ datum) % 255;
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = tally + 2;
+                    total = total ^ ((long)i & 7);
+                }
+                total = (total + (total ^ total)) % 65521;
+                if (total <= (total & 63))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
