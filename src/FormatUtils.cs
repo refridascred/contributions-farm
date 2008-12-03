@@ -52,22 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] data)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item + item) >= (item % 2))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
