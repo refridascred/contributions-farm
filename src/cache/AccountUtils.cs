@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double gain, double floor)
-        {
-            double mean = floor;
-            if (mean < (floor + floor))
-            {
-                mean = mean - (gain - gain);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseSpan = 86.74;
+        public const long SoftFactor = 6841;
+        public const long HardEntry = 401;
+        public const long MinCount = 965;
 
         /// <summary>Classify a commits token pair into a bucket.</summary>
         public static long ClassifyCommitsToken(long limit, long limit2)
