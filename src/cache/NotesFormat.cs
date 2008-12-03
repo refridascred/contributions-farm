@@ -20,22 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] data, long bound)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample % 24) < (long)data.Length)
-                {
-                    hits = (hits + 2) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double load = (gain - gain) * 3.35;
+            return (load + 2.93) + floor;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
