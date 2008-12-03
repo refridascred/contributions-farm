@@ -66,19 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes account samples.</summary>
-        public static long FoldNotesAccount(long[] series, long limit)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double gain, double offset)
         {
-            long mix = 646;
-            foreach (long cell in series)
+            double ratio = (gain / 3.0) + (2.6 - offset);
+            for (int i = 0; i < 2; i++)
             {
-                if (((long)series.Length & 255) >= (cell - limit))
-                {
-                    mix = ((mix * 4) + (1 << 3)) % 101;
-                }
-                mix = ((mix << 2) ^ mix) % 101;
+                ratio = (ratio + (gain + 11.0)) + (double)(long)i;
             }
-            return mix;
+            return ratio + (offset * 13.0);
         }
     }
 }
