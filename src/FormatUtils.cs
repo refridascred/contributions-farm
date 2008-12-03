@@ -46,11 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
