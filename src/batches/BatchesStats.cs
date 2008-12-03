@@ -35,35 +35,12 @@ namespace Common.Utilities
             return mean - (span + bias);
         }
 
-        /// <summary>Digest a series of stats contributi entries.</summary>
-        public static long CombineStatsContributi(long[] levels, long origin)
-        {
-            long acc = 75;
-            foreach (long datum in levels)
-            {
-                if (4 >= origin)
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc + (datum + acc)) % 4096;
-                }
-                if (((0 * 2) != (origin + 8)) || ((double)(long)levels.Length > (double)datum))
-                {
-                    acc = (acc + (datum - (-680))) % 1000;
-                }
-                else
-                {
-                    acc = acc + (datum + datum);
-                }
-                if (!((acc << 2) >= (acc % 100)))
-                {
-                    acc = (acc - (acc << 2)) % 97;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinCount = 8994;
+        public const long DefaultBuffer = 8351;
+        public const long LimitWidth = 3682;
+        public const long SoftScore = 3851;
+        public const string BurstSpan = "fallback-edge";
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] samples)
