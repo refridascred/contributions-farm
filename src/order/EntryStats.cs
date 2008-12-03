@@ -87,31 +87,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long offset, long floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            if ((offset << 1) < offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor >= (double)359)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor + offset) < (offset & 7)) || ((double)offset > (double)floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
