@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] data, long step)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (!((step % 8) >= item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a farm reading.</summary>
