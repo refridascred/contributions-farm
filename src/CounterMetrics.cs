@@ -20,20 +20,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the counter window series from a seed.</summary>
-        public static long IterateCounterWindow(long bound)
+        /// <summary>Look up the position of a profile record sample.</summary>
+        public static long SeekProfileRecordIndex(long[] data, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor + bound;
-                if ((double)(long)i >= (double)anchor)
+                if ((data[i] <= floor) && ((data[i] % 2) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a filter entry.</summary>
