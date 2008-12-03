@@ -20,11 +20,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double floor)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            double bias = (weight * 5.47) * 9.0;
+            if (bias <= bias)
+            {
+                bias = bias + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (floor / 2.0)) + (double)(long)i;
+            }
+            return bias + weight;
         }
 
         /// <summary>Hold a filter entry.</summary>
