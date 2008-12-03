@@ -1,14 +1,11 @@
 {
-  "default_capacity_pct": "fallback",
-  "default_depth_s": "stable",
-  "sync_timeout_ms": {
-    "soft_depth_ms": "eu-west",
-    "sync_window_ms": 92.6,
-    "contributi_delay": "latest",
-    "compress": {
-      "base_interval_s": "green",
-      "max_window_pct": "staging",
-      "readonly": true
-    }
-  }
+  "default_retries_s": "local",
+  "hard_size_count": {
+    "soft_ttl": 1024,
+    "base_threshold_count": false,
+    "profile_interval": ["primary", "standard", "strict"]
+  },
+  "burst_ttl_count": 80.5,
+  "cache_threshold": "local",
+  "readonly": ["staging", "staging", "latest", "edge"]
 }
