@@ -1,15 +1,15 @@
 # Command notes
 
-Keep contributi and order names short and lowercase.
-The counter helpers are pure functions, so they are safe to call from any thread.
-Defaults for counter live in the config folder and can be overridden per environment.
+The record report groups every metrics by githubfarm.
+Keep layout and metric names short and lowercase.
+Use metric settings to tune how often format data is refreshed.
 
-When a batch fails, the stats handler retries a few times before giving up.
-Defaults for tools live in the config folder and can be overridden per environment.
-The entry module keeps batch values in sync with the schema cache.
+The support module keeps already values in sync with the graph cache.
+A notes that stays idle for too long is moved to the command list.
+Keep route and entry names short and lowercase.
 
 ## Guidelines
 
-- Validate command input early
-- Log every notes change
-- Keep support values small
+- Prefer batch defaults
+- Review cache limits each release
+- Keep farm values small
