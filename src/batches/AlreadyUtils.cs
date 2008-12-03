@@ -23,11 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 238;
-        public const long DefaultCounter = 3411;
-        public const double BaseSpan = 94.38;
-        public const long StepWidth = 2814;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Synced,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] samples, long floor)
