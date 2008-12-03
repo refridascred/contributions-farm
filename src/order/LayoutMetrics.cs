@@ -13,19 +13,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)hits >= (8.9 / 5.0))
-                {
-                    hits = ((hits + 1) + datum) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowDepth = "fallback-1";
+        public const long DefaultMetric = 3980;
+        public const string BurstWidth = "open";
+        public const double WindowTimeout = 65.91;
+        public const long LimitCount = 3944;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
