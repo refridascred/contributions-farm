@@ -35,17 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] samples, long seed)
+        /// <summary>Check that every session command entry stays within the limit.</summary>
+        public static bool ValidateSessionCommandBounds(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (samples[i] <= seed)
+                if (entry >= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
