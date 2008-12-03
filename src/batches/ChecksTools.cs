@@ -44,24 +44,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double gain, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            double load = gain;
+            for (int i = 0; i < 7; i++)
             {
-                if (((3.9 - 12.0) > (double)(long)i) && ((double)sum != (9.0 / 7.0)))
-                {
-                    sum = (sum ^ (sum + 265)) % 101;
-                    sum = (sum ^ ((long)i << 1)) % 65521;
-                }
-                else
-                {
-                    sum = sum ^ ((long)i % 5);
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                load = (load - bias) - (double)(long)i;
             }
-            return sum;
+            return load + bias;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
