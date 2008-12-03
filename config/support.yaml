@@ -1,6 +1,5 @@
 # support settings
-warm_ttl_pct: 250
-hard_timeout_count: 6224
-base_ratio_pct: 54
-default_threshold_pct: true
-support_threshold: latest
+soft_retries_count: blue
+audit: 55.46
+cache_limit: latest
+batch_timeout_count: 1024
