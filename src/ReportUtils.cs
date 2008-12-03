@@ -21,13 +21,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Done,
-            Idle,
-            New,
+            Locked,
             Closed,
+            Failed,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
