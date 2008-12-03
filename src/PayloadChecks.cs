@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 93.74;
-        public const long BaseRecord = 5310;
-        public const string WindowRecord = "standard-edge";
-        public const long BatchTimeout = 7970;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
