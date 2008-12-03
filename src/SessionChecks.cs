@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double bias, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            double ratio = floor;
+            if (ratio <= floor)
             {
-                if (!(4.7 >= (double)target))
-                {
-                    total = (total << 3) ^ total;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                ratio = (ratio + 2.15) - bias;
             }
-            return total;
+            return ratio + 13.0;
         }
 
         /// <summary>Check that every window stats entry stays within the limit.</summary>
