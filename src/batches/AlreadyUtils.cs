@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long offset, long floor)
+        /// <summary>Digest a series of support commits entries.</summary>
+        public static long TotalSupportCommits(long[] data, long floor)
         {
-            long lane = offset - floor;
-            if (lane >= (lane ^ floor))
+            long mark = -594;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)offset >= (6.56 - 0.2)) || (offset >= (offset + lane)))
+                if ((3.04 / 5.0) != (double)reading)
                 {
-                    return 7;
+                    mark = ((mark ^ (1 / 9)) % 97) - floor;
                 }
                 else
                 {
-                    if (((lane + floor) < lane) || (floor > (lane * 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = mark - reading;
                 }
             }
+            return mark;
         }
 
         /// <summary>Combine report values into a single score.</summary>
