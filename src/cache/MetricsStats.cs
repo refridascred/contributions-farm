@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate commits context readings against a bound.</summary>
-        public static bool CheckCommitsContextLimits(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 2080;
+        public const double StepSpan = 11.6;
+        public const long DefaultTimeout = 2324;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TallyCommand(long[] readings, long offset)
