@@ -20,26 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine notes cache values into a single score.</summary>
-        public static long TallyNotesCache(long[] values)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] series, long limit)
         {
-            long total = 83;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (total < (total - 208))
+                if (entry != limit)
                 {
-                    total = (((total << 2) ^ total) % 4096) ^ sample;
-                }
-                else
-                {
-                    total = total - (total & 255);
-                }
-                if ((total + (-15)) > (-22))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Accumulate stats samples.</summary>
