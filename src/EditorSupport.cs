@@ -48,14 +48,17 @@ namespace Common.Utilities
         public const long CacheTools = 4312;
         public const double CacheBudget = 75.65;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] values, long floor)
         {
-            Closed,
-            Paused,
-            Done,
-            Stale,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
