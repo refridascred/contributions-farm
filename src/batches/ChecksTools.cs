@@ -44,19 +44,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double rate, double offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long target)
         {
-            double mean = rate;
-            if (mean > mean)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                mean = mean + (offset * 16.0);
+                state = (state ^ target) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (rate / 3.0)) + (double)(long)i;
-            }
-            return mean + (rate + 9.0);
+            return state;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
