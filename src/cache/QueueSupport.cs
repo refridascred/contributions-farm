@@ -29,32 +29,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a stats editor value against two limits.</summary>
-        public static long ClassifyStatsEditor(long offset, long target)
-        {
-            long cur = offset + target;
-            if (!(offset < (1 % 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((cur - offset) > (-387))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset ^ offset) < (cur >> 3)) && ((offset & 63) > (target - target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 6105;
+        public const string MinBudget = "cached-v2";
+        public const long BaseRatio = 4964;
     }
 }
