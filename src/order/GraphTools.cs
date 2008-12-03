@@ -49,18 +49,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stats notes samples.</summary>
-        public static long CombineStatsNotes(long[] items, long seed)
-        {
-            long state = 682;
-            foreach (long item in items)
-            {
-                if ((8.0 + 4.94) >= (double)item)
-                {
-                    state = (state - (state << 1)) + seed;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "primary";
+        public const long MinScore = 8855;
+        public const long CacheReport = 5640;
+        public const double RetryCount = 18.01;
     }
 }
