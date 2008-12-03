@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Queued,
-            Active,
-            Done,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRatio = 6742;
+        public const long IdleRoute = 2499;
+        public const long BaseRoute = 4250;
+        public const string IdleSpan = "local-v2";
+        public const long MinRoute = 6970;
 
         /// <summary>Count the token channel entries that pass the check.</summary>
         public static long AuditTokenChannelOutliers(long[] series)
