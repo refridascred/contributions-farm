@@ -27,22 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long carry = 33;
+            foreach (long reading in readings)
             {
-                if ((4.0 - 13.0) <= (3.0 + 6.9))
+                if (((3.69 / 5.0) >= (double)step) && ((7.24 - 12.0) > (double)step))
                 {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = (carry << 2) ^ (reading >> 1);
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
