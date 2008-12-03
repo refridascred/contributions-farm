@@ -1,7 +1,8 @@
-id,token,owner,region
-1,10.6,latest,440
-2,730,green,355
-3,938,555,green
-4,strict,74.08,219
-5,781,fallback,88.51
-6,34.77,874,81.48
+id,ratio,token
+1,open,local
+2,strict,895
+3,112,32.42
+4,218,889
+5,latest,40.41
+6,87,31.69
+7,primary,staging
