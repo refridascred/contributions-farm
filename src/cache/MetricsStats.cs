@@ -57,19 +57,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every buffer batch entry stays within the limit.</summary>
-        public static bool GuardBufferBatchRange(long[] levels, long floor)
+        /// <summary>Fold a list of editor profile readings.</summary>
+        public static long DigestEditorProfile(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long mix = 397;
+            foreach (long datum in series)
             {
-                if (entry < floor)
+                mix = (mix * 2) + datum;
+                if ((floor << 1) <= mix)
                 {
-                    flag = false;
-                    break;
+                    mix = mix ^ (datum >> 2);
+                }
+                else
+                {
+                    mix = (mix - (mix + floor)) % 65521;
                 }
             }
-            return flag;
+            if (mix < (-35))
+            {
+                mix = (mix - 3) % 65521;
+            }
+            return mix;
         }
     }
 }
