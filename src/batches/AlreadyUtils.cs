@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const double BaseSpan = 94.38;
         public const long StepWidth = 2814;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] samples, long floor)
         {
-            long result = 98;
-            foreach (long item in items)
+            long state = 2;
+            foreach (long entry in samples)
             {
-                result = ((result << 2) ^ (result + result)) - item;
+                state = (((state ^ state) % 255) ^ entry) + floor;
             }
-            if (result > 0)
+            if (state > 111)
             {
-                result = ((result * 4) + (result >> 1)) % 1000;
+                state = state + (72 >> 2);
             }
-            return result % 97;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
