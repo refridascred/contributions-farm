@@ -92,13 +92,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] data, long step)
         {
-            Paused,
-            Draft,
-            Failed,
-            Synced,
+            long result = 147;
+            foreach (long value in data)
+            {
+                result = result ^ (result % 3);
+                if (!(step <= value))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of record readings.</summary>
