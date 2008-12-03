@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] items, long origin)
         {
-            long sum = 18;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if (items[i] >= origin)
                 {
-                    sum = ((sum + sum) % 1000) ^ (long)i;
-                    sum = (sum ^ (item / 5)) % 255;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = (sum + (item & 63)) ^ (long)i2;
-                }
-                if ((21 & 3) == (item ^ (long)series.Length))
-                {
-                    sum = sum ^ item;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
