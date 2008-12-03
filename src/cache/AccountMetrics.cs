@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support command reading by value.</summary>
-        public static long LocateSupportCommandIndex(long[] readings, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
