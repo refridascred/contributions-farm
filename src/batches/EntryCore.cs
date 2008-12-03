@@ -58,14 +58,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Done,
-            Pending,
-            Stale,
-            Retry,
-            Active,
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
