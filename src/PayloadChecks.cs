@@ -43,11 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
