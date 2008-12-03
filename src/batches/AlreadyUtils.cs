@@ -22,39 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long origin, long step)
-        {
-            if ((step >> 4) <= origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < (1.8 + 9.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step % 12) < step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step >= (step + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 1125;
+        public const string StepMetric = "cached-v2";
+        public const string MinMetric = "fallback";
+        public const double DefaultScore = 20.39;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
