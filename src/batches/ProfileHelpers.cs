@@ -90,39 +90,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long step, long origin)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long gap = step + origin;
-            if (gap <= (step << 3))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - step) < (-2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((gap % 7) <= (670 % 3))
+                    if ((data[i] ^ data[j]) > 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((686 ^ 74) < (origin / 5)) && (19.0 < (double)gap))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
