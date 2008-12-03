@@ -1,11 +1,7 @@
 {
-  "default_retries_s": "local",
-  "hard_size_count": {
-    "soft_ttl": 1024,
-    "base_threshold_count": false,
-    "profile_interval": ["primary", "standard", "strict"]
-  },
-  "burst_ttl_count": 80.5,
-  "cache_threshold": "local",
-  "readonly": ["staging", "staging", "latest", "edge"]
+  "channel_ttl": "blue",
+  "max_capacity_pct": "edge",
+  "tools_threshold": ["strict", "latest", "cached"],
+  "persist": true,
+  "retry_size_count": "standard"
 }
