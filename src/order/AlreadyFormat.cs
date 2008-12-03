@@ -14,12 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardRatio = 3723;
-        public const string MinFarm = "fallback-v2";
-        public const string WindowScore = "cached";
-        public const long BaseFarm = 4372;
-        public const long BurstFarm = 8160;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Closed,
+            Synced,
+            Pending,
+            New,
+            Stale,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string SoftRecord = "open-v2";
