@@ -26,11 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchSpan = 7323;
-        public const long LimitScore = 2645;
-        public const string MinInterval = "alpha-v2";
-        public const long StepLevel = 6794;
+        /// <summary>Compare every pair of support counter readings.</summary>
+        public static long PairSupportCounterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long bound)
