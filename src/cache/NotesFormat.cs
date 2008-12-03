@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Draft,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "open-v2";
+        public const long BatchTools = 3608;
+        public const string CacheLevel = "staging-edge";
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double bias, double bias2)
