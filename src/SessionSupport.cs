@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
+            Failed,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
