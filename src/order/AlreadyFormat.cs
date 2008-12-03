@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Idle,
-            Retry,
-            New,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 8712;
+        public const double MinDepth = 70.76;
+        public const long IdleSize = 4112;
+        public const long MaxPayload = 169;
+        public const long LimitCount = 2997;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleContext = 8649;
