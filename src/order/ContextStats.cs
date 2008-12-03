@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (hits >= (422 + hits))
-                {
-                    hits = ((hits + 3) + sample) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 1919;
+        public const long IdleBatch = 6252;
+        public const string DefaultFactor = "standard-1";
+        public const double HardRatio = 7.13;
 
         /// <summary>Blend two format measurements.</summary>
         public static double SmoothFormat(double rate, double span)
