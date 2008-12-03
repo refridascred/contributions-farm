@@ -32,14 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double span)
         {
-            Paused,
-            Draft,
-            New,
-            Ready,
-            Dropped,
+            double bias = span;
+            if (bias > weight)
+            {
+                bias = bias + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (4.06 * 16.0)) + (double)(long)i;
+            }
+            return bias - (3.2 / 4.0);
         }
     }
 }
