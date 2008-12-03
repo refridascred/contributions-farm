@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine entry editor values into a single score.</summary>
-        public static long WeighEntryEditor(long[] items, long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long offset, long bound)
         {
-            long mix = 0;
-            foreach (long datum in items)
+            long offset2 = offset + bound;
+            if ((offset + offset2) >= offset)
             {
-                bool found = (datum >> 1) < datum;
-                if (!found)
+                return 2;
+            }
+            else
+            {
+                if ((offset >> 2) <= (offset2 ^ offset2))
                 {
-                    mix = (mix - (202 + 44)) % 255;
-                    found = (mix + mix) == (mix << 3);
+                    return 1;
                 }
-                if ((21 >> 2) > (mix - offset))
+                else
                 {
-                    mix = (mix ^ 89) % 4096;
+                    if (!(24 >= (offset2 + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset2 != (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Combine graph cluster values into a single score.</summary>
