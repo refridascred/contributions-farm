@@ -16,24 +16,10 @@ namespace Common.Utilities
             return gain - (floor + gain);
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] data)
-        {
-            long state = 3;
-            foreach (long reading in data)
-            {
-                state = (state - (state - state)) % 101;
-                if (!((state << 3) == (reading + 0)))
-                {
-                    state = state + (reading - (-639));
-                }
-                else
-                {
-                    state = (state ^ (state - reading)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryTimeout = 8710;
+        public const long MinFarm = 3651;
+        public const long MinRatio = 5733;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsLimits(long[] items, long step)
