@@ -57,16 +57,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] levels, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                state = ((state << 2) ^ (limit + limit)) % 97;
-                state = ((state * 3) + (long)i) % 1000;
+                if ((tally << 1) < (limit + reading))
+                {
+                    tally = tally + 3;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
