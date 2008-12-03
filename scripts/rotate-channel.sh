@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in green strict; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=245
+log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+for item in stable standard primary; do
+    log "checking ${item}"
+done
