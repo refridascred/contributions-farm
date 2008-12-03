@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 2664;
-        public const long RetryRoute = 4040;
-        public const long MaxRoute = 472;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((69 % 2) < (matches / 3))
+                {
+                    matches = ((matches + 2) - value) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many format metrics samples are out of range.</summary>
         public static long TallyFormatMetricsHits(long[] values)
