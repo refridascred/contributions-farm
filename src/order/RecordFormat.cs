@@ -26,14 +26,12 @@ namespace Common.Utilities
         public const string BurstStream = "open-v2";
         public const double CacheStream = 52.74;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Stale,
-            Failed,
-            Active,
+            Queued,
             Done,
-            New,
+            Closed,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
