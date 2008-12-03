@@ -28,18 +28,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] readings, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell >= count)
+                if (total > (target + (long)i))
                 {
-                    count = (count + 3) - target;
+                    total = (total ^ (target + total)) % 65521;
+                    total = (total * 2) + ((long)i - 1);
                 }
+                else
+                {
+                    total = (total ^ (long)i) % 97;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
