@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] values, long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.2 - 4.2) < (4.26 * 5.0))
+                if (data[i] == floor)
                 {
-                    tally = ((tally + 3) - datum) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stats stats.</summary>
