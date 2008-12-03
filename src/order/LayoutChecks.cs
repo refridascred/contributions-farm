@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of command format readings.</summary>
-        public static long ScoreCommandFormat(long[] samples, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long state = 68;
-            foreach (long entry in samples)
-            {
-                state = (state - (286 ^ seed)) - entry;
-            }
-            return state;
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
