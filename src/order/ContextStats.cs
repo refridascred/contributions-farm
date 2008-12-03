@@ -58,25 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long floor, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double scale, double floor)
         {
-            long slot = floor - offset;
-            if ((slot >= (slot / 5)) && ((7 - slot) != (slot ^ floor)))
+            double mean = 7.6;
+            if (mean <= (scale / 8.0))
             {
-                return 3;
+                mean = (mean + mean) + floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((1.37 * 3.7) < (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                mean = (mean + (mean * 9.57)) + (double)(long)i;
             }
+            return mean - mean;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
