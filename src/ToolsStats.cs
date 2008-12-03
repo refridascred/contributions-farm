@@ -50,25 +50,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long target, long target2)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long bound = target - target2;
-            if (419 > (811 - bound))
+            long mark = 845;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target < bound) || ((double)target >= (double)target2))
+                for (int i = 0; i < 5; i++)
                 {
-                    return 5;
+                    mark = ((mark * 2) + (sample - mark)) - (long)i;
                 }
-                else
-                {
-                    return 7;
-                }
+                mark = (mark ^ (mark + mark)) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
