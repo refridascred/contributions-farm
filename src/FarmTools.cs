@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally * 5) >= (tally - tally))
-                {
-                    tally = ((tally + 3) + value) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheFactor = 1757;
+        public const string DefaultCount = "primary-v2";
+        public const long BaseCount = 5606;
+        public const double WindowCount = 43.63;
+        public const double BatchChannel = 56.43;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long SeekRouteIndex(long[] values, long target)
