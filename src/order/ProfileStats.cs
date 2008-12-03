@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long target, long target2)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long step = target - target2;
-            if (step > (step & 127))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target2 >> 1) >= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((640 << 1) >= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Active,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
