@@ -74,20 +74,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Derive the next commits stream value from a seed.</summary>
-        public static long DeriveCommitsStream(long step)
+        /// <summary>Blend two githubfarm order measurements.</summary>
+        public static double ProjectGithubfarmOrder(double gain, double bias)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            double mean = (gain * 6.03) + (double)648;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state ^ (state & 15)) % 4096;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state ^ state) % 101) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                mean = ((mean - gain) + (double)(long)i) + bias;
             }
-            return state;
+            return mean - mean;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
