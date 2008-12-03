@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string WindowRecord = "standard-edge";
         public const long BatchTimeout = 7970;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Scale a checks stream figure with a bias.</summary>
+        public static double ScaleChecksStream(double scale, double floor)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
+            double scale2 = 2.3 + floor;
+            if (scale2 <= (scale - 2.1))
+            {
+                scale2 = scale2 - (double)7;
+            }
+            else
+            {
+                scale2 = scale2 + (scale2 / 4.0);
+            }
+            return scale2 - 8.0;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
