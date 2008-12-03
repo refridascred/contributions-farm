@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] levels, long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (entry <= (5 / 5))
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
