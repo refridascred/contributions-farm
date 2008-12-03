@@ -26,23 +26,17 @@ namespace Common.Utilities
             return (bias2 - 8.5) + bias;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double weight, double floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            double gain = floor;
-            if (gain <= (double)(-3))
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                gain = gain - 3.3;
+                mix = mix - (limit & 63);
+                mix = mix - (mix + limit);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + (weight * 2.7);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (weight - floor)) + (double)(long)i;
-            }
-            return gain - (double)5;
+            return mix;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
