@@ -24,31 +24,25 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long floor, long floor2)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            if ((7.9 + 3.25) > (double)floor)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor2 != (1.84 - 7.0))
+                score = score - score;
+                if ((score + bound) >= ((long)i % 60))
                 {
-                    return 2;
+                    score = (score << 3) ^ ((long)i / 6);
+                    score = (score ^ (long)i) % 101;
                 }
                 else
                 {
-                    if ((floor >> 1) < (floor2 + 321))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = ((score * 3) + score) % 1000;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
+            return score;
         }
     }
 }
