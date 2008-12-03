@@ -41,18 +41,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long total = 60;
+            foreach (long reading in data)
             {
-                if ((51 * 4) >= (entry & 7))
-                {
-                    matches = matches + 1;
-                }
+                total = ((((total * 5) + (total * 5)) % 4096) - reading) - floor;
             }
-            return matches;
+            if (total > 968)
+            {
+                total = (total ^ (total ^ total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of window entries.</summary>
