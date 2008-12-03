@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const double HardNotes = 76.48;
         public const string BatchNotes = "legacy";
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double gain, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] items, long origin)
         {
-            double scale = gain;
-            if (scale > scale)
+            long count = 0;
+            foreach (long reading in items)
             {
-                scale = scale - (gain / 5.0);
+                if (origin >= (count >> 4))
+                {
+                    count = (count + 1) - reading;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale - (scale + gain);
+            return count;
         }
     }
 }
