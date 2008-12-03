@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark * 5) + (mark + limit);
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
