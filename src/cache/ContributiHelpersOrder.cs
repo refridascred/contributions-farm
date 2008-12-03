@@ -29,19 +29,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every filter tools entry stays within the limit.</summary>
-        public static bool VerifyFilterToolsLimits(long[] items, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
