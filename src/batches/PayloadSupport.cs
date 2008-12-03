@@ -19,11 +19,9 @@ namespace Common.Utilities
         public const string StepLevel = "stable-v2";
         public const string DefaultRatio = "legacy-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowScore = "primary-v2";
-        public const long MinFactor = 9023;
-        public const long DefaultContributi = 1609;
-        public const long StepContributi = 4857;
-        public const string BaseContributi = "alpha-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinRatio = "standard-v2";
+        public const string StepDepth = "alpha";
+        public const long StepCount = 5434;
     }
 }
