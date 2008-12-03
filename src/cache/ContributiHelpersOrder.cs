@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double rate, double offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double weight = offset;
-            return (weight - (double)8) + rate;
+            New,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Accumulate notes samples.</summary>
