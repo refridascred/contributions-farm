@@ -52,21 +52,18 @@ namespace Common.Utilities
             return rate + 5.0;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                double mean = (double)limit + (7.6 * 3.8);
-                if ((mean - 19.0) > 8.4)
+                if (datum <= (11 * 4))
                 {
-                    total = total - 1;
-                    continue;
+                    seen = seen + 1;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
