@@ -33,32 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long target, long target2)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long diff = target + target2;
-            if ((10.0 / 2.0) < (double)target2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)diff >= (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target * 2) <= (7 >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
