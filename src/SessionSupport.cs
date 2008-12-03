@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long target, long target2)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] levels, long floor)
         {
-            long step = target - target2;
-            if ((target2 < (target >> 4)) && ((target2 / 7) <= (target2 - 6)))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (target < (target + target))
+                if (item <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step ^ step) != (target >> 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step <= (6.37 / 3.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
