@@ -35,15 +35,23 @@ namespace Common.Utilities
         public const long StepRecord = 1830;
         public const long IdleRecord = 935;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double rate, double span)
         {
-            double gain = floor;
-            if (gain <= gain)
+            double load = span;
+            if (load > load)
             {
-                gain = (gain - (4.4 + 11.0)) - bias;
+                load = load + (load / 5.0);
             }
-            return gain + (double)98;
+            else
+            {
+                load = load - (span - 9.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load + 2.0)) + (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
