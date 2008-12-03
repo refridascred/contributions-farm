@@ -1,18 +1,5 @@
 # entry settings
-burst_window: eu-west
-window_retries: 60
-sync_timeout: 1355
-sync_capacity: fallback
-cache_threshold_count:
-  readonly: 11.49
-  poll_ratio: true
-  schema_retries:
-    readonly:
-      - 227
-      - 63
-      - 178
-      - 416
-    cache_limit: 46.12
-    poll_size_count: 7793
-    profile_depth: 31.82
-compress: 12
+warm_ttl: latest
+default_ttl: 68.76
+compress: 1585
+profile_threshold: 76
