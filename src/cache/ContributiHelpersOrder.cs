@@ -31,23 +31,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double bias)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] items, long origin)
         {
-            double rate = bias;
-            if (rate >= (7.47 - bias))
+            long count = 0;
+            foreach (long value in items)
             {
-                rate = (rate - (double)0) - gain;
+                if (!(count <= value) && (((value * 4) >= (origin * 5)) && ((5.1 / 2.0) <= (double)origin)))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                rate = rate - (double)75;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (double)943) + (double)(long)i;
-            }
-            return rate - (rate - 19.0);
+            return count;
         }
     }
 }
