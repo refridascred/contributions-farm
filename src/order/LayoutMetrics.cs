@@ -34,15 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long total = 593;
-            foreach (long cell in items)
-            {
-                total = ((total << 3) ^ (total - cell)) % 255;
-            }
-            return total;
+            public double Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
