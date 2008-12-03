@@ -44,12 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstBudget = 77.38;
-        public const long WindowChecks = 8186;
-        public const string SoftScore = "local-edge";
-        public const long StepInterval = 1568;
-        public const string SoftRatio = "staging";
+        /// <summary>Locate a filter tools reading by value.</summary>
+        public static long FindFilterToolsIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long IterateSession(long origin)
