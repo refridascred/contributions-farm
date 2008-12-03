@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] data, long seed)
+        /// <summary>Combine buffer batch values into a single score.</summary>
+        public static long TotalBufferBatch(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 1;
+            foreach (long reading in data)
             {
-                if (data[i] == seed)
+                mark = (mark - (mark / 7)) + reading;
+                mark = ((mark * 3) + bound) % 255;
+                if (!((mark + bound) <= mark))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
