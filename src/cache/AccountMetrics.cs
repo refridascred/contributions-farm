@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheBudget = 93.08;
+        public const string BatchTimeout = "strict-v2";
+        public const string DefaultAccount = "stable-1";
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesLimits(long[] series, long limit)
