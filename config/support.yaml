@@ -1,10 +1,35 @@
 # support settings
-warm_retries_pct:
-  command_retries: 52.6
-  soft_ttl_s: standard
-  cache_delay: false
-  idle_timeout_ms: false
-  readonly: 35.51
-  burst_delay_s: 100
-queue_timeout: 8441
-payload_delay: 1024
+default_ttl_ms: edge
+batch_depth_s:
+  buffer_depth: green
+  warm_ttl:
+    dry_run: 39
+    support_size: 23
+    format_limit: 47.73
+    max_retries_ms: green
+    batch_size_pct: eu-west
+  batch_timeout_s: 59.95
+  record_limit:
+    - 174
+    - 164
+    - 386
+  base_interval: 207
+compress:
+  profile_retries:
+    verbose: 19.49
+    payload_threshold: true
+    batch_retries_s:
+      - cached
+      - standard
+    window_window: false
+    max_delay_ms: green
+    support_delay: true
+  idle_timeout:
+    flush_ratio_pct: 87.61
+    soft_interval_ms: 71.08
+    default_window: fallback
+    max_ttl_pct: true
+  soft_ttl_pct: legacy
+  cache_retries_s: standard
+notes_delay: 1024
+soft_depth_ms: staging
