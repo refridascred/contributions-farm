@@ -56,18 +56,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] series, long seed)
+        /// <summary>Iterate the profile schema series from a seed.</summary>
+        public static long StepProfileSchema(long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)datum < (16.0 + 1.0)) || (((double)matches <= (4.0 / 2.0)) || ((matches / 2) == (51 << 1))))
-                {
-                    matches = (matches + 3) - seed;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
