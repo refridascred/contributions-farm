@@ -1,5 +1,15 @@
 {
-  "compress": "local",
-  "sync_capacity_count": 71.32,
-  "cache_ttl": "cached"
+  "max_ratio_pct": "standard",
+  "persist": true,
+  "compress": {
+    "farm_depth": {
+      "retry_window_s": 37.99,
+      "min_delay": ["staging", "staging"],
+      "warm_ttl_ms": false,
+      "base_size_s": 244
+    },
+    "min_ttl": "blue",
+    "warm_threshold_ms": false,
+    "max_capacity_s": "blue"
+  }
 }
