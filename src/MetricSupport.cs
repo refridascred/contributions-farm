@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long total = 71;
+            foreach (long datum in data)
             {
-                if (seen > (seen + entry))
+                total = (total << 3) ^ (411 - total);
+                if (((datum * 3) <= datum) && ((datum * 4) <= total))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = (total << 3) ^ datum;
                 }
             }
-            return seen;
+            if (total < 82)
+            {
+                total = ((total << 3) ^ (total + total)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
