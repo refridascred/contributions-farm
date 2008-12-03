@@ -42,12 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Check that every notes githubfarm entry stays within the limit.</summary>
+        public static bool CheckNotesGithubfarmRange(long[] items, long seed)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
