@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] values, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen - (-86)) == (61 - seen))
-                {
-                    seen = ((seen + 1) + cell) + offset;
-                }
-            }
-            return seen;
+            double weight = offset;
+            return (weight - (double)8) + rate;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
