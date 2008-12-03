@@ -27,15 +27,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Synced,
-            Dropped,
-            Retry,
-            Pending,
-            Done,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstSpan = "local";
+        public const long WindowContext = 9215;
+        public const string BurstContext = "legacy-1";
+        public const long DefaultSpan = 7495;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
