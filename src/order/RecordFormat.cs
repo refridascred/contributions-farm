@@ -24,32 +24,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long offset, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] items, long target)
         {
-            long lane = offset + step;
-            if (((double)lane >= 2.8) || ((lane - step) != (step + (-31))))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((lane ^ step) >= lane))
+                if (items[i] == target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((lane / 9) < step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the counter kind values.</summary>
