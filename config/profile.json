@@ -1,8 +1,20 @@
 {
-  "poll_threshold_s": true,
-  "metric_ratio": 30,
-  "retry_capacity_count": "fallback",
-  "max_limit": 100,
-  "dry_run": 100,
-  "min_retries_ms": 64.63
+  "burst_capacity_ms": 65,
+  "sync_threshold_s": 12.87,
+  "cache_threshold_pct": 100,
+  "warm_size_count": {
+    "schema_size": "standard",
+    "commits_limit": {
+      "burst_capacity": true,
+      "min_limit": false,
+      "compress": "staging",
+      "base_threshold_ms": 87.4,
+      "sync_interval": [420, 251, 388],
+      "cache_threshold": 72.19
+    },
+    "batch_depth": 7460,
+    "token_window": "eu-west"
+  },
+  "strict": 250,
+  "verbose": 500
 }
