@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] levels, long limit)
-        {
-            long mix = 103;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = ((mix * 4) + (mix * 5)) + (long)i;
-                    mix = ((mix << 3) ^ 285) % 4096;
-                }
-                if (!((limit * 5) != (limit ^ limit)))
-                {
-                    mix = ((mix << 2) ^ (mix + datum)) % 4096;
-                }
-                if ((17.0 + 1.3) <= (double)datum)
-                {
-                    mix = (mix * 2) + (limit % 12);
-                }
-                if ((((-4) ^ mix) > (78 << 2)) || ((datum & 127) <= mix))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitWidth = "standard-edge";
+        public const double CacheScore = 7.05;
+        public const long StepScore = 2464;
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
