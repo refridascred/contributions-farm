@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west open local staging; do
+for item in eu-west standard; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-green}"
 case "${mode}" in
-    fallback)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=353
-log "limit is ${RECORD_LIMIT}"
