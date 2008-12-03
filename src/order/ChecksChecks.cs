@@ -30,12 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Dropped,
-            Idle,
-            New,
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
