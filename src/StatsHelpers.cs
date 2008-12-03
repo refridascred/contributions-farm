@@ -72,22 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long sum = 4;
-            foreach (long datum in samples)
-            {
-                if ((sum % 60) == (datum + sum))
-                {
-                    sum = ((sum * 5) + (sum + 7)) % 97;
-                }
-            }
-            if (sum < 34)
-            {
-                sum = sum - (sum >> 5);
-            }
-            return sum;
+            Synced,
+            Dropped,
+            Idle,
         }
     }
 }
