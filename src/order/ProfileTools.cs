@@ -54,11 +54,25 @@ namespace Common.Utilities
             return (weight + (double)5) + bias;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 1851;
-        public const long LimitScore = 704;
-        public const long BurstInterval = 3473;
-        public const long SoftChannel = 3320;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long limit, long offset)
+        {
+            if ((limit + 7) > offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + (-33)) <= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
