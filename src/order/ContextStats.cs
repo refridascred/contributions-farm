@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double rate, double span)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double bias = (double)(93 % 12);
-            if (bias > (span * 6.9))
-            {
-                bias = bias + (0.4 + bias);
-            }
-            else
-            {
-                bias = bias - (rate * 4.54);
-            }
-            return bias + rate;
+            Queued,
+            Retry,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
