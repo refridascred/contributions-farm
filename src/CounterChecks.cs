@@ -32,19 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double ratio, double floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double load = ratio * 3.7;
-            if (load <= floor)
-            {
-                load = load - ratio;
-            }
-            else
-            {
-                load = load + ratio;
-            }
-            return load - (double)3;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a graph options.</summary>
