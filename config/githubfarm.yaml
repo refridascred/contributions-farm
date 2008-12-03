@@ -1,23 +1,23 @@
 # githubfarm settings
-min_timeout_count: 2225
-default_interval: false
-format_threshold:
-  min_delay_pct: 2921
-  githubfarm_ttl: 3259
-  burst_interval_pct: false
-  farm_capacity: 92.65
-  min_ratio_s: 6701
-  contributi_threshold:
-    idle_timeout_s: false
-    soft_depth_pct:
-      - 414
-      - 139
-      - 394
-      - 164
-    flush_interval_pct:
-      - blue
-      - latest
-      - stable
-      - blue
-    editor_ttl: standard
-    payload_interval: 64.97
+contributi_timeout: 60
+persist: 3350
+compress: 87
+verbose:
+  - legacy
+  - eu-west
+  - open
+  - legacy
+dry_run: false
+max_delay:
+  dry_run:
+    soft_retries_pct: blue
+    verbose: staging
+    warm_retries_ms: 64
+    idle_timeout: staging
+    persist: true
+    hard_timeout_pct: true
+  burst_window_pct: edge
+  command_depth:
+    - 128
+    - 450
+    - 202
