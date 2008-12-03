@@ -25,39 +25,21 @@ namespace Common.Utilities
         public const long SoftBudget = 929;
         public const long DefaultSchema = 2784;
 
-        /// <summary>Rank command notes input into a small class.</summary>
-        public static long ClassifyCommandNotes(long step, long step2)
+        /// <summary>Compare every pair of order notes readings.</summary>
+        public static long CompareOrderNotesCount(long[] levels)
         {
-            long bound = step ^ step2;
-            if (!((double)step == (4.6 + 4.3)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)step > (1.1 * 5.0)) && ((31 ^ bound) != (step + step2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (212 > (step << 2))
+                    if ((levels[i] + levels[j]) > 20)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step > (step2 ^ step2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next channel value.</summary>
