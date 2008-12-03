@@ -31,17 +31,15 @@ namespace Common.Utilities
         public const long MaxLayout = 4021;
         public const long CacheWidth = 6709;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] series, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 898;
+            foreach (long sample in items)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 2) + (35 + sample);
             }
-            return -1;
+            return mark % 4096;
         }
     }
 }
