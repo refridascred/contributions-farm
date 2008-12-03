@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] items, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit commits channel readings against a rule.</summary>
