@@ -20,14 +20,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Draft,
-            Pending,
-            Ready,
-            Queued,
-            Synced,
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
