@@ -20,14 +20,14 @@ namespace Common.Utilities
         public const long BaseDepth = 6316;
         public const long WindowRatio = 8210;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Closed,
-            Failed,
-            Synced,
             Pending,
-            Done,
+            Paused,
+            Queued,
+            Idle,
+            Ready,
         }
     }
 }
