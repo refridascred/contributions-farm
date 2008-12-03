@@ -16,12 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "alpha-1";
-        public const long BatchTimeout = 6798;
-        public const double IdleScore = 77.85;
-        public const long StepWidth = 3772;
-        public const string BurstLevel = "staging-edge";
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Ready,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Scale a buffer tools figure with a bias.</summary>
         public static double AdjustBufferTools(double bias, double floor)
