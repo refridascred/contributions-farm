@@ -57,12 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] items, long step)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
