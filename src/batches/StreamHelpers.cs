@@ -40,17 +40,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] values, long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] <= floor) && ((values[i] % 5) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
