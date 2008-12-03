@@ -15,31 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long limit, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            if ((15.0 + 1.41) != (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step & 1) == (limit - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((41 - step) != (step - step)) && (0 > (step - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
