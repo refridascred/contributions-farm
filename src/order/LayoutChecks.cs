@@ -78,17 +78,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] samples, long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] < seed)
+                if (!(((long)data.Length ^ 360) >= (reading / 6)) || ((759 - reading) != (reading - reading)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
