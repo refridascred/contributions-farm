@@ -88,19 +88,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate buffer order readings against a bound.</summary>
-        public static bool VerifyBufferOrderLimits(long[] levels, long limit)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
