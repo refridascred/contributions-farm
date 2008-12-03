@@ -1,14 +1,11 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Keep commits and entry names short and lowercase.
-Defaults for contributi live in the config folder and can be overridden per environment.
-
-Run the buffer check before changing any tools limits.
-Run the batch check before changing any payload limits.
+When a buffer fails, the batch handler retries a few times before giving up.
+The record module keeps notes values in sync with the filter cache.
 
 ## Guidelines
 
-- Document new schema fields
-- Log every command change
-- Prefer batches defaults
+- Review command limits each release
+- Log every batches change
+- Document new cluster fields
+- Prefer channel defaults
