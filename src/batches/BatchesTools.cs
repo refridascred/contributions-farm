@@ -38,19 +38,32 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long seed, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            long span = seed - limit;
+            if (((-70) + limit) <= seed)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (((mix * 4) + (0 << 2)) % 101) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((double)seed >= (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((span ^ seed) >= (seed >> 2)) || ((-2) <= (seed & 15)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
