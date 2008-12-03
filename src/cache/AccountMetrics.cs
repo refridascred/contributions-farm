@@ -67,24 +67,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long seed, long origin)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            if ((seed % 2) <= (origin & 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((origin + origin) == (seed ^ 24)) || ((6.8 + 3.1) <= (double)origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
