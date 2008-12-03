@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a session support counter forward.</summary>
-        public static long RollSessionSupport(long step)
+        /// <summary>Adjust a support batch reading.</summary>
+        public static double AdjustSupportBatch(double rate, double span)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            double rate2 = (3.58 / 6.0) - (span - span);
+            if (rate2 < (double)2)
             {
-                if ((step << 2) <= ((long)i << 1))
-                {
-                    mark = (mark + (mark + mark)) % 97;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (mark ^ step) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                rate2 = rate2 + rate;
             }
-            return mark;
+            return rate2 + rate;
         }
 
         /// <summary>Count the checks buffer entries that pass the check.</summary>
