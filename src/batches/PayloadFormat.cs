@@ -56,17 +56,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first record profile entry that matches the target.</summary>
-        public static long LocateRecordProfileIndex(long[] levels, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long datum in levels)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 5) != 0))
+                if (((anchor + anchor) < (datum ^ datum)) && (anchor <= (anchor ^ datum)))
                 {
-                    return (long)i;
+                    continue;
+                }
+                if ((anchor > (anchor / 3)) || ((7 % 8) < anchor))
+                {
+                    anchor = anchor ^ (datum + 8);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor % 10)) % 65521;
                 }
             }
-            return -1;
+            if (anchor > 215)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 65521;
         }
     }
 }
