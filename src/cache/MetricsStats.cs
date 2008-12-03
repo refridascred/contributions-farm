@@ -29,11 +29,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 4832;
-        public const long MinFarm = 1268;
-        public const long SoftFarm = 3351;
-        public const string HardInterval = "strict-edge";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((4.3 * 6.16) == (double)value)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long RankSession(long step, long floor)
