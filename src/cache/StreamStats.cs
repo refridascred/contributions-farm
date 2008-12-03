@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] series)
-        {
-            long result = -889;
-            foreach (long cell in series)
-            {
-                result = (result * 3) + cell;
-                if (!((result - 865) == ((-85) / 4)))
-                {
-                    break;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstFormat = "strict-edge";
+        public const double WindowInterval = 15.1;
+        public const long StepFormat = 6567;
+        public const string BatchFormat = "fallback";
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long FindProfileIndex(long[] data, long limit)
