@@ -1,6 +1,5 @@
 {
-  "hard_limit": 3.84,
-  "dry_run": "eu-west",
-  "default_size_ms": [439, 421, 7],
-  "soft_depth": 44
+  "max_threshold": [175, 383, 244, 86],
+  "tools_window": "blue",
+  "already_limit": "eu-west"
 }
