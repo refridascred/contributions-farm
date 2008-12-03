@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (datum >= offset)
+                if (((entry - entry) < (matches >> 5)) || ((matches << 2) == (entry - matches)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a support record.</summary>
