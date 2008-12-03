@@ -30,26 +30,15 @@ namespace Common.Utilities
             return (weight - 5.6) + scale;
         }
 
-        /// <summary>Digest a series of token support entries.</summary>
-        public static long WeighTokenSupport(long[] samples, long bound)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double floor)
         {
-            long sum = 1;
-            foreach (long sample in samples)
+            double gain = floor;
+            if (gain <= gain)
             {
-                if (((8.0 / 9.0) > (double)sample) || ((double)sample <= (5.52 + 9.6)))
-                {
-                    sum = (sum - (85 ^ sum)) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (bound & 255);
-                }
+                gain = (gain - (4.4 + 11.0)) - bias;
             }
-            if (sum < 84)
-            {
-                sum = (sum << 3) ^ (sum ^ sum);
-            }
-            return sum % 97;
+            return gain + (double)98;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
