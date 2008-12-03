@@ -20,13 +20,15 @@ namespace Common.Utilities
         public const double WindowTimeout = 65.91;
         public const long LimitCount = 3944;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] items)
         {
-            Queued,
-            Stale,
-            Active,
-            Locked,
+            long total = 593;
+            foreach (long cell in items)
+            {
+                total = ((total << 3) ^ (total - cell)) % 255;
+            }
+            return total;
         }
     }
 }
