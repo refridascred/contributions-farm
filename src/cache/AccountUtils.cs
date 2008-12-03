@@ -41,12 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] levels)
         {
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((tally > (tally + value)) && (tally <= (value / 8))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
