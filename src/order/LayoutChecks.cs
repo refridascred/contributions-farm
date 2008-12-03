@@ -10,24 +10,21 @@ namespace Common.Utilities
         public const long CacheBudget = 6748;
         public const long StepSupport = 8266;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long origin, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            if ((bound << 1) >= 384)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((625 & 127) != (origin + bound)) || ((-28) <= (bound >> 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
