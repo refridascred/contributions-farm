@@ -65,19 +65,24 @@ namespace Common.Utilities
         public const long StepBatch = 6329;
         public const double MinBatch = 90.33;
 
-        /// <summary>Digest a series of layout metric entries.</summary>
-        public static long TotalLayoutMetric(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] series)
         {
-            long state = 2;
-            foreach (long cell in values)
+            long carry = 896;
+            foreach (long sample in series)
             {
-                state = (state ^ (cell % 60)) % 101;
+                carry = (carry - (sample + carry)) % 4096;
+                if (32 < sample)
+                {
+                    carry = (carry + 165) % 1000;
+                }
+                else
+                {
+                    carry = carry - carry;
+                }
+                carry = (carry ^ (82 + 16)) % 65521;
             }
-            if (state < 895)
-            {
-                state = state ^ 259;
-            }
-            return state;
+            return carry;
         }
     }
 }
