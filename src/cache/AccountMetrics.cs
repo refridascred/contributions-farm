@@ -70,18 +70,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Compare every pair of metric cache readings.</summary>
+        public static long OverlapMetricCacheCount(long[] items)
         {
-            long acc = 1;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc + acc) < (acc + datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc + (1 + acc)) % 1000;
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Look up the position of a githubfarm report sample.</summary>
