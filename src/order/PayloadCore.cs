@@ -13,17 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] series, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                acc = acc - step;
-                acc = (acc << 3) ^ (acc * 4);
-                acc = ((acc * 5) + (long)i) % 101;
+                if (97 >= (seed ^ cell))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first metrics order entry that matches the target.</summary>
