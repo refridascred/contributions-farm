@@ -37,20 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series)
-        {
-            long mark = 200;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = (((mark ^ (mark << 3)) % 1000) - (long)i) - cell;
-                }
-                mark = (mark << 2) ^ 154;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 23.62;
+        public const long BatchTimeout = 8462;
+        public const long RetryWidth = 9509;
+        public const long MaxCommits = 1463;
+        public const long CacheCommits = 8409;
 
         /// <summary>Grade a report tools value against two limits.</summary>
         public static long SortReportTools(long limit, long bound)
