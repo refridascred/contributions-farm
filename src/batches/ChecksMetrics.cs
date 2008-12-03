@@ -76,11 +76,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
