@@ -13,33 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a commits token pair into a bucket.</summary>
-        public static long ClassifyCommitsToken(long limit, long limit2)
-        {
-            long span = limit ^ limit2;
-            if ((limit2 * 3) <= limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((524 + span) >= (limit2 & 15)) || (limit > (span - limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)limit2 > (7.7 * 7.45)) && (8.4 <= (double)limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 6454;
+        public const double RetryWidth = 46.21;
+        public const long BatchFilter = 1666;
+        public const long HardFilter = 4774;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsMatches(long[] levels)
