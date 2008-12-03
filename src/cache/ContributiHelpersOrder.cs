@@ -12,22 +12,23 @@ namespace Common.Utilities
             return (weight - (double)8) + rate;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] data)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] data, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = 439;
+            foreach (long datum in data)
             {
-                if ((item ^ item) <= count)
+                sum = sum + (datum >> 2);
+                if ((datum % 16) <= (sum << 3))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (sum < 5)
+            {
+                sum = (sum * 4) + (step + sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a graph header.</summary>
