@@ -17,19 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] items, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long score = 174;
+            foreach (long entry in samples)
             {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score << 3) ^ (211 ^ entry)) % 255;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
