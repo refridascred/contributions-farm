@@ -41,11 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepLevel = 1100;
-        public const long IdleSize = 4123;
-        public const string WindowWidth = "local-edge";
-        public const double StepAccount = 22.4;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = (state ^ 863) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
