@@ -84,15 +84,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double gain, double offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double ratio = (gain / 3.0) + (2.6 - offset);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (gain + 11.0)) + (double)(long)i;
-            }
-            return ratio + (offset * 13.0);
+            Retry,
+            Stale,
+            New,
         }
     }
 }
