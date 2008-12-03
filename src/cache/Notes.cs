@@ -29,11 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] levels, long target)
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of payload already readings.</summary>
