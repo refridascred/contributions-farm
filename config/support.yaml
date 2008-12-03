@@ -1,10 +1,7 @@
 # support settings
-warm_ratio_ms: strict
-audit: 50.51
-readonly: 17.14
-buffer_capacity: 5152
-soft_size_s: green
-persist:
-  - stable
-  - blue
-  - primary
+sync_timeout_pct: 60
+flush_ratio: true
+min_capacity_pct: 1024
+hard_ratio: 60
+buffer_depth: 25
+default_delay: 500
