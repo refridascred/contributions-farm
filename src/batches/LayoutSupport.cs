@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySpan = 7088;
-        public const double IdleWidth = 71.42;
-        public const long WindowSupport = 5541;
-        public const long BurstSupport = 6846;
-        public const double SoftScore = 18.09;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] data)
