@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next layout queue value.</summary>
-        public static double AdjustLayoutQueue(double ratio, double span)
+        /// <summary>Adjust a queue filter reading.</summary>
+        public static double SmoothQueueFilter(double ratio, double floor)
         {
-            double ratio2 = span;
-            return (ratio2 - (ratio2 / 8.0)) + ratio;
+            double drift = (floor * 1.22) - (ratio / 7.0);
+            if (drift <= drift)
+            {
+                drift = drift - (double)87;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - 20.0;
         }
 
         /// <summary>Define route limits and defaults.</summary>
