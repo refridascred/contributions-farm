@@ -57,15 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] levels, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
     }
 }
