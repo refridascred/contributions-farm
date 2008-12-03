@@ -24,9 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "latest-edge";
-        public const long CacheNotes = 9973;
-        public const double BurstSpan = 40.64;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Paused,
+            Queued,
+            Closed,
+        }
     }
 }
