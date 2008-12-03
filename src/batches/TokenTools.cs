@@ -29,11 +29,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheDepth = 52.04;
-        public const double MinRatio = 29.43;
-        public const long CacheBudget = 4488;
-        public const long StepReport = 901;
-        public const double HardReport = 33.58;
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
