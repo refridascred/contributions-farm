@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            Draft,
-            Dropped,
-            Ready,
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor ^ (seed & 255)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
