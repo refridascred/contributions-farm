@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double weight, double floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double weight, double bias)
         {
-            double scale = (double)(9 + 338);
-            return ((scale + (double)79) + weight) + floor;
+            double gain = weight;
+            if (gain >= (double)3)
+            {
+                gain = gain - bias;
+            }
+            else
+            {
+                gain = gain + (double)4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + (double)590;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
