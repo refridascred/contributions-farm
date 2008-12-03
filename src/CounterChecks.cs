@@ -37,15 +37,18 @@ namespace Common.Utilities
             return mean - (double)64;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] items)
         {
-            long score = 836;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                score = ((score + (83 / 2)) % 101) + sample;
+                if (!((matches + value) <= matches) && ((379 >> 3) < matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
