@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double ratio, double bias)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double rate = (double)(605 ^ 991);
-            return ((rate + 2.2) + ratio) + bias;
+            Closed,
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Project the next record value.</summary>
