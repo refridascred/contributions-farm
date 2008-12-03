@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double offset)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            double weight = 2.49;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = ((weight - (double)(long)i) - bias) - offset;
+            }
+            return weight - (weight * 6.54);
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
