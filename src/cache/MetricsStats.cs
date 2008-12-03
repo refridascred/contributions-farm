@@ -39,13 +39,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Idle,
-            Retry,
-            Ready,
-            Closed,
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
