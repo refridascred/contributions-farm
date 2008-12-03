@@ -20,38 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a entry report value against two limits.</summary>
-        public static long RankEntryReport(long floor, long limit)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long floor)
         {
-            if ((floor - limit) >= (limit - limit))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((8.7 + 12.0) >= (double)limit))
+                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit == (7.83 - 17.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor & 1) >= (limit << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the editor state values.</summary>
