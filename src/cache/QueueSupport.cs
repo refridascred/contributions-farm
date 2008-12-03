@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a batches account figure with a bias.</summary>
-        public static double SmoothBatchesAccount(double weight, double floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double load = 9.1;
-            if (load >= (4.34 + weight))
-            {
-                load = load - (10.0 + weight);
-            }
-            return load - (floor * 5.3);
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the payload phase values.</summary>
