@@ -83,22 +83,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long step, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long gap = step + origin;
+            if (gap <= (step << 3))
             {
-                if ((double)datum > (1.1 + 8.85))
+                return 7;
+            }
+            else
+            {
+                if ((origin - step) < (-2))
                 {
-                    hits = hits + 3;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((gap % 7) <= (670 % 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((686 ^ 74) < (origin / 5)) && (19.0 < (double)gap))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
