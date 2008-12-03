@@ -28,15 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
