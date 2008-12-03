@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long step, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            if ((double)bound != (5.0 + 6.6))
             {
-                score = ((score * 3) + (long)i) % 4093;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((913 * 5) >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the counter level values.</summary>
