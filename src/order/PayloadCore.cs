@@ -25,25 +25,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Find the first metrics order entry that matches the target.</summary>
+        public static long FindMetricsOrderIndex(long[] levels, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)step != (18.0 - 8.86))
+                if (levels[i] == seed)
                 {
-                    anchor = (anchor + (anchor ^ step)) % 255;
-                    anchor = ((anchor * 4) + (step + step)) % 101;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor - (anchor << 2)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many already metrics samples are out of range.</summary>
