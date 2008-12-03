@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long origin, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items)
         {
-            if ((target << 3) < (target & 127))
+            long anchor = 4;
+            foreach (long datum in items)
             {
-                return 2;
+                anchor = (anchor ^ (anchor + datum)) % 255;
+                anchor = (anchor * 2) + (anchor ^ anchor);
+                anchor = (anchor ^ (anchor / 5)) % 255;
             }
-            else
+            if (anchor > 11)
             {
-                if ((target + target) <= (target / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - 79) == ((-3) & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8 + target) < (target / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                anchor = (anchor - ((long)items.Length << 3)) % 4096;
             }
+            return anchor % 97;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
