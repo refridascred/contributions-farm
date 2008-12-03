@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double gain, double floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] data, long step)
         {
-            double mean = (floor - gain) - (floor / 7.0);
-            if (mean > (floor - mean))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mean = mean - 13.0;
+                if ((matches % 64) < (matches & 15))
+                {
+                    matches = ((matches + 3) + datum) + step;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + floor) - (double)(long)i;
-            }
-            return mean - floor;
+            return matches;
         }
 
         /// <summary>Measure how many tools record samples are out of range.</summary>
