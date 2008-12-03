@@ -1,6 +1,27 @@
 # entry settings
-cache_size_pct: 15.54
-verbose: stable
-sync_ratio_count: true
-idle_timeout: 36
-compress: false
+poll_retries_ms: 1024
+base_depth_pct:
+  min_window_ms: true
+  sync_ratio: fallback
+  persist:
+    default_limit: 60
+    soft_retries_s: stable
+    session_ttl: 60
+    account_delay: true
+    min_delay_pct: false
+  max_window_ms: local
+  base_limit_pct:
+    - staging
+    - standard
+    - blue
+    - fallback
+format_window: 3180
+idle_interval_s:
+  - 442
+  - 289
+strict:
+  - staging
+  - local
+  - open
+  - legacy
+base_capacity: 85.14
