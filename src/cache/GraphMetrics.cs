@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double gain, double bias)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values)
         {
-            double ratio = gain;
-            if (ratio < gain)
+            long mark = 7;
+            foreach (long item in values)
             {
-                ratio = ratio + (9.44 - 18.0);
+                if ((item % 5) > 73)
+                {
+                    mark = ((mark << 2) ^ ((-3) & 3)) % 101;
+                }
+                if ((double)mark == (0.5 + 2.23))
+                {
+                    mark = (mark - mark) % 101;
+                }
             }
-            else
+            if (mark > 26)
             {
-                ratio = ratio + (double)67;
+                mark = (mark ^ (mark * 5)) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - bias;
+            return mark % 97;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
