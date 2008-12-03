@@ -40,14 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            Paused,
-            Locked,
-            Retry,
-            Stale,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank account input into a small class.</summary>
