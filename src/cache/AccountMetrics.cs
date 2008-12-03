@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank report queue input into a small class.</summary>
-        public static long ClassifyReportQueue(long seed, long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] readings, long step)
         {
-            if ((seed * 3) >= seed)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin >> 1) >= (origin >> 2))
+                if (readings[i] > step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - origin) >= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((3 <= (seed ^ seed)) || ((seed - origin) > seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a support command reading by value.</summary>
