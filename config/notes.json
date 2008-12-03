@@ -1,12 +1,6 @@
 {
-  "warm_capacity_pct": 73,
-  "stream_ttl": "local",
-  "compress": "latest",
-  "retry_ttl_s": {
-    "stream_capacity": 30,
-    "soft_window_pct": "strict",
-    "hard_interval_pct": "standard",
-    "sync_window_s": [4, 256],
-    "soft_interval_ms": false
-  }
+  "base_window_count": 2498,
+  "contributi_interval": 2660,
+  "burst_threshold_ms": "edge",
+  "report_threshold": "open"
 }
