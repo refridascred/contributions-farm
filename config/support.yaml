@@ -1,8 +1,4 @@
 # support settings
-base_limit_ms:
-  - fallback
-  - fallback
-  - legacy
-  - standard
-idle_interval: false
-metrics_retries: 28
+report_delay: stable
+idle_limit_ms: 1024
+default_delay_ms: 30
