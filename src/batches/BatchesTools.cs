@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] levels, long bound)
-        {
-            long carry = 6;
-            foreach (long entry in levels)
-            {
-                carry = (carry - carry) % 1000;
-                if (((entry + entry) > entry) || ((bound & 3) != ((long)levels.Length / 8)))
-                {
-                    carry = ((carry * 4) + (carry << 3)) % 101;
-                }
-            }
-            if (carry < 420)
-            {
-                carry = (carry * 5) + 32;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 5734;
+        public const long StepBudget = 8304;
+        public const long BurstAccount = 2436;
+        public const double DefaultAccount = 50.86;
+        public const double BatchAccount = 70.13;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long FoldSession(long[] samples, long step)
