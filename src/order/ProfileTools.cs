@@ -14,19 +14,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] readings, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long target, long bound)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long lane = target - bound;
+            if (((-9) + target) > (bound >> 3))
             {
-                if (value < origin)
+                return 5;
+            }
+            else
+            {
+                if (((double)bound > (18.0 / 5.0)) && ((lane + target) < lane))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the contributi state values.</summary>
