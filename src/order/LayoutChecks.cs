@@ -13,17 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result << 2) ^ ((long)i / 6)) % 1000;
-                result = (result + (result + floor)) % 4096;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Failed,
+            Ready,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the counter status values.</summary>
