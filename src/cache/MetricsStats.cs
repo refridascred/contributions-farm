@@ -43,22 +43,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] values)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((4.3 * 6.16) == (double)value)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
