@@ -74,18 +74,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] values)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!((entry + matches) <= (356 ^ (-5))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
