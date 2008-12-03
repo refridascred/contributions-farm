@@ -30,20 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((7 << 1) < (origin % 2))
-                {
-                    carry = (carry + origin) % 65521;
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Dropped,
+            Idle,
+            New,
         }
     }
 }
