@@ -1,23 +1,7 @@
 # githubfarm settings
-contributi_timeout: 60
-persist: 3350
-compress: 87
-verbose:
-  - legacy
-  - eu-west
+window_retries: false
+persist: 3545
+batch_size_ms:
   - open
-  - legacy
-dry_run: false
-max_delay:
-  dry_run:
-    soft_retries_pct: blue
-    verbose: staging
-    warm_retries_ms: 64
-    idle_timeout: staging
-    persist: true
-    hard_timeout_pct: true
-  burst_window_pct: edge
-  command_depth:
-    - 128
-    - 450
-    - 202
+  - eu-west
+  - local
