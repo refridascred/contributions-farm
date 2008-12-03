@@ -1,5 +1,10 @@
 {
-  "enabled": 30,
-  "batch_delay_pct": "edge",
-  "burst_threshold": "primary"
+  "hard_depth_ms": false,
+  "flush_depth_count": {
+    "sync_interval_s": "cached",
+    "burst_retries_count": "edge",
+    "cache_size_pct": 100,
+    "readonly": 250
+  },
+  "persist": ["eu-west", "stable", "stable", "cached"]
 }
