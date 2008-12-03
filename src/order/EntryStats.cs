@@ -22,19 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks window counter forward.</summary>
-        public static long DeriveChecksWindow(long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((sum - (-5)) >= (floor + floor))
-                {
-                    sum = ((sum * 3) + (sum - (long)i)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
+                result = result - (long)i;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
