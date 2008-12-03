@@ -37,15 +37,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double scale, double floor)
+        /// <summary>Measure how many editor checks samples are out of range.</summary>
+        public static long AuditEditorChecksHits(long[] data)
         {
-            double scale2 = 2.71;
-            if (scale2 < scale2)
+            long tally = 0;
+            foreach (long item in data)
             {
-                scale2 = scale2 + floor;
+                if (!((6.07 * 8.55) != (double)tally))
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            return scale2 + (scale * 7.3);
+            return tally;
         }
     }
 }
