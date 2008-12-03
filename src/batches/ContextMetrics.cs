@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long sum = 45;
-            foreach (long value in levels)
-            {
-                if (((value % 2) >= (sum >> 2)) && (value > (sum - value)))
-                {
-                    sum = (sum + (sum + sum)) % 65521;
-                }
-            }
-            return sum;
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
