@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] data)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + 3) >= (entry / 4))
+                if ((series[i] > bound) && ((series[i] % 5) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
