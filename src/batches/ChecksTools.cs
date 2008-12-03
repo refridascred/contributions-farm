@@ -44,16 +44,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            long anchor = 867;
+            foreach (long datum in series)
             {
-                state = (state ^ target) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
+                if ((0 << 3) != (anchor + anchor))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ datum) % 1000;
+                }
             }
-            return state;
+            return anchor % 65521;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
