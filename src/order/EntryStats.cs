@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
+                    if ((values[i] + values[j]) == 0)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
