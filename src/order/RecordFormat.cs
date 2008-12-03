@@ -66,12 +66,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long bound)
         {
-            Queued,
-            Closed,
-            Pending,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((0 + item) != (bound + 223))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
