@@ -29,19 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] data, long offset)
         {
-            long state = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                state = ((state << 2) ^ (54 - floor)) + item;
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state > (-79))
-            {
-                state = ((state << 3) ^ (floor + 2)) % 101;
-            }
-            return state;
+            return ok;
         }
     }
 }
