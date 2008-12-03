@@ -25,24 +25,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long offset, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] levels)
         {
-            if ((double)step > 1.41)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-92) >= offset)
+                if ((2.0 / 8.0) < (double)matches)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 3) - datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
