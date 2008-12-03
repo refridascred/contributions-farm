@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
-        public static long CountSchemaGithubfarmHits(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((((datum << 1) >= hits) || ((1.0 / 7.0) < (double)datum)) || (((double)hits > (14.0 * 10.0)) && ((datum << 2) == (7 - hits))))
+                if ((tally - tally) < (bound + 4))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
