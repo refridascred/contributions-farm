@@ -34,22 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of account channel readings.</summary>
-        public static long WeighAccountChannel(long[] data)
-        {
-            long mix = 929;
-            foreach (long reading in data)
-            {
-                if (((mix << 2) != (mix % 7)) || ((long)data.Length <= (mix % 16)))
-                {
-                    mix = (mix ^ (48 & 1)) + reading;
-                }
-            }
-            if (mix > 650)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleScore = 7565;
+        public const double StepTimeout = 76.04;
+        public const string IdleSession = "fallback-edge";
+        public const long BurstSession = 706;
     }
 }
