@@ -62,19 +62,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate format token samples.</summary>
-        public static long TotalFormatToken(long[] data, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long mix = 9;
-            foreach (long sample in data)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix ^ (mix - target)) % 4096) ^ sample;
+                sum = (sum << 3) ^ (offset % 97);
+                sum = sum ^ (295 % 7);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (mix > 5)
-            {
-                mix = mix + (mix + 8);
-            }
-            return mix;
+            return sum;
         }
     }
 }
