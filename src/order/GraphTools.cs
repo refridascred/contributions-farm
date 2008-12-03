@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 6394;
-        public const long CacheBatch = 8731;
-        public const long BatchInterval = 5394;
-        public const double SoftDepth = 13.79;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)limit == (2.0 + 5.56))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long MatchProfileCount(long[] data)
