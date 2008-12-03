@@ -1,7 +1,7 @@
 {
-  "retry_depth": 5,
-  "poll_timeout": 84.53,
-  "min_threshold_s": ["edge", "standard"],
-  "session_interval": 1024,
-  "idle_window_ms": 52.21
+  "record_capacity": "fallback",
+  "farm_window": 5316,
+  "cache_delay": 8.32,
+  "base_size_pct": 9818,
+  "counter_depth": ["edge", "standard"]
 }
