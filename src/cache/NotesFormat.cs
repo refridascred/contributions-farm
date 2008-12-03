@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardFactor = 5496;
-        public const long BaseStream = 8489;
-        public const string StepStream = "staging-v2";
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowGaps(long[] data, long bound)
