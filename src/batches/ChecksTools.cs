@@ -59,39 +59,21 @@ namespace Common.Utilities
             return mean + (rate + 9.0);
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long origin, long origin2)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long prev = origin ^ origin2;
-            if ((origin + origin) <= (prev - origin2))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (prev < (origin2 % 24))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev * 5) >= origin)
+                    if ((data[i] + data[j]) < 7)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (242 >= (origin * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
