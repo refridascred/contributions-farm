@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] values, long limit)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
