@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] series, long bound)
+        /// <summary>Measure how many cache already samples are out of range.</summary>
+        public static long MeasureCacheAlreadyHits(long[] data)
         {
-            long carry = 27;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                carry = ((carry + (sample * 2)) % 4096) - bound;
-                carry = ((carry << 2) ^ (652 * 3)) % 101;
+                if ((long)data.Length != (seen - 218))
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a already header.</summary>
