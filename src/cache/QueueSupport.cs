@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ratio + (double)253;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double bias, double offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double mean = bias;
-            if (mean <= (6.0 + offset))
-            {
-                mean = mean + (offset - offset);
-            }
-            else
-            {
-                mean = mean - (double)215;
-            }
-            return mean - mean;
+            Paused,
+            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Grade a stats editor value against two limits.</summary>
