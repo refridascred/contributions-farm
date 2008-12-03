@@ -42,11 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
+            New,
+            Stale,
+            Done,
+            Draft,
         }
     }
 }
