@@ -30,17 +30,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] items, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (items[i] <= limit)
+                if (entry >= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the window level values.</summary>
