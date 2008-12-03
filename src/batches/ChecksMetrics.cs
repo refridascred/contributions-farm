@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] values, long bound)
+        /// <summary>Validate batches buffer readings against a bound.</summary>
+        public static bool CheckBatchesBufferBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (value < 781)
+                if (reading <= offset)
                 {
-                    matches = (matches + 2) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
