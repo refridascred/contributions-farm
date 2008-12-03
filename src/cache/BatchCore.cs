@@ -21,22 +21,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit commits githubfarm readings against a rule.</summary>
-        public static long AuditCommitsGithubfarmGaps(long[] samples)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= (4.0 + 8.0))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
