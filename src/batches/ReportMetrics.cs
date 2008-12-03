@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate window editor readings against a bound.</summary>
-        public static bool VerifyWindowEditorRange(long[] data, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (cell >= target)
+                if ((entry >> 2) <= (step >> 1))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a token header.</summary>
