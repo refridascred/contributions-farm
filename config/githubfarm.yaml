@@ -1,19 +1,4 @@
 # githubfarm settings
-strict: cached
-compress: false
-burst_threshold_pct: latest
-batch_ttl_s: open
-batch_ttl: 13
-idle_threshold_ms:
-  hard_delay_pct:
-    enabled: primary
-    strict: legacy
-    poll_size: 1486
-    batch_ratio_pct: 60.15
-  batch_delay_pct: 1066
-  max_depth_s: staging
-  context_delay: 87.46
-  verbose:
-    retry_limit_ms: true
-    retry_timeout_count: true
-    base_window: true
+order_window: 659
+filter_size: 9262
+readonly: primary
