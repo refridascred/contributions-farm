@@ -69,12 +69,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            New,
-            Draft,
-            Closed,
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
