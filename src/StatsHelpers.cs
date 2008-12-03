@@ -39,19 +39,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double weight, double offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] series, long seed)
         {
-            double load = weight / 4.0;
-            if (load <= (double)48)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - (weight * 11.0)) - offset;
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (13.0 + weight);
-            }
-            return load + (double)283;
+            return -1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
