@@ -65,19 +65,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)i <= (8.7 / 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix - (3 % 5);
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
     }
 }
