@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long BaseStream = 8489;
         public const string StepStream = "staging-v2";
 
-        /// <summary>Audit channel account readings against a rule.</summary>
-        public static long AuditChannelAccountHits(long[] values, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((sample / 7) <= sample)
+                if ((sample % 24) < (long)data.Length)
                 {
-                    count = (count + 3) - offset;
+                    hits = (hits + 2) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
