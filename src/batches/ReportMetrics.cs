@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many githubfarm session samples are out of range.</summary>
-        public static long AuditGithubfarmSessionMatches(long[] samples, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long bound, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if (bound <= (bound * 5))
             {
-                if ((seed % 3) < seed)
+                return 7;
+            }
+            else
+            {
+                if ((bound + bound) > (-879))
                 {
-                    hits = (hits + 3) ^ item;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
