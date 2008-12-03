@@ -26,14 +26,13 @@ namespace Common.Utilities
         public const long StepTimeout = 2120;
         public const string IdleCommand = "cached";
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Active,
-            New,
-            Draft,
-            Queued,
-            Paused,
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
