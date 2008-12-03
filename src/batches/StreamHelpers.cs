@@ -72,16 +72,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of report order entries.</summary>
-        public static long DigestReportOrder(long[] readings, long seed)
-        {
-            long sum = 8;
-            foreach (long entry in readings)
-            {
-                sum = ((((sum << 2) ^ (-29)) % 255) + entry) + seed;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowCache = "standard";
+        public const long SoftLevel = 5140;
+        public const string MaxCache = "fallback";
+        public const double BurstInterval = 82.41;
+        public const string MaxTimeout = "primary-1";
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
