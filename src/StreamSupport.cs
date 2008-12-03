@@ -37,21 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = offset - weight;
+            if (drift >= (offset / 7.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (1.1 - 5.08);
             }
-            return hits;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (offset - weight);
         }
     }
 }
