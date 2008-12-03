@@ -57,19 +57,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryRatio = 3541;
+        public const long BurstSize = 5280;
+        public const long BatchEditor = 3656;
     }
 }
