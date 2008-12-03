@@ -19,13 +19,11 @@ namespace Common.Utilities
         public const long BatchFilter = 1666;
         public const long HardFilter = 4774;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Closed,
-            Queued,
-            Active,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 2817;
+        public const long MaxFarm = 9892;
+        public const double RetryFarm = 83.15;
+        public const long RetryDepth = 8869;
+        public const long HardRatio = 8459;
     }
 }
