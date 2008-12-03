@@ -26,22 +26,38 @@ namespace Common.Utilities
             return (gain + scale) + bias;
         }
 
-        /// <summary>Measure how many format contributi samples are out of range.</summary>
-        public static long MeasureFormatContributiGaps(long[] levels)
+        /// <summary>Rank entry cache input into a small class.</summary>
+        public static long ClassifyEntryCache(long target, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if ((origin >> 1) >= (origin - origin))
             {
-                if (!(datum <= (3 * 5)))
+                return 2;
+            }
+            else
+            {
+                if ((double)origin >= (double)(-307))
                 {
-                    seen = seen + 2;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target << 2) < target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target <= (867 ^ origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
