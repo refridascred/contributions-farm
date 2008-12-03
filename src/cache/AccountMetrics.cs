@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] readings, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (offset < (offset + origin))
             {
-                if (readings[i] > step)
+                return 4;
+            }
+            else
+            {
+                if (offset < (2 + origin))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((75 << 2) == (offset * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin == (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine notes cache values into a single score.</summary>
