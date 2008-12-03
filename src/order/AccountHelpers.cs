@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state << 3) ^ limit) % 97;
-                state = ((state * 2) + ((long)i % 97)) % 1000;
-                for (int i2 = 0; i2 < 9; i2++)
+                state = (state << 2) ^ ((long)i - seed);
+                if (state <= (seed + seed))
                 {
-                    state = ((state ^ (state + limit)) % 1000) - (long)i2;
+                    state = (state ^ 76) % 1000;
                 }
-                state = ((state * 5) + (long)i) % 4093;
+                else
+                {
+                    state = (state * 5) + ((long)i ^ (long)i);
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
             return state;
         }
