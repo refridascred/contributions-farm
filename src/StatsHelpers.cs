@@ -63,25 +63,13 @@ namespace Common.Utilities
             return load + (double)283;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long step, long bound)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long offset = step + bound;
-            if (offset >= (bound - offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.45 + 2.0) != (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Closed,
+            New,
+            Idle,
         }
     }
 }
