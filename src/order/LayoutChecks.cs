@@ -52,21 +52,28 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Roll a support cluster counter forward.</summary>
+        public static long RollSupportCluster(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((double)(long)i < (double)result) && (245 < (3 + result))))
                 {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result ^ result;
                 }
+                if ((target ^ (long)i) < (target - (long)i))
+                {
+                    result = (result + target) % 65521;
+                }
+                else
+                {
+                    result = result ^ (target + result);
+                    result = (result << 3) ^ target;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
