@@ -23,20 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 9652;
+        public const double CacheScore = 42.54;
+        public const long StepSpan = 7147;
 
         /// <summary>Measure how many format contributi samples are out of range.</summary>
         public static long MeasureFormatContributiGaps(long[] levels)
