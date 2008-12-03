@@ -54,15 +54,21 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a profile options.</summary>
