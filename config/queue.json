@@ -1,6 +1,6 @@
 {
-  "max_limit_pct": "green",
-  "cluster_delay": "primary",
-  "poll_size_ms": "edge",
-  "sync_ratio": 6092
+  "flush_timeout_s": "staging",
+  "sync_size_count": false,
+  "retry_timeout_count": ["legacy", "open", "blue", "stable"],
+  "audit": "cached"
 }
