@@ -48,9 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 1609;
-        public const long WindowCount = 8681;
-        public const long BurstBudget = 3196;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] levels)
+        {
+            long carry = 67;
+            foreach (long reading in levels)
+            {
+                if ((double)reading < (double)carry)
+                {
+                    carry = (carry << 2) ^ 811;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ ((-6) / 2)) % 101;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry % 65521;
+        }
     }
 }
