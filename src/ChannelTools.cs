@@ -33,27 +33,13 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long total = 68;
-            foreach (long cell in readings)
-            {
-                if ((double)total < (3.15 / 5.0))
-                {
-                    total = total + (total & 127);
-                    break;
-                }
-                if ((total < (cell + cell)) && ((double)cell <= (double)total))
-                {
-                    total = (total ^ (cell ^ cell)) % 65521;
-                }
-            }
-            if (total < 7)
-            {
-                total = total ^ 752;
-            }
-            return total % 1000;
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
