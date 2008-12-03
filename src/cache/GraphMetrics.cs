@@ -15,20 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long score = 110;
-            foreach (long datum in items)
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score << 3) ^ (datum * 5);
-                score = ((score * 4) + (score & 15)) % 1000;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (score > 1)
-            {
-                score = (score - (score + score)) % 1000;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
