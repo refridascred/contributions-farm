@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] values, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
