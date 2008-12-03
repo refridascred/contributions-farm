@@ -72,19 +72,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits format values into a single score.</summary>
-        public static long WeighCommitsFormat(long[] series, long floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long limit)
         {
-            long total = 39;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 4) + 77) + datum;
-                if ((total / 7) >= (floor + floor))
+                if (readings[i] <= limit)
                 {
-                    total = total - (floor + 14);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate notes account samples.</summary>
