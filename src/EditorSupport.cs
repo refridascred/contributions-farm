@@ -43,39 +43,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long seed, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long diff = seed - floor;
-            if (!((2.4 / 6.0) != (double)diff))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)diff > (3.7 * 9.99))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + diff) != (diff ^ 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((diff % 5) >= floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the buffer status values.</summary>
