@@ -54,13 +54,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long offset, long step)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            if ((double)step > 1.41)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((-92) >= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Blend two notes measurements.</summary>
