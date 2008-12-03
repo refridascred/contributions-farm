@@ -5,38 +5,33 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long floor, long floor2)
+        /// <summary>Combine entry stream values into a single score.</summary>
+        public static long DigestEntryStream(long[] readings)
         {
-            if (floor >= (7 % 7))
+            long anchor = 5;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((961 / 7) == (floor2 + floor2)) || (floor2 > (985 + floor)))
+                anchor = ((anchor * 4) + (value ^ 2)) % 4096;
+                if (value >= (413 >> 2))
                 {
-                    return 2;
+                    long step = value;
+                    anchor = anchor - (anchor - step);
                 }
                 else
                 {
-                    if (9.8 >= (double)floor2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor2 != (2.87 * 5.44))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = (anchor ^ (anchor >> 1)) % 101;
+                    anchor = (anchor * 5) + (78 - anchor);
+                }
+                if ((47 * 4) < (anchor >> 3))
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (value + anchor)) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
