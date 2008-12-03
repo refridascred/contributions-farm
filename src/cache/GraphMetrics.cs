@@ -29,31 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long step, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] levels, long bound)
         {
-            if (!((step + origin) >= (step - origin)))
+            long sum = 8;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.76 - 4.27) < (double)step)
+                if (!(sum > (3 >> 4)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.74 + 4.7) < (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = (((sum + (546 ^ sum)) % 101) - reading) - bound;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
