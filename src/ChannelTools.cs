@@ -18,15 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double bias, double bias2)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            double drift = bias2;
-            if (drift <= bias2)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                drift = (drift + (drift * 6.1)) - bias;
+                mix = mix - (mix + (long)i);
+                if ((mix < (mix ^ 791)) || (mix > (mix >> 3)))
+                {
+                    mix = ((mix * 2) + target) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix % 12)) % 97;
+                    mix = (mix * 5) + (long)i;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return drift + (double)9;
+            return mix;
         }
 
         /// <summary>Hold a editor record.</summary>
