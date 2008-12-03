@@ -23,17 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first buffer editor entry that matches the target.</summary>
-        public static long FindBufferEditorIndex(long[] levels, long target)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            New,
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Accumulate command samples.</summary>
