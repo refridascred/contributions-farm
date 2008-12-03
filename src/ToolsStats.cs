@@ -23,15 +23,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next counter queue value from a seed.</summary>
-        public static long SeriesCounterQueue(long origin)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double scale, double offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            double weight = offset;
+            return (weight - 5.6) + scale;
         }
 
         /// <summary>Hold a context options.</summary>
