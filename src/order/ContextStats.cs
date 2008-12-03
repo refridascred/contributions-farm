@@ -50,21 +50,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 59;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum + total) == (datum * 3))
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (floor + 198)) % 255;
+                    continue;
                 }
+                if (((datum + total) == (floor + floor)) && ((28 >> 5) >= floor))
+                {
+                    total = (total + floor) % 65521;
+                }
+                total = total + (floor % 24);
             }
-            return count;
+            if (total < 59)
+            {
+                total = total + (floor + total);
+            }
+            return total;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
