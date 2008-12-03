@@ -23,19 +23,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate notes buffer readings against a bound.</summary>
-        public static bool VerifyNotesBufferLimits(long[] data, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry > step)
+                sum = (sum - sum) % 4096;
+                if ((double)sum < (3.74 + 2.0))
                 {
-                    valid = false;
+                    sum = (sum + (offset ^ offset)) % 65521;
                     break;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (((sum << 3) ^ sum) % 101) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
