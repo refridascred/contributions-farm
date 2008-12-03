@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Measure how many checks support samples are out of range.</summary>
+        public static long TallyChecksSupportHits(long[] readings)
         {
-            long result = 98;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (!((9.06 - 7.0) > (double)cell))
+                if ((hits - hits) > (entry ^ entry))
                 {
-                    result = (result * 2) + (result - result);
-                }
-                if ((cell / 7) <= cell)
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (result < 459)
-            {
-                result = ((result * 5) + (long)values.Length) % 101;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the order status values.</summary>
