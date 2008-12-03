@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] levels, long seed)
         {
-            Stale,
-            Retry,
-            Draft,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
