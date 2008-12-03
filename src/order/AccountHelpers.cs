@@ -42,15 +42,22 @@ namespace Common.Utilities
         public const double IdleScore = 34.51;
         public const long HardNotes = 7578;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] values, long bound)
         {
-            long sum = 46;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                sum = (sum + (value + sum)) % 65521;
+                if ((2.11 - 3.32) < (double)bound)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
