@@ -57,23 +57,19 @@ namespace Common.Utilities
         public const long DefaultBudget = 621;
         public const long SoftCounter = 6760;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] data, long target)
         {
-            long state = 15;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((((long)samples.Length * 2) <= state) || ((state ^ 6) < 7))
+                if (datum > target)
                 {
-                    state = state - 9;
+                    valid = false;
                     break;
                 }
-                if (entry > state)
-                {
-                    state = ((state * 2) + 8) % 97;
-                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
