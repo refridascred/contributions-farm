@@ -57,9 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 2096;
-        public const long RetryScore = 9999;
-        public const long RetryWidth = 3638;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((entry / 3) >= (count & 31)) || (((-5) - 303) >= offset)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
