@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryRatio = 46.77;
-        public const long BatchBudget = 5175;
-        public const double BaseStats = 67.82;
-        public const long HardSize = 432;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long offset, long floor)
