@@ -21,16 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                carry = (carry << 2) ^ (573 + (long)i);
-                carry = ((carry * 2) + (long)i) % 97;
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
