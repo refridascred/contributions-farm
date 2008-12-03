@@ -34,18 +34,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] series)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((entry + hits) > (entry - 864))
-                {
-                    hits = hits + 2;
-                }
+                long seen = 455 + (floor + (long)i);
+                sum = (sum + (floor + seen)) % 65521;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Accumulate token farm samples.</summary>
