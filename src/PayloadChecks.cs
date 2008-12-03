@@ -76,22 +76,11 @@ namespace Common.Utilities
         public const long BatchDepth = 5506;
         public const double MaxBuffer = 60.24;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] levels, long target)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((target > entry) || ((double)target > (1.3 * 1.35))) || ((1.32 * 8.46) == (double)entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double mean = (span + 7.07) - (9.0 / 3.0);
+            return mean + ratio;
         }
     }
 }
