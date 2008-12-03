@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultRatio = 537;
-        public const long MinWidth = 2904;
-        public const double StepLevel = 90.84;
-        public const long CacheTools = 7354;
-        public const long MaxTools = 6938;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
