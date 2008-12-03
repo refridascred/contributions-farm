@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] items, long origin)
         {
-            Ready,
-            Closed,
-            Dropped,
-            Done,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
