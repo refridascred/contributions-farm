@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultTimeout = 8038;
-        public const string BatchSize = "fallback";
-        public const long SoftTimeout = 2821;
-        public const long WindowFarm = 7279;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 7371;
+        public const string DefaultSupport = "standard-edge";
+        public const long BaseSupport = 4043;
+        public const long HardSpan = 2260;
+        public const double IdleScore = 71.83;
 
         /// <summary>Find the first metrics order entry that matches the target.</summary>
         public static long FindMetricsOrderIndex(long[] levels, long seed)
