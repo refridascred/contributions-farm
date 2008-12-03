@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const long HardEditor = 7027;
         public const long SoftEditor = 1506;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] readings, long floor)
         {
-            Closed,
-            Ready,
-            Synced,
-            Done,
-            Queued,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading >> 3) == (reading & 127))
+                {
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next record value.</summary>
