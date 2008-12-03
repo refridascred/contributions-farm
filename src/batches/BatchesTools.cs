@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 5519;
+        public const long SoftFarm = 7955;
+        public const double SoftBudget = 59.65;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinReport = 1848;
