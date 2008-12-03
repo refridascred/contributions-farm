@@ -23,12 +23,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseSize = "latest";
-        public const long DefaultFormat = 7528;
-        public const long MinDepth = 3559;
-        public const long IdleFormat = 7674;
-        public const double BurstFormat = 90.19;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Idle,
+            Active,
+            Synced,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Blend two counter format measurements.</summary>
         public static double BlendCounterFormat(double weight, double bias)
