@@ -88,21 +88,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 3;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((total - 8) != (total - total))
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total - (total >> 5)) % 1000;
+                    break;
                 }
+                total = total + (datum + datum);
             }
-            return hits;
+            return total;
         }
     }
 }
