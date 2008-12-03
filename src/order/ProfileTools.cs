@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double bias, double offset)
         {
-            Queued,
-            Dropped,
-            Pending,
-            Active,
+            double weight = (offset - offset) / 6.0;
+            return (weight + (double)5) + bias;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
