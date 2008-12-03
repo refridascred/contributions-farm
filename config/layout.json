@@ -1,8 +1,20 @@
 {
-  "sync_timeout_ms": "primary",
-  "compress": 1024,
-  "enabled": "standard",
-  "strict": true,
-  "report_retries": "stable",
-  "sync_capacity_ms": 2823
+  "batch_delay": 70,
+  "metrics_size": {
+    "hard_delay_count": 250,
+    "route_size": ["strict", "fallback", "latest"],
+    "channel_timeout": 6449,
+    "base_threshold_count": [113, 268, 188],
+    "flush_depth": {
+      "soft_threshold_ms": false,
+      "strict": "open",
+      "metrics_size": 10.7,
+      "report_ttl": false
+    },
+    "cache_timeout": "standard"
+  },
+  "dry_run": 68.88,
+  "min_ratio_ms": true,
+  "persist": 17,
+  "cache_interval_ms": false
 }
