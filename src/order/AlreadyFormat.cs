@@ -33,13 +33,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long floor, long offset)
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            long delta = floor + offset;
+            if ((offset & 31) != (offset << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2.0 + 2.0) <= (double)delta)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)delta > (double)6) || ((delta >> 3) != (18 + 651)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
