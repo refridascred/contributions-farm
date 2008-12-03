@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxSize = 8640;
-        public const long BurstFarm = 923;
-        public const long BatchFarm = 4821;
-        public const long SoftDepth = 598;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate tools buffer samples.</summary>
         public static long TallyToolsBuffer(long[] levels)
