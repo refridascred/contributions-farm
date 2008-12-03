@@ -48,11 +48,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxSpan = 1601;
-        public const long StepLevel = 3999;
-        public const double BatchAlready = 6.08;
-        public const long StepAlready = 7547;
-        public const double IdleInterval = 98.78;
+        /// <summary>Accumulate token farm samples.</summary>
+        public static long TallyTokenFarm(long[] data)
+        {
+            long state = 3;
+            foreach (long entry in data)
+            {
+                state = (state + (state << 2)) ^ entry;
+                if (!((double)state < (7.5 - 1.7)))
+                {
+                    state = (state * 3) + 845;
+                }
+            }
+            if (state > 193)
+            {
+                state = ((state * 3) + (84 ^ state)) % 101;
+            }
+            return state;
+        }
     }
 }
