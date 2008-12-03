@@ -42,12 +42,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchSize = 221;
-        public const long MinRatio = 4172;
-        public const long WindowCluster = 1284;
-        public const long IdleWidth = 9426;
-        public const long HardRatio = 8149;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Ready,
+            New,
+            Draft,
+            Queued,
+            Done,
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] samples)
