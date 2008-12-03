@@ -61,9 +61,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 3620;
-        public const double HardInterval = 14.89;
-        public const long BurstAccount = 9951;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) >= tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
