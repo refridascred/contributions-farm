@@ -14,19 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the already batches series from a seed.</summary>
-        public static long IterateAlreadyBatches(long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            double load = (18.0 / 6.0) / 6.0;
+            if (load >= (double)594)
             {
-                if ((double)mix <= 3.38)
-                {
-                    mix = (mix - (origin + origin)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                load = (load - load) - floor;
             }
-            return mix;
+            else
+            {
+                load = load + 18.0;
+            }
+            return load + ratio;
         }
 
         /// <summary>Hold a filter info.</summary>
