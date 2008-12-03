@@ -20,11 +20,24 @@ namespace Common.Utilities
             return scale + (scale - bias2);
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long seed, long offset)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            if (((seed & 31) == (1 / 3)) && (offset >= (offset + offset)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed ^ (-9)) != (968 + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
