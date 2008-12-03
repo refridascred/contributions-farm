@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ratio + (double)253;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardCount = 20.23;
-        public const string BatchSpan = "latest-edge";
-        public const double CacheSpan = 89.22;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double bias, double offset)
+        {
+            double mean = bias;
+            if (mean <= (6.0 + offset))
+            {
+                mean = mean + (offset - offset);
+            }
+            else
+            {
+                mean = mean - (double)215;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Grade a stats editor value against two limits.</summary>
         public static long ClassifyStatsEditor(long offset, long target)
