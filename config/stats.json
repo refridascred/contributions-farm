@@ -1,8 +1,11 @@
 {
-  "flush_capacity": 20.92,
-  "sync_window": "standard",
-  "audit": 85,
-  "min_ttl": [432, 281],
-  "warm_delay_ms": ["standard", "fallback", "stable"],
-  "strict": "latest"
+  "hard_timeout": 11.27,
+  "soft_threshold_count": "cached",
+  "burst_depth": {
+    "payload_capacity": "primary",
+    "readonly": "local",
+    "compress": "latest",
+    "order_timeout": 85.49
+  },
+  "default_ratio_count": "staging"
 }
