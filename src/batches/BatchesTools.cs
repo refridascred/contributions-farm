@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] data)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + 3) >= (entry / 4))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
