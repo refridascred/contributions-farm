@@ -44,23 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] series)
-        {
-            long anchor = 867;
-            foreach (long datum in series)
-            {
-                if ((0 << 3) != (anchor + anchor))
-                {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ datum) % 1000;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheLevel = "legacy-1";
+        public const long LimitProfile = 9179;
+        public const double RetryRatio = 82.82;
+        public const long HardProfile = 1833;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesBounds(long[] samples, long bound)
