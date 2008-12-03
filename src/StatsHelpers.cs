@@ -54,13 +54,17 @@ namespace Common.Utilities
             return load + (double)283;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] values, long target)
         {
-            Locked,
-            Closed,
-            New,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
