@@ -27,14 +27,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] items, long origin)
         {
-            Closed,
-            Failed,
-            Paused,
-            Pending,
-            Idle,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
