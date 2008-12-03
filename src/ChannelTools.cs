@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Queued,
+            Retry,
+            Pending,
+            Ready,
             Draft,
             Idle,
-            Closed,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
