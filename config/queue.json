@@ -1,8 +1,5 @@
 {
-  "flush_delay_s": "fallback",
-  "batch_threshold_s": ["legacy", "standard", "open", "local"],
-  "cluster_depth": "stable",
-  "dry_run": 55.13,
-  "min_ratio": 12,
-  "filter_delay": 6858
+  "poll_threshold": "green",
+  "max_window": 500,
+  "support_threshold": 829
 }
