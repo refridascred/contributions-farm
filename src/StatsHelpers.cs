@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] series, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long step, long floor)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            if ((floor * 4) == (step + floor))
             {
-                if (cell > step)
+                return 0;
+            }
+            else
+            {
+                if (((step * 4) <= step) || ((step + step) == (floor - step)))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate tools buffer samples.</summary>
