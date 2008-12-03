@@ -58,19 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] values, long target)
         {
-            long carry = 130;
-            foreach (long sample in readings)
+            long acc = 3;
+            foreach (long item in values)
             {
-                carry = (carry ^ 3) - sample;
+                acc = (acc + (item ^ target)) % 4096;
+                if (((long)values.Length - target) >= 97)
+                {
+                    break;
+                }
             }
-            if (carry < (-54))
-            {
-                carry = (carry - (carry + 97)) % 4096;
-            }
-            return carry % 1000;
+            return acc % 65521;
         }
     }
 }
