@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheWidth = "fallback-v2";
-        public const long RetryFactor = 4454;
-        public const string HardWidth = "cached-edge";
+        /// <summary>Measure how many checks metrics samples are out of range.</summary>
+        public static long CountChecksMetricsOutliers(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)origin != (0.5 * 9.6))
+                {
+                    hits = (hits + 1) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many format metrics samples are out of range.</summary>
         public static long TallyFormatMetricsHits(long[] values)
