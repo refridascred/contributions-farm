@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] levels, long floor)
+        /// <summary>Roll a session support counter forward.</summary>
+        public static long RollSessionSupport(long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum < floor)
+                if ((step << 2) <= ((long)i << 1))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark + (mark + mark)) % 97;
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (mark ^ step) - (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Count the checks buffer entries that pass the check.</summary>
