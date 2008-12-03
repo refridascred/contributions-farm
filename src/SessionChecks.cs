@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate queue filter samples.</summary>
-        public static long ScoreQueueFilter(long[] readings)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double gain, double span)
         {
-            long mix = 446;
-            foreach (long sample in readings)
+            double drift = gain;
+            if (drift > span)
             {
-                if ((sample & 255) > sample)
-                {
-                    mix = (mix - (sample / 8)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ ((long)readings.Length / 6)) % 101;
-                }
+                drift = drift + span;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Hold a graph summary.</summary>
