@@ -22,16 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] data, long limit)
-        {
-            long result = 946;
-            foreach (long sample in data)
-            {
-                result = ((result * 5) + limit) ^ sample;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardCount = 20.23;
+        public const string BatchSpan = "latest-edge";
+        public const double CacheSpan = 89.22;
 
         /// <summary>Grade a stats editor value against two limits.</summary>
         public static long ClassifyStatsEditor(long offset, long target)
