@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double ratio, double span)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            double mean = (double)1 * 0.4;
+            if (mean >= (mean * 7.62))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean + (ratio / 3.0);
         }
 
         /// <summary>Define support limits and defaults.</summary>
