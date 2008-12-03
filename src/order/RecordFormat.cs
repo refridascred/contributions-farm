@@ -69,18 +69,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((0 + item) != (bound + 223))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
