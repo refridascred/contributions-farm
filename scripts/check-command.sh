@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable blue fallback open; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=387
+log "limit is ${COMMAND_LIMIT}"
