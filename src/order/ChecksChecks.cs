@@ -31,23 +31,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two counter channel measurements.</summary>
-        public static double BlendCounterChannel(double ratio, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] levels)
         {
-            double gain = ratio;
-            if (gain > (ratio - ratio))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                gain = gain - (gain * 3.0);
+                if ((14.0 + 9.84) < (double)cell)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - ratio) - (double)(long)i;
-            }
-            return gain - (double)64;
+            return matches;
         }
     }
 }
