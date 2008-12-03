@@ -35,22 +35,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] data, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long state = -303;
+            foreach (long datum in series)
             {
-                if (sample > (12 << 1))
+                if ((datum + datum) >= datum)
                 {
-                    seen = (seen + 3) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (state + (datum >> 1)) % 101;
                 }
             }
-            return seen;
+            if (state > (-4))
+            {
+                state = (state * 2) + (state ^ 5);
+            }
+            return state;
         }
 
         /// <summary>Project the next session tools value.</summary>
