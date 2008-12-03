@@ -24,10 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 1848;
-        public const double BurstReport = 51.71;
-        public const string WindowReport = "legacy-edge";
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] samples, long step)
+        {
+            long score = 7;
+            foreach (long entry in samples)
+            {
+                if (!((entry & 127) <= (step % 24)))
+                {
+                    score = (score + (2 + step)) % 4096;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long floor)
