@@ -1,9 +1,24 @@
 # githubfarm settings
-channel_ttl: true
-strict: 15
-hard_size_count: 81.6
-support_retries: 89.11
-flush_threshold_ms:
-  - 314
-  - 335
-compress: eu-west
+batch_delay_s: 60
+soft_ttl_s:
+  - 217
+  - 319
+  - 323
+poll_size_ms:
+  poll_timeout:
+    - 371
+    - 432
+    - 397
+    - 254
+  counter_threshold:
+    - 248
+    - 206
+    - 173
+  min_capacity_s: 30
+audit: strict
+burst_retries:
+  - 242
+  - 473
+  - 403
+  - 433
+editor_capacity: open
