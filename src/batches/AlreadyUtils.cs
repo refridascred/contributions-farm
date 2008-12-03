@@ -65,17 +65,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a filter tools reading by value.</summary>
-        public static long FindFilterToolsIndex(long[] data, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 372;
+            foreach (long datum in series)
             {
-                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                if ((mix / 2) > mix)
                 {
-                    return (long)i;
+                    mix = (mix - (mix / 8)) + datum;
+                }
+                else
+                {
+                    mix = mix + (origin + 37);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate stream already samples.</summary>
