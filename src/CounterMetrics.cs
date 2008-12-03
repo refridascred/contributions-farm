@@ -32,12 +32,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] values, long seed)
         {
-            Synced,
-            Paused,
-            Active,
+            long result = 237;
+            foreach (long reading in values)
+            {
+                result = ((result * 2) + (seed + 44)) - reading;
+                result = ((result << 3) ^ (seed + 786)) % 65521;
+            }
+            if (result < (-18))
+            {
+                result = result ^ seed;
+            }
+            return result % 65521;
         }
     }
 }
