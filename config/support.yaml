@@ -1,16 +1,20 @@
 # support settings
-enabled: 500
-soft_ttl: 33
-poll_threshold_s: 98
-compress: true
-farm_capacity: 3097
-burst_capacity:
-  enabled: latest
-  batch_capacity_pct:
-    - green
-    - blue
-  format_depth: 6
-  cache_ttl:
-    - green
-    - staging
-    - eu-west
+soft_size_s:
+  hard_capacity: 60
+  batch_retries: false
+  audit: 67.46
+  sync_window:
+    - 45
+    - 415
+    - 33
+    - 40
+  warm_limit_ms: 5566
+  compress: stable
+batch_ratio: 250
+batches_capacity: edge
+record_ratio:
+  context_size: 79
+  cache_limit_pct: local
+  verbose: 30
+  enabled: cached
+  default_window: false
