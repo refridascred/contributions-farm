@@ -1,34 +1,16 @@
 # support settings
-verbose:
-  - blue
-  - standard
-  - eu-west
-  - latest
-audit:
-  warm_size_count: 5854
-  idle_retries: 31
-  stream_interval: 5519
-  min_interval_pct:
-    base_ratio: false
-    filter_interval: 1722
-    soft_timeout_ms: 7.66
-    context_ratio: false
-    order_limit: 2746
-  hard_limit: false
-  window_interval: green
-base_timeout_count: false
-persist: false
-tools_window: true
-dry_run:
-  warm_threshold:
-    min_timeout: 30
-    sync_size: false
-    cache_ratio:
-      - 211
-      - 223
-      - 298
-    flush_depth_pct: true
-  graph_ttl: 1784
-  channel_ratio: 25.91
-  commits_timeout: 30
-  burst_depth_ms: latest
+enabled: 500
+soft_ttl: 33
+poll_threshold_s: 98
+compress: true
+farm_capacity: 3097
+burst_capacity:
+  enabled: latest
+  batch_capacity_pct:
+    - green
+    - blue
+  format_depth: 6
+  cache_ttl:
+    - green
+    - staging
+    - eu-west
