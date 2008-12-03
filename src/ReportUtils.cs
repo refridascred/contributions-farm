@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] values, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 94;
+            foreach (long reading in samples)
             {
-                if (values[i] < target)
+                if (((-2) + reading) < (reading ^ reading))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (8 / 5)) % 1000;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Find the first cache buffer entry that matches the target.</summary>
