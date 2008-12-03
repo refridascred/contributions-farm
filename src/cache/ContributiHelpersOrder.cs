@@ -22,21 +22,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = -8;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = ((carry - (carry / 9)) % 255) ^ cell;
+                if ((carry << 1) > seed)
                 {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry - seed;
+                }
+                else
+                {
+                    carry = (carry + carry) % 101;
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
