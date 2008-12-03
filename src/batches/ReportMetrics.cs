@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] readings, long offset)
         {
-            long total = 467;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                total = total - item;
-                if ((7.28 + 6.9) <= (double)total)
+                if ((hits + value) < (hits - hits))
                 {
-                    total = (total << 3) ^ (total & 3);
+                    hits = (hits + 2) + offset;
                 }
             }
-            if (total < (-127))
-            {
-                total = (total ^ (total % 12)) % 255;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a report record.</summary>
