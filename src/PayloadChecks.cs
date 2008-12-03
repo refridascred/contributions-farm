@@ -17,16 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = result + ((-100) & 31);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
