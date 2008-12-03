@@ -36,23 +36,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Count channel contributi pairs that satisfy a relation.</summary>
+        public static long OverlapChannelContributiCount(long[] series)
         {
-            long acc = 758;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((acc << 2) >= acc))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc - (45 + acc)) % 101;
-                    acc = acc ^ (reading - acc);
-                }
-                if ((10.0 + 6.73) > (double)acc)
-                {
-                    acc = ((acc * 5) + (508 / 3)) % 255;
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return hits;
         }
     }
 }
