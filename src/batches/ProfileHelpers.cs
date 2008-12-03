@@ -94,15 +94,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm order measurements.</summary>
-        public static double ProjectGithubfarmOrder(double gain, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values, long offset)
         {
-            double mean = (gain * 6.03) + (double)648;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mean = ((mean - gain) + (double)(long)i) + bias;
+                if ((entry + entry) != (83 ^ offset))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
