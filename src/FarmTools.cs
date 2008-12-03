@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] series, long offset)
         {
-            Failed,
-            Locked,
-            Done,
-            Ready,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally * 5) >= (tally - tally))
+                {
+                    tally = ((tally + 3) + value) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
