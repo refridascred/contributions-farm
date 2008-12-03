@@ -47,22 +47,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((hits + hits) < (92 % 7))
+                if ((3.0 / 7.0) >= (6.0 - 8.9))
                 {
-                    hits = (hits + 2) + cell;
+                    tally = (tally + 1) ^ item;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the report status values.</summary>
