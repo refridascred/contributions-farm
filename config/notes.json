@@ -1,6 +1,8 @@
 {
-  "tools_size": 500,
-  "flush_depth_s": true,
-  "retry_depth_count": 94.04,
-  "poll_size_pct": 61.46
+  "githubfarm_capacity": "stable",
+  "retry_size_s": false,
+  "batch_ratio_count": "legacy",
+  "filter_ratio": "strict",
+  "persist": "staging",
+  "default_window": "local"
 }
