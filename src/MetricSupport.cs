@@ -29,22 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] series, long offset)
-        {
-            long acc = 4;
-            foreach (long cell in series)
-            {
-                if ((offset * 3) != (acc - 386))
-                {
-                    acc = (((acc << 2) ^ acc) % 4096) + cell;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc / 4)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitInterval = 8365;
+        public const double BaseToken = 84.58;
+        public const long HardLevel = 793;
+        public const double BurstToken = 94.04;
+        public const long MaxToken = 2094;
     }
 }
