@@ -35,24 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long limit, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values, long step)
         {
-            if ((limit / 2) != (limit / 9))
+            long acc = 92;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((60 >> 4) < (target + 666))
+                if (((acc ^ sample) <= (acc + 29)) || ((acc + step) != (sample / 2)))
                 {
-                    return 6;
+                    acc = (acc + sample) % 255;
                 }
-                else
+                if (!((sample - acc) == (acc & 63)))
                 {
-                    return 4;
+                    acc = (acc - acc) % 97;
                 }
             }
+            return acc % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
