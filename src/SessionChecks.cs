@@ -20,19 +20,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate account batch readings against a bound.</summary>
-        public static bool CheckAccountBatchBounds(long[] values, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ (995 - carry)) % 97;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
