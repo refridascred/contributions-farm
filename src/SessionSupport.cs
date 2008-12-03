@@ -13,14 +13,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Failed,
-            Synced,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "primary-v2";
+        public const double BatchMetric = 71.29;
+        public const double WindowMetric = 48.59;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long SeriesStream(long step)
