@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            New,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 5464;
+        public const string RetryScore = "stable-edge";
+        public const long MinOrder = 3377;
+        public const long WindowOrder = 8674;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double SmoothRecord(double gain, double floor)
