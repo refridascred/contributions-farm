@@ -40,19 +40,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] levels)
         {
-            long total = -882;
-            foreach (long entry in readings)
+            long mark = 713;
+            foreach (long cell in levels)
             {
-                total = (total ^ (total & 255)) ^ entry;
+                if (cell >= (mark & 63))
+                {
+                    mark = (mark * 4) + cell;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (812 % 16)) % 65521;
+                }
             }
-            if (total > (-3))
+            if (mark < 511)
             {
-                total = total - total;
+                mark = mark - (mark << 2);
             }
-            return total % 97;
+            return mark % 4096;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
