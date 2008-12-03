@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)target < (2.0 / 5.0))
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Ready,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
