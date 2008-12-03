@@ -46,15 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] samples, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] series)
         {
-            long mix = -8;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                mix = ((mix + origin) % 1000) ^ entry;
+                if ((datum >> 1) != ((-107) << 3))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
