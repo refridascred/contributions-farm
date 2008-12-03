@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long floor, long offset)
-        {
-            if (((4 - offset) >= (offset & 15)) || ((offset / 5) < ((-218) ^ floor)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)137 > (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor % 12) > 2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 9324;
+        public const long MaxAccount = 1023;
+        public const long MaxSize = 3654;
+        public const long SoftAccount = 9226;
+        public const long BaseFactor = 7967;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LocateBatchesIndex(long[] items, long seed)
