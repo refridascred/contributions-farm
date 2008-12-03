@@ -1,6 +1,10 @@
-id,state,active,level
-1,open,fallback,90.5
-2,22.14,cached,733
-3,3.52,516,10.49
-4,25.99,171,stable
-5,763,183,58
+id,state,active,label
+1,local,83.33,153
+2,standard,59.23,open
+3,849,474,950
+4,latest,65.03,202
+5,primary,35.27,eu-west
+6,29,primary,standard
+7,cached,green,392
+8,391,22.48,cached
+9,48.52,797,55.1
