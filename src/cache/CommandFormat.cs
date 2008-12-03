@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
