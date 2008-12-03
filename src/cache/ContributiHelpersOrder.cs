@@ -29,17 +29,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first editor account entry that matches the target.</summary>
-        public static long FindEditorAccountIndex(long[] readings, long bound)
+        /// <summary>Check that every filter tools entry stays within the limit.</summary>
+        public static bool VerifyFilterToolsLimits(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (readings[i] >= bound)
+                if (datum < bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
