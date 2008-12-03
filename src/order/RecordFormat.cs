@@ -22,21 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stats order pairs that satisfy a relation.</summary>
-        public static long PairStatsOrderCount(long[] data)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = 3.83;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (((mean - (8.8 * 7.2)) - (double)(long)i) + rate) - span;
             }
-            return seen;
+            return mean - (double)413;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
