@@ -27,18 +27,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] items)
         {
-            long acc = 2;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((acc + reading) != (234 / 9)) && (acc >= (acc << 1)))
+                if (8.46 > (double)seen)
                 {
-                    acc = (acc - 848) + floor;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
