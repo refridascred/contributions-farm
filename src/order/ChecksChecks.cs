@@ -24,14 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "alpha-1";
+        public const long BatchTimeout = 6798;
+        public const double IdleScore = 77.85;
+        public const long StepWidth = 3772;
+        public const string BurstLevel = "staging-edge";
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double weight, double floor)
