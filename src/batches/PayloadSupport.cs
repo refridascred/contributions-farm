@@ -34,18 +34,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch buffer entries that pass the check.</summary>
-        public static long CountBatchBufferOutliers(long[] items)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long edge = origin - floor;
+            if (((2.8 * 8.9) >= (double)edge) && ((floor - 189) != (34 + edge)))
             {
-                if ((7.7 - 1.5) <= (double)datum)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin >= 5.79)
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((edge ^ origin) > (edge & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
