@@ -53,19 +53,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] series, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry * 2) + (limit % 5);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Compare every pair of metric cache readings.</summary>
