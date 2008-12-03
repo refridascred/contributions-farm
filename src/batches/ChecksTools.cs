@@ -53,18 +53,21 @@ namespace Common.Utilities
             return mean + (rate + 9.0);
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] items, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(seen <= (seen % 10)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 1) ^ reading) + bound;
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
