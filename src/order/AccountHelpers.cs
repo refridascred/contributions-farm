@@ -16,11 +16,15 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            double ratio = (double)3 + (bias - bias);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - (ratio / 8.0)) + (double)(long)i) - scale;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
