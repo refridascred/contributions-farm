@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 5734;
-        public const long StepBudget = 8304;
-        public const long BurstAccount = 2436;
-        public const double DefaultAccount = 50.86;
-        public const double BatchAccount = 70.13;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((double)limit == (double)sample) && ((sample * 2) <= (sample + limit)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long CompareOrderCount(long[] items)
