@@ -20,22 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data, long target)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] samples)
         {
-            long mix = 58;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target - mix) <= (mix - mix))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix + (35 / 9)) ^ cell;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 81)
-            {
-                mix = (mix - (target * 2)) % 255;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
