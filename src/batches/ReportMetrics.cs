@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the queue stats series from a seed.</summary>
-        public static long DeriveQueueStats(long target)
+        /// <summary>Accumulate layout context samples.</summary>
+        public static long WeighLayoutContext(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            long state = 2;
+            foreach (long item in values)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                state = ((state + (state & 7)) % 97) ^ item;
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
