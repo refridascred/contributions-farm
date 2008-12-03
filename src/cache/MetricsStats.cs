@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 2080;
-        public const double StepSpan = 11.6;
-        public const long DefaultTimeout = 2324;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 6669;
+        public const long SoftSession = 843;
+        public const long DefaultInterval = 5111;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] samples, long limit)
