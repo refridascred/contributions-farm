@@ -23,32 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] values, long seed)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] samples, long floor)
         {
-            long carry = 26;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long tally = seed % 7;
-                if ((tally - 87) < tally)
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
                 {
-                    carry = (carry ^ (737 + 895)) ^ sample;
-                    continue;
-                }
-                if ((360 + carry) > carry)
-                {
-                    carry = (carry << 3) ^ (0 + 174);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (9 - carry)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry > 491)
-            {
-                carry = carry - seed;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
