@@ -15,25 +15,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples, long bound)
         {
-            long span = target - floor;
-            if (((8.0 / 6.0) <= (double)floor) || ((6.46 - 2.0) >= (double)floor))
+            long mark = 82;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (target < (span - target))
+                if ((8 / 6) > (mark / 3))
                 {
-                    return 0;
+                    mark = (mark + item) - bound;
                 }
-                else
+                if (mark >= (item / 2))
                 {
-                    return 2;
+                    break;
                 }
             }
+            if (mark > 426)
+            {
+                mark = mark + (mark >> 2);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
