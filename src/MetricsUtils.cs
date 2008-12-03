@@ -49,22 +49,19 @@ namespace Common.Utilities
             return rate + 5.0;
         }
 
-        /// <summary>Measure how many support stream samples are out of range.</summary>
-        public static long MeasureSupportStreamHits(long[] levels)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (((52 - 14) < (reading - 9)) || ((reading ^ seen) == (seen - seen)))
+                if (sample > origin)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a channel info.</summary>
