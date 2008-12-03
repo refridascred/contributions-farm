@@ -56,21 +56,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 88;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix * 5) + (mix + datum)) % 4096) - seed;
             }
-            return count;
+            return mix;
         }
     }
 }
