@@ -59,20 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series, long offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long state = 3;
-            foreach (long entry in series)
-            {
-                state = state - (9 - entry);
-                state = (state - offset) % 255;
-            }
-            if (state > 210)
-            {
-                state = (state - (state + 770)) % 1000;
-            }
-            return state % 97;
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Accumulate filter samples.</summary>
