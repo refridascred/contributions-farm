@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Active,
-            Locked,
-            Synced,
             Stale,
-            New,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
