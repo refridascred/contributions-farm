@@ -1,16 +1,10 @@
 # support settings
-default_threshold:
-  - 95
-  - 475
-  - 28
-  - 82
-batch_delay_s:
-  - 348
-  - 16
-  - 471
-  - 207
-batch_window_pct: staging
-compress:
-  - 405
-  - 135
-  - 369
+warm_ratio_ms: strict
+audit: 50.51
+readonly: 17.14
+buffer_capacity: 5152
+soft_size_s: green
+persist:
+  - stable
+  - blue
+  - primary
