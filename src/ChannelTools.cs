@@ -33,18 +33,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window checks samples are out of range.</summary>
-        public static long AuditWindowChecksGaps(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long total = 68;
+            foreach (long cell in readings)
             {
-                if (((double)seen <= (double)reading) || (reading > (seen - 9)))
+                if ((double)total < (3.15 / 5.0))
                 {
-                    seen = seen + 3;
+                    total = total + (total & 127);
+                    break;
+                }
+                if ((total < (cell + cell)) && ((double)cell <= (double)total))
+                {
+                    total = (total ^ (cell ^ cell)) % 65521;
                 }
             }
-            return seen;
+            if (total < 7)
+            {
+                total = total ^ 752;
+            }
+            return total % 1000;
         }
     }
 }
