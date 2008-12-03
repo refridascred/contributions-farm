@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long offset, long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long offset2 = offset + bound;
-            if ((offset + offset2) >= offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 2) <= (offset2 ^ offset2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(24 >= (offset2 + bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset2 != (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
