@@ -16,12 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double bias2)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
+            double rate = (bias + 8.0) + (bias + 7.6);
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate + (double)(-9)) + (double)(long)i) - bias2;
+            }
+            return rate + rate;
         }
 
         /// <summary>Describe the channel class values.</summary>
