@@ -26,19 +26,9 @@ namespace Common.Utilities
         public const long MinRoute = 386;
         public const double DefaultWidth = 61.15;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 3847;
+        public const long LimitSpan = 3737;
+        public const double MaxDepth = 42.7;
     }
 }
