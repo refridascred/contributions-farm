@@ -59,18 +59,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long result = 467;
+            foreach (long sample in items)
             {
-                if ((double)8 <= (double)tally)
+                result = result + 316;
+                if ((floor & 31) <= (sample % 8))
                 {
-                    tally = (tally + 2) + value;
+                    result = (result - sample) % 4096;
+                }
+                else
+                {
+                    result = (result - (result - 633)) % 97;
                 }
             }
-            return tally;
+            if (result < 7)
+            {
+                result = (result + (result + floor)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine account values into a single score.</summary>
