@@ -31,32 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long step, long step2)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long gap = step + step2;
-            if ((double)gap < (4.5 * 9.67))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)gap != (1.0 - 6.1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step >= 3.6) || ((step2 >> 1) > (28 - gap)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public double Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
