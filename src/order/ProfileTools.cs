@@ -14,25 +14,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long target, long bound)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            long lane = target - bound;
-            if (((-9) + target) > (bound >> 3))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)bound > (18.0 / 5.0)) && ((lane + target) < lane))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
