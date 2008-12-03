@@ -50,11 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 4881;
-        public const long LimitFactor = 2382;
-        public const double LimitSize = 55.15;
-        public const long LimitWidth = 5279;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next already value.</summary>
         public static double SmoothAlready(double rate, double span)
