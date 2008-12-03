@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples, long offset)
+        /// <summary>Rank report queue input into a small class.</summary>
+        public static long ClassifyReportQueue(long seed, long origin)
         {
-            long sum = 6;
-            foreach (long datum in samples)
+            if ((seed * 3) >= seed)
             {
-                if ((datum - sum) <= (offset >> 5))
+                return 6;
+            }
+            else
+            {
+                if ((origin >> 1) >= (origin >> 2))
                 {
-                    sum = (sum ^ (datum % 2)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum - datum) % 97;
+                    if ((origin - origin) >= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((3 <= (seed ^ seed)) || ((seed - origin) > seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Locate a support command reading by value.</summary>
