@@ -34,12 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 1959;
-        public const long MinOrder = 1581;
-        public const long MaxOrder = 6836;
-        public const double BaseOrder = 3.84;
-        public const long SoftWidth = 3964;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Queued,
+            New,
+            Done,
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
