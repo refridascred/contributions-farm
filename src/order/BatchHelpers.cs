@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] samples, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            long total = 554;
-            foreach (long sample in samples)
+            long result = 9;
+            foreach (long value in levels)
             {
-                if ((sample % 3) > (long)samples.Length)
+                if ((result % 100) == (value + value))
                 {
-                    total = ((total << 3) ^ (sample * 2)) % 101;
+                    result = ((result << 3) ^ (value ^ 84)) % 4096;
                 }
             }
-            if (total < 596)
-            {
-                total = total + (total + floor);
-            }
-            return total % 1000;
+            return result % 4096;
         }
 
         /// <summary>Hold a already info.</summary>
