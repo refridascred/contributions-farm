@@ -70,9 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 94.47;
-        public const double WindowScore = 20.15;
-        public const long BatchFactor = 6014;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double offset)
+        {
+            double drift = 9.43 / 7.0;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (((drift + (double)4) - (double)(long)i) - ratio) + offset;
+            }
+            return drift - (double)221;
+        }
     }
 }
