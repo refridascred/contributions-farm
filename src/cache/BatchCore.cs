@@ -52,11 +52,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstInterval = 27.24;
-        public const double SoftRoute = 15.3;
-        public const long WindowSize = 8815;
-        public const long BurstLevel = 6402;
-        public const long StepRoute = 2168;
+        /// <summary>Count account window pairs that satisfy a relation.</summary>
+        public static long MatchAccountWindowCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
