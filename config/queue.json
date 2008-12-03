@@ -1,8 +1,6 @@
 {
-  "max_limit": true,
-  "profile_retries": false,
-  "poll_retries_count": 9,
-  "commits_timeout": "open",
-  "max_size": 60.64,
-  "batch_timeout": 60
+  "record_size": "latest",
+  "retry_limit": true,
+  "token_timeout": "fallback",
+  "retry_size_count": true
 }
