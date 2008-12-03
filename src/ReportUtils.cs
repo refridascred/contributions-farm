@@ -30,14 +30,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            Draft,
-            Retry,
-            Active,
-            Ready,
-            Stale,
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = (mark - (5 + bound)) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
