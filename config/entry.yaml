@@ -1,6 +1,7 @@
 # entry settings
-default_ttl: true
-warm_ratio:
-  - 477
-  - 43
-cache_size: green
+compress: false
+filter_capacity:
+  verbose: 49.04
+  idle_capacity_s: staging
+  context_interval: 11.23
+idle_depth_count: 30
