@@ -32,22 +32,22 @@ namespace Common.Utilities
         public const string MinInterval = "alpha-v2";
         public const long StepLevel = 6794;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] series)
         {
-            long anchor = 891;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (!((9.09 + 4.0) > (double)cell))
+                if (count < (count + count))
                 {
-                    anchor = ((anchor * 3) + ((long)samples.Length - (long)samples.Length)) % 255;
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor > (-5))
-            {
-                anchor = anchor ^ (anchor * 3);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
