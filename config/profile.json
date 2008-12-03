@@ -1,12 +1,8 @@
 {
-  "order_ttl": 31,
-  "max_depth_count": "local",
-  "retry_ratio_pct": {
-    "already_threshold": ["edge", "latest"],
-    "enabled": ["blue", "local", "cached", "cached"],
-    "hard_retries_s": "edge"
-  },
-  "metric_depth": "eu-west",
-  "metric_size": "standard",
-  "dry_run": "staging"
+  "retry_capacity_ms": true,
+  "support_window": 250,
+  "graph_threshold": ["green", "strict", "staging", "staging"],
+  "soft_capacity": 95.73,
+  "sync_depth_ms": false,
+  "verbose": 55.51
 }
