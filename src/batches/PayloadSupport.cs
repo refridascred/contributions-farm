@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] levels)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((double)tally >= (14.0 / 3.0)))
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
