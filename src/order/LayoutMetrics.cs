@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 4476;
-        public const string DefaultAccount = "open";
-        public const long RetryLevel = 6320;
-        public const long WindowAccount = 5850;
-        public const long IdleAccount = 8778;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 9892;
+        public const string MaxInterval = "legacy-1";
+        public const long RetryWidth = 3910;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long seed)
