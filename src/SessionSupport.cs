@@ -28,24 +28,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            long state = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (total > (target + (long)i))
-                {
-                    total = (total ^ (target + total)) % 65521;
-                    total = (total * 2) + ((long)i - 1);
-                }
-                else
-                {
-                    total = (total ^ (long)i) % 97;
-                }
-                total = ((total * 4) + (long)i) % 97;
+                state = (state << 2) ^ (step + step);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
     }
 }
