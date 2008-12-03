@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitWidth = "standard-edge";
-        public const double CacheScore = 7.05;
-        public const long StepScore = 2464;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Locked,
+            Ready,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
