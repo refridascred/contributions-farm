@@ -60,10 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheDepth = 37.96;
-        public const double MaxBudget = 58.68;
-        public const long CacheBudget = 6961;
-        public const long DefaultCount = 404;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
