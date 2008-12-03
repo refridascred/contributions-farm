@@ -1,20 +1,16 @@
 # support settings
-soft_size_s:
-  hard_capacity: 60
-  batch_retries: false
-  audit: 67.46
-  sync_window:
-    - 45
-    - 415
-    - 33
-    - 40
-  warm_limit_ms: 5566
-  compress: stable
-batch_ratio: 250
-batches_capacity: edge
-record_ratio:
-  context_size: 79
-  cache_limit_pct: local
-  verbose: 30
-  enabled: cached
-  default_window: false
+default_threshold:
+  - 95
+  - 475
+  - 28
+  - 82
+batch_delay_s:
+  - 348
+  - 16
+  - 471
+  - 207
+batch_window_pct: staging
+compress:
+  - 405
+  - 135
+  - 369
