@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinRatio = 4803;
+        public const long BaseChannel = 6991;
+        public const long BaseFactor = 9202;
+        public const long BurstChannel = 3503;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
