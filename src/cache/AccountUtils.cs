@@ -17,19 +17,13 @@ namespace Common.Utilities
         public const long HardOrder = 6918;
         public const double BaseWidth = 0.31;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] values, long target)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long acc = 3;
-            foreach (long item in values)
-            {
-                acc = (acc + (item ^ target)) % 4096;
-                if (((long)values.Length - target) >= 97)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Retry,
+            Paused,
+            Queued,
+            Failed,
         }
     }
 }
