@@ -40,19 +40,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double rate, double offset)
+        /// <summary>Classify a already filter pair into a bucket.</summary>
+        public static long RankAlreadyFilter(long target, long target2)
         {
-            double mean = rate;
-            if (mean >= (rate - rate))
+            long slot = target + target2;
+            if ((target - target) > target2)
             {
-                mean = mean - (mean * 2.9);
+                return 6;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean + (offset - rate)) + (double)(long)i;
+                if ((16.0 > (double)slot) || ((slot + target2) < (target2 + 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.1 + 2.09) < (double)slot)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return mean - 0.8;
         }
 
         /// <summary>Define support limits and defaults.</summary>
