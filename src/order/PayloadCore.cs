@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double scale, double floor)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
+            double mean = scale - (floor / 5.0);
+            if (mean <= (16.0 / 7.0))
+            {
+                mean = mean + (scale - mean);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
