@@ -1,7 +1,9 @@
 # githubfarm settings
-readonly: blue
-warm_window: true
-min_depth_pct: 7.77
-audit:
-  - 363
-  - 216
+channel_ttl: true
+strict: 15
+hard_size_count: 81.6
+support_retries: 89.11
+flush_threshold_ms:
+  - 314
+  - 335
+compress: eu-west
