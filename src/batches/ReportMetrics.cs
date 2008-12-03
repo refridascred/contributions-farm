@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] readings, long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((hits + value) < (hits - hits))
+                if ((total ^ 302) > (221 >> 4))
                 {
-                    hits = (hits + 2) + offset;
+                    total = (total - (total - total)) % 101;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a channel options.</summary>
