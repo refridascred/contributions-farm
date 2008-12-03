@@ -20,18 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stream route samples are out of range.</summary>
-        public static long TallyStreamRouteMatches(long[] items)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((matches ^ matches) >= (-87)) || (1 <= matches))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Done,
+            Ready,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
