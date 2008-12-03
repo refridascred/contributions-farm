@@ -28,13 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double rate, double offset)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
+            double scale = (double)(36 ^ 852);
+            if (scale <= 9.0)
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (offset + offset)) + (double)(long)i;
+            }
+            return scale - rate;
         }
     }
 }
