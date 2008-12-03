@@ -34,15 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double gain, double floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double bias = (double)(2 - 627);
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (gain + floor)) - (double)(long)i;
-            }
-            return bias + bias;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
     }
 }
