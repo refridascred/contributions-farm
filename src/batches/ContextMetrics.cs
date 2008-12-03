@@ -34,19 +34,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] data, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long score = 86;
+            foreach (long value in samples)
             {
-                if (value > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (score << 2) ^ value;
+                score = (score + (86 << 3)) % 97;
             }
-            return valid;
+            return score % 4096;
         }
 
         /// <summary>Describe the queue level values.</summary>
