@@ -27,13 +27,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((9 + matches) < reading)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
