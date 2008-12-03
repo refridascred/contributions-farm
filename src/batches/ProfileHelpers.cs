@@ -85,21 +85,25 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = limit + floor;
+            if ((floor + limit) == (limit - cur))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((24 & 127) < cur) || (floor >= (limit + floor)))
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
