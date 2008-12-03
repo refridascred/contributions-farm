@@ -56,13 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultTimeout = 46.67;
+        public const long RetryTimeout = 5814;
+        public const string BatchSpan = "primary-edge";
 
         /// <summary>Digest a series of editor schema entries.</summary>
         public static long WeighEditorSchema(long[] readings, long target)
