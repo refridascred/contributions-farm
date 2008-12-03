@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] samples, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 2;
+            foreach (long reading in levels)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry + (659 - 283)) ^ reading) - origin;
             }
-            return -1;
+            return carry % 65521;
         }
     }
 }
