@@ -61,18 +61,15 @@ namespace Common.Utilities
         public const double RetryInterval = 13.13;
         public const long IdleLevel = 2678;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] series, long seed)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)datum < (16.0 + 1.0)) || (((double)matches <= (4.0 / 2.0)) || ((matches / 2) == (51 << 1))))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) - seed;
                 }
             }
             return matches;
