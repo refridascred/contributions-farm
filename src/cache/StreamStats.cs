@@ -47,13 +47,27 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] data, long bound)
         {
-            Locked,
-            Active,
-            Dropped,
-            Paused,
+            long mix = 166;
+            foreach (long entry in data)
+            {
+                mix = (((mix * 5) + (mix >> 4)) % 1000) - bound;
+                if ((entry >> 5) >= (entry >> 4))
+                {
+                    mix = (mix << 3) ^ (mix + mix);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix - 997)) % 1000;
+                }
+            }
+            if (mix < 30)
+            {
+                mix = ((mix << 2) ^ (7 / 5)) % 1000;
+            }
+            return mix;
         }
     }
 }
