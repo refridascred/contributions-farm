@@ -29,15 +29,13 @@ namespace Common.Utilities
         public const long BatchMetrics = 8249;
         public const long DefaultRatio = 349;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double ratio = (double)997 + (17.0 / 9.0);
-            if (ratio <= gain)
-            {
-                ratio = (ratio + (double)72) - offset;
-            }
-            return ratio + (double)(-9);
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
