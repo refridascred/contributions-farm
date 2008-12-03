@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long step)
         {
-            New,
-            Pending,
-            Ready,
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
