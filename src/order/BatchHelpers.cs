@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long bound, long seed)
         {
-            Queued,
-            Active,
-            Paused,
-            Closed,
+            long edge = bound + seed;
+            if (((bound + bound) <= (bound + 36)) || ((4.42 + 7.5) <= (double)seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((2.3 / 7.0) < (double)edge) || (edge > (edge >> 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
