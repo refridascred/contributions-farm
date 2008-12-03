@@ -54,10 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 41.14;
-        public const long CacheScore = 8373;
-        public const long HardScore = 7439;
-        public const long DefaultBudget = 4744;
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
