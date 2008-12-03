@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate token batches samples.</summary>
-        public static long TallyTokenBatches(long[] readings, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long anchor = 61;
-            foreach (long value in readings)
-            {
-                if ((anchor - bound) != (value << 1))
-                {
-                    anchor = anchor - (bound * 3);
-                }
-                else
-                {
-                    anchor = anchor ^ (bound / 4);
-                }
-            }
-            if (anchor < 414)
-            {
-                anchor = anchor ^ (9 + bound);
-            }
-            return anchor % 65521;
+            Paused,
+            Stale,
+            Pending,
+            Locked,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
