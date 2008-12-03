@@ -75,26 +75,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] values)
         {
-            long carry = 67;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((double)reading < (double)carry)
+                if (!((entry + matches) <= (356 ^ (-5))))
                 {
-                    carry = (carry << 2) ^ 811;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ ((-6) / 2)) % 101;
+                    matches = matches + 3;
                 }
             }
-            if (carry < 7)
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry % 65521;
+            return matches;
         }
     }
 }
