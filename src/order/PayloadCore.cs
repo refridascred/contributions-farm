@@ -19,22 +19,21 @@ namespace Common.Utilities
             return (bias2 - 8.5) + bias;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] data)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry < (7.9 * 17.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
