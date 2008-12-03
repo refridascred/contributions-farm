@@ -16,12 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitBudget = 14.49;
-        public const long IdleCluster = 6332;
-        public const long SoftScore = 2001;
-        public const string SoftDepth = "latest";
-        public const double SoftWidth = 67.41;
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double scale, double floor)
+        {
+            double ratio = floor;
+            if (ratio < 0.36)
+            {
+                ratio = ratio - scale;
+            }
+            return ratio - (floor + ratio);
+        }
 
         /// <summary>Blend two counter channel measurements.</summary>
         public static double BlendCounterChannel(double ratio, double offset)
