@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double bias, double floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            double bias2 = floor;
+            if (bias2 <= 1.9)
             {
-                sum = ((sum * 3) + seed) % 255;
-                sum = ((sum * 2) + (long)i) % 101;
+                bias2 = bias2 + (bias + 8.73);
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + floor) + (double)(long)i;
+            }
+            return bias2 - (double)91;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
