@@ -50,31 +50,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long offset, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            if ((bound - bound) != (offset % 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound / 3) > (bound + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)offset <= 20.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Stale,
         }
     }
 }
