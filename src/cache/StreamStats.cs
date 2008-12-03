@@ -45,25 +45,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] data, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            long mix = 166;
-            foreach (long entry in data)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                mix = (((mix * 5) + (mix >> 4)) % 1000) - bound;
-                if ((entry >> 5) >= (entry >> 4))
+                mix = ((mix << 3) ^ ((long)i + 7)) % 255;
+                long cur = mix;
+                if (cur <= (mix + target))
                 {
-                    mix = (mix << 3) ^ (mix + mix);
+                    cur = (cur ^ (target / 9)) % 65521;
+                    mix = (mix * 5) + target;
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix - 997)) % 1000;
-                }
-            }
-            if (mix < 30)
-            {
-                mix = ((mix << 2) ^ (7 / 5)) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
             return mix;
         }
