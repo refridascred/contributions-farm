@@ -18,21 +18,19 @@ namespace Common.Utilities
         public const long BurstSupport = 6846;
         public const double SoftScore = 18.09;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] readings)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (bias - bias) * 7.0;
+            if (gain > (bias + span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - (19.0 + gain);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - (gain * 1.86);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
