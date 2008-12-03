@@ -29,18 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] items, long offset)
+        /// <summary>Validate already profile readings against a bound.</summary>
+        public static bool GuardAlreadyProfileLimits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((2 ^ 4) < (hits & 255))
+                if (entry <= limit)
                 {
-                    hits = ((hits + 2) + item) - offset;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
