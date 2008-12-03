@@ -16,18 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long anchor = 0;
+            foreach (long value in levels)
             {
-                if ((count + reading) <= (reading + count))
+                anchor = ((anchor * 3) + anchor) % 65521;
+                if (((265 + seed) >= (anchor / 8)) && ((value ^ anchor) < (value * 2)))
                 {
-                    count = count + 1;
+                    anchor = (anchor - value) % 255;
                 }
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Blend two counter channel measurements.</summary>
