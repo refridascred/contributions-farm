@@ -13,18 +13,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] readings, long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long step, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long step2 = step ^ origin;
+            if ((3.86 / 9.0) != (double)step)
             {
-                if (!(cell >= (cell ^ 414)))
+                return 6;
+            }
+            else
+            {
+                if (step2 <= (origin >> 5))
                 {
-                    tally = (tally + 3) + origin;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)908 != (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a already stats.</summary>
