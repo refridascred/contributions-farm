@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] readings, long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (2.91 < (double)hits)
+                if ((3 > (anchor + anchor)) || ((long)i <= (seed << 1)))
                 {
-                    hits = ((hits + 1) ^ sample) + bound;
+                    anchor = anchor ^ ((long)i - seed);
                 }
+                if (anchor > (8 - anchor))
+                {
+                    anchor = (anchor - ((-2) ^ (long)i)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (seed / 6)) % 65521;
+                }
+                if (!((anchor & 7) != ((long)i << 2)))
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Classify a route cluster pair into a bucket.</summary>
