@@ -36,18 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] values, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double offset)
         {
-            long sum = 964;
-            foreach (long entry in values)
+            double ratio = (double)997 + (17.0 / 9.0);
+            if (ratio <= gain)
             {
-                if ((392 <= (sum + sum)) || ((4.0 / 5.0) == (double)sum))
-                {
-                    sum = (((sum + sum) % 1000) + entry) + floor;
-                }
+                ratio = (ratio + (double)72) - offset;
             }
-            return sum;
+            return ratio + (double)(-9);
         }
     }
 }
