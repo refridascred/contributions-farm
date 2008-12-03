@@ -1,10 +1,11 @@
 # entry settings
-soft_retries: local
-dry_run: staging
-account_timeout:
+strict: latest
+retry_limit:
+  - cached
   - local
-  - eu-west
-  - local
-  - eu-west
-poll_timeout_ms: 30
-support_interval: latest
+  - blue
+  - primary
+soft_capacity_ms: 11.23
+layout_interval:
+  - 425
+  - 27
