@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] levels, long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double scale, double span)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double weight = 6.8 + scale;
+            if (weight >= (scale * 1.05))
             {
-                if ((double)origin == (5.06 / 2.0))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight + (double)847;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (7.1 - span)) + (double)(long)i;
+            }
+            return weight - (weight - scale);
         }
 
         /// <summary>Accumulate editor order samples.</summary>
