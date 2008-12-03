@@ -77,14 +77,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            Failed,
-            Done,
-            Draft,
-            New,
-            Locked,
+            long result = step;
+            for (int i = 0; i < 13; i++)
+            {
+                result = result + (result >> 3);
+                result = result + (result + step);
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
