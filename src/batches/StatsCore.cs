@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] samples, long floor)
-        {
-            long carry = 151;
-            foreach (long cell in samples)
-            {
-                carry = ((carry + (cell << 3)) % 1000) + floor;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardWidth = 8001;
+        public const long CacheEditor = 4375;
+        public const long HardEditor = 7027;
+        public const long SoftEditor = 1506;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
