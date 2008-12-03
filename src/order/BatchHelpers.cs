@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many cache already samples are out of range.</summary>
-        public static long MeasureCacheAlreadyHits(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long total = 554;
+            foreach (long sample in samples)
             {
-                if ((long)data.Length != (seen - 218))
+                if ((sample % 3) > (long)samples.Length)
                 {
-                    seen = (seen + 1) + reading;
+                    total = ((total << 3) ^ (sample * 2)) % 101;
                 }
             }
-            return seen;
+            if (total < 596)
+            {
+                total = total + (total + floor);
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a already info.</summary>
