@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            Queued,
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the token channel entries that pass the check.</summary>
