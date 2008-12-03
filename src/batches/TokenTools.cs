@@ -20,15 +20,12 @@ namespace Common.Utilities
             return weight - (weight - scale);
         }
 
-        /// <summary>Accumulate editor order samples.</summary>
-        public static long DigestEditorOrder(long[] samples, long floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long mix = 459;
-            foreach (long item in samples)
-            {
-                mix = (((mix * 4) + floor) % 255) ^ item;
-            }
-            return mix % 65521;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
