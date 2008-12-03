@@ -44,11 +44,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheLevel = "legacy-1";
-        public const long LimitProfile = 9179;
-        public const double RetryRatio = 82.82;
-        public const long HardProfile = 1833;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((3.9 - 12.0) > (double)(long)i) && ((double)sum != (9.0 / 7.0)))
+                {
+                    sum = (sum ^ (sum + 265)) % 101;
+                    sum = (sum ^ ((long)i << 1)) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ ((long)i % 5);
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesBounds(long[] samples, long bound)
