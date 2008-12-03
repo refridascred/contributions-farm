@@ -37,24 +37,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a commits command value against two limits.</summary>
-        public static long RankCommitsCommand(long target, long bound)
-        {
-            if (((405 - 60) <= target) && ((bound << 2) >= (bound >> 4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound & 1) == (target + bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 2557;
+        public const long StepChannel = 6927;
+        public const long BatchScore = 4196;
+        public const long CacheFactor = 7906;
     }
 }
