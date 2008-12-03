@@ -22,29 +22,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long step, long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long origin, long step)
         {
-            long step2 = step ^ origin;
-            if ((3.86 / 9.0) != (double)step)
+            if ((step >> 4) <= origin)
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (step2 <= (origin >> 5))
+                if ((double)step < (1.8 + 9.0))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)908 != (double)step)
+                    if ((step % 12) < step)
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 0;
+                        if (step >= (step + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
