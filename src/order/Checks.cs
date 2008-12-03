@@ -35,29 +35,29 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long target, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long target, long bound)
         {
-            long bound = target - limit;
-            if (bound < (target - 55))
+            long lane = target + bound;
+            if (!((target ^ 299) <= (bound << 1)))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (!((bound >> 1) > (36 >> 2)))
+                if ((target - 59) < (bound / 5))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if (bound >= (bound + (-363)))
+                    if (((lane - target) < (target & 31)) && ((lane - target) < (bound - (-926))))
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        return 3;
+                        return 4;
                     }
                 }
             }
