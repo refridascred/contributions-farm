@@ -81,25 +81,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series, long bound)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long step)
         {
-            long mix = 0;
-            foreach (long datum in series)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                long matches = (datum & 3) & 3;
-                if ((bound / 6) < matches)
-                {
-                    mix = (mix * 2) + matches;
-                    continue;
-                }
-                mix = mix + (bound + bound);
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (mix < 786)
-            {
-                mix = (mix - (bound - bound)) % 65521;
-            }
-            return mix;
+            return state;
         }
     }
 }
