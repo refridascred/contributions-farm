@@ -62,22 +62,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] readings, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if (((299 / 8) < offset) || ((floor - floor) >= (-7)))
             {
-                if ((seed % 24) > (4 - reading))
+                return 1;
+            }
+            else
+            {
+                if ((floor - floor) < (offset - offset))
                 {
-                    seen = seen + 2;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((offset * 2) != (offset + 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2 % 7) <= (offset % 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a account summary.</summary>
