@@ -11,16 +11,13 @@ namespace Common.Utilities
         public const double BurstLevel = 29.93;
         public const long DefaultAlready = 1936;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score << 2) ^ ((long)i / 9)) % 97;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Retry,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
