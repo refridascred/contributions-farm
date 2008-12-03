@@ -79,12 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            double drift = 14.0;
+            if (drift < (weight + offset))
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (weight + offset)) + (double)(long)i;
+            }
+            return drift - 2.3;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
