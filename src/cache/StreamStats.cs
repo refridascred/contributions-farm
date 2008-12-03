@@ -19,25 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long bound, long floor)
-        {
-            if (bound < (floor - floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor < (6.8 / 3.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitLevel = 5773;
+        public const string StepTools = "strict";
+        public const long BaseFactor = 486;
+        public const string RetrySpan = "latest-edge";
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterRange(long[] samples, long limit)
