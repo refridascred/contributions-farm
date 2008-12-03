@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long offset)
         {
-            Ready,
-            New,
-            Queued,
-            Draft,
-            Locked,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
