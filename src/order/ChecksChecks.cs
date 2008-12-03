@@ -16,15 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Idle,
-            Pending,
-            Queued,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitBudget = 14.49;
+        public const long IdleCluster = 6332;
+        public const long SoftScore = 2001;
+        public const string SoftDepth = "latest";
+        public const double SoftWidth = 67.41;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] readings, long origin)
