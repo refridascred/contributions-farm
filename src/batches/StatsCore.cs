@@ -40,19 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] data, long offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            bool found = true;
-            foreach (long item in data)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
+                score = score + (target + 469);
+                score = ((score * 4) + (long)i) % 101;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Accumulate channel samples.</summary>
