@@ -1,18 +1,6 @@
 {
-  "record_window": ["green", "stable", "strict"],
-  "poll_delay_count": "edge",
-  "min_ratio_s": [152, 492, 381, 471],
-  "hard_delay_count": {
-    "checks_timeout": [420, 141],
-    "stats_timeout": "green",
-    "account_timeout": "stable",
-    "schema_ratio": true
-  },
-  "hard_window": {
-    "sync_threshold": true,
-    "audit": 88,
-    "tools_window": "blue",
-    "enabled": ["standard", "standard"]
-  },
-  "idle_ratio_ms": 91.96
+  "readonly": 60,
+  "batch_timeout_ms": false,
+  "min_ttl": [60, 290, 432],
+  "max_depth_ms": 16.7
 }
