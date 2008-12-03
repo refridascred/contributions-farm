@@ -61,14 +61,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Grade a window format value against two limits.</summary>
+        public static long GradeWindowFormat(long bound, long offset)
         {
-            Failed,
-            Idle,
-            Active,
-            Stale,
-            Synced,
+            long span = bound ^ offset;
+            if (offset <= (span % 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.8 + 3.59) > (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound - bound) != (offset * 3)) && ((double)offset >= (1.0 / 8.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
