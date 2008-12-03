@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            New,
-            Dropped,
-            Active,
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
