@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a metrics metric reading by value.</summary>
-        public static long SeekMetricsMetricIndex(long[] levels, long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
