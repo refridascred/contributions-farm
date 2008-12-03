@@ -70,11 +70,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
