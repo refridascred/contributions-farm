@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of contributi farm readings.</summary>
-        public static long CombineContributiFarm(long[] samples)
+        /// <summary>Validate window editor readings against a bound.</summary>
+        public static bool ValidateWindowEditorBounds(long[] values, long step)
         {
-            long result = 8;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                result = (result - (datum >> 4)) % 97;
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result > 378)
-            {
-                result = (result + (result / 2)) % 97;
-            }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Blend two editor measurements.</summary>
