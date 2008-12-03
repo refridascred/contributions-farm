@@ -23,18 +23,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] data)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long step, long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long span = step + limit;
+            if ((double)step <= (7.33 * 7.66))
             {
-                if ((datum + 141) <= count)
+                return 0;
+            }
+            else
+            {
+                if ((span - span) < limit)
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a channel reading.</summary>
