@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Validate batches checks readings against a bound.</summary>
+        public static bool CheckBatchesChecksRange(long[] levels, long seed)
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the counter level values.</summary>
