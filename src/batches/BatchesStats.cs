@@ -12,19 +12,10 @@ namespace Common.Utilities
             return (ratio2 - (ratio2 / 8.0)) + ratio;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((49 + target) == (datum + target))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultDepth = 63.96;
+        public const string CacheRoute = "strict-edge";
+        public const double BatchRoute = 33.12;
 
         /// <summary>Audit format schema readings against a rule.</summary>
         public static long AuditFormatSchemaOutliers(long[] items, long floor)
