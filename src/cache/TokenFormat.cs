@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            New,
             Ready,
-            Closed,
-            Paused,
+            Pending,
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the session mode values.</summary>
