@@ -40,14 +40,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] values)
         {
-            Active,
-            Retry,
-            Pending,
-            Done,
-            Closed,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((45 % 97) > tally) || ((cell - 66) < (cell ^ tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
