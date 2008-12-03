@@ -56,26 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long score = -14;
-            foreach (long value in series)
-            {
-                if ((score & 1) >= (46 / 3))
-                {
-                    score = score - (670 + value);
-                }
-                else
-                {
-                    score = (score ^ (value ^ value)) % 101;
-                }
-                if ((value + score) < (value * 2))
-                {
-                    score = (score - (value - value)) % 65521;
-                }
-            }
-            return score % 65521;
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of editor schema entries.</summary>
