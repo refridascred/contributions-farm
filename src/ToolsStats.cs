@@ -71,19 +71,11 @@ namespace Common.Utilities
             return gain + (gain - span);
         }
 
-        /// <summary>Validate token editor readings against a bound.</summary>
-        public static bool GuardTokenEditorLimits(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 43.75;
+        public const long MaxSpan = 6687;
+        public const string SoftCount = "cached-1";
+        public const long BatchTools = 143;
+        public const long WindowTools = 8376;
     }
 }
