@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-COMMAND_LIMIT=203
-log "limit is ${COMMAND_LIMIT}"
-
-for item in standard blue; do
+for item in staging cached strict; do
     log "checking ${item}"
 done
