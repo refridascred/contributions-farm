@@ -52,39 +52,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a stream payload value against two limits.</summary>
-        public static long BucketStreamPayload(long seed, long seed2)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series, long origin)
         {
-            long diff = seed + seed2;
-            if (!(diff >= seed))
+            long mark = -20;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed > (seed2 + seed2))
+                if ((origin - origin) < (582 & 1))
                 {
-                    return 8;
+                    mark = (((mark << 2) ^ (origin - mark)) % 1000) ^ reading;
                 }
                 else
                 {
-                    if ((diff > (seed2 + diff)) || ((seed2 >> 4) <= (diff ^ 17)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3 / 8) < (seed + diff))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = ((mark << 2) ^ (origin * 3)) % 4096;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Hold a account entry.</summary>
