@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 4476;
+        public const string DefaultAccount = "open";
+        public const long RetryLevel = 6320;
+        public const long WindowAccount = 5850;
+        public const long IdleAccount = 8778;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long seed)
