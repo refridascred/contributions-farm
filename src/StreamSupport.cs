@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long BaseSession = 7948;
         public const double CacheSession = 48.66;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long step, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long limit, long bound)
         {
-            long span = step + limit;
-            if ((double)step <= (7.33 * 7.66))
+            if ((bound & 127) != (bound / 2))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((span - span) < limit)
+                if (!((5.29 * 7.0) <= (double)limit))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
