@@ -27,15 +27,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long bound)
         {
-            long anchor = 4;
-            foreach (long entry in values)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = (((anchor * 3) + 9) % 4096) ^ entry;
+                mark = (mark - mark) % 4096;
+                mark = (mark ^ (bound << 1)) % 255;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return anchor % 65521;
+            return mark;
         }
     }
 }
