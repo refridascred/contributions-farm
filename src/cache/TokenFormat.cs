@@ -25,10 +25,15 @@ namespace Common.Utilities
         public const long MinRoute = 386;
         public const double DefaultWidth = 61.15;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleBuffer = 36.57;
-        public const long BaseBuffer = 2641;
-        public const string LimitLevel = "stable-v2";
-        public const double WindowInterval = 87.28;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
