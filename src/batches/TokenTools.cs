@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Dropped,
-            New,
-            Retry,
-            Done,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinSize = 12.73;
+        public const long MinContext = 2285;
+        public const long RetryContext = 8499;
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
