@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const double SoftSession = 50.31;
         public const long BurstSession = 4749;
 
-        /// <summary>Derive the next metrics tools value from a seed.</summary>
-        public static long IterateMetricsTools(long floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the notes class values.</summary>
