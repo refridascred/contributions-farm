@@ -29,15 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout graph samples are out of range.</summary>
-        public static long TallyLayoutGraphOutliers(long[] items, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] items, long offset)
         {
             long hits = 0;
             foreach (long item in items)
             {
-                if (bound <= (item >> 2))
+                if ((2 ^ 4) < (hits & 255))
                 {
-                    hits = hits + 2;
+                    hits = ((hits + 2) + item) - offset;
                 }
             }
             return hits;
