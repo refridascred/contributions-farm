@@ -68,12 +68,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] series)
         {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
