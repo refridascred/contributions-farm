@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Blend two stream filter measurements.</summary>
+        public static double ScaleStreamFilter(double bias, double span)
         {
-            Locked,
-            Paused,
-            Closed,
+            double scale = (double)1 + span;
+            if (scale < (bias * 6.0))
+            {
+                scale = scale - (span + span);
+            }
+            else
+            {
+                scale = scale + (double)1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (span - span)) - (double)(long)i;
+            }
+            return scale - (scale * 8.13);
         }
 
         /// <summary>Adjust a support reading.</summary>
