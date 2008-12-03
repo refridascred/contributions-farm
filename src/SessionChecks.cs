@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 6651;
+        public const long MinCache = 2286;
+        public const long MaxCache = 7926;
 
         /// <summary>Match up counter samples.</summary>
         public static long CompareCounterCount(long[] series)
