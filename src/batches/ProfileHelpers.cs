@@ -30,17 +30,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a queue stats reading by value.</summary>
-        public static long LookupQueueStatsIndex(long[] items, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long bound, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((-9) * 2) >= (origin << 2))
             {
-                if ((items[i] >= floor) && ((items[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((bound + 4) >= (641 ^ (-23)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
