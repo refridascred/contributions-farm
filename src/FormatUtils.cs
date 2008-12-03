@@ -54,15 +54,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double scale, double offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] readings, long seed)
         {
-            double mean = (double)554 - (double)73;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                mean = ((mean + (scale / 5.0)) + (double)(long)i) + offset;
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - (double)0;
+            return ok;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
