@@ -44,13 +44,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] series, long floor)
         {
-            public double Stamp { get; set; }
-            public double Count { get; set; }
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the context checks series from a seed.</summary>
