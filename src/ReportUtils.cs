@@ -62,19 +62,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate command schema readings against a bound.</summary>
-        public static bool CheckCommandSchemaBounds(long[] values, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Retry,
+            Pending,
+            Done,
+            Closed,
         }
     }
 }
