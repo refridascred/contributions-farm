@@ -30,17 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] data, long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
