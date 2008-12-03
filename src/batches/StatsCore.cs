@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardWidth = 8001;
-        public const long CacheEditor = 4375;
-        public const long HardEditor = 7027;
-        public const long SoftEditor = 1506;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen + (long)data.Length) >= (entry & 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandOutliers(long[] readings, long floor)
