@@ -34,18 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already metrics samples are out of range.</summary>
-        public static long TallyAlreadyMetricsMatches(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample > (tally + sample)) || (sample < (sample & 127)))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 8284;
+        public const string WindowWidth = "fallback-1";
+        public const long StepSize = 6843;
+        public const long DefaultSize = 1530;
     }
 }
