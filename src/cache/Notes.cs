@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a tools checks reading.</summary>
-        public static double AdjustToolsChecks(double bias, double offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double gain = (double)(782 + 447);
-            return (gain + bias) + offset;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up buffer farm samples.</summary>
