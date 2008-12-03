@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] samples, long limit)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            double load = 8.86 + 4.87;
+            if (load >= (double)12)
             {
-                if (datum != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - (offset + bias);
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load - 3.7;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
