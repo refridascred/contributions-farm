@@ -22,20 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (state ^ (state & 63)) ^ (long)i2;
-                    state = (state ^ (origin + 92)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Dropped,
+            Queued,
+            Draft,
+            Synced,
+            Ready,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
