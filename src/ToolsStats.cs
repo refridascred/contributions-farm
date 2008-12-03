@@ -29,23 +29,19 @@ namespace Common.Utilities
         public const long StepRecord = 1830;
         public const long IdleRecord = 935;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double rate, double span)
+        /// <summary>Validate metric support readings against a bound.</summary>
+        public static bool GuardMetricSupportLimits(long[] readings, long limit)
         {
-            double load = span;
-            if (load > load)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                load = load + (load / 5.0);
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (span - 9.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load + 2.0)) + (double)(long)i;
-            }
-            return load - rate;
+            return ready;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
