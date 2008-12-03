@@ -21,20 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 89.83;
+        public const long BurstFormat = 4922;
+        public const string DefaultBudget = "staging-v2";
+        public const long DefaultFormat = 1163;
+        public const long IdleFormat = 7174;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
