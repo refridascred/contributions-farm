@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Idle,
-            Failed,
-            Dropped,
-            Ready,
-            Synced,
+            public double Token { get; set; }
+            public double Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
