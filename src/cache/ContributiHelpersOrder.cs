@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of schema command readings.</summary>
-        public static long MatchSchemaCommandCount(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((bound >> 2) == (carry + carry))
                 {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry * 3) + bound;
+                    carry = (carry ^ (bound >> 2)) % 97;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the counter level values.</summary>
