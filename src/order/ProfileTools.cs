@@ -38,24 +38,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long limit, long offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            if ((limit + 7) > offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + (-33)) <= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a queue stats.</summary>
