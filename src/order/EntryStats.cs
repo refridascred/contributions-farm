@@ -43,22 +43,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] series)
+        /// <summary>Validate channel stream readings against a bound.</summary>
+        public static bool GuardChannelStreamBounds(long[] data, long target)
         {
-            long anchor = 35;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((anchor >> 4) >= (-9))
+                if (value > target)
                 {
-                    anchor = anchor + (anchor + datum);
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 847)
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Roll a support counter forward.</summary>
