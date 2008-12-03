@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long limit, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long origin)
         {
-            long span = limit ^ floor;
-            if (((double)span < (1.0 + 9.95)) || (limit < ((-859) >> 1)))
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
+                acc = (acc + ((long)i + acc)) % 1000;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (!(floor > 105))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (3.0 < (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((17.0 * 6.4) > (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
