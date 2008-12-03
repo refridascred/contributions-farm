@@ -79,14 +79,13 @@ namespace Common.Utilities
         public const double BurstInterval = 82.41;
         public const string MaxTimeout = "primary-1";
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Retry,
-            Locked,
-            Stale,
-            Pending,
-            Closed,
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
