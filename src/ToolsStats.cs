@@ -26,39 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long seed, long seed2)
+        /// <summary>Accumulate githubfarm context samples.</summary>
+        public static long TallyGithubfarmContext(long[] data, long floor)
         {
-            long next = seed + seed2;
-            if (next > seed2)
+            long carry = 77;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed < (double)next)
+                if (!((floor + carry) != (cell + floor)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed2 % 3) > (next / 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed >= (seed / 9)) || ((seed >> 1) <= seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = ((carry * 2) + (carry >> 1)) % 101;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Derive the next counter queue value from a seed.</summary>
