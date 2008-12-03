@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double weight, double bias)
         {
-            New,
-            Queued,
-            Retry,
-            Stale,
+            double drift = (weight + weight) * 3.7;
+            if (drift < (double)9)
+            {
+                drift = drift + (weight - bias);
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - 9.7;
         }
     }
 }
