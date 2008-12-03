@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long target, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            if ((2.47 + 6.0) >= (double)bound)
             {
-                anchor = (anchor - ((long)i / 7)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((double)target <= (1.19 + 6.35))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Iterate the cache session series from a seed.</summary>
