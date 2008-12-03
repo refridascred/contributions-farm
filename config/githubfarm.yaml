@@ -1,14 +1,41 @@
 # githubfarm settings
-max_retries_s:
-  report_size: 30
-  soft_delay: true
-  route_ttl:
-    - 163
-    - 216
-    - 267
-    - 76
-window_limit: 73.79
-soft_ratio_count:
-  - open
-  - edge
-profile_depth: local
+idle_interval_pct:
+  persist:
+    - stable
+    - legacy
+    - blue
+  min_timeout_s: 6584
+  flush_interval_s:
+    stream_window: 1024
+    max_capacity: local
+    checks_capacity: true
+  compress: 18
+flush_window_count: 89
+enabled: 60
+persist:
+  - blue
+  - stable
+  - eu-west
+min_limit: 78
+stream_ttl:
+  flush_delay: 500
+  default_interval_count: false
+  compress:
+    max_ratio: 95.08
+    idle_delay_pct:
+      - 291
+      - 179
+    max_retries_count: 6837
+    verbose: 58.85
+    editor_capacity: cached
+  batches_size:
+    hard_ratio_count: eu-west
+    warm_delay_count: 250
+    batch_threshold_s: primary
+    cache_threshold_count: primary
+    soft_timeout_ms: 8177
+  readonly: 4235
+  idle_capacity_ms:
+    - 217
+    - 104
+    - 215
