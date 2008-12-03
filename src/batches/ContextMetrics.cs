@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Stale,
-            Paused,
-            Queued,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 4.23;
+        public const double IdleFilter = 83.66;
+        public const string BaseFilter = "strict-v2";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long ScoreTools(long[] samples, long bound)
