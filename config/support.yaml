@@ -1,10 +1,10 @@
 # support settings
-editor_limit:
-  - stable
-  - open
-  - standard
-  - fallback
-base_window_pct: 28.21
-sync_window_count: 495
-verbose: staging
-burst_ttl: 60
+warm_limit_pct: 19.08
+idle_limit: 1024
+soft_threshold_count:
+  - 380
+  - 67
+  - 482
+  - 417
+strict: 167
+max_threshold_ms: 3523
