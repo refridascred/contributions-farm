@@ -41,11 +41,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 5630;
-        public const double MaxInterval = 85.02;
-        public const double HardStats = 28.05;
-        public const long SoftStats = 7005;
-        public const long DefaultStats = 9511;
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
