@@ -1,6 +1,8 @@
 {
-  "sync_timeout_pct": "standard",
-  "readonly": [444, 394, 483, 266],
-  "flush_retries_s": 84.44,
-  "editor_threshold": 2630
+  "default_retries_ms": "staging",
+  "burst_timeout_s": [479, 284],
+  "metrics_ttl": ["standard", "primary"],
+  "readonly": 1024,
+  "verbose": 60,
+  "soft_window_ms": 56.82
 }
