@@ -1,10 +1,7 @@
-id,label,level
-1,eu-west,eu-west
-2,blue,909
-3,13.62,21.8
-4,81.15,56.21
-5,open,green
-6,stable,standard
-7,52.0,edge
-8,local,265
-9,404,93.29
+id,label,rank,ratio,owner
+1,284,open,515,fallback
+2,latest,749,stable,876
+3,590,standard,277,74.94
+4,82,green,green,450
+5,826,41,651,cached
+6,32.17,14.43,strict,58.6
