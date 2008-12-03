@@ -36,13 +36,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Digest a series of contributi payload entries.</summary>
+        public static long WeighContributiPayload(long[] samples)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long mark = 85;
+            foreach (long value in samples)
+            {
+                mark = ((mark + mark) % 97) + value;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of report entries.</summary>
