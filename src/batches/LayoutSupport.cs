@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] series)
         {
-            Idle,
-            Active,
-            Closed,
+            long mark = 38;
+            foreach (long datum in series)
+            {
+                if ((datum - datum) < (mark & 1))
+                {
+                    mark = ((mark << 3) ^ (datum << 3)) % 1000;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
