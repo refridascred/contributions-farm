@@ -14,19 +14,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] levels, long seed)
         {
-            double load = (18.0 / 6.0) / 6.0;
-            if (load >= (double)594)
+            long score = 93;
+            foreach (long cell in levels)
             {
-                load = (load - load) - floor;
+                if (745 > cell)
+                {
+                    score = ((score << 2) ^ cell) % 1000;
+                    score = score ^ (cell ^ cell);
+                }
+                score = score - 40;
             }
-            else
+            if (score < (-65))
             {
-                load = load + 18.0;
+                score = ((score * 4) + seed) % 65521;
             }
-            return load + ratio;
+            return score % 97;
         }
 
         /// <summary>Hold a filter info.</summary>
