@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const long BurstSupport = 6846;
         public const double SoftScore = 18.09;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double bias, double span)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            double gain = (bias - bias) * 7.0;
-            if (gain > (bias + span))
-            {
-                gain = gain - (19.0 + gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - (gain * 1.86);
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
