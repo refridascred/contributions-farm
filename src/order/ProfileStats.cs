@@ -31,12 +31,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] series, long floor)
         {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a batch header.</summary>
