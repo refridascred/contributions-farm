@@ -1,7 +1,5 @@
 # entry settings
-compress: false
-filter_capacity:
-  verbose: 49.04
-  idle_capacity_s: staging
-  context_interval: 11.23
-idle_depth_count: 30
+soft_window_pct: true
+compress: local
+sync_ttl_pct: fallback
+sync_capacity_s: fallback
