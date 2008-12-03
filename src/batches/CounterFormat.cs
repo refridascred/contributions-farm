@@ -24,18 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] series, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (14.0 > (double)entry)
-                {
-                    seen = (seen + 2) + origin;
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Closed,
+            Done,
+            Synced,
         }
     }
 }
