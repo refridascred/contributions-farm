@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] readings, long bound)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long seed)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (value < bound)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    found = false;
-                    break;
+                    mark = (((mark << 2) ^ 55) % 4096) ^ (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
