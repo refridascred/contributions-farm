@@ -1,12 +1,10 @@
 # Command notes
 
-Use stream settings to tune how often already data is refreshed.
-Each tools is validated before it reaches the token queue.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+Keep layout and order names short and lowercase.
+A metric that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Validate report input early
-- Log every commits change
-- Review metric limits each release
-- Prefer order defaults
+- Keep schema values small
+- Review profile limits each release
+- Prefer queue defaults
