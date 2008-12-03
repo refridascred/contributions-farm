@@ -14,18 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the already buffer entries that pass the check.</summary>
-        public static long AuditAlreadyBufferGaps(long[] items, long offset)
+        /// <summary>Find the first command route entry that matches the target.</summary>
+        public static long SeekCommandRouteIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((offset + value) >= count) && (value <= (value ^ offset)))
+                if (samples[i] >= origin)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
