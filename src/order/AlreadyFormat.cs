@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const double CacheCount = 13.29;
         public const long DefaultRatio = 1313;
 
-        /// <summary>Validate route filter readings against a bound.</summary>
-        public static bool GuardRouteFilterRange(long[] samples, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (entry <= floor)
+                if (sample >= limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Count cache format pairs that satisfy a relation.</summary>
