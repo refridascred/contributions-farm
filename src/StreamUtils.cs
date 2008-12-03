@@ -23,22 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] readings, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mix = -364;
+            foreach (long sample in readings)
             {
-                if ((3.36 - 8.31) < (double)limit)
+                if ((double)sample <= (5.07 - 13.0))
                 {
-                    seen = (seen + 1) ^ reading;
+                    mix = (mix + (sample >> 2)) % 101;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 2) + (offset + offset)) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Blend two commits window measurements.</summary>
