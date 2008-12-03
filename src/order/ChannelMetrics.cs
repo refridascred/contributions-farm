@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Blend two commits record measurements.</summary>
+        public static double BlendCommitsRecord(double rate, double bias)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            double weight = rate;
+            if (weight > rate)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                weight = weight - (weight + bias);
             }
-            return anchor;
+            else
+            {
+                weight = weight - (2.19 * 1.7);
+            }
+            return weight + bias;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
