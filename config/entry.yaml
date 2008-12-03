@@ -1,27 +1,17 @@
 # entry settings
-poll_retries_ms: 1024
-base_depth_pct:
-  min_window_ms: true
-  sync_ratio: fallback
-  persist:
-    default_limit: 60
-    soft_retries_s: stable
-    session_ttl: 60
-    account_delay: true
-    min_delay_pct: false
-  max_window_ms: local
-  base_limit_pct:
-    - staging
-    - standard
-    - blue
-    - fallback
-format_window: 3180
-idle_interval_s:
-  - 442
-  - 289
-strict:
-  - staging
-  - local
+burst_ttl_s: true
+route_interval:
+  - latest
+  - latest
   - open
-  - legacy
-base_capacity: 85.14
+farm_limit:
+  warm_depth:
+    soft_interval_pct: false
+    retry_interval_s:
+      - 164
+      - 475
+    max_interval_pct: 36
+    session_limit: false
+  cache_limit: eu-west
+  queue_limit: 3461
+compress: 35.26
