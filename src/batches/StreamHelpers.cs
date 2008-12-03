@@ -40,21 +40,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Rank profile editor input into a small class.</summary>
+        public static long BucketProfileEditor(long bound, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((-54) % 24) == (bound + floor))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ bound) <= floor)
                 {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
