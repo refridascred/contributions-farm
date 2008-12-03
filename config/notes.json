@@ -1,6 +1,9 @@
 {
-  "idle_threshold_pct": [46, 181, 67, 362],
-  "dry_run": 5470,
-  "contributi_size": "open",
-  "warm_ttl_pct": "staging"
+  "default_interval_s": "strict",
+  "hard_capacity_s": {
+    "burst_depth": true,
+    "base_depth_ms": true,
+    "soft_size_count": "standard"
+  },
+  "default_ratio": true
 }
