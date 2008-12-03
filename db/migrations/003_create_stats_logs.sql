@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    state TEXT NOT NULL DEFAULT 'new',
-    token TEXT
+    owner TEXT NOT NULL,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
 
-INSERT INTO stats_logs (state, token) VALUES ('green', 'green');
-INSERT INTO stats_logs (state, token) VALUES ('standard', 'cached');
-INSERT INTO stats_logs (state, token) VALUES ('eu-west', 'edge');
+INSERT INTO stats_logs (owner, state) VALUES ('staging', 'standard');
+INSERT INTO stats_logs (owner, state) VALUES ('legacy', 'cached');
+INSERT INTO stats_logs (owner, state) VALUES ('primary', 'latest');
