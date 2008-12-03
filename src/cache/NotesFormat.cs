@@ -20,19 +20,15 @@ namespace Common.Utilities
             return (load + 2.93) + floor;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double mean = span;
+            if (mean < (ratio - span))
             {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - span;
             }
-            return stale;
+            return mean + (3.8 - mean);
         }
     }
 }
