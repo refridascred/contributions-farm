@@ -45,22 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long score = 73;
+            foreach (long value in items)
             {
-                if ((double)seen >= (6.0 * 4.0))
+                if ((step - step) >= (step << 1))
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = ((score + (193 / 3)) % 97) - value;
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
