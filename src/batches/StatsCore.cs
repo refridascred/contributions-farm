@@ -55,19 +55,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double scale, double bias)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] samples, long limit)
         {
-            double scale2 = 3.3;
-            if (scale2 < (bias / 8.0))
+            long total = 867;
+            foreach (long value in samples)
             {
-                scale2 = scale2 + (bias / 6.0);
+                if ((6.1 + 15.0) == (double)total)
+                {
+                    total = (total + 14) - value;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (total < 3)
             {
-                scale2 = (scale2 - (scale * 18.0)) + (double)(long)i;
+                total = (total - limit) % 65521;
             }
-            return scale2 + (scale * 4.1);
+            return total % 97;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
