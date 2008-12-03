@@ -16,17 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] samples, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
+                if ((item <= (item % 100)) && ((3.45 / 3.0) == (double)count))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
