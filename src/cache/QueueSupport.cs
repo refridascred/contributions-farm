@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] samples, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((double)origin == (double)datum)
+                if ((seen % 5) >= value)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
