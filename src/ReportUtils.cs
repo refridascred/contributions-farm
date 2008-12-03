@@ -26,15 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] readings)
+        /// <summary>Count the filter account entries that pass the check.</summary>
+        public static long AuditFilterAccountMatches(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long reading in samples)
             {
-                if ((((-23) / 9) < (hits - hits)) || (((double)hits <= 15.0) && ((double)reading <= (14.0 * 1.7))))
+                if ((6 >> 4) > (hits >> 5))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 2) - reading;
                 }
             }
             return hits;
