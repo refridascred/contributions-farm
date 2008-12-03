@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double weight, double bias)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] values, long bound)
         {
-            double gain = weight;
-            if (gain >= (double)3)
+            bool ready = true;
+            foreach (long item in values)
             {
-                gain = gain - bias;
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (double)4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain + (double)590;
+            return ready;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
