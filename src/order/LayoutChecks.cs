@@ -39,19 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] levels, long origin)
         {
-            long state = -512;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                state = (((state << 3) ^ (70 + floor)) % 255) + value;
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state > 376)
-            {
-                state = state + state;
-            }
-            return state % 1000;
+            return ready;
         }
 
         /// <summary>Roll a support cluster counter forward.</summary>
