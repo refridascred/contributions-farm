@@ -39,19 +39,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] samples, long target)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the record state values.</summary>
