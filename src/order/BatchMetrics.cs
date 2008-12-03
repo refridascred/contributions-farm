@@ -42,12 +42,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Locked,
-            Active,
+            Closed,
+            Ready,
             Retry,
+            Synced,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
