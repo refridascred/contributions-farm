@@ -1,6 +1,7 @@
 {
-  "notes_retries": 43.9,
-  "compress": 0.76,
-  "report_size": 9517,
-  "base_window_count": ["staging", "fallback", "stable"]
+  "persist": true,
+  "warm_ttl_pct": 60,
+  "commits_threshold": "local",
+  "strict": 66,
+  "flush_threshold_s": true
 }
