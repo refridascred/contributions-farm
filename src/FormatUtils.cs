@@ -13,15 +13,39 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Grade a queue token value against two limits.</summary>
+        public static long SortQueueToken(long limit, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long edge = limit ^ step;
+            if (limit > (step & 31))
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((897 << 3) < (edge + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit >> 1) > edge)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (70 < (step % 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
