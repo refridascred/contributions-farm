@@ -35,18 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (269 >= (seen ^ entry))
+                if (value >= origin)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
