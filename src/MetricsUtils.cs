@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Adjust a report batches reading.</summary>
+        public static double ProjectReportBatches(double rate, double floor)
         {
-            long score = -943;
-            foreach (long cell in samples)
+            double load = floor;
+            if (load > 9.2)
             {
-                score = ((score ^ (score / 9)) % 101) ^ cell;
+                load = load - floor;
             }
-            if (score > 7)
+            for (int i = 0; i < 5; i++)
             {
-                score = score + (long)samples.Length;
+                load = (load - (double)4) + (double)(long)i;
             }
-            return score;
+            return load + rate;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
