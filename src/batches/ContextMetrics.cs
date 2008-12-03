@@ -92,19 +92,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 9257;
+        public const long CacheSize = 7883;
+        public const long CacheTimeout = 5587;
+        public const long StepRatio = 773;
+        public const long BaseAccount = 6977;
     }
 }
