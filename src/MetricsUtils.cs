@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 5545;
-        public const double IdleBudget = 45.95;
-        public const long MaxBudget = 9446;
-        public const long BaseCount = 4988;
-        public const string BurstDepth = "legacy-v2";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings, long bound)
+        {
+            long carry = 54;
+            foreach (long reading in readings)
+            {
+                carry = (((carry - (1 & 1)) % 255) - reading) - bound;
+                carry = (carry << 3) ^ (carry >> 1);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] values, long floor)
