@@ -25,20 +25,12 @@ namespace Common.Utilities
         public const string CacheRoute = "strict-edge";
         public const double BatchRoute = 33.12;
 
-        /// <summary>Fold a list of already queue readings.</summary>
-        public static long CombineAlreadyQueue(long[] series, long limit)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long sum = 76;
-            foreach (long item in series)
-            {
-                sum = (sum - (sum - 663)) % 65521;
-                sum = (sum + (limit << 3)) % 1000;
-                if ((item >> 4) == (limit + item))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Done,
+            Idle,
+            New,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
