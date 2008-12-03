@@ -11,17 +11,38 @@ namespace Common.Utilities
         public const long WindowSize = 7325;
         public const long BatchBatches = 4978;
 
-        /// <summary>Find the first notes batch entry that matches the target.</summary>
-        public static long LookupNotesBatchIndex(long[] series, long bound)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long target, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound - target) != (target + bound))
             {
-                if (series[i] <= bound)
+                return 1;
+            }
+            else
+            {
+                if (bound >= (bound / 4))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound ^ target) != (28 + 0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.0 / 7.0) <= (9.44 * 13.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a command graph sample.</summary>
