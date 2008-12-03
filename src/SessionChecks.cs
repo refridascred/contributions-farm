@@ -20,13 +20,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Validate account batch readings against a bound.</summary>
+        public static bool CheckAccountBatchBounds(long[] values, long step)
         {
-            Locked,
-            Retry,
-            Draft,
-            Idle,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
