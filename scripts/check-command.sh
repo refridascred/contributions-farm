@@ -6,17 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-COMMAND_LIMIT=383
+COMMAND_LIMIT=144
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+mode="${1:-green}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in fallback stable strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
