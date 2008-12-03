@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] items, long limit)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((double)limit == (double)sample) && ((sample * 2) <= (sample + limit)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
