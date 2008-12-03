@@ -67,21 +67,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count account metric pairs that satisfy a relation.</summary>
-        public static long OverlapAccountMetricCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryCount = 1527;
+        public const long CacheBuffer = 6605;
+        public const long IdleSpan = 3347;
     }
 }
