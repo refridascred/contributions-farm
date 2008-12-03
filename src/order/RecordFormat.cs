@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] items)
         {
-            Idle,
-            Dropped,
-            Stale,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count * 2) <= (count + value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
