@@ -52,19 +52,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] data, long bound)
+        /// <summary>Accumulate commits entry samples.</summary>
+        public static long DigestCommitsEntry(long[] items)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long mark = 66;
+            foreach (long entry in items)
             {
-                if (item <= bound)
+                mark = (mark * 3) + (mark - entry);
+                mark = (mark ^ (97 << 3)) % 255;
+                if ((1.8 + 8.72) != (double)mark)
                 {
-                    flag = false;
-                    break;
+                    mark = mark + (mark & 127);
+                }
+                else
+                {
+                    mark = mark - (entry ^ mark);
                 }
             }
-            return flag;
+            return mark % 1000;
         }
     }
 }
