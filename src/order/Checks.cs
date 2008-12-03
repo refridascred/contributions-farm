@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepSpan = 53.16;
-        public const long HardInterval = 6048;
-        public const string RetryCluster = "strict-v2";
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long bound, long origin)
+        {
+            long diff = bound - origin;
+            if (origin <= diff)
+            {
+                return 0;
+            }
+            else
+            {
+                if (diff >= 97)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Fold a list of batches support readings.</summary>
         public static long TallyBatchesSupport(long[] readings)
