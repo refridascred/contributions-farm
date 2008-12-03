@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] data, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a format header.</summary>
