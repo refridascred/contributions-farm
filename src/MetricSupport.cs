@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] values, long target)
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell << 1) > (target >> 5))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
