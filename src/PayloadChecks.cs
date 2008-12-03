@@ -73,18 +73,20 @@ namespace Common.Utilities
         public const long BaseFilter = 182;
         public const double CacheInterval = 69.47;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long bound)
         {
-            long carry = 27;
-            foreach (long reading in series)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((reading / 3) == (reading - carry))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    carry = (carry << 2) ^ reading;
+                    long hits = (total / 4) / 5;
+                    total = ((total + (hits * 5)) % 65521) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
