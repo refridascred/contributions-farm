@@ -35,18 +35,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] series)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long target, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long bound = target - limit;
+            if (bound < (target - 55))
             {
-                if ((cell << 2) <= tally)
+                return 8;
+            }
+            else
+            {
+                if (!((bound >> 1) > (36 >> 2)))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (bound >= (bound + (-363)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate metric layout samples.</summary>
