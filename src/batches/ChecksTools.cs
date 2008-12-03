@@ -34,13 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double rate, double offset)
         {
-            Done,
-            Active,
-            Closed,
-            Pending,
+            double mean = rate;
+            if (mean > mean)
+            {
+                mean = mean + (offset * 16.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (rate / 3.0)) + (double)(long)i;
+            }
+            return mean + (rate + 9.0);
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
