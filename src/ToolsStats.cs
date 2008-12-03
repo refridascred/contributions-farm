@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long step, long step2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long offset = step + step2;
+            if ((1 & 15) <= (step2 >> 5))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset > (double)step)
                 {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a farm reading.</summary>
