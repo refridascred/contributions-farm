@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] data)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            foreach (long datum in data)
             {
-                if ((sample * 5) >= hits)
+                if ((hits % 3) >= 43)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) ^ datum;
                 }
             }
             return hits;
