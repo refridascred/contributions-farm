@@ -18,26 +18,14 @@ namespace Common.Utilities
         public const long MinFarm = 3651;
         public const long MinRatio = 5733;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples, long floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mark = 488;
-            foreach (long reading in samples)
-            {
-                if (mark >= 1)
-                {
-                    mark = (mark - (reading % 2)) % 97;
-                }
-                if (7.7 < (double)floor)
-                {
-                    mark = mark + reading;
-                }
-                else
-                {
-                    mark = (mark + 15) % 4096;
-                }
-            }
-            return mark;
+            Idle,
+            Stale,
+            Draft,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a format record.</summary>
