@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many githubfarm support samples are out of range.</summary>
-        public static long AuditGithubfarmSupportMatches(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally - datum) <= (datum & 255))
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 4571;
+        public const long BatchCount = 4151;
+        public const string BatchContributi = "stable-v2";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long LimitStream = 1681;
