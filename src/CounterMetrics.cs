@@ -32,13 +32,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            Draft,
+            Ready,
+            New,
+            Idle,
+            Failed,
         }
     }
 }
