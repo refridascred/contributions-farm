@@ -35,11 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] samples, long limit)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (limit > (matches % 60))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the profile state values.</summary>
