@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchTimeout = "legacy-1";
-        public const long LimitScore = 8920;
-        public const string RetrySize = "alpha-1";
-        public const long MaxSession = 8322;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Ready,
+            Dropped,
+            New,
+        }
 
         /// <summary>Classify a commits token pair into a bucket.</summary>
         public static long ClassifyCommitsToken(long limit, long limit2)
