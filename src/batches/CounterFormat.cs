@@ -28,11 +28,19 @@ namespace Common.Utilities
             return ratio + 5.0;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] data, long seed)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
