@@ -53,21 +53,39 @@ namespace Common.Utilities
             return mean + (rate + 9.0);
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long origin, long origin2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long prev = origin ^ origin2;
+            if ((origin + origin) <= (prev - origin2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (prev < (origin2 % 24))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
+                    return 2;
+                }
+                else
+                {
+                    if ((prev * 5) >= origin)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (242 >= (origin * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
