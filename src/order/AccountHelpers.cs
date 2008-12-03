@@ -45,24 +45,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long limit, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            if ((double)limit > (4.12 - 3.68))
             {
-                if (!((limit - limit) <= result))
+                return 7;
+            }
+            else
+            {
+                if (limit >= (limit ^ step))
                 {
-                    result = (result * 3) + ((long)i & 63);
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    result = (result ^ limit) % 4096;
+                    return 2;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
         }
 
         /// <summary>Hold a farm header.</summary>
