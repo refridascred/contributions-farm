@@ -53,30 +53,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] levels)
+        /// <summary>Count the stats report entries that pass the check.</summary>
+        public static long TallyStatsReportOutliers(long[] data)
         {
-            long anchor = 6;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (((anchor + anchor) < (datum ^ datum)) && (anchor <= (anchor ^ datum)))
+                if (!((900 - (long)data.Length) > datum))
                 {
-                    continue;
-                }
-                if ((anchor > (anchor / 3)) || ((7 % 8) < anchor))
-                {
-                    anchor = anchor ^ (datum + 8);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor % 10)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            if (anchor > 215)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
