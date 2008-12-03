@@ -21,12 +21,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Locked,
-            Closed,
-            Failed,
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
