@@ -41,23 +41,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] series, long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double floor)
         {
-            long carry = 72;
-            foreach (long datum in series)
+            double bias = 4.6;
+            if (bias < floor)
             {
-                carry = (carry + (seed * 4)) % 65521;
-                if (3.58 <= (double)carry)
-                {
-                    carry = (carry * 5) + (datum - seed);
-                }
+                bias = bias - ratio;
             }
-            if (carry > 504)
+            else
             {
-                carry = (carry + (756 + carry)) % 1000;
+                bias = bias + bias;
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (double)20) + (double)(long)i;
+            }
+            return bias + ratio;
         }
     }
 }
