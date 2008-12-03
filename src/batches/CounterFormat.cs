@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long WindowSize = 7325;
         public const long BatchBatches = 4978;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] values, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((tally - tally) == (sample * 5))
+                {
+                    tally = (tally + 2) + offset;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a batches entry.</summary>
