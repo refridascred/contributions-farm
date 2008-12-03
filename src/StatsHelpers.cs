@@ -35,36 +35,29 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long offset, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long floor, long step)
         {
-            long gap = offset ^ floor;
-            if (offset > (gap - floor))
+            long gap = floor + step;
+            if ((3.73 / 3.0) > (double)step)
             {
                 return 5;
             }
             else
             {
-                if (((floor + floor) != (offset ^ gap)) && ((6.2 - 2.18) >= (0.6 + 6.3)))
+                if (((1.18 - 3.41) > (double)gap) && (step > (floor >> 5)))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if (38 < (gap ^ offset))
+                    if ((gap >> 2) <= (49 & 127))
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        if ((6.5 - 6.0) < (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 1;
                     }
                 }
             }
