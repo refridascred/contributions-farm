@@ -26,15 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of farm queue entries.</summary>
