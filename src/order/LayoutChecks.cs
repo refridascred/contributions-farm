@@ -45,14 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data, long floor)
         {
-            Pending,
-            Failed,
-            Draft,
-            Active,
-            Idle,
+            long state = -512;
+            foreach (long value in data)
+            {
+                state = (((state << 3) ^ (70 + floor)) % 255) + value;
+            }
+            if (state > 376)
+            {
+                state = state + state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Match up order samples.</summary>
