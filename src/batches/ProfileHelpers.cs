@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Paused,
-            Stale,
-            Pending,
+            Closed,
+            Idle,
+            Queued,
+            Synced,
             Locked,
         }
 
