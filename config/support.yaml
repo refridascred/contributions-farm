@@ -1,20 +1,25 @@
 # support settings
-checks_interval:
-  entry_size:
-    dry_run: 500
-    warm_threshold_ms: local
-    hard_timeout_s: green
-    compress: eu-west
-    batch_interval: false
-  compress: open
-  editor_delay:
-    - strict
-    - cached
-  poll_capacity: latest
-  batch_retries_count: eu-west
-min_retries_s:
-  - 386
-  - 227
-  - 193
-layout_delay: eu-west
-contributi_delay: 8983
+idle_timeout_pct:
+  soft_threshold_pct:
+    - 238
+    - 232
+    - 90
+  hard_ttl: true
+  cache_delay_s: 32
+  stream_window: 53
+  flush_capacity:
+    - 192
+    - 148
+  queue_window: 500
+soft_threshold_ms: 30.08
+poll_window_ms:
+  base_ratio_count: 96
+  batch_retries:
+    - local
+    - primary
+  min_threshold: true
+  dry_run: true
+  account_capacity: 1024
+  githubfarm_timeout: latest
+context_ratio: 44
+checks_ratio: staging
