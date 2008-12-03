@@ -1,4 +1,24 @@
 # support settings
-report_delay: stable
-idle_limit_ms: 1024
-default_delay_ms: 30
+payload_depth: 89.35
+enabled: 12
+dry_run:
+  retry_capacity: 20.04
+  compress:
+    compress:
+      - 321
+      - 484
+      - 359
+    default_ttl: open
+    buffer_retries:
+      - legacy
+      - edge
+    graph_interval: blue
+    sync_depth_pct: false
+    soft_limit_pct: true
+  verbose:
+    - 260
+    - 481
+    - 231
+    - 145
+retry_retries_pct: eu-west
+graph_delay: 59
