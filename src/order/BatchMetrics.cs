@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of profile record readings.</summary>
-        public static long OverlapProfileRecordCount(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 103;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix * 4) + (mix * 5)) + (long)i;
+                    mix = ((mix << 3) ^ 285) % 4096;
+                }
+                if (!((limit * 5) != (limit ^ limit)))
+                {
+                    mix = ((mix << 2) ^ (mix + datum)) % 4096;
+                }
+                if ((17.0 + 1.3) <= (double)datum)
+                {
+                    mix = (mix * 2) + (limit % 12);
+                }
+                if ((((-4) ^ mix) > (78 << 2)) || ((datum & 127) <= mix))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the window class values.</summary>
