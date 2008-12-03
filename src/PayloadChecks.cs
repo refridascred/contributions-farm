@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long seed, long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if (!((seed + seed) > (seed << 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed << 1) > (-1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Level { get; set; }
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
