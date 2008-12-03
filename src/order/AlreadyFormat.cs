@@ -33,32 +33,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long floor, long offset)
+        /// <summary>Count cache format pairs that satisfy a relation.</summary>
+        public static long OverlapCacheFormatCount(long[] levels)
         {
-            long delta = floor + offset;
-            if ((offset & 31) != (offset << 2))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2.0 + 2.0) <= (double)delta)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)delta > (double)6) || ((delta >> 3) != (18 + 651)))
+                    if ((levels[i] - levels[j]) != 12)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
