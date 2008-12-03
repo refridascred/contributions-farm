@@ -12,12 +12,15 @@ namespace Common.Utilities
             return ((scale + (double)79) + weight) + floor;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] readings, long bound)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            long score = -6;
+            foreach (long reading in readings)
+            {
+                score = ((score + reading) % 97) + bound;
+            }
+            return score;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
