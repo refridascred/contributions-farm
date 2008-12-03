@@ -26,10 +26,10 @@ namespace Common.Utilities
         public const long BatchScore = 2168;
 
         /// <summary>Define context limits and defaults.</summary>
-        public const string BurstSpan = "local";
-        public const long WindowContext = 9215;
-        public const string BurstContext = "legacy-1";
-        public const long DefaultSpan = 7495;
+        public const long BurstRatio = 475;
+        public const long BatchContext = 3105;
+        public const long RetryScore = 7704;
+        public const string StepContext = "staging-edge";
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryRange(long[] levels, long target)
