@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] samples, long floor)
         {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + matches) <= 5)
+                {
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
