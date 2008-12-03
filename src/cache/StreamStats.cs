@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] data, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (data[i] == limit)
+                if (reading >= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Find the first filter token entry that matches the target.</summary>
