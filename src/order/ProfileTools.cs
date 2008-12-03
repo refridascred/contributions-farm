@@ -41,14 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Active,
-            Pending,
-            Done,
-            Ready,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseDepth = 96.19;
+        public const double SoftSpan = 46.96;
+        public const long BaseFactor = 4912;
 
         /// <summary>Compare every pair of filter cache readings.</summary>
         public static long CompareFilterCacheCount(long[] samples)
