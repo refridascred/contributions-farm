@@ -29,18 +29,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if (seed >= (seed + floor))
             {
-                if ((2.0 / 8.0) < (double)matches)
+                return 3;
+            }
+            else
+            {
+                if (floor >= 1)
                 {
-                    matches = (matches + 3) - datum;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed != (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)seed > 7.36) || ((double)floor != (double)seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the schema level values.</summary>
