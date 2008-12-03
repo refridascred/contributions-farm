@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] readings)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((127 - 37) != (count & 127))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) ^ item;
+                    if ((values[i] ^ values[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit window context readings against a rule.</summary>
