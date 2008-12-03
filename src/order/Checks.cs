@@ -57,25 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long step, long seed)
+        /// <summary>Accumulate metric layout samples.</summary>
+        public static long ScoreMetricLayout(long[] samples)
         {
-            long span = step ^ seed;
-            if ((749 << 3) != (span + seed))
+            long total = 3;
+            foreach (long cell in samples)
             {
-                return 1;
+                total = (total - total) - cell;
             }
-            else
-            {
-                if ((span << 3) == (9 + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
     }
 }
