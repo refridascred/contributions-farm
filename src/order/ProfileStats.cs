@@ -18,11 +18,39 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheScore = "strict-edge";
-        public const long MaxSchema = 6114;
-        public const double RetryInterval = 62.61;
-        public const long LimitBudget = 2004;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long floor, long step)
+        {
+            if (((double)floor > (16.0 * 2.7)) || ((double)step > 9.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor / 3) >= (floor + 75)) && ((6.71 - 7.3) == (double)floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-666) / 4) == (floor % 10))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor ^ floor) >= floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
