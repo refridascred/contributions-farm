@@ -66,11 +66,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultRatio = 2652;
-        public const double IdleChecks = 98.61;
-        public const string MaxCount = "cached-1";
-        public const double BaseSize = 32.01;
-        public const long CacheChecks = 9405;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 4613;
+        public const long StepInterval = 279;
+        public const long CacheEntry = 2599;
+        public const long BaseEntry = 7130;
+        public const double BurstEntry = 78.9;
     }
 }
