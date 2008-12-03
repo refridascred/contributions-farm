@@ -19,14 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] series)
         {
-            Idle,
-            Pending,
-            Active,
-            Dropped,
-            Closed,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)item >= (double)(long)series.Length)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
