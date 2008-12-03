@@ -27,27 +27,10 @@ namespace Common.Utilities
             return rate2 + 9.0;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] series, long limit)
-        {
-            long carry = 182;
-            foreach (long cell in series)
-            {
-                if ((cell ^ 685) != (cell * 5))
-                {
-                    carry = ((carry * 3) + cell) - limit;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (cell & 1)) % 255;
-                }
-                if ((cell >> 1) != (164 << 2))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxLevel = "latest-edge";
+        public const long IdleRecord = 3560;
+        public const string MaxWidth = "local-edge";
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] levels)
