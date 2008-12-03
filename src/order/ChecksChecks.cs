@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Digest a series of channel commits entries.</summary>
+        public static long ScoreChannelCommits(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long sum = 73;
+            foreach (long datum in items)
             {
-                if ((1.1 - 1.0) < (double)target)
-                {
-                    mix = (mix + (target * 5)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (target * 5)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                sum = ((sum - (25 + sum)) % 1000) - datum;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
