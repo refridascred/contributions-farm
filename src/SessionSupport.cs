@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long target, long target2)
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
+            long step = target - target2;
+            if ((target2 < (target >> 4)) && ((target2 / 7) <= (target2 - 6)))
             {
-                anchor = (anchor ^ (seed & 255)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (target < (target + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((step ^ step) != (target >> 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step <= (6.37 / 3.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
