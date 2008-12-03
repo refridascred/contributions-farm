@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Measure how many githubfarm session samples are out of range.</summary>
+        public static long AuditGithubfarmSessionMatches(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seed % 3) < seed)
                 {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
