@@ -12,21 +12,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 17;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result ^ (result % 12)) % 1000) + datum;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
