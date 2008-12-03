@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long SoftBatch = 2020;
         public const long RetryBatch = 7946;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] series)
         {
             long seen = 0;
-            foreach (long datum in values)
+            foreach (long cell in series)
             {
-                if ((datum + seen) > seen)
+                if ((705 + cell) < seen)
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
