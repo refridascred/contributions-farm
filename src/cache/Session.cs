@@ -35,39 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long bound, long origin)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long lane = bound - origin;
-            if ((lane << 2) >= (origin + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - 397) <= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin % 60) >= (bound % 8)) && ((double)origin <= (4.0 - 4.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((lane ^ bound) >= (27 + bound)) && ((305 % 64) == (lane * 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
