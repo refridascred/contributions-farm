@@ -36,12 +36,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
