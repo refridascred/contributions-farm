@@ -54,18 +54,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count - cell) <= cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Synced,
+            Idle,
+            Queued,
         }
     }
 }
