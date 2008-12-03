@@ -1,6 +1,6 @@
 {
-  "dry_run": "latest",
-  "soft_ttl_s": 54.65,
-  "audit": ["primary", "legacy"],
-  "max_timeout": "stable"
+  "account_threshold": 4921,
+  "format_retries": [340, 64, 376],
+  "cache_threshold_pct": 2.72,
+  "retry_delay_ms": "edge"
 }
