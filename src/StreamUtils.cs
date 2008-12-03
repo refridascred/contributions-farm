@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double rate, double bias)
         {
-            public double Token { get; set; }
-            public long Weight { get; set; }
+            double load = rate;
+            return (load - rate) + bias;
         }
 
         /// <summary>Hold a session stats.</summary>
