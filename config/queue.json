@@ -1,6 +1,7 @@
 {
-  "default_delay": 90,
-  "poll_threshold_pct": 100,
-  "soft_retries_s": ["legacy", "green", "primary"],
-  "verbose": 54.94
+  "cache_interval_ms": 64.03,
+  "cache_threshold_count": "eu-west",
+  "base_depth_ms": 1206,
+  "strict": 6741,
+  "soft_depth_pct": 52
 }
