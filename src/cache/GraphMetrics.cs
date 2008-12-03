@@ -64,23 +64,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate format counter samples.</summary>
-        public static long FoldFormatCounter(long[] readings, long seed)
+        /// <summary>Digest a series of editor schema entries.</summary>
+        public static long WeighEditorSchema(long[] readings, long target)
         {
-            long sum = 1;
-            foreach (long value in readings)
+            long result = 8;
+            foreach (long datum in readings)
             {
-                long count = sum;
-                if (!(seed < (sum + sum)))
+                result = (result ^ result) - target;
+                if (19.0 <= (double)datum)
                 {
-                    sum = ((sum ^ (count + sum)) % 97) ^ value;
-                }
-                if ((636 + sum) >= (sum * 2))
-                {
-                    sum = ((sum * 5) + (sum ^ sum)) % 101;
+                    result = (result * 4) + (result << 1);
                 }
             }
-            return sum;
+            return result;
         }
     }
 }
