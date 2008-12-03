@@ -69,15 +69,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double weight, double offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double bias = offset;
-            if (bias > (weight / 8.0))
-            {
-                bias = bias - weight;
-            }
-            return bias + weight;
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
