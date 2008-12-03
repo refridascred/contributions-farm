@@ -1,11 +1,6 @@
 {
-  "soft_interval_s": "blue",
-  "cache_window_s": 6.36,
-  "filter_depth": {
-    "soft_ratio": 30,
-    "base_retries": true,
-    "cache_size": 25,
-    "batch_delay_count": false,
-    "buffer_limit": "edge"
-  }
+  "session_retries": "fallback",
+  "burst_retries_s": [223, 197],
+  "batch_delay": 58,
+  "sync_window": [379, 440]
 }
