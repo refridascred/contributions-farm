@@ -14,11 +14,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 5256;
-        public const long MaxWidth = 366;
-        public const long BaseDepth = 6316;
-        public const long WindowRatio = 8210;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 5) + (floor - carry)) % 255;
+                if ((6.0 - 8.13) > (2.1 - 8.22))
+                {
+                    carry = (carry * 2) + ((long)i / 9);
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long StepNotes(long seed)
