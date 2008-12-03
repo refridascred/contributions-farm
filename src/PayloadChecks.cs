@@ -40,18 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] levels, long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if ((origin >> 5) <= (origin - offset))
             {
-                if ((2.0 * 2.81) < (double)value)
+                return 7;
+            }
+            else
+            {
+                if (5 <= (offset << 3))
                 {
-                    tally = (tally + 1) + bound;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
