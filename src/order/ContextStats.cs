@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long WindowSpan = 426;
         public const long MinCount = 265;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 3103;
-        public const string WindowEntry = "fallback-edge";
-        public const long BaseEntry = 5940;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values, long step)
+        {
+            long anchor = 36;
+            foreach (long sample in values)
+            {
+                anchor = ((anchor - (anchor + step)) % 1000) ^ sample;
+            }
+            if (anchor < 62)
+            {
+                anchor = (anchor - 1) % 1000;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long WeighSchema(long[] levels)
