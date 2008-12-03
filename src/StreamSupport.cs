@@ -14,17 +14,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] series, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((series[i] >= limit) && ((series[i] % 5) != 0))
+                if (reading <= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate stream samples.</summary>
