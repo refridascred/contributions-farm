@@ -50,10 +50,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "open-v2";
-        public const double MinCommits = 32.08;
-        public const long SoftTimeout = 1914;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] items)
+        {
+            long acc = 1;
+            foreach (long datum in items)
+            {
+                if ((acc + acc) < (acc + datum))
+                {
+                    acc = (acc + (1 + acc)) % 1000;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaBounds(long[] items, long step)
