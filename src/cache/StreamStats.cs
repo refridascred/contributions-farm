@@ -19,11 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitLevel = 5773;
-        public const string StepTools = "strict";
-        public const long BaseFactor = 486;
-        public const string RetrySpan = "latest-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 761;
+        public const long RetryScore = 8602;
+        public const string MaxRatio = "cached";
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterRange(long[] samples, long limit)
