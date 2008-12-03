@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((seen % 24) != (seen ^ datum))
+                if (((long)data.Length ^ sample) > tally)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
