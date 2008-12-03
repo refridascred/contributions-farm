@@ -1,6 +1,8 @@
 # support settings
-default_interval_s: local
-default_capacity_pct: 100
-checks_delay: legacy
-farm_limit: 8196
-default_threshold_count: 46
+burst_limit: blue
+filter_ratio: blue
+default_capacity: 294
+poll_delay: 51.92
+max_delay_count:
+  - green
+  - latest
