@@ -1,12 +1,7 @@
 # githubfarm settings
-account_ratio:
-  persist: 2476
-  poll_depth: strict
-  max_interval_ms: 1987
-  min_ttl_s: 27.21
-  farm_timeout: primary
-max_threshold: legacy
-hard_window: 250
-hard_depth_count: true
-max_interval_count: 63
-counter_interval: 71.99
+contributi_retries: 23
+commits_limit: 3806
+max_delay_count:
+  - primary
+  - cached
+audit: true
