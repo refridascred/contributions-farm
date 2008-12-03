@@ -31,14 +31,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] data, long floor)
         {
-            Failed,
-            Active,
-            Locked,
-            Draft,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
