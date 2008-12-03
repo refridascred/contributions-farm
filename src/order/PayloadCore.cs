@@ -42,23 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double gain, double span)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double scale = gain;
-            if (scale > (span * 6.04))
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + (gain * 20.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - span;
+            Locked,
+            Ready,
+            Closed,
+            Stale,
+            Dropped,
         }
     }
 }
