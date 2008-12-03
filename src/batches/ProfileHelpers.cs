@@ -32,22 +32,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] series, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] values, long step)
         {
-            long mark = -20;
-            foreach (long reading in series)
+            long anchor = 689;
+            foreach (long value in values)
             {
-                if ((origin - origin) < (582 & 1))
+                long bound = value;
+                if (step >= (bound & 7))
                 {
-                    mark = (((mark << 2) ^ (origin - mark)) % 1000) ^ reading;
+                    continue;
                 }
-                else
+                if (769 < (value & 127))
                 {
-                    mark = ((mark << 2) ^ (origin * 3)) % 4096;
+                    anchor = anchor - (step << 2);
                 }
             }
-            return mark % 1000;
+            if (anchor < 5)
+            {
+                anchor = (anchor ^ (4 << 2)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
