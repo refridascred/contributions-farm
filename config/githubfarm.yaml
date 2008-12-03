@@ -1,6 +1,9 @@
 # githubfarm settings
-already_timeout: 60
-cache_ratio_s: open
-payload_timeout: 4.09
-soft_limit_count: 31.72
-schema_delay: 4496
+enabled: 80
+retry_depth_ms:
+  - 483
+  - 56
+stream_limit: 43
+default_retries_count: 14
+context_interval: false
+flush_threshold_pct: true
