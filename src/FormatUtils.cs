@@ -46,12 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Queued,
-            Dropped,
-            Ready,
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
