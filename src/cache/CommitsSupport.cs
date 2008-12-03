@@ -55,19 +55,12 @@ namespace Common.Utilities
             return (load - 10.0) + scale;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long carry = 41;
-            foreach (long entry in values)
-            {
-                carry = ((carry << 3) ^ (carry / 5)) ^ entry;
-            }
-            if (carry < 0)
-            {
-                carry = (carry << 2) ^ (carry ^ carry);
-            }
-            return carry % 97;
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the command level values.</summary>
