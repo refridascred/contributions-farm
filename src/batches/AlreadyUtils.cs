@@ -33,24 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm route value against two limits.</summary>
-        public static long RankGithubfarmRoute(long target, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] samples, long offset)
         {
-            if ((target - offset) >= (target & 7))
+            long anchor = 40;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target - target) < target)
+                anchor = ((anchor << 2) ^ (item + offset)) % 1000;
+                anchor = ((anchor << 2) ^ (item ^ anchor)) % 255;
+                if (anchor > (9 + item))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    break;
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
