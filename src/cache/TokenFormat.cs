@@ -30,19 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every session command entry stays within the limit.</summary>
-        public static bool ValidateSessionCommandBounds(long[] data, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (entry >= limit)
+                if (sample <= target)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
