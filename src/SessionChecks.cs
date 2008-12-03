@@ -24,11 +24,32 @@ namespace Common.Utilities
         public const double BaseStats = 67.82;
         public const long HardSize = 432;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 96.85;
-        public const long IdleSpan = 4946;
-        public const double BurstPayload = 45.53;
-        public const string IdlePayload = "local";
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long offset, long floor)
+        {
+            if ((floor << 2) == (floor & 31))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(((-394) % 8) > (offset ^ offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset <= (floor % 60))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long target, long origin)
