@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double scale, double span)
+        /// <summary>Project the next layout queue value.</summary>
+        public static double AdjustLayoutQueue(double ratio, double span)
         {
-            double scale2 = (scale - scale) / 9.0;
-            if (scale2 >= (scale + scale2))
-            {
-                scale2 = scale2 - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 - span) + (double)(long)i;
-            }
-            return scale2 - scale;
+            double ratio2 = span;
+            return (ratio2 - (ratio2 / 8.0)) + ratio;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
