@@ -63,12 +63,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 8953;
-        public const string MinBatches = "alpha-edge";
-        public const long MaxBatches = 6389;
-        public const long IdleDepth = 2031;
-        public const string IdleBatches = "latest-v2";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] samples, long origin)
+        {
+            long mix = 28;
+            foreach (long value in samples)
+            {
+                mix = (((mix << 3) ^ (870 % 10)) % 101) + value;
+                if ((double)origin != (double)mix)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long FindFilterIndex(long[] samples, long seed)
