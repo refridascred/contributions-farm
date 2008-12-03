@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = offset - floor;
+            if (lane >= (lane ^ floor))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((double)offset >= (6.56 - 0.2)) || (offset >= (offset + lane)))
                 {
-                    if ((data[i] + data[j]) < 10)
+                    return 7;
+                }
+                else
+                {
+                    if (((lane + floor) < lane) || (floor > (lane * 4)))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a githubfarm route value against two limits.</summary>
