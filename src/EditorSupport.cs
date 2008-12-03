@@ -52,24 +52,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long bound, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            if (6 >= seed)
+            long state = 86;
+            foreach (long cell in data)
             {
-                return 1;
+                state = state ^ (838 - cell);
+                state = state + (3 >> 1);
             }
-            else
-            {
-                if ((seed - bound) >= (835 * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state % 1000;
         }
 
         /// <summary>Describe the buffer status values.</summary>
