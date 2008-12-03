@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 700;
-        public const double HardCount = 22.81;
-        public const long WindowMetrics = 6875;
-        public const long BatchMetrics = 8249;
-        public const long DefaultRatio = 349;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 3043;
+        public const long HardEditor = 141;
+        public const double WindowTimeout = 8.09;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
