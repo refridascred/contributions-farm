@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double bias, double floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double bias2 = (floor / 3.0) + (double)7;
-            if (bias2 < bias)
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (bias2 + bias2)) - (double)(long)i;
-            }
-            return bias2 + (double)43;
+            Queued,
+            Active,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a already info.</summary>
