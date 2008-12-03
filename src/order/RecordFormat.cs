@@ -47,12 +47,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public double Token { get; set; }
         }
     }
 }
