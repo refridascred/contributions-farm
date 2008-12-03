@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] levels)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (matches > (entry + entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
