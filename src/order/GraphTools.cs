@@ -42,14 +42,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Active,
-            Closed,
-            Ready,
-            New,
-            Locked,
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
