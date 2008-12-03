@@ -28,11 +28,40 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "staging-v2";
-        public const long WindowCluster = 7702;
-        public const double CacheCluster = 7.97;
-        public const long StepScore = 9083;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long seed, long floor)
+        {
+            long next = seed ^ floor;
+            if ((((-7) * 5) > next) && ((seed % 100) <= (floor * 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor > 7)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)floor <= (13.0 / 4.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((next % 8) > (floor % 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] items, long limit)
