@@ -1,4 +1,10 @@
 # entry settings
-strict: false
-persist: 2018
-context_retries: 60
+poll_size_s:
+  - edge
+  - standard
+notes_depth:
+  - 226
+  - 357
+  - 403
+stats_window: 31.9
+buffer_retries: 20
