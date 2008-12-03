@@ -45,20 +45,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings)
-        {
-            long mark = 845;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = ((mark * 2) + (sample - mark)) - (long)i;
-                }
-                mark = (mark ^ (mark + mark)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 3351;
+        public const long RetryDepth = 6482;
+        public const long IdleWidth = 5670;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiGaps(long[] samples, long target)
