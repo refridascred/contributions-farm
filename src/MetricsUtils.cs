@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] items, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((floor >> 1) > ((long)i ^ floor))
+                if (value <= step)
                 {
-                    state = (state << 3) ^ ((long)i >> 1);
-                    continue;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    state = state - (floor >> 2);
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
