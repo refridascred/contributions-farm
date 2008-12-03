@@ -26,22 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window context readings against a rule.</summary>
-        public static long TallyWindowContextOutliers(long[] levels, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (((origin + origin) == (origin2 / 6)) && ((double)origin <= (4.7 + 2.0)))
             {
-                if ((((bound >> 2) > ((-484) - value)) && ((54 + 78) > value)) || ((double)tally <= (double)value))
+                return 5;
+            }
+            else
+            {
+                if (9 < (origin >> 1))
                 {
-                    tally = tally + 1;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((origin2 ^ 691) <= origin2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
