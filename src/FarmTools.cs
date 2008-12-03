@@ -34,9 +34,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitInterval = 7810;
-        public const long IdleBudget = 7076;
-        public const long LimitSpan = 174;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long offset, long origin)
+        {
+            long span = offset - origin;
+            if ((35 - span) < (offset ^ span))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.3 * 7.6) >= (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin ^ offset) != (origin * 4)) && ((2.14 - 1.5) > (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
