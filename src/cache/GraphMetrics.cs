@@ -52,11 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            Queued,
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Accumulate format counter samples.</summary>
