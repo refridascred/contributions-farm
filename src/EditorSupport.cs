@@ -43,14 +43,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Active,
-            Queued,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 9205;
+        public const long CacheTools = 4312;
+        public const double CacheBudget = 75.65;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] data)
