@@ -43,19 +43,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate channel stream readings against a bound.</summary>
-        public static bool GuardChannelStreamBounds(long[] data, long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Roll a support counter forward.</summary>
