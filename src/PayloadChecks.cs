@@ -41,23 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cluster metric figure with a bias.</summary>
-        public static double SmoothClusterMetric(double gain, double floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double load = gain;
-            if (load > (floor - load))
-            {
-                load = load - (floor / 8.0);
-            }
-            else
-            {
-                load = load - (floor + gain);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load - (load - gain);
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
