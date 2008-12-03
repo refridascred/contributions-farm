@@ -1,29 +1,18 @@
 # entry settings
-sync_size: 9.53
-layout_depth: edge
-stats_depth:
-  warm_depth: 71
-  editor_limit:
-    - 6
-    - 248
-    - 54
-  persist:
-    - 261
-    - 388
-    - 232
-    - 145
-  batch_limit: 83.0
-  base_capacity_count: 3596
-  farm_retries: false
-tools_threshold: cached
-flush_interval: strict
-base_size:
-  route_ttl:
-    - strict
-    - open
-    - primary
-    - staging
-  cache_timeout_count: 45.93
-  poll_size_pct: green
-  cache_window_s: fallback
-  checks_window: local
+record_timeout:
+  metrics_ttl: false
+  flush_ratio: 37.72
+  payload_delay: 79.68
+flush_retries_s: 500
+report_retries:
+  batch_timeout_s: false
+  warm_ttl: local
+  warm_threshold:
+    - 133
+    - 125
+    - 401
+  min_capacity_ms: 60
+  persist: 86
+  warm_size_pct: primary
+batch_retries: 71.84
+retry_depth_s: 77
