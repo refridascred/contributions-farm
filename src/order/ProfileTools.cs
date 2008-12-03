@@ -44,12 +44,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            New,
-            Retry,
-            Locked,
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the context checks series from a seed.</summary>
