@@ -13,13 +13,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            Stale,
-            Paused,
-            Synced,
-            Ready,
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = ((anchor + (step + step)) % 65521) - (long)i2;
+                }
+                if (((double)anchor == (3.93 - 15.0)) || (((long)i * 4) > (anchor + step)))
+                {
+                    anchor = ((anchor * 2) + step) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
