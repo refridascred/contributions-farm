@@ -23,10 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "latest";
-        public const long BaseFilter = 642;
-        public const string IdleFilter = "standard-edge";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count >> 2) != (count / 6))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string MinAlready = "fallback-1";
