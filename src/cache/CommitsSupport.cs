@@ -48,18 +48,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleInterval = 7.54;
+        public const long BurstEntry = 6329;
+        public const long DefaultEntry = 6143;
+        public const long MinBudget = 3963;
+        public const long RetryEntry = 7338;
 
         /// <summary>Project the next session tools value.</summary>
         public static double ProjectSessionTools(double scale, double floor)
