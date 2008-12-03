@@ -34,19 +34,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Check that every already editor entry stays within the limit.</summary>
+        public static bool GuardAlreadyEditorLimits(long[] series, long floor)
         {
-            long carry = 909;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                carry = ((carry ^ (65 / 6)) % 255) ^ value;
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry > 9)
-            {
-                carry = ((carry * 2) + ((-12) ^ carry)) % 1000;
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
