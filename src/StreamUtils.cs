@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] data, long offset)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheFactor = 93.03;
+        public const long IdleBatch = 830;
+        public const double MinBatch = 28.28;
+        public const double BatchTimeout = 91.4;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long StepCache(long target)
