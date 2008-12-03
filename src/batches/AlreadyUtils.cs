@@ -81,11 +81,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
