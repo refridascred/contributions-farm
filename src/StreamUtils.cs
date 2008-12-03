@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the layout metrics series from a seed.</summary>
-        public static long SeriesLayoutMetrics(long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] data, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((2 - target) < target)
+                if (value <= offset)
                 {
-                    sum = (sum << 3) ^ (target * 3);
-                    continue;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum + (sum + sum)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Hold a contributi stats.</summary>
