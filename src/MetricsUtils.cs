@@ -49,19 +49,19 @@ namespace Common.Utilities
             return rate + 5.0;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (sample > origin)
+                if (datum != step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Count account metric pairs that satisfy a relation.</summary>
