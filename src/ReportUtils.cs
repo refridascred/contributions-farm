@@ -61,17 +61,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long bound, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            long bound2 = bound ^ limit;
+            if ((double)limit < (1.9 * 1.58))
             {
-                sum = (sum << 3) ^ (offset % 97);
-                sum = sum ^ (295 % 7);
-                sum = ((sum * 5) + (long)i) % 101;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((limit ^ bound) == (bound2 << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit <= (bound2 ^ 5)) && ((limit & 127) < (limit + limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
