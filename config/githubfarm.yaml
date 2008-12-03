@@ -1,11 +1,4 @@
 # githubfarm settings
-command_retries:
-  - 328
-  - 484
-  - 153
-readonly:
-  - eu-west
-  - strict
-  - fallback
-  - staging
-batch_ratio: false
+strict: 16.57
+audit: false
+entry_interval: true
