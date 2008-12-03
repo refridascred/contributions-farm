@@ -73,13 +73,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] samples)
         {
-            Idle,
-            Stale,
-            Dropped,
-            Retry,
+            long sum = 46;
+            foreach (long value in samples)
+            {
+                sum = (sum + (value + sum)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
