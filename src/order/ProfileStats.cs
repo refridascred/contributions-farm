@@ -22,11 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long origin, long origin2)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            long offset = origin ^ origin2;
+            if (origin2 < (offset & 15))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((674 & 255) != (offset * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
