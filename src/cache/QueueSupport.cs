@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double gain, double offset)
+        /// <summary>Scale a batches account figure with a bias.</summary>
+        public static double SmoothBatchesAccount(double weight, double floor)
         {
-            double ratio = offset;
-            if (ratio < gain)
+            double load = 9.1;
+            if (load >= (4.34 + weight))
             {
-                ratio = ratio - 2.4;
+                load = load - (10.0 + weight);
             }
-            else
-            {
-                ratio = ratio - (double)92;
-            }
-            return ratio + (double)253;
+            return load - (floor * 5.3);
         }
 
         /// <summary>Describe the payload phase values.</summary>
