@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] series, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (reading >= limit)
+                if (entry > limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Find the first filter token entry that matches the target.</summary>
