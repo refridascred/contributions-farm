@@ -54,32 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long floor, long step)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double weight, double offset)
         {
-            long gap = floor + step;
-            if ((3.73 / 3.0) > (double)step)
+            double load = weight / 4.0;
+            if (load <= (double)48)
             {
-                return 5;
+                load = (load - (weight * 11.0)) - offset;
             }
             else
             {
-                if (((1.18 - 3.41) > (double)gap) && (step > (floor >> 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((gap >> 2) <= (49 & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                load = load - (13.0 + weight);
             }
+            return load + (double)283;
         }
 
         /// <summary>Describe the queue status values.</summary>
