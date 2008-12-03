@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long origin)
         {
-            Retry,
-            Pending,
-            Ready,
-            Draft,
-            Idle,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
