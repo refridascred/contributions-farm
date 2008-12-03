@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate entry payload samples.</summary>
-        public static long CombineEntryPayload(long[] readings, long bound)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long mix = -2;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((-739) + cell) > bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix * 4) + (bound - cell)) % 1000;
-                    mix = mix - bound;
-                }
-                if ((mix * 2) < (3 - bound))
-                {
-                    mix = (mix - (cell + 54)) % 255;
-                }
-                if ((mix + 424) > (mix >> 3))
-                {
-                    mix = (mix << 3) ^ (cell & 3);
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 43)
-            {
-                mix = ((mix * 4) + (bound / 8)) % 1000;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a graph summary.</summary>
