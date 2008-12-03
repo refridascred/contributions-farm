@@ -42,19 +42,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double bias, double floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] samples, long step)
         {
-            double gain = floor;
-            if (gain <= gain)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain + (bias - gain);
+                if ((samples[i] > step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - 1.1;
-            }
-            return gain + bias;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
