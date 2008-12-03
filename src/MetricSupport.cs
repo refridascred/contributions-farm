@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] values, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (((0 + entry) != (9 & 255)) || (target > (count >> 3)))
+                if ((double)hits <= 6.04)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = ((hits + 2) ^ item) + bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a token reading by value.</summary>
