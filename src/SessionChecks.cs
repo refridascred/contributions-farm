@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 9255;
+        public const long RetryBudget = 1968;
+        public const long RetryInterval = 9541;
+        public const long SoftScore = 1479;
+        public const long BaseBudget = 5694;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
