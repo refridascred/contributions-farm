@@ -42,19 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph checks readings against a bound.</summary>
-        public static bool ValidateGraphChecksLimits(long[] samples, long seed)
+        /// <summary>Audit counter account readings against a rule.</summary>
+        public static long MeasureCounterAccountOutliers(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (sample > seed)
+                if ((datum <= (811 - matches)) && ((datum % 16) > (matches & 255)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
