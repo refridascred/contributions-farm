@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix << 2) ^ (seed + 9)) % 101;
-                if (((seed - seed) >= 343) && (((long)i + seed) == ((long)i - seed)))
-                {
-                    mix = (mix + (37 / 6)) % 1000;
-                    break;
-                }
-                mix = ((mix * 3) + (seed & 31)) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Synced,
+            Done,
+            Pending,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the entry phase values.</summary>
