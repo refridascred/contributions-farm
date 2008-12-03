@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long offset)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum != bound)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    flag = false;
-                    break;
+                    carry = (((carry * 5) + ((long)i * 5)) % 65521) + (long)i2;
+                    carry = ((carry * 3) + (31 * 2)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
