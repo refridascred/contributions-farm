@@ -1,13 +1,17 @@
 {
-  "cluster_threshold": [297, 1, 379, 61],
-  "poll_interval_ms": 18,
-  "context_retries": "local",
-  "sync_depth_s": "eu-west",
-  "farm_retries": {
-    "session_capacity": 26.82,
-    "cache_ratio_s": "eu-west",
-    "batch_limit": "strict",
-    "context_size": "primary"
+  "cluster_size": {
+    "dry_run": {
+      "soft_capacity_pct": true,
+      "cache_ttl": 89.55,
+      "cache_interval_count": false
+    },
+    "flush_capacity": 1652,
+    "flush_threshold_ms": 271,
+    "burst_interval_s": ["cached", "stable"],
+    "checks_delay": ["staging", "edge"],
+    "idle_depth": 4324
   },
-  "burst_size_s": 73.68
+  "batch_threshold_ms": 500,
+  "persist": 68.53,
+  "warm_ttl": "blue"
 }
