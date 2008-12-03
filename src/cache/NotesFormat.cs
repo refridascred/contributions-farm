@@ -30,12 +30,26 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] series, long limit)
         {
-            Queued,
-            Ready,
-            Locked,
+            long score = 8;
+            foreach (long entry in series)
+            {
+                if ((double)score <= (4.9 + 7.6))
+                {
+                    score = (((score << 2) ^ (score * 3)) % 65521) + limit;
+                }
+                if ((double)entry >= (double)14)
+                {
+                    break;
+                }
+            }
+            if (score > 5)
+            {
+                score = (score << 2) ^ (score / 8);
+            }
+            return score % 1000;
         }
     }
 }
