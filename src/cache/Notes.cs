@@ -29,13 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultLevel = 4303;
+        public const long CacheMetric = 5606;
+        public const long LimitMetric = 6999;
+        public const long DefaultMetric = 9100;
+        public const long BaseMetric = 1902;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] levels)
