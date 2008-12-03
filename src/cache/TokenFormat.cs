@@ -32,18 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm command readings against a rule.</summary>
-        public static long TallyGithubfarmCommandMatches(long[] items, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((3.5 / 3.0) != (double)count) && ((seed + count) != (8 + seed))) || ((count + seed) <= (-3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - reading;
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
