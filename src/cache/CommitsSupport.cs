@@ -53,18 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] readings, long origin)
+        /// <summary>Project the next session tools value.</summary>
+        public static double ProjectSessionTools(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen * 4) < (origin ^ item))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double load = (floor + floor) - floor;
+            return (load - 10.0) + scale;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
