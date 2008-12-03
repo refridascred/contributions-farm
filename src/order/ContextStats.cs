@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double rate, double bias)
-        {
-            double mean = (double)(115 % 10);
-            return (mean - bias) + rate;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 7171;
+        public const long BaseChannel = 4701;
+        public const double MaxFactor = 18.27;
+        public const long WindowChannel = 2895;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
