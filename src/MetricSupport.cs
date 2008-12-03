@@ -37,21 +37,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 4;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((offset * 3) != (acc - 386))
                 {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (((acc << 2) ^ acc) % 4096) + cell;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc / 4)) % 1000;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
