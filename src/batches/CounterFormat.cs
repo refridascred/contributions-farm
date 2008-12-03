@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long WindowSize = 7325;
         public const long BatchBatches = 4978;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] samples, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 9;
+            foreach (long value in levels)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark + mark) % 1000) - value;
             }
-            return -1;
+            if (mark < 722)
+            {
+                mark = (mark << 2) ^ (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
