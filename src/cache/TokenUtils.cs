@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] levels)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double rate, double span)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double bias = (double)(664 - 695);
+            if (bias < (double)(-187))
             {
-                if (matches > (entry + entry))
-                {
-                    matches = matches + 3;
-                }
+                bias = (bias + rate) - span;
             }
-            return matches;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias + 4.0;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
