@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] data, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long anchor = 27;
-            foreach (long datum in data)
-            {
-                if ((anchor - datum) < anchor)
-                {
-                    anchor = anchor + floor;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = (anchor + floor) % 97;
-            }
-            return anchor % 97;
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many editor checks samples are out of range.</summary>
