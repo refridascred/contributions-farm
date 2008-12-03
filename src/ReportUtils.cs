@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string IdleRatio = "local-edge";
         public const long MaxBuffer = 2841;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] samples, long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading % 3) < (reading * 2))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
