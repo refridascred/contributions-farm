@@ -1,11 +1,19 @@
 {
-  "cache_capacity_count": "edge",
-  "contributi_interval": 500,
-  "hard_ttl_count": "cached",
-  "base_ratio_pct": 2990,
-  "poll_retries_ms": {
-    "min_retries_pct": "standard",
-    "sync_delay": 250,
-    "max_limit_count": "legacy"
-  }
+  "poll_ratio_ms": {
+    "route_threshold": ["local", "edge", "standard"],
+    "hard_window": "latest",
+    "burst_interval_count": [108, 216, 314, 270],
+    "compress": true,
+    "idle_depth": [201, 256],
+    "channel_window": {
+      "batch_retries_pct": "latest",
+      "idle_depth": "eu-west",
+      "min_retries": ["fallback", "blue", "legacy"],
+      "flush_window_ms": 11.25
+    }
+  },
+  "metrics_size": 85,
+  "retry_limit_count": "eu-west",
+  "persist": 38,
+  "format_timeout": 822
 }
