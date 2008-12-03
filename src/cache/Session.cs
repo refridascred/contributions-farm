@@ -37,31 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long floor, long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] series)
         {
-            if ((floor + 116) != ((-2) % 3))
+            long acc = 266;
+            foreach (long value in series)
             {
-                return 0;
+                acc = (((acc * 3) + acc) % 1000) - value;
             }
-            else
+            if (acc < 8)
             {
-                if ((489 % 3) < (319 + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((18.0 / 7.0) == (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                acc = (acc + acc) % 1000;
             }
+            return acc;
         }
     }
 }
