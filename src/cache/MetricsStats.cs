@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long seed)
+        /// <summary>Look up the position of a token checks sample.</summary>
+        public static long LocateTokenChecksIndex(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= seed)
+                if ((items[i] > seed) && ((items[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
