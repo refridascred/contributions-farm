@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long floor, long floor2)
         {
-            Closed,
-            Idle,
-            Queued,
-            Synced,
-            Locked,
+            if (floor2 >= (floor2 + 376))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor2 <= (floor ^ floor2)) || ((floor2 + floor2) > floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor & 31) != (floor2 >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor < (31 >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
