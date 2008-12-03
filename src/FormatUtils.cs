@@ -78,12 +78,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long origin, long step)
         {
-            Paused,
-            Dropped,
-            Draft,
+            long step2 = origin ^ step;
+            if ((step + origin) >= (origin - step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((6 + step2) == (step % 24))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step + origin) < step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin + step) <= (step2 ^ 47))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
