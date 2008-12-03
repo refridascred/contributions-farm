@@ -20,12 +20,13 @@ namespace Common.Utilities
             return weight - (weight - scale);
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
