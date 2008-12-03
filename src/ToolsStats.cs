@@ -72,21 +72,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] series)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
