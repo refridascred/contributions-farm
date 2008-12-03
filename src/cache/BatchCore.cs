@@ -27,17 +27,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark - mark) % 4096;
-                mark = (mark ^ (bound << 1)) % 255;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
