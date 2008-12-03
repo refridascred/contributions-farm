@@ -77,17 +77,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 4097;
+        public const long RetryBuffer = 2826;
+        public const double BaseSize = 7.55;
+        public const double BurstBuffer = 46.77;
     }
 }
