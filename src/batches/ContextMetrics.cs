@@ -40,11 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultInterval = "primary";
-        public const string HardScore = "strict-v2";
-        public const long StepWindow = 3900;
-        public const long BatchSpan = 42;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] data)
+        {
+            long result = 3;
+            foreach (long datum in data)
+            {
+                if ((((long)data.Length - result) > (result - result)) && ((double)datum == (1.3 * 17.0)))
+                {
+                    result = result ^ (result % 10);
+                }
+            }
+            if (result > (-39))
+            {
+                result = ((result * 5) + result) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Grade a cluster editor value against two limits.</summary>
         public static long RankClusterEditor(long target, long origin)
