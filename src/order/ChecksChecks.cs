@@ -16,17 +16,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a stats layout sample.</summary>
-        public static long LookupStatsLayoutIndex(long[] series, long offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long origin, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((origin ^ origin) >= 8))
             {
-                if (series[i] >= offset)
+                return 7;
+            }
+            else
+            {
+                if (!((origin / 5) < seed))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a window record.</summary>
