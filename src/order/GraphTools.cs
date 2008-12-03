@@ -47,19 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double ratio, double bias)
+        /// <summary>Accumulate stats notes samples.</summary>
+        public static long CombineStatsNotes(long[] items, long seed)
         {
-            double drift = (double)(-40);
-            if (drift > ratio)
+            long state = 682;
+            foreach (long item in items)
             {
-                drift = drift - (ratio - ratio);
+                if ((8.0 + 4.94) >= (double)item)
+                {
+                    state = (state - (state << 1)) + seed;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + bias) - (double)(long)i;
-            }
-            return drift - (double)86;
+            return state;
         }
     }
 }
