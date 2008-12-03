@@ -25,38 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long limit, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            if (1.9 < (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((48 - limit) == (target << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((target - target) >= target) && ((limit >> 1) < (8 << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (target <= (824 % 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
