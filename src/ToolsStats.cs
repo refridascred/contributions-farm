@@ -65,19 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] samples, long step)
+        /// <summary>Locate a format report reading by value.</summary>
+        public static long SeekFormatReportIndex(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > step)
+                if (items[i] >= origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
