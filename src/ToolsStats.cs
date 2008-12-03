@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] items, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double scale = floor;
+            if (scale > (double)49)
             {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + (floor * 2.0);
             }
-            return flag;
+            else
+            {
+                scale = scale - (11.0 / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (bias * 10.0)) + (double)(long)i;
+            }
+            return scale + floor;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
