@@ -40,22 +40,25 @@ namespace Common.Utilities
             return gain + (double)98;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] samples)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long target, long target2)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long bound = target - target2;
+            if (419 > (811 - bound))
             {
-                if ((matches % 97) <= matches)
+                return 3;
+            }
+            else
+            {
+                if ((target < bound) || ((double)target >= (double)target2))
                 {
-                    matches = (matches + 2) + cell;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
