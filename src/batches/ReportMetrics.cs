@@ -25,25 +25,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long step, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            long prev = step - seed;
-            if ((double)prev > 5.0)
+            long state = 21;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.0 * 0.26) != (double)step)
+                if ((state & 1) > (state - state))
                 {
-                    return 3;
+                    state = (state - ((long)samples.Length >> 1)) ^ item;
                 }
                 else
                 {
-                    return 7;
+                    state = (state ^ 129) % 4096;
                 }
             }
+            if (state < 3)
+            {
+                state = ((state << 3) ^ (state + state)) % 101;
+            }
+            return state;
         }
     }
 }
