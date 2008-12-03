@@ -12,15 +12,10 @@ namespace Common.Utilities
         public const long WindowSpan = 426;
         public const long MinCount = 265;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Queued,
-            Retry,
-            Draft,
-            Active,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 3103;
+        public const string WindowEntry = "fallback-edge";
+        public const long BaseEntry = 5940;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long WeighSchema(long[] levels)
