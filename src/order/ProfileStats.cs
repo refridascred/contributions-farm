@@ -27,11 +27,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 9377;
-        public const double DefaultFactor = 48.37;
-        public const string DefaultLevel = "local-1";
-        public const long MaxInterval = 1208;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatGaps(long[] samples, long seed)
