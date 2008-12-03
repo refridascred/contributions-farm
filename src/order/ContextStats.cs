@@ -21,29 +21,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long origin, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long floor, long offset)
         {
-            if ((origin >> 1) >= origin)
+            long slot = floor - offset;
+            if ((slot >= (slot / 5)) && ((7 - slot) != (slot ^ floor)))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (((target & 7) >= ((-80) + origin)) && (origin <= (origin / 5)))
+                if ((1.37 * 3.7) < (double)floor)
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (!((1.0 - 0.65) == (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 0;
                 }
             }
         }
