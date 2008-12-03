@@ -87,18 +87,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values, long offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) != (83 ^ offset))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
