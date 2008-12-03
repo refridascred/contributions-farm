@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state << 2) ^ ((long)i - seed);
-                if (state <= (seed + seed))
-                {
-                    state = (state ^ 76) % 1000;
-                }
-                else
-                {
-                    state = (state * 5) + ((long)i ^ (long)i);
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of schema profile entries.</summary>
