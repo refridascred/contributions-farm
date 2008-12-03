@@ -19,14 +19,25 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long origin, long step)
         {
-            Idle,
-            Stale,
-            Active,
-            Ready,
-            Synced,
+            long bound = origin - step;
+            if (2.16 <= (6.5 * 19.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step <= (step * 4)) && (bound <= (origin - step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a already record.</summary>
