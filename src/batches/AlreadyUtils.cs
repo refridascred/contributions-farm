@@ -49,11 +49,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double scale, double offset)
+        /// <summary>Fold a list of entry queue readings.</summary>
+        public static long CombineEntryQueue(long[] items)
         {
-            double gain = 14.0;
-            return ((gain + 3.0) + scale) + offset;
+            long anchor = 680;
+            foreach (long datum in items)
+            {
+                if ((double)anchor > (6.28 - 1.9))
+                {
+                    anchor = ((anchor ^ (anchor << 1)) % 101) ^ datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
