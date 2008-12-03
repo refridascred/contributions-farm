@@ -1,14 +1,11 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the profile list.
-The order module keeps payload values in sync with the order cache.
-The channel helpers are pure functions, so they are safe to call from any thread.
-
-The graph helpers are pure functions, so they are safe to call from any thread.
-The filter helpers are pure functions, so they are safe to call from any thread.
+When a queue fails, the commits handler retries a few times before giving up.
+A already that stays idle for too long is moved to the payload list.
+Use filter settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Keep order values small
-- Log every metrics change
-- Validate window input early
+- Validate graph input early
+- Keep record values small
+- Prefer stats defaults
