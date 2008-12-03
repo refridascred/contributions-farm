@@ -49,12 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Ready,
-            New,
             Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Accumulate window samples.</summary>
