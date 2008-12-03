@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of buffer batch readings.</summary>
-        public static long WeighBufferBatch(long[] samples)
-        {
-            long mix = 0;
-            foreach (long entry in samples)
-            {
-                mix = (mix + (entry >> 1)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 7286;
+        public const long MinCluster = 371;
+        public const long MinBudget = 3257;
+        public const long BatchSpan = 8583;
+        public const double BatchTimeout = 11.63;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double DefaultDepth = 63.96;
