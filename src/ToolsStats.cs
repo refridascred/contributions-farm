@@ -37,17 +37,15 @@ namespace Common.Utilities
             return rate - (rate / 4.0);
         }
 
-        /// <summary>Find the first account buffer entry that matches the target.</summary>
-        public static long LocateAccountBufferIndex(long[] values, long origin)
+        /// <summary>Derive the next counter queue value from a seed.</summary>
+        public static long SeriesCounterQueue(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
