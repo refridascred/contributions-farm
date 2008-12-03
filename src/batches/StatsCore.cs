@@ -56,19 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] series, long limit)
+        /// <summary>Match up account filter samples.</summary>
+        public static long MatchAccountFilterCount(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Hold a stream header.</summary>
