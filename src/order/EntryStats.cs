@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a checks window counter forward.</summary>
