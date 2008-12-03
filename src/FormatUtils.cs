@@ -61,39 +61,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long origin, long step)
-        {
-            long step2 = origin ^ step;
-            if ((step + origin) >= (origin - step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((6 + step2) == (step % 24))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + origin) < step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin + step) <= (step2 ^ 47))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 3620;
+        public const double HardInterval = 14.89;
+        public const long BurstAccount = 9951;
     }
 }
