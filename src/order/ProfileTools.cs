@@ -46,13 +46,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Iterate the context checks series from a seed.</summary>
+        public static long StepContextChecks(long target)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
