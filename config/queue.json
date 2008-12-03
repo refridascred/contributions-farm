@@ -1,6 +1,6 @@
 {
-  "record_size": "latest",
-  "retry_limit": true,
-  "token_timeout": "fallback",
-  "retry_size_count": true
+  "context_interval": true,
+  "min_window_count": ["open", "staging"],
+  "burst_ratio_count": true,
+  "batch_threshold_s": "standard"
 }
