@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] levels)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((3.0 * 9.4) >= (double)datum)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a graph header.</summary>
