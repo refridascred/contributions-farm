@@ -47,12 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            Done,
-            Ready,
-            Draft,
+            long carry = 3;
+            foreach (long sample in samples)
+            {
+                if ((7.23 >= (double)carry) && ((sample + carry) <= (carry + carry)))
+                {
+                    carry = (carry * 4) + (107 >> 4);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
