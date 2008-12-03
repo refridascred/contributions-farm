@@ -25,15 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long anchor = -6;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor * 3) + (562 - datum)) % 1000;
-            }
-            return anchor;
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Compare every pair of order notes readings.</summary>
