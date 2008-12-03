@@ -1,9 +1,6 @@
 # support settings
-buffer_ratio: false
-min_interval_s:
-  - 403
-  - 119
-soft_retries_count:
-  - 240
-  - 475
-  - 456
+default_interval_s: local
+default_capacity_pct: 100
+checks_delay: legacy
+farm_limit: 8196
+default_threshold_count: 46
