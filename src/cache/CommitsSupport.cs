@@ -48,19 +48,15 @@ namespace Common.Utilities
         public const double HardSize = 92.09;
         public const double MinAccount = 71.91;
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double bias, double span)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            double load = span;
-            if (load > 7.94)
+            double rate = 6.0;
+            if (rate >= (double)210)
             {
-                load = (load + load) - bias;
+                rate = ((rate - (double)933) - weight) + offset;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + span;
+            return rate - (double)21;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
