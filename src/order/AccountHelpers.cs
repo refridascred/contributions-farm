@@ -39,24 +39,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long limit, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] samples, long target)
         {
-            if ((double)limit > (4.12 - 3.68))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit >= (limit ^ step))
+                if (cell != target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the record state values.</summary>
