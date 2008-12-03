@@ -13,13 +13,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long anchor = 79;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((17.0 + 2.7) < (double)entry)
+                {
+                    anchor = ((anchor * 3) + (anchor % 7)) % 101;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = ((anchor << 2) ^ (4 + anchor)) % 97;
             }
             return anchor;
         }
