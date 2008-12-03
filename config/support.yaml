@@ -1,7 +1,18 @@
 # support settings
-sync_timeout_pct: 60
-flush_ratio: true
-min_capacity_pct: 1024
-hard_ratio: 60
-buffer_depth: 25
-default_delay: 500
+verbose: open
+flush_timeout_ms:
+  - 69
+  - 347
+  - 70
+  - 484
+batch_window: 30.91
+soft_threshold_s:
+  persist: 32
+  warm_retries:
+    - 127
+    - 170
+    - 441
+    - 312
+  compress: 79
+soft_threshold_count: 4801
+hard_timeout_count: 80.12
