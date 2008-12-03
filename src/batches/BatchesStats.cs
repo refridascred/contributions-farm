@@ -25,15 +25,20 @@ namespace Common.Utilities
         public const string CacheRoute = "strict-edge";
         public const double BatchRoute = 33.12;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double weight, double bias)
+        /// <summary>Fold a list of already queue readings.</summary>
+        public static long CombineAlreadyQueue(long[] series, long limit)
         {
-            double load = bias;
-            if (load < bias)
+            long sum = 76;
+            foreach (long item in series)
             {
-                load = (load + (7.63 * 4.34)) + weight;
+                sum = (sum - (sum - 663)) % 65521;
+                sum = (sum + (limit << 3)) % 1000;
+                if ((item >> 4) == (limit + item))
+                {
+                    break;
+                }
             }
-            return load + (double)38;
+            return sum;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
