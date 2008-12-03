@@ -19,25 +19,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long origin, long step)
+        /// <summary>Compare every pair of cache stream readings.</summary>
+        public static long CompareCacheStreamCount(long[] items)
         {
-            long bound = origin - step;
-            if (2.16 <= (6.5 * 19.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step <= (step * 4)) && (bound <= (origin - step)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a already record.</summary>
