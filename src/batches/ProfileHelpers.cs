@@ -74,19 +74,23 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Adjust a tools session reading.</summary>
-        public static double SmoothToolsSession(double weight, double span)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double rate, double bias)
         {
-            double rate = (double)(468 + 977);
-            if (rate >= span)
+            double load = rate;
+            if (load >= load)
             {
-                rate = (rate - 7.89) + weight;
+                load = load - (rate - rate);
             }
             else
             {
-                rate = rate + (double)4;
+                load = load - load;
             }
-            return rate + span;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (bias - 6.13)) + (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
