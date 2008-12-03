@@ -13,11 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Match up metric account samples.</summary>
+        public static long MatchMetricAccountCount(long[] samples)
         {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a stream reading.</summary>
