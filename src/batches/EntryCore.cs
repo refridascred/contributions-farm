@@ -44,12 +44,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = carry - carry;
+                carry = ((carry * 5) + 664) % 65521;
+                carry = (carry + (long)i) % 4096;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
