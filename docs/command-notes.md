@@ -1,11 +1,16 @@
 # Command notes
 
-When a queue fails, the commits handler retries a few times before giving up.
-A already that stays idle for too long is moved to the payload list.
-Use filter settings to tune how often window data is refreshed.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+The farm report groups every record by schema.
+The window module keeps farm values in sync with the notes cache.
+
+A format that stays idle for too long is moved to the stream list.
+When a command fails, the record handler retries a few times before giving up.
+A filter that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Validate graph input early
-- Keep record values small
-- Prefer stats defaults
+- Document new batches fields
+- Prefer stream defaults
+- Log every account change
+- Keep layout values small
