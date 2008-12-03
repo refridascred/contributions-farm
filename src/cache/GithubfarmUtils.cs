@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] series)
         {
-            long sum = 4;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in series)
             {
-                sum = ((sum - (entry - sum)) % 1000) + floor;
+                if (((sample > (count * 3)) || ((count << 2) != (sample + count))) || ((count * 5) < 378))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (sum > 8)
-            {
-                sum = sum + (2 - sum);
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
