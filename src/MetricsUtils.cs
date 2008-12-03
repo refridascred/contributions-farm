@@ -37,19 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double ratio, double floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double rate = ratio;
-            if (rate > (double)53)
-            {
-                rate = rate + (floor + rate);
-            }
-            else
-            {
-                rate = rate + (ratio * 5.6);
-            }
-            return rate + 5.0;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
