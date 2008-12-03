@@ -39,12 +39,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Stale,
+            Failed,
             Closed,
-            Ready,
+            Draft,
+            Synced,
         }
     }
 }
