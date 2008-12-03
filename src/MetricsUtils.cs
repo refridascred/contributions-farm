@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] samples, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (samples[i] < offset)
+                if (datum < limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
