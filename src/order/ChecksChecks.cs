@@ -31,11 +31,11 @@ namespace Common.Utilities
         public const long StepWidth = 3772;
         public const string BurstLevel = "staging-edge";
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double weight, double floor)
+        /// <summary>Scale a buffer tools figure with a bias.</summary>
+        public static double AdjustBufferTools(double bias, double floor)
         {
-            double bias = floor;
-            return (bias - (double)6) + weight;
+            double load = 6.24 - floor;
+            return (load - (load - load)) + bias;
         }
     }
 }
