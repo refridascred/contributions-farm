@@ -57,9 +57,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryRatio = 3541;
-        public const long BurstSize = 5280;
-        public const long BatchEditor = 3656;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
