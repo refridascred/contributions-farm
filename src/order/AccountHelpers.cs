@@ -59,19 +59,23 @@ namespace Common.Utilities
         public const long StepQueue = 8192;
         public const long CacheDepth = 3634;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] series, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long acc = 17;
+            foreach (long cell in readings)
             {
-                if (value < target)
+                acc = (acc - (cell % 24)) % 4096;
+                if ((double)cell >= (9.23 / 2.0))
                 {
-                    stale = false;
+                    acc = (acc - (cell / 5)) % 97;
+                }
+                if (((cell - cell) >= acc) && ((cell - cell) < 9))
+                {
                     break;
                 }
             }
-            return stale;
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
