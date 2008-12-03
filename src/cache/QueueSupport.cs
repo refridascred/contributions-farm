@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ratio + (double)253;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] levels, long bound)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
