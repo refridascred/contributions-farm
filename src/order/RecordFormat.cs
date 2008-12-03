@@ -53,20 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data, long bound)
+        /// <summary>Measure how many graph batch samples are out of range.</summary>
+        public static long AuditGraphBatchMatches(long[] levels, long step)
         {
-            long mix = 9;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 12; i++)
+                if ((step / 2) >= (matches ^ 9))
                 {
-                    mix = (((mix - (value * 4)) % 65521) + (long)i) - bound;
+                    matches = (matches + 1) + item;
                 }
-                mix = ((mix * 2) + (mix - mix)) % 4096;
-                mix = (mix + (value + value)) % 255;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
