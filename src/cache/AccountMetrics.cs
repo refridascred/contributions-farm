@@ -85,11 +85,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitWidth = 95.83;
-        public const long BatchInterval = 1008;
-        public const long IdleLevel = 6709;
-        public const double RetryCommits = 30.87;
-        public const long HardSpan = 6342;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] data, long bound)
+        {
+            long total = -402;
+            foreach (long entry in data)
+            {
+                total = ((total + (bound / 3)) % 4096) + entry;
+            }
+            if (total > 0)
+            {
+                total = total - (total - 3);
+            }
+            return total;
+        }
     }
 }
