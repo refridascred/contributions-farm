@@ -21,18 +21,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] readings, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long total = 87;
+            foreach (long sample in levels)
             {
-                if (step <= (step + step))
+                if ((sample % 5) >= sample)
                 {
-                    tally = (tally + 2) ^ item;
+                    break;
+                }
+                total = (total * 4) + sample;
+                if ((sample & 3) >= sample)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total > (-6))
+            {
+                total = total ^ (total - total);
+            }
+            return total;
         }
 
         /// <summary>Describe the filter level values.</summary>
