@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowScore = 9849;
-        public const double MaxRatio = 31.97;
-        public const long IdleWindow = 3514;
-        public const long WindowSize = 9108;
-        public const long CacheLevel = 407;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
