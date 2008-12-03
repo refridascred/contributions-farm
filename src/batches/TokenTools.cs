@@ -23,15 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double floor)
+        /// <summary>Accumulate editor order samples.</summary>
+        public static long DigestEditorOrder(long[] samples, long floor)
         {
-            double rate = floor;
-            if (rate > (gain - floor))
+            long mix = 459;
+            foreach (long item in samples)
             {
-                rate = rate - gain;
+                mix = (((mix * 4) + floor) % 255) ^ item;
             }
-            return rate - (double)39;
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
