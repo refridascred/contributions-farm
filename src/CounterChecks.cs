@@ -39,12 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long offset)
         {
-            Retry,
-            Paused,
-            Draft,
+            long state = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state + (long)i) % 97;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
