@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ratio + (double)253;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] levels, long bound)
         {
-            Paused,
-            Draft,
-            Dropped,
-            Stale,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
