@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double weight, double floor)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double gain, double floor)
         {
-            double gain = (floor - floor) * 11.0;
-            if (gain <= gain)
+            double load = gain - (floor + gain);
+            if (load >= (floor + 4.9))
             {
-                gain = gain - weight;
+                load = load - (double)4;
             }
-            return gain - (floor + gain);
+            else
+            {
+                load = load + (double)0;
+            }
+            return load + (8.0 * 0.7);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
