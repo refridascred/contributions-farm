@@ -23,19 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double weight, double bias)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            double drift = 9.9;
-            if (drift > (double)44)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + (drift - bias)) - weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - drift;
+            return matches;
         }
 
         /// <summary>Describe the context phase values.</summary>
