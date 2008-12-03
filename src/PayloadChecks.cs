@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long origin)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc + ((long)i + acc)) % 1000;
-                acc = ((acc * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
