@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] samples, long floor)
         {
-            Retry,
-            Stale,
-            Paused,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
