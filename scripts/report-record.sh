@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict cached primary; do
+for item in eu-west open local staging; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=38
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-standard}"
+mode="${1:-fallback}"
 case "${mode}" in
-    eu-west)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=353
+log "limit is ${RECORD_LIMIT}"
