@@ -31,32 +31,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long offset, long floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long span = offset ^ floor;
-            if ((29 & 15) < floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)span == (0.5 / 8.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((3 <= (floor + 3)) || ((span ^ floor) > (floor - floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
