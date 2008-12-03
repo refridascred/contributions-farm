@@ -52,19 +52,17 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Validate batches record readings against a bound.</summary>
-        public static bool ValidateBatchesRecordLimits(long[] levels, long target)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= target)
+                if ((items[i] < target) && ((items[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
