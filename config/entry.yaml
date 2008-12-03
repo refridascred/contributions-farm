@@ -1,5 +1,6 @@
 # entry settings
-warm_ttl: latest
-default_ttl: 68.76
-compress: 1585
-profile_threshold: 76
+cache_size_pct: 15.54
+verbose: stable
+sync_ratio_count: true
+idle_timeout: 36
+compress: false
