@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Project the next filter already value.</summary>
+        public static double AdjustFilterAlready(double gain, double offset)
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            double mean = gain;
+            if (mean <= (1.5 - gain))
+            {
+                mean = mean + (double)8;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (offset - gain)) + (double)(long)i;
+            }
+            return mean - (double)64;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
