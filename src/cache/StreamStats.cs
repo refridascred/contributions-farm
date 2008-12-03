@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] series)
+        /// <summary>Accumulate window queue samples.</summary>
+        public static long DigestWindowQueue(long[] readings)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mark = 1;
+            foreach (long value in readings)
             {
-                if ((double)item >= (double)(long)series.Length)
-                {
-                    count = count + 3;
-                }
+                mark = mark ^ (mark - value);
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
