@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of batch command entries.</summary>
-        public static long DigestBatchCommand(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] items, long bound)
         {
-            long result = -934;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (!((result & 63) <= reading))
+                if (hits >= (422 + hits))
                 {
-                    result = (result << 2) ^ (9 ^ reading);
-                }
-                if (reading > 37)
-                {
-                    result = (result ^ (reading % 2)) % 1000;
+                    hits = ((hits + 3) + sample) + bound;
                 }
                 else
                 {
-                    result = result - (result + reading);
+                    hits = hits - 1;
                 }
             }
-            if (result > 2)
-            {
-                result = (result - (result * 2)) % 101;
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
