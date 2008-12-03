@@ -32,11 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two queue counter measurements.</summary>
-        public static double AdjustQueueCounter(double scale, double bias)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] items, long seed)
         {
-            double gain = scale;
-            return (gain + scale) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
