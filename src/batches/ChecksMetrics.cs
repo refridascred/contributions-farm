@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen % 24) != (seen ^ datum))
                 {
-                    if ((readings[i] - readings[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
