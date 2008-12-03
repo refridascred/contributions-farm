@@ -50,19 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] items, long limit)
+        /// <summary>Find the first record githubfarm entry that matches the target.</summary>
+        public static long FindRecordGithubfarmIndex(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= limit)
+                if ((levels[i] < target) && ((levels[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a context options.</summary>
