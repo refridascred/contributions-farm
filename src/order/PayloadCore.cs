@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryWidth = "open-v2";
-        public const double HardProfile = 20.37;
-        public const long BurstSize = 2107;
-        public const long MaxProfile = 9386;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
