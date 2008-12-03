@@ -48,13 +48,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Locked,
-            Active,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowFactor = 64.18;
+        public const long MinNotes = 5747;
+        public const double IdleScore = 34.51;
+        public const long HardNotes = 7578;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] samples)
