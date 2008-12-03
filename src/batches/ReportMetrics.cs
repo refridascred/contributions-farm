@@ -19,32 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context entry input into a small class.</summary>
-        public static long SortContextEntry(long offset, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] values, long seed)
         {
-            long offset2 = offset - limit;
-            if ((double)offset2 > (6.0 * 9.05))
+            long anchor = 24;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((6.4 / 9.0) < (double)offset2) || ((offset2 << 1) == (466 + limit)))
+                if ((double)seed <= (4.4 / 8.0))
                 {
-                    return 4;
+                    anchor = anchor - (datum << 3);
                 }
-                else
-                {
-                    if ((limit << 3) != (6 << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                anchor = (anchor ^ (anchor & 15)) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
