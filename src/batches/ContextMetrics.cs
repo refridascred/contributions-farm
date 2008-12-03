@@ -10,26 +10,17 @@ namespace Common.Utilities
         public const double IdleFilter = 83.66;
         public const string BaseFilter = "strict-v2";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples, long bound)
+        /// <summary>Locate a notes session reading by value.</summary>
+        public static long SeekNotesSessionIndex(long[] samples, long floor)
         {
-            long mark = 82;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8 / 6) > (mark / 3))
+                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
                 {
-                    mark = (mark + item) - bound;
-                }
-                if (mark >= (item / 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 426)
-            {
-                mark = mark + (mark >> 2);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
