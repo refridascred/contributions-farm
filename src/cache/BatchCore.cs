@@ -32,21 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of cache stream readings.</summary>
-        public static long CompareCacheStreamCount(long[] items)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample > origin)
                 {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the record kind values.</summary>
