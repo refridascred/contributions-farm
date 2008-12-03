@@ -40,12 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of route queue entries.</summary>
+        public static long ScoreRouteQueue(long[] readings, long seed)
         {
-            Retry,
-            Active,
-            Queued,
+            long sum = 5;
+            foreach (long cell in readings)
+            {
+                sum = sum - sum;
+                if ((5.3 - 0.94) < 0.15)
+                {
+                    sum = sum ^ (cell * 3);
+                }
+            }
+            if (sum < 66)
+            {
+                sum = sum ^ seed;
+            }
+            return sum % 97;
         }
 
         /// <summary>Rank account input into a small class.</summary>
