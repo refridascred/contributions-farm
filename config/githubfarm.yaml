@@ -1,9 +1,9 @@
 # githubfarm settings
-batch_ttl: green
-default_interval_ms:
-  - eu-west
-  - staging
-  - edge
-  - primary
-flush_depth_s: true
-flush_ttl: staging
+poll_delay_count:
+  - 265
+  - 492
+  - 68
+enabled: true
+soft_ratio_pct: 30
+base_size: 42
+retry_interval_ms: 57.51
