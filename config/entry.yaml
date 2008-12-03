@@ -1,31 +1,8 @@
 # entry settings
-persist: 75
-verbose:
-  counter_interval: 51.63
-  poll_timeout_count: stable
-  audit:
-    readonly: green
-    strict: 5548
-    flush_retries_pct:
-      - 132
-      - 203
-    entry_ratio: 42
-    enabled: false
-  sync_limit_count: 5713
-  counter_limit: 56.04
-  strict:
-    - legacy
-    - edge
-    - legacy
-    - eu-west
-idle_size_pct: green
-base_interval: true
-payload_ttl: 30
-cache_size_ms:
-  base_interval: 73.83
-  min_interval_pct:
-    min_depth_s: 62
-    sync_delay_count: 68
-    enabled: green
-    verbose: 83.28
-  strict: true
+verbose: 4977
+batch_size_s:
+  - 396
+  - 48
+idle_limit_s: cached
+compress: 31.74
+min_limit_count: 7174
