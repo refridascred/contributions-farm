@@ -56,22 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] data, long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] readings, long step)
         {
-            long total = 789;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (!(total > seed))
+                if (value > step)
                 {
-                    total = (((total << 2) ^ total) % 65521) + item;
-                }
-                else
-                {
-                    total = (total + (12 * 2)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Blend two report measurements.</summary>
