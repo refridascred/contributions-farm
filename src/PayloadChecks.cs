@@ -54,11 +54,19 @@ namespace Common.Utilities
         public const long BatchDepth = 5506;
         public const double MaxBuffer = 60.24;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long bound)
         {
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
