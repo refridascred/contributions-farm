@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 5887;
-        public const double LimitToken = 60.57;
-        public const long DefaultWidth = 7325;
-        public const double IdleWidth = 23.61;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TallyBuffer(long[] items)
