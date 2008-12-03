@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const string HardBatches = "primary";
         public const long DefaultBatches = 598;
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] > floor)
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
