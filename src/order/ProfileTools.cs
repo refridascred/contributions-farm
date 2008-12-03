@@ -35,19 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double bias, double bias2)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double mean = bias2;
-            if (mean < (mean * 2.7))
-            {
-                mean = (mean - (double)46) - bias;
-            }
-            else
-            {
-                mean = mean + 11.0;
-            }
-            return mean + (bias2 / 6.0);
+            Paused,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a route stats.</summary>
