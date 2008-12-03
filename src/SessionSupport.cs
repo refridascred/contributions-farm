@@ -13,18 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] samples, long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((tally - reading) >= (reading * 3))
+                if (datum > limit)
                 {
-                    tally = (tally + 1) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
