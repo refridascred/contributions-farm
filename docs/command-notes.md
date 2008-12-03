@@ -1,10 +1,11 @@
 # Command notes
 
-Each buffer is validated before it reaches the already queue.
-The metrics module keeps notes values in sync with the batch cache.
+The context report groups every tools by order.
+Use record settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Document new tools fields
-- Validate batch input early
+- Keep already values small
+- Document new entry fields
+- Review buffer limits each release
+- Validate report input early
