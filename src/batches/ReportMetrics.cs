@@ -33,15 +33,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long mark = 898;
-            foreach (long sample in items)
-            {
-                mark = (mark * 2) + (35 + sample);
-            }
-            return mark % 4096;
+            public double Label { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
