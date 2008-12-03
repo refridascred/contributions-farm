@@ -35,21 +35,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] <= seed)
                 {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
