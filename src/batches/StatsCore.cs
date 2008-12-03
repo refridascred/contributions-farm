@@ -34,19 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] series, long bound)
         {
-            long mix = 50;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mix = (((mix << 3) ^ mix) % 4096) ^ entry;
+                if (entry >= (401 - hits))
+                {
+                    hits = (hits + 1) + bound;
+                }
             }
-            if (mix > 74)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
