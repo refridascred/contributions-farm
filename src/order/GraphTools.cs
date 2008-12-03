@@ -27,12 +27,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
-            public double Count { get; set; }
+            Synced,
+            Dropped,
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Hold a notes record.</summary>
