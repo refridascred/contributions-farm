@@ -26,21 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route metrics readings.</summary>
-        public static long CompareRouteMetricsCount(long[] series)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] >= floor)
                 {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next metric value.</summary>
