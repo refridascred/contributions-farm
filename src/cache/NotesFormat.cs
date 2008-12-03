@@ -19,21 +19,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum <= step)
                 {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
