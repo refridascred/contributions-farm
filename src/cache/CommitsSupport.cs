@@ -81,15 +81,25 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics report entries.</summary>
-        public static long TallyMetricsReport(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series, long bound)
         {
-            long result = 582;
-            foreach (long cell in series)
+            long mix = 0;
+            foreach (long datum in series)
             {
-                result = (result + (result + cell)) % 1000;
+                long matches = (datum & 3) & 3;
+                if ((bound / 6) < matches)
+                {
+                    mix = (mix * 2) + matches;
+                    continue;
+                }
+                mix = mix + (bound + bound);
             }
-            return result;
+            if (mix < 786)
+            {
+                mix = (mix - (bound - bound)) % 65521;
+            }
+            return mix;
         }
     }
 }
