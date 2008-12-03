@@ -80,13 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] series, long target)
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
