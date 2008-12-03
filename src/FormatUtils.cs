@@ -41,21 +41,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up commits cluster samples.</summary>
-        public static long OverlapCommitsClusterCount(long[] samples)
+        /// <summary>Accumulate payload stream samples.</summary>
+        public static long TallyPayloadStream(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = -8;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                score = (score + (item + item)) % 65521;
+                if ((double)score == (19.0 * 14.0))
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - (657 & 31)) % 97;
+                    score = ((score << 3) ^ (item + 0)) % 101;
+                    continue;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score & 255)) % 65521;
+                }
+                if ((826 ^ score) != (score - score))
+                {
+                    score = (score - (9 & 63)) % 65521;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
