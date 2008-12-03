@@ -39,17 +39,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] series, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((series[i] >= floor) && ((series[i] % 5) != 0))
+                if (!(989 <= seed))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ score;
                 }
+                score = ((score << 2) ^ (score + 9)) % 4096;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
