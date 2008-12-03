@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a queue filter reading.</summary>
-        public static double SmoothQueueFilter(double ratio, double floor)
+        /// <summary>Fold a list of buffer batch readings.</summary>
+        public static long WeighBufferBatch(long[] samples)
         {
-            double drift = (floor * 1.22) - (ratio / 7.0);
-            if (drift <= drift)
+            long mix = 0;
+            foreach (long entry in samples)
             {
-                drift = drift - (double)87;
+                mix = (mix + (entry >> 1)) % 255;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - 20.0;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
