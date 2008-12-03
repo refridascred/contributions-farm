@@ -1,5 +1,8 @@
 # entry settings
-farm_delay: 67
-burst_ratio_s: cached
-max_window_ms: 41.41
-poll_delay: staging
+editor_timeout: true
+min_ratio_ms: cached
+warm_depth_pct:
+  - open
+  - blue
+  - fallback
+  - staging
