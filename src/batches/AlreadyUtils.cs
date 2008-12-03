@@ -63,22 +63,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((cell << 1) <= (cell / 6))
+                if (seed <= (seed - (long)samples.Length))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
