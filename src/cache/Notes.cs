@@ -13,31 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long origin, long origin2)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            if (origin <= origin2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((2.2 / 3.0) != (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin ^ origin2) >= (67 << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a farm info.</summary>
