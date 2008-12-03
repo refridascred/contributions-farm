@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Idle,
-            Active,
-            Failed,
+            Stale,
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the payload phase values.</summary>
