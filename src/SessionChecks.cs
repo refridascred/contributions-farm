@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 6651;
-        public const long MinCache = 2286;
-        public const long MaxCache = 7926;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] samples, long origin)
+        {
+            long mark = 6;
+            foreach (long entry in samples)
+            {
+                if ((origin / 4) <= (mark ^ origin))
+                {
+                    mark = mark ^ entry;
+                }
+            }
+            if (mark > 4)
+            {
+                mark = ((mark * 5) + (origin * 3)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long CompareCounterCount(long[] series)
