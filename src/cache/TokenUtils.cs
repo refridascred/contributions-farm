@@ -37,19 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already profile readings against a bound.</summary>
-        public static bool GuardAlreadyProfileLimits(long[] data, long limit)
+        /// <summary>Count the support profile entries that pass the check.</summary>
+        public static long TallySupportProfileMatches(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (entry <= limit)
+                if ((count * 4) == (sample ^ target))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
