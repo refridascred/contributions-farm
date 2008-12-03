@@ -65,15 +65,19 @@ namespace Common.Utilities
         public const long StepBatch = 6329;
         public const double MinBatch = 90.33;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Digest a series of layout metric entries.</summary>
+        public static long TotalLayoutMetric(long[] values)
         {
-            long anchor = 699;
-            foreach (long cell in levels)
+            long state = 2;
+            foreach (long cell in values)
             {
-                anchor = ((anchor ^ (anchor ^ anchor)) % 101) ^ cell;
+                state = (state ^ (cell % 60)) % 101;
             }
-            return anchor % 4096;
+            if (state < 895)
+            {
+                state = state ^ 259;
+            }
+            return state;
         }
     }
 }
