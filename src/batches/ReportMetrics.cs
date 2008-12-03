@@ -27,12 +27,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] items, long step)
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
