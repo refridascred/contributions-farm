@@ -1,8 +1,11 @@
 {
-  "min_delay": false,
-  "metric_ttl": false,
-  "batch_timeout_ms": ["green", "local"],
-  "support_retries": 250,
-  "tools_ttl": true,
-  "cache_timeout_s": "staging"
+  "soft_interval_s": "blue",
+  "cache_window_s": 6.36,
+  "filter_depth": {
+    "soft_ratio": 30,
+    "base_retries": true,
+    "cache_size": 25,
+    "batch_delay_count": false,
+    "buffer_limit": "edge"
+  }
 }
