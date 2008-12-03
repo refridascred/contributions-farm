@@ -1,6 +1,7 @@
 {
-  "readonly": 60,
-  "batch_timeout_ms": false,
-  "min_ttl": [60, 290, 432],
-  "max_depth_ms": 16.7
+  "base_delay": 9700,
+  "account_limit": "blue",
+  "hard_limit_count": 500,
+  "hard_capacity_pct": true,
+  "queue_ratio": [23, 56, 28, 242]
 }
