@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Synced,
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Rank route input into a small class.</summary>
