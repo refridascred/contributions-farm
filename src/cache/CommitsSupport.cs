@@ -91,21 +91,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the route graph series from a seed.</summary>
-        public static long RollRouteGraph(long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc << 3) ^ (acc * 5)) % 1000;
-                if ((seed + 3) < (acc + seed))
-                {
-                    acc = (acc * 3) + seed;
-                    acc = (acc - ((long)i + 167)) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Queued,
+            Idle,
+            Active,
         }
     }
 }
