@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long bound, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] levels, long bound)
         {
-            if (!((725 ^ origin) == (origin >> 5)))
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (4.9 < (7.22 * 5.76))
+                if (entry > bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin <= (7.94 / 7.0)) && ((bound << 2) < (origin - origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((((-937) + origin) == (origin ^ bound)) || ((17.0 - 15.0) <= (double)origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the commits phase values.</summary>
