@@ -44,16 +44,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the metrics contributi series from a seed.</summary>
-        public static long RollMetricsContributi(long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long sum = 4;
+            foreach (long datum in samples)
             {
-                state = (state ^ state) % 4096;
-                state = ((state * 2) + (long)i) % 101;
+                if ((sum % 60) == (datum + sum))
+                {
+                    sum = ((sum * 5) + (sum + 7)) % 97;
+                }
             }
-            return state;
+            if (sum < 34)
+            {
+                sum = sum - (sum >> 5);
+            }
+            return sum;
         }
     }
 }
