@@ -1,18 +1,27 @@
 # entry settings
-record_timeout:
-  metrics_ttl: false
-  flush_ratio: 37.72
-  payload_delay: 79.68
-flush_retries_s: 500
-report_retries:
-  batch_timeout_s: false
-  warm_ttl: local
-  warm_threshold:
-    - 133
-    - 125
-    - 401
-  min_capacity_ms: 60
-  persist: 86
-  warm_size_pct: primary
-batch_retries: 71.84
-retry_depth_s: 77
+default_interval: local
+retry_ttl_pct:
+  hard_capacity_s: fallback
+  readonly: true
+  audit:
+    - strict
+    - primary
+    - edge
+    - staging
+  sync_window_count: 516
+  default_size_s: staging
+base_depth_count:
+  min_depth_pct: cached
+  hard_interval_count: eu-west
+  hard_limit_pct: fallback
+  audit:
+    soft_ttl_count: 3543
+    cache_ratio_s: 2248
+    enabled: 7509
+    poll_interval_ms: false
+    counter_threshold: 27
+  flush_delay:
+    filter_window: 58
+    layout_window: 5
+    enabled: 1024
+  cache_timeout: 2379
