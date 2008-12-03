@@ -1,9 +1,6 @@
-id,level,ratio
-1,strict,770
-2,fallback,646
-3,37.91,26.97
-4,895,596
-5,276,open
-6,276,835
-7,45.08,134
-8,legacy,737
+id,rank,weight
+1,green,66.62
+2,stable,strict
+3,33.06,local
+4,cached,806
+5,249,eu-west
