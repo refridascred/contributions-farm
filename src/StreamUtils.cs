@@ -57,25 +57,21 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long offset, long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            long gap = offset + bound;
-            if (((bound % 8) <= bound) || ((0 * 5) != (offset << 2)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((gap + offset) < (bound ^ bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
