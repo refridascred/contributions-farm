@@ -39,10 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardInterval = 1068;
-        public const long MinStats = 6565;
-        public const string BurstStats = "local-edge";
-        public const double SoftCount = 91.97;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultLevel = 4958;
+        public const long RetryWindow = 2817;
+        public const double LimitRatio = 79.59;
+        public const string MaxWindow = "stable-edge";
     }
 }
