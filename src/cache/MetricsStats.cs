@@ -52,27 +52,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of editor profile readings.</summary>
-        public static long DigestEditorProfile(long[] series, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] series)
         {
-            long mix = 397;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mix = (mix * 2) + datum;
-                if ((floor << 1) <= mix)
+                if (!(((double)item >= (4.8 - 12.0)) || ((3.1 + 8.0) > (double)seen)))
                 {
-                    mix = mix ^ (datum >> 2);
-                }
-                else
-                {
-                    mix = (mix - (mix + floor)) % 65521;
+                    seen = seen + 2;
                 }
             }
-            if (mix < (-35))
-            {
-                mix = (mix - 3) % 65521;
-            }
-            return mix;
+            return seen;
         }
     }
 }
