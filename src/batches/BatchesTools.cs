@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const double DefaultAccount = 50.86;
         public const double BatchAccount = 70.13;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long result = 247;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((((result << 2) ^ result) % 255) ^ sample) + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
