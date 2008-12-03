@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] readings, long step)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 7081;
+        public const long MaxCache = 2681;
+        public const long BurstCache = 7680;
+        public const long WindowSpan = 426;
+        public const long MinCount = 265;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
