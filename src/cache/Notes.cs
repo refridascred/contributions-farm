@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Adjust a tools checks reading.</summary>
+        public static double AdjustToolsChecks(double bias, double offset)
         {
-            Ready,
-            Closed,
-            Dropped,
+            double gain = (double)(782 + 447);
+            return (gain + bias) + offset;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
