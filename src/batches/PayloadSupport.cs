@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowBudget = 1409;
-        public const long CacheGithubfarm = 389;
-        public const long MaxGithubfarm = 3544;
-        public const string BatchGithubfarm = "standard-1";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((1.4 + 3.3) < (double)sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long DeriveCommand(long floor)
