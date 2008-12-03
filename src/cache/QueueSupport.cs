@@ -34,18 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] items)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading > (0.9 * 20.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
