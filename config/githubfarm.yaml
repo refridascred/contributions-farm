@@ -1,45 +1,5 @@
 # githubfarm settings
-flush_capacity: 86
-default_ratio_pct:
-  command_limit: 43
-  contributi_window:
-    retry_depth_pct:
-      - 257
-      - 452
-      - 280
-      - 417
-    entry_limit: strict
-    flush_interval_pct: 1024
-    already_timeout: 500
-    command_depth:
-      - edge
-      - open
-      - primary
-      - standard
-    contributi_interval:
-      - 346
-      - 7
-  context_window: edge
-  verbose:
-    soft_size_count: 77
-    editor_limit:
-      - 407
-      - 460
-      - 106
-    strict:
-      - eu-west
-      - blue
-      - green
-      - primary
-  batch_delay_ms: blue
-enabled:
-  poll_interval_pct: open
-  max_ttl_pct: local
-  enabled: 28.0
-  retry_retries: stable
-  flush_capacity_pct:
-    soft_interval: false
-    report_depth: false
-    sync_ratio: 9279
-    readonly: 56
-sync_capacity: 43.99
+max_window: false
+strict: open
+layout_window: fallback
+base_ratio_ms: 88
