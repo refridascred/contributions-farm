@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] series)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (((sample > (count * 3)) || ((count << 2) != (sample + count))) || ((count * 5) < 378))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
