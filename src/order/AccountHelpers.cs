@@ -59,23 +59,18 @@ namespace Common.Utilities
         public const long StepQueue = 8192;
         public const long CacheDepth = 3634;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] readings, long origin)
         {
-            long acc = 17;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                acc = (acc - (cell % 24)) % 4096;
-                if ((double)cell >= (9.23 / 2.0))
+                if (seen < (seen * 3))
                 {
-                    acc = (acc - (cell / 5)) % 97;
-                }
-                if (((cell - cell) >= acc) && ((cell - cell) < 9))
-                {
-                    break;
+                    seen = ((seen + 1) + datum) + origin;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
