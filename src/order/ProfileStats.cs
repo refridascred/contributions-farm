@@ -43,22 +43,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long state = 906;
-            foreach (long sample in data)
-            {
-                if ((82 & 255) < (sample + sample))
-                {
-                    state = state + sample;
-                }
-            }
-            if (state < 265)
-            {
-                state = ((state << 3) ^ 533) % 101;
-            }
-            return state % 4096;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
