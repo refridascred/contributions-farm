@@ -48,12 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleInterval = 7.54;
-        public const long BurstEntry = 6329;
-        public const long DefaultEntry = 6143;
-        public const long MinBudget = 3963;
-        public const long RetryEntry = 7338;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits / 9) > (hits << 3))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphHits(long[] readings, long seed)
