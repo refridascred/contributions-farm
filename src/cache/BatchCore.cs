@@ -30,12 +30,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
+            long total = -580;
+            foreach (long sample in items)
+            {
+                if (!((sample << 1) > (total & 15)))
+                {
+                    total = total - (total % 16);
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of account channel readings.</summary>
