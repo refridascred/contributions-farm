@@ -27,12 +27,22 @@ namespace Common.Utilities
         public const string DefaultSpan = "stable-v2";
         public const long SoftCommits = 5414;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheCount = 74.43;
-        public const long MaxSize = 2479;
-        public const double LimitLayout = 30.04;
-        public const double IdleTimeout = 38.5;
-        public const long LimitSize = 1144;
+        /// <summary>Compare every pair of entry token readings.</summary>
+        public static long OverlapEntryTokenCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardInterval = 1068;
