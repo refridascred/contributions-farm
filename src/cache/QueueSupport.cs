@@ -33,36 +33,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long floor, long seed)
+        /// <summary>Grade a stats editor value against two limits.</summary>
+        public static long ClassifyStatsEditor(long offset, long target)
         {
-            long offset = floor ^ seed;
-            if (!((24 + offset) < (floor & 7)))
+            long cur = offset + target;
+            if (!(offset < (1 % 3)))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((offset - 293) < (seed - 62))
+                if ((cur - offset) > (-387))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((3.04 - 3.4) < (double)floor)
+                    if (((offset ^ offset) < (cur >> 3)) && ((offset & 63) > (target - target)))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if ((floor + floor) < offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 3;
                     }
                 }
             }
