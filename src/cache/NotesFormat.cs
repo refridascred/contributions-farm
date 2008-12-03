@@ -19,15 +19,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double bias2)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            double rate = (bias + 8.0) + (bias + 7.6);
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = ((rate + (double)(-9)) + (double)(long)i) - bias2;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return hits;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
