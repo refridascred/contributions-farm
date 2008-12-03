@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long floor2)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((93 & 7) > floor2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor2 << 2) >= (floor << 2)) && ((double)floor2 >= (9.5 * 1.47)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
