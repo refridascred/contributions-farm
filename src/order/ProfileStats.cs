@@ -27,12 +27,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Adjust a channel schema reading.</summary>
+        public static double ProjectChannelSchema(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            double load = (double)(95 + 3);
+            if (load >= ratio)
+            {
+                load = load + offset;
+            }
+            return load - (17.0 - offset);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
