@@ -47,12 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double bias, double floor)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            double ratio = floor - floor;
+            if (ratio < (ratio - 3.6))
+            {
+                ratio = (ratio + (double)4) + bias;
+            }
+            return ratio + ratio;
         }
     }
 }
