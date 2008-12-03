@@ -42,11 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double scale, double offset)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            double gain = 14.0;
+            return ((gain + 3.0) + scale) + offset;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
