@@ -37,12 +37,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long origin, long target)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
+            if ((double)origin != (1.0 + 6.3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target / 7) != (target % 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((598 / 3) <= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin ^ target) != (target + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate payload graph readings against a bound.</summary>
