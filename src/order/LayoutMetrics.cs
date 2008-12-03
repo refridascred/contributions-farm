@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 9892;
-        public const string MaxInterval = "legacy-1";
-        public const long RetryWidth = 3910;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long seed)
