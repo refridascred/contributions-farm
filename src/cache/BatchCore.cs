@@ -33,18 +33,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Scale a route schema figure with a bias.</summary>
+        public static double BlendRouteSchema(double ratio, double span)
         {
-            long total = -580;
-            foreach (long sample in items)
+            double rate = (double)((-8) ^ (-581));
+            for (int i = 0; i < 4; i++)
             {
-                if (!((sample << 1) > (total & 15)))
-                {
-                    total = total - (total % 16);
-                }
+                rate = (((rate + (double)(-307)) + (double)(long)i) + ratio) - span;
             }
-            return total;
+            return rate - (5.91 * 3.48);
         }
 
         /// <summary>Define session limits and defaults.</summary>
