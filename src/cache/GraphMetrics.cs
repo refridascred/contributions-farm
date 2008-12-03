@@ -52,18 +52,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] values)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((33 + item) <= item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate format counter samples.</summary>
