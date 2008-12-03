@@ -20,21 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix + 5) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
