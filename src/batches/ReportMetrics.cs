@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((total ^ 302) > (221 >> 4))
-                {
-                    total = (total - (total - total)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinFactor = 3865;
+        public const long MinPayload = 1720;
+        public const long BasePayload = 6228;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
