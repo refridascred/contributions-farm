@@ -1,8 +1,9 @@
 # githubfarm settings
-layout_depth: 0.83
-poll_timeout_count: green
-cluster_interval: eu-west
-cache_window_pct:
-  - primary
-  - latest
-  - fallback
+default_window_pct: 82.02
+warm_depth_ms:
+  - 369
+  - 300
+  - 394
+sync_ratio: 54.14
+sync_size_s: 6299
+cache_depth_count: 7
