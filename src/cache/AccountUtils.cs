@@ -24,15 +24,38 @@ namespace Common.Utilities
             return gain + (double)590;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] readings, long bound)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long floor, long target)
         {
-            long score = -6;
-            foreach (long reading in readings)
+            if (((double)floor < 1.9) && (floor <= target))
             {
-                score = ((score + reading) % 97) + bound;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (target >= (floor << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((2 % 3) > (target & 15)) && ((double)floor < (19.0 * 3.56)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)floor > (double)(-620))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
