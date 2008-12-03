@@ -78,17 +78,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] samples, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long target, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = target - origin;
+            if ((origin < (86 * 5)) && ((next + target) == (target / 2)))
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((8.74 + 9.4) <= (double)origin) || ((79 + origin) <= (target + origin)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the entry class values.</summary>
