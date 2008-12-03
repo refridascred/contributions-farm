@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            long score = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (score < (offset - offset))
+                {
+                    score = (score - (offset % 60)) % 4096;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a context githubfarm value against two limits.</summary>
