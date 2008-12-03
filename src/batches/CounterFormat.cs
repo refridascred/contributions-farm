@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long limit, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] items, long target)
         {
-            if (limit > (limit - 0))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (566 < (offset + offset))
+                if (value < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
