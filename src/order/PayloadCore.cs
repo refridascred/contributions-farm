@@ -24,11 +24,11 @@ namespace Common.Utilities
             return scale2 - 9.8;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Scale a entry stats figure with a bias.</summary>
+        public static double AdjustEntryStats(double gain, double bias)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            double bias2 = gain + gain;
+            return (bias2 - 8.5) + bias;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
