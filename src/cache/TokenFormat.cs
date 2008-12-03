@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Closed,
-            Synced,
-            Idle,
-            Active,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 5.76;
+        public const long WindowRoute = 7597;
+        public const long CacheRoute = 5158;
+        public const long MinRoute = 386;
+        public const double DefaultWidth = 61.15;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowLimits(long[] items, long target)
