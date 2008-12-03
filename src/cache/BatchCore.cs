@@ -15,11 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            public double Weight { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
