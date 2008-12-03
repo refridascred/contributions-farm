@@ -34,18 +34,39 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm queue entries.</summary>
-        public static long ScoreFarmQueue(long[] series)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long offset, long floor)
         {
-            long acc = 4;
-            foreach (long reading in series)
+            long gap = offset ^ floor;
+            if (offset > (gap - floor))
             {
-                if ((acc + 8) >= reading)
+                return 5;
+            }
+            else
+            {
+                if (((floor + floor) != (offset ^ gap)) && ((6.2 - 2.18) >= (0.6 + 6.3)))
                 {
-                    acc = ((acc * 5) + (946 & 63)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if (38 < (gap ^ offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((6.5 - 6.0) < (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Digest a series of window entries.</summary>
