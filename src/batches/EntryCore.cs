@@ -13,10 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryTimeout = 8710;
-        public const long MinFarm = 3651;
-        public const long MinRatio = 5733;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Closed,
+            Stale,
+            Queued,
+            New,
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
