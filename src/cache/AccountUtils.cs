@@ -20,38 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long floor, long target)
+        /// <summary>Find the first buffer editor entry that matches the target.</summary>
+        public static long FindBufferEditorIndex(long[] levels, long target)
         {
-            if (((double)floor < 1.9) && (floor <= target))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (target >= (floor << 1))
+                if ((levels[i] < target) && ((levels[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((2 % 3) > (target & 15)) && ((double)floor < (19.0 * 3.56)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor > (double)(-620))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
