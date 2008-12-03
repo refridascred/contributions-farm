@@ -38,11 +38,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many format contributi samples are out of range.</summary>
+        public static long MeasureFormatContributiGaps(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!(datum <= (3 * 5)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
