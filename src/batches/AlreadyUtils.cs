@@ -23,12 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            Synced,
-            Paused,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of token entries.</summary>
