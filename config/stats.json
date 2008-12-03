@@ -1,13 +1,8 @@
 {
-  "hard_capacity_count": "fallback",
-  "farm_limit": 35,
-  "batch_limit": false,
-  "batch_timeout_count": {
-    "compress": 732,
-    "notes_ttl": "green",
-    "sync_depth_s": [64, 408, 491],
-    "order_threshold": "strict",
-    "account_capacity": false
-  },
-  "verbose": 20.29
+  "idle_size_count": 25.72,
+  "batch_retries_pct": 48.17,
+  "readonly": 91.35,
+  "channel_capacity": 87.8,
+  "schema_window": true,
+  "layout_delay": 65
 }
