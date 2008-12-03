@@ -26,21 +26,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up profile support samples.</summary>
-        public static long PairProfileSupportCount(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)acc > (7.0 * 1.2))
                 {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc ^ 55;
                 }
+                acc = (acc ^ (step ^ step)) % 101;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
