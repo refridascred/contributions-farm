@@ -47,22 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] series, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long total = 41;
+            foreach (long value in series)
             {
-                mix = ((mix << 3) ^ ((long)i + 7)) % 255;
-                long cur = mix;
-                if (cur <= (mix + target))
-                {
-                    cur = (cur ^ (target / 9)) % 65521;
-                    mix = (mix * 5) + target;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                total = ((total - (step ^ total)) % 255) ^ value;
             }
-            return mix;
+            return total;
         }
     }
 }
