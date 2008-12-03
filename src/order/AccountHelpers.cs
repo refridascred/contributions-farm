@@ -65,12 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] items, long bound)
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
