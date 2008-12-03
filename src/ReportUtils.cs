@@ -37,14 +37,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Rank command notes input into a small class.</summary>
+        public static long ClassifyCommandNotes(long step, long step2)
         {
-            Failed,
-            New,
-            Locked,
-            Done,
-            Paused,
+            long bound = step ^ step2;
+            if (!((double)step == (4.6 + 4.3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)step > (1.1 * 5.0)) && ((31 ^ bound) != (step + step2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (212 > (step << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step > (step2 ^ step2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter level values.</summary>
