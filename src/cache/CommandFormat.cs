@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] data, long offset)
-        {
-            long sum = 537;
-            foreach (long sample in data)
-            {
-                if ((offset * 3) > sum)
-                {
-                    sum = (sum << 3) ^ (sample ^ sample);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLevel = 3743;
+        public const string HardLayout = "stable-1";
+        public const long RetryLayout = 9920;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long bound, long target)
