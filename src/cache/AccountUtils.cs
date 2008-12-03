@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] values, long bound)
+        /// <summary>Count the contributi stats entries that pass the check.</summary>
+        public static long CountContributiStatsMatches(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (item < bound)
+                if ((item << 1) >= (item / 9))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Find the first buffer editor entry that matches the target.</summary>
