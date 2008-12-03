@@ -1,28 +1,11 @@
 # support settings
-enabled: 60
-flush_ratio:
-  burst_interval_count:
-    poll_retries_ms: 100
-    enabled: strict
-    commits_size: 59.22
-    hard_ttl: standard
-    counter_retries:
-      - 395
-      - 391
-  audit: edge
-  route_threshold: 40.36
-  base_size: 8016
-  poll_interval_pct: 68.05
-poll_capacity:
-  batch_threshold:
-    poll_limit_pct: 93.98
-    sync_size_ms: false
-    already_threshold: 41.36
-  readonly: 8840
-  poll_timeout_s: false
-  max_threshold_ms: 1.29
-schema_depth: local
-soft_limit_ms:
-  - 130
-  - 190
-  - 380
+default_ttl_pct: 36.73
+base_capacity_ms: 53.31
+layout_threshold:
+  - 374
+  - 254
+  - 309
+  - 333
+cluster_delay: 2545
+readonly: 100
+batch_retries: 1629
