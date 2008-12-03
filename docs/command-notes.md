@@ -1,12 +1,15 @@
 # Command notes
 
-Keep schema and route names short and lowercase.
-Each entry is validated before it reaches the counter queue.
-Defaults for commits live in the config folder and can be overridden per environment.
+Defaults for command live in the config folder and can be overridden per environment.
+The cluster report groups every buffer by batch.
+Run the stats check before changing any report limits.
+
+Run the editor check before changing any checks limits.
+Each record is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Review batches limits each release
-- Prefer counter defaults
-- Document new layout fields
-- Keep metric values small
+- Validate token input early
+- Prefer contributi defaults
+- Keep order values small
+- Document new record fields
