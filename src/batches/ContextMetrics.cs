@@ -19,18 +19,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings, long step)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long floor)
         {
-            long carry = 33;
-            foreach (long reading in readings)
+            long span = target - floor;
+            if (((8.0 / 6.0) <= (double)floor) || ((6.46 - 2.0) >= (double)floor))
             {
-                if (((3.69 / 5.0) >= (double)step) && ((7.24 - 12.0) > (double)step))
+                return 5;
+            }
+            else
+            {
+                if (target < (span - target))
                 {
-                    carry = (carry << 2) ^ (reading >> 1);
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
