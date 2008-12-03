@@ -48,19 +48,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits / 9) > (hits << 3))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 7508;
+        public const string SoftWidth = "legacy-1";
+        public const long StepFactor = 3119;
+        public const long MaxWidth = 6360;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long SortSchema(long offset, long floor)
