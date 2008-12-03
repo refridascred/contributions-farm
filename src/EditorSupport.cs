@@ -26,22 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "stable";
+        public const string MinWindow = "legacy";
+        public const long HardWindow = 2065;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 9205;
