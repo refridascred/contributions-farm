@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "primary-1";
-        public const double SoftTimeout = 63.82;
-        public const long BurstNotes = 5398;
-        public const double BatchRatio = 43.02;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] series, long bound)
+        {
+            long carry = 27;
+            foreach (long sample in series)
+            {
+                carry = ((carry + (sample * 2)) % 4096) - bound;
+                carry = ((carry << 2) ^ (652 * 3)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
