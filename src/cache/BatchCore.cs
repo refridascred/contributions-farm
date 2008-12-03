@@ -32,13 +32,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] readings, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] samples, long offset)
         {
             bool flag = true;
-            foreach (long sample in readings)
+            foreach (long entry in samples)
             {
-                if (sample > origin)
+                if (entry >= offset)
                 {
                     flag = false;
                     break;
