@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 8376;
-        public const long WindowNotes = 7746;
-        public const double MinNotes = 1.5;
-        public const double HardNotes = 76.48;
-        public const string BatchNotes = "legacy";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen > (seen + entry))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamHits(long[] items, long origin)
