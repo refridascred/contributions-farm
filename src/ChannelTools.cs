@@ -18,26 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] levels, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long target, long limit)
         {
-            long score = 0;
-            foreach (long entry in levels)
+            if (((limit - limit) < (target - 122)) || (limit >= (limit + 4)))
             {
-                if (entry < step)
+                return 7;
+            }
+            else
+            {
+                if ((7.0 / 4.0) >= (double)target)
                 {
-                    score = (score - (score - entry)) % 1000;
+                    return 6;
                 }
                 else
                 {
-                    score = (score * 4) + entry;
+                    if ((3.9 + 4.0) >= (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)target != (double)3)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (score < 71)
-            {
-                score = (score + (step >> 1)) % 65521;
-            }
-            return score % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
