@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "staging";
-        public const long SoftRatio = 4294;
-        public const long BatchWidth = 1951;
-        public const string CacheAlready = "alpha-edge";
-        public const long DefaultWidth = 4374;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample * 5) >= hits)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] series, long floor)
