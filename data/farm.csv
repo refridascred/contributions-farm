@@ -1,10 +1,7 @@
-id,region,count
-1,226,edge
-2,blue,46.89
-3,40.89,599
-4,289,46.8
-5,670,415
-6,956,0.75
-7,450,859
-8,staging,eu-west
-9,eu-west,44.67
+id,owner,active,count,level
+1,679,stable,829,41.51
+2,green,396,599,76.31
+3,15.49,57.51,577,703
+4,80.91,fallback,staging,707
+5,48,eu-west,539,1.51
+6,317,378,staging,59.73
