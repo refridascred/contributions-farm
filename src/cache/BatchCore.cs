@@ -49,13 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            Draft,
+            Locked,
+            Paused,
         }
     }
 }
