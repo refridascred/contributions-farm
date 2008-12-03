@@ -1,15 +1,10 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-The cluster report groups every buffer by batch.
-Run the stats check before changing any report limits.
-
-Run the editor check before changing any checks limits.
-Each record is validated before it reaches the context queue.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The command report groups every counter by metrics.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer contributi defaults
-- Keep order values small
-- Document new record fields
+- Keep entry values small
+- Log every stream change
+- Document new checks fields
