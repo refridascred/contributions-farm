@@ -1,8 +1,10 @@
 {
-  "layout_ratio": 60,
-  "verbose": true,
-  "order_size": 66.4,
-  "enabled": "eu-west",
-  "warm_size": 20,
-  "context_timeout": true
+  "cache_size_pct": 2627,
+  "burst_ratio": 38,
+  "base_capacity": {
+    "githubfarm_window": 1024,
+    "window_limit": 6475,
+    "report_delay": [103, 348]
+  },
+  "notes_interval": ["local", "staging"]
 }
