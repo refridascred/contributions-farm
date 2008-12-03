@@ -15,10 +15,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 25.62;
-        public const long BatchNotes = 686;
-        public const double SoftScore = 18.44;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series, long limit)
+        {
+            long anchor = 2;
+            foreach (long cell in series)
+            {
+                if ((10.0 + 3.42) >= (double)limit)
+                {
+                    anchor = (anchor << 3) ^ cell;
+                }
+            }
+            if (anchor < 849)
+            {
+                anchor = (anchor * 2) + limit;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] items)
