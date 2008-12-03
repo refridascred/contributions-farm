@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count order metrics pairs that satisfy a relation.</summary>
-        public static long CompareOrderMetricsCount(long[] values)
+        /// <summary>Accumulate entry stream samples.</summary>
+        public static long FoldEntryStream(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 436;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (((mix * 3) + (mix / 2)) % 65521) ^ sample;
             }
-            return matches;
+            if (mix > 2)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
