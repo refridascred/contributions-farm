@@ -23,21 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] samples, long offset)
-        {
-            long anchor = 40;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor << 2) ^ (item + offset)) % 1000;
-                anchor = ((anchor << 2) ^ (item ^ anchor)) % 255;
-                if (anchor > (9 + item))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 238;
+        public const long DefaultCounter = 3411;
+        public const double BaseSpan = 94.38;
+        public const long StepWidth = 2814;
 
         /// <summary>Fold a list of entry queue readings.</summary>
         public static long CombineEntryQueue(long[] items)
