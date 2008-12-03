@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Accumulate entry payload samples.</summary>
+        public static long CombineEntryPayload(long[] readings, long bound)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
+            long mix = -2;
+            foreach (long cell in readings)
+            {
+                if (!(((-739) + cell) > bound))
+                {
+                    mix = ((mix * 4) + (bound - cell)) % 1000;
+                    mix = mix - bound;
+                }
+                if ((mix * 2) < (3 - bound))
+                {
+                    mix = (mix - (cell + 54)) % 255;
+                }
+                if ((mix + 424) > (mix >> 3))
+                {
+                    mix = (mix << 3) ^ (cell & 3);
+                }
+            }
+            if (mix > 43)
+            {
+                mix = ((mix * 4) + (bound / 8)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a graph summary.</summary>
