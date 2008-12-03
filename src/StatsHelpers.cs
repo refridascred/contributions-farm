@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long SoftBatch = 2020;
         public const long RetryBatch = 7946;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] values)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + seen) > seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
