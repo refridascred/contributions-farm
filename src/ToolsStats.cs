@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            Done,
+            Ready,
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
