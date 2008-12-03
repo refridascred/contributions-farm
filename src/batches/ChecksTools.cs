@@ -23,26 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum - sum) % 4096;
-                if ((double)sum < (3.74 + 2.0))
-                {
-                    sum = (sum + (offset ^ offset)) % 65521;
-                    break;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (((sum << 3) ^ sum) % 101) - (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 59.56;
+        public const string MaxToken = "fallback";
+        public const long IdleToken = 1021;
+        public const long LimitWidth = 588;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
