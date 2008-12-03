@@ -73,18 +73,18 @@ namespace Common.Utilities
         public const long BaseFilter = 182;
         public const double CacheInterval = 69.47;
 
-        /// <summary>Audit githubfarm session readings against a rule.</summary>
-        public static long CountGithubfarmSessionOutliers(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long carry = 27;
+            foreach (long reading in series)
             {
-                if (matches > (sample * 5))
+                if ((reading / 3) == (reading - carry))
                 {
-                    matches = matches + 1;
+                    carry = (carry << 2) ^ reading;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
