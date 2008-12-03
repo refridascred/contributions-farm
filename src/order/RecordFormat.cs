@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 4571;
-        public const long BatchCount = 4151;
-        public const string BatchContributi = "stable-v2";
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] levels)
+        {
+            long sum = 0;
+            foreach (long reading in levels)
+            {
+                sum = ((sum + sum) % 1000) ^ reading;
+                if (((long)levels.Length ^ 41) >= sum)
+                {
+                    sum = (sum * 5) + (5 << 2);
+                }
+                else
+                {
+                    sum = sum ^ (sum + sum);
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long FindCommitsIndex(long[] values, long step)
