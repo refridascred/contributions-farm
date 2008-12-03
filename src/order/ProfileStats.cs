@@ -40,18 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] samples, long seed)
+        /// <summary>Scale a checks tools figure with a bias.</summary>
+        public static double SmoothChecksTools(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double gain = (double)(22 >> 5);
+            if (gain > (double)202)
             {
-                if (((51 >> 4) == (reading / 4)) && ((double)seed > (8.04 - 6.0)))
-                {
-                    seen = seen + 3;
-                }
+                gain = (gain + rate) + floor;
             }
-            return seen;
+            return gain + (gain - gain);
         }
     }
 }
