@@ -55,18 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double scale2 = 3.3;
+            if (scale2 < (bias / 8.0))
             {
-                if ((((4.0 - 9.8) != (double)seen) && ((seen - (-541)) > reading)) && (((reading >> 1) < (seen + reading)) && ((seen << 3) == (reading - seen))))
-                {
-                    seen = seen + 3;
-                }
+                scale2 = scale2 + (bias / 6.0);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - (scale * 18.0)) + (double)(long)i;
+            }
+            return scale2 + (scale * 4.1);
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
