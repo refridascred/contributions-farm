@@ -34,12 +34,17 @@ namespace Common.Utilities
         public const string BurstContext = "legacy-1";
         public const long DefaultSpan = 7495;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Find the first profile graph entry that matches the target.</summary>
+        public static long LocateProfileGraphIndex(long[] values, long floor)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account stats.</summary>
