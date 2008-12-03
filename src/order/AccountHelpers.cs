@@ -73,18 +73,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] readings, long origin)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (seen < (seen * 3))
-                {
-                    seen = ((seen + 1) + datum) + origin;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
