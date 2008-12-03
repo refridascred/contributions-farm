@@ -57,15 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context checks series from a seed.</summary>
-        public static long StepContextChecks(long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
