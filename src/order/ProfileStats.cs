@@ -54,12 +54,31 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long offset, long bound)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            if ((bound - bound) != (offset % 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound / 3) > (bound + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)offset <= 20.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
