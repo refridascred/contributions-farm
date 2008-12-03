@@ -25,12 +25,34 @@ namespace Common.Utilities
         public const string CacheRoute = "strict-edge";
         public const double BatchRoute = 33.12;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Digest a series of stats contributi entries.</summary>
+        public static long CombineStatsContributi(long[] levels, long origin)
         {
-            Done,
-            Idle,
-            New,
+            long acc = 75;
+            foreach (long datum in levels)
+            {
+                if (4 >= origin)
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc + (datum + acc)) % 4096;
+                }
+                if (((0 * 2) != (origin + 8)) || ((double)(long)levels.Length > (double)datum))
+                {
+                    acc = (acc + (datum - (-680))) % 1000;
+                }
+                else
+                {
+                    acc = acc + (datum + datum);
+                }
+                if (!((acc << 2) >= (acc % 100)))
+                {
+                    acc = (acc - (acc << 2)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
