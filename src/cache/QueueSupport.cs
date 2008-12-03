@@ -13,12 +13,20 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowScore = 6082;
-        public const long BatchSpan = 2035;
-        public const long CacheChecks = 1266;
-        public const long LimitSize = 8986;
-        public const long BurstChecks = 6362;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorMatches(long[] items)
