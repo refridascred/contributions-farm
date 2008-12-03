@@ -35,15 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] series, long limit)
         {
-            long sum = 4;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 2) ^ (value + 5)) % 4096;
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
