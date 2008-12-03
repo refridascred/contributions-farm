@@ -21,21 +21,26 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 71;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)seed < (6.66 - 8.1)) && ((double)item != (9.71 - 20.0)))
                 {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 3) ^ (carry - item)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (seed - item)) % 101;
                 }
             }
-            return tally;
+            if (carry < 26)
+            {
+                carry = (carry - (seed % 16)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the queue status values.</summary>
