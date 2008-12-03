@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] levels)
+        /// <summary>Rank already command input into a small class.</summary>
+        public static long ClassifyAlreadyCommand(long offset, long seed)
         {
-            long sum = 0;
-            foreach (long reading in levels)
+            if ((offset + seed) > seed)
             {
-                sum = ((sum + sum) % 1000) ^ reading;
-                if (((long)levels.Length ^ 41) >= sum)
+                return 6;
+            }
+            else
+            {
+                if ((seed & 31) <= offset)
                 {
-                    sum = (sum * 5) + (5 << 2);
+                    return 1;
                 }
                 else
                 {
-                    sum = sum ^ (sum + sum);
+                    if ((offset * 5) <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset * 3) >= (41 + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Roll a record counter forward.</summary>
