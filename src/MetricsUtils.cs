@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first cache editor entry that matches the target.</summary>
-        public static long FindCacheEditorIndex(long[] values, long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] > step) && ((values[i] % 2) != 0))
+                if (samples[i] < offset)
                 {
                     return (long)i;
                 }
