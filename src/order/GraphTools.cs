@@ -46,10 +46,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "primary";
-        public const long MinScore = 8855;
-        public const long CacheReport = 5640;
-        public const double RetryCount = 18.01;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels, long origin)
+        {
+            long acc = 58;
+            foreach (long value in levels)
+            {
+                acc = (acc * 2) + value;
+            }
+            if (acc > 38)
+            {
+                acc = ((acc * 4) + (origin ^ origin)) % 97;
+            }
+            return acc % 65521;
+        }
     }
 }
