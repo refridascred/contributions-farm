@@ -45,18 +45,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            long anchor = 6;
+            foreach (long reading in readings)
             {
-                carry = carry - carry;
-                carry = ((carry * 5) + 664) % 65521;
-                carry = (carry + (long)i) % 4096;
-                carry = ((carry * 2) + (long)i) % 97;
+                anchor = anchor ^ (reading - anchor);
+                if ((reading + anchor) < (reading % 7))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (anchor > 24)
+            {
+                anchor = (anchor << 3) ^ (anchor ^ anchor);
+            }
+            return anchor;
         }
     }
 }
