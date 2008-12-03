@@ -26,12 +26,12 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Find the first record githubfarm entry that matches the target.</summary>
-        public static long FindRecordGithubfarmIndex(long[] levels, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] levels, long bound)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) != 0))
+                if (levels[i] >= bound)
                 {
                     return (long)i;
                 }
