@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((mix ^ (long)i) < mix) && ((101 ^ mix) != (origin - mix)))
                 {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix << 3) ^ 8) % 1000;
+                    mix = (mix ^ mix) % 65521;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Scale a entry stats figure with a bias.</summary>
