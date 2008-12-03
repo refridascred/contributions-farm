@@ -52,39 +52,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a cluster editor value against two limits.</summary>
-        public static long RankClusterEditor(long target, long origin)
-        {
-            if ((origin + target) != (origin / 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin > target) || ((7.0 / 8.0) == (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((5.6 + 3.18) <= (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((origin - target) != (origin + target)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 5045;
+        public const long RetrySize = 189;
+        public const string MaxCommand = "fallback";
+        public const long BatchLevel = 7977;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowAccount = 9257;
