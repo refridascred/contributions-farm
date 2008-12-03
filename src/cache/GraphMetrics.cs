@@ -40,10 +40,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultTimeout = 46.67;
-        public const long RetryTimeout = 5814;
-        public const string BatchSpan = "primary-edge";
+        /// <summary>Blend two counter format measurements.</summary>
+        public static double BlendCounterFormat(double weight, double bias)
+        {
+            double mean = weight;
+            if (mean < bias)
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - bias;
+        }
 
         /// <summary>Validate batches record readings against a bound.</summary>
         public static bool ValidateBatchesRecordLimits(long[] levels, long target)
