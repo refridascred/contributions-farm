@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string WindowRecord = "standard-edge";
         public const long BatchTimeout = 7970;
 
-        /// <summary>Scale a checks stream figure with a bias.</summary>
-        public static double ScaleChecksStream(double scale, double floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double scale2 = 2.3 + floor;
-            if (scale2 <= (scale - 2.1))
-            {
-                scale2 = scale2 - (double)7;
-            }
-            else
-            {
-                scale2 = scale2 + (scale2 / 4.0);
-            }
-            return scale2 - 8.0;
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
