@@ -57,15 +57,23 @@ namespace Common.Utilities
         public const long DefaultBudget = 621;
         public const long SoftCounter = 6760;
 
-        /// <summary>Digest a series of buffer metric entries.</summary>
-        public static long CombineBufferMetric(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            long mix = 238;
-            foreach (long item in items)
+            long state = 15;
+            foreach (long entry in samples)
             {
-                mix = (mix ^ (item + (-51))) % 101;
+                if ((((long)samples.Length * 2) <= state) || ((state ^ 6) < 7))
+                {
+                    state = state - 9;
+                    break;
+                }
+                if (entry > state)
+                {
+                    state = ((state * 2) + 8) % 97;
+                }
             }
-            return mix % 97;
+            return state;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
