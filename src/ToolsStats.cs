@@ -56,11 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 43.75;
-        public const long MaxSpan = 6687;
-        public const string SoftCount = "cached-1";
-        public const long BatchTools = 143;
-        public const long WindowTools = 8376;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
