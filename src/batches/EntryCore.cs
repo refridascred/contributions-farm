@@ -47,9 +47,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchTimeout = 13.12;
-        public const string StepBudget = "open-edge";
-        public const double LimitFactor = 45.14;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Done,
+            Idle,
+            Closed,
+        }
     }
 }
