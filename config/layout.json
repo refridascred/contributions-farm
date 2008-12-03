@@ -1,11 +1,18 @@
 {
-  "batch_size": true,
-  "verbose": {
-    "default_depth": 31.62,
-    "batch_ratio": [404, 311, 51, 147],
-    "idle_limit_pct": "strict",
-    "hard_timeout": "strict",
-    "dry_run": "staging"
+  "queue_ttl": true,
+  "audit": {
+    "stream_depth": true,
+    "strict": ["legacy", "staging", "cached"],
+    "idle_window_ms": 60,
+    "persist": "local",
+    "flush_size": "stable",
+    "tools_ratio": {
+      "cache_interval_count": false,
+      "soft_ttl": "staging",
+      "default_depth_ms": "eu-west",
+      "verbose": "staging",
+      "max_ttl_ms": 5
+    }
   },
-  "cache_ttl_pct": [252, 310, 53, 453]
+  "session_threshold": true
 }
