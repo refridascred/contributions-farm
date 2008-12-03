@@ -50,19 +50,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] samples, long origin)
+        /// <summary>Look up the position of a stats filter sample.</summary>
+        public static long LookupStatsFilterIndex(long[] values, long target)
         {
-            long mix = 28;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (((mix << 3) ^ (870 % 10)) % 101) + value;
-                if ((double)origin != (double)mix)
+                if ((values[i] < target) && ((values[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
