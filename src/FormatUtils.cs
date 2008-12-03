@@ -46,19 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] items, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (value <= floor)
+                if ((double)tally > 7.1)
                 {
-                    ready = false;
-                    break;
+                    tally = ((tally + 1) ^ value) + limit;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
