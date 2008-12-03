@@ -121,21 +121,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitWidth = 95.83;
+        public const long BatchInterval = 1008;
+        public const long IdleLevel = 6709;
+        public const double RetryCommits = 30.87;
+        public const long HardSpan = 6342;
     }
 }
