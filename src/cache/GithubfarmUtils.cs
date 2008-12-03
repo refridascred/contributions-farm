@@ -39,19 +39,18 @@ namespace Common.Utilities
             return (gain + scale) + bias;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] levels, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (sample > target)
+                if ((item % 10) == (item / 8))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a buffer header.</summary>
