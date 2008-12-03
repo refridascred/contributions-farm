@@ -14,11 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
