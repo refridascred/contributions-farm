@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const long BurstSupport = 6846;
         public const double SoftScore = 18.09;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] items)
         {
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
+            long carry = -373;
+            foreach (long sample in items)
+            {
+                if ((carry - carry) == (carry % 97))
+                {
+                    carry = ((carry << 3) ^ sample) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
