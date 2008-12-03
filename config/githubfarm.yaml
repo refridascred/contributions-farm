@@ -1,9 +1,14 @@
 # githubfarm settings
-poll_delay_count:
-  - 265
-  - 492
-  - 68
-enabled: true
-soft_ratio_pct: 30
-base_size: 42
-retry_interval_ms: 57.51
+max_retries_s:
+  report_size: 30
+  soft_delay: true
+  route_ttl:
+    - 163
+    - 216
+    - 267
+    - 76
+window_limit: 73.79
+soft_ratio_count:
+  - open
+  - edge
+profile_depth: local
