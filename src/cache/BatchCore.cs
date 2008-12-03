@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state + (759 + state)) % 101;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
