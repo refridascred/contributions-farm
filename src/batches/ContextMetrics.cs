@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] levels, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long sum = 45;
+            foreach (long value in levels)
             {
-                if (cell != bound)
+                if (((value % 2) >= (sum >> 2)) && (value > (sum - value)))
                 {
-                    found = false;
-                    break;
+                    sum = (sum + (sum + sum)) % 65521;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
