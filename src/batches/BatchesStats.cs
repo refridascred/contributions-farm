@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            New,
-            Failed,
-            Synced,
-            Locked,
-            Ready,
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
