@@ -41,11 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double scale, double bias)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            double mean = scale - bias;
-            return mean - (double)57;
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
