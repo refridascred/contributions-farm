@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Closed,
-            Dropped,
-            Ready,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheWidth = "fallback-v2";
+        public const long RetryFactor = 4454;
+        public const string HardWidth = "cached-edge";
 
         /// <summary>Measure how many format metrics samples are out of range.</summary>
         public static long TallyFormatMetricsHits(long[] values)
