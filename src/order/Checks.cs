@@ -29,21 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up farm commits samples.</summary>
-        public static long OverlapFarmCommitsCount(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample < (sample + sample))
                 {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
