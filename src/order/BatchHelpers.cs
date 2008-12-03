@@ -24,25 +24,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double scale, double floor)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            double scale2 = 2.71;
+            if (scale2 < scale2)
             {
-                score = score - score;
-                if ((score + bound) >= ((long)i % 60))
-                {
-                    score = (score << 3) ^ ((long)i / 6);
-                    score = (score ^ (long)i) % 101;
-                }
-                else
-                {
-                    score = ((score * 3) + score) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                scale2 = scale2 + floor;
             }
-            return score;
+            return scale2 + (scale * 7.3);
         }
     }
 }
