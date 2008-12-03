@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultRatio = 537;
+        public const long MinWidth = 2904;
+        public const double StepLevel = 90.84;
+        public const long CacheTools = 7354;
+        public const long MaxTools = 6938;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
