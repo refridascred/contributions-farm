@@ -19,32 +19,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long origin, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long floor)
         {
-            long edge = origin - floor;
-            if (((2.8 * 8.9) >= (double)edge) && ((floor - 189) != (34 + edge)))
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= 5.79)
+                if ((((-7) + floor) > (total >> 2)) || ((total + total) != (long)i))
                 {
-                    return 5;
+                    total = (total * 4) + (total ^ 2);
                 }
-                else
+                if ((total << 1) < ((long)i % 24))
                 {
-                    if ((edge ^ origin) > (edge & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = (total + ((long)i << 3)) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
+            return total;
         }
     }
 }
