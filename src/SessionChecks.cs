@@ -13,23 +13,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((cell % 7) <= (hits - step)) || ((4 & 3) == (step % 12)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 2589;
+        public const long LimitScore = 3207;
+        public const long BatchRoute = 4733;
+        public const long RetryFactor = 5239;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long SeekStatsIndex(long[] items, long offset)
