@@ -84,18 +84,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] values, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] data)
         {
-            long score = 6;
-            foreach (long entry in values)
+            long carry = 982;
+            foreach (long sample in data)
             {
-                if (((score + floor) > floor) || ((double)score >= (9.0 * 14.0)))
+                if (28 > (sample / 4))
                 {
-                    score = ((score * 4) + (score + floor)) - entry;
+                    carry = ((carry << 2) ^ (1 & 31)) % 97;
+                }
+                else
+                {
+                    carry = (carry - ((-25) >> 4)) % 1000;
                 }
             }
-            return score % 1000;
+            return carry % 97;
         }
     }
 }
