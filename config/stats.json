@@ -1,21 +1,8 @@
 {
-  "burst_threshold_ms": "stable",
-  "verbose": {
-    "cache_size_pct": "local",
-    "hard_capacity_pct": 86,
-    "cache_capacity_count": {
-      "payload_capacity": "fallback",
-      "default_threshold_pct": true,
-      "soft_timeout_s": 8094,
-      "idle_threshold_count": 48,
-      "retry_ttl": 500,
-      "stats_retries": "fallback"
-    },
-    "persist": "open",
-    "githubfarm_retries": 5933,
-    "batch_interval_pct": 100
-  },
-  "sync_timeout_s": 500,
-  "soft_threshold_pct": 2755,
-  "commits_window": ["green", "eu-west", "open"]
+  "flush_capacity": 20.92,
+  "sync_window": "standard",
+  "audit": 85,
+  "min_ttl": [432, 281],
+  "warm_delay_ms": ["standard", "fallback", "stable"],
+  "strict": "latest"
 }
