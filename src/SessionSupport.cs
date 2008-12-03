@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] readings)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((72 - 827) > matches) || ((6 * 5) >= matches)))
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
