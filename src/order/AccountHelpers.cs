@@ -14,18 +14,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema profile entries.</summary>
-        public static long TallySchemaProfile(long[] values, long offset)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] samples, long origin)
         {
-            long result = 223;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)result <= (19.0 * 7.69))
+                if (samples[i] == origin)
                 {
-                    result = (((result ^ (921 << 1)) % 65521) + value) + offset;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Hold a commits stats.</summary>
