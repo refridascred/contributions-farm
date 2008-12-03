@@ -1,11 +1,5 @@
 # entry settings
-report_timeout: true
-max_delay_pct: legacy
-context_capacity:
-  - blue
-  - latest
-default_limit:
-  - 47
-  - 121
-  - 420
-persist: true
+cache_ratio: true
+record_ratio: 45
+enabled: 30
+hard_retries: standard
