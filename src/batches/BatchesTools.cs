@@ -38,29 +38,35 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long seed, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long origin, long floor)
         {
-            long span = seed - limit;
-            if (((-70) + limit) <= seed)
+            if (floor >= (floor + origin))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((double)seed >= (double)limit)
+                if (floor >= (origin >> 1))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (((span ^ seed) >= (seed >> 2)) || ((-2) <= (seed & 15)))
+                    if (((2 + 660) >= origin) && ((origin >> 3) == (origin >> 2)))
                     {
                         return 0;
                     }
                     else
                     {
-                        return 6;
+                        if ((double)floor <= (8.1 * 3.5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
