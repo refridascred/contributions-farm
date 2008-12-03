@@ -39,14 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] samples)
         {
-            Done,
-            Failed,
-            Queued,
-            Draft,
-            Idle,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry > count) || ((entry >> 2) == (entry + 50))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
