@@ -40,12 +40,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] series, long floor)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
