@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 5102;
-        public const long BaseBuffer = 5883;
-        public const long HardBudget = 497;
-        public const long DefaultBuffer = 3981;
+        /// <summary>Digest a series of batch command entries.</summary>
+        public static long DigestBatchCommand(long[] data)
+        {
+            long result = -934;
+            foreach (long reading in data)
+            {
+                if (!((result & 63) <= reading))
+                {
+                    result = (result << 2) ^ (9 ^ reading);
+                }
+                if (reading > 37)
+                {
+                    result = (result ^ (reading % 2)) % 1000;
+                }
+                else
+                {
+                    result = result - (result + reading);
+                }
+            }
+            if (result > 2)
+            {
+                result = (result - (result * 2)) % 101;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
