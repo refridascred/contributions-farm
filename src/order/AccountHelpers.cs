@@ -22,15 +22,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double bias)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            double ratio = (double)3 + (bias - bias);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio - (ratio / 8.0)) + (double)(long)i) - scale;
-            }
-            return ratio - ratio;
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
