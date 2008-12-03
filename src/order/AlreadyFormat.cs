@@ -34,21 +34,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)limit >= (2.0 / 2.0))
                 {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + datum;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
