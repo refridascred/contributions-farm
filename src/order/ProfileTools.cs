@@ -47,11 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double bias, double offset)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long step, long target)
         {
-            double weight = (offset - offset) / 6.0;
-            return (weight + (double)5) + bias;
+            long next = step + target;
+            if (!((target % 2) <= (step ^ next)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step < (0 ^ target)) && ((step + target) == (target % 16)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((next + step) <= next) || ((target / 6) > (83 / 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
