@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double ratio, double offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long seed)
         {
-            double load = (ratio * 4.2) / 4.0;
-            if (load <= offset)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                load = load - (load + offset);
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - 4.78) + (double)(long)i;
-            }
-            return load + (ratio / 8.0);
+            return ready;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
