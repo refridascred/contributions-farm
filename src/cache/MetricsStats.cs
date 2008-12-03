@@ -41,15 +41,25 @@ namespace Common.Utilities
         public const long SoftFarm = 3351;
         public const string HardInterval = "strict-edge";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long step, long floor)
         {
-            long total = 94;
-            foreach (long sample in levels)
+            long gap = step + floor;
+            if ((83 > (step + floor)) || (step > (gap & 1)))
             {
-                total = (total - (sample >> 2)) % 97;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (((double)floor > (1.02 * 9.3)) || ((double)step == (double)gap))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
