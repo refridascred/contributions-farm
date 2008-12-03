@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 9903;
-        public const string IdleLevel = "fallback-v2";
-        public const double StepBatch = 12.87;
-        public const long SoftBatch = 2020;
-        public const long RetryBatch = 7946;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxSize = 8640;
+        public const long BurstFarm = 923;
+        public const long BatchFarm = 4821;
+        public const long SoftDepth = 598;
 
         /// <summary>Accumulate tools buffer samples.</summary>
         public static long TallyToolsBuffer(long[] levels)
