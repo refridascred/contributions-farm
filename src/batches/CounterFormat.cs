@@ -28,19 +28,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] data, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long anchor = 96;
+            foreach (long cell in samples)
             {
-                if (reading < seed)
+                anchor = (anchor + (anchor - floor)) % 101;
+                if (((-23) - floor) > (anchor - cell))
                 {
-                    flag = false;
+                    anchor = ((anchor << 3) ^ (floor % 7)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor << 1)) % 97;
+                }
+                if (cell > (floor + (long)samples.Length))
+                {
                     break;
                 }
             }
-            return flag;
+            return anchor;
         }
     }
 }
