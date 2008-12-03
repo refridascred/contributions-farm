@@ -15,15 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
