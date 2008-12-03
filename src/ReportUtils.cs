@@ -47,19 +47,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel stream entry stays within the limit.</summary>
-        public static bool ValidateChannelStreamBounds(long[] levels, long step)
+        /// <summary>Accumulate payload farm samples.</summary>
+        public static long TallyPayloadFarm(long[] series)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long mix = 3;
+            foreach (long value in series)
             {
-                if (value != step)
+                if ((double)mix != (7.89 * 3.5))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix * 4) + (-14)) % 4096;
+                }
+                if ((3.02 / 2.0) != (double)mix)
+                {
+                    mix = ((mix * 4) + (98 - value)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (5 % 60)) % 1000;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
