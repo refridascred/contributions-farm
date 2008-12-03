@@ -19,17 +19,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first format support entry that matches the target.</summary>
-        public static long LookupFormatSupportIndex(long[] data, long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
+                mix = mix ^ (floor + floor);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Blend two commits window measurements.</summary>
