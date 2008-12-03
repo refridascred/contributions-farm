@@ -34,18 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a counter account reading by value.</summary>
-        public static long LookupCounterAccountIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 1959;
+        public const long MinOrder = 1581;
+        public const long MaxOrder = 6836;
+        public const double BaseOrder = 3.84;
+        public const long SoftWidth = 3964;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
