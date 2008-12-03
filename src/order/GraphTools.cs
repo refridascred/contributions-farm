@@ -47,19 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] values, long seed)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double drift = (double)(-40);
+            if (drift > ratio)
             {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - (ratio - ratio);
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + bias) - (double)(long)i;
+            }
+            return drift - (double)86;
         }
     }
 }
