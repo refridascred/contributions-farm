@@ -85,31 +85,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long origin, long floor)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            if ((floor - floor) <= floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 255) > (floor & 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin & 15) == (54 >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Paused,
+            Draft,
+            Failed,
+            Synced,
         }
 
         /// <summary>Fold a list of record readings.</summary>
