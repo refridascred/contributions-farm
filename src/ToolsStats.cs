@@ -15,18 +15,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] data)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (cell >= (cell - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Paused,
+            Pending,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
