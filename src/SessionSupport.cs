@@ -34,14 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] levels)
         {
-            Failed,
-            Done,
-            Draft,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)(-97) > (double)matches))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
     }
 }
