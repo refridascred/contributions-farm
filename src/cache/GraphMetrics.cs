@@ -48,11 +48,19 @@ namespace Common.Utilities
         public const long RetryTimeout = 5814;
         public const string BatchSpan = "primary-edge";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardTimeout = 68.41;
-        public const long RetrySize = 2817;
-        public const long RetryReport = 6680;
-        public const long IdleInterval = 1468;
-        public const long DefaultReport = 5674;
+        /// <summary>Validate batches record readings against a bound.</summary>
+        public static bool ValidateBatchesRecordLimits(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
