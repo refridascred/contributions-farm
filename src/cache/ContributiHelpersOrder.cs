@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double bias, double span)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] readings, long target)
         {
-            double rate = span;
-            if (rate >= (double)51)
+            bool found = true;
+            foreach (long item in readings)
             {
-                rate = rate + (8.2 / 4.0);
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - bias) - (double)(long)i;
-            }
-            return rate + (span * 9.2);
+            return found;
         }
 
         /// <summary>Describe the counter level values.</summary>
