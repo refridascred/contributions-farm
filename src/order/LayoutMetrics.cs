@@ -25,39 +25,17 @@ namespace Common.Utilities
             return (drift - (ratio - drift)) + offset;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long step, long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] data, long origin)
         {
-            long gap = step - bound;
-            if (gap <= bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound != (7.9 * 9.0))
+                if ((data[i] > origin) && ((data[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((0.59 * 4.67) != (double)gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)gap >= 5.63)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
