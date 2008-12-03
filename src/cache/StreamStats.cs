@@ -19,19 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series, long limit)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long bound, long floor)
         {
-            long sum = 2;
-            foreach (long datum in series)
+            if (bound < (floor - floor))
             {
-                sum = ((sum ^ (datum / 6)) % 255) - limit;
+                return 8;
             }
-            if (sum < 406)
+            else
             {
-                sum = sum ^ sum;
+                if ((double)floor < (6.8 / 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return sum % 1000;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
