@@ -12,16 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix + 5) % 65521;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
