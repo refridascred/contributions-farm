@@ -23,15 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Done,
-            New,
-            Closed,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 8359;
+        public const long HardOrder = 6918;
+        public const double BaseWidth = 0.31;
 
         /// <summary>Accumulate command samples.</summary>
         public static long FoldCommand(long[] values, long target)
