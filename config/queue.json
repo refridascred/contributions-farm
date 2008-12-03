@@ -1,8 +1,6 @@
 {
-  "dry_run": true,
-  "cache_depth": ["eu-west", "blue"],
-  "window_size": "open",
-  "poll_retries": ["staging", "fallback", "primary", "edge"],
-  "warm_ttl_pct": false,
-  "batch_ttl_count": [5, 15, 133, 205]
+  "report_threshold": "primary",
+  "verbose": "cached",
+  "strict": [90, 436, 148, 473],
+  "notes_capacity": true
 }
