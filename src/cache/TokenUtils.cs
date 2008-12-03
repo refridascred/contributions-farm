@@ -32,39 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long seed, long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] samples, long limit)
         {
-            long gap = seed ^ step;
-            if (((744 + step) >= gap) || ((step - (-497)) > (gap / 5)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step / 7) == (seed - 26))
+                if (samples[i] < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)57 > (double)gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((6.4 + 0.5) <= (double)gap)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
