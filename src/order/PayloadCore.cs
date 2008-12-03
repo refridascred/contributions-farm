@@ -13,12 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 7371;
-        public const string DefaultSupport = "standard-edge";
-        public const long BaseSupport = 4043;
-        public const long HardSpan = 2260;
-        public const double IdleScore = 71.83;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = acc - step;
+                acc = (acc << 3) ^ (acc * 4);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first metrics order entry that matches the target.</summary>
         public static long FindMetricsOrderIndex(long[] levels, long seed)
