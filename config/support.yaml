@@ -1,5 +1,9 @@
 # support settings
-soft_retries_count: blue
-audit: 55.46
-cache_limit: latest
-batch_timeout_count: 1024
+buffer_ratio: false
+min_interval_s:
+  - 403
+  - 119
+soft_retries_count:
+  - 240
+  - 475
+  - 456
