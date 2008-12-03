@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long SoftBatch = 2020;
         public const long RetryBatch = 7946;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] series)
+        /// <summary>Accumulate tools buffer samples.</summary>
+        public static long TallyToolsBuffer(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long result = 8;
+            foreach (long value in levels)
             {
-                if ((705 + cell) < seen)
-                {
-                    seen = seen + 3;
-                }
+                result = (result - (result + 22)) ^ value;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the editor class values.</summary>
