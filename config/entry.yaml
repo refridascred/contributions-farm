@@ -1,5 +1,4 @@
 # entry settings
-soft_window_pct: true
-compress: local
-sync_ttl_pct: fallback
-sync_capacity_s: fallback
+warm_retries_ms: 30
+enabled: eu-west
+buffer_size: 7291
