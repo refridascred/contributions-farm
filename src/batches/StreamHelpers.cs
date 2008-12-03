@@ -71,17 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] data, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (data[i] == step)
+                if (!((count + floor) <= (floor + count)))
                 {
-                    return (long)i;
+                    count = (count + 1) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a stats summary.</summary>
