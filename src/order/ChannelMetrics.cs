@@ -19,21 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 79;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mark + mark) <= (mark & 127))
                 {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark << 2) ^ (seed / 5)) % 1000;
+                }
+                else
+                {
+                    mark = (mark ^ ((-315) ^ datum)) % 65521;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the window state values.</summary>
