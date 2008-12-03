@@ -21,15 +21,19 @@ namespace Common.Utilities
         public const double HardNotes = 76.48;
         public const string BatchNotes = "legacy";
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double gain, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            double scale = gain;
+            if (scale > scale)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                scale = scale - (gain / 5.0);
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale - (scale + gain);
         }
     }
 }
