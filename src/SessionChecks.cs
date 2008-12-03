@@ -36,16 +36,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum << 2) ^ (target - sum)) % 97;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
