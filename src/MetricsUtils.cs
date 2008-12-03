@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 35.2;
-        public const long RetryProfile = 1819;
-        public const long MinProfile = 4628;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] samples)
+        {
+            long score = -943;
+            foreach (long cell in samples)
+            {
+                score = ((score ^ (score / 9)) % 101) ^ cell;
+            }
+            if (score > 7)
+            {
+                score = score + (long)samples.Length;
+            }
+            return score;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ScaleSupport(double ratio, double floor)
