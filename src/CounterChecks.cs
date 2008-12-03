@@ -59,12 +59,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Active,
-            Done,
-            Locked,
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
