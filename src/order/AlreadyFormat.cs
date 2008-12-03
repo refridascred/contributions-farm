@@ -21,13 +21,11 @@ namespace Common.Utilities
         public const long BaseFarm = 4372;
         public const long BurstFarm = 8160;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "open-v2";
+        public const string MaxRecord = "fallback-edge";
+        public const double DefaultScore = 35.96;
+        public const string BurstRecord = "latest-1";
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
