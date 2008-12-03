@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long step, long offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long floor2)
         {
-            long edge = step - offset;
-            if (step <= (offset - edge))
+            if ((93 & 7) > floor2)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((double)edge == (0.5 * 19.0))
+                if (((floor2 << 2) >= (floor << 2)) && ((double)floor2 >= (9.5 * 1.47)))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if (!((edge ^ step) < (96 + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 2;
                 }
             }
         }
