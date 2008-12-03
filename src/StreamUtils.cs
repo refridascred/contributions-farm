@@ -25,18 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] values, long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)origin <= (double)tally)
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
