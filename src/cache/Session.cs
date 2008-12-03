@@ -38,13 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Failed,
-            Retry,
-            New,
-            Active,
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
