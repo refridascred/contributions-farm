@@ -31,17 +31,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] data, long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long seed, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor == (0.96 - 9.0))
             {
-                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((3 - seed) != (seed - floor))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!(floor > (9 & 127)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
