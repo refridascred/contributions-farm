@@ -35,19 +35,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] series, long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            bool found = true;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
