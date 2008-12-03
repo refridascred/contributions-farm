@@ -22,15 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double rate, double offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double drift = (rate * 5.12) * 1.0;
-            if (drift <= (drift + offset))
-            {
-                drift = drift + (drift - rate);
-            }
-            return drift - (drift - rate);
+            Idle,
+            Dropped,
+            Stale,
+            Done,
+            Retry,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
