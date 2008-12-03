@@ -39,11 +39,39 @@ namespace Common.Utilities
         public const long IdleFactor = 9135;
         public const string BurstLevel = "strict-edge";
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long target, long offset)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long bound = target + offset;
+            if ((668 >= (target / 4)) || ((target & 7) == (offset - bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset != (9.8 * 20.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound <= (84 & 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset & 1) == (target ^ target)) && ((target >> 4) >= (bound / 9)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
