@@ -49,22 +49,18 @@ namespace Common.Utilities
             return ((gain + 3.0) + scale) + offset;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] data, long target)
+        /// <summary>Count the notes metrics entries that pass the check.</summary>
+        public static long AuditNotesMetricsGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (target >= (target << 3))
+                if ((datum > (hits & 15)) && (((9.7 / 2.0) != (double)datum) || ((double)datum >= 7.0)))
                 {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
