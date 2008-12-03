@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 7171;
-        public const long BaseChannel = 4701;
-        public const double MaxFactor = 18.27;
-        public const long WindowChannel = 2895;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 5102;
+        public const long BaseBuffer = 5883;
+        public const long HardBudget = 497;
+        public const long DefaultBuffer = 3981;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
