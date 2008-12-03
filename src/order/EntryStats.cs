@@ -43,19 +43,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate payload graph readings against a bound.</summary>
-        public static bool VerifyPayloadGraphRange(long[] levels, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long anchor = 35;
+            foreach (long datum in series)
             {
-                if (entry < seed)
+                if ((anchor >> 4) >= (-9))
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor + (anchor + datum);
                 }
             }
-            return valid;
+            if (anchor < 847)
+            {
+                anchor = (anchor - anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a support counter forward.</summary>
