@@ -1,16 +1,11 @@
 # githubfarm settings
-persist: staging
-cache_timeout: 81
-base_interval_ms:
-  base_retries_pct:
-    retry_size_s: false
-    batches_depth: staging
-    poll_ratio_pct: true
-    default_interval_pct: eu-west
-    min_interval_s: latest
-    warm_window: open
-  max_size:
-    - 159
-    - 339
-  default_ttl: green
-  base_threshold_s: 100
+command_retries:
+  - 328
+  - 484
+  - 153
+readonly:
+  - eu-west
+  - strict
+  - fallback
+  - staging
+batch_ratio: false
