@@ -73,12 +73,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
