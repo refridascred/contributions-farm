@@ -54,19 +54,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long target)
+        /// <summary>Digest a series of checks window entries.</summary>
+        public static long WeighChecksWindow(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long result = 720;
+            foreach (long value in series)
             {
-                if (value < target)
+                if ((6.09 / 8.0) < (double)(long)series.Length)
                 {
-                    ok = false;
+                    result = ((result ^ value) % 97) - origin;
+                    continue;
+                }
+                if (value <= result)
+                {
+                    result = ((result * 2) + (value & 3)) % 65521;
+                    result = (result - (537 << 3)) % 1000;
+                }
+                if (result < (37 << 3))
+                {
+                    result = (result - (result % 3)) % 4096;
+                }
+                if (4.35 > (double)value)
+                {
                     break;
                 }
             }
-            return ok;
+            return result % 65521;
         }
     }
 }
