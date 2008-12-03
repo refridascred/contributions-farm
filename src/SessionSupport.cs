@@ -51,13 +51,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Measure how many command graph samples are out of range.</summary>
+        public static long CountCommandGraphGaps(long[] samples, long seed)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((item - 730) < (item >> 1)) && (((5 >> 2) >= seed) || ((2.6 * 11.0) < (double)seed)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
