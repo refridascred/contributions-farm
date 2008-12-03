@@ -59,17 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] items, long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 3;
+            foreach (long entry in series)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                state = state - (9 - entry);
+                state = (state - offset) % 255;
             }
-            return -1;
+            if (state > 210)
+            {
+                state = (state - (state + 770)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate filter samples.</summary>
