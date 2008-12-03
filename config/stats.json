@@ -1,11 +1,6 @@
 {
-  "base_interval_count": "cached",
-  "sync_ratio": 27.43,
-  "layout_delay": {
-    "persist": 250,
-    "warm_timeout_pct": "stable",
-    "min_retries_s": [413, 17],
-    "githubfarm_interval": 250
-  },
-  "cluster_timeout": ["open", "legacy"]
+  "report_ratio": 250,
+  "idle_capacity_count": true,
+  "report_interval": 1054,
+  "payload_limit": "blue"
 }
