@@ -1,11 +1,12 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-The record report groups every stream by checks.
-Each cluster is validated before it reaches the already queue.
+Keep schema and route names short and lowercase.
+Each entry is validated before it reaches the counter queue.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Validate batches input early
-- Log every stream change
+- Review batches limits each release
+- Prefer counter defaults
+- Document new layout fields
+- Keep metric values small
