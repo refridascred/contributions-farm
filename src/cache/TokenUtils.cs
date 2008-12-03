@@ -37,19 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate schema batch readings against a bound.</summary>
-        public static bool VerifySchemaBatchLimits(long[] items, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long target, long bound)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            if (0.5 >= (double)target)
             {
-                if (cell >= step)
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (8.08 / 2.0))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
     }
 }
