@@ -48,15 +48,11 @@ namespace Common.Utilities
         public const double HardSize = 92.09;
         public const double MinAccount = 71.91;
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double rate = 6.0;
-            if (rate >= (double)210)
-            {
-                rate = ((rate - (double)933) - weight) + offset;
-            }
-            return rate - (double)21;
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
