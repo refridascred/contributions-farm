@@ -1,10 +1,23 @@
 # entry settings
-dry_run:
-  sync_ttl_count: 40.5
+soft_size_s: standard
+payload_size:
+  record_window: 4.04
+  format_delay: 2078
+  flush_ttl_ms: 12
+dry_run: eu-west
+warm_limit:
+  flush_threshold_s: true
+  commits_retries: true
   idle_interval_s:
-    - 254
-    - 230
-  batch_retries: 72.62
-  idle_capacity_count: edge
-batch_threshold_ms: 21.65
-soft_interval_count: cached
+    batch_capacity:
+      - strict
+      - cached
+    max_ttl_count:
+      - staging
+      - local
+      - fallback
+      - eu-west
+    audit: 250
+  base_depth_ms: 2020
+  poll_capacity_pct: 100
+  soft_retries_count: 30
