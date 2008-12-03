@@ -45,14 +45,38 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a cluster editor value against two limits.</summary>
+        public static long RankClusterEditor(long target, long origin)
         {
-            Synced,
-            Paused,
-            Ready,
-            Dropped,
-            Failed,
+            if ((origin + target) != (origin / 8))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin > target) || ((7.0 / 8.0) == (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((5.6 + 3.18) <= (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((origin - target) != (origin + target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm options.</summary>
