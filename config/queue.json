@@ -1,5 +1,18 @@
 {
-  "poll_threshold": "green",
-  "max_window": 500,
-  "support_threshold": 829
+  "default_window": 84,
+  "cluster_depth": 54,
+  "command_capacity": 100,
+  "support_size": {
+    "max_window": 742,
+    "retry_delay_count": 60,
+    "min_size_count": {
+      "farm_capacity": false,
+      "stream_limit": "blue",
+      "retry_interval_count": 34,
+      "readonly": 547,
+      "commits_window": false,
+      "route_size": "legacy"
+    }
+  },
+  "min_retries": 1044
 }
