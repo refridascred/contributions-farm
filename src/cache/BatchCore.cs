@@ -16,20 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long mark = 53;
-            foreach (long datum in items)
-            {
-                mark = ((mark * 2) + (mark + datum)) % 255;
-                mark = (mark - (mark * 2)) % 1000;
-            }
-            if (mark > 671)
-            {
-                mark = (mark * 3) + (mark + mark);
-            }
-            return mark;
+            public long Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit commits githubfarm readings against a rule.</summary>
