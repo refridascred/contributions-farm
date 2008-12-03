@@ -29,15 +29,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a account reading.</summary>
