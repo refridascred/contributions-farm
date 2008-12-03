@@ -1,5 +1,6 @@
 {
-  "persist": 6657,
-  "audit": "eu-west",
-  "warm_ratio_count": ["local", "strict", "primary", "blue"]
+  "default_delay_pct": "eu-west",
+  "queue_window": ["primary", "green", "fallback", "local"],
+  "contributi_ratio": 250,
+  "persist": 1024
 }
