@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Derive the next stream already value from a seed.</summary>
+        public static long SeriesStreamAlready(long offset)
         {
-            double load = gain - (floor + gain);
-            if (load >= (floor + 4.9))
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                load = load - (double)4;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            else
-            {
-                load = load + (double)0;
-            }
-            return load + (8.0 * 0.7);
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
