@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] readings, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Describe the counter level values.</summary>
