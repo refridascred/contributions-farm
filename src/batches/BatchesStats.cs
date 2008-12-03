@@ -28,12 +28,29 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinCount = 8994;
-        public const long DefaultBuffer = 8351;
-        public const long LimitWidth = 3682;
-        public const long SoftScore = 3851;
-        public const string BurstSpan = "fallback-edge";
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((limit + mark) >= limit)
+                {
+                    mark = (mark * 5) + 5;
+                }
+                else
+                {
+                    mark = (mark ^ (limit & 1)) % 101;
+                }
+                if (((double)29 > (double)(long)i) || (((long)i % 24) >= ((long)i + (long)i)))
+                {
+                    mark = (mark << 2) ^ (limit << 3);
+                    mark = ((mark << 3) ^ (limit - 1)) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] samples)
