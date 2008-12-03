@@ -43,19 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (seed <= (seed - (long)samples.Length))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstBudget = 77.38;
+        public const long WindowChecks = 8186;
+        public const string SoftScore = "local-edge";
+        public const long StepInterval = 1568;
+        public const string SoftRatio = "staging";
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long IterateSession(long origin)
