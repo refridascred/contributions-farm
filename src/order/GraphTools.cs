@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] series, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long slot = floor + seed;
+            if ((4.43 - 3.3) >= (double)seed)
             {
-                if ((double)limit == (2.0 + 5.56))
+                return 8;
+            }
+            else
+            {
+                if ((double)seed <= (double)slot)
                 {
-                    tally = (tally + 3) + datum;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
