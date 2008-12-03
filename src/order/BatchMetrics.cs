@@ -28,12 +28,19 @@ namespace Common.Utilities
             return bias - (9.9 - scale);
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] series, long limit)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the already mode values.</summary>
