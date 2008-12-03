@@ -14,11 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 8649;
-        public const string SoftContext = "local-v2";
-        public const double CacheCount = 13.29;
-        public const long DefaultRatio = 1313;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] samples, long target)
+        {
+            long acc = 15;
+            foreach (long sample in samples)
+            {
+                if ((acc / 2) >= (target * 5))
+                {
+                    acc = (((acc * 5) + (acc << 1)) % 65521) + sample;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] readings, long limit)
