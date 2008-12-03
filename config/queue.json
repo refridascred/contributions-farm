@@ -1,6 +1,5 @@
 {
-  "report_threshold": "primary",
-  "verbose": "cached",
-  "strict": [90, 436, 148, 473],
-  "notes_capacity": true
+  "default_window_s": 65.27,
+  "queue_delay": 250,
+  "stream_interval": 38.38
 }
