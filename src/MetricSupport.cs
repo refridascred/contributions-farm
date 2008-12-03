@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Audit commits channel readings against a rule.</summary>
+        public static long AuditCommitsChannelMatches(long[] readings, long origin)
         {
-            Closed,
-            Synced,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)(long)readings.Length > (1.8 / 6.0))
+                {
+                    tally = ((tally + 1) ^ sample) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first window tools entry that matches the target.</summary>
