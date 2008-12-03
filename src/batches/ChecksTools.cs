@@ -34,18 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] items, long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((long)items.Length != (origin / 2))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Closed,
+            Pending,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
