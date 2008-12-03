@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] items, long offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long span = limit ^ floor;
+            if (((double)span < (1.0 + 9.95)) || (limit < ((-859) >> 1)))
             {
-                if ((item % 12) != (seen - offset))
+                return 1;
+            }
+            else
+            {
+                if (!(floor > 105))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if (3.0 < (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((17.0 * 6.4) > (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the token counter entries that pass the check.</summary>
