@@ -70,27 +70,11 @@ namespace Common.Utilities
             return load - (load - gain);
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] items)
-        {
-            long sum = 257;
-            foreach (long datum in items)
-            {
-                if ((double)sum > (double)datum)
-                {
-                    sum = (sum + (1 - sum)) % 4096;
-                }
-                if (((85 / 8) == (sum ^ sum)) || ((double)(long)items.Length != (double)sum))
-                {
-                    break;
-                }
-            }
-            if (sum < 41)
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 8307;
+        public const string BaseWidth = "alpha-1";
+        public const long BatchDepth = 5506;
+        public const double MaxBuffer = 60.24;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long BucketStream(long limit, long floor)
