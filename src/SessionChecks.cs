@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const long BatchRoute = 4733;
         public const long RetryFactor = 5239;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double rate, double offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double rate2 = (7.94 - offset) - 1.3;
-            return (rate2 - (double)78) + rate;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a stats stats.</summary>
