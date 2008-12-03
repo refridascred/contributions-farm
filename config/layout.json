@@ -1,5 +1,8 @@
 {
-  "warm_threshold_pct": 70.29,
-  "verbose": 4517,
-  "warm_interval_pct": 17.69
+  "sync_timeout_ms": "primary",
+  "compress": 1024,
+  "enabled": "standard",
+  "strict": true,
+  "report_retries": "stable",
+  "sync_capacity_ms": 2823
 }
