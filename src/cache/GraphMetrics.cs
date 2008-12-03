@@ -23,19 +23,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] levels, long bound)
-        {
-            long sum = 8;
-            foreach (long reading in levels)
-            {
-                if (!(sum > (3 >> 4)))
-                {
-                    sum = (((sum + (546 ^ sum)) % 101) - reading) - bound;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseSize = "latest";
+        public const long DefaultFormat = 7528;
+        public const long MinDepth = 3559;
+        public const long IdleFormat = 7674;
+        public const double BurstFormat = 90.19;
 
         /// <summary>Blend two counter format measurements.</summary>
         public static double BlendCounterFormat(double weight, double bias)
