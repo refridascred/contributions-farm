@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Stale,
-            Paused,
-            Ready,
-            Locked,
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
