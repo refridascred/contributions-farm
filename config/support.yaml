@@ -1,27 +1,6 @@
 # support settings
-readonly: 93.99
-soft_capacity_ms: 59.49
-compress: 86.72
-hard_timeout_s:
-  flush_capacity_pct: open
-  entry_ratio: 49.31
-  stream_limit: green
-  readonly: 86
-  notes_interval: blue
-  min_delay: true
-poll_ttl_count:
-  poll_delay_s:
-    - eu-west
-    - strict
-  entry_threshold: 39
-  enabled: 26.72
-  persist:
-    - 268
-    - 321
-    - 426
-    - 435
-  retry_ratio_s:
-    strict: false
-    hard_size_count: 26.86
-    cache_size_pct: staging
-strict: local
+cache_capacity_ms: 76.41
+already_threshold: latest
+warm_limit_count: false
+enabled: 9463
+hard_limit_ms: true
