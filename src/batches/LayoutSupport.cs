@@ -36,22 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] readings, long offset)
+        /// <summary>Validate graph checks readings against a bound.</summary>
+        public static bool ValidateGraphChecksLimits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((77 - offset) != (seen << 2))
+                if (sample > seed)
                 {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Digest a series of checks window entries.</summary>
