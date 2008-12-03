@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long seed, long offset)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long slot = seed ^ offset;
-            if ((slot / 9) < (67 + slot))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset == (18.0 + 5.7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Roll a account counter forward.</summary>
