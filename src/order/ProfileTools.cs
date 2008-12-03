@@ -56,10 +56,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheScore = 35.04;
-        public const long BatchSupport = 5590;
-        public const double HardSupport = 16.25;
-        public const double SoftLevel = 2.52;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state << 2) ^ (limit + limit)) % 97;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
