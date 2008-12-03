@@ -25,18 +25,18 @@ namespace Common.Utilities
             return bias - (9.9 - scale);
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = 62;
+            foreach (long cell in items)
             {
-                if ((hits - hits) >= (hits ^ hits))
+                if ((sum << 1) <= (cell + cell))
                 {
-                    hits = (hits + 3) - value;
+                    sum = (sum - (sum / 7)) % 1000;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Describe the profile kind values.</summary>
