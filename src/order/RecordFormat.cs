@@ -52,18 +52,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items, long step)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double weight, double offset)
         {
-            long score = 73;
-            foreach (long value in items)
+            double bias = offset;
+            if (bias > (weight / 8.0))
             {
-                if ((step - step) >= (step << 1))
-                {
-                    score = ((score + (193 / 3)) % 97) - value;
-                }
+                bias = bias - weight;
             }
-            return score % 65521;
+            return bias + weight;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
