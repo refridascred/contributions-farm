@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Validate stats support readings against a bound.</summary>
+        public static bool VerifyStatsSupportRange(long[] samples, long step)
         {
-            long result = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (reading >= (reading >> 3))
+                if (entry >= step)
                 {
-                    result = ((result * 2) + (reading + result)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > (-7))
-            {
-                result = ((result * 5) + 83) % 1000;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
