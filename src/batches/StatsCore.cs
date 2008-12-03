@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] readings, long floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading >> 3) == (reading & 127))
-                {
-                    tally = (tally + 1) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double rate = (double)(605 ^ 991);
+            return ((rate + 2.2) + ratio) + bias;
         }
 
         /// <summary>Project the next record value.</summary>
