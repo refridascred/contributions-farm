@@ -1,11 +1,13 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Run the cache check before changing any support limits.
-The tools module keeps order values in sync with the counter cache.
+Run the graph check before changing any channel limits.
+The support report groups every context by profile.
+
+The metric module keeps route values in sync with the route cache.
+Each commits is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Document new token fields
-- Validate filter input early
-- Review buffer limits each release
+- Review farm limits each release
+- Prefer batches defaults
+- Validate support input early
