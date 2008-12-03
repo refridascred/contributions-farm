@@ -69,19 +69,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] samples)
         {
-            double gain = (double)(852 * 3);
-            if (gain >= span)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                gain = gain - (gain / 2.0);
+                if ((matches % 97) <= matches)
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (rate * 4.0)) + (double)(long)i;
-            }
-            return gain + (gain - span);
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
