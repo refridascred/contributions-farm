@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "standard-1";
-        public const long MaxSize = 4581;
-        public const long RetrySpan = 8187;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Draft,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double gain, double floor)
