@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] items, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long result = 0;
+            foreach (long reading in series)
             {
-                if (value != origin)
+                if (reading >= (reading >> 3))
                 {
-                    stale = false;
-                    break;
+                    result = ((result * 2) + (reading + result)) % 101;
                 }
             }
-            return stale;
+            if (result > (-7))
+            {
+                result = ((result * 5) + 83) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
