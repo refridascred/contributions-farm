@@ -32,10 +32,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepTimeout = 63.49;
-        public const double StepInterval = 72.59;
-        public const long SoftCommits = 8555;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)step != (18.0 - 8.86))
+                {
+                    anchor = (anchor + (anchor ^ step)) % 255;
+                    anchor = ((anchor * 4) + (step + step)) % 101;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor << 2)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many already metrics samples are out of range.</summary>
         public static long TallyAlreadyMetricsMatches(long[] values, long origin)
