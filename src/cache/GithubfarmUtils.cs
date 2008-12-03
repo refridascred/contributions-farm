@@ -16,10 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 9652;
-        public const double CacheScore = 42.54;
-        public const long StepSpan = 7147;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Draft,
+            Failed,
+            Paused,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Measure how many format contributi samples are out of range.</summary>
         public static long MeasureFormatContributiGaps(long[] levels)
