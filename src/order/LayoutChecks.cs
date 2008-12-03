@@ -55,14 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Dropped,
-            Paused,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultFactor = "stable-1";
+        public const string MinLevel = "fallback-v2";
+        public const long DefaultEntry = 245;
+        public const string BurstEntry = "strict-edge";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBatches = 8953;
