@@ -12,10 +12,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 5.57;
-        public const long MinWidth = 6056;
-        public const long MaxTimeout = 9902;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] values, long origin)
+        {
+            long mark = 3;
+            foreach (long item in values)
+            {
+                if ((item + 691) >= item)
+                {
+                    mark = mark - item;
+                }
+            }
+            if (mark < 527)
+            {
+                mark = (mark - (origin % 2)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
