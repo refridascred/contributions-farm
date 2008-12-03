@@ -54,17 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] data, long seed)
+        /// <summary>Validate token commits readings against a bound.</summary>
+        public static bool GuardTokenCommitsBounds(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (data[i] <= seed)
+                if (entry != limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine already values into a single score.</summary>
