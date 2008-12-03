@@ -51,32 +51,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of checks window entries.</summary>
-        public static long WeighChecksWindow(long[] series, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] samples, long offset)
         {
-            long result = 720;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((6.09 / 8.0) < (double)(long)series.Length)
+                if (cell > offset)
                 {
-                    result = ((result ^ value) % 97) - origin;
-                    continue;
-                }
-                if (value <= result)
-                {
-                    result = ((result * 2) + (value & 3)) % 65521;
-                    result = (result - (537 << 3)) % 1000;
-                }
-                if (result < (37 << 3))
-                {
-                    result = (result - (result % 3)) % 4096;
-                }
-                if (4.35 > (double)value)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return result % 65521;
+            return flag;
         }
     }
 }
