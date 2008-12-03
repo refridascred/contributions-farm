@@ -53,19 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] items, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (entry <= offset)
+                if ((seen * 4) < (origin ^ item))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
