@@ -23,19 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] series, long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            double drift = 9.9;
+            if (drift > (double)44)
             {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + (drift - bias)) - weight;
             }
-            return stale;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the context phase values.</summary>
