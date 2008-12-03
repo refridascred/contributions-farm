@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window queue samples.</summary>
-        public static long DigestWindowQueue(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] series)
         {
-            long mark = 1;
-            foreach (long value in readings)
+            long result = -889;
+            foreach (long cell in series)
             {
-                mark = mark ^ (mark - value);
+                result = (result * 3) + cell;
+                if (!((result - 865) == ((-85) / 4)))
+                {
+                    break;
+                }
             }
-            return mark % 97;
+            return result % 97;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
