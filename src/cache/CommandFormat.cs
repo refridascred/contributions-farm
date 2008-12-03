@@ -13,31 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long bound, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            if (((target << 3) < (target >> 5)) && ((bound - target) <= bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target >= (target / 9)) && ((bound & 15) < (target >> 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound >= (double)target) || ((target % 2) < 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the token channel entries that pass the check.</summary>
