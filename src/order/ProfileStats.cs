@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long mix = -643;
-            foreach (long value in levels)
+            long acc = 72;
+            foreach (long sample in values)
             {
-                mix = (mix + (mix + mix)) ^ value;
+                acc = (((acc << 2) ^ (acc * 5)) % 255) - sample;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Rank route input into a small class.</summary>
