@@ -13,17 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] series, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (series[i] == bound)
+                if ((((double)offset > (9.5 + 5.5)) && ((tally + 1) <= reading)) || (((offset << 3) == (offset ^ offset)) && ((reading + tally) >= (reading - offset))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
