@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] values, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] data, long offset)
         {
-            long anchor = 24;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((double)seed <= (4.4 / 8.0))
+                if (datum <= offset)
                 {
-                    anchor = anchor - (datum << 3);
+                    flag = false;
+                    break;
                 }
-                anchor = (anchor ^ (anchor & 15)) % 65521;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Adjust a entry reading.</summary>
