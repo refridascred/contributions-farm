@@ -24,17 +24,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] items, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (items[i] == target)
+                double gain = (double)limit - (double)14;
+                if ((((long)i % 100) < (limit << 1)) || (738 > (mark & 3)))
                 {
-                    return (long)i;
+                    gain = gain + (gain / 4.0);
                 }
+                if (!((gain + 6.7) <= gain))
+                {
+                    gain = gain + gain;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the counter kind values.</summary>
