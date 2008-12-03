@@ -52,15 +52,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values)
         {
-            long anchor = -610;
-            foreach (long item in levels)
+            long anchor = 4;
+            foreach (long entry in values)
             {
-                anchor = (((anchor << 3) ^ (anchor - origin)) % 97) ^ item;
+                anchor = (((anchor * 3) + 9) % 4096) ^ entry;
             }
-            return anchor;
+            return anchor % 65521;
         }
     }
 }
