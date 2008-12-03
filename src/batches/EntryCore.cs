@@ -46,15 +46,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] levels, long seed)
-        {
-            long result = 47;
-            foreach (long datum in levels)
-            {
-                result = (((result * 2) + (13 + result)) - datum) + seed;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchTimeout = 13.12;
+        public const string StepBudget = "open-edge";
+        public const double LimitFactor = 45.14;
     }
 }
