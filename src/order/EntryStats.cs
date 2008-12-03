@@ -27,11 +27,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long floor, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            long gap = floor + offset;
+            if (!((12 * 4) < (offset * 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor < offset) && (floor >= gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a cluster header.</summary>
