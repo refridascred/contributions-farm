@@ -1,20 +1,5 @@
 {
-  "compress": true,
-  "metrics_ttl": 228,
-  "hard_retries": [151, 43],
-  "cache_interval_count": 60,
-  "enabled": ["cached", "primary", "primary"],
-  "hard_limit_pct": {
-    "command_threshold": {
-      "counter_capacity": "eu-west",
-      "format_window": 60,
-      "strict": ["open", "cached", "eu-west"],
-      "warm_ttl": false
-    },
-    "dry_run": 33.22,
-    "flush_ratio_count": "green",
-    "base_limit": 5118,
-    "strict": 30,
-    "order_interval": 5.9
-  }
+  "readonly": 38.82,
+  "hard_threshold_count": "eu-west",
+  "max_limit_ms": "standard"
 }
