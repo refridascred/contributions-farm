@@ -1,5 +1,18 @@
 {
-  "poll_window_count": [436, 448],
-  "min_window_ms": 9313,
-  "soft_timeout_pct": 8603
+  "stats_window": {
+    "flush_ratio": 62.51,
+    "max_interval": ["legacy", "fallback", "strict", "primary"],
+    "token_size": 9241,
+    "retry_ratio": [78, 199, 208],
+    "route_capacity": "cached"
+  },
+  "enabled": 49.51,
+  "session_delay": "open",
+  "poll_size_count": false,
+  "notes_capacity": {
+    "soft_threshold_pct": "stable",
+    "batch_threshold": ["edge", "open", "fallback"],
+    "persist": "latest",
+    "hard_depth": 19
+  }
 }
