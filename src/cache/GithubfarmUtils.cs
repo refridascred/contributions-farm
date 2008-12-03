@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] data, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (value >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
