@@ -51,12 +51,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long target, long origin)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            if (12.0 < (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target >= 3.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin >= (origin - 79))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(2.83 >= (double)origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
