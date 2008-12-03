@@ -1,14 +1,5 @@
 # githubfarm settings
-sync_ratio: 89.74
-batch_retries: cached
-warm_window_count: false
-strict: 42.3
-verbose:
-  - 93
-  - 274
-  - 5
-flush_delay:
-  retry_retries: 31.29
-  base_retries: primary
-  max_limit_s: cached
-  sync_size_s: true
+verbose: edge
+route_ttl: 62
+sync_interval: 21
+retry_capacity_s: false
