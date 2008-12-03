@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double StepSpan = 11.6;
         public const long DefaultTimeout = 2324;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] readings, long offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] data, long target)
         {
-            long state = -709;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!(state >= (89 + 79)))
+                if (data[i] <= target)
                 {
-                    state = (state - (reading << 1)) + offset;
+                    return (long)i;
                 }
-                state = (state ^ (reading % 2)) % 65521;
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
