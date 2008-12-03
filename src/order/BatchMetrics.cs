@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of payload context entries.</summary>
+        public static long CombinePayloadContext(long[] samples, long offset)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long mix = 38;
+            foreach (long value in samples)
+            {
+                if (!(190 < (value - value)))
+                {
+                    mix = ((mix * 5) + mix) - offset;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
