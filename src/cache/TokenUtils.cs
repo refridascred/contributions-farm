@@ -12,18 +12,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] series, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((172 + 9) <= floor) && ((floor - floor) == (matches << 1)))
                 {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) - value;
                 }
             }
             return matches;
