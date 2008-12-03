@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long score = 3;
-            foreach (long entry in samples)
-            {
-                score = score ^ (entry / 5);
-                score = (score << 2) ^ (entry - 93);
-                score = ((score * 5) + 490) % 97;
-            }
-            return score % 4096;
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
