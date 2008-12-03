@@ -1,5 +1,8 @@
 {
-  "sync_timeout_ms": true,
-  "persist": true,
-  "idle_delay_pct": 72
+  "min_interval_count": 97,
+  "base_size_s": 63.12,
+  "poll_delay_s": 1024,
+  "min_limit_count": true,
+  "already_retries": "green",
+  "sync_capacity": true
 }
