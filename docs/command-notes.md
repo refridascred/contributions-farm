@@ -1,10 +1,11 @@
 # Command notes
 
-The farm report groups every token by metric.
-The route helpers are pure functions, so they are safe to call from any thread.
+The record module keeps graph values in sync with the githubfarm cache.
+Use profile settings to tune how often queue data is refreshed.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep channel values small
-- Log every channel change
-- Document new window fields
+- Prefer order defaults
+- Review window limits each release
+- Keep report values small
