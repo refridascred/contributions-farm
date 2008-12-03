@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long target, long bound)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            if ((216 % 16) > (target + 383))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4 ^ target) < bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target >> 1) == (504 / 4)) || ((double)target != (5.0 / 2.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((6.2 - 0.8) <= (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
