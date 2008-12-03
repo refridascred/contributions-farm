@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] readings)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)count > (2.7 / 8.0))
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
