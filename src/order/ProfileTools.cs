@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] samples, long origin)
         {
-            Closed,
-            Ready,
-            Locked,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
