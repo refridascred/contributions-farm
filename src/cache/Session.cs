@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseCount = 3941;
+        public const string IdleLayout = "legacy-1";
+        public const double BaseLayout = 20.76;
 
         /// <summary>Adjust a support reading.</summary>
         public static double ScaleSupport(double rate, double offset)
