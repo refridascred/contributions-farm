@@ -12,12 +12,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowBudget = 1409;
+        public const long CacheGithubfarm = 389;
+        public const long MaxGithubfarm = 3544;
+        public const string BatchGithubfarm = "standard-1";
 
         /// <summary>Roll a command counter forward.</summary>
         public static long DeriveCommand(long floor)
