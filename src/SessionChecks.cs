@@ -20,12 +20,11 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryRatio = 46.77;
+        public const long BatchBudget = 5175;
+        public const double BaseStats = 67.82;
+        public const long HardSize = 432;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
