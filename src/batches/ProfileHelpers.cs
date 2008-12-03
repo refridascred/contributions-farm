@@ -74,23 +74,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double rate, double bias)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double load = rate;
-            if (load >= load)
-            {
-                load = load - (rate - rate);
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (bias - 6.13)) + (double)(long)i;
-            }
-            return load - rate;
+            Idle,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
