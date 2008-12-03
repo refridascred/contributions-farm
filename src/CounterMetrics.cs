@@ -21,15 +21,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Paused,
+            Failed,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Classify a queue farm pair into a bucket.</summary>
