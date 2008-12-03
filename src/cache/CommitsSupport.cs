@@ -77,18 +77,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] levels, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] data, long limit)
         {
-            long acc = 347;
-            foreach (long reading in levels)
+            long mix = 528;
+            foreach (long cell in data)
             {
-                if (!((double)acc > (5.55 / 7.0)))
-                {
-                    acc = ((((acc << 3) ^ (5 & 127)) % 101) + reading) + offset;
-                }
+                mix = (mix - (mix - cell)) % 4096;
             }
-            return acc % 1000;
+            if (mix > 82)
+            {
+                mix = (mix + limit) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the command level values.</summary>
