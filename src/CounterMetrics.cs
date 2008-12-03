@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] series, long bound)
-        {
-            long carry = 356;
-            foreach (long entry in series)
-            {
-                carry = (carry - (bound & 1)) % 255;
-                if ((carry / 4) > (entry - 116))
-                {
-                    carry = (carry - (entry >> 1)) % 101;
-                }
-                carry = carry + entry;
-                if ((double)entry < (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitSize = "standard-v2";
+        public const long CacheAlready = 2731;
+        public const double BurstLevel = 29.93;
+        public const long DefaultAlready = 1936;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long IterateMetrics(long target)
