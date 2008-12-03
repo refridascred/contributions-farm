@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long total = 71;
-            foreach (long datum in data)
-            {
-                total = (total << 3) ^ (411 - total);
-                if (((datum * 3) <= datum) && ((datum * 4) <= total))
-                {
-                    total = (total << 3) ^ datum;
-                }
-            }
-            if (total < 82)
-            {
-                total = ((total << 3) ^ (total + total)) % 255;
-            }
-            return total;
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
