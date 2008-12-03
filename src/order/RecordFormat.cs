@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] levels, long step)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((step + step) < (6 / 7))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Measure how many graph batch samples are out of range.</summary>
