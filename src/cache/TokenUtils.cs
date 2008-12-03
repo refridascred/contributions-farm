@@ -25,22 +25,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long target, long bound)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long seed, long step)
         {
-            if (0.5 >= (double)target)
+            long gap = seed ^ step;
+            if (((744 + step) >= gap) || ((step - (-497)) > (gap / 5)))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((double)target < (8.08 / 2.0))
+                if ((step / 7) == (seed - 26))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)57 > (double)gap)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((6.4 + 0.5) <= (double)gap)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
