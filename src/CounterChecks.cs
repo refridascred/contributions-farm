@@ -13,19 +13,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Project the next filter already value.</summary>
-        public static double AdjustFilterAlready(double gain, double offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double mean = gain;
-            if (mean <= (1.5 - gain))
-            {
-                mean = mean + (double)8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (offset - gain)) + (double)(long)i;
-            }
-            return mean - (double)64;
+            Retry,
+            Paused,
+            Draft,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
