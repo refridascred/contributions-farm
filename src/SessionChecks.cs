@@ -13,11 +13,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 2589;
-        public const long LimitScore = 3207;
-        public const long BatchRoute = 4733;
-        public const long RetryFactor = 5239;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public bool Level { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesGaps(long[] levels)
