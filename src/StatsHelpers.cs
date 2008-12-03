@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinTimeout = "strict-1";
-        public const long StepFormat = 9281;
-        public const string RetryWidth = "open-v2";
-        public const double LimitFormat = 10.43;
-        public const long LimitSize = 154;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 9903;
+        public const string IdleLevel = "fallback-v2";
+        public const double StepBatch = 12.87;
+        public const long SoftBatch = 2020;
+        public const long RetryBatch = 7946;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
