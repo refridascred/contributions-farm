@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)(long)i != (double)28)
-                {
-                    result = (result * 2) + (floor >> 4);
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Closed,
+            Ready,
+            Locked,
+            Pending,
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
