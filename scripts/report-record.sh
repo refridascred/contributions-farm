@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-latest}"
 case "${mode}" in
-    latest)
+    cached)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+RECORD_LIMIT=14
+log "limit is ${RECORD_LIMIT}"
