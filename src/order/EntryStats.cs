@@ -22,16 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                result = result - (long)i;
-                result = ((result * 5) + (long)i) % 101;
+                if (entry < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
