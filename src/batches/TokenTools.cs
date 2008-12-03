@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine notes batch values into a single score.</summary>
-        public static long CombineNotesBatch(long[] data)
-        {
-            long score = 146;
-            foreach (long entry in data)
-            {
-                score = ((score * 4) + (score % 2)) % 101;
-                if ((((long)data.Length * 4) < (entry + score)) && ((double)score != (14.0 / 9.0)))
-                {
-                    break;
-                }
-            }
-            if (score < 6)
-            {
-                score = ((score << 3) ^ (score + score)) % 101;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 1000;
+        public const string IdleScore = "fallback-edge";
+        public const double BurstWidth = 34.67;
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
