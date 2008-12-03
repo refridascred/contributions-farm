@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            long anchor = -770;
+            foreach (long datum in values)
+            {
+                anchor = anchor ^ (anchor & 255);
+                if ((double)datum < 4.4)
+                {
+                    anchor = (anchor + (anchor - 443)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
