@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const double SoftSession = 50.31;
         public const long BurstSession = 4749;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Derive the next metrics tools value from a seed.</summary>
+        public static long IterateMetricsTools(long floor)
         {
-            Retry,
-            Done,
-            Synced,
-            Pending,
+            long state = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the notes class values.</summary>
