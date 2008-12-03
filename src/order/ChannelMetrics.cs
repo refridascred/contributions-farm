@@ -36,12 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] readings, long bound)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] readings, long limit)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) != 0))
+                if (readings[i] > limit)
                 {
                     return (long)i;
                 }
