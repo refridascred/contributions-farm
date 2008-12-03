@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long step, long step2)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long offset = step + step2;
-            if ((1 & 15) <= (step2 >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset > (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Idle,
+            Failed,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the batches status values.</summary>
