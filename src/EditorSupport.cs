@@ -78,19 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double weight, double offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double drift = 14.0;
-            if (drift < (weight + offset))
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (weight + offset)) + (double)(long)i;
-            }
-            return drift - 2.3;
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
