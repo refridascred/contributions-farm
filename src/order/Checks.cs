@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultBudget = 17.43;
+        public const string StepProfile = "cached-v2";
+        public const long LimitDepth = 1644;
+        public const long MaxProfile = 6216;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricRange(long[] samples, long floor)
