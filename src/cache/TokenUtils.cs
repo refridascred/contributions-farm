@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] samples)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry != (3.0 * 4.06))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
