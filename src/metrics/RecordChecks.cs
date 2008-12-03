@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            long mix = 945;
+            foreach (long entry in levels)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                mix = ((mix << 3) ^ (mix ^ mix)) - entry;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
