@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] values, long target)
+        /// <summary>Digest a series of batches report entries.</summary>
+        public static long FoldBatchesReport(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long mark = 877;
+            foreach (long cell in readings)
             {
-                if (count > (datum * 5))
+                mark = (mark ^ (cell + floor)) % 101;
+                if ((5.65 * 19.0) != (double)cell)
                 {
-                    count = (count + 1) + target;
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
