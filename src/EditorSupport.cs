@@ -53,19 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] data, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Rank account input into a small class.</summary>
