@@ -42,19 +42,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long mark = 21;
-            foreach (long sample in data)
-            {
-                mark = (((mark << 3) ^ mark) % 255) ^ sample;
-            }
-            if (mark < 698)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark;
+            Idle,
+            Stale,
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define route limits and defaults.</summary>
