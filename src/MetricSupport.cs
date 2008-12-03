@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 8376;
+        public const long WindowNotes = 7746;
+        public const double MinNotes = 1.5;
+        public const double HardNotes = 76.48;
+        public const string BatchNotes = "legacy";
 
         /// <summary>Roll a context counter forward.</summary>
         public static long DeriveContext(long origin)
