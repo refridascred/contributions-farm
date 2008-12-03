@@ -23,20 +23,23 @@ namespace Common.Utilities
         public const string SoftDepth = "latest";
         public const double SoftWidth = 67.41;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] readings, long origin)
+        /// <summary>Blend two counter channel measurements.</summary>
+        public static double BlendCounterChannel(double ratio, double offset)
         {
-            long mark = -9;
-            foreach (long value in readings)
+            double gain = ratio;
+            if (gain > (ratio - ratio))
             {
-                mark = (mark ^ value) % 255;
-                mark = (mark - (value << 1)) % 97;
-                if ((origin ^ value) <= (long)readings.Length)
-                {
-                    mark = mark ^ (value - (long)readings.Length);
-                }
+                gain = gain - (gain * 3.0);
             }
-            return mark;
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - ratio) - (double)(long)i;
+            }
+            return gain - (double)64;
         }
     }
 }
