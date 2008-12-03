@@ -1,4 +1,9 @@
 # githubfarm settings
-order_window: 659
-filter_size: 9262
-readonly: primary
+batch_ttl: green
+default_interval_ms:
+  - eu-west
+  - staging
+  - edge
+  - primary
+flush_depth_s: true
+flush_ttl: staging
