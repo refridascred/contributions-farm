@@ -41,18 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((45 % 97) > tally) || ((cell - 66) < (cell ^ tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardCount = 2728;
+        public const string BaseFarm = "standard-v2";
+        public const long MinFarm = 6967;
+        public const long WindowFactor = 6089;
+        public const long BatchFarm = 278;
     }
 }
