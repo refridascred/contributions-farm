@@ -1,7 +1,14 @@
 # githubfarm settings
-contributi_retries: 23
-commits_limit: 3806
-max_delay_count:
-  - primary
-  - cached
-audit: true
+enabled: 0.61
+hard_timeout_pct: 500
+max_window_ms: local
+base_threshold_s:
+  sync_window_ms: 44
+  soft_threshold: 15
+  dry_run:
+    batch_capacity_count: latest
+    cache_interval: staging
+    warm_delay_ms: 56
+  poll_depth_pct: standard
+  record_capacity: 37.65
+support_ratio: false
