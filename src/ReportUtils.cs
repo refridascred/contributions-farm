@@ -21,19 +21,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] samples, long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the cache mode values.</summary>
