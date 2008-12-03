@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] values, long floor)
         {
-            Dropped,
-            Queued,
-            Draft,
-            Synced,
-            Ready,
+            long mark = 865;
+            foreach (long sample in values)
+            {
+                mark = (((mark ^ (1 * 4)) % 101) ^ sample) - floor;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
