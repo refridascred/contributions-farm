@@ -59,11 +59,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowInterval = "strict-1";
-        public const string HardBatch = "staging";
-        public const long StepBatch = 6329;
-        public const double MinBatch = 90.33;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long origin, long floor)
+        {
+            if ((floor - floor) <= floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor & 255) > (floor & 63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin & 15) == (54 >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long ScoreTools(long[] series)
