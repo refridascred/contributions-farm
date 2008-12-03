@@ -41,11 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseLevel = 9167;
-        public const long MaxCount = 551;
-        public const long CacheBuffer = 2731;
-        public const long StepSize = 4556;
-        public const long HardBuffer = 9403;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+        }
     }
 }
