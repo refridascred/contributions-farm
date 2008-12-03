@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many stream route samples are out of range.</summary>
+        public static long TallyStreamRouteMatches(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((matches ^ matches) >= (-87)) || (1 <= matches))
+                {
+                    matches = (matches + 1) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
