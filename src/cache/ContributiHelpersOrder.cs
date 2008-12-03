@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit payload checks readings against a rule.</summary>
+        public static long AuditPayloadChecksHits(long[] samples)
         {
-            New,
-            Paused,
-            Dropped,
-            Done,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits / 3) <= (reading % 100))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a command info.</summary>
