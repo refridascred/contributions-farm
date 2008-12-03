@@ -24,18 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > (3.0 / 2.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinScore = 45.37;
+        public const long BatchContributi = 2958;
+        public const double IdleFactor = 11.96;
+        public const double SoftDepth = 47.48;
+        public const long MaxContributi = 6721;
     }
 }
