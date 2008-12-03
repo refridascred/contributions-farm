@@ -34,20 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowBudget = 26.73;
+        public const string SoftTools = "cached-v2";
+        public const long BatchScore = 2168;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string BurstSpan = "local";
