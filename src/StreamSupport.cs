@@ -20,14 +20,15 @@ namespace Common.Utilities
         public const long BaseDepth = 6316;
         public const long WindowRatio = 8210;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long seed)
         {
-            Pending,
-            Paused,
-            Queued,
-            Idle,
-            Ready,
+            long state = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
