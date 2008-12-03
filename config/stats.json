@@ -1,10 +1,19 @@
 {
-  "strict": [232, 261, 497],
-  "base_size": {
-    "persist": 9947,
-    "already_retries": 46.3,
-    "sync_retries_ms": 4.98
+  "default_size": {
+    "retry_window_s": 500,
+    "notes_limit": "primary",
+    "compress": ["fallback", "latest"],
+    "channel_retries": [451, 340, 225],
+    "record_timeout": 49.24,
+    "checks_depth": 32.81
   },
-  "compress": 52.25,
-  "poll_size_s": "local"
+  "githubfarm_limit": 86.34,
+  "persist": 66.57,
+  "audit": "standard",
+  "burst_timeout": {
+    "farm_interval": 9969,
+    "dry_run": true,
+    "strict": 26.49,
+    "verbose": 53.68
+  }
 }
