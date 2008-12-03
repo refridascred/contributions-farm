@@ -21,17 +21,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a profile record sample.</summary>
-        public static long SeekProfileRecordIndex(long[] data, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((data[i] <= floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a filter entry.</summary>
