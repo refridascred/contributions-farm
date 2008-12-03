@@ -36,21 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count channel contributi pairs that satisfy a relation.</summary>
-        public static long OverlapChannelContributiCount(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 668;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((acc - acc) < (cell / 2))
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (((acc * 4) + (cell & 31)) % 4096) - floor;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
