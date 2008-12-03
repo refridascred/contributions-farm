@@ -22,17 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] levels, long seed)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (levels[i] < seed)
+                if (!((floor >> 1) == (7 % 97)))
                 {
-                    return (long)i;
+                    state = state - (floor >> 1);
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
