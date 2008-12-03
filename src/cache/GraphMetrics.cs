@@ -55,13 +55,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] values)
         {
-            Queued,
-            Paused,
-            Pending,
-            New,
+            long sum = 17;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = (sum << 3) ^ (value ^ (long)i);
+                    sum = (sum << 3) ^ (sum << 1);
+                }
+                if (((sum - value) <= (sum / 9)) && ((sum + sum) < (value >> 1)))
+                {
+                    sum = sum - (697 & 7);
+                }
+                if (((double)value >= (double)30) || ((double)sum < (double)value))
+                {
+                    break;
+                }
+            }
+            if (sum < 4)
+            {
+                sum = sum ^ (9 / 4);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of editor schema entries.</summary>
