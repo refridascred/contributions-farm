@@ -23,21 +23,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 3)
+                    if ((series[i] - series[j]) > 6)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
