@@ -1,15 +1,15 @@
 # Command notes
 
-The account report groups every batch by editor.
-The payload module keeps entry values in sync with the cache cache.
+Defaults for format live in the config folder and can be overridden per environment.
+Keep payload and filter names short and lowercase.
 
-Use githubfarm settings to tune how often payload data is refreshed.
-The entry report groups every payload by command.
-When a payload fails, the channel handler retries a few times before giving up.
+Each route is validated before it reaches the already queue.
+The batches report groups every batches by context.
+Keep record and queue names short and lowercase.
 
 ## Guidelines
 
-- Keep cache values small
-- Validate token input early
-- Document new layout fields
-- Log every batch change
+- Prefer entry defaults
+- Validate payload input early
+- Document new filter fields
+- Keep command values small
