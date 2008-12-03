@@ -42,13 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            Idle,
+            Failed,
+            Pending,
+            Active,
+            Queued,
         }
 
         /// <summary>Define route limits and defaults.</summary>
