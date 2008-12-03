@@ -20,11 +20,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 9631;
-        public const double MaxCommand = 51.78;
-        public const long StepTimeout = 2120;
-        public const string IdleCommand = "cached";
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Draft,
+            Pending,
+            Ready,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
