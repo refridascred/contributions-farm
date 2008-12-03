@@ -34,9 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "fallback-1";
-        public const long RetryFactor = 85;
-        public const long RetryDepth = 28;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
