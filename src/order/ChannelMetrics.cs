@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double bias)
+        /// <summary>Audit cache graph readings against a rule.</summary>
+        public static long CountCacheGraphGaps(long[] samples)
         {
-            double bias2 = (bias * 8.25) + (double)28;
-            if (bias2 >= (bias2 / 7.0))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                bias2 = (bias2 + 18.0) + scale;
+                if ((sample & 7) >= (267 >> 5))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 - (bias2 - 0.29);
+            return hits;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
