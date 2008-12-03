@@ -36,12 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
