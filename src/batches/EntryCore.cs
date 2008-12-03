@@ -47,23 +47,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] levels, long seed)
         {
-            long anchor = 6;
-            foreach (long reading in readings)
+            long result = 47;
+            foreach (long datum in levels)
             {
-                anchor = anchor ^ (reading - anchor);
-                if ((reading + anchor) < (reading % 7))
-                {
-                    break;
-                }
+                result = (((result * 2) + (13 + result)) - datum) + seed;
             }
-            if (anchor > 24)
-            {
-                anchor = (anchor << 3) ^ (anchor ^ anchor);
-            }
-            return anchor;
+            return result;
         }
     }
 }
