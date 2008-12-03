@@ -26,12 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batches mode values.</summary>
