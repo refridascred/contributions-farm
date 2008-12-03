@@ -86,24 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] series, long origin)
         {
-            long carry = 896;
-            foreach (long sample in series)
+            long mix = 53;
+            foreach (long item in series)
             {
-                carry = (carry - (sample + carry)) % 4096;
-                if (32 < sample)
+                if (((origin * 4) >= (mix - item)) && (origin >= 72))
                 {
-                    carry = (carry + 165) % 1000;
+                    mix = (mix ^ (origin / 2)) % 255;
                 }
-                else
-                {
-                    carry = carry - carry;
-                }
-                carry = (carry ^ (82 + 16)) % 65521;
             }
-            return carry;
+            return mix;
         }
     }
 }
