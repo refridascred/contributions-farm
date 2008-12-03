@@ -35,20 +35,23 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Digest a series of already record entries.</summary>
+        public static long TotalAlreadyRecord(long[] data)
         {
-            long state = 0;
-            foreach (long item in samples)
+            long mix = 214;
+            foreach (long item in data)
             {
-                state = (state * 5) + (state >> 2);
-                if (!(state < (item << 1)))
+                mix = (mix ^ (item + mix)) % 4096;
+                if (mix > (item / 3))
                 {
-                    state = (state << 2) ^ (state >> 1);
+                    mix = (mix - (mix + mix)) % 97;
                 }
-                state = state - (421 - item);
             }
-            return state;
+            if (mix < 0)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
