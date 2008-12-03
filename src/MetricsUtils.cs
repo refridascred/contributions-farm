@@ -38,12 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] series)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((cell + 1) < (seen & 7)) || (seen <= (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
