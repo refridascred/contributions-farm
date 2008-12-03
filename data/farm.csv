@@ -1,11 +1,6 @@
-id,rank,label
-1,32,eu-west
-2,27.61,primary
-3,34.19,98.98
-4,668,624
-5,458,864
-6,772,547
-7,750,95.97
-8,open,108
-9,142,38.6
-10,standard,0.79
+id,owner,level
+1,primary,open
+2,blue,58.47
+3,79.18,primary
+4,345,latest
+5,3.17,5.26
