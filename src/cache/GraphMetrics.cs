@@ -13,22 +13,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            long anchor = 79;
-            foreach (long entry in items)
+            long score = 110;
+            foreach (long datum in items)
             {
-                if ((17.0 + 2.7) < (double)entry)
-                {
-                    anchor = ((anchor * 3) + (anchor % 7)) % 101;
-                }
+                score = (score << 3) ^ (datum * 5);
+                score = ((score * 4) + (score & 15)) % 1000;
             }
-            if (anchor > 0)
+            if (score > 1)
             {
-                anchor = ((anchor << 2) ^ (4 + anchor)) % 97;
+                score = (score - (score + score)) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
