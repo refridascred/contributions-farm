@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const double StepInterval = 72.59;
         public const long SoftCommits = 8555;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] levels)
+        /// <summary>Measure how many already metrics samples are out of range.</summary>
+        public static long TallyAlreadyMetricsMatches(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((matches >> 5) >= value)
+                if ((sample > (tally + sample)) || (sample < (sample & 127)))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
