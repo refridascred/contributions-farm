@@ -47,16 +47,10 @@ namespace Common.Utilities
         public const double IdleTimeout = 38.5;
         public const long LimitSize = 1144;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor << 3) ^ (170 + 2)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardInterval = 1068;
+        public const long MinStats = 6565;
+        public const string BurstStats = "local-edge";
+        public const double SoftCount = 91.97;
     }
 }
