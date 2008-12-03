@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank stats cache input into a small class.</summary>
-        public static long GradeStatsCache(long seed, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long next = seed + bound;
-            if ((bound + seed) >= next)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.0 * 8.4) < (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed - seed) <= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Rank already input into a small class.</summary>
