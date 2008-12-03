@@ -1,10 +1,17 @@
 {
-  "persist": {
-    "burst_interval_s": "cached",
-    "readonly": "fallback",
-    "persist": false
-  },
-  "flush_ttl_s": true,
-  "route_size": 28.34,
-  "metrics_interval": true
+  "cache_timeout_pct": 9870,
+  "soft_depth": 1024,
+  "max_retries_pct": {
+    "metrics_window": "standard",
+    "checks_capacity": 6640,
+    "warm_interval_pct": {
+      "idle_timeout_pct": true,
+      "commits_size": false,
+      "contributi_timeout": 36,
+      "min_interval": false,
+      "schema_size": "fallback"
+    },
+    "burst_delay": ["legacy", "legacy", "edge"],
+    "batch_timeout": 33
+  }
 }
