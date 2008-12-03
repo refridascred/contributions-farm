@@ -56,15 +56,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the profile schema series from a seed.</summary>
-        public static long StepProfileSchema(long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double ratio, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            double bias = (double)4 * 20.0;
+            if (bias < span)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                bias = (bias + 4.03) - ratio;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - (span * 8.0);
         }
     }
 }
