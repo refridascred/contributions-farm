@@ -20,15 +20,9 @@ namespace Common.Utilities
             return (load + 2.93) + floor;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double ratio, double span)
-        {
-            double mean = span;
-            if (mean < (ratio - span))
-            {
-                mean = mean - span;
-            }
-            return mean + (3.8 - mean);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseTimeout = 9986;
+        public const long CacheSpan = 4973;
+        public const long LimitProfile = 2809;
     }
 }
