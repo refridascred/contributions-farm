@@ -18,20 +18,19 @@ namespace Common.Utilities
         public const double CacheCount = 13.29;
         public const long DefaultRatio = 1313;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Validate route filter readings against a bound.</summary>
+        public static bool GuardRouteFilterRange(long[] samples, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((double)6 == (double)offset)
+                if (entry <= floor)
                 {
-                    carry = (carry + offset) % 97;
+                    stale = false;
+                    break;
                 }
-                carry = (carry - (carry + (long)i)) % 255;
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
