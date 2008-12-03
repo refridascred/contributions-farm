@@ -36,21 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Queued,
+            Retry,
+            Stale,
         }
     }
 }
