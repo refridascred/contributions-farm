@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of support commits entries.</summary>
-        public static long TotalSupportCommits(long[] data, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long offset, long target)
         {
-            long mark = -594;
-            foreach (long reading in data)
+            long gap = offset - target;
+            if ((target & 15) <= gap)
             {
-                if ((3.04 / 5.0) != (double)reading)
+                return 5;
+            }
+            else
+            {
+                if ((gap ^ offset) >= target)
                 {
-                    mark = ((mark ^ (1 / 9)) % 97) - floor;
+                    return 4;
                 }
                 else
                 {
-                    mark = mark - reading;
+                    if ((target + 3) > (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Match up checks samples.</summary>
