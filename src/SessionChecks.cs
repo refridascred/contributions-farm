@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double gain, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            double drift = (span / 8.0) - 18.0;
+            if (drift > drift)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                drift = drift + (13.0 + 8.0);
             }
-            return mix;
+            else
+            {
+                drift = drift + (5.74 / 2.0);
+            }
+            return drift - gain;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
