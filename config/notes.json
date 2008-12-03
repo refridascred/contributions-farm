@@ -1,21 +1,5 @@
 {
-  "cluster_interval": 250,
-  "dry_run": 61,
-  "metric_size": {
-    "warm_ttl_s": false,
-    "layout_ttl": false,
-    "burst_capacity_pct": {
-      "hard_depth_pct": 10.35,
-      "max_window_count": false,
-      "hard_limit_ms": 48,
-      "strict": 8653,
-      "burst_threshold": true,
-      "soft_ratio_count": true
-    },
-    "default_delay_count": 4886,
-    "verbose": "standard",
-    "buffer_threshold": true
-  },
-  "retry_threshold": 6371,
-  "already_depth": false
+  "warm_retries": 98,
+  "min_window": ["open", "local"],
+  "default_interval_count": "latest"
 }
