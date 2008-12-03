@@ -27,15 +27,12 @@ namespace Common.Utilities
         public const double RetryInterval = 62.61;
         public const long LimitBudget = 2004;
 
-        /// <summary>Scale a checks tools figure with a bias.</summary>
-        public static double SmoothChecksTools(double rate, double floor)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double gain = (double)(22 >> 5);
-            if (gain > (double)202)
-            {
-                gain = (gain + rate) + floor;
-            }
-            return gain + (gain - gain);
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
