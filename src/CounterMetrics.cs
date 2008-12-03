@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 8;
+            foreach (long cell in data)
             {
-                if ((values[i] > step) && ((values[i] % 5) == 0))
+                state = ((state << 3) ^ state) % 65521;
+                if (((state + 8) < ((long)data.Length + cell)) && (state <= (cell ^ cell)))
                 {
-                    return (long)i;
+                    state = (state - (state - 922)) % 101;
                 }
             }
-            return -1;
+            if (state > 94)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a record options.</summary>
