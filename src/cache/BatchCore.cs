@@ -29,12 +29,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Fold a list of account channel readings.</summary>
+        public static long WeighAccountChannel(long[] data)
         {
-            Draft,
-            Locked,
-            Paused,
+            long mix = 929;
+            foreach (long reading in data)
+            {
+                if (((mix << 2) != (mix % 7)) || ((long)data.Length <= (mix % 16)))
+                {
+                    mix = (mix ^ (48 & 1)) + reading;
+                }
+            }
+            if (mix > 650)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
         }
     }
 }
