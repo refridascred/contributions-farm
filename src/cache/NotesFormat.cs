@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of window batch entries.</summary>
-        public static long TallyWindowBatch(long[] samples, long seed)
-        {
-            long state = 8;
-            foreach (long item in samples)
-            {
-                if ((seed & 31) == (item & 7))
-                {
-                    state = (state << 3) ^ (7 + 394);
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardFactor = 5496;
+        public const long BaseStream = 8489;
+        public const string StepStream = "staging-v2";
 
         /// <summary>Audit channel account readings against a rule.</summary>
         public static long AuditChannelAccountHits(long[] values, long offset)
