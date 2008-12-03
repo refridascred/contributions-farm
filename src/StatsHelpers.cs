@@ -26,12 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            New,
+            Stale,
+            Idle,
+            Paused,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
