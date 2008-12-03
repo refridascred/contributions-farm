@@ -59,19 +59,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double rate, double bias)
+        /// <summary>Grade a stream payload value against two limits.</summary>
+        public static long BucketStreamPayload(long seed, long seed2)
         {
-            double mean = bias;
-            if (mean > bias)
+            long diff = seed + seed2;
+            if (!(diff >= seed))
             {
-                mean = (mean - (bias - bias)) - rate;
+                return 3;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean + 7.8) - (double)(long)i;
+                if (seed > (seed2 + seed2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((diff > (seed2 + diff)) || ((seed2 >> 4) <= (diff ^ 17)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3 / 8) < (seed + diff))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return mean + mean;
         }
 
         /// <summary>Blend two githubfarm order measurements.</summary>
