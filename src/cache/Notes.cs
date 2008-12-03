@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] readings, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally - tally) < (bound + 4))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
