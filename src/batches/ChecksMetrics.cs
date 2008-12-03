@@ -83,13 +83,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Idle,
-            Active,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheScore = 3807;
+        public const long MinBatch = 4595;
+        public const string DefaultScore = "standard-1";
     }
 }
