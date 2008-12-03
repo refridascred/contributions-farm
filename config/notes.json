@@ -1,17 +1,12 @@
 {
-  "enabled": {
-    "cache_ttl_s": 16.1,
-    "flush_timeout_ms": false,
-    "poll_threshold_ms": {
-      "max_timeout_count": 1024,
-      "record_interval": [98, 25],
-      "poll_depth": "staging",
-      "batch_ttl_ms": true
-    },
-    "channel_window": "latest",
-    "default_ttl_count": "primary"
-  },
-  "base_ttl_ms": 91,
-  "cache_interval": 8,
-  "cache_timeout": "local"
+  "warm_capacity_pct": 73,
+  "stream_ttl": "local",
+  "compress": "latest",
+  "retry_ttl_s": {
+    "stream_capacity": 30,
+    "soft_window_pct": "strict",
+    "hard_interval_pct": "standard",
+    "sync_window_s": [4, 256],
+    "soft_interval_ms": false
+  }
 }
