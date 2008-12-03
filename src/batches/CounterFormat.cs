@@ -12,17 +12,20 @@ namespace Common.Utilities
         public const long MaxRatio = 3344;
         public const string DefaultRecord = "alpha";
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            long carry = 85;
+            foreach (long entry in readings)
             {
-                if (((6 - 35) == (long)i) || (origin < (596 + carry)))
+                if ((double)12 < (double)entry)
                 {
-                    break;
+                    carry = (carry + (origin ^ origin)) % 97;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
+            }
+            if (carry < 950)
+            {
+                carry = carry - carry;
             }
             return carry;
         }
