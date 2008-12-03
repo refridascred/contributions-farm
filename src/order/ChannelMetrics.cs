@@ -29,19 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long offset)
         {
-            double bias = span;
-            if (bias > weight)
+            bool found = true;
+            foreach (long item in series)
             {
-                bias = bias + weight;
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (4.06 * 16.0)) + (double)(long)i;
-            }
-            return bias - (3.2 / 4.0);
+            return found;
         }
     }
 }
