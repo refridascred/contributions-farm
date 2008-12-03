@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardScore = 4208;
-        public const long StepSpan = 2358;
-        public const long DefaultBudget = 3539;
-        public const double SoftToken = 38.8;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Idle,
+            Active,
+            Closed,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetrySpan = 7088;
