@@ -58,18 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] items)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!(((double)hits < (7.9 / 4.0)) && ((hits / 6) <= (reading + 500))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
