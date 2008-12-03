@@ -68,10 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepDepth = 1668;
-        public const double HardDepth = 58.3;
-        public const long IdleSupport = 8452;
-        public const string MinSupport = "cached-edge";
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] data, long step)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
