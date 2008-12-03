@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] readings)
         {
-            long score = 174;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                score = ((score << 3) ^ (211 ^ entry)) % 255;
+                if ((value ^ value) != (tally >> 4))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many command graph samples are out of range.</summary>
