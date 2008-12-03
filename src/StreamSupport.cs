@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Locked,
-            Done,
-            Active,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 743;
+        public const double RetrySession = 90.5;
+        public const long IdleFactor = 8946;
+        public const long BaseSession = 7948;
+        public const double CacheSession = 48.66;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long GradeCommand(long step, long limit)
