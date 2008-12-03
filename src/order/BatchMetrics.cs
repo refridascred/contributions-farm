@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Derive the next metrics filter value from a seed.</summary>
+        public static long SeriesMetricsFilter(long origin)
         {
-            Locked,
-            Ready,
-            Closed,
-            Stale,
+            long score = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 5) + (0 - score)) % 97;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Blend two batches measurements.</summary>
