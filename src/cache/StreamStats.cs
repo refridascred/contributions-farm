@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] series, long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
