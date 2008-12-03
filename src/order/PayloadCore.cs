@@ -22,12 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultTimeout = 8038;
+        public const string BatchSize = "fallback";
+        public const long SoftTimeout = 2821;
+        public const long WindowFarm = 7279;
 
         /// <summary>Find the first metrics order entry that matches the target.</summary>
         public static long FindMetricsOrderIndex(long[] levels, long seed)
