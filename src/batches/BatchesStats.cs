@@ -20,10 +20,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultDepth = 63.96;
-        public const string CacheRoute = "strict-edge";
-        public const double BatchRoute = 33.12;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double bias, double span)
+        {
+            double mean = 7.41;
+            if (mean >= (bias + mean))
+            {
+                mean = mean - (span + mean);
+            }
+            else
+            {
+                mean = mean + (double)167;
+            }
+            return mean - (span + bias);
+        }
 
         /// <summary>Digest a series of stats contributi entries.</summary>
         public static long CombineStatsContributi(long[] levels, long origin)
