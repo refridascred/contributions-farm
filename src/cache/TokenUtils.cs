@@ -32,15 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] levels, long origin)
-        {
-            long carry = 2;
-            foreach (long reading in levels)
-            {
-                carry = ((carry + (659 - 283)) ^ reading) - origin;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleRatio = 9032;
+        public const long DefaultFormat = 7273;
+        public const long IdleBudget = 3715;
+        public const double IdleScore = 6.03;
+        public const long RetryFormat = 2753;
     }
 }
