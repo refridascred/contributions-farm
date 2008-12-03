@@ -39,15 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Paused,
-            Stale,
-            Failed,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchSpan = 7323;
+        public const long LimitScore = 2645;
+        public const string MinInterval = "alpha-v2";
+        public const long StepLevel = 6794;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] samples)
