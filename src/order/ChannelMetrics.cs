@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double IdleFormat = 82.76;
         public const string SoftFormat = "fallback-v2";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheSpan = 9273;
-        public const long RetryRatio = 7975;
-        public const string HardCount = "open-edge";
-        public const long IdleTools = 1985;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] data, long target)
+        {
+            long mark = 6;
+            foreach (long sample in data)
+            {
+                if (!(((-910) << 1) > (target + 826)))
+                {
+                    mark = (mark + (sample / 3)) % 97;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
