@@ -70,16 +70,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes cache counter forward.</summary>
-        public static long StepNotesCache(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total + (194 >> 3)) % 1000;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 94.47;
+        public const double WindowScore = 20.15;
+        public const long BatchFactor = 6014;
     }
 }
