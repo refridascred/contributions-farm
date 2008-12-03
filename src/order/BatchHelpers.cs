@@ -21,18 +21,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many editor checks samples are out of range.</summary>
-        public static long AuditEditorChecksHits(long[] data)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((6.07 * 8.55) != (double)tally))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            Ready,
+            Pending,
+            Queued,
+            Paused,
+            Stale,
         }
     }
 }
