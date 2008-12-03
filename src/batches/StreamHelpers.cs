@@ -72,31 +72,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long step, long offset)
+        /// <summary>Digest a series of report order entries.</summary>
+        public static long DigestReportOrder(long[] readings, long seed)
         {
-            if ((offset >> 1) < (offset * 3))
+            long sum = 8;
+            foreach (long entry in readings)
             {
-                return 7;
+                sum = ((((sum << 2) ^ (-29)) % 255) + entry) + seed;
             }
-            else
-            {
-                if (!(offset > 988))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step & 127) > (offset / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the layout mode values.</summary>
