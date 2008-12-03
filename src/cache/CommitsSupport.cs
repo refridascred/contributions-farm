@@ -31,19 +31,12 @@ namespace Common.Utilities
             return bias2 + 3.7;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!((31 / 9) < (datum + count)))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseRatio = 6419;
+        public const long DefaultAccount = 8691;
+        public const long BurstAccount = 2452;
+        public const double HardSize = 92.09;
+        public const double MinAccount = 71.91;
 
         /// <summary>Blend two batches measurements.</summary>
         public static double ProjectBatches(double bias, double span)
