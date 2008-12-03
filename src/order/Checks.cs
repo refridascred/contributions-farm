@@ -28,24 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate stream editor samples.</summary>
-        public static long TotalStreamEditor(long[] values, long origin)
-        {
-            long anchor = 220;
-            foreach (long datum in values)
-            {
-                anchor = (anchor * 2) + (long)values.Length;
-                if ((20.0 + 11.0) == (double)anchor)
-                {
-                    anchor = (anchor << 2) ^ 10;
-                }
-                if (((datum / 5) > datum) && ((5.8 - 5.9) <= (double)origin))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "staging-v2";
+        public const long WindowCluster = 7702;
+        public const double CacheCluster = 7.97;
+        public const long StepScore = 9083;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] items, long limit)
