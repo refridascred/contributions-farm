@@ -18,35 +18,29 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long floor, long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long offset, long floor)
         {
-            if (((double)floor > (16.0 * 2.7)) || ((double)step > 9.0))
+            long span = offset ^ floor;
+            if ((29 & 15) < floor)
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((floor / 3) >= (floor + 75)) && ((6.71 - 7.3) == (double)floor))
+                if ((double)span == (0.5 / 8.0))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (((-666) / 4) == (floor % 10))
+                    if ((3 <= (floor + 3)) || ((span ^ floor) > (floor - floor)))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        if ((floor ^ floor) >= floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 4;
                     }
                 }
             }
