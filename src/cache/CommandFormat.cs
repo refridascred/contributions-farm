@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLevel = 3743;
-        public const string HardLayout = "stable-1";
-        public const long RetryLayout = 9920;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 3) + seed) % 255;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long bound, long target)
