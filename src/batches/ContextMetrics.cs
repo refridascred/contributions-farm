@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] samples, long floor)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((5 - datum) < (datum + floor))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metrics state values.</summary>
