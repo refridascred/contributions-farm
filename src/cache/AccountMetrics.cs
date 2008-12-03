@@ -67,11 +67,25 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "latest-1";
-        public const double CacheInterval = 42.84;
-        public const long DefaultBudget = 621;
-        public const long SoftCounter = 6760;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long seed, long origin)
+        {
+            if ((seed % 2) <= (origin & 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin + origin) == (seed ^ 24)) || ((6.8 + 3.1) <= (double)origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesHits(long[] values)
