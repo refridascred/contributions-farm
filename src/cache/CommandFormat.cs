@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double bias, double floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double bias2 = floor;
-            if (bias2 <= 1.9)
-            {
-                bias2 = bias2 + (bias + 8.73);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + floor) + (double)(long)i;
-            }
-            return bias2 - (double)91;
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
