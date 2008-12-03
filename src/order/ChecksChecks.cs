@@ -24,21 +24,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up cache queue samples.</summary>
-        public static long CompareCacheQueueCount(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -9;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = (mark ^ value) % 255;
+                mark = (mark - (value << 1)) % 97;
+                if ((origin ^ value) <= (long)readings.Length)
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark ^ (value - (long)readings.Length);
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
