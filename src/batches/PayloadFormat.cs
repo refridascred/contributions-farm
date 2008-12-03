@@ -56,12 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftSpan = 81.0;
-        public const long BasePayload = 833;
-        public const long IdleSize = 5739;
-        public const double RetryInterval = 13.13;
-        public const long IdleLevel = 2678;
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricMatches(long[] series, long seed)
