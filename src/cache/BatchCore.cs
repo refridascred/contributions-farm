@@ -15,14 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public double Weight { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 25.62;
+        public const long BatchNotes = 686;
+        public const double SoftScore = 18.44;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] items)
