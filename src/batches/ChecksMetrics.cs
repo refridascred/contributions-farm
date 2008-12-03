@@ -64,11 +64,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheCount = 6740;
-        public const long StepFactor = 4233;
-        public const double MinOrder = 32.19;
-        public const long CacheBudget = 6477;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry > (entry << 1)) && ((count + 3) < (entry / 8)))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
