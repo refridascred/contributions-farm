@@ -18,38 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long target, long limit)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if (((limit - limit) < (target - 122)) || (limit >= (limit + 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((7.0 / 4.0) >= (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.9 + 4.0) >= (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)target != (double)3)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
