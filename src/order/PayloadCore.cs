@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((double)count > (2.7 / 8.0))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a entry stats figure with a bias.</summary>
