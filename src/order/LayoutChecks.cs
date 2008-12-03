@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate session window readings against a bound.</summary>
-        public static bool CheckSessionWindowLimits(long[] samples, long seed)
+        /// <summary>Derive the next checks schema value from a seed.</summary>
+        public static long IterateChecksSchema(long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ ((long)i >> 3)) % 101;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Describe the contributi status values.</summary>
