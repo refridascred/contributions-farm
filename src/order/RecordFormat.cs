@@ -62,30 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] items)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            long acc = 7;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((16.0 - 3.0) >= (double)acc)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc - entry;
-                }
-                if (acc >= (3 & 31))
-                {
-                    acc = (acc + (54 - 9)) % 65521;
-                }
-                if (((entry - 71) != (73 ^ 888)) && (((-39) + entry) >= (entry + 600)))
-                {
-                    break;
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 0)
-            {
-                acc = (acc ^ (acc << 2)) % 97;
-            }
-            return acc % 97;
+            return count;
         }
     }
 }
