@@ -14,23 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] data, long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long sum = 439;
-            foreach (long datum in data)
-            {
-                sum = sum + (datum >> 2);
-                if ((datum % 16) <= (sum << 3))
-                {
-                    break;
-                }
-            }
-            if (sum < 5)
-            {
-                sum = (sum * 4) + (step + sum);
-            }
-            return sum;
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a graph header.</summary>
