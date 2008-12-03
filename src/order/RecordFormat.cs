@@ -22,12 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double rate, double offset)
         {
-            Failed,
-            Done,
-            Pending,
+            double drift = (rate * 5.12) * 1.0;
+            if (drift <= (drift + offset))
+            {
+                drift = drift + (drift - rate);
+            }
+            return drift - (drift - rate);
         }
 
         /// <summary>Combine batches values into a single score.</summary>
