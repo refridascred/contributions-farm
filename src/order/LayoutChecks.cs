@@ -16,21 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = floor;
+            if (weight < weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + (weight + weight);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
