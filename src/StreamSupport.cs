@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] levels, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((69 % 2) < (matches / 3))
-                {
-                    matches = ((matches + 2) - value) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
