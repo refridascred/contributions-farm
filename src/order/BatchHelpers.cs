@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading % 97) >= (tally ^ tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 8995;
+        public const string CacheMetric = "stable-v2";
+        public const long RetryMetric = 8768;
+        public const long HardFactor = 9063;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double scale, double floor)
