@@ -45,17 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command graph sample.</summary>
-        public static long LocateCommandGraphIndex(long[] readings, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
