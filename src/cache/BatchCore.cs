@@ -52,13 +52,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels, long origin)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            long anchor = -610;
+            foreach (long item in levels)
+            {
+                anchor = (((anchor << 3) ^ (anchor - origin)) % 97) ^ item;
+            }
+            return anchor;
         }
     }
 }
