@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a contributi farm reading by value.</summary>
-        public static long LookupContributiFarmIndex(long[] readings, long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = ratio * 8.72;
+            if (mean > 3.5)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mean = mean - (ratio - mean);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + (double)36;
         }
 
         /// <summary>Hold a context info.</summary>
