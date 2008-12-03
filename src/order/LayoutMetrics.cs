@@ -38,31 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a route cluster pair into a bucket.</summary>
-        public static long GradeRouteCluster(long limit, long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long floor)
         {
-            if ((double)seed >= (4.0 / 2.0))
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed <= 2.0)
+                if ((double)(long)i == (double)floor)
                 {
-                    return 4;
+                    anchor = anchor ^ (5 * 3);
+                    anchor = anchor - anchor;
+                    continue;
                 }
-                else
-                {
-                    if (((808 ^ 6) != (limit + seed)) || ((714 / 2) <= (seed ^ limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
+            return anchor;
         }
     }
 }
