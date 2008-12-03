@@ -1,24 +1,4 @@
 # githubfarm settings
-batch_delay_s: 60
-soft_ttl_s:
-  - 217
-  - 319
-  - 323
-poll_size_ms:
-  poll_timeout:
-    - 371
-    - 432
-    - 397
-    - 254
-  counter_threshold:
-    - 248
-    - 206
-    - 173
-  min_capacity_s: 30
-audit: strict
-burst_retries:
-  - 242
-  - 473
-  - 403
-  - 433
-editor_capacity: open
+enabled: true
+retry_timeout: 35
+retry_depth_pct: 97.31
