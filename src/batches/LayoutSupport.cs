@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double ratio, double span)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long target, long bound)
         {
-            double mean = (double)1 * 0.4;
-            if (mean >= (mean * 7.62))
+            if ((216 % 16) > (target + 383))
             {
-                mean = mean - mean;
+                return 7;
             }
             else
             {
-                mean = mean + span;
+                if ((4 ^ target) < bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target >> 1) == (504 / 4)) || ((double)target != (5.0 / 2.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((6.2 - 0.8) <= (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + (ratio / 3.0);
         }
 
         /// <summary>Define support limits and defaults.</summary>
