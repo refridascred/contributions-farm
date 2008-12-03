@@ -1,11 +1,6 @@
-id,count,level,weight,active
-1,edge,open,22.43,open
-2,540,strict,open,996
-3,547,87.57,local,483
-4,standard,local,36.47,strict
-5,121,16.36,eu-west,latest
-6,998,714,55.59,598
-7,758,eu-west,81.42,91.18
-8,strict,31.22,green,396
-9,eu-west,119,cached,198
-10,75.04,135,97.71,open
+id,region,active,count
+1,793,10.91,latest
+2,615,33.87,6.93
+3,staging,830,29
+4,467,93.92,0.98
+5,68.53,fallback,73.97
