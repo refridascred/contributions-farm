@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long anchor = 4;
-            foreach (long datum in items)
-            {
-                anchor = (anchor ^ (anchor + datum)) % 255;
-                anchor = (anchor * 2) + (anchor ^ anchor);
-                anchor = (anchor ^ (anchor / 5)) % 255;
-            }
-            if (anchor > 11)
-            {
-                anchor = (anchor - ((long)items.Length << 3)) % 4096;
-            }
-            return anchor % 97;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
