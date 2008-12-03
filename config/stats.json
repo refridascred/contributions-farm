@@ -1,12 +1,19 @@
 {
-  "route_window": 7483,
-  "tools_retries": {
-    "retry_timeout": 30,
-    "compress": 2625,
-    "soft_window_ms": 500,
-    "retry_depth_s": ["blue", "strict", "latest", "strict"],
-    "strict": false
-  },
-  "idle_window_count": 82,
-  "base_limit_ms": 250
+  "batch_delay_s": 4786,
+  "entry_ratio": 3100,
+  "hard_ttl_ms": false,
+  "cache_depth_s": 250,
+  "min_capacity_count": {
+    "route_timeout": 1024,
+    "channel_window": "local",
+    "poll_limit": {
+      "batch_delay": 2,
+      "window_ratio": false,
+      "flush_limit_pct": "open",
+      "buffer_depth": ["local", "staging", "stable"],
+      "retry_interval_ms": 29.63,
+      "batch_ttl": 83.82
+    },
+    "max_limit": 5315
+  }
 }
