@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] readings, long floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long mark = 883;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6 + floor) > (floor - mark))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark + (long)readings.Length;
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark << 2) ^ (item ^ item)) % 65521;
             }
-            if (mark < 858)
-            {
-                mark = mark ^ (floor % 100);
-            }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Hold a stream record.</summary>
