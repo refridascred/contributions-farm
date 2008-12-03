@@ -1,18 +1,8 @@
 {
-  "tools_delay": {
-    "persist": 8,
-    "counter_retries": [142, 427],
-    "audit": {
-      "min_limit": "cached",
-      "graph_size": false,
-      "strict": 1633,
-      "max_ttl_s": "strict",
-      "entry_size": "fallback",
-      "warm_retries_s": 94
-    },
-    "base_ttl_ms": 1740,
-    "sync_limit_s": "strict"
-  },
-  "command_retries": true,
-  "batch_interval_s": 11
+  "min_delay": false,
+  "metric_ttl": false,
+  "batch_timeout_ms": ["green", "local"],
+  "support_retries": 250,
+  "tools_ttl": true,
+  "cache_timeout_s": "staging"
 }
