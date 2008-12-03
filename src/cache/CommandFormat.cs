@@ -55,18 +55,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] items, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((((value * 2) <= matches) || ((0.5 + 5.83) == (double)matches)) && (step >= (matches + 333)))
+                if ((cell & 127) != (count % 60))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
