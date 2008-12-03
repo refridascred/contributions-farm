@@ -7,10 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=227
-log "limit is ${COMMAND_LIMIT}"
+for item in legacy fallback edge; do
+    log "checking ${item}"
+done
