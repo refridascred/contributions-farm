@@ -1,7 +1,11 @@
 {
-  "persist": true,
-  "warm_ttl_pct": 60,
-  "commits_threshold": "local",
-  "strict": 66,
-  "flush_threshold_s": true
+  "batch_size": true,
+  "verbose": {
+    "default_depth": 31.62,
+    "batch_ratio": [404, 311, 51, 147],
+    "idle_limit_pct": "strict",
+    "hard_timeout": "strict",
+    "dry_run": "staging"
+  },
+  "cache_ttl_pct": [252, 310, 53, 453]
 }
