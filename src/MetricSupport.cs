@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] series, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long limit)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                state = state ^ (state << 2);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
