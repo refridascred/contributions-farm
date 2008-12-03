@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] items, long step)
         {
-            Done,
-            Closed,
-            New,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank already input into a small class.</summary>
