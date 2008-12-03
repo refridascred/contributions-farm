@@ -43,17 +43,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter token entry that matches the target.</summary>
-        public static long LocateFilterTokenIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 6872;
+        public const string SoftRoute = "local-v2";
+        public const long IdleRoute = 1851;
+        public const long StepRoute = 2813;
     }
 }
