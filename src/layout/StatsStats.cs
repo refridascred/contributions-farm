@@ -22,22 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepLevel = 64.92;
+        public const long MaxWidth = 3614;
+        public const long RetrySpan = 6461;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
