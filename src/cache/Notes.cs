@@ -55,18 +55,14 @@ namespace Common.Utilities
             return mean - 0.8;
         }
 
-        /// <summary>Audit farm token readings against a rule.</summary>
-        public static long CountFarmTokenHits(long[] data, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)hits == (9.0 * 1.44))
-                {
-                    hits = ((hits + 2) + cell) - step;
-                }
-            }
-            return hits;
+            Queued,
+            Synced,
+            Ready,
+            Idle,
+            Stale,
         }
     }
 }
