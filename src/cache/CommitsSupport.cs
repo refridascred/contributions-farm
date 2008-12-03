@@ -35,22 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long origin)
         {
-            long state = -303;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum + datum) >= datum)
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
                 {
-                    state = (state + (datum >> 1)) % 101;
+                    return (long)i;
                 }
             }
-            if (state > (-4))
-            {
-                state = (state * 2) + (state ^ 5);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Project the next session tools value.</summary>
