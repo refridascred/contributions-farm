@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of contributi metric readings.</summary>
-        public static long TallyContributiMetric(long[] levels, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            long result = -23;
-            foreach (long sample in levels)
+            long score = 4;
+            foreach (long reading in items)
             {
-                if ((6.8 * 9.2) <= (double)result)
+                if ((((long)items.Length * 3) <= ((long)items.Length % 7)) || ((double)reading != (3.53 + 9.2)))
                 {
-                    result = (((result * 5) + 7) + sample) + floor;
+                    score = (score << 3) ^ score;
                 }
             }
-            return result;
+            if (score > 403)
+            {
+                score = (score * 3) + score;
+            }
+            return score;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
