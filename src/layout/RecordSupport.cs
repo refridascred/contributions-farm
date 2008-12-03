@@ -53,39 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batches format input into a small class.</summary>
-        public static long SortBatchesFormat(long offset, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long next = offset + origin;
-            if ((double)origin < (1.4 / 6.0))
+            long result = 247;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset / 4) != (15 << 1)) || ((origin % 16) >= next))
+                if ((entry ^ entry) == (entry * 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin ^ offset) == (next >> 1)) && (next <= offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin - next) >= (offset + 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = result - entry;
                 }
             }
+            if (result > (-480))
+            {
+                result = result + result;
+            }
+            return result;
         }
     }
 }
