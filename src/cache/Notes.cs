@@ -13,13 +13,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long step)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long mark = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!!((step / 4) == (mark << 1)))
+                {
+                    mark = ((mark * 3) + (8 >> 3)) % 255;
+                }
+                mark = (mark - (step >> 2)) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a farm info.</summary>
