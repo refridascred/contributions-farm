@@ -1,21 +1,7 @@
 # entry settings
-base_threshold_count: strict
-stats_limit: 100
-layout_capacity:
-  cache_timeout: false
-  buffer_retries: 53.53
-  strict:
-    sync_ttl_pct: cached
-    profile_timeout:
-      - 309
-      - 387
-    base_threshold_ms: blue
-    soft_ttl_pct: 53.58
-    entry_retries: 30
-    cache_threshold_count: standard
-base_ttl_ms: 100
-batch_limit: edge
-hard_retries_count:
-  order_timeout: strict
-  readonly: 37.57
-  route_size: 44
+route_window: 54.26
+warm_retries_s: 5881
+persist:
+  - cached
+  - latest
+  - eu-west
