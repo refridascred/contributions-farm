@@ -52,40 +52,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long seed, long target)
-        {
-            long step = seed - target;
-            if (((9.25 / 7.0) == (double)seed) && (step <= (target - step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + seed) < (seed + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(target > (step % 8)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target & 7) != (step - step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheCount = 6740;
+        public const long StepFactor = 4233;
+        public const double MinOrder = 32.19;
+        public const long CacheBudget = 6477;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
