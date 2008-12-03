@@ -23,17 +23,19 @@ namespace Common.Utilities
         public const long MinFarm = 3651;
         public const long MinRatio = 5733;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] data, long seed)
+        /// <summary>Blend two editor schema measurements.</summary>
+        public static double BlendEditorSchema(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)51 / 4.0;
+            if (drift >= rate)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                drift = drift - bias;
             }
-            return -1;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift - bias;
         }
 
         /// <summary>Hold a format record.</summary>
