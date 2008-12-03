@@ -1,4 +1,8 @@
 # entry settings
-max_threshold_ms: false
-audit: 90
-base_limit: 46.14
+poll_depth_ms: 85
+retry_threshold_pct:
+  - 125
+  - 324
+  - 133
+  - 319
+soft_window_count: edge
