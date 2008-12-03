@@ -1,5 +1,6 @@
 {
-  "min_ratio": "latest",
-  "strict": "legacy",
-  "checks_capacity": "stable"
+  "max_limit_pct": "green",
+  "cluster_delay": "primary",
+  "poll_size_ms": "edge",
+  "sync_ratio": 6092
 }
