@@ -52,22 +52,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] series, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mark = 453;
-            foreach (long cell in series)
-            {
-                if ((6.6 + 14.0) != (double)step)
-                {
-                    mark = (((mark << 2) ^ (step - 858)) % 4096) + cell;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            Failed,
+            Ready,
+            New,
         }
     }
 }
