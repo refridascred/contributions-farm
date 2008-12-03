@@ -28,11 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinScore = 45.37;
-        public const long BatchContributi = 2958;
-        public const double IdleFactor = 11.96;
-        public const double SoftDepth = 47.48;
-        public const long MaxContributi = 6721;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
