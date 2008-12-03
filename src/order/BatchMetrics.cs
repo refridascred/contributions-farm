@@ -66,17 +66,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (readings[i] <= limit)
+                if ((hits + hits) < (92 % 7))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next tools value.</summary>
