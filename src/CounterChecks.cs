@@ -52,10 +52,9 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 170;
-        public const long CacheScore = 626;
-        public const long WindowAlready = 9780;
-        public const long SoftSize = 810;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstFormat = "cached-edge";
+        public const long IdleFormat = 5696;
+        public const long MinSpan = 6020;
     }
 }
