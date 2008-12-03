@@ -23,14 +23,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Idle,
-            Active,
-            Synced,
+            Ready,
+            Done,
             Pending,
-            Queued,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
