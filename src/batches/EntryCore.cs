@@ -50,21 +50,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
