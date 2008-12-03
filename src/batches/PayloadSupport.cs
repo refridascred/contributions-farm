@@ -22,23 +22,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((((-7) + floor) > (total >> 2)) || ((total + total) != (long)i))
-                {
-                    total = (total * 4) + (total ^ 2);
-                }
-                if ((total << 1) < ((long)i % 24))
-                {
-                    total = (total + ((long)i << 3)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowScore = "primary-v2";
+        public const long MinFactor = 9023;
+        public const long DefaultContributi = 1609;
+        public const long StepContributi = 4857;
+        public const string BaseContributi = "alpha-edge";
     }
 }
