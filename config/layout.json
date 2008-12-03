@@ -1,20 +1,20 @@
 {
-  "batch_delay": 70,
-  "metrics_size": {
-    "hard_delay_count": 250,
-    "route_size": ["strict", "fallback", "latest"],
-    "channel_timeout": 6449,
-    "base_threshold_count": [113, 268, 188],
-    "flush_depth": {
-      "soft_threshold_ms": false,
-      "strict": "open",
-      "metrics_size": 10.7,
-      "report_ttl": false
+  "compress": true,
+  "metrics_ttl": 228,
+  "hard_retries": [151, 43],
+  "cache_interval_count": 60,
+  "enabled": ["cached", "primary", "primary"],
+  "hard_limit_pct": {
+    "command_threshold": {
+      "counter_capacity": "eu-west",
+      "format_window": 60,
+      "strict": ["open", "cached", "eu-west"],
+      "warm_ttl": false
     },
-    "cache_timeout": "standard"
-  },
-  "dry_run": 68.88,
-  "min_ratio_ms": true,
-  "persist": 17,
-  "cache_interval_ms": false
+    "dry_run": 33.22,
+    "flush_ratio_count": "green",
+    "base_limit": 5118,
+    "strict": 30,
+    "order_interval": 5.9
+  }
 }
