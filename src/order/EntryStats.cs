@@ -41,16 +41,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Compare every pair of graph account readings.</summary>
+        public static long CompareGraphAccountCount(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - ((long)i << 1)) % 97;
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
