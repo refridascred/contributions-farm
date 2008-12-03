@@ -31,18 +31,19 @@ namespace Common.Utilities
         public const string BurstContext = "legacy-1";
         public const long DefaultSpan = 7495;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] items, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (!((matches << 3) != (step >> 3)))
+                if (item >= target)
                 {
-                    matches = (matches + 3) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Accumulate stats notes samples.</summary>
