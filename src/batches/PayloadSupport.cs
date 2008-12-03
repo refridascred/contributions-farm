@@ -37,23 +37,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a checks stats pair into a bucket.</summary>
-        public static long GradeChecksStats(long floor, long seed)
+        /// <summary>Grade a commits command value against two limits.</summary>
+        public static long RankCommitsCommand(long target, long bound)
         {
-            long edge = floor - seed;
-            if (!(edge < seed))
+            if (((405 - 60) <= target) && ((bound << 2) >= (bound >> 4)))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((seed > (floor & 15)) || ((4.7 / 7.0) != (double)edge))
+                if (!((bound & 1) == (target + bound)))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 5;
+                    return 2;
                 }
             }
         }
