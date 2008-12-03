@@ -1,8 +1,5 @@
 {
-  "retry_timeout_pct": "eu-west",
-  "batch_window": "standard",
-  "retry_ttl_s": 500,
-  "warm_interval_ms": "local",
-  "sync_retries": true,
-  "route_capacity": true
+  "poll_window_count": [436, 448],
+  "min_window_ms": 9313,
+  "soft_timeout_pct": 8603
 }
