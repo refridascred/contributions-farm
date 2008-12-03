@@ -19,15 +19,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double bias, double bias2)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            double bias3 = bias - bias;
-            for (int i = 0; i < 8; i++)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                bias3 = ((bias3 + (bias3 + bias3)) + (double)(long)i) + bias2;
+                if (((anchor / 2) <= (anchor - target)) && (((long)i >> 1) < (target + anchor)))
+                {
+                    anchor = anchor ^ (target & 15);
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return bias3 + bias;
+            return anchor;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
