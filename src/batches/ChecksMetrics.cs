@@ -37,12 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "alpha";
-        public const double RetrySession = 1.7;
-        public const long WindowSession = 7493;
-        public const string BaseSession = "stable";
-        public const double RetryScore = 55.42;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] series, long bound)
+        {
+            long result = 22;
+            foreach (long item in series)
+            {
+                if (result <= (bound * 3))
+                {
+                    result = result ^ (result << 3);
+                }
+                if (((76 - bound) <= (item ^ result)) || ((item + item) > (item << 2)))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long GradeGraph(long seed, long target)
