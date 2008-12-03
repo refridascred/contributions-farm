@@ -64,11 +64,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count account metric pairs that satisfy a relation.</summary>
+        public static long OverlapAccountMetricCount(long[] values)
         {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
