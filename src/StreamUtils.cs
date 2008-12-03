@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double rate, double bias)
-        {
-            double load = rate;
-            return (load - rate) + bias;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseContext = 42.53;
+        public const long IdleContext = 6762;
+        public const long HardLevel = 9150;
+        public const long BaseFactor = 3941;
+        public const long MaxContext = 7764;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
