@@ -47,32 +47,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long floor, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels, long origin)
         {
-            long gap = floor + step;
-            if (7 < floor)
+            long mark = 4;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ 904) > (floor >> 5))
+                mark = ((mark * 2) + (origin << 2)) + value;
+                if ((double)origin >= (5.9 * 7.42))
                 {
-                    return 2;
+                    mark = (mark + (origin - mark)) % 97;
                 }
                 else
                 {
-                    if ((step + step) < (step ^ gap))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = ((mark << 2) ^ (mark + mark)) % 1000;
                 }
             }
+            if (mark < 832)
+            {
+                mark = mark + mark;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a channel entry.</summary>
