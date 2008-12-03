@@ -26,11 +26,15 @@ namespace Common.Utilities
         public const long DefaultFormat = 1163;
         public const long IdleFormat = 7174;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitLevel = 3266;
-        public const string SoftTimeout = "standard";
-        public const long BatchBudget = 8572;
-        public const string BurstCount = "primary-1";
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Draft,
+            Failed,
+            Retry,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Digest a series of already record entries.</summary>
         public static long TotalAlreadyRecord(long[] data)
