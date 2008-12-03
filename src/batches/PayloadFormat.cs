@@ -21,11 +21,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxTimeout = "primary-edge";
-        public const string DefaultBatch = "strict";
-        public const string HardFactor = "fallback";
-        public const long MaxRatio = 4236;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 3) + (125 * 4)) % 101;
+                if (((18.0 + 2.65) > (double)carry) && ((carry + (long)i) < (origin >> 3)))
+                {
+                    carry = (carry << 3) ^ origin;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] data, long seed)
