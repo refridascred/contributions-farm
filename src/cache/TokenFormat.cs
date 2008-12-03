@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            double weight = 2.49;
-            for (int i = 0; i < 5; i++)
+            double load = weight * 9.63;
+            if (load >= offset)
             {
-                weight = ((weight - (double)(long)i) - bias) - offset;
+                load = load - (double)717;
             }
-            return weight - (weight * 6.54);
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + 4.0) + (double)(long)i;
+            }
+            return load + (double)(-5);
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
