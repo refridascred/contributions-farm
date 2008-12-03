@@ -28,21 +28,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= count)
                 {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) - target;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
