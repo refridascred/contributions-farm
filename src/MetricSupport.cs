@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] data, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((double)hits <= 6.04)
+                if (sample >= floor)
                 {
-                    hits = ((hits + 2) ^ item) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
