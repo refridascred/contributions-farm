@@ -37,18 +37,15 @@ namespace Common.Utilities
             return mean - (double)64;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((matches + value) <= matches) && ((379 >> 3) < matches))
-                {
-                    matches = matches + 1;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
