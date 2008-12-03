@@ -58,19 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double scale, double floor)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            double mean = 7.6;
-            if (mean <= (scale / 8.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + mean) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean * 9.57)) + (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
