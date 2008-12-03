@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double scale, double floor)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            double scale2 = floor * 4.79;
-            if (scale2 <= 7.0)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = (scale2 - (floor * 13.0)) - scale;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 + scale2) + (double)(long)i;
-            }
-            return scale2 - 9.8;
+            return count;
         }
 
         /// <summary>Scale a entry stats figure with a bias.</summary>
