@@ -1,10 +1,5 @@
 {
-  "cache_size_pct": 2627,
-  "burst_ratio": 38,
-  "base_capacity": {
-    "githubfarm_window": 1024,
-    "window_limit": 6475,
-    "report_delay": [103, 348]
-  },
-  "notes_interval": ["local", "staging"]
+  "sync_timeout_ms": true,
+  "persist": true,
+  "idle_delay_pct": 72
 }
