@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = rate + (span * 20.0);
+            if (ratio <= 3.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - rate;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Hold a layout record.</summary>
