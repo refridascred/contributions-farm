@@ -33,15 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
