@@ -1,6 +1,5 @@
 {
-  "default_delay_pct": "eu-west",
-  "queue_window": ["primary", "green", "fallback", "local"],
-  "contributi_ratio": 250,
-  "persist": 1024
+  "cache_ttl": "staging",
+  "commits_ratio": 7731,
+  "min_ttl": "local"
 }
