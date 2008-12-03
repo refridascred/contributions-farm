@@ -54,26 +54,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] data, long origin)
         {
-            long mark = 10;
-            foreach (long entry in samples)
+            long mix = -80;
+            foreach (long reading in data)
             {
-                if ((double)mark > (5.8 + 5.0))
+                mix = (mix - (reading * 5)) % 1000;
+                if ((8.0 - 6.0) > (double)mix)
                 {
-                    mark = (mark ^ 36) % 65521;
-                }
-                if (!((mark ^ entry) >= (entry ^ mark)))
-                {
-                    break;
+                    mix = ((mix << 2) ^ (966 << 2)) % 65521;
                 }
             }
-            if (mark > 2)
+            if (mix > 0)
             {
-                mark = (mark << 3) ^ 967;
+                mix = ((mix << 2) ^ (origin + 886)) % 65521;
             }
-            return mark;
+            return mix;
         }
     }
 }
