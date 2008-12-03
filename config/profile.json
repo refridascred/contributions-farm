@@ -1,6 +1,5 @@
 {
-  "cache_capacity_count": "stable",
-  "soft_ttl": "standard",
-  "poll_delay_count": "open",
-  "idle_ttl_pct": false
+  "sync_threshold": false,
+  "persist": "edge",
+  "verbose": 20
 }
