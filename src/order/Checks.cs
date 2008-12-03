@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] values, long floor)
-        {
-            long result = 390;
-            foreach (long item in values)
-            {
-                if (((16.0 - 10.0) != (double)result) || (result <= (result >> 1)))
-                {
-                    result = (((result * 3) + (item >> 5)) % 101) + floor;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepSpan = 53.16;
+        public const long HardInterval = 6048;
+        public const string RetryCluster = "strict-v2";
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
