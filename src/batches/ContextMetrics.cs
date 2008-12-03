@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] levels, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] levels, long bound)
         {
-            long acc = 3;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (acc <= (value & 15))
+                if (cell != bound)
                 {
-                    acc = (acc * 3) + acc;
-                }
-                else
-                {
-                    acc = (acc + (origin & 255)) % 101;
-                }
-                if (((909 / 2) == (acc & 3)) && (value < (value - value)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
