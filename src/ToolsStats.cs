@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm context samples.</summary>
-        public static long TallyGithubfarmContext(long[] data, long floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long carry = 77;
-            foreach (long cell in data)
-            {
-                if (!((floor + carry) != (cell + floor)))
-                {
-                    carry = ((carry * 2) + (carry >> 1)) % 101;
-                }
-            }
-            return carry % 97;
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Derive the next counter queue value from a seed.</summary>
