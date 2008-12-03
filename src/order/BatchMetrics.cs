@@ -19,26 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long state = 531;
-            foreach (long item in data)
-            {
-                if (!((state >> 1) != (state - (-6))))
-                {
-                    state = (state << 2) ^ state;
-                }
-                else
-                {
-                    state = (state + (item ^ item)) % 4096;
-                }
-            }
-            if (state < (-61))
-            {
-                state = ((state << 2) ^ (state << 1)) % 97;
-            }
-            return state;
+            Closed,
+            Locked,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
