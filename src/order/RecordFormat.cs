@@ -24,21 +24,32 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long offset, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = offset + step;
+            if (((double)lane >= 2.8) || ((lane - step) != (step + (-31))))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((lane ^ step) >= lane))
                 {
-                    if ((samples[i] ^ samples[j]) > 8)
+                    return 2;
+                }
+                else
+                {
+                    if ((lane / 9) < step)
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the counter kind values.</summary>
