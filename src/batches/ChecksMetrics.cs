@@ -23,14 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] values, long bound)
         {
-            Dropped,
-            Done,
-            Draft,
-            Queued,
-            Ready,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (value < 781)
+                {
+                    matches = (matches + 2) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
