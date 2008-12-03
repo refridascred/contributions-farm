@@ -1,6 +1,6 @@
 # support settings
-checks_depth: 94.1
-soft_interval_s: stable
-sync_limit_count: standard
-dry_run: 1024
-contributi_ttl: fallback
+enabled: 1905
+warm_depth_s: 8757
+sync_ttl_ms: 60
+profile_retries: 53.2
+flush_size_s: 1298
