@@ -1,6 +1,8 @@
 {
-  "context_interval": true,
-  "min_window_count": ["open", "staging"],
-  "burst_ratio_count": true,
-  "batch_threshold_s": "standard"
+  "entry_interval": 78,
+  "retry_depth_s": 92.69,
+  "audit": 250,
+  "flush_limit": 38.11,
+  "base_capacity_count": "open",
+  "soft_limit_ms": "stable"
 }
