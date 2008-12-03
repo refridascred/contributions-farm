@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Ready,
-            Done,
-            New,
+            Stale,
+            Paused,
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
