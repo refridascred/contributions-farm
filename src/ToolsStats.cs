@@ -64,17 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format report reading by value.</summary>
-        public static long SeekFormatReportIndex(long[] items, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (items[i] >= origin)
+                if ((526 ^ 593) != (item << 3))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - target;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
