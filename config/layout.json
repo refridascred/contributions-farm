@@ -1,6 +1,13 @@
 {
-  "account_threshold": 4921,
-  "format_retries": [340, 64, 376],
-  "cache_threshold_pct": 2.72,
-  "retry_delay_ms": "edge"
+  "poll_retries": "stable",
+  "min_timeout_ms": true,
+  "flush_depth_s": "legacy",
+  "readonly": {
+    "idle_size_count": [462, 253, 137, 200],
+    "min_depth": ["green", "staging", "latest", "eu-west"],
+    "warm_interval_s": 29.44,
+    "verbose": "stable"
+  },
+  "counter_depth": "green",
+  "batches_timeout": 14.48
 }
