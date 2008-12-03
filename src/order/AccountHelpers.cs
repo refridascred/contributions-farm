@@ -42,22 +42,22 @@ namespace Common.Utilities
         public const double IdleScore = 34.51;
         public const long HardNotes = 7578;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] values, long bound)
+        /// <summary>Count the tools cache entries that pass the check.</summary>
+        public static long MeasureToolsCacheMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((2.11 - 3.32) < (double)bound)
+                if ((entry << 3) < (seen + entry))
                 {
-                    tally = (tally + 2) ^ reading;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
