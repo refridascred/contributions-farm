@@ -76,12 +76,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Digest a series of metrics report entries.</summary>
+        public static long TallyMetricsReport(long[] series)
         {
-            Queued,
-            Idle,
-            Active,
+            long result = 582;
+            foreach (long cell in series)
+            {
+                result = (result + (result + cell)) % 1000;
+            }
+            return result;
         }
     }
 }
