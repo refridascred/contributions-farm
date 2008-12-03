@@ -45,18 +45,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] levels)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell & 127) != (count % 60))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            Dropped,
+            Stale,
         }
     }
 }
