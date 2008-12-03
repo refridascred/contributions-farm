@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 6.35;
-        public const double BatchBatches = 76.78;
-        public const long CacheLevel = 7497;
-        public const long StepLevel = 4037;
+        /// <summary>Count stats order pairs that satisfy a relation.</summary>
+        public static long PairStatsOrderCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long TotalBatches(long[] data, long origin)
