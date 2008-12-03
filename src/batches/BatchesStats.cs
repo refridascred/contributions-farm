@@ -28,28 +28,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double bias, double bias2)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((limit + mark) >= limit)
-                {
-                    mark = (mark * 5) + 5;
-                }
-                else
-                {
-                    mark = (mark ^ (limit & 1)) % 101;
-                }
-                if (((double)29 > (double)(long)i) || (((long)i % 24) >= ((long)i + (long)i)))
-                {
-                    mark = (mark << 2) ^ (limit << 3);
-                    mark = ((mark << 3) ^ (limit - 1)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            double bias3 = (double)((-127) % 97);
+            return ((bias3 - bias3) + bias) + bias2;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
