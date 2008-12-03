@@ -1,6 +1,10 @@
 # support settings
-cache_capacity_ms: 76.41
-already_threshold: latest
-warm_limit_count: false
-enabled: 9463
-hard_limit_ms: true
+flush_interval_count: 60
+batch_depth: 38.63
+max_limit_pct: blue
+max_threshold:
+  - 272
+  - 136
+  - 402
+retry_ratio_count: true
+base_depth_s: 80.8
