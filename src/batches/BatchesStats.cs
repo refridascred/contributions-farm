@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double bias, double span)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double mean = 7.41;
-            if (mean >= (bias + mean))
-            {
-                mean = mean - (span + mean);
-            }
-            else
-            {
-                mean = mean + (double)167;
-            }
-            return mean - (span + bias);
+            New,
+            Failed,
+            Synced,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
