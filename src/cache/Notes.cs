@@ -43,22 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double rate, double offset)
         {
-            long state = 4;
-            foreach (long entry in values)
+            double mean = rate;
+            if (mean >= (rate - rate))
             {
-                if (!((double)state <= (9.2 - 11.0)))
-                {
-                    state = (state * 5) + (entry - entry);
-                }
-                else
-                {
-                    state = state ^ state;
-                }
+                mean = mean - (mean * 2.9);
             }
-            return state % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (offset - rate)) + (double)(long)i;
+            }
+            return mean - 0.8;
         }
 
         /// <summary>Describe the window mode values.</summary>
