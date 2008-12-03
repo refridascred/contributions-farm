@@ -1,7 +1,5 @@
 {
-  "cache_interval_ms": 64.03,
-  "cache_threshold_count": "eu-west",
-  "base_depth_ms": 1206,
-  "strict": 6741,
-  "soft_depth_pct": 52
+  "min_ratio": "latest",
+  "strict": "legacy",
+  "checks_capacity": "stable"
 }
