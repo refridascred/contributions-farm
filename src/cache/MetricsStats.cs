@@ -35,17 +35,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next channel cache value from a seed.</summary>
-        public static long RollChannelCache(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = (mix - (mix * 4)) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 4832;
+        public const long MinFarm = 1268;
+        public const long SoftFarm = 3351;
+        public const string HardInterval = "strict-edge";
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] levels)
