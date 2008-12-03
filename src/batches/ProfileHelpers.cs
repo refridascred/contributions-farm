@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long floor, long floor2)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            if (floor2 >= (floor2 + 376))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 <= (floor ^ floor2)) || ((floor2 + floor2) > floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor & 31) != (floor2 >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor < (31 >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
