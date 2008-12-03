@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
