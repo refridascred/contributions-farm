@@ -12,10 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 761;
-        public const long RetryScore = 8602;
-        public const string MaxRatio = "cached";
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum / 4) <= (floor << 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterRange(long[] samples, long limit)
