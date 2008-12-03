@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            long anchor = 65;
-            foreach (long value in levels)
+            long state = 5;
+            foreach (long datum in samples)
             {
-                anchor = (anchor * 3) + (anchor - value);
+                state = (state - datum) % 1000;
             }
-            return anchor % 1000;
+            return state;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
