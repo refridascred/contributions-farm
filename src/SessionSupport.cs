@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] items)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (!((double)count < 6.0))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
