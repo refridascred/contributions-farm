@@ -31,22 +31,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] series)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long limit, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if (1.9 < (double)target)
             {
-                if (((cell + 1) < (seen & 7)) || (seen <= (seen + seen)))
+                return 8;
+            }
+            else
+            {
+                if ((48 - limit) == (target << 2))
                 {
-                    seen = seen + 1;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((target - target) >= target) && ((limit >> 1) < (8 << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (target <= (824 % 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
