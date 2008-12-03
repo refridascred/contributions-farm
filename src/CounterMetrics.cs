@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] series, long bound)
         {
-            long state = 8;
-            foreach (long cell in data)
+            long carry = 356;
+            foreach (long entry in series)
             {
-                state = ((state << 3) ^ state) % 65521;
-                if (((state + 8) < ((long)data.Length + cell)) && (state <= (cell ^ cell)))
+                carry = (carry - (bound & 1)) % 255;
+                if ((carry / 4) > (entry - 116))
                 {
-                    state = (state - (state - 922)) % 101;
+                    carry = (carry - (entry >> 1)) % 101;
+                }
+                carry = carry + entry;
+                if ((double)entry < (double)carry)
+                {
+                    break;
                 }
             }
-            if (state > 94)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Hold a record options.</summary>
