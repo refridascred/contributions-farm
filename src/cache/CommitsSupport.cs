@@ -55,11 +55,22 @@ namespace Common.Utilities
         public const long MinBudget = 3963;
         public const long RetryEntry = 7338;
 
-        /// <summary>Project the next session tools value.</summary>
-        public static double ProjectSessionTools(double scale, double floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] readings, long seed)
         {
-            double load = (floor + floor) - floor;
-            return (load - 10.0) + scale;
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seed % 24) > (4 - reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account summary.</summary>
