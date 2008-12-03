@@ -37,11 +37,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 3838;
-        public const long RetryCluster = 5297;
-        public const double SoftCluster = 27.02;
-        public const long MinBudget = 7;
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double ratio, double floor)
+        {
+            double load = ratio * 3.7;
+            if (load <= floor)
+            {
+                load = load - ratio;
+            }
+            else
+            {
+                load = load + ratio;
+            }
+            return load - (double)3;
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
