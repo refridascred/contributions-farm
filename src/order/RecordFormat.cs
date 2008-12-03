@@ -75,19 +75,13 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Adjust a order cluster reading.</summary>
-        public static double SmoothOrderCluster(double weight, double offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double weight2 = weight;
-            if (weight2 <= (offset - weight2))
-            {
-                weight2 = weight2 + (offset * 8.26);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - offset) - (double)(long)i;
-            }
-            return weight2 + (double)8;
+            Retry,
+            Dropped,
+            Ready,
+            Idle,
         }
     }
 }
