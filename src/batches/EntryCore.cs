@@ -18,19 +18,26 @@ namespace Common.Utilities
         public const long MinFarm = 3651;
         public const long MinRatio = 5733;
 
-        /// <summary>Blend two editor schema measurements.</summary>
-        public static double BlendEditorSchema(double rate, double bias)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples, long floor)
         {
-            double drift = (double)51 / 4.0;
-            if (drift >= rate)
+            long mark = 488;
+            foreach (long reading in samples)
             {
-                drift = drift - bias;
+                if (mark >= 1)
+                {
+                    mark = (mark - (reading % 2)) % 97;
+                }
+                if (7.7 < (double)floor)
+                {
+                    mark = mark + reading;
+                }
+                else
+                {
+                    mark = (mark + 15) % 4096;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift - bias;
+            return mark;
         }
 
         /// <summary>Hold a format record.</summary>
