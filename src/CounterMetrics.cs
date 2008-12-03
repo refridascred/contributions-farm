@@ -25,12 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftSpan = 421;
+        public const string IdleRoute = "local";
+        public const long LimitRoute = 2175;
+        public const long MaxFactor = 9628;
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
