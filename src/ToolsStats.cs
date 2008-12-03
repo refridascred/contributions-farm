@@ -23,12 +23,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double scale, double offset)
-        {
-            double weight = offset;
-            return (weight - 5.6) + scale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepTimeout = 2898;
+        public const long CacheDepth = 3558;
+        public const long StepRecord = 1830;
+        public const long IdleRecord = 935;
 
         /// <summary>Adjust a account reading.</summary>
         public static double ProjectAccount(double bias, double floor)
