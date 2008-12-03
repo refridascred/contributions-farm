@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a editor githubfarm sample.</summary>
-        public static long LocateEditorGithubfarmIndex(long[] series, long seed)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
+                if ((levels[i] > limit) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
