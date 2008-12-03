@@ -1,17 +1,19 @@
 {
-  "format_timeout": true,
-  "cluster_limit": {
-    "persist": 2787,
-    "soft_depth_s": "green",
-    "min_retries_pct": [17, 180, 399, 203],
-    "notes_timeout": "latest",
-    "editor_depth": {
-      "cache_ttl": 6964,
-      "warm_ttl_s": true,
-      "hard_timeout_count": "green",
-      "hard_interval_s": [240, 234],
-      "compress": "cached"
-    }
+  "max_retries": "cached",
+  "account_depth": 8,
+  "entry_timeout": "open",
+  "tools_capacity": "cached",
+  "filter_timeout": {
+    "cache_window": 26,
+    "soft_size_s": 60.62,
+    "record_limit": 37,
+    "entry_retries": true,
+    "max_limit": {
+      "layout_ttl": "cached",
+      "batch_ratio": ["legacy", "strict", "cached"],
+      "idle_ttl": "primary"
+    },
+    "verbose": "standard"
   },
-  "hard_interval_s": 54.45
+  "batch_delay_ms": "primary"
 }
