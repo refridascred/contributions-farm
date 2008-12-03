@@ -1,24 +1,27 @@
 # support settings
-payload_depth: 89.35
-enabled: 12
-dry_run:
-  retry_capacity: 20.04
-  compress:
-    compress:
-      - 321
-      - 484
-      - 359
-    default_ttl: open
-    buffer_retries:
-      - legacy
-      - edge
-    graph_interval: blue
-    sync_depth_pct: false
-    soft_limit_pct: true
-  verbose:
-    - 260
-    - 481
-    - 231
-    - 145
-retry_retries_pct: eu-west
-graph_delay: 59
+readonly: 93.99
+soft_capacity_ms: 59.49
+compress: 86.72
+hard_timeout_s:
+  flush_capacity_pct: open
+  entry_ratio: 49.31
+  stream_limit: green
+  readonly: 86
+  notes_interval: blue
+  min_delay: true
+poll_ttl_count:
+  poll_delay_s:
+    - eu-west
+    - strict
+  entry_threshold: 39
+  enabled: 26.72
+  persist:
+    - 268
+    - 321
+    - 426
+    - 435
+  retry_ratio_s:
+    strict: false
+    hard_size_count: 26.86
+    cache_size_pct: staging
+strict: local
