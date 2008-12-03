@@ -28,27 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] samples, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] items)
         {
-            long anchor = 96;
-            foreach (long cell in samples)
+            long mark = 39;
+            foreach (long sample in items)
             {
-                anchor = (anchor + (anchor - floor)) % 101;
-                if (((-23) - floor) > (anchor - cell))
+                if (((double)mark > (2.7 - 19.0)) || ((double)mark >= (17.0 * 8.0)))
                 {
-                    anchor = ((anchor << 3) ^ (floor % 7)) % 255;
+                    mark = mark ^ (mark ^ sample);
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ (anchor << 1)) % 97;
-                }
-                if (cell > (floor + (long)samples.Length))
-                {
-                    break;
+                    mark = (mark * 2) + (20 - mark);
                 }
             }
-            return anchor;
+            return mark;
         }
     }
 }
