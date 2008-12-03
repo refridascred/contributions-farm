@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] series, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((floor <= (tally % 60)) && ((floor > tally) && (5.94 > (double)tally)))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of schema record readings.</summary>
