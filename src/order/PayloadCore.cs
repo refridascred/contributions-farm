@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define support limits and defaults.</summary>
