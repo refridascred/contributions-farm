@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] levels)
         {
-            Idle,
-            Synced,
-            Retry,
-            Closed,
-            Ready,
+            long mix = -643;
+            foreach (long value in levels)
+            {
+                mix = (mix + (mix + mix)) ^ value;
+            }
+            return mix;
         }
 
         /// <summary>Rank route input into a small class.</summary>
