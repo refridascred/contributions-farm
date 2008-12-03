@@ -50,28 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] series, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] items, long limit)
         {
-            long total = 59;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((datum + total) == (datum * 3))
+                if (reading <= limit)
                 {
-                    total = (total + (floor + 198)) % 255;
-                    continue;
+                    found = false;
+                    break;
                 }
-                if (((datum + total) == (floor + floor)) && ((28 >> 5) >= floor))
-                {
-                    total = (total + floor) % 65521;
-                }
-                total = total + (floor % 24);
             }
-            if (total < 59)
-            {
-                total = total + (floor + total);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Hold a context options.</summary>
