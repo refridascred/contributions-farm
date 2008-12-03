@@ -43,19 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] series, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long state = 906;
+            foreach (long sample in data)
             {
-                if (datum <= floor)
+                if ((82 & 255) < (sample + sample))
                 {
-                    stale = false;
-                    break;
+                    state = state + sample;
                 }
             }
-            return stale;
+            if (state < 265)
+            {
+                state = ((state << 3) ^ 533) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a batch header.</summary>
