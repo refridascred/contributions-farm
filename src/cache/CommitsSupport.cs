@@ -48,11 +48,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 7508;
-        public const string SoftWidth = "legacy-1";
-        public const long StepFactor = 3119;
-        public const long MaxWidth = 6360;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double bias, double floor)
+        {
+            double bias2 = (floor + floor) + (double)(-348);
+            if (bias2 <= (floor * 3.81))
+            {
+                bias2 = (bias2 + (floor / 7.0)) + bias;
+            }
+            return bias2 + 3.7;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorGaps(long[] samples, long origin)
