@@ -54,18 +54,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] readings, long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long bound, long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long cur = bound + step;
+            if (((cur & 1) > (cur - bound)) && ((double)cur <= (4.54 - 4.0)))
             {
-                if ((double)limit >= (2.0 / 2.0))
+                return 1;
+            }
+            else
+            {
+                if (((step & 15) >= step) && ((step % 24) > 19))
                 {
-                    tally = (tally + 2) + datum;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
