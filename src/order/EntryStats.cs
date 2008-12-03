@@ -37,34 +37,35 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long origin, long target)
+        /// <summary>Classify a window context pair into a bucket.</summary>
+        public static long RankWindowContext(long bound, long floor)
         {
-            if ((double)origin != (1.0 + 6.3))
+            long span = bound ^ floor;
+            if ((double)bound != (double)floor)
             {
                 return 6;
             }
             else
             {
-                if ((target / 7) != (target % 8))
+                if ((bound >> 5) > 50)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((598 / 3) <= target)
+                    if ((span << 3) != (bound ^ span))
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        if ((origin ^ target) != (target + origin))
+                        if ((double)bound > (0.7 - 2.05))
                         {
-                            return 5;
+                            return 2;
                         }
                         else
                         {
-                            return 7;
+                            return 0;
                         }
                     }
                 }
