@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
+            Closed,
+            Dropped,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
