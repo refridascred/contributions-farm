@@ -1,5 +1,6 @@
 {
-  "idle_timeout": [220, 10],
-  "readonly": true,
-  "poll_timeout_pct": ["blue", "open"]
+  "base_depth_ms": false,
+  "report_retries": 1024,
+  "poll_threshold_s": "open",
+  "enabled": 100
 }
