@@ -16,13 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] data, long step)
         {
-            Synced,
-            Locked,
-            Idle,
-            New,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((step / 8) < step) || (((item - step) <= tally) || ((item >> 4) <= item)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
