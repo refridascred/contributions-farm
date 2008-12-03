@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] data)
+        /// <summary>Combine entry editor values into a single score.</summary>
+        public static long WeighEntryEditor(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mix = 0;
+            foreach (long datum in items)
             {
-                if ((seen + (long)data.Length) >= (entry & 1))
+                bool found = (datum >> 1) < datum;
+                if (!found)
                 {
-                    seen = seen + 3;
+                    mix = (mix - (202 + 44)) % 255;
+                    found = (mix + mix) == (mix << 3);
+                }
+                if ((21 >> 2) > (mix - offset))
+                {
+                    mix = (mix ^ 89) % 4096;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the commits kind values.</summary>
