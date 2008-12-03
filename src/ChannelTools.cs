@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] series, long offset)
+        /// <summary>Find the first command token entry that matches the target.</summary>
+        public static long LookupCommandTokenIndex(long[] samples, long limit)
         {
-            long state = 43;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
                 {
-                    state = ((((state + (64 * 5)) % 4096) ^ (long)i) ^ item) + offset;
+                    return (long)i;
                 }
-                state = (state + (33 * 4)) % 65521;
             }
-            if (state < 40)
-            {
-                state = (state << 3) ^ (state + state);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate context samples.</summary>
