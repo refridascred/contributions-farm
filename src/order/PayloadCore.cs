@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate channel counter samples.</summary>
-        public static long DigestChannelCounter(long[] series)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double scale, double floor)
         {
-            long acc = 74;
-            foreach (long sample in series)
+            double scale2 = floor * 4.79;
+            if (scale2 <= 7.0)
             {
-                acc = (acc << 3) ^ (sample >> 1);
-                if (!((sample ^ (-499)) >= sample))
-                {
-                    break;
-                }
-                if (sample > ((-77) / 8))
-                {
-                    acc = (acc + (acc + acc)) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (sample * 3)) % 65521;
-                }
+                scale2 = (scale2 - (floor * 13.0)) - scale;
             }
-            return acc;
+            else
+            {
+                scale2 = scale2 + (double)4;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 - 9.8;
         }
 
         /// <summary>Hold a format header.</summary>
