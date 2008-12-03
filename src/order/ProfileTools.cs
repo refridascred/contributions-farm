@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] items, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (((-368) + offset) < (hits % 12))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the support level values.</summary>
