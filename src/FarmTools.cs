@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(((seed + 53) <= (84 % 10)) || ((seed + score) >= (score << 3))))
-                {
-                    score = (score - (seed - seed)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
