@@ -37,15 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] items, long origin)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] items)
         {
             long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (origin >= (count >> 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) - reading;
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
