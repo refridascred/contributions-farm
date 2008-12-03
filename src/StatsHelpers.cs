@@ -36,12 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] series)
         {
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + seen) == (datum + datum))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
