@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long DefaultWidth = 7325;
         public const double IdleWidth = 23.61;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            public long Owner { get; set; }
-            public double Label { get; set; }
-            public double Size { get; set; }
+            long mark = 53;
+            foreach (long datum in items)
+            {
+                mark = ((mark * 2) + (mark + datum)) % 255;
+                mark = (mark - (mark * 2)) % 1000;
+            }
+            if (mark > 671)
+            {
+                mark = (mark * 3) + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of cache stream readings.</summary>
