@@ -1,12 +1,13 @@
 {
-  "idle_window": false,
-  "retry_size_s": {
-    "default_size_s": "stable",
-    "default_ttl_ms": [284, 166, 459, 191],
-    "cluster_depth": 250
+  "hard_capacity_count": "fallback",
+  "farm_limit": 35,
+  "batch_limit": false,
+  "batch_timeout_count": {
+    "compress": 732,
+    "notes_ttl": "green",
+    "sync_depth_s": [64, 408, 491],
+    "order_threshold": "strict",
+    "account_capacity": false
   },
-  "flush_timeout_ms": "staging",
-  "command_threshold": "staging",
-  "cache_retries": 500,
-  "default_ratio_s": "cached"
+  "verbose": 20.29
 }
