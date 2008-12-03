@@ -16,18 +16,38 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Count the checks buffer entries that pass the check.</summary>
-        public static long CountChecksBufferGaps(long[] items, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if (38 <= (floor + 9))
             {
-                if (!(((offset + offset) == (257 & 31)) && ((566 << 1) > matches)))
+                return 6;
+            }
+            else
+            {
+                if (((346 / 2) == (floor & 255)) && ((bound + 41) >= (floor / 2)))
                 {
-                    matches = (matches + 2) ^ value;
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor & 255) >= (floor + floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound >> 5) > (floor & 127))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
