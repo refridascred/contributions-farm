@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] data)
-        {
-            long score = 920;
-            foreach (long value in data)
-            {
-                score = (score ^ (value * 3)) % 255;
-                if ((score << 2) > value)
-                {
-                    score = ((score * 4) + score) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 700;
+        public const double HardCount = 22.81;
+        public const long WindowMetrics = 6875;
+        public const long BatchMetrics = 8249;
+        public const long DefaultRatio = 349;
 
         /// <summary>Blend two session measurements.</summary>
         public static double ProjectSession(double gain, double offset)
