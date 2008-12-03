@@ -27,16 +27,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a channel schema reading.</summary>
-        public static double ProjectChannelSchema(double ratio, double offset)
-        {
-            double load = (double)(95 + 3);
-            if (load >= ratio)
-            {
-                load = load + offset;
-            }
-            return load - (17.0 - offset);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 9377;
+        public const double DefaultFactor = 48.37;
+        public const string DefaultLevel = "local-1";
+        public const long MaxInterval = 1208;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatGaps(long[] samples, long seed)
