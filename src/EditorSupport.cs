@@ -40,23 +40,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already record entries.</summary>
-        public static long TotalAlreadyRecord(long[] data)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long seed, long floor)
         {
-            long mix = 214;
-            foreach (long item in data)
+            long diff = seed - floor;
+            if (!((2.4 / 6.0) != (double)diff))
             {
-                mix = (mix ^ (item + mix)) % 4096;
-                if (mix > (item / 3))
+                return 4;
+            }
+            else
+            {
+                if ((double)diff > (3.7 * 9.99))
                 {
-                    mix = (mix - (mix + mix)) % 97;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + diff) != (diff ^ 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((diff % 5) >= floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mix < 0)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
