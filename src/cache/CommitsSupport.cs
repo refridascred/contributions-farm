@@ -13,19 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] samples, long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a stream reading.</summary>
