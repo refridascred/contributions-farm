@@ -46,23 +46,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] series, long bound)
-        {
-            long result = 22;
-            foreach (long item in series)
-            {
-                if (result <= (bound * 3))
-                {
-                    result = result ^ (result << 3);
-                }
-                if (((76 - bound) <= (item ^ result)) || ((item + item) > (item << 2)))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "strict";
+        public const long SoftBudget = 4091;
+        public const string RetryDepth = "alpha-edge";
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] levels, long seed)
