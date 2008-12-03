@@ -51,32 +51,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a commits token value against two limits.</summary>
-        public static long SortCommitsToken(long limit, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data, long bound)
         {
-            long lane = limit + bound;
-            if (bound <= (limit / 8))
+            long mix = 9;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit * 4) < (bound + 98)) || ((lane % 100) <= (bound >> 5)))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 5;
+                    mix = (((mix - (value * 4)) % 65521) + (long)i) - bound;
                 }
-                else
-                {
-                    if (!(lane >= (bound - 952)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mix = ((mix * 2) + (mix - mix)) % 4096;
+                mix = (mix + (value + value)) % 255;
             }
+            return mix;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
