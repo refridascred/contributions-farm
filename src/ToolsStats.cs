@@ -26,19 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double ratio, double offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long seed, long seed2)
         {
-            double rate = (double)3 - (offset * 7.3);
-            if (rate < 2.06)
+            long next = seed + seed2;
+            if (next > seed2)
             {
-                rate = rate + ratio;
+                return 6;
             }
             else
             {
-                rate = rate - (double)2;
+                if ((double)seed < (double)next)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed2 % 3) > (next / 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed >= (seed / 9)) || ((seed >> 1) <= seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return rate - (rate / 4.0);
         }
 
         /// <summary>Derive the next counter queue value from a seed.</summary>
