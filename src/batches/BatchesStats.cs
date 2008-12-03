@@ -34,12 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double bias, double bias2)
-        {
-            double bias3 = (double)((-127) % 97);
-            return ((bias3 - bias3) + bias) + bias2;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryFactor = 85.83;
+        public const long BaseTools = 4047;
+        public const long HardTools = 1113;
+        public const long MinTools = 1472;
+        public const string BatchSpan = "strict";
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] samples)
