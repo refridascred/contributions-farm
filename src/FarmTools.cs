@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already filter readings.</summary>
-        public static long CompareAlreadyFilterCount(long[] values)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (5.36 / 6.0) + 6.0;
+            if (drift < (double)23)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift + scale) + offset;
             }
-            return hits;
+            else
+            {
+                drift = drift + (drift + 3.2);
+            }
+            return drift - 8.3;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
