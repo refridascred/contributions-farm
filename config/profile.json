@@ -1,5 +1,7 @@
 {
-  "sync_threshold": false,
-  "persist": "edge",
-  "verbose": 20
+  "base_size": false,
+  "default_ttl_ms": "stable",
+  "metrics_interval": ["legacy", "legacy", "latest"],
+  "audit": true,
+  "stats_threshold": "blue"
 }
