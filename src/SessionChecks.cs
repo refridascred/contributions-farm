@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 9255;
-        public const long RetryBudget = 1968;
-        public const long RetryInterval = 9541;
-        public const long SoftScore = 1479;
-        public const long BaseBudget = 5694;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleTimeout = 8840;
+        public const long WindowBudget = 7680;
+        public const long HardInterval = 6981;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
