@@ -34,19 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double weight, double bias)
-        {
-            double drift = (weight + weight) * 3.7;
-            if (drift < (double)9)
-            {
-                drift = drift + (weight - bias);
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - 9.7;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheDepth = 37.96;
+        public const double MaxBudget = 58.68;
+        public const long CacheBudget = 6961;
+        public const long DefaultCount = 404;
     }
 }
