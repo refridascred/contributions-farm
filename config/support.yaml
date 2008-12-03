@@ -1,8 +1,7 @@
 # support settings
-sync_retries_count:
-  - 51
-  - 98
-  - 5
-dry_run: 500
-persist: eu-west
-audit: 250
+batch_ttl_ms:
+  - 434
+  - 127
+route_capacity: 85.12
+payload_delay: false
+layout_retries: true
