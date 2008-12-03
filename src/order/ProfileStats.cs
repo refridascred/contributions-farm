@@ -33,12 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Fold a list of layout window readings.</summary>
+        public static long CombineLayoutWindow(long[] values)
         {
-            Pending,
-            Idle,
-            Active,
+            long sum = 3;
+            foreach (long item in values)
+            {
+                if ((item - sum) <= sum)
+                {
+                    sum = (sum - (973 << 2)) % 65521;
+                }
+            }
+            if (sum < 86)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a channel stats.</summary>
