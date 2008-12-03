@@ -46,18 +46,21 @@ namespace Common.Utilities
         public const long BurstSupport = 6846;
         public const double SoftScore = 18.09;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            long carry = -373;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry - carry) == (carry % 97))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry << 3) ^ sample) % 4096;
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
