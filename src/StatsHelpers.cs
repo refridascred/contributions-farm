@@ -30,13 +30,21 @@ namespace Common.Utilities
         public const string RetryEditor = "strict-v2";
         public const long BaseEditor = 7758;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            Closed,
-            Pending,
-            Queued,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a context counter forward.</summary>
