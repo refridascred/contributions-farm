@@ -68,19 +68,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] levels, long target)
+        /// <summary>Accumulate stream already samples.</summary>
+        public static long FoldStreamAlready(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long acc = 914;
+            foreach (long cell in samples)
             {
-                if (item > target)
+                if ((cell - cell) <= target)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc ^ acc) % 65521;
                 }
+                else
+                {
+                    acc = (acc ^ ((long)samples.Length - acc)) % 97;
+                    acc = (acc - (target - target)) % 4096;
+                }
+                acc = ((acc << 2) ^ (701 << 1)) % 255;
             }
-            return ok;
+            return acc;
         }
     }
 }
