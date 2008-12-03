@@ -63,18 +63,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] series, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long carry = 5;
-            foreach (long entry in series)
-            {
-                if (step >= carry)
-                {
-                    carry = carry ^ entry;
-                }
-            }
-            return carry;
+            Draft,
+            Retry,
+            Active,
         }
     }
 }
