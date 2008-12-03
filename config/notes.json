@@ -1,7 +1,7 @@
 {
-  "cache_window_s": ["fallback", "cached"],
-  "buffer_ratio": 85,
-  "poll_capacity_pct": 97.7,
-  "enabled": "strict",
-  "audit": true
+  "poll_ratio": false,
+  "dry_run": 85.87,
+  "max_interval_count": "edge",
+  "default_size": 71.72,
+  "soft_delay": "standard"
 }
