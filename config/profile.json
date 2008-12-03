@@ -1,5 +1,5 @@
 {
-  "cache_ttl": "staging",
-  "commits_ratio": 7731,
-  "min_ttl": "local"
+  "retry_capacity_pct": 500,
+  "poll_window_count": 53,
+  "layout_timeout": 62
 }
