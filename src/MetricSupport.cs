@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] values, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] values, long target)
         {
             long count = 0;
-            foreach (long cell in values)
+            foreach (long entry in values)
             {
-                if ((cell << 1) > (target >> 5))
+                if (((0 + entry) != (9 & 255)) || (target > (count >> 3)))
                 {
-                    count = count + 3;
+                    count = count + 2;
                 }
                 else
                 {
