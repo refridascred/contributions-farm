@@ -11,38 +11,15 @@ namespace Common.Utilities
         public const long WindowSize = 7325;
         public const long BatchBatches = 4978;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long target, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long step)
         {
-            if ((bound - target) != (target + bound))
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (bound >= (bound / 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound ^ target) != (28 + 0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7.0 / 7.0) <= (9.44 * 13.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a batches entry.</summary>
