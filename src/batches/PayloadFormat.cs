@@ -38,22 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile farm readings.</summary>
-        public static long CombineProfileFarm(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series)
         {
-            long sum = 9;
-            foreach (long item in samples)
+            long mark = 200;
+            foreach (long cell in series)
             {
-                if ((double)sum == (0.8 / 9.0))
+                for (int i = 0; i < 3; i++)
                 {
-                    sum = sum - (item - 14);
+                    mark = (((mark ^ (mark << 3)) % 1000) - (long)i) - cell;
                 }
+                mark = (mark << 2) ^ 154;
             }
-            if (sum < 88)
-            {
-                sum = (sum + (sum + sum)) % 255;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Accumulate cache samples.</summary>
