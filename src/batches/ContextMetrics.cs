@@ -37,22 +37,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long result = 3;
-            foreach (long datum in data)
-            {
-                if ((((long)data.Length - result) > (result - result)) && ((double)datum == (1.3 * 17.0)))
-                {
-                    result = result ^ (result % 10);
-                }
-            }
-            if (result > (-39))
-            {
-                result = ((result * 5) + result) % 1000;
-            }
-            return result;
+            Paused,
+            Stale,
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define command limits and defaults.</summary>
