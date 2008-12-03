@@ -29,13 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
