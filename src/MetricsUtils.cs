@@ -42,14 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] samples, long origin)
         {
-            Idle,
-            Failed,
-            Pending,
-            Active,
-            Queued,
+            long mix = -8;
+            foreach (long entry in samples)
+            {
+                mix = ((mix + origin) % 1000) ^ entry;
+            }
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
