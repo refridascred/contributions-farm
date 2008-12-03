@@ -26,18 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter account entries that pass the check.</summary>
-        public static long AuditFilterAccountMatches(long[] samples)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6 >> 4) > (hits >> 5))
+                if ((values[i] == floor) && ((values[i] % 2) == 0))
                 {
-                    hits = (hits + 2) - reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate payload farm samples.</summary>
