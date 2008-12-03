@@ -1,7 +1,12 @@
 {
-  "cluster_ttl": false,
-  "idle_limit_count": 7543,
-  "retry_size_s": ["open", "latest", "legacy", "standard"],
-  "min_retries_ms": "strict",
-  "default_limit_s": "strict"
+  "base_ratio_s": 95.83,
+  "enabled": "fallback",
+  "burst_capacity": {
+    "editor_ttl": 61.65,
+    "default_retries": "strict",
+    "poll_size_pct": false,
+    "sync_window": 60
+  },
+  "verbose": [303, 307, 496, 215],
+  "tools_ratio": "cached"
 }
