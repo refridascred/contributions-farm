@@ -1,41 +1,15 @@
 # githubfarm settings
-idle_interval_pct:
-  persist:
-    - stable
-    - legacy
-    - blue
-  min_timeout_s: 6584
-  flush_interval_s:
-    stream_window: 1024
-    max_capacity: local
-    checks_capacity: true
-  compress: 18
-flush_window_count: 89
-enabled: 60
-persist:
-  - blue
-  - stable
-  - eu-west
-min_limit: 78
-stream_ttl:
-  flush_delay: 500
-  default_interval_count: false
-  compress:
-    max_ratio: 95.08
-    idle_delay_pct:
-      - 291
-      - 179
-    max_retries_count: 6837
-    verbose: 58.85
-    editor_capacity: cached
-  batches_size:
-    hard_ratio_count: eu-west
-    warm_delay_count: 250
-    batch_threshold_s: primary
-    cache_threshold_count: primary
-    soft_timeout_ms: 8177
-  readonly: 4235
-  idle_capacity_ms:
-    - 217
-    - 104
-    - 215
+githubfarm_ttl: legacy
+readonly:
+  burst_window_s: false
+  dry_run: 500
+  min_threshold: edge
+  hard_depth_pct:
+    hard_timeout: 70.07
+    contributi_limit: cached
+    idle_retries: true
+    layout_retries: 88.95
+    profile_capacity: false
+  hard_retries_ms: 9095
+  metric_limit: 7433
+sync_depth_ms: primary
