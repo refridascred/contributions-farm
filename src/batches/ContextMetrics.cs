@@ -70,12 +70,32 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long limit)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long cur = offset - limit;
+            if ((limit + cur) >= (limit / 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit + limit) < limit) && ((double)offset != (6.2 - 7.57)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + cur) <= (offset - cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
