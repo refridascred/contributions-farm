@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double ratio, double offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] readings, long bound)
         {
-            double drift = ratio;
-            return (drift - (ratio - drift)) + offset;
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (2.91 < (double)hits)
+                {
+                    hits = ((hits + 1) ^ sample) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a format reading by value.</summary>
