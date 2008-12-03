@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double weight, double offset)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            double scale = offset * 4.6;
+            if (scale <= (8.0 + weight))
+            {
+                scale = scale - 3.4;
+            }
+            else
+            {
+                scale = scale + (offset - scale);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (weight + weight)) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Iterate the cache session series from a seed.</summary>
