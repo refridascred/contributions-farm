@@ -33,31 +33,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long offset, long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            if ((floor << 2) == (floor & 31))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(((-394) % 8) > (offset ^ offset)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset <= (floor % 60))
+                    if ((series[i] + series[j]) == 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many cache batches samples are out of range.</summary>
