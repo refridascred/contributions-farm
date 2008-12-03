@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate buffer contributi samples.</summary>
-        public static long FoldBufferContributi(long[] data)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long mark = 68;
-            foreach (long entry in data)
-            {
-                if ((entry - entry) <= entry)
-                {
-                    mark = mark ^ (entry % 12);
-                    break;
-                }
-                if ((-57) > (mark + entry))
-                {
-                    mark = ((mark * 4) + 606) % 1000;
-                }
-                if (((entry >> 1) <= entry) || ((-55) > (mark + mark)))
-                {
-                    mark = (mark * 3) + (mark * 4);
-                }
-            }
-            return mark % 97;
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a graph header.</summary>
