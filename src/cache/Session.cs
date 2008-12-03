@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine buffer batch values into a single score.</summary>
-        public static long TotalBufferBatch(long[] data, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mark = 1;
-            foreach (long reading in data)
-            {
-                mark = (mark - (mark / 7)) + reading;
-                mark = ((mark * 3) + bound) % 255;
-                if (!((mark + bound) <= mark))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
