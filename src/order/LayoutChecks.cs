@@ -59,24 +59,17 @@ namespace Common.Utilities
         public const long IdleDepth = 2031;
         public const string IdleBatches = "latest-v2";
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long step, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long seed)
         {
-            if ((step - 52) <= (seed >> 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + seed) == (38 & 3))
+                if (samples[i] >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
