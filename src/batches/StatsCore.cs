@@ -68,15 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Draft,
-            Retry,
-            Locked,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 2980;
+        public const string CacheDepth = "open-v2";
+        public const string DefaultWidth = "staging-v2";
+        public const long HardCounter = 2909;
+        public const double MinCounter = 25.2;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] items, long target)
