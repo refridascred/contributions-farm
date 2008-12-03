@@ -52,13 +52,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long bound, long seed)
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            if (6 >= seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed - bound) >= (835 * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the buffer status values.</summary>
