@@ -61,31 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long target, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] series, long limit)
         {
-            if ((target + 2) >= (seed % 2))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (target >= seed)
+                if (entry >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)target > (2.27 - 2.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a stream header.</summary>
