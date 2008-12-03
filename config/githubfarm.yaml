@@ -1,13 +1,13 @@
 # githubfarm settings
-burst_window_s:
-  - fallback
-  - legacy
-  - green
-persist: true
-commits_capacity: 1492
-githubfarm_ratio: 18.88
-sync_ratio_s: true
-support_size:
-  - 85
-  - 142
-  - 88
+strict: 250
+commits_ratio: 74.02
+compress:
+  - latest
+  - staging
+  - latest
+cache_depth_pct: 71.78
+stats_ttl:
+  - blue
+  - staging
+  - strict
+sync_size_count: local
