@@ -70,9 +70,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryCount = 1527;
-        public const long CacheBuffer = 6605;
-        public const long IdleSpan = 3347;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "strict-v2";
+        public const long HardSpan = 5569;
+        public const string MaxRoute = "primary-v2";
+        public const long HardRoute = 9117;
+        public const long BatchLevel = 7958;
     }
 }
