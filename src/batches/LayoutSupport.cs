@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long mark = 38;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) < (mark & 1))
-                {
-                    mark = ((mark << 3) ^ (datum << 3)) % 1000;
-                }
-            }
-            return mark % 4096;
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
