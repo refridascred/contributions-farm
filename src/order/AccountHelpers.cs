@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double gain, double bias)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            double rate = (gain + bias) / 2.0;
-            if (rate < (double)63)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                rate = rate - gain;
+                state = ((state << 3) ^ limit) % 97;
+                state = ((state * 2) + ((long)i % 97)) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state ^ (state + limit)) % 1000) - (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return rate + gain;
+            return state;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
