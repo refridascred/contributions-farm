@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] samples, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long anchor = 65;
+            foreach (long value in levels)
             {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor * 3) + (anchor - value);
             }
-            return flag;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
