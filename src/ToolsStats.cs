@@ -57,19 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric support readings against a bound.</summary>
-        public static bool GuardMetricSupportLimits(long[] readings, long limit)
+        /// <summary>Accumulate filter window samples.</summary>
+        public static long CombineFilterWindow(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long mark = 2;
+            foreach (long item in readings)
             {
-                if (value <= limit)
+                if ((4.0 / 7.0) != (double)item)
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark - mark) % 101) + origin;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (item ^ item)) % 97;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
