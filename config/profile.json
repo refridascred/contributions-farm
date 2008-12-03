@@ -1,8 +1,6 @@
 {
-  "retry_capacity_ms": true,
-  "support_window": 250,
-  "graph_threshold": ["green", "strict", "staging", "staging"],
-  "soft_capacity": 95.73,
-  "sync_depth_ms": false,
-  "verbose": 55.51
+  "hard_limit": 3.84,
+  "dry_run": "eu-west",
+  "default_size_ms": [439, 421, 7],
+  "soft_depth": 44
 }
