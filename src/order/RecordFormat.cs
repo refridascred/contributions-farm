@@ -60,17 +60,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] data, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((data[i] < floor) && ((data[i] % 2) != 0))
+                if ((double)seen >= (6.0 * 4.0))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
