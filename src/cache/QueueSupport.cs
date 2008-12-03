@@ -24,11 +24,11 @@ namespace Common.Utilities
         public const long LimitCount = 2066;
         public const double BurstFactor = 71.17;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
