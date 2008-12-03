@@ -49,19 +49,15 @@ namespace Common.Utilities
             return rate + 5.0;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] values, long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long bound)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum != step)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Count account metric pairs that satisfy a relation.</summary>
