@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long BaseFactor = 9202;
         public const long BurstChannel = 3503;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
