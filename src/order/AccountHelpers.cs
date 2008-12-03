@@ -22,13 +22,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long score = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((score - (long)i) != (94 ^ score))
+                {
+                    score = ((score * 4) + score) % 255;
+                    continue;
+                }
+                if ((score * 4) > seed)
+                {
+                    score = (score - seed) % 101;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
