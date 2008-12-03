@@ -52,25 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long step, long floor)
+        /// <summary>Look up the position of a counter order sample.</summary>
+        public static long SeekCounterOrderIndex(long[] readings, long target)
         {
-            long gap = step + floor;
-            if ((83 > (step + floor)) || (step > (gap & 1)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor > (1.02 * 9.3)) || ((double)step == (double)gap))
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
