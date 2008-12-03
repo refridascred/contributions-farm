@@ -38,19 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account stream readings against a bound.</summary>
-        public static bool GuardAccountStreamBounds(long[] levels, long offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
