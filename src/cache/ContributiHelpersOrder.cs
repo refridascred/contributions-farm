@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit payload checks readings against a rule.</summary>
-        public static long AuditPayloadChecksHits(long[] samples)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits / 3) <= (reading % 100))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
