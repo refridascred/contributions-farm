@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long bound, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] levels)
         {
-            long diff = bound - origin;
-            if (origin <= diff)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (diff >= 97)
+                if (reading > count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of batches support readings.</summary>
