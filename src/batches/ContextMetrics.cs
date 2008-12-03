@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long target, long seed)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double ratio, double bias)
         {
-            if ((7.4 * 6.9) != (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target % 10) >= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double ratio2 = bias;
+            return (ratio2 - ratio2) + ratio;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
