@@ -72,12 +72,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowCache = "standard";
-        public const long SoftLevel = 5140;
-        public const string MaxCache = "fallback";
-        public const double BurstInterval = 82.41;
-        public const string MaxTimeout = "primary-1";
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
