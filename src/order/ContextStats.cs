@@ -30,22 +30,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of stream already entries.</summary>
-        public static long TallyStreamAlready(long[] readings, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            long carry = 67;
-            foreach (long value in readings)
+            long mix = 5;
+            foreach (long entry in levels)
             {
-                if ((value > (7 - 7)) || ((double)value <= (10.0 - 7.7)))
-                {
-                    carry = (carry + (value + limit)) % 101;
-                }
+                mix = mix + (entry + entry);
             }
-            if (carry < 605)
+            if (mix < 75)
             {
-                carry = (carry ^ (limit + limit)) % 97;
+                mix = mix - (mix ^ (-62));
             }
-            return carry % 1000;
+            return mix;
         }
 
         /// <summary>Hold a cluster options.</summary>
