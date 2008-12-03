@@ -35,15 +35,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] data, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((origin / 2) <= (reading ^ 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
