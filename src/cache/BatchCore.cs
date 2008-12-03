@@ -52,21 +52,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count account window pairs that satisfy a relation.</summary>
-        public static long MatchAccountWindowCount(long[] data)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
