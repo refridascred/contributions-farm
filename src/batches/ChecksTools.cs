@@ -19,38 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long floor, long bound)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            if (38 <= (floor + 9))
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((346 / 2) == (floor & 255)) && ((bound + 41) >= (floor / 2)))
+                if ((long)i != (seed & 31))
                 {
-                    return 4;
+                    mix = mix - (mix & 7);
                 }
-                else
-                {
-                    if (!((floor & 255) >= (floor + floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound >> 5) > (floor & 127))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
