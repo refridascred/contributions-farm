@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 1919;
-        public const long IdleBatch = 6252;
-        public const string DefaultFactor = "standard-1";
-        public const double HardRatio = 7.13;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double SmoothFormat(double rate, double span)
