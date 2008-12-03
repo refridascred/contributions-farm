@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools record samples are out of range.</summary>
-        public static long CountToolsRecordGaps(long[] samples)
+        /// <summary>Scale a account payload figure with a bias.</summary>
+        public static double AdjustAccountPayload(double bias, double span)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double bias2 = (double)(7 - 98);
+            if (bias2 <= (bias2 + bias))
             {
-                if ((count ^ reading) == (reading - count))
-                {
-                    count = count + 2;
-                }
+                bias2 = bias2 + (bias - span);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + bias) - (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Accumulate metric samples.</summary>
