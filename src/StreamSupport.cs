@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already graph readings against a rule.</summary>
-        public static long CountAlreadyGraphMatches(long[] values)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mix = 5;
+            foreach (long reading in series)
             {
-                if (matches > datum)
+                if ((mix + reading) < (216 - mix))
                 {
-                    matches = matches + 1;
+                    mix = ((mix << 2) ^ (floor * 3)) % 4096;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
