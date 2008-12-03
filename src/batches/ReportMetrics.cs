@@ -17,19 +17,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] items, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (cell > step)
+                if ((8.51 / 3.0) >= (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
