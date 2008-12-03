@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long step, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long slot = step ^ floor;
+            if (((step & 31) >= (floor + floor)) && ((2.91 - 14.0) > (double)slot))
             {
-                if ((data[i] <= step) && ((data[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((9 + floor) > slot) && ((75 >> 2) == (floor >> 3)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
