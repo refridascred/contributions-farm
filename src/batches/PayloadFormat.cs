@@ -42,31 +42,19 @@ namespace Common.Utilities
             return mean + (double)9;
         }
 
-        /// <summary>Grade a report tools value against two limits.</summary>
-        public static long SortReportTools(long limit, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] samples, long bound)
         {
-            if ((510 % 100) <= bound)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound ^ 7) >= (limit & 31)))
+                if (sample > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)limit == (8.0 / 9.0)) && ((183 % 8) > (bound << 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
