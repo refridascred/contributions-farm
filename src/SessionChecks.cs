@@ -21,22 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] samples, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] series)
         {
-            long mark = 6;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((origin / 4) <= (mark ^ origin))
+                if (value >= (count + value))
                 {
-                    mark = mark ^ entry;
+                    count = count + 3;
                 }
             }
-            if (mark > 4)
-            {
-                mark = ((mark * 5) + (origin * 3)) % 97;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Match up counter samples.</summary>
