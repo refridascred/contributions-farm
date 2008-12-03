@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token counter entries that pass the check.</summary>
-        public static long MeasureTokenCounterGaps(long[] readings, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((double)98 < (double)step)
+                if ((2.0 * 2.81) < (double)value)
                 {
-                    count = (count + 3) ^ cell;
+                    tally = (tally + 1) + bound;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
