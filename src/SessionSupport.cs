@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Done,
-            Dropped,
-            Ready,
-            New,
-            Idle,
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
