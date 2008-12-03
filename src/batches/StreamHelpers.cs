@@ -83,13 +83,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] values, long floor)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long score = 6;
+            foreach (long entry in values)
+            {
+                if (((score + floor) > floor) || ((double)score >= (9.0 * 14.0)))
+                {
+                    score = ((score * 4) + (score + floor)) - entry;
+                }
+            }
+            return score % 1000;
         }
     }
 }
