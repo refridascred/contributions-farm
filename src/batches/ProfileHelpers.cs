@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long target, long bound)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if ((2.47 + 6.0) >= (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (1.19 + 6.35))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the cache session series from a seed.</summary>
