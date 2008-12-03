@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] levels, long origin)
         {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)origin == (5.06 / 2.0))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next record value.</summary>
