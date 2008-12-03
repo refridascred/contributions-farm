@@ -58,17 +58,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 532;
+            foreach (long entry in levels)
             {
-                if (levels[i] <= origin)
+                if ((double)entry >= (1.0 - 7.0))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (result + entry)) % 255;
                 }
             }
-            return -1;
+            if (result > 869)
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
