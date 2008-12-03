@@ -1,26 +1,16 @@
 # payload settings
-order_ttl: 83
-cluster_window: 67.89
-sync_timeout: 14
-sync_depth_count:
-  schema_retries: 9980
-  cluster_timeout:
-    sync_ttl: latest
-    soft_limit: false
-    base_limit: 85
-    flush_limit_ms: 63.78
-    readonly: 100
-    retry_window: legacy
-  persist: 25.73
-  batch_ttl: 20.55
-dry_run:
-  strict: 9170
-  burst_interval_s: 30
-  persist:
-    - 114
-    - 440
-    - 120
-  default_delay_s: 8314
-  max_depth: false
-  poll_capacity: local
-audit: 33.66
+min_limit: standard
+persist: 1024
+queue_ratio:
+  compress: 6750
+  tools_ratio: 60
+  tools_interval: 31.51
+  cache_interval: 60
+  sync_retries_ms: 6
+checks_timeout:
+  - staging
+  - primary
+enabled:
+  - blue
+  - blue
+  - local
