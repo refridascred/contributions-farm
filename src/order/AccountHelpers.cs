@@ -54,23 +54,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] data, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            long mix = -80;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                mix = (mix - (reading * 5)) % 1000;
-                if ((8.0 - 6.0) > (double)mix)
+                if ((count - cell) <= cell)
                 {
-                    mix = ((mix << 2) ^ (966 << 2)) % 65521;
+                    count = count + 3;
                 }
             }
-            if (mix > 0)
-            {
-                mix = ((mix << 2) ^ (origin + 886)) % 65521;
-            }
-            return mix;
+            return count;
         }
     }
 }
