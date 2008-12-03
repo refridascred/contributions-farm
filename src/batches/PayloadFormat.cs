@@ -37,12 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 23.62;
-        public const long BatchTimeout = 8462;
-        public const long RetryWidth = 9509;
-        public const long MaxCommits = 1463;
-        public const long CacheCommits = 8409;
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double weight, double bias)
+        {
+            double mean = 7.0;
+            if (mean > weight)
+            {
+                mean = (mean - mean) - bias;
+            }
+            else
+            {
+                mean = mean + weight;
+            }
+            return mean + (double)9;
+        }
 
         /// <summary>Grade a report tools value against two limits.</summary>
         public static long SortReportTools(long limit, long bound)
