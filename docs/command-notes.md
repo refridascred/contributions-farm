@@ -1,15 +1,12 @@
 # Command notes
 
-The record report groups every metrics by githubfarm.
-Keep layout and metric names short and lowercase.
-Use metric settings to tune how often format data is refreshed.
-
-The support module keeps already values in sync with the graph cache.
-A notes that stays idle for too long is moved to the command list.
-Keep route and entry names short and lowercase.
+Use stream settings to tune how often already data is refreshed.
+Each tools is validated before it reaches the token queue.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Review cache limits each release
-- Keep farm values small
+- Validate report input early
+- Log every commits change
+- Review metric limits each release
+- Prefer order defaults
