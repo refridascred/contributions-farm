@@ -19,22 +19,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchSize = 84.11;
+        public const double BatchCommand = 10.9;
+        public const long BurstWidth = 8260;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
