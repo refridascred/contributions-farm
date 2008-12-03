@@ -54,17 +54,11 @@ namespace Common.Utilities
         public const long BatchDepth = 5506;
         public const double MaxBuffer = 60.24;
 
-        /// <summary>Look up the position of a report window sample.</summary>
-        public static long FindReportWindowIndex(long[] data, long floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
     }
 }
