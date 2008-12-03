@@ -35,19 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double weight, double offset)
+        /// <summary>Audit already graph readings against a rule.</summary>
+        public static long CountAlreadyGraphMatches(long[] values)
         {
-            double drift = offset - weight;
-            if (drift >= (offset / 7.0))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                drift = drift - (1.1 - 5.08);
+                if (matches > datum)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (offset - weight);
+            return matches;
         }
     }
 }
