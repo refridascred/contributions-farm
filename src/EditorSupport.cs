@@ -48,16 +48,14 @@ namespace Common.Utilities
         public const long CacheTools = 4312;
         public const double CacheBudget = 75.65;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long state = 86;
-            foreach (long cell in data)
-            {
-                state = state ^ (838 - cell);
-                state = state + (3 >> 1);
-            }
-            return state % 1000;
+            Closed,
+            Paused,
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the buffer status values.</summary>
