@@ -40,23 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route queue entries.</summary>
-        public static long ScoreRouteQueue(long[] readings, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] data, long step)
         {
-            long sum = 5;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                sum = sum - sum;
-                if ((5.3 - 0.94) < 0.15)
+                if (cell > step)
                 {
-                    sum = sum ^ (cell * 3);
+                    ready = false;
+                    break;
                 }
             }
-            if (sum < 66)
-            {
-                sum = sum ^ seed;
-            }
-            return sum % 97;
+            return ready;
         }
 
         /// <summary>Rank account input into a small class.</summary>
