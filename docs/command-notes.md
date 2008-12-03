@@ -1,14 +1,14 @@
 # Command notes
 
-The batch module keeps layout values in sync with the entry cache.
-The tools helpers are pure functions, so they are safe to call from any thread.
-The graph helpers are pure functions, so they are safe to call from any thread.
+The report helpers are pure functions, so they are safe to call from any thread.
+Keep commits and entry names short and lowercase.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
-Use command settings to tune how often graph data is refreshed.
-Each stats is validated before it reaches the farm queue.
+Run the buffer check before changing any tools limits.
+Run the batch check before changing any payload limits.
 
 ## Guidelines
 
-- Document new session fields
-- Keep filter values small
-- Log every cache change
+- Document new schema fields
+- Log every command change
+- Prefer batches defaults
