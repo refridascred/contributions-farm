@@ -33,14 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Idle,
-            Done,
-            New,
-            Synced,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftBudget = 16.13;
+        public const double StepFactor = 23.69;
+        public const string BurstToken = "primary-v2";
+        public const string RetryToken = "fallback-v2";
+        public const long MinToken = 1478;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
