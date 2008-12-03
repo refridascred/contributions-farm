@@ -1,16 +1,8 @@
 {
-  "tools_window": false,
-  "dry_run": {
-    "format_ttl": {
-      "flush_depth_pct": ["blue", "open", "edge", "cached"],
-      "batch_capacity": 14.37,
-      "support_ttl": 43.95,
-      "hard_interval_pct": 27.55,
-      "readonly": true
-    },
-    "readonly": 70.31,
-    "retry_limit_ms": "local"
-  },
-  "base_window_count": false,
-  "soft_capacity_count": 250
+  "cache_capacity_ms": [445, 98, 126, 280],
+  "audit": "latest",
+  "tools_interval": "fallback",
+  "dry_run": 81.62,
+  "max_window": [41, 42, 102, 409],
+  "base_interval": 4556
 }
