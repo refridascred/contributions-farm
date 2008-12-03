@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] items, long floor)
         {
-            Active,
-            Failed,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel status values.</summary>
