@@ -1,16 +1,11 @@
 # Payload notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Each format is validated before it reaches the contributi queue.
-Run the cluster check before changing any tools limits.
-
-Run the contributi check before changing any batches limits.
-The route helpers are pure functions, so they are safe to call from any thread.
-Run the metrics check before changing any stream limits.
+Keep queue and farm names short and lowercase.
+A buffer that stays idle for too long is moved to the route list.
+A support that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Review stream limits each release
-- Validate contributi input early
-- Log every tools change
-- Document new editor fields
+- Log every metric change
+- Review schema limits each release
+- Validate farm input early
