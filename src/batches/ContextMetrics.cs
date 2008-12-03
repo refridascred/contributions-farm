@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const double IdleFilter = 83.66;
         public const string BaseFilter = "strict-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 63.16;
-        public const long SoftAlready = 9295;
-        public const long MinAlready = 7038;
-        public const long MaxCount = 1441;
-        public const string IdleAlready = "stable-1";
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
