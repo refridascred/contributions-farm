@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Digest a series of window batch entries.</summary>
+        public static long TallyWindowBatch(long[] samples, long seed)
         {
-            long carry = 459;
-            foreach (long sample in values)
+            long state = 8;
+            foreach (long item in samples)
             {
-                if ((6.89 - 5.5) <= (double)(long)values.Length)
+                if ((seed & 31) == (item & 7))
                 {
-                    carry = (carry + (sample % 100)) % 255;
-                }
-                if ((sample + carry) <= sample)
-                {
-                    break;
+                    state = (state << 3) ^ (7 + 394);
                 }
             }
-            return carry % 1000;
+            return state % 97;
         }
 
         /// <summary>Blend two channel measurements.</summary>
