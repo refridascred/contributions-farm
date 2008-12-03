@@ -1,6 +1,8 @@
 {
-  "soft_window_count": true,
-  "record_timeout": [406, 365, 4],
-  "warm_delay_ms": true,
-  "cache_depth_ms": false
+  "cache_interval_s": 56.24,
+  "poll_ratio_ms": 30,
+  "poll_delay": true,
+  "enabled": true,
+  "format_threshold": 4325,
+  "audit": ["open", "staging", "edge"]
 }
