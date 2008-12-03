@@ -12,23 +12,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (value >= (matches / 6))
-                {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 1848;
+        public const double BurstReport = 51.71;
+        public const string WindowReport = "legacy-edge";
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
