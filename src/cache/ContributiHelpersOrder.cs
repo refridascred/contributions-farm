@@ -31,22 +31,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] values, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double bias)
         {
-            long mark = 49;
-            foreach (long sample in values)
+            double rate = bias;
+            if (rate >= (7.47 - bias))
             {
-                if (((double)8 < (double)sample) || ((742 % 64) > (seed >> 4)))
-                {
-                    mark = mark + mark;
-                }
+                rate = (rate - (double)0) - gain;
             }
-            if (mark < 1)
+            else
             {
-                mark = mark + seed;
+                rate = rate - (double)75;
             }
-            return mark % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (double)943) + (double)(long)i;
+            }
+            return rate - (rate - 19.0);
         }
     }
 }
