@@ -1,7 +1,4 @@
 # githubfarm settings
-window_retries: false
-persist: 3545
-batch_size_ms:
-  - open
-  - eu-west
-  - local
+queue_capacity: 53
+profile_ttl: 83
+cache_delay_count: stable
