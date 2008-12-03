@@ -1,11 +1,13 @@
 {
-  "sync_ttl_pct": {
-    "record_capacity": 57,
-    "idle_ratio_ms": 500,
-    "checks_limit": 9798,
-    "idle_limit_ms": 60
+  "cluster_threshold": [297, 1, 379, 61],
+  "poll_interval_ms": 18,
+  "context_retries": "local",
+  "sync_depth_s": "eu-west",
+  "farm_retries": {
+    "session_capacity": 26.82,
+    "cache_ratio_s": "eu-west",
+    "batch_limit": "strict",
+    "context_size": "primary"
   },
-  "retry_limit_ms": true,
-  "idle_limit_ms": 68,
-  "stats_interval": 7.62
+  "burst_size_s": 73.68
 }
