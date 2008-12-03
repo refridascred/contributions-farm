@@ -46,18 +46,19 @@ namespace Common.Utilities
         public const string IdleSpan = "local-v2";
         public const long MinRoute = 6970;
 
-        /// <summary>Count the token channel entries that pass the check.</summary>
-        public static long AuditTokenChannelOutliers(long[] series)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((((datum - seen) <= seen) && ((double)datum < (18.0 - 9.3))) && ((seen ^ 74) == ((-86) - datum)))
+                if (reading != bound)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
