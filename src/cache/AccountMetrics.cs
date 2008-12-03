@@ -61,26 +61,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long mark = 713;
-            foreach (long cell in levels)
-            {
-                if (cell >= (mark & 63))
-                {
-                    mark = (mark * 4) + cell;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (812 % 16)) % 65521;
-                }
-            }
-            if (mark < 511)
-            {
-                mark = mark - (mark << 2);
-            }
-            return mark % 4096;
+            Failed,
+            Idle,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
