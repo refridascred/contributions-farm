@@ -51,11 +51,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstSize = 3660;
-        public const double StepFactor = 4.96;
-        public const long StepQueue = 8192;
-        public const long CacheDepth = 3634;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextOutliers(long[] readings, long origin)
