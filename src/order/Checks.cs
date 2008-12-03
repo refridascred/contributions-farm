@@ -63,15 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric layout samples.</summary>
-        public static long ScoreMetricLayout(long[] samples)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] series, long step)
         {
-            long total = 3;
-            foreach (long cell in samples)
+            long carry = 5;
+            foreach (long entry in series)
             {
-                total = (total - total) - cell;
+                if (step >= carry)
+                {
+                    carry = carry ^ entry;
+                }
             }
-            return total;
+            return carry;
         }
     }
 }
