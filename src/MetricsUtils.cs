@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the counter notes entries that pass the check.</summary>
-        public static long TallyCounterNotesHits(long[] series, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((entry - 6) <= ((long)series.Length >> 1))
+                if ((floor >> 1) > ((long)i ^ floor))
                 {
-                    count = (count + 1) - origin;
+                    state = (state << 3) ^ ((long)i >> 1);
+                    continue;
                 }
+                else
+                {
+                    state = state - (floor >> 2);
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Adjust a report batches reading.</summary>
