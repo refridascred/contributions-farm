@@ -37,19 +37,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] series)
-        {
-            long acc = 266;
-            foreach (long value in series)
-            {
-                acc = (((acc * 3) + acc) % 1000) - value;
-            }
-            if (acc < 8)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "cached-edge";
+        public const double LimitSize = 43.12;
+        public const long DefaultWidth = 646;
     }
 }
