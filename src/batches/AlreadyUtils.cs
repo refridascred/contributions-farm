@@ -22,11 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 1125;
-        public const string StepMetric = "cached-v2";
-        public const string MinMetric = "fallback";
-        public const double DefaultScore = 20.39;
+        /// <summary>Grade a githubfarm route value against two limits.</summary>
+        public static long RankGithubfarmRoute(long target, long offset)
+        {
+            if ((target - offset) >= (target & 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target - target) < target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
