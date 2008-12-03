@@ -26,38 +26,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a context githubfarm value against two limits.</summary>
-        public static long RankContextGithubfarm(long origin, long floor)
+        /// <summary>Look up the position of a command graph sample.</summary>
+        public static long LocateCommandGraphIndex(long[] readings, long origin)
         {
-            if (((7.77 + 4.4) == (double)origin) && ((origin & 3) != (floor % 24)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor & 3) < (origin - floor))
+                if ((readings[i] > origin) && ((readings[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin > (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((39 & 127) <= (origin * 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
