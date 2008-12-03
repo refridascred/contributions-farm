@@ -30,9 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 6105;
-        public const string MinBudget = "cached-v2";
-        public const long BaseRatio = 4964;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public bool Size { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
