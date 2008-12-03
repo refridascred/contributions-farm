@@ -1,4 +1,29 @@
 # entry settings
-warm_retries_ms: 30
-enabled: eu-west
-buffer_size: 7291
+sync_size: 9.53
+layout_depth: edge
+stats_depth:
+  warm_depth: 71
+  editor_limit:
+    - 6
+    - 248
+    - 54
+  persist:
+    - 261
+    - 388
+    - 232
+    - 145
+  batch_limit: 83.0
+  base_capacity_count: 3596
+  farm_retries: false
+tools_threshold: cached
+flush_interval: strict
+base_size:
+  route_ttl:
+    - strict
+    - open
+    - primary
+    - staging
+  cache_timeout_count: 45.93
+  poll_size_pct: green
+  cache_window_s: fallback
+  checks_window: local
