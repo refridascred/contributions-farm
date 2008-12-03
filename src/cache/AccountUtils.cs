@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseLevel = 9167;
+        public const long MaxCount = 551;
+        public const long CacheBuffer = 2731;
+        public const long StepSize = 4556;
+        public const long HardBuffer = 9403;
     }
 }
