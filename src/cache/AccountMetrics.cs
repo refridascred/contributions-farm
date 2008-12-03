@@ -87,19 +87,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((((value % 5) > (value - count)) && ((count - count) == (count * 4))) || (3.29 >= (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "open-v2";
+        public const double MinCommits = 32.08;
+        public const long SoftTimeout = 1914;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaBounds(long[] items, long step)
