@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Synced,
-            Done,
-            Pending,
-            Closed,
-            Paused,
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
