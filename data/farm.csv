@@ -1,11 +1,6 @@
-id,owner,weight,region
-1,71.45,5,blue
-2,open,30,7.31
-3,open,latest,132
-4,20.37,52.92,657
-5,306,371,398
-6,standard,203,41.99
-7,18.57,17.44,standard
-8,green,174,stable
-9,32.01,green,21.73
-10,edge,1,green
+id,owner
+1,10.79
+2,53.59
+3,local
+4,427
+5,stable
