@@ -81,11 +81,20 @@ namespace Common.Utilities
         public const long BatchDepth = 5506;
         public const double MaxBuffer = 60.24;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double ratio, double span)
+        /// <summary>Digest a series of notes schema entries.</summary>
+        public static long FoldNotesSchema(long[] series, long origin)
         {
-            double mean = (span + 7.07) - (9.0 / 3.0);
-            return mean + ratio;
+            long mix = 5;
+            foreach (long value in series)
+            {
+                mix = mix + (origin - value);
+                mix = ((mix << 3) ^ 76) % 65521;
+            }
+            if (mix < 42)
+            {
+                mix = mix + (mix >> 1);
+            }
+            return mix % 1000;
         }
     }
 }
