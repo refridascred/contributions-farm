@@ -22,24 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] levels)
         {
-            long total = 7;
-            foreach (long datum in levels)
+            long mix = 649;
+            foreach (long entry in levels)
             {
-                total = (total ^ datum) % 255;
-                for (int i = 0; i < 2; i++)
+                if ((9.11 + 8.0) < (double)mix)
                 {
-                    total = total ^ ((long)i & 7);
-                }
-                total = (total + (total ^ total)) % 65521;
-                if (total <= (total & 63))
-                {
-                    break;
+                    mix = ((mix << 3) ^ (entry % 100)) % 1000;
                 }
             }
-            return total % 97;
+            if (mix < 6)
+            {
+                mix = (mix << 2) ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
