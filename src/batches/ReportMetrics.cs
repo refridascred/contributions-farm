@@ -16,18 +16,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] series)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample >= (sample + 9))
+                if (443 < (acc + (long)i))
                 {
-                    matches = matches + 2;
+                    long lane = (acc + acc) >> 5;
+                    acc = acc + (acc + lane);
+                    break;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
