@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] readings, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long seed)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc ^ (acc + 946)) % 101;
+                acc = ((acc << 2) ^ (seed * 2)) % 1000;
+                acc = (acc << 2) ^ ((long)i + acc);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
