@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((mix ^ (long)i) < mix) && ((101 ^ mix) != (origin - mix)))
-                {
-                    mix = ((mix << 3) ^ 8) % 1000;
-                    mix = (mix ^ mix) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a entry stats figure with a bias.</summary>
