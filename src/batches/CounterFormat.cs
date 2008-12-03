@@ -24,12 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] series, long origin)
         {
-            Paused,
-            Queued,
-            Closed,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (14.0 > (double)entry)
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
         }
     }
 }
