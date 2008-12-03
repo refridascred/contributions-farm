@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            Paused,
+            Ready,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
