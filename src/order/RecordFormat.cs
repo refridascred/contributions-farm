@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BatchCount = 4151;
         public const string BatchContributi = "stable-v2";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 1681;
-        public const string DefaultStream = "alpha-edge";
-        public const double MaxStream = 78.72;
-        public const string BurstStream = "open-v2";
-        public const double CacheStream = 52.74;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
