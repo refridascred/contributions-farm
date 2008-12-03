@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Accumulate token command samples.</summary>
+        public static long TallyTokenCommand(long[] data, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long anchor = 130;
+            foreach (long datum in data)
             {
-                anchor = (anchor << 3) ^ 4;
-                anchor = (anchor - (70 & 15)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((target - anchor) < 200)
+                {
+                    anchor = (((anchor * 2) + (anchor + 85)) % 1000) - datum;
+                }
             }
             return anchor;
         }
