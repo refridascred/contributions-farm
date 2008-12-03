@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseInterval = 682;
-        public const long BurstTimeout = 3795;
-        public const double StepScore = 61.39;
-        public const double SoftSize = 58.83;
-        public const string MinInterval = "legacy-edge";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data, long floor)
+        {
+            long score = 976;
+            foreach (long value in data)
+            {
+                score = ((score * 5) + (value % 12)) % 101;
+            }
+            if (score > 18)
+            {
+                score = score - (floor + floor);
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TallySession(long[] data)
