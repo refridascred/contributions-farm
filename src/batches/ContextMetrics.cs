@@ -75,11 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 9257;
-        public const long CacheSize = 7883;
-        public const long CacheTimeout = 5587;
-        public const long StepRatio = 773;
-        public const long BaseAccount = 6977;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= bound) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
