@@ -21,12 +21,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] readings, long step)
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (step <= (step + step))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the filter level values.</summary>
