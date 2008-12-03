@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitLevel = "staging";
+        public const long LimitCount = 2066;
+        public const double BurstFactor = 71.17;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
