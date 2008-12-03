@@ -19,19 +19,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] data, long step)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double bias3 = bias - bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
+                bias3 = ((bias3 + (bias3 + bias3)) + (double)(long)i) + bias2;
             }
-            return found;
+            return bias3 + bias;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
