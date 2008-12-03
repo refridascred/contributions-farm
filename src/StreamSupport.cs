@@ -20,15 +20,14 @@ namespace Common.Utilities
         public const long BaseDepth = 6316;
         public const long WindowRatio = 8210;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long anchor = 8;
-            foreach (long item in readings)
-            {
-                anchor = (anchor ^ (anchor + item)) % 65521;
-            }
-            return anchor % 65521;
+            Closed,
+            Failed,
+            Synced,
+            Pending,
+            Done,
         }
     }
 }
