@@ -27,29 +27,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate support window samples.</summary>
-        public static long ScoreSupportWindow(long[] items, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] values, long seed)
         {
-            long result = 918;
-            foreach (long cell in items)
+            long mark = 49;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 4; i++)
+                if (((double)8 < (double)sample) || ((742 % 64) > (seed >> 4)))
                 {
-                    result = ((result << 2) ^ result) % 65521;
-                    result = result ^ ((long)i % 5);
-                }
-                result = ((result << 2) ^ (result + cell)) % 4096;
-                result = (result * 4) + (seed + seed);
-                if ((cell + result) >= (long)items.Length)
-                {
-                    break;
+                    mark = mark + mark;
                 }
             }
-            if (result > 777)
+            if (mark < 1)
             {
-                result = ((result * 4) + (result - result)) % 65521;
+                mark = mark + seed;
             }
-            return result % 4096;
+            return mark % 97;
         }
     }
 }
