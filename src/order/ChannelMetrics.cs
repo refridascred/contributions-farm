@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double bias, double offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double bias)
         {
-            double load = 8.86 + 4.87;
-            if (load >= (double)12)
+            double bias2 = (bias * 8.25) + (double)28;
+            if (bias2 >= (bias2 / 7.0))
             {
-                load = load - (offset + bias);
+                bias2 = (bias2 + 18.0) + scale;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 4; i++)
             {
-                load = (load + offset) + (double)(long)i;
+                bias2 = (bias2 - bias) + (double)(long)i;
             }
-            return load - 3.7;
+            return bias2 - (bias2 - 0.29);
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
