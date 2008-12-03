@@ -35,17 +35,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] data, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                long seen = 455 + (floor + (long)i);
-                sum = (sum + (floor + seen)) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (target >= (target << 3))
+                {
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the account kind values.</summary>
