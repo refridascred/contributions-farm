@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long bound)
         {
-            double drift = gain;
-            if (drift > span)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift + span;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + gain;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
