@@ -33,21 +33,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 891;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((9.09 + 4.0) > (double)cell))
                 {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 3) + ((long)samples.Length - (long)samples.Length)) % 255;
                 }
             }
-            return seen;
+            if (anchor > (-5))
+            {
+                anchor = anchor ^ (anchor * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
