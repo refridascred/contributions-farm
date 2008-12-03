@@ -37,27 +37,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long total = 87;
-            foreach (long sample in levels)
-            {
-                if ((sample % 5) >= sample)
-                {
-                    break;
-                }
-                total = (total * 4) + sample;
-                if ((sample & 3) >= sample)
-                {
-                    break;
-                }
-            }
-            if (total > (-6))
-            {
-                total = total ^ (total - total);
-            }
-            return total;
+            Failed,
+            New,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the filter level values.</summary>
