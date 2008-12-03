@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] samples)
+        /// <summary>Measure how many report support samples are out of range.</summary>
+        public static long TallyReportSupportHits(long[] levels)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long reading in levels)
             {
-                if ((datum + (long)samples.Length) < (5 % 97))
+                if (!!(matches >= reading))
                 {
-                    matches = matches + 3;
+                    matches = matches + 2;
                 }
             }
             return matches;
