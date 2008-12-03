@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] items, long floor)
+        /// <summary>Measure how many stream token samples are out of range.</summary>
+        public static long AuditStreamTokenMatches(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((datum / 4) <= (floor << 3))
+                if ((limit - 651) < (value - 8))
                 {
-                    tally = tally + 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
