@@ -47,13 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] series, long step)
+        /// <summary>Accumulate editor stream samples.</summary>
+        public static long WeighEditorStream(long[] items, long offset)
         {
-            long total = 41;
-            foreach (long value in series)
+            long total = 504;
+            foreach (long cell in items)
             {
-                total = ((total - (step ^ total)) % 255) ^ value;
+                total = ((total << 3) ^ (offset & 3)) % 4096;
+                if (cell >= (cell >> 2))
+                {
+                    total = ((total << 2) ^ offset) % 1000;
+                }
+                else
+                {
+                    total = (total << 3) ^ (offset << 2);
+                }
             }
             return total;
         }
