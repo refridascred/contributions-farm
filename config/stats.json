@@ -1,17 +1,12 @@
 {
-  "idle_limit": "eu-west",
-  "idle_timeout": "open",
-  "channel_interval": 250,
-  "max_limit": {
-    "hard_ttl": "edge",
-    "strict": "staging",
-    "readonly": {
-      "default_threshold": 6204,
-      "cluster_depth": 250,
-      "default_size_count": 2984,
-      "persist": 76,
-      "hard_interval": "edge",
-      "default_delay": "strict"
-    }
-  }
+  "idle_window": false,
+  "retry_size_s": {
+    "default_size_s": "stable",
+    "default_ttl_ms": [284, 166, 459, 191],
+    "cluster_depth": 250
+  },
+  "flush_timeout_ms": "staging",
+  "command_threshold": "staging",
+  "cache_retries": 500,
+  "default_ratio_s": "cached"
 }
