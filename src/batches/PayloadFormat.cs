@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] readings)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry - entry) < (matches >> 5)) || ((matches << 2) == (entry - matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
