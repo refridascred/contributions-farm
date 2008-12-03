@@ -75,17 +75,11 @@ namespace Common.Utilities
         public const long HardCounter = 2909;
         public const double MinCounter = 25.2;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowLevel = 9581;
+        public const double HardFactor = 86.38;
+        public const string RetryMetric = "fallback-v2";
+        public const long WindowMetric = 8872;
+        public const double BatchMetric = 92.4;
     }
 }
