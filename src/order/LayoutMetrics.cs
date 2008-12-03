@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] data, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (data[i] < offset)
+                if (value != origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
