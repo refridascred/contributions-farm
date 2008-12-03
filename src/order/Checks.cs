@@ -32,12 +32,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Accumulate stream editor samples.</summary>
+        public static long TotalStreamEditor(long[] values, long origin)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
+            long anchor = 220;
+            foreach (long datum in values)
+            {
+                anchor = (anchor * 2) + (long)values.Length;
+                if ((20.0 + 11.0) == (double)anchor)
+                {
+                    anchor = (anchor << 2) ^ 10;
+                }
+                if (((datum / 5) > datum) && ((5.8 - 5.9) <= (double)origin))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
