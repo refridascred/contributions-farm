@@ -1,8 +1,5 @@
 {
-  "default_retries_ms": "staging",
-  "burst_timeout_s": [479, 284],
-  "metrics_ttl": ["standard", "primary"],
-  "readonly": 1024,
-  "verbose": 60,
-  "soft_window_ms": 56.82
+  "min_capacity_pct": 30,
+  "soft_retries_ms": 60,
+  "window_size": false
 }
