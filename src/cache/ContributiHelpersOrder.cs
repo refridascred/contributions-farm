@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((bound >> 2) == (carry + carry))
-                {
-                    carry = (carry * 3) + bound;
-                    carry = (carry ^ (bound >> 2)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
