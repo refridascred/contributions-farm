@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the checks buffer entries that pass the check.</summary>
+        public static long CountChecksBufferGaps(long[] items, long offset)
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!(((offset + offset) == (257 & 31)) && ((566 << 1) > matches)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
