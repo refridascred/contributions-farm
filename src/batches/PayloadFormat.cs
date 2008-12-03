@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double bias, double span)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] levels)
         {
-            double weight = bias;
-            if (weight > span)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (weight - bias);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + 3.84) + (double)(long)i;
-            }
-            return weight + (5.9 - bias);
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
