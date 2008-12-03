@@ -12,26 +12,21 @@ namespace Common.Utilities
             return (gain + bias) + offset;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Match up buffer farm samples.</summary>
+        public static long OverlapBufferFarmCount(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                double load = (2.68 / 7.0) + (5.36 + 7.5);
-                if (load > (double)anchor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor + (43 - anchor)) % 65521;
-                    continue;
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    load = load + (double)bound;
-                    load = load - (load + load);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
