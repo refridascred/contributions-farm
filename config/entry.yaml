@@ -1,30 +1,6 @@
 # entry settings
-enabled:
-  idle_depth_pct:
-    account_depth: true
-    sync_limit: green
-    hard_limit_s: 500
-    warm_ttl: 89.03
-    verbose: 79.14
-  readonly: 1
-  sync_retries_pct: eu-west
-  flush_depth: primary
-  dry_run: edge
-burst_ratio_ms:
-  profile_ttl:
-    - standard
-    - stable
-    - staging
-    - latest
-  enabled: false
-  idle_interval_count: 16
-  queue_capacity: 1024
-  queue_limit: green
-  cache_window: 1024
-poll_delay_count: 4733
-max_threshold_s: 60
-profile_window: 500
-flush_interval:
-  enabled: 1667
-  idle_timeout_pct: 36.64
-  burst_limit_pct: eu-west
+default_ttl: true
+warm_ratio:
+  - 477
+  - 43
+cache_size: green
