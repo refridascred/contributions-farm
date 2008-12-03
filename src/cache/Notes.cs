@@ -13,20 +13,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (!!((step / 4) == (mark << 1)))
+                double load = (2.68 / 7.0) + (5.36 + 7.5);
+                if (load > (double)anchor)
                 {
-                    mark = ((mark * 3) + (8 >> 3)) % 255;
+                    anchor = (anchor + (43 - anchor)) % 65521;
+                    continue;
                 }
-                mark = (mark - (step >> 2)) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
+                else
+                {
+                    load = load + (double)bound;
+                    load = load - (load + load);
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
