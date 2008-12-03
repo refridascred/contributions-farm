@@ -63,13 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
