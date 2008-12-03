@@ -1,14 +1,18 @@
 {
-  "account_delay": 47.72,
-  "soft_retries": 58,
-  "base_timeout_ms": false,
-  "enabled": "latest",
-  "editor_threshold": {
-    "soft_depth_count": 4.75,
-    "verbose": 250,
-    "persist": "green",
-    "compress": false,
-    "max_depth_ms": 100
+  "record_window": ["green", "stable", "strict"],
+  "poll_delay_count": "edge",
+  "min_ratio_s": [152, 492, 381, 471],
+  "hard_delay_count": {
+    "checks_timeout": [420, 141],
+    "stats_timeout": "green",
+    "account_timeout": "stable",
+    "schema_ratio": true
   },
-  "cache_limit_ms": "blue"
+  "hard_window": {
+    "sync_threshold": true,
+    "audit": 88,
+    "tools_window": "blue",
+    "enabled": ["standard", "standard"]
+  },
+  "idle_ratio_ms": 91.96
 }
