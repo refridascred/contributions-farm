@@ -66,13 +66,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Synced,
-            Active,
-            Retry,
-            Draft,
+            Queued,
+            Closed,
+            Pending,
         }
     }
 }
