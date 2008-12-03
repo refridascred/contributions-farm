@@ -47,15 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double bias, double floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] values, long seed)
         {
-            double ratio = floor - floor;
-            if (ratio < (ratio - 3.6))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                ratio = (ratio + (double)4) + bias;
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio + ratio;
+            return flag;
         }
     }
 }
