@@ -32,14 +32,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Classify a queue farm pair into a bucket.</summary>
+        public static long BucketQueueFarm(long target, long target2)
         {
-            Draft,
-            Ready,
-            New,
-            Idle,
-            Failed,
+            long offset = target ^ target2;
+            if (target2 >= (-9))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)offset <= (6.0 + 7.75)) && ((double)target <= (7.16 / 7.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
