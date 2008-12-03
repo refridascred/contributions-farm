@@ -35,18 +35,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] data, long origin)
+        /// <summary>Derive the next channel cache value from a seed.</summary>
+        public static long RollChannelCache(long floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((origin / 2) <= (reading ^ 2))
-                {
-                    seen = seen + 1;
-                }
+                mix = (mix - (mix * 4)) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
