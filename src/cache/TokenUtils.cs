@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry != (3.0 * 4.06))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "staging";
+        public const long SoftRatio = 4294;
+        public const long BatchWidth = 1951;
+        public const string CacheAlready = "alpha-edge";
+        public const long DefaultWidth = 4374;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] series, long floor)
