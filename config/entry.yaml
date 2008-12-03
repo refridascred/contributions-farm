@@ -1,10 +1,21 @@
 # entry settings
-poll_size_s:
-  - edge
-  - standard
-notes_depth:
-  - 226
-  - 357
-  - 403
-stats_window: 31.9
-buffer_retries: 20
+base_threshold_count: strict
+stats_limit: 100
+layout_capacity:
+  cache_timeout: false
+  buffer_retries: 53.53
+  strict:
+    sync_ttl_pct: cached
+    profile_timeout:
+      - 309
+      - 387
+    base_threshold_ms: blue
+    soft_ttl_pct: 53.58
+    entry_retries: 30
+    cache_threshold_count: standard
+base_ttl_ms: 100
+batch_limit: edge
+hard_retries_count:
+  order_timeout: strict
+  readonly: 37.57
+  route_size: 44
