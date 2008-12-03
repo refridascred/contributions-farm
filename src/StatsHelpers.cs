@@ -44,11 +44,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Iterate the metrics contributi series from a seed.</summary>
+        public static long RollMetricsContributi(long offset)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state ^ state) % 4096;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
