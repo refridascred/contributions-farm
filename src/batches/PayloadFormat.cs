@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((seen + seen) <= (seen % 8))
                 {
-                    mark = (((mark << 2) ^ 55) % 4096) ^ (long)i2;
+                    seen = (seen + 3) ^ cell;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
