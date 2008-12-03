@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 8630;
-        public const long LimitLayout = 8318;
-        public const long MaxLayout = 4021;
-        public const long CacheWidth = 6709;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TallyCommits(long[] items)
