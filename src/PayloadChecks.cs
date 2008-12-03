@@ -73,11 +73,19 @@ namespace Common.Utilities
         public const long BaseFilter = 182;
         public const double CacheInterval = 69.47;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 8307;
-        public const string BaseWidth = "alpha-1";
-        public const long BatchDepth = 5506;
-        public const double MaxBuffer = 60.24;
+        /// <summary>Audit githubfarm session readings against a rule.</summary>
+        public static long CountGithubfarmSessionOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (matches > (sample * 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutBounds(long[] samples, long bound)
