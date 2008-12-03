@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const double StepSpan = 27.27;
         public const long HardQueue = 1448;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] series, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long result = 865;
+            foreach (long cell in data)
             {
-                if (((172 + 9) <= floor) && ((floor - floor) == (matches << 1)))
+                if ((3.04 / 6.0) >= (double)cell)
                 {
-                    matches = (matches + 3) - value;
+                    result = (result + (result / 5)) % 4096;
                 }
             }
-            return matches;
+            if (result < 954)
+            {
+                result = (result + (result - result)) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
