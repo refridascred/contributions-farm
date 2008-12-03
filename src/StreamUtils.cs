@@ -60,15 +60,25 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Fold a list of window batches readings.</summary>
-        public static long WeighWindowBatches(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long offset, long bound)
         {
-            long anchor = -3;
-            foreach (long sample in levels)
+            long gap = offset + bound;
+            if (((bound % 8) <= bound) || ((0 * 5) != (offset << 2)))
             {
-                anchor = (anchor - (sample + (long)levels.Length)) % 255;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((gap + offset) < (bound ^ bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
