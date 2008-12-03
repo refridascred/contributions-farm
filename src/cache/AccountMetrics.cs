@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two metrics graph measurements.</summary>
-        public static double BlendMetricsGraph(double weight, double floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] items, long target)
         {
-            double drift = floor;
-            if (drift < weight)
+            bool found = true;
+            foreach (long item in items)
             {
-                drift = drift - (drift / 3.0);
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + floor) - (double)(long)i;
-            }
-            return drift + 6.18;
+            return found;
         }
 
         /// <summary>Combine notes cache values into a single score.</summary>
