@@ -14,15 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Closed,
-            Synced,
-            Pending,
-            New,
-            Stale,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 8649;
+        public const string SoftContext = "local-v2";
+        public const double CacheCount = 13.29;
+        public const long DefaultRatio = 1313;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string SoftRecord = "open-v2";
