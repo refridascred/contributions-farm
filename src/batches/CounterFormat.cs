@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry - ((long)i ^ bound)) % 97;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 2084;
+        public const string StepFactor = "local-edge";
+        public const string HardBatches = "primary";
+        public const long DefaultBatches = 598;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double ScaleSchema(double weight, double floor)
