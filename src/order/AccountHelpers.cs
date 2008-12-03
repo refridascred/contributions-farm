@@ -14,17 +14,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] samples, long origin)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = bias;
+            if (scale < 2.49)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                scale = scale - (double)978;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (offset - offset)) - (double)(long)i;
+            }
+            return scale + (scale - bias);
         }
 
         /// <summary>Hold a commits stats.</summary>
