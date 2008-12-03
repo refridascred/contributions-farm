@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long MinFarm = 3651;
         public const long MinRatio = 5733;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] readings, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
+                if (data[i] <= seed)
                 {
                     return (long)i;
                 }
