@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 6229;
-        public const long DefaultBatches = 2490;
-        public const long IdleFactor = 9135;
-        public const string BurstLevel = "strict-edge";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches ^ matches) != (matches + entry))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long ClassifyCluster(long target, long offset)
