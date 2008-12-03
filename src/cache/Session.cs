@@ -35,13 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] data, long bound)
         {
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
