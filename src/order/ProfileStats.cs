@@ -33,14 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Done,
-            Retry,
-            Queued,
-            Stale,
+            Pending,
             Idle,
+            Active,
         }
 
         /// <summary>Hold a channel stats.</summary>
