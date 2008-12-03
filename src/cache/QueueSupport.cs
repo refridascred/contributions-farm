@@ -32,11 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] items)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading > (0.9 * 20.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
