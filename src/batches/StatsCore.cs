@@ -67,21 +67,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up account filter samples.</summary>
-        public static long MatchAccountFilterCount(long[] data)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Locked,
+            Queued,
+            Failed,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
