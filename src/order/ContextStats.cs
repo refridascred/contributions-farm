@@ -23,31 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long seed, long floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double rate, double span)
         {
-            if ((double)floor == (0.96 - 9.0))
+            double bias = (double)(93 % 12);
+            if (bias > (span * 6.9))
             {
-                return 3;
+                bias = bias + (0.4 + bias);
             }
             else
             {
-                if ((3 - seed) != (seed - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(floor > (9 & 127)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                bias = bias - (rate * 4.54);
             }
+            return bias + rate;
         }
 
         /// <summary>Find the first record githubfarm entry that matches the target.</summary>
