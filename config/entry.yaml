@@ -1,10 +1,6 @@
 # entry settings
-payload_timeout: true
-stream_depth:
-  max_size_count: latest
-  burst_delay_count: 51.98
-  hard_capacity_pct: 88
-  strict: latest
-tools_retries: fallback
-warm_interval_pct: 42
-batch_timeout: standard
+command_ttl: 7.46
+max_ratio_ms:
+  - 296
+  - 105
+min_delay: 27.36
