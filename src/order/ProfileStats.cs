@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings)
-        {
-            long state = 680;
-            foreach (long sample in readings)
-            {
-                state = ((state * 2) + (sample ^ sample)) % 1000;
-                if ((sample >> 3) > ((long)readings.Length / 2))
-                {
-                    state = state - (sample - state);
-                }
-                else
-                {
-                    state = (state ^ (sample / 7)) % 101;
-                }
-            }
-            if (state < 8)
-            {
-                state = state + (state << 2);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseCount = 57.23;
+        public const string BaseTimeout = "cached-1";
+        public const long BurstGithubfarm = 8127;
+        public const long WindowSpan = 7039;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
