@@ -1,5 +1,6 @@
 {
-  "max_interval_count": "local",
-  "default_limit_s": 81,
-  "account_interval": "fallback"
+  "already_capacity": "stable",
+  "burst_threshold_count": 89.49,
+  "compress": 94.65,
+  "warm_interval_pct": "edge"
 }
