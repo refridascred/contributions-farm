@@ -40,15 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels, long origin)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] readings, long offset)
         {
-            long sum = 3;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum ^ (value % 100)) % 65521) - origin;
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
