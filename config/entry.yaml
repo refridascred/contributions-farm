@@ -1,19 +1,6 @@
 # entry settings
-readonly: 250
-format_depth: 500
-idle_interval_s:
-  verbose: 83.96
-  sync_window:
-    - 335
-    - 320
-    - 43
-  cache_limit_count: false
-  burst_threshold_count: 10.41
-  enabled: false
-  farm_delay: 1024
-flush_depth_count: 7050
-compress:
-  - staging
-  - edge
-  - primary
-  - staging
+soft_size: edge
+window_ttl: latest
+poll_ttl_pct: 21.89
+githubfarm_ratio: 34.08
+batch_depth_ms: 3435
