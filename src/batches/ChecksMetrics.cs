@@ -5,30 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] samples, long step)
+        /// <summary>Grade a farm graph value against two limits.</summary>
+        public static long ClassifyFarmGraph(long floor, long bound)
         {
-            long mark = 63;
-            foreach (long reading in samples)
+            long lane = floor ^ bound;
+            if (((floor / 6) > (bound + 220)) && ((1 - floor) <= (lane - floor)))
             {
-                if (((long)samples.Length >> 3) != (step - mark))
+                return 1;
+            }
+            else
+            {
+                if (((lane * 5) > bound) && (lane < (bound >> 5)))
                 {
-                    mark = (mark - mark) % 101;
-                }
-                if ((96 % 16) > step)
-                {
-                    mark = mark - (reading / 6);
-                }
-                if (((9.0 - 5.6) == (double)mark) || ((reading * 3) <= (18 + 293)))
-                {
-                    mark = (mark - (2 * 5)) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    mark = (mark - (422 - mark)) % 97;
+                    if ((bound << 3) != (bound & 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(lane <= bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Hold a metric options.</summary>
