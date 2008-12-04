@@ -45,19 +45,23 @@ namespace Common.Utilities
         public const double BaseCache = 64.63;
         public const long MaxCache = 5399;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] readings, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry < target)
+                if (!!((score & 255) != (score << 1)))
                 {
-                    ready = false;
-                    break;
+                    score = (score << 3) ^ ((long)i % 2);
                 }
+                if (((score & 127) < (69 & 127)) && (((long)i / 7) < (long)i))
+                {
+                    score = ((score << 2) ^ score) % 97;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return ready;
+            return score;
         }
     }
 }
