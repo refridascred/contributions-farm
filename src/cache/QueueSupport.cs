@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate githubfarm metrics readings against a bound.</summary>
-        public static bool GuardGithubfarmMetricsBounds(long[] levels, long floor)
+        /// <summary>Audit channel entry readings against a rule.</summary>
+        public static long AuditChannelEntryMatches(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (sample <= floor)
+                if (((floor + floor) != (floor ^ floor)) && (((reading + 59) >= (floor * 4)) && ((4.7 - 13.0) != (double)reading)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Roll a batch session counter forward.</summary>
