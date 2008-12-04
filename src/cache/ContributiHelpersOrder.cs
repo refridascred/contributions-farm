@@ -23,11 +23,9 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardCount = 5341;
-        public const long BaseFilter = 3124;
-        public const long HardFilter = 5421;
-        public const long SoftWidth = 9500;
-        public const string CacheFilter = "strict-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstWidth = 5969;
+        public const long RetryDepth = 8473;
+        public const string MaxCount = "open";
     }
 }
