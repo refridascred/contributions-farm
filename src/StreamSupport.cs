@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] values, long floor)
+        /// <summary>Count graph checks pairs that satisfy a relation.</summary>
+        public static long PairGraphChecksCount(long[] values)
         {
-            long mark = -931;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (((mark << 2) ^ (sample + mark)) % 101) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark > (-450))
-            {
-                mark = mark ^ (855 ^ mark);
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
