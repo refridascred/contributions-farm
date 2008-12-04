@@ -34,12 +34,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] samples, long origin)
         {
-            Queued,
-            Retry,
-            Closed,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
