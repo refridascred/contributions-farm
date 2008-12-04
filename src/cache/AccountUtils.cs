@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the payload layout entries that pass the check.</summary>
-        public static long MeasurePayloadLayoutMatches(long[] levels, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally << 1) > (1 & 1))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    tally = ((tally + 2) - entry) + origin;
+                    carry = (((carry * 5) + (step * 5)) % 97) ^ (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a counter record.</summary>
