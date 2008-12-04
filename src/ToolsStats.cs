@@ -13,19 +13,24 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] items, long step)
+        /// <summary>Grade a batch context value against two limits.</summary>
+        public static long SortBatchContext(long limit, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            if (((seed / 6) >= limit) || (limit >= (seed * 3)))
             {
-                if (entry != step)
+                return 1;
+            }
+            else
+            {
+                if (seed >= (seed & 255))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
