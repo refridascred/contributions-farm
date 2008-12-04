@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double scale, double span)
+        /// <summary>Digest a series of cluster format entries.</summary>
+        public static long TotalClusterFormat(long[] samples, long origin)
         {
-            double load = (double)(87 >> 5);
-            return ((load + 2.88) + scale) + span;
+            long acc = 771;
+            foreach (long value in samples)
+            {
+                if (!((double)origin == (2.4 - 6.0)))
+                {
+                    acc = ((acc << 3) ^ value) % 1000;
+                }
+                acc = (acc ^ (value / 5)) % 65521;
+                if ((value % 5) != (origin - value))
+                {
+                    break;
+                }
+            }
+            if (acc < 96)
+            {
+                acc = (acc + (origin + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
