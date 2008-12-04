@@ -1,6 +1,7 @@
 # entry settings
-idle_timeout: 7616
-queue_capacity: strict
-poll_threshold_pct: 67
-enabled: 15
-persist: local
+retry_window: 99
+hard_threshold_ms: cached
+cache_limit_pct: 48.92
+sync_ttl_s: 3934
+base_depth: false
+verbose: 1241
