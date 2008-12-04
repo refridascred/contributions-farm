@@ -63,16 +63,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples, long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long score = 876;
-            foreach (long reading in samples)
-            {
-                score = (score ^ (bound / 9)) ^ reading;
-                score = score - (score + 145);
-            }
-            return score;
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a layout entry.</summary>
