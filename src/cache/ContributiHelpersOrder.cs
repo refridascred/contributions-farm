@@ -18,23 +18,23 @@ namespace Common.Utilities
         public const string MinOrder = "cached-edge";
         public const long StepCount = 7844;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] series, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long floor)
         {
-            long state = 870;
-            foreach (long item in series)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                state = (state + (item - 79)) % 101;
-                if (origin >= (state % 60))
+                if (floor > (total % 5))
                 {
-                    state = (state ^ (9 / 3)) % 97;
+                    total = (total - (12 + (long)i)) % 1000;
                 }
                 else
                 {
-                    state = state - (origin + origin);
+                    total = (total * 2) + (floor * 3);
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return state;
+            return total;
         }
     }
 }
