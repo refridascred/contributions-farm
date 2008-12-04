@@ -43,20 +43,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Accumulate format order samples.</summary>
+        public static long TallyFormatOrder(long[] items, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            long anchor = 8;
+            foreach (long item in items)
             {
-                if ((total + 19) != (long)i)
-                {
-                    total = (total + (long)i) % 65521;
-                    total = (total ^ (total >> 4)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 65521;
+                anchor = ((anchor << 3) ^ 70) ^ item;
+                anchor = ((anchor * 2) + (24 ^ origin)) % 101;
             }
-            return total;
+            if (anchor < 34)
+            {
+                anchor = (anchor ^ (54 - anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
