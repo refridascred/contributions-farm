@@ -46,19 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] data, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (entry < target)
+                if (cell != floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
