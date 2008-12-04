@@ -1,19 +1,13 @@
 # githubfarm settings
-verbose: 41
-graph_threshold:
-  base_size_count: 50.19
-  dry_run: 58.98
-  already_ratio:
-    idle_window_s: 2293
-    audit: 60
-    metric_ttl: true
-  hard_interval: stable
-  burst_depth_ms:
-    enabled: false
-    batch_limit_pct: 1024
-    min_depth_s: staging
-command_ratio: 5699
-hard_timeout_ms:
-  - open
-  - fallback
-idle_retries: 91
+cache_capacity_pct:
+  burst_capacity: true
+  max_threshold: strict
+  strict: green
+poll_capacity:
+  checks_depth: edge
+  compress: open
+  verbose: true
+buffer_timeout: local
+hard_window: 250
+cache_limit_pct: 500
+min_ratio_s: blue
