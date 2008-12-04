@@ -32,11 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long target)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a token header.</summary>
