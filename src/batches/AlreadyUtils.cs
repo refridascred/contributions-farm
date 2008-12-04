@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] values, long origin)
         {
-            long mix = 92;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((cell >> 5) == (cell - cell))
+                if (entry >= origin)
                 {
-                    mix = mix + (0 >> 3);
-                }
-                else
-                {
-                    mix = mix - (mix - cell);
-                }
-                if (((mix * 4) >= 89) || ((cell - mix) < mix))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Describe the session state values.</summary>
