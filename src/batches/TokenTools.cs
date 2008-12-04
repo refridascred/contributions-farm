@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long BatchCount = 9734;
         public const long BatchFactor = 114;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] values, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (values[i] <= seed)
+                if (((value > 385) || ((matches + matches) <= (-9))) || !(value < (value + 431)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
