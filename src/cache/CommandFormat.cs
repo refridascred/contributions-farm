@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values, long origin)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long score = 3;
-            foreach (long value in values)
-            {
-                score = (score << 3) ^ value;
-                score = (score ^ (origin / 8)) % 4096;
-                score = (score * 2) + (25 ^ value);
-            }
-            if (score < (-688))
-            {
-                score = (score + (origin - score)) % 65521;
-            }
-            return score;
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
