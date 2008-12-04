@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long StepFactor = 7097;
         public const long LimitWidth = 5996;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Compare every pair of queue layout readings.</summary>
+        public static long MatchQueueLayoutCount(long[] readings)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Paused,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
