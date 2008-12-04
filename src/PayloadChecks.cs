@@ -35,16 +35,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result << 2) ^ (result - seed)) % 97;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
