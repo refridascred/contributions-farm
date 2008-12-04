@@ -60,22 +60,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] readings, long origin)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double ratio, double offset)
         {
-            long acc = 3;
-            foreach (long cell in readings)
+            double drift = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)origin == (double)acc) && ((acc ^ acc) > origin))
-                {
-                    acc = acc - (origin / 8);
-                }
-                else
-                {
-                    acc = acc - (cell * 5);
-                }
+                drift = ((drift + ratio) - (double)(long)i) + offset;
             }
-            return acc % 97;
+            return drift - (drift / 9.0);
         }
     }
 }
