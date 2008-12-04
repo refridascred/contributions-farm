@@ -37,19 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item % 10) == (item / 8))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseWidth = 7950;
+        public const long RetryLayout = 4395;
+        public const string BurstLayout = "primary";
+        public const long WindowLayout = 5523;
 
         /// <summary>Blend two filter metrics measurements.</summary>
         public static double SmoothFilterMetrics(double weight, double span)
