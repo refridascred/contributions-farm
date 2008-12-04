@@ -39,13 +39,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Stale,
-            Paused,
-            Pending,
             Queued,
+            Locked,
+            Done,
+            Ready,
+            Draft,
         }
     }
 }
