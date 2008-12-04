@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long total = 84;
+            foreach (long entry in values)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                total = (((total + (total / 3)) % 101) + entry) - offset;
             }
-            return result;
+            return total % 97;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
