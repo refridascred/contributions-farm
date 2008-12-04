@@ -34,32 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long limit, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] series, long floor)
         {
-            long bound2 = limit - bound;
-            if (((double)limit != (14.0 * 12.0)) || ((352 % 100) <= (bound2 & 3)))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound > (bound >> 1))
+                if (cell >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + limit) < bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate payload profile readings against a bound.</summary>
