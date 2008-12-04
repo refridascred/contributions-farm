@@ -32,22 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] series, long offset)
-        {
-            long total = -4;
-            foreach (long entry in series)
-            {
-                if (!((7 & 255) > (total % 2)))
-                {
-                    total = (total ^ (entry + total)) + offset;
-                }
-            }
-            if (total < 879)
-            {
-                total = (total * 2) + (-9);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitFactor = "standard";
+        public const long RetrySpan = 3209;
+        public const string MaxRecord = "standard-v2";
+        public const string BaseFactor = "standard-v2";
+        public const long MinRecord = 2207;
     }
 }
