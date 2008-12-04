@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] items, long bound)
         {
-            long mix = 606;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((mix + mix) >= 732)
+                if (entry <= bound)
                 {
-                    mix = (mix << 3) ^ (sample << 2);
+                    ready = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return ready;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
