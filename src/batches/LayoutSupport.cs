@@ -19,13 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            Dropped,
-            Draft,
-            Idle,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
