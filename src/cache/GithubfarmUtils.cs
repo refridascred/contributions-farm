@@ -33,11 +33,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 967;
-        public const double StepBudget = 21.36;
-        public const long DefaultTimeout = 7197;
-        public const long LimitSize = 8579;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long StepCache(long origin)
