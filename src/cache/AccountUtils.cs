@@ -29,10 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepCount = 4276;
-        public const long HardFactor = 67;
-        public const long BatchFarm = 4815;
+        /// <summary>Locate a graph command reading by value.</summary>
+        public static long SeekGraphCommandIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] samples, long offset)
