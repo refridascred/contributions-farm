@@ -45,25 +45,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)acc <= (9.84 / 9.0))
-                {
-                    acc = (acc + ((long)i >> 2)) % 4096;
-                    acc = ((acc * 3) + seed) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (seed << 1)) % 4096;
-                }
-                acc = (acc + (long)i) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitFactor = "latest-edge";
+        public const double LimitScore = 62.45;
+        public const long LimitTimeout = 3551;
+        public const double RetryCluster = 35.02;
     }
 }
