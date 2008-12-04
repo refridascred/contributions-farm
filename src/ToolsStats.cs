@@ -92,18 +92,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] samples, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long state = 21;
+            foreach (long reading in series)
             {
-                if ((526 ^ 593) != (item << 3))
+                if (((reading % 16) >= (state * 4)) && (reading < (418 ^ state)))
                 {
-                    hits = (hits + 1) - target;
+                    state = (state + state) % 101;
                 }
             }
-            return hits;
+            return state % 97;
         }
     }
 }
