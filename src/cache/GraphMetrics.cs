@@ -34,12 +34,20 @@ namespace Common.Utilities
         public const string SoftFarm = "strict-edge";
         public const long MinFarm = 4422;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftDepth = 60.97;
-        public const long DefaultCount = 2691;
-        public const long SoftReport = 830;
-        public const long MaxDepth = 5846;
-        public const string IdleFactor = "alpha-1";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] readings, long bound)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] readings)
