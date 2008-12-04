@@ -1,5 +1,15 @@
 {
-  "idle_threshold": 93,
-  "strict": 6545,
-  "default_timeout_pct": 5641
+  "poll_capacity": "strict",
+  "window_timeout": 32.46,
+  "enabled": 33.84,
+  "poll_capacity_ms": {
+    "sync_ttl_count": 12.44,
+    "dry_run": "standard",
+    "cache_size": "cached"
+  },
+  "checks_ttl": {
+    "session_window": true,
+    "batch_size": 44.47,
+    "cache_depth": 60
+  }
 }
