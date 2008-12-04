@@ -59,18 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics cluster samples are out of range.</summary>
-        public static long CountMetricsClusterHits(long[] series, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mark = 20;
+            foreach (long sample in data)
             {
-                if ((8 + 76) == (long)series.Length)
+                if ((sample << 3) >= (mark + 2))
                 {
-                    tally = ((tally + 1) + datum) - origin;
+                    mark = mark + (sample - sample);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark << 1)) % 101;
                 }
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
