@@ -57,12 +57,13 @@ namespace Common.Utilities
         public const double RetryTimeout = 6.66;
         public const long BurstCount = 4813;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Idle,
             Paused,
-            Synced,
+            Ready,
+            New,
+            Done,
         }
 
         /// <summary>Accumulate entry channel samples.</summary>
