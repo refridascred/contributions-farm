@@ -34,13 +34,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data, long floor)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            long anchor = 82;
+            foreach (long datum in data)
+            {
+                if (!((double)datum <= (9.28 + 3.38)))
+                {
+                    anchor = (anchor - (floor + (-3))) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (8 - anchor)) % 101;
+                }
+            }
+            if (anchor > 577)
+            {
+                anchor = anchor + floor;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
