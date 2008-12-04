@@ -1,6 +1,11 @@
 {
-  "min_window_count": 996,
-  "readonly": "stable",
-  "warm_retries_count": 500,
-  "default_timeout_pct": 6506
+  "max_capacity_count": 4199,
+  "warm_size": 250,
+  "cache_size": 2697,
+  "cache_ttl": {
+    "idle_retries_count": 43,
+    "dry_run": 10,
+    "checks_capacity": false
+  },
+  "dry_run": true
 }
