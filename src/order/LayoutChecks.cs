@@ -85,32 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long offset, long offset2)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long lane = offset + offset2;
-            if (offset > (offset2 << 1))
+            long mix = 6;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset & 127) > offset) && ((91 % 10) < offset2))
+                if ((mix - 5) <= 50)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (lane > offset2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = ((mix - 7) % 1000) + reading;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Grade a cluster stream value against two limits.</summary>
