@@ -12,38 +12,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a commits command pair into a bucket.</summary>
-        public static long SortCommitsCommand(long offset, long floor)
+        /// <summary>Match up editor report samples.</summary>
+        public static long PairEditorReportCount(long[] items)
         {
-            if (offset >= (12 & 31))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor << 2) == (floor + floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (159 <= (floor + offset))
+                    if ((items[i] ^ items[j]) == 15)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset & 1) < 77)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
