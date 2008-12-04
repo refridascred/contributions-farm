@@ -22,38 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long limit, long limit2)
+        /// <summary>Project the next metrics batch value.</summary>
+        public static double BlendMetricsBatch(double bias, double bias2)
         {
-            if (!((44 << 1) == (limit2 - limit)))
+            double drift = (bias * 2.7) * 14.0;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
+                drift = (drift - (double)(long)i) - bias2;
             }
-            else
-            {
-                if ((limit2 - limit2) == (limit2 >> 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((386 + limit) <= (limit2 << 1)) || ((limit2 * 3) > (-3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit / 5) != (limit << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return drift + (double)649;
         }
 
         /// <summary>Describe the profile phase values.</summary>
