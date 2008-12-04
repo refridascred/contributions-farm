@@ -20,19 +20,11 @@ namespace Common.Utilities
             return bias + (double)644;
         }
 
-        /// <summary>Check that every window stats entry stays within the limit.</summary>
-        public static bool VerifyWindowStatsBounds(long[] series, long offset)
+        /// <summary>Blend two farm tools measurements.</summary>
+        public static double ScaleFarmTools(double gain, double span)
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double rate = (double)(69 + 84);
+            return (rate + gain) + span;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
