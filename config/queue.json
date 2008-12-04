@@ -1,6 +1,11 @@
 {
-  "default_depth_ms": "primary",
-  "verbose": 16,
-  "support_interval": 67.5,
-  "flush_threshold": false
+  "warm_capacity": true,
+  "retry_interval_s": 42.73,
+  "batch_capacity_count": {
+    "session_limit": 7935,
+    "layout_ttl": 30,
+    "batch_ttl_count": 24.07
+  },
+  "cache_timeout": 250,
+  "entry_window": true
 }
