@@ -46,32 +46,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long bound, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            long bound2 = bound ^ limit;
-            if ((double)limit < (1.9 * 1.58))
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit ^ bound) == (bound2 << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit <= (bound2 ^ 5)) && ((limit & 127) < (limit + limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
