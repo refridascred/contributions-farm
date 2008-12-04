@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score - score) % 101;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Match up queue samples.</summary>
