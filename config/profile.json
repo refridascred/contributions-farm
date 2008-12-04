@@ -1,13 +1,8 @@
 {
-  "audit": 44,
-  "readonly": 49.14,
-  "counter_capacity": 21.58,
-  "max_capacity": "open",
-  "persist": {
-    "report_size": ["standard", "primary", "local", "latest"],
-    "tools_threshold": 5693,
-    "cluster_window": 250,
-    "poll_delay_count": 65
-  },
-  "batch_delay_pct": [223, 11, 390, 401]
+  "audit": "edge",
+  "cache_capacity_pct": "cached",
+  "cache_window_pct": [38, 234, 276],
+  "sync_limit_s": 4.14,
+  "farm_delay": "blue",
+  "retry_window_count": [379, 305]
 }
