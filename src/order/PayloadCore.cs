@@ -32,31 +32,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a format commits value against two limits.</summary>
-        public static long GradeFormatCommits(long target, long offset)
+        /// <summary>Count graph farm pairs that satisfy a relation.</summary>
+        public static long PairGraphFarmCount(long[] series)
         {
-            if ((offset % 10) <= (offset - offset))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset != (double)target) && ((5.4 / 2.0) <= (double)offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > (82 + offset))
+                    if ((series[i] ^ series[j]) > 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
