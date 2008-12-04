@@ -13,31 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a checks githubfarm value against two limits.</summary>
-        public static long RankChecksGithubfarm(long offset, long target)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            if ((target & 3) >= (target - offset))
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((9.0 + 2.7) <= (double)target) || ((offset + offset) >= target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset >= (offset - 906))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Combine support values into a single score.</summary>
