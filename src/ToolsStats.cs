@@ -75,22 +75,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long acc = 174;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)acc > (14.0 * 1.1)) || ((value / 7) < value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc + (value & 63);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ value) % 1000;
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
