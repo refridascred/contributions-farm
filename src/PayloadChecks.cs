@@ -48,13 +48,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            Ready,
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
