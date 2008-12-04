@@ -61,21 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
