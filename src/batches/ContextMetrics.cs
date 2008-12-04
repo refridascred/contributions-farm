@@ -22,12 +22,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleBudget = 232;
-        public const long DefaultCommand = 6200;
-        public const string MinCommand = "standard-1";
-        public const double MaxCommand = 4.5;
-        public const long WindowCommand = 4517;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches ^ reading) == (reading & 15))
+                {
+                    matches = (matches + 1) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long bound)
