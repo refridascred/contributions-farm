@@ -19,11 +19,13 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate record samples.</summary>
