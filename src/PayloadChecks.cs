@@ -89,21 +89,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] readings)
+        /// <summary>Blend two support already measurements.</summary>
+        public static double ScaleSupportAlready(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale - scale) - (double)(long)i;
             }
-            return hits;
+            return scale + (gain + offset);
         }
     }
 }
