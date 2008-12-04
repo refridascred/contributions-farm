@@ -24,13 +24,18 @@ namespace Common.Utilities
         public const string StepReport = "staging-1";
         public const long LimitReport = 3041;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] levels, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits << 3) == (6 >> 5))
+                {
+                    hits = ((hits + 2) ^ value) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
