@@ -24,11 +24,13 @@ namespace Common.Utilities
         public const long LimitCount = 2066;
         public const double BurstFactor = 71.17;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
