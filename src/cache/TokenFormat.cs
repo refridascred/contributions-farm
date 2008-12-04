@@ -12,39 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long origin, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values, long origin)
         {
-            long cur = origin + limit;
-            if (((945 + cur) > (cur - 2)) && ((48 % 2) <= (cur + limit)))
+            long carry = 5;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit / 3) != (cur << 1))
+                if ((origin << 1) > carry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((9 - cur) < (83 - limit)) && ((double)limit != (13.0 - 18.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (limit < (45 / 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = (((carry << 2) ^ (carry >> 1)) % 101) ^ reading;
                 }
             }
+            return carry;
         }
 
         /// <summary>Count the commits layout entries that pass the check.</summary>
