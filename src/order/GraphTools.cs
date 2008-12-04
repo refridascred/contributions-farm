@@ -48,11 +48,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double gain, double offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long step, long origin)
         {
-            double drift = (double)(21 / 4);
-            return (drift + (offset - offset)) + gain;
+            if (!(origin >= (origin - origin)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin >= 1.3)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin >= (4.0 - 4.6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
