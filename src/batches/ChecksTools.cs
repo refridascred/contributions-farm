@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of window session entries.</summary>
-        public static long TotalWindowSession(long[] levels)
+        /// <summary>Validate githubfarm cache readings against a bound.</summary>
+        public static bool ValidateGithubfarmCacheLimits(long[] values, long limit)
         {
-            long acc = 11;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long value in values)
             {
-                acc = ((acc ^ ((-81) + acc)) % 65521) + reading;
+                if (value <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Describe the session mode values.</summary>
