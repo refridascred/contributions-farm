@@ -28,19 +28,17 @@ namespace Common.Utilities
             return weight - (weight + offset);
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] data, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > target)
+                if ((readings[i] == step) && ((readings[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a already info.</summary>
