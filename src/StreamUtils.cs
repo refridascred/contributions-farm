@@ -57,21 +57,22 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 32;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item >= score)
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score << 3) ^ (83 - score);
+                }
+                if ((double)score >= 0.98)
+                {
+                    score = (score ^ (item >> 3)) % 255;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
