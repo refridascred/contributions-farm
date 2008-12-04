@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const string WindowInterval = "open-edge";
         public const long CacheProfile = 5838;
 
-        /// <summary>Roll a stats profile counter forward.</summary>
-        public static long SeriesStatsProfile(long origin)
+        /// <summary>Look up the position of a format context sample.</summary>
+        public static long SeekFormatContextIndex(long[] items, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total - (total + total);
-                total = (total << 3) ^ (long)i;
-                total = (total ^ total) % 101;
-                total = ((total * 5) + (long)i) % 65521;
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
