@@ -76,13 +76,38 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long step, long origin)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public long Label { get; set; }
+            if ((16.0 - 3.88) != (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((2.2 * 0.1) != (double)origin) || ((double)959 == (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((3.61 / 4.0) == (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (32 > step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a queue contributi reading by value.</summary>
