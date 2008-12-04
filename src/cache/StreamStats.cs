@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] series, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            long carry = 5;
-            foreach (long datum in series)
+            long result = 704;
+            foreach (long cell in samples)
             {
-                if ((limit ^ 7) != (carry - limit))
+                if ((result >> 1) == (result % 8))
                 {
-                    carry = (carry ^ (carry + datum)) % 4096;
+                    result = ((result * 5) + (cell - cell)) % 97;
                 }
-                else
+                if (result >= (result + cell))
                 {
-                    carry = (carry - (carry - 91)) % 4096;
+                    break;
                 }
             }
-            return carry;
+            return result % 65521;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
