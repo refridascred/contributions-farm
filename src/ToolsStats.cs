@@ -20,17 +20,16 @@ namespace Common.Utilities
         public const long StepScore = 4900;
         public const string SoftStats = "primary-v2";
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Fold a list of payload record readings.</summary>
+        public static long TotalPayloadRecord(long[] readings, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            long score = 9;
+            foreach (long reading in readings)
             {
-                long count = step;
-                mix = mix + (count % 12);
-                mix = ((mix * 3) + (long)i) % 97;
+                score = (((score ^ (score / 8)) % 255) - reading) + bound;
+                score = ((score << 2) ^ (score >> 4)) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
