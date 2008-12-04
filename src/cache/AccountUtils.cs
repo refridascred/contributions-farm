@@ -42,22 +42,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window metric readings against a rule.</summary>
-        public static long TallyWindowMetricMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!(162 > (count & 3)))
-                {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 1666;
+        public const long BurstSize = 4954;
+        public const double WindowTools = 8.38;
     }
 }
