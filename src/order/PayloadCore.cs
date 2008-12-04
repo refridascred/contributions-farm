@@ -10,10 +10,15 @@ namespace Common.Utilities
         public const long RetryScore = 9724;
         public const long SoftLevel = 6422;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 5065;
-        public const double WindowContributi = 58.7;
-        public const string SoftContributi = "standard-edge";
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Queued,
+            New,
+            Stale,
+            Closed,
+            Done,
+        }
 
         /// <summary>Grade a format commits value against two limits.</summary>
         public static long GradeFormatCommits(long target, long offset)
