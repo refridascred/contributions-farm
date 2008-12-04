@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinStats = 88.7;
+        public const long BatchStats = 3549;
+        public const double MaxStats = 20.81;
+        public const long CacheRatio = 7072;
 
         /// <summary>Grade a window account value against two limits.</summary>
         public static long BucketWindowAccount(long bound, long floor)
