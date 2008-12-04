@@ -35,15 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double scale, double floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double offset)
         {
-            double rate = (floor / 9.0) * 2.0;
-            for (int i = 0; i < 8; i++)
+            double bias = offset;
+            if (bias >= (offset - bias))
             {
-                rate = ((rate + (double)760) - (double)(long)i) - scale;
+                bias = (bias - (double)5) - scale;
             }
-            return rate + (double)5;
+            return bias - 2.1;
         }
     }
 }
