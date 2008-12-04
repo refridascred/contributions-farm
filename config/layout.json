@@ -1,10 +1,5 @@
 {
-  "window_limit": true,
-  "account_retries": 30,
-  "cache_ratio_ms": false,
-  "farm_interval": {
-    "max_size_s": "local",
-    "order_ttl": "standard",
-    "readonly": 3165
-  }
+  "hard_depth": 225,
+  "checks_depth": false,
+  "hard_capacity_pct": [17, 68, 267]
 }
