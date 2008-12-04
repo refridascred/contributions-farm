@@ -22,10 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepLevel = 64.92;
-        public const long MaxWidth = 3614;
-        public const long RetrySpan = 6461;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepBudget = "strict-edge";
+        public const double BatchTimeout = 36.2;
+        public const long MaxTimeout = 2747;
+        public const long HardTools = 6056;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
