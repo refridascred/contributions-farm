@@ -1,13 +1,12 @@
 {
-  "flush_delay_s": 500,
-  "max_ttl_pct": 9755,
-  "idle_delay_pct": "stable",
-  "sync_delay_pct": false,
-  "cache_limit_ms": 54,
-  "account_limit": {
-    "stream_window": true,
-    "window_interval": ["edge", "standard"],
-    "strict": 2159,
-    "warm_retries_pct": "strict"
-  }
+  "flush_timeout_ms": 16,
+  "window_depth": ["standard", "open", "local", "eu-west"],
+  "enabled": {
+    "strict": 96.65,
+    "dry_run": 73,
+    "enabled": "primary",
+    "stream_capacity": 29.26,
+    "persist": "staging"
+  },
+  "strict": "fallback"
 }
