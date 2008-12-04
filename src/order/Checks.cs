@@ -32,19 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((bound / 8) == (count * 4))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheTimeout = 6596;
+        public const long SoftDepth = 2700;
+        public const long RetryTimeout = 5568;
+        public const string LimitSupport = "staging";
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long FoldChecks(long[] samples, long target)
