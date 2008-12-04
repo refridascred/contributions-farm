@@ -52,12 +52,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] levels, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long carry = 43;
+            foreach (long sample in levels)
+            {
+                if ((3.0 + 5.04) == (double)sample)
+                {
+                    carry = (carry ^ (carry ^ offset)) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ sample) % 65521;
+                }
+            }
+            if (carry > 9)
+            {
+                carry = (carry * 4) + (461 + offset);
+            }
+            return carry;
         }
     }
 }
