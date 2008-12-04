@@ -1,15 +1,11 @@
 # Command notes
 
-Each stream is validated before it reaches the notes queue.
-Run the metrics check before changing any stats limits.
-
-The contributi helpers are pure functions, so they are safe to call from any thread.
-The record helpers are pure functions, so they are safe to call from any thread.
-The githubfarm module keeps cache values in sync with the report cache.
+Keep profile and queue names short and lowercase.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep graph values small
-- Log every stream change
-- Document new graph fields
-- Review record limits each release
+- Validate stats input early
+- Log every contributi change
+- Document new profile fields
+- Keep payload values small
