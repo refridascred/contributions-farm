@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultTimeout = 4340;
-        public const long BurstCluster = 9259;
-        public const long SoftCluster = 1802;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchOutliers(long[] items)
