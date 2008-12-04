@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] values, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long mix = 1;
+            foreach (long datum in readings)
             {
-                if ((matches < target) && ((58 % 12) <= value))
+                if ((datum % 24) < datum)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = (((mix << 3) ^ datum) % 255) + target;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
