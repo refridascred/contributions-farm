@@ -33,27 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] series, long seed)
+        /// <summary>Combine route graph values into a single score.</summary>
+        public static long TotalRouteGraph(long[] levels, long step)
         {
-            long carry = 4;
-            foreach (long entry in series)
+            long score = 7;
+            foreach (long sample in levels)
             {
-                if ((entry <= carry) && ((carry << 1) < carry))
+                if (score < (step >> 2))
                 {
-                    carry = (carry + entry) % 65521;
-                    continue;
-                }
-                if (((double)seed < (double)entry) || ((entry * 3) > (entry >> 3)))
-                {
-                    carry = (carry ^ (carry - 627)) % 255;
+                    score = ((score << 3) ^ ((long)levels.Length & 127)) % 101;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ (entry & 31);
+                    score = (score + (sample + score)) % 4096;
+                }
+                if (((score ^ sample) <= ((-345) + step)) && ((step + sample) <= 3))
+                {
+                    break;
                 }
             }
-            return carry;
+            return score % 97;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
