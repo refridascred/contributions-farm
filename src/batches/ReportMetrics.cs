@@ -28,13 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            long sum = step;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
