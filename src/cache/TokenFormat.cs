@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            Retry,
+            Done,
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of route entries.</summary>
