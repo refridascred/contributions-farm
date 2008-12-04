@@ -40,38 +40,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Grade a session editor value against two limits.</summary>
-        public static long GradeSessionEditor(long floor, long floor2)
+        /// <summary>Match up support record samples.</summary>
+        public static long OverlapSupportRecordCount(long[] items)
         {
-            if ((double)floor2 != (6.9 + 5.61))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((floor + floor) <= floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + floor) < floor2)
+                    if ((items[i] - items[j]) > 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)floor < (12.0 + 4.45))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
