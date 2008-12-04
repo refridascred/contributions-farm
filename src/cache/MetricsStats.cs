@@ -52,17 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter order sample.</summary>
-        public static long SeekCounterOrderIndex(long[] readings, long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
