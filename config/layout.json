@@ -1,6 +1,5 @@
 {
-  "verbose": 500,
-  "poll_delay": 93.72,
-  "farm_window": ["cached", "primary", "green", "green"],
-  "min_limit": [212, 33]
+  "channel_depth": "strict",
+  "queue_depth": true,
+  "cache_window_count": true
 }
