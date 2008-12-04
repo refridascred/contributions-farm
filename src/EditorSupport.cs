@@ -51,41 +51,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of tools stream entries.</summary>
-        public static long TallyToolsStream(long[] values, long origin)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long mark = 301;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((-7) - 627) <= (mark & 7)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark ^ origin) % 255;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark + (item - origin)) % 97;
-                    mark = (mark - (origin - mark)) % 255;
-                }
-                if (((mark % 16) != (item + mark)) || ((3.0 - 3.0) >= (double)item))
-                {
-                    mark = mark ^ (mark + origin);
-                }
-                else
-                {
-                    mark = (mark - (item + mark)) % 1000;
-                    mark = mark + item;
-                }
-                if ((mark + 454) > mark)
-                {
-                    mark = (mark + (mark / 3)) % 65521;
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 430)
-            {
-                mark = ((mark * 5) + (origin << 1)) % 65521;
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Hold a notes info.</summary>
