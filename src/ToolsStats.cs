@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] values, long offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
