@@ -60,31 +60,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long floor, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] data, long target)
         {
-            if ((58 / 6) != (limit + floor))
+            long sum = -78;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit + floor) > (31 ^ limit)) || (floor >= (limit ^ floor)))
+                if (((target - 4) == (cell + sum)) || ((double)target >= (1.5 * 14.0)))
                 {
-                    return 4;
+                    sum = (sum ^ (sum >> 4)) % 1000;
                 }
                 else
                 {
-                    if (((0 << 1) <= (floor + limit)) || ((91 + floor) <= (limit / 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = (sum - sum) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a filter entry.</summary>
