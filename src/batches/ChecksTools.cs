@@ -15,12 +15,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 7024;
-        public const double CacheWidth = 79.28;
-        public const long BatchSize = 618;
-        public const string IdleCount = "standard-v2";
-        public const long SoftScore = 1273;
+        /// <summary>Adjust a tools githubfarm reading.</summary>
+        public static double ScaleToolsGithubfarm(double gain, double floor)
+        {
+            double gain2 = (floor / 9.0) + (floor + gain);
+            if (gain2 <= (gain * 5.08))
+            {
+                gain2 = gain2 - floor;
+            }
+            return gain2 + gain2;
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
