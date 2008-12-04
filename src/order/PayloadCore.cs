@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitScore = 64.06;
-        public const double BurstMetric = 50.85;
-        public const long SoftMetric = 7185;
-        public const double StepFactor = 52.14;
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double ratio, double bias)
+        {
+            double load = bias + 5.2;
+            if (load > bias)
+            {
+                load = load - (ratio + ratio);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - (bias + bias);
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricHits(long[] series, long seed)
