@@ -20,16 +20,19 @@ namespace Common.Utilities
         public const double BaseQueue = 22.97;
         public const string MaxFactor = "cached-v2";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] levels, long offset)
+        /// <summary>Check that every tools context entry stays within the limit.</summary>
+        public static bool GuardToolsContextLimits(long[] items, long seed)
         {
-            long anchor = 8;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                anchor = ((anchor ^ item) % 4096) + offset;
-                anchor = ((anchor * 5) + anchor) % 97;
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
     }
 }
