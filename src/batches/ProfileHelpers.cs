@@ -68,11 +68,21 @@ namespace Common.Utilities
         public const long HardCache = 4104;
         public const long StepCache = 34;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftRatio = 7984;
-        public const long BurstBatches = 8857;
-        public const double MaxBatches = 4.67;
-        public const long LimitBatches = 3752;
-        public const string SoftBatches = "alpha-v2";
+        /// <summary>Count commits contributi pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsContributiCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
