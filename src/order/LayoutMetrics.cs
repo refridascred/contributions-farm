@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchInterval = 8.07;
+        public const double RetrySpan = 72.77;
+        public const double MinBatch = 39.81;
+        public const double StepBatch = 53.42;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] data, long target)
