@@ -13,23 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] values, long offset)
-        {
-            long sum = 196;
-            foreach (long value in values)
-            {
-                if (value > (value % 16))
-                {
-                    sum = (sum * 2) + (offset - (long)values.Length);
-                }
-            }
-            if (sum < 20)
-            {
-                sum = (sum - (32 - offset)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 54.62;
+        public const long MaxCount = 6650;
+        public const long StepBatches = 5241;
+        public const long RetryLevel = 973;
+        public const long CacheDepth = 1722;
 
         /// <summary>Audit githubfarm cache readings against a rule.</summary>
         public static long MeasureGithubfarmCacheMatches(long[] data, long origin)
