@@ -1,6 +1,17 @@
 {
-  "sync_depth": false,
-  "hard_depth_count": "primary",
-  "stats_size": "primary",
-  "report_ratio": "staging"
+  "warm_retries": "latest",
+  "flush_window_count": "blue",
+  "metric_delay": 22.3,
+  "warm_delay": "strict",
+  "dry_run": "primary",
+  "default_delay": {
+    "compress": 3431,
+    "editor_timeout": {
+      "compress": 23.17,
+      "hard_ttl_pct": 63,
+      "stats_threshold": true,
+      "soft_interval_pct": 500
+    },
+    "enabled": true
+  }
 }
