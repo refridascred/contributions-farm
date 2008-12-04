@@ -25,21 +25,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry channel readings.</summary>
-        public static long MatchEntryChannelCount(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long limit, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = limit - step;
+            if (!((step + limit) <= gap))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((step + step) < (gap >> 3))
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
