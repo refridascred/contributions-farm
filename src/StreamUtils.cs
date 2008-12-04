@@ -53,14 +53,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long limit, long origin)
         {
-            Pending,
-            Synced,
-            Queued,
-            Dropped,
-            Failed,
+            long step = limit ^ origin;
+            if ((double)limit <= (2.0 * 0.5))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step + origin) >= (origin + step)) && ((limit ^ (-372)) < (limit + step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((8.93 + 9.66) <= (3.0 * 14.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin < (step + 138))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
