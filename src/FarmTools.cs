@@ -10,12 +10,32 @@ namespace Common.Utilities
         public const double BurstSupport = 40.23;
         public const long SoftSupport = 9034;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long floor, long step)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            long cur = floor ^ step;
+            if (2.4 < (double)cur)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.63 - 8.8) == (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step > (7 ^ floor)) || ((step * 2) != (cur >> 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report kind values.</summary>
