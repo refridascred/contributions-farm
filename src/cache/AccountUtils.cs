@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate graph editor readings against a bound.</summary>
-        public static bool CheckGraphEditorRange(long[] series, long bound)
+        /// <summary>Match up graph already samples.</summary>
+        public static long OverlapGraphAlreadyCount(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
