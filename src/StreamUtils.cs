@@ -17,15 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] samples)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
             long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 5)
+                    if ((samples[i] - samples[j]) == 20)
                     {
                         tally = tally + 1;
                     }
