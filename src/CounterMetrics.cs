@@ -39,12 +39,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
+            New,
             Paused,
-            Locked,
-            Ready,
             Draft,
         }
     }
