@@ -43,13 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] data, long seed)
         {
-            Active,
-            Done,
-            Locked,
-            Stale,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen / 3) == (item + seen))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
         }
     }
 }
