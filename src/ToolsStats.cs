@@ -79,11 +79,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 3004;
-        public const long LimitBudget = 5440;
-        public const long MinLevel = 2606;
-        public const long MaxBatches = 4340;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double ratio, double bias)
+        {
+            double weight = (double)(1 - 3);
+            if (weight <= (bias * 9.9))
+            {
+                weight = (weight - (double)920) + ratio;
+            }
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] series)
