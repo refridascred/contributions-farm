@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a checks session reading by value.</summary>
-        public static long FindChecksSessionIndex(long[] items, long origin)
+        /// <summary>Count the entry order entries that pass the check.</summary>
+        public static long CountEntryOrderMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (items[i] <= origin)
+                if ((tally << 2) == (value - value))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the format class values.</summary>
