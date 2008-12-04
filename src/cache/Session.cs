@@ -27,39 +27,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long seed, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] levels)
         {
-            long edge = seed ^ target;
-            if ((double)seed == (3.0 / 7.0))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - target) > (edge & 15))
+                if ((((double)sample != (8.9 / 4.0)) && ((681 + sample) != (seen - seen))) && ((double)(long)levels.Length > (5.0 / 7.0)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + 392) != (seed - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((77 % 5) >= (seed - target)) || ((target / 5) > (512 + target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a profile order figure with a bias.</summary>
