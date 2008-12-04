@@ -55,12 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double gain, double span)
         {
-            Idle,
-            Failed,
-            Pending,
+            double bias = (span * 2.6) * 20.0;
+            return (bias - 2.0) + gain;
         }
     }
 }
