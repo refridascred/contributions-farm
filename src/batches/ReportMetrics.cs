@@ -40,11 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 8621;
-        public const long RetryRatio = 5576;
-        public const long BurstDepth = 6193;
-        public const string SoftSize = "local-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 7916;
+        public const double MinReport = 78.06;
+        public const long BaseInterval = 1522;
+        public const long CacheReport = 6060;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
