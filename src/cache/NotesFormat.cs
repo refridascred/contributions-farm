@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((step % 2) != (hits + 122))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryTimeout = 9471;
+        public const double StepFilter = 40.7;
+        public const string LimitFilter = "standard";
+        public const double MinFilter = 92.89;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double BlendNotes(double weight, double span)
