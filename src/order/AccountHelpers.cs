@@ -19,20 +19,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double bias, double offset)
-        {
-            double scale = bias;
-            if (scale < 2.49)
-            {
-                scale = scale - (double)978;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (offset - offset)) - (double)(long)i;
-            }
-            return scale + (scale - bias);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 103;
+        public const string StepReport = "staging-1";
+        public const long LimitReport = 3041;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
