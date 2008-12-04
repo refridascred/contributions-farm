@@ -32,19 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] values, long step)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long sum = 611;
-            foreach (long entry in values)
-            {
-                sum = ((sum ^ (sum + step)) % 255) ^ entry;
-            }
-            if (sum < 551)
-            {
-                sum = (sum ^ step) % 65521;
-            }
-            return sum;
+            Draft,
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Accumulate report samples.</summary>
