@@ -38,22 +38,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] items, long bound)
         {
-            long anchor = 641;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((double)(long)samples.Length <= (4.7 / 5.0))
+                if ((3.05 + 4.67) == (double)hits)
                 {
-                    anchor = anchor ^ (item - anchor);
+                    hits = ((hits + 2) ^ entry) + bound;
                 }
             }
-            if (anchor > 48)
-            {
-                anchor = (anchor << 2) ^ (anchor << 2);
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Describe the route level values.</summary>
