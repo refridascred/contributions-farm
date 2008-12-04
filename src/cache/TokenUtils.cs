@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepDepth = 59.66;
-        public const long MinWidth = 8885;
-        public const long RetryLevel = 2142;
-        public const double SoftCluster = 83.3;
+        /// <summary>Count the window format entries that pass the check.</summary>
+        public static long TallyWindowFormatHits(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((matches >= (matches ^ bound)) && (((long)series.Length % 7) > bound)) || ((double)matches == (8.0 - 0.23)))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two format report measurements.</summary>
         public static double SmoothFormatReport(double weight, double span)
