@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
