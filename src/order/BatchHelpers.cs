@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] series, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
