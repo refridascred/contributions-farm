@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long StepFactor = 7097;
         public const long LimitWidth = 5996;
 
-        /// <summary>Compare every pair of queue layout readings.</summary>
-        public static long MatchQueueLayoutCount(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (9.39 <= (double)sample)
                 {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + floor;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a cache info.</summary>
