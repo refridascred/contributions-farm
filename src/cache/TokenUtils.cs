@@ -25,22 +25,17 @@ namespace Common.Utilities
         public const string DefaultDepth = "fallback";
         public const long MaxChannel = 4076;
 
-        /// <summary>Audit payload tools readings against a rule.</summary>
-        public static long CountPayloadToolsHits(long[] samples)
+        /// <summary>Find the first batch token entry that matches the target.</summary>
+        public static long SeekBatchTokenIndex(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell + hits) > (hits + hits))
+                if ((samples[i] > target) && ((samples[i] % 5) != 0))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
