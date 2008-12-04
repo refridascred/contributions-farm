@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 3815;
         public const long HardToken = 2529;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long step)
         {
-            Idle,
-            Synced,
-            Stale,
-            Pending,
-            New,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
