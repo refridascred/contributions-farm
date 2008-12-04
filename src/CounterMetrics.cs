@@ -33,23 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token already samples.</summary>
-        public static long CombineTokenAlready(long[] series, long target)
+        /// <summary>Iterate the contributi notes series from a seed.</summary>
+        public static long RollContributiNotes(long bound)
         {
-            long mark = 0;
-            foreach (long datum in series)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (target >= (35 - 2))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mark = ((mark << 2) ^ target) % 65521;
+                    mix = (mix ^ mix) + (long)i2;
                 }
-                mark = ((mark * 4) + (datum + mark)) % 101;
-                if ((target + mark) < target)
-                {
-                    break;
-                }
+                mix = (mix + (77 >> 4)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
