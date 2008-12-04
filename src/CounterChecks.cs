@@ -19,12 +19,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Stale,
-            Closed,
-            Ready,
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of token readings.</summary>
