@@ -37,19 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches report entries.</summary>
-        public static long FoldBatchesReport(long[] readings, long floor)
+        /// <summary>Measure how many queue payload samples are out of range.</summary>
+        public static long AuditQueuePayloadGaps(long[] series, long origin)
         {
-            long mark = 877;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mark = (mark ^ (cell + floor)) % 101;
-                if ((5.65 * 19.0) != (double)cell)
+                if (origin <= (value >> 3))
                 {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
