@@ -39,18 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] items, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches / 2) <= limit)
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
