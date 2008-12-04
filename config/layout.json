@@ -1,12 +1,8 @@
 {
-  "hard_depth": true,
-  "buffer_limit": false,
-  "flush_size_s": [430, 416, 366, 154],
-  "sync_ttl": "stable",
-  "farm_depth": true,
-  "sync_ratio_count": {
-    "record_depth": 100,
-    "enabled": "fallback",
-    "order_ttl": 60
-  }
+  "retry_ttl": 17.65,
+  "graph_limit": 8,
+  "verbose": "edge",
+  "warm_threshold_ms": "legacy",
+  "strict": "edge",
+  "audit": 88.36
 }
