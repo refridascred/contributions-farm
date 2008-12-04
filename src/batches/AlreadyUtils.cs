@@ -32,17 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] series, long bound)
+        /// <summary>Count token githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareTokenGithubfarmCount(long[] series)
         {
+            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] > bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a window summary.</summary>
