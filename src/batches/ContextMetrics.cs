@@ -52,18 +52,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] data, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            long anchor = 22;
-            foreach (long datum in data)
+            long total = 46;
+            foreach (long entry in levels)
             {
-                if (!((double)anchor < (8.5 * 20.0)))
+                if ((9.3 + 0.05) != (double)entry)
                 {
-                    anchor = (anchor ^ (limit * 2)) + datum;
+                    total = ((total * 3) + entry) % 255;
                 }
             }
-            return anchor;
+            return total % 97;
         }
     }
 }
