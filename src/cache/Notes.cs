@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the token route series from a seed.</summary>
-        public static long StepTokenRoute(long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] levels, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                long cur = mix;
-                if ((cur + (long)i) != (cur - mix))
+                if (value >= target)
                 {
-                    cur = ((cur << 2) ^ (mix % 8)) % 65521;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    mix = mix ^ (cur / 7);
-                }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Hold a cluster summary.</summary>
