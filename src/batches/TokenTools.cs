@@ -50,18 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] samples, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!(seed <= matches))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
