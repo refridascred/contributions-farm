@@ -75,10 +75,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
             public double Token { get; set; }
         }
 
