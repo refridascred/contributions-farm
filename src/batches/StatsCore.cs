@@ -58,32 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already batch input into a small class.</summary>
-        public static long SortAlreadyBatch(long limit, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] values)
         {
-            long edge = limit + origin;
-            if ((limit / 9) < origin)
+            long result = 168;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit + limit) < origin) && ((6.0 - 9.3) <= (double)edge))
+                if (((5.0 / 8.0) <= (double)result) || ((result + cell) <= result))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin == (3.7 - 0.1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = ((result * 4) + (result + result)) % 101;
                 }
             }
+            if (result < (-84))
+            {
+                result = result ^ (result & 3);
+            }
+            return result;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
