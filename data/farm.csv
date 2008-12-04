@@ -1,10 +1,6 @@
-id,rank,level,owner
-1,21.62,56.02,509
-2,29.27,67.12,52.66
-3,25.77,523,91.13
-4,630,primary,718
-5,fallback,270,72
-6,188,94.4,stable
-7,861,blue,19.87
-8,456,991,13.1
-9,97.32,49,452
+id,count,owner,active
+1,557,77,674
+2,legacy,19.84,fallback
+3,strict,840,edge
+4,56.92,932,standard
+5,legacy,434,green
