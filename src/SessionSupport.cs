@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (2.7 <= (double)tally)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchInterval = "primary-edge";
+        public const long LimitOrder = 1489;
+        public const string DefaultCount = "local-v2";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] items, long target)
