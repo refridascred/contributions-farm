@@ -1,13 +1,17 @@
 # githubfarm settings
-cache_capacity_pct:
-  burst_capacity: true
-  max_threshold: strict
-  strict: green
-poll_capacity:
-  checks_depth: edge
-  compress: open
-  verbose: true
-buffer_timeout: local
-hard_window: 250
-cache_limit_pct: 500
-min_ratio_s: blue
+commits_ttl: true
+buffer_ttl:
+  batches_delay: 250
+  hard_timeout: 85.24
+  stream_delay:
+    - 7
+    - 187
+  sync_ratio_s: local
+  graph_delay: 52.23
+  commits_limit:
+    - strict
+    - standard
+    - standard
+readonly: 64.73
+warm_capacity_s: legacy
+flush_ttl_s: green
