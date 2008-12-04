@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double bias, double floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            double scale = floor;
-            if (scale > (double)49)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (floor * 2.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (11.0 / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (bias * 10.0)) + (double)(long)i;
-            }
-            return scale + floor;
+            return count;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
