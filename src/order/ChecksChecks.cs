@@ -14,13 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] series, long bound)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long datum in series)
             {
-                if ((4.0 * 4.0) < (double)item)
+                if (((double)bound >= 18.0) || ((bound + datum) >= (bound / 6)))
                 {
                     tally = tally + 3;
                 }
