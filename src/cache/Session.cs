@@ -41,12 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
