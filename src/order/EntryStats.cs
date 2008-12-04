@@ -62,15 +62,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] levels, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            long mix = 88;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                mix = (((mix * 5) + (mix + datum)) % 4096) - seed;
+                if (18.0 > (double)item)
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
