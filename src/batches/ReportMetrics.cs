@@ -43,12 +43,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] data, long bound)
         {
-            Synced,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((double)bound <= (2.05 / 3.0)) && ((bound + item) <= count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
