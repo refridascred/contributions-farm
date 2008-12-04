@@ -30,21 +30,22 @@ namespace Common.Utilities
         public const string RetryEditor = "strict-v2";
         public const long BaseEditor = 7758;
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits >> 1) < cell)
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Roll a context counter forward.</summary>
