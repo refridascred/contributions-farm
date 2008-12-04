@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLevel = "standard-1";
-        public const double SoftFactor = 22.0;
-        public const long MinDepth = 1090;
-        public const string IdleLayout = "legacy";
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
