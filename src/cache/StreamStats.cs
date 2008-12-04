@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next tools route value from a seed.</summary>
-        public static long StepToolsRoute(long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] series, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Define report limits and defaults.</summary>
