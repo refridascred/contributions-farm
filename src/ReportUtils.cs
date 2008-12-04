@@ -17,21 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 1;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state + (state + limit)) - value;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Digest a series of already entries.</summary>
