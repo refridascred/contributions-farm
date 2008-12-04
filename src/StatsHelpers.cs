@@ -28,39 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long seed, long seed2)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long prev = seed ^ seed2;
-            if (((seed - seed2) == (seed >> 3)) || ((seed2 / 4) < 60))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4.99 / 8.0) == (double)seed2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev ^ seed) >= (prev << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed >= 4) || ((0.57 - 3.0) != (double)prev))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first account farm entry that matches the target.</summary>
