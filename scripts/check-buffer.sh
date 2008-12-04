@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=81
-log "limit is ${BUFFER_LIMIT}"
+for item in green staging; do
+    log "checking ${item}"
+done
 
-mode="${1:-latest}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-edge}"
 case "${mode}" in
-    blue)
+    edge)
         log "fast path"
         ;;
     *)
