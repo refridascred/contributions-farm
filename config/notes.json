@@ -1,8 +1,7 @@
 {
-  "idle_threshold": 33,
-  "strict": "stable",
-  "warm_limit_count": true,
-  "min_timeout_pct": 625,
-  "enabled": "eu-west",
-  "soft_limit_pct": ["latest", "fallback", "blue", "cached"]
+  "retry_limit": 100,
+  "soft_capacity_pct": 500,
+  "soft_timeout_s": 19,
+  "strict": 27.74,
+  "already_delay": "staging"
 }
