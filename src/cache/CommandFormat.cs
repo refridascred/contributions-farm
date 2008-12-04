@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double weight, double floor)
         {
-            Ready,
-            Paused,
-            Queued,
-            Failed,
-            Locked,
+            double mean = floor;
+            return (mean + floor) + weight;
         }
 
         /// <summary>Describe the tools class values.</summary>
