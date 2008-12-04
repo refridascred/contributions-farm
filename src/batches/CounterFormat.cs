@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double bias, double span)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long step)
         {
-            double mean = (double)809 - bias;
-            if (mean > (span * 6.1))
+            long diff = seed + step;
+            if (!((step + seed) >= (diff & 31)))
             {
-                mean = mean + bias;
+                return 5;
             }
             else
             {
-                mean = mean + (mean + mean);
+                if ((step % 100) < ((-1) % 64))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return mean - mean;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
