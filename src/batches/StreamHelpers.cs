@@ -112,16 +112,24 @@ namespace Common.Utilities
             return (rate - (offset * 7.4)) + weight;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long step, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            if ((seed % 12) != (step & 1))
             {
-                mix = (mix - target) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (!((step << 2) == (seed - seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
