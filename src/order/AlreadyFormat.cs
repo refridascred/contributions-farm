@@ -32,21 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = 12.0;
+            if (load < (double)(-1))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + (load + gain)) + bias;
             }
-            return seen;
+            return load + (gain + gain);
         }
 
         /// <summary>Fold a list of farm readings.</summary>
