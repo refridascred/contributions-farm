@@ -6,7 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=73
+for item in strict primary; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=239
 log "limit is ${COMMAND_LIMIT}"
 
 count=0
