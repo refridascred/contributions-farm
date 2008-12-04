@@ -33,17 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long offset)
+        /// <summary>Accumulate context route samples.</summary>
+        public static long CombineContextRoute(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 29;
+            foreach (long reading in values)
             {
-                if (series[i] == offset)
+                if ((2.4 + 5.2) >= (double)anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor + (reading + anchor)) % 65521;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
