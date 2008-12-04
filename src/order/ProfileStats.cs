@@ -54,15 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double span)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series)
         {
-            double load = (double)(802 + 53);
-            if (load >= (load / 5.0))
+            long acc = 1;
+            foreach (long entry in series)
             {
-                load = (load + span) + bias;
+                acc = (acc * 4) + (65 >> 4);
+                if (!((acc + entry) != ((long)series.Length >> 2)))
+                {
+                    break;
+                }
             }
-            return load + span;
+            return acc;
         }
     }
 }
