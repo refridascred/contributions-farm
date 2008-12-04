@@ -61,11 +61,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] data, long limit)
         {
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
