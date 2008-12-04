@@ -1,7 +1,16 @@
 # entry settings
-retry_window: 99
-hard_threshold_ms: cached
-cache_limit_pct: 48.92
-sync_ttl_s: 3934
-base_depth: false
-verbose: 1241
+default_capacity: 250
+metric_threshold:
+  dry_run: 60.53
+  audit: 4182
+  default_threshold_s: 5164
+  window_ratio:
+    hard_delay_ms: legacy
+    idle_window: cached
+    poll_retries_pct:
+      - legacy
+      - latest
+  schema_window: legacy
+idle_depth_s: 500
+default_timeout_count: 3374
+retry_depth: false
