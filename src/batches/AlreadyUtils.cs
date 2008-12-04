@@ -23,19 +23,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many schema stream samples are out of range.</summary>
-        public static long TallySchemaStreamHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((bound % 16) < bound) && ((1.3 + 5.38) < (double)value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 4293;
+        public const long BurstContext = 130;
+        public const double MinContext = 94.4;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultDepth = 9566;
