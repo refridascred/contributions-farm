@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account window readings against a rule.</summary>
-        public static long MeasureAccountWindowOutliers(long[] items)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (hits > (item - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
