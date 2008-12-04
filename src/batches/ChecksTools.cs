@@ -62,19 +62,17 @@ namespace Common.Utilities
         public const double RetryEditor = 31.78;
         public const long StepBudget = 894;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long bound)
+        /// <summary>Find the first stream cache entry that matches the target.</summary>
+        public static long LookupStreamCacheIndex(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= bound)
+                if ((items[i] >= bound) && ((items[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
