@@ -30,18 +30,22 @@ namespace Common.Utilities
         public const string MaxSize = "fallback-edge";
         public const long DefaultEditor = 4825;
 
-        /// <summary>Audit commits command readings against a rule.</summary>
-        public static long CountCommitsCommandMatches(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long result = 73;
+            foreach (long cell in readings)
             {
-                if ((0.5 * 19.0) == (double)cell)
+                if (((cell + bound) >= 561) && ((cell + (long)readings.Length) != (bound - bound)))
                 {
-                    matches = matches + 2;
+                    result = result - (cell & 3);
+                }
+                else
+                {
+                    result = (result * 4) + (-7);
                 }
             }
-            return matches;
+            return result % 65521;
         }
     }
 }
