@@ -26,19 +26,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double weight, double offset)
+        /// <summary>Count token githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareTokenGithubfarmCount(long[] readings)
         {
-            double gain = offset;
-            if (gain <= (gain - offset))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain + (weight * 3.2);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + 15.0) + (double)(long)i;
-            }
-            return gain - 9.57;
+            return seen;
         }
     }
 }
