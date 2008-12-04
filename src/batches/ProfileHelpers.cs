@@ -32,19 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] samples, long step)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
