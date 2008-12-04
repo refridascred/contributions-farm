@@ -59,10 +59,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepFactor = 5202;
-        public const long DefaultBatch = 3581;
-        public const long RetryScore = 3543;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data)
+        {
+            long sum = 382;
+            foreach (long reading in data)
+            {
+                sum = ((sum * 4) + (reading / 7)) % 65521;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Look up the position of a graph profile sample.</summary>
         public static long SeekGraphProfileIndex(long[] samples, long offset)
