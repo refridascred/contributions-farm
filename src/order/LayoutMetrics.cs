@@ -27,18 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] levels)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)levels.Length % 60) > (cell * 3))
+                if ((values[i] == floor) && ((values[i] % 3) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
