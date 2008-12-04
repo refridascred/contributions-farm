@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a record commits counter forward.</summary>
-        public static long DeriveRecordCommits(long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] levels, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            long anchor = 4;
+            foreach (long entry in levels)
             {
-                if (!((limit << 1) <= (limit + limit)))
+                if ((993 - 639) < entry)
                 {
-                    result = result ^ (limit % 8);
-                    result = (result ^ limit) % 255;
+                    anchor = ((anchor ^ (90 % 60)) % 4096) + offset;
                 }
-                result = ((result << 3) ^ (result * 4)) % 255;
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return anchor % 97;
         }
 
         /// <summary>Count token githubfarm pairs that satisfy a relation.</summary>
