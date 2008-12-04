@@ -32,20 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] samples, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] samples)
         {
-            long mix = 90;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix ^ (mix + reading)) % 255) + target;
-                mix = (mix * 4) + (281 / 5);
-                if (!((reading + (-97)) < (mix * 2)))
+                if ((9.6 / 2.0) <= (double)tally)
                 {
-                    break;
+                    tally = (tally + 2) + item;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
