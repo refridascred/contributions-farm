@@ -24,11 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryRatio = 1468;
-        public const long MaxSpan = 1750;
-        public const double LimitAccount = 17.51;
-        public const long HardDepth = 5640;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Failed,
+            Done,
+            Retry,
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] samples, long seed)
