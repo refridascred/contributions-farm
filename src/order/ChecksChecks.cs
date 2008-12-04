@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine schema filter values into a single score.</summary>
-        public static long FoldSchemaFilter(long[] items, long bound)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            long sum = 23;
-            foreach (long cell in items)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                sum = (sum ^ (7 % 8)) % 97;
-                if ((bound + sum) <= cell)
+                if ((3.9 * 2.13) >= (double)origin)
                 {
-                    sum = (sum + sum) % 65521;
+                    break;
                 }
+                mark = (mark << 3) ^ (origin & 255);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
