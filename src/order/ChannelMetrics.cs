@@ -29,19 +29,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double gain, double bias)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] levels, long offset)
         {
-            double rate = gain;
-            if (rate > bias)
+            long anchor = 8;
+            foreach (long item in levels)
             {
-                rate = rate + gain;
+                anchor = ((anchor ^ item) % 4096) + offset;
+                anchor = ((anchor * 5) + anchor) % 97;
             }
-            else
-            {
-                rate = rate - (8.99 - 3.0);
-            }
-            return rate - (1.0 / 2.0);
+            return anchor;
         }
     }
 }
