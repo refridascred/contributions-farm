@@ -55,10 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 2.66;
-        public const double StepSpan = 16.37;
-        public const long RetryBatches = 1345;
-        public const long MaxBatches = 2933;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels)
+        {
+            long anchor = 247;
+            foreach (long datum in levels)
+            {
+                anchor = (anchor - datum) % 97;
+            }
+            if (anchor > 453)
+            {
+                anchor = (anchor - (anchor & 127)) % 4096;
+            }
+            return anchor;
+        }
     }
 }
