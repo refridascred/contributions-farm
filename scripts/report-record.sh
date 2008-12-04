@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable strict; do
+RECORD_LIMIT=231
+log "limit is ${RECORD_LIMIT}"
+
+for item in legacy local; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
