@@ -65,11 +65,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "latest-1";
-        public const string IdleBudget = "strict-edge";
-        public const double MinInterval = 22.75;
-        public const long HardWidth = 5286;
-        public const string CacheTimeout = "standard-1";
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)seed <= (3.0 + 8.0))
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
+        }
     }
 }
