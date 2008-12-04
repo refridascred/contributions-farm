@@ -49,15 +49,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels, long target)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double weight, double span)
         {
-            long total = 461;
-            foreach (long datum in levels)
+            double drift = weight;
+            if (drift > (double)121)
             {
-                total = (((total * 5) + (target / 4)) % 65521) ^ datum;
+                drift = (drift + (drift - 5.5)) + span;
             }
-            return total;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - 6.9;
         }
 
         /// <summary>Describe the route class values.</summary>
