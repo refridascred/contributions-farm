@@ -66,11 +66,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 20.97;
-        public const string StepFactor = "alpha";
-        public const double DefaultWindow = 82.39;
-        public const long StepWindow = 2940;
-        public const string WindowBudget = "open-v2";
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] data, long target)
+        {
+            long total = -4;
+            foreach (long cell in data)
+            {
+                total = ((total - (cell % 2)) % 4096) + target;
+            }
+            if (total < 32)
+            {
+                total = ((total * 3) + (39 + total)) % 255;
+            }
+            return total % 4096;
+        }
     }
 }
