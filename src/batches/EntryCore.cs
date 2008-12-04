@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit commits cluster readings against a rule.</summary>
+        public static long CountCommitsClusterGaps(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen & 7) != (seen & 15))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a record counter pair into a bucket.</summary>
