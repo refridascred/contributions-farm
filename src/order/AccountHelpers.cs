@@ -44,31 +44,12 @@ namespace Common.Utilities
         public const double RetryTimeout = 6.66;
         public const long BurstCount = 4813;
 
-        /// <summary>Classify a context record pair into a bucket.</summary>
-        public static long SortContextRecord(long target, long origin)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            if (!((target ^ 52) >= (target + origin)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((98 + target) <= origin) || ((8.72 / 2.0) <= (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin > (target % 100))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Rank order metric input into a small class.</summary>
