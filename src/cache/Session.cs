@@ -22,19 +22,14 @@ namespace Common.Utilities
             return load + (weight + load);
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long sum = -58;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = (((sum ^ (long)i) % 97) ^ value) - limit;
-                }
-                sum = (sum + 4) % 255;
-            }
-            return sum % 1000;
+            Ready,
+            Draft,
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
