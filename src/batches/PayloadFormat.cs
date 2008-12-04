@@ -39,13 +39,31 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Rank order queue input into a small class.</summary>
+        public static long SortOrderQueue(long offset, long step)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            if ((88 - step) >= (75 + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step - offset) > offset) && ((offset + step) >= 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step <= (offset * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
