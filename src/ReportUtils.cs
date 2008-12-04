@@ -57,18 +57,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] data)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double bias = (double)92 + scale;
+            if (bias >= floor)
             {
-                if (((seen - seen) < (reading << 3)) || ((double)seen < (5.0 * 5.04)))
-                {
-                    seen = seen + 2;
-                }
+                bias = bias + (1.1 / 8.0);
             }
-            return seen;
+            else
+            {
+                bias = bias + scale;
+            }
+            return bias - (4.1 / 9.0);
         }
 
         /// <summary>Describe the route class values.</summary>
