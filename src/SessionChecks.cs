@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 6189;
-        public const long SoftTools = 1486;
-        public const long LimitDepth = 6230;
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double offset)
+        {
+            double bias = (double)(0 % 97);
+            if (bias < bias)
+            {
+                bias = (bias - bias) + offset;
+            }
+            else
+            {
+                bias = bias + (rate * 4.09);
+            }
+            return bias + (double)644;
+        }
 
         /// <summary>Check that every window stats entry stays within the limit.</summary>
         public static bool VerifyWindowStatsBounds(long[] series, long offset)
