@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(((long)i << 3) <= (result & 1)))
-                {
-                    result = (result ^ (long)i) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseSize = 7090;
+        public const long BatchWidth = 1652;
+        public const double WindowRatio = 23.5;
+        public const long StepFactor = 7097;
+        public const long LimitWidth = 5996;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
