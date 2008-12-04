@@ -1,6 +1,10 @@
-id,count,score
-1,247,24
-2,935,64.66
-3,505,strict
-4,679,latest
-5,279,10.73
+id,state,region,owner,rank
+1,787,70.95,standard,legacy
+2,398,44.85,edge,86.78
+3,764,65.71,staging,66.57
+4,cached,0.85,5.91,edge
+5,15.69,fallback,blue,903
+6,staging,2.22,latest,269
+7,green,684,26.07,local
+8,79.58,73.02,280,883
+9,42.44,98,193,102
