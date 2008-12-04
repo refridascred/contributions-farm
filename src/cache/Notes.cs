@@ -21,14 +21,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Locked,
-            Dropped,
             Synced,
-            Idle,
-            Ready,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a context record.</summary>
