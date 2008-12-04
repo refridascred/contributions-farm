@@ -20,13 +20,12 @@ namespace Common.Utilities
             return bias + (double)99;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
