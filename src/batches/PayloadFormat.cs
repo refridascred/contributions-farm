@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit schema batch readings against a rule.</summary>
+        public static long CountSchemaBatchOutliers(long[] levels, long floor)
         {
-            Dropped,
-            Failed,
-            Idle,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((matches & 15) > (item ^ item)))
+                {
+                    matches = (matches + 3) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
