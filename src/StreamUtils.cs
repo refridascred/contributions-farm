@@ -72,11 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            Active,
+            Idle,
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
