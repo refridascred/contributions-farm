@@ -26,13 +26,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] data)
         {
-            New,
-            Pending,
-            Synced,
-            Closed,
+            long result = 46;
+            foreach (long reading in data)
+            {
+                if ((8.0 * 13.0) == (double)result)
+                {
+                    result = ((result - (result + 6)) % 1000) + reading;
+                }
+                result = result + result;
+            }
+            if (result < 98)
+            {
+                result = ((result * 3) + (result / 6)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
