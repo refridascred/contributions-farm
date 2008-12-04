@@ -38,10 +38,13 @@ namespace Common.Utilities
         public const double RetryTimeout = 6.66;
         public const long BurstCount = 4813;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 6072;
-        public const long MinLevel = 5966;
-        public const double BurstBudget = 91.07;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
