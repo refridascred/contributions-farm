@@ -95,12 +95,16 @@ namespace Common.Utilities
             return (rate - (offset * 7.4)) + weight;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            Synced,
-            Done,
-            Retry,
+            long mix = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix - target) % 255;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
