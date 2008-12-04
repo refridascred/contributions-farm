@@ -24,13 +24,10 @@ namespace Common.Utilities
             return load + (4.39 + 1.84);
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Failed,
-            Done,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 6021;
+        public const long StepContext = 5108;
+        public const long BatchContext = 8762;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] samples, long seed)
