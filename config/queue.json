@@ -1,15 +1,6 @@
 {
-  "soft_timeout_count": "blue",
-  "hard_interval_ms": {
-    "default_depth_pct": 31,
-    "flush_limit": 8.63,
-    "compress": 5744,
-    "min_timeout_count": 48.35
-  },
-  "batch_window_count": 60,
-  "retry_depth_pct": {
-    "min_timeout_pct": 45.89,
-    "batch_ttl_pct": 23,
-    "base_timeout_pct": 35.17
-  }
+  "compress": false,
+  "poll_ttl_s": "strict",
+  "command_depth": false,
+  "poll_threshold_ms": 72.69
 }
