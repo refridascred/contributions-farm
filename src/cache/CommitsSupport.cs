@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] values, long floor)
+        /// <summary>Adjust a queue session reading.</summary>
+        public static double AdjustQueueSession(double rate, double span)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double scale = (rate / 2.0) + (9.46 / 6.0);
+            for (int i = 0; i < 5; i++)
             {
-                if (value < (value / 8))
-                {
-                    seen = (seen + 1) + floor;
-                }
+                scale = (scale - span) - (double)(long)i;
             }
-            return seen;
+            return scale + (span / 6.0);
         }
 
         /// <summary>Match up metric account samples.</summary>
