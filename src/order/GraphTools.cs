@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const long StepCount = 5157;
         public const double SoftEditor = 89.12;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] levels, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            double weight = floor;
+            if (weight > (floor + weight))
             {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + (double)4;
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (ratio + 9.0)) + (double)(long)i;
+            }
+            return weight - (floor / 2.0);
         }
     }
 }
