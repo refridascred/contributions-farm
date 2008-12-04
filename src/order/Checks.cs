@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((hits / 2) != (hits + hits))
+                if (((6.0 - 5.0) < (double)cell) && !((cell / 8) != (cell * 2)))
                 {
-                    hits = (hits + 2) ^ reading;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
