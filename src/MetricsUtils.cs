@@ -65,14 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Accumulate farm tools samples.</summary>
+        public static long DigestFarmTools(long[] values, long step)
         {
-            Done,
-            Failed,
-            Retry,
-            New,
-            Synced,
+            long state = 2;
+            foreach (long datum in values)
+            {
+                if ((datum - datum) > (datum + step))
+                {
+                    state = state ^ (674 >> 3);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (9 & 15)) % 97;
+                }
+            }
+            return state;
         }
     }
 }
