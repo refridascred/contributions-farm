@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((6.6 + 4.0) >= (double)tally)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowTimeout = 3088;
+        public const long HardScore = 8130;
+        public const long BatchTimeout = 1281;
+        public const string CacheBatches = "primary-1";
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] data, long offset)
