@@ -16,18 +16,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already tools entries that pass the check.</summary>
-        public static long AuditAlreadyToolsHits(long[] data)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long seed, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long gap = seed + offset;
+            if ((6.47 * 5.6) >= (double)offset)
             {
-                if ((datum ^ count) != (count ^ datum))
+                return 6;
+            }
+            else
+            {
+                if ((3 ^ offset) > offset)
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((7 >> 2) == (gap + (-445)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + 7) > seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
