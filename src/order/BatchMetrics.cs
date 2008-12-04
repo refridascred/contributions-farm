@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] series)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally >> 2) >= (tally & 3))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
