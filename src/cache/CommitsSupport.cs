@@ -48,12 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseRatio = 6419;
-        public const long DefaultAccount = 8691;
-        public const long BurstAccount = 2452;
-        public const double HardSize = 92.09;
-        public const double MinAccount = 71.91;
+        /// <summary>Measure how many layout profile samples are out of range.</summary>
+        public static long MeasureLayoutProfileGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen & 255) <= seen)
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long ScoreProfile(long[] series)
