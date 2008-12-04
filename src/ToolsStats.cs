@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] samples, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (samples[i] > seed)
+                if (datum > offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
