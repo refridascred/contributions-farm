@@ -16,24 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long origin, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] values, long seed)
         {
-            if ((origin + seed) > origin)
+            long total = 7;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + origin) != (47 / 7))
+                if ((145 - 719) != (total - seed))
                 {
-                    return 0;
+                    total = ((total << 2) ^ (seed >> 2)) % 1000;
                 }
-                else
+                if ((1.0 + 4.2) <= (double)datum)
                 {
-                    return 1;
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
