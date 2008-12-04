@@ -1,5 +1,12 @@
 {
-  "sync_window_s": "standard",
-  "min_limit": ["cached", "edge", "standard", "fallback"],
-  "default_depth_pct": "edge"
+  "editor_window": 11.77,
+  "channel_retries": ["green", "stable", "legacy", "stable"],
+  "poll_retries": {
+    "base_delay_count": 23.1,
+    "payload_depth": true,
+    "graph_interval": 12,
+    "enabled": [162, 204, 55, 289]
+  },
+  "batch_threshold": [188, 494],
+  "default_limit_pct": "eu-west"
 }
