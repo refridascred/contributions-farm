@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next batches format value.</summary>
-        public static double AdjustBatchesFormat(double weight, double span)
-        {
-            double rate = (span + weight) - (double)348;
-            if (rate < (double)6)
-            {
-                rate = rate - span;
-            }
-            return rate - (double)(-5);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 6772;
+        public const long CacheLayout = 7491;
+        public const long BaseLayout = 4486;
+        public const long CacheSize = 5723;
+        public const string CacheTimeout = "legacy-edge";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepCount = 8492;
