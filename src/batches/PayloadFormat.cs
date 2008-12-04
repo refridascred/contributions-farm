@@ -14,11 +14,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double ratio, double offset)
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            double ratio2 = (double)(250 - 11);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = ((ratio2 - (ratio2 - 9.5)) - (double)(long)i) - offset;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
