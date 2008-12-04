@@ -29,22 +29,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric already readings against a rule.</summary>
-        public static long TallyMetricAlreadyMatches(long[] levels)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((1 + entry) > (entry + entry)) || ((entry >> 1) <= (461 + (long)levels.Length)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score << 2) ^ ((long)i * 2)) % 101;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
     }
 }
