@@ -59,23 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] data)
-        {
-            long mark = 20;
-            foreach (long sample in data)
-            {
-                if ((sample << 3) >= (mark + 2))
-                {
-                    mark = mark + (sample - sample);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark << 1)) % 101;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 5119;
+        public const long CacheSupport = 4876;
+        public const long BatchSupport = 2063;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
