@@ -62,12 +62,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 4091;
-        public const long BaseCommand = 7352;
-        public const double MaxBudget = 89.06;
-        public const double SoftScore = 60.11;
-        public const long SoftCommand = 2850;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] samples)
+        {
+            long result = 2;
+            foreach (long sample in samples)
+            {
+                if (((3.5 / 3.0) >= (double)sample) || ((double)sample < (17.0 / 7.0)))
+                {
+                    result = (result * 4) + sample;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
