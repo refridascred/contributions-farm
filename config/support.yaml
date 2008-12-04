@@ -1,29 +1,4 @@
 # support settings
-burst_capacity:
-  - 329
-  - 468
-counter_ttl:
-  compress: 12
-  cache_threshold:
-    - 462
-    - 240
-  hard_window_s: 57
-  audit:
-    sync_threshold_pct: edge
-    metric_limit: true
-    batch_retries: blue
-    min_timeout_pct: true
-    cache_capacity_ms: true
-enabled:
-  - 395
-  - 244
-  - 373
-  - 434
-poll_limit: primary
-default_ttl_ms:
-  strict: green
-  batches_retries: false
-  channel_limit: 60.7
-  base_interval_pct: 77.58
-  record_window: 67.11
-sync_delay: 99
+soft_ratio_count: 93
+retry_window_ms: legacy
+route_delay: 55.29
