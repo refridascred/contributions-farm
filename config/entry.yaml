@@ -1,11 +1,27 @@
 # entry settings
-compress: 67
-max_delay: true
-min_limit: 81.39
-base_capacity_pct:
-  readonly: 53
-  counter_timeout: false
-  base_delay: 50.57
-  cluster_depth: 500
-  idle_limit: false
-  compress: eu-west
+base_depth_count:
+  - open
+  - blue
+min_retries_ms:
+  notes_retries: fallback
+  context_timeout:
+    - open
+    - green
+    - fallback
+    - legacy
+  flush_interval_pct: edge
+  enabled: open
+default_capacity_pct:
+  route_threshold: false
+  burst_limit:
+    - cached
+    - primary
+    - primary
+    - legacy
+  hard_timeout:
+    batch_size_ms: true
+    compress: fallback
+    payload_window: 7712
+    warm_interval_count: true
+    max_ratio_ms: false
+  tools_delay: open
