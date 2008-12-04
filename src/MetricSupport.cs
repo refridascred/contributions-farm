@@ -20,21 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Adjust a batches stats reading.</summary>
+        public static double SmoothBatchesStats(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 2.81;
+            if (scale > (8.48 + scale))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale + weight) + offset;
             }
-            return tally;
+            return scale - 0.3;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
