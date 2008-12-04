@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 8298;
-        public const double BurstSupport = 40.23;
-        public const long SoftSupport = 9034;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public double Rank { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long GradeProfile(long floor, long step)
