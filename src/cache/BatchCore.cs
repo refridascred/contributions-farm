@@ -15,11 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultCount = 2006;
-        public const long DefaultFilter = 1868;
-        public const string BatchFilter = "strict-v2";
-        public const long MaxCount = 7124;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Pending,
+            Locked,
+            Queued,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string StepBudget = "legacy-v2";
