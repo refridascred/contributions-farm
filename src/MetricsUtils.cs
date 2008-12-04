@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] items, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (entry <= bound)
+                if ((double)floor < (2.0 - 6.8))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) - sample;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
