@@ -50,18 +50,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm format readings against a rule.</summary>
-        public static long TallyGithubfarmFormatGaps(long[] samples)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= (tally % 8))
+                if (series[i] == offset)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
