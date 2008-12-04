@@ -40,9 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "local-v2";
-        public const long BatchNotes = 2736;
-        public const long BatchCount = 191;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            New,
+            Draft,
+            Paused,
+            Synced,
+            Ready,
+        }
     }
 }
