@@ -1,7 +1,9 @@
-id,level,token,ratio,region
-1,779,47.09,979,local
-2,legacy,legacy,standard,49.49
-3,0.19,local,601,634
-4,local,74.14,821,85.18
-5,673,7.19,658,32.37
-6,12.32,fallback,eu-west,90
+id,weight,region
+1,81.34,cached
+2,primary,34.54
+3,125,17.19
+4,green,507
+5,309,22.06
+6,53.88,7.99
+7,413,stable
+8,legacy,269
