@@ -34,12 +34,18 @@ namespace Common.Utilities
             return scale + (scale - bias);
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] samples)
         {
-            Idle,
-            Paused,
-            Failed,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((seen * 5) > reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
