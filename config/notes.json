@@ -1,24 +1,6 @@
 {
-  "idle_ratio_pct": 53,
-  "cache_window": "standard",
-  "window_size": 6943,
-  "route_threshold": {
-    "sync_threshold": "cached",
-    "compress": 92,
-    "max_capacity_count": "stable",
-    "max_depth_count": "latest",
-    "min_threshold_pct": 30
-  },
-  "strict": "blue",
-  "flush_threshold": {
-    "idle_ttl": {
-      "default_threshold": 100,
-      "hard_ttl": 99,
-      "dry_run": "green",
-      "soft_delay": 97.24
-    },
-    "hard_threshold_s": 8899,
-    "dry_run": [307, 392, 416],
-    "cache_size": 250
-  }
+  "format_depth": "strict",
+  "persist": false,
+  "compress": 30,
+  "sync_threshold_s": "standard"
 }
