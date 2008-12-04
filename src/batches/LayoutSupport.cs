@@ -73,38 +73,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long step, long seed)
-        {
-            if ((seed & 1) == (step & 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ seed) <= (step << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step < (seed & 127))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed > (58 ^ step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepSize = 8023;
+        public const long BaseEntry = 431;
+        public const string IdleTimeout = "staging-edge";
+        public const long DefaultEntry = 8925;
+        public const string SoftEntry = "open-edge";
     }
 }
