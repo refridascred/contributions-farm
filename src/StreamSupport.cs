@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the window cache entries that pass the check.</summary>
-        public static long AuditWindowCacheMatches(long[] series)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double ratio = span;
+            if (ratio >= (gain / 2.0))
             {
-                if (((54 + matches) > (entry - entry)) || ((double)entry > (13.0 * 2.2)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ratio + (span * 5.4);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (ratio / 8.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
