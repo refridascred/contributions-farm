@@ -29,22 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] items)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((((4.63 * 5.1) == (double)count) || (3.7 >= (double)sample)) && ((sample - count) <= count))
+                if (value >= origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
