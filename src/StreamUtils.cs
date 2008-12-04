@@ -51,23 +51,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two commits window measurements.</summary>
-        public static double AdjustCommitsWindow(double gain, double floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double mean = (double)((-9) >> 2);
-            if (mean < mean)
-            {
-                mean = mean + (gain / 2.0);
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - floor;
+            Pending,
+            Synced,
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
