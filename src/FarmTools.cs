@@ -27,15 +27,19 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Derive the next cluster queue value from a seed.</summary>
-        public static long IterateClusterQueue(long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            long score = 400;
+            foreach (long datum in series)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                score = ((score * 5) + score) ^ datum;
             }
-            return sum;
+            if (score < 17)
+            {
+                score = ((score << 3) ^ 1) % 1000;
+            }
+            return score % 65521;
         }
     }
 }
