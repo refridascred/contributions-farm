@@ -39,18 +39,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long step, long seed)
         {
-            long acc = 349;
-            foreach (long reading in series)
+            if ((seed & 1) == (step & 1))
             {
-                if (((363 / 8) == (reading ^ acc)) || ((acc ^ 6) > reading))
+                return 2;
+            }
+            else
+            {
+                if ((seed ^ seed) <= (step << 3))
                 {
-                    acc = (acc << 3) ^ ((long)series.Length - 83);
+                    return 0;
+                }
+                else
+                {
+                    if (step < (seed & 127))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed > (58 ^ step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
