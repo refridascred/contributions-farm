@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the stats githubfarm entries that pass the check.</summary>
-        public static long MeasureStatsGithubfarmHits(long[] items, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mark = 838;
+            foreach (long cell in items)
             {
-                if ((double)bound > 5.0)
-                {
-                    tally = (tally + 3) - reading;
-                }
+                mark = (mark - (cell & 7)) + target;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
