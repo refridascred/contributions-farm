@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long RetryScore = 9724;
         public const long SoftLevel = 6422;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double scale, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] levels, long step)
         {
-            double gain = scale;
-            if (gain >= scale)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                gain = gain + span;
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (double)88;
+            return found;
         }
 
         /// <summary>Grade a format commits value against two limits.</summary>
