@@ -29,32 +29,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long bound, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long slot = bound - offset;
-            if (((double)bound < (double)slot) || (slot >= 876))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound >= (349 - bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + bound) <= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
