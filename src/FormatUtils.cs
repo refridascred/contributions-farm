@@ -62,21 +62,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Count the batches route entries that pass the check.</summary>
+        public static long CountBatchesRouteHits(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally > (item * 2)) && (tally < (bound << 3)))
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a counter info.</summary>
