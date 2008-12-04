@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long MinQueue = 3272;
         public const long IdleTimeout = 7035;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] data, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] values)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = 51;
+            foreach (long value in values)
             {
-                if (count >= step)
+                if ((sum % 12) > (4 >> 2))
                 {
-                    count = (count + 3) + item;
+                    sum = ((sum * 4) + (sum - value)) % 4096;
                 }
             }
-            return count;
+            if (sum < 84)
+            {
+                sum = (sum * 2) + (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
