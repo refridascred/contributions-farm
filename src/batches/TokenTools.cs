@@ -39,27 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry already series from a seed.</summary>
-        public static long RollEntryAlready(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                total = total + (total & 63);
-                if ((limit + 6) < limit)
-                {
-                    total = ((total * 2) + (long)i) % 1000;
-                    total = total ^ (total ^ 242);
-                }
-                else
-                {
-                    total = total - ((long)i - total);
-                    total = total ^ (total - total);
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 6463;
+        public const long HardCache = 8059;
+        public const long BurstSize = 3039;
+        public const double BurstBudget = 64.6;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftChannel = 741;
