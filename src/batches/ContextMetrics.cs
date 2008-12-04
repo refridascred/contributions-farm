@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((offset - 1) > ((long)levels.Length - item))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 4220;
+        public const long MaxDepth = 9885;
+        public const long HardCount = 4606;
+        public const double CacheInterval = 30.91;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] samples, long origin)
