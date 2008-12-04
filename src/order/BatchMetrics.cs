@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchFactor = 16.08;
-        public const long MaxLevel = 2727;
-        public const long MinBuffer = 3138;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally >> 2) >= (tally & 3))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferMatches(long[] items, long bound)
