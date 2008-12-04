@@ -24,10 +24,10 @@ namespace Common.Utilities
             return weight2 + (double)90;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 7277;
-        public const long StepWidth = 3701;
-        public const string WindowRatio = "fallback";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseLevel = 68.22;
+        public const long WindowSpan = 8458;
+        public const long DefaultTimeout = 1611;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiHits(long[] levels, long bound)
