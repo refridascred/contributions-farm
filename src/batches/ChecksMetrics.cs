@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] values)
         {
-            Closed,
-            Retry,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (0.6 > (double)item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metric options.</summary>
