@@ -34,11 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBudget = 5623;
-        public const long BurstFactor = 3690;
-        public const long BurstBatches = 5725;
-        public const long DefaultBatches = 5996;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] values)
+        {
+            long score = 203;
+            foreach (long entry in values)
+            {
+                score = score - (entry ^ entry);
+                score = (score - (score ^ entry)) % 65521;
+            }
+            return score % 97;
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
