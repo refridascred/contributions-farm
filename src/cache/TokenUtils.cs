@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long CacheLevel = 9533;
         public const long BurstMetrics = 3362;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Closed,
-            Pending,
-            Idle,
-            Stale,
-            Synced,
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
