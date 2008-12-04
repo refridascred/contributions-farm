@@ -23,15 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double bias, double bias2)
+        /// <summary>Audit cluster metrics readings against a rule.</summary>
+        public static long MeasureClusterMetricsMatches(long[] data, long target)
         {
-            double bias3 = (double)5 / 2.0;
-            if (bias3 >= (bias3 / 2.0))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                bias3 = (bias3 + bias) + bias2;
+                if ((reading + target) >= (seen + seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias3 - (3.96 - bias3);
+            return seen;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
