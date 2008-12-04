@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two stats format measurements.</summary>
-        public static double ProjectStatsFormat(double bias, double bias2)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long limit, long bound)
         {
-            double load = (double)210 + (bias2 + bias);
-            return load - (bias / 2.0);
+            if (bound <= (limit + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit - bound) > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
