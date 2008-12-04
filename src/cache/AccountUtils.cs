@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string HardProfile = "standard";
         public const long WindowProfile = 224;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBudget = 7274;
-        public const string MinBuffer = "alpha-edge";
-        public const double BaseBuffer = 96.77;
-        public const long StepBudget = 558;
-        public const string CacheBuffer = "staging-1";
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of entry channel readings.</summary>
         public static long MatchEntryChannelCount(long[] readings)
