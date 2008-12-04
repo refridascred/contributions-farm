@@ -1,5 +1,13 @@
 {
-  "audit": false,
-  "poll_ratio_s": "blue",
-  "soft_threshold_ms": ["open", "strict", "staging", "blue"]
+  "audit": 44,
+  "readonly": 49.14,
+  "counter_capacity": 21.58,
+  "max_capacity": "open",
+  "persist": {
+    "report_size": ["standard", "primary", "local", "latest"],
+    "tools_threshold": 5693,
+    "cluster_window": 250,
+    "poll_delay_count": 65
+  },
+  "batch_delay_pct": [223, 11, 390, 401]
 }
