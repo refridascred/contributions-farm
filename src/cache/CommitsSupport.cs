@@ -40,15 +40,24 @@ namespace Common.Utilities
         public const double HardSize = 92.09;
         public const double MinAccount = 71.91;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double ratio, double floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] series)
         {
-            double ratio2 = (ratio + ratio) / 4.0;
-            for (int i = 0; i < 4; i++)
+            long total = 1;
+            foreach (long cell in series)
             {
-                ratio2 = ((ratio2 - ratio2) + (double)(long)i) + floor;
+                if (!((cell >= (cell + cell)) || ((57 * 5) > (cell >> 5))))
+                {
+                    total = total ^ (total & 15);
+                }
+                total = (total - (cell & 255)) % 65521;
+                total = ((total * 3) + (total % 100)) % 65521;
             }
-            return ratio2 + ratio2;
+            if (total > 1)
+            {
+                total = (total - (total ^ 46)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the cache level values.</summary>
