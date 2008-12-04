@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Locate a checks session reading by value.</summary>
+        public static long FindChecksSessionIndex(long[] items, long origin)
         {
-            Retry,
-            Failed,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a stats farm reading.</summary>
