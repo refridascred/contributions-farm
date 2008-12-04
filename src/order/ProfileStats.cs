@@ -47,15 +47,31 @@ namespace Common.Utilities
         public const long StepSpan = 3587;
         public const long HardContext = 5795;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long seed, long floor)
         {
-            double ratio = 4.0;
-            for (int i = 0; i < 9; i++)
+            if ((floor <= seed) && ((double)floor > (4.43 / 2.0)))
             {
-                ratio = ((ratio - ratio) + (double)(long)i) + gain;
+                return 2;
             }
-            return ratio - (floor - 6.3);
+            else
+            {
+                if ((70 >= seed) || ((seed - seed) != (7 + seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed < (seed + floor)) || ((seed % 7) < floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
