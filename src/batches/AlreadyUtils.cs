@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] data, long target)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long origin, long offset)
         {
-            long mix = 11;
-            foreach (long value in data)
+            if ((offset << 2) > (offset >> 4))
             {
-                mix = mix - (target + mix);
-                if (value > target)
+                return 2;
+            }
+            else
+            {
+                if ((1.0 - 1.8) != (double)origin)
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((217 + offset) <= (origin >> 4)) && (632 <= (origin + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
