@@ -28,12 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a notes token sample.</summary>
-        public static long LookupNotesTokenIndex(long[] data, long bound)
+        /// <summary>Find the first cluster stats entry that matches the target.</summary>
+        public static long LocateClusterStatsIndex(long[] data, long origin)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < bound)
+                if ((data[i] <= origin) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
