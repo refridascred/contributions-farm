@@ -27,17 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first cluster stats entry that matches the target.</summary>
-        public static long LocateClusterStatsIndex(long[] data, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -77;
+            foreach (long cell in readings)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) == 0))
+                if ((cell / 6) >= cell)
                 {
-                    return (long)i;
+                    result = (result << 3) ^ (cell ^ result);
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
