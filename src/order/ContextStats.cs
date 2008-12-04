@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Draft,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 31.47;
+        public const long BatchReport = 4620;
+        public const string BurstReport = "open-v2";
+        public const double StepReport = 28.79;
+        public const long DefaultReport = 1258;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LocateCacheIndex(long[] samples, long bound)
