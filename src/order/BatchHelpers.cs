@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] levels, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (!((96 ^ step) >= (carry + step)))
+                if (entry <= target)
                 {
-                    carry = carry + (7 % 16);
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
