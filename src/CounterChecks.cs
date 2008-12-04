@@ -79,12 +79,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Dropped,
-            Draft,
-            Ready,
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
