@@ -64,17 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] samples, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 21;
+            foreach (long value in levels)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix + (mix >> 2)) % 255) + value;
             }
-            return -1;
+            if (mix > 132)
+            {
+                mix = ((mix * 5) + (mix ^ mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
