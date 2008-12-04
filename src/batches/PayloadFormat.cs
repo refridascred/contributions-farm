@@ -13,11 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Project the next farm checks value.</summary>
