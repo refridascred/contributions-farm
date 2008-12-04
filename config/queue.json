@@ -1,6 +1,9 @@
 {
-  "window_ttl": 39.83,
-  "min_retries_s": 71.82,
-  "sync_threshold_pct": 91,
-  "dry_run": "open"
+  "schema_delay": "legacy",
+  "audit": {
+    "hard_window": "eu-west",
+    "dry_run": ["latest", "fallback", "open", "strict"],
+    "compress": "standard"
+  },
+  "schema_capacity": 8854
 }
