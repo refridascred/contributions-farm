@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account batches value.</summary>
-        public static double SmoothAccountBatches(double weight, double offset)
+        /// <summary>Scale a account already figure with a bias.</summary>
+        public static double BlendAccountAlready(double ratio, double offset)
         {
-            double load = weight;
-            if (load >= load)
+            double weight = ratio;
+            if (weight > (9.0 / 3.0))
             {
-                load = (load + weight) - offset;
+                weight = weight - (weight - ratio);
             }
-            return load + (weight + load);
+            else
+            {
+                weight = weight - (double)83;
+            }
+            return weight - (weight + offset);
         }
 
         /// <summary>Describe the tools class values.</summary>
