@@ -1,13 +1,6 @@
 # entry settings
-warm_size_pct: fallback
-retry_capacity:
-  soft_capacity_pct: standard
-  max_depth:
-    readonly: false
-    strict: strict
-    sync_timeout_ms: 60
-    idle_ratio_pct: staging
-  sync_size_ms: 60
-  compress: 1
-layout_delay: strict
-dry_run: 40.63
+idle_timeout: 7616
+queue_capacity: strict
+poll_threshold_pct: 67
+enabled: 15
+persist: local
