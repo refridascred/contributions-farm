@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            Draft,
+            Dropped,
+            Closed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
