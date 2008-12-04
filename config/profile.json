@@ -1,17 +1,12 @@
 {
-  "batch_interval": {
-    "queue_delay": "cached",
-    "sync_depth_count": 8595,
-    "notes_depth": {
-      "cache_limit": true,
-      "warm_interval": 60,
-      "base_window": 5571,
-      "verbose": "latest"
-    }
+  "soft_timeout_s": ["cached", "local"],
+  "cache_retries_ms": 500,
+  "max_size_ms": {
+    "route_depth": true,
+    "max_threshold_ms": 9438,
+    "enabled": 30,
+    "poll_size_pct": 20,
+    "readonly": 20.89
   },
-  "hard_delay": false,
-  "strict": 3.23,
-  "batches_threshold": 308,
-  "compress": 85,
-  "window_timeout": "green"
+  "hard_timeout_pct": true
 }
