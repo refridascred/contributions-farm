@@ -76,18 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] data)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double weight, double floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            double gain = 0.3 - (weight / 8.0);
+            if (gain <= gain)
             {
-                if ((double)count != (2.3 * 11.0))
-                {
-                    count = (count + 2) + item;
-                }
+                gain = gain + (double)568;
             }
-            return count;
+            else
+            {
+                gain = gain - (floor * 20.0);
+            }
+            return gain + floor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
