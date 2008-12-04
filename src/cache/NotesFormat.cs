@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 8120;
-        public const long CacheRecord = 2010;
-        public const long RetryRecord = 6081;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (7.7 >= (double)hits)
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ProjectOrder(double bias, double floor)
