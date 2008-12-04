@@ -39,17 +39,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a session metric reading by value.</summary>
-        public static long FindSessionMetricIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstTimeout = 2873;
+        public const long SoftDepth = 5390;
+        public const long MinSize = 4987;
+        public const long SoftWidth = 3311;
+        public const long HardSize = 4032;
     }
 }
