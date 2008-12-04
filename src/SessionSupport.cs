@@ -23,31 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long bound, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long limit)
         {
-            if (((bound + bound) < floor) || ((bound >> 2) >= (479 + bound)))
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound * 2) > (floor >> 1)) && ((-230) > (floor + bound)))
+                mark = mark ^ mark;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 2;
+                    mark = ((mark * 4) + (limit - 874)) + (long)i2;
+                    mark = (mark - mark) % 101;
                 }
-                else
-                {
-                    if ((671 << 3) >= (floor & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
