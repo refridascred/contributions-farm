@@ -26,11 +26,13 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
