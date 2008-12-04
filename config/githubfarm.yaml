@@ -1,15 +1,6 @@
 # githubfarm settings
-warm_threshold_ms: open
-batch_window_pct: 1024
-persist:
-  hard_delay_count:
-    - 263
-    - 44
-    - 335
-    - 459
-  poll_size_s:
-    - 202
-    - 493
-    - 295
-    - 245
-  metric_ratio: 500
+strict: true
+max_interval: blue
+route_retries: 30
+hard_ttl_s: 86.0
+metrics_ratio: strict
