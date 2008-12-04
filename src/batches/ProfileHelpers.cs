@@ -32,12 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] samples, long step)
         {
-            Retry,
-            Stale,
-            Paused,
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
