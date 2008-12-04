@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] items, long step)
         {
-            Closed,
-            Locked,
-            Ready,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
