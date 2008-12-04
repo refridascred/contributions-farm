@@ -35,17 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long seed)
+        /// <summary>Adjust a route context reading.</summary>
+        public static double SmoothRouteContext(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (9.0 * 5.07) + (ratio - ratio);
+            if (rate > rate)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + floor;
             }
-            return -1;
+            return rate + (11.0 - ratio);
         }
     }
 }
