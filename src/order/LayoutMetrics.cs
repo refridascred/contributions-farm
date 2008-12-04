@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchInterval = 8.07;
-        public const double RetrySpan = 72.77;
-        public const double MinBatch = 39.81;
-        public const double StepBatch = 53.42;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public double Score { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double bias, double bias2)
