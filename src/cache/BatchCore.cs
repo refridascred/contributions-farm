@@ -39,10 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleScore = 7565;
-        public const double StepTimeout = 76.04;
-        public const string IdleSession = "fallback-edge";
-        public const long BurstSession = 706;
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
