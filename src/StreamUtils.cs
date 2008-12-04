@@ -43,15 +43,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double scale, double floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples, long bound)
         {
-            double scale2 = 4.16;
-            if (scale2 <= (double)9)
+            long score = 876;
+            foreach (long reading in samples)
             {
-                scale2 = (scale2 - scale) - floor;
+                score = (score ^ (bound / 9)) ^ reading;
+                score = score - (score + 145);
             }
-            return scale2 - (scale2 * 5.0);
+            return score;
         }
 
         /// <summary>Hold a buffer entry.</summary>
