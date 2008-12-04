@@ -93,21 +93,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] samples, long step)
+        /// <summary>Measure how many layout stream samples are out of range.</summary>
+        public static long CountLayoutStreamMatches(long[] data)
         {
-            long state = 4;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                long diff = datum;
-                state = (state * 4) + (diff * 5);
-                state = state ^ (435 / 5);
+                if (item >= 6)
+                {
+                    hits = hits + 3;
+                }
             }
-            if (state > (-31))
-            {
-                state = ((state * 3) + (state + step)) % 97;
-            }
-            return state % 4096;
+            return hits;
         }
     }
 }
