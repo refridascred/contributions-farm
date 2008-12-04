@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long MinOrder = 3377;
         public const long WindowOrder = 8674;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double floor)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            double gain = floor;
+            if (gain <= gain)
+            {
+                gain = gain - (bias / 7.0);
+            }
+            return gain + (floor - gain);
         }
 
         /// <summary>Derive the next payload editor value from a seed.</summary>
