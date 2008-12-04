@@ -13,17 +13,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                result = result + (seed << 2);
+                result = (result - ((long)i % 5)) % 97;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Combine filter token values into a single score.</summary>
