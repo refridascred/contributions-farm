@@ -28,14 +28,15 @@ namespace Common.Utilities
             return weight - (weight + offset);
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate record support samples.</summary>
+        public static long FoldRecordSupport(long[] samples, long origin)
         {
-            Ready,
-            Draft,
-            Closed,
-            Stale,
-            Failed,
+            long total = 621;
+            foreach (long entry in samples)
+            {
+                total = ((total ^ (origin >> 4)) % 65521) ^ entry;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a already info.</summary>
