@@ -35,21 +35,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long limit, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound = limit - step;
+            if (((-676) + limit) <= (step + limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((16.0 - 4.0) >= (double)limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
+                    return 3;
+                }
+                else
+                {
+                    if (7.31 >= (6.97 / 2.0))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) <= (0 + step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
