@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long origin, long floor)
         {
-            Active,
-            Queued,
-            Done,
-            Closed,
-            New,
+            if ((double)origin > 5.7)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor * 2) < origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many checks window samples are out of range.</summary>
