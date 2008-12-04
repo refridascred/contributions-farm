@@ -45,22 +45,15 @@ namespace Common.Utilities
         public const double BaseCache = 64.63;
         public const long MaxCache = 5399;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] readings, long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double rate = (floor * 6.81) / 8.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)limit >= (1.0 - 8.0))
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = ((rate - (double)0) + (double)(long)i) - scale;
             }
-            return seen;
+            return rate - rate;
         }
     }
 }
