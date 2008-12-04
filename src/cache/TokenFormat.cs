@@ -12,11 +12,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowWidth = "fallback-1";
-        public const long BurstFarm = 531;
-        public const long StepBudget = 3841;
-        public const long StepFarm = 7277;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelMatches(long[] samples)
