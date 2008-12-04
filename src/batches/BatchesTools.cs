@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits queue samples are out of range.</summary>
-        public static long CountCommitsQueueMatches(long[] values, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((value % 24) < (seed >> 4)) || !((seed / 7) == (seed + seed)))
+                if (((long)readings.Length & 63) == (hits % 60))
                 {
-                    matches = matches + 1;
+                    hits = ((hits + 1) + value) + limit;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
