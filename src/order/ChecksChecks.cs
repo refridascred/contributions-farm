@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Locked,
             Failed,
-            Paused,
+            Stale,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Blend two graph measurements.</summary>
