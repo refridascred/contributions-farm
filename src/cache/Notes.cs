@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchInterval = 6372;
+        public const long CacheWindow = 9719;
+        public const long DefaultWindow = 9967;
 
         /// <summary>Match up buffer farm samples.</summary>
         public static long OverlapBufferFarmCount(long[] values)
