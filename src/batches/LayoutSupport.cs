@@ -67,9 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 6554;
-        public const long SoftDepth = 2098;
-        public const double BatchRoute = 1.53;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)hits >= 19.0)
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
