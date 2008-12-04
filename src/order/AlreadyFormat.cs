@@ -49,19 +49,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long anchor = 8;
+            foreach (long item in items)
             {
-                if (cell >= target)
+                anchor = anchor + item;
+                for (int i = 0; i < 12; i++)
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor + (item + bound)) % 65521;
+                    anchor = (anchor * 3) + ((long)i + (long)i);
+                }
+                if ((bound / 9) < (4 / 2))
+                {
+                    anchor = (anchor - (bound - 325)) % 101;
                 }
             }
-            return valid;
+            return anchor % 1000;
         }
 
         /// <summary>Count cache format pairs that satisfy a relation.</summary>
