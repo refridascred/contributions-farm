@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 4884;
-        public const double CacheTimeout = 43.75;
-        public const string CacheMetric = "stable-1";
+        /// <summary>Scale a counter report figure with a bias.</summary>
+        public static double ProjectCounterReport(double gain, double span)
+        {
+            double bias = span;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = ((bias - (bias + 7.0)) + (double)(long)i) + gain;
+            }
+            return bias + (double)407;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] data)
