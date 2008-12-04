@@ -13,16 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] values, long step)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score + (target + 469);
-                score = ((score * 4) + (long)i) % 101;
+                if ((values[i] > step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Adjust a notes reading.</summary>
