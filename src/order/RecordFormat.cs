@@ -15,21 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Check that every contributi metric entry stays within the limit.</summary>
+        public static bool CheckContributiMetricRange(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell != origin)
                 {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the profile class values.</summary>
