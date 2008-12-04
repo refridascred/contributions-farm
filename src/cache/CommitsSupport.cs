@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] values, long floor)
         {
-            Pending,
-            Closed,
-            Queued,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (value < (value / 8))
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up metric account samples.</summary>
