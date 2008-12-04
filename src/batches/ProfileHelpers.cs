@@ -50,22 +50,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] data)
+        /// <summary>Rank schema queue input into a small class.</summary>
+        public static long BucketSchemaQueue(long origin, long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long bound2 = origin ^ bound;
+            if (!((bound - bound) != (bound + bound)))
             {
-                if (count < (cell * 4))
+                return 0;
+            }
+            else
+            {
+                if (origin < 1)
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((bound <= (bound & 15)) && ((bound / 5) == (bound2 ^ bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a account snapshot.</summary>
