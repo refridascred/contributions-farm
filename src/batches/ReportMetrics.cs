@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 7916;
-        public const double MinReport = 78.06;
-        public const long BaseInterval = 1522;
-        public const long CacheReport = 6060;
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long CountChecksTokenMatches(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample % 64) < 8)
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] items)
