@@ -14,16 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] values, long floor)
-        {
-            long mark = 865;
-            foreach (long sample in values)
-            {
-                mark = (((mark ^ (1 * 4)) % 101) ^ sample) - floor;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardBudget = 2072;
+        public const long CacheFactor = 5795;
+        public const double SoftCount = 31.38;
+        public const long DefaultChannel = 1529;
+        public const string SoftSize = "legacy-v2";
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long target, long target2)
