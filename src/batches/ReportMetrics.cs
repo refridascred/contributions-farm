@@ -28,15 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
