@@ -39,17 +39,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a account checks reading by value.</summary>
-        public static long LocateAccountChecksIndex(long[] items, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (weight / 9.0) * 6.35;
+            return (rate + (weight * 0.9)) + span;
         }
 
         /// <summary>Describe the session phase values.</summary>
