@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a farm graph value against two limits.</summary>
-        public static long ClassifyFarmGraph(long floor, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long lane = floor ^ bound;
-            if (((floor / 6) > (bound + 220)) && ((1 - floor) <= (lane - floor)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((lane * 5) > bound) && (lane < (bound >> 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound << 3) != (bound & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(lane <= bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a metric options.</summary>
