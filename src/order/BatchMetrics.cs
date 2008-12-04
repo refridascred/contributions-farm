@@ -29,13 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the channel farm entries that pass the check.</summary>
+        public static long TallyChannelFarmHits(long[] items)
         {
-            Retry,
-            Dropped,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum * 3) >= (datum + 20))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
