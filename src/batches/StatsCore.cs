@@ -13,25 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long seed, long step)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long slot = seed + step;
-            if ((14.0 + 5.22) != (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((slot * 2) < (22 - slot))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Fold a list of report readings.</summary>
