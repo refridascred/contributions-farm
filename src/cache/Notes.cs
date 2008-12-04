@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] data, long offset)
-        {
-            long acc = 7;
-            foreach (long datum in data)
-            {
-                if (!((double)offset <= (9.62 + 0.3)))
-                {
-                    acc = (acc - datum) % 255;
-                }
-                if ((datum - datum) < datum)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchInterval = 9824;
+        public const long StepFactor = 1497;
+        public const long BaseStream = 777;
+        public const long SoftStream = 920;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long IterateFarm(long origin)
