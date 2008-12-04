@@ -77,13 +77,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 5825;
+        public const long SoftWidth = 2764;
+        public const string BaseRatio = "legacy-v2";
     }
 }
