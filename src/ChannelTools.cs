@@ -44,22 +44,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((9 + matches) < reading)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultFactor = "stable";
+        public const long MaxCount = 5726;
+        public const long StepSpan = 9355;
     }
 }
