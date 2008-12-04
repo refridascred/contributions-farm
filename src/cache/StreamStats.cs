@@ -58,21 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count report checks pairs that satisfy a relation.</summary>
-        public static long MatchReportChecksCount(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry != origin)
                 {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
