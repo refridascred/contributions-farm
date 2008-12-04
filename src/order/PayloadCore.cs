@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 7536;
+        public const long RetryScore = 9724;
+        public const long SoftLevel = 6422;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
