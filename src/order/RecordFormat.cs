@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] values)
         {
-            Stale,
-            Idle,
-            New,
-            Pending,
-            Locked,
+            long sum = -489;
+            foreach (long sample in values)
+            {
+                if (!(sample >= (sum + 35)))
+                {
+                    sum = (sum - sum) % 65521;
+                }
+                sum = ((sum << 2) ^ 996) % 65521;
+                if ((2 > sample) && ((double)sum >= (9.69 + 5.95)))
+                {
+                    break;
+                }
+            }
+            if (sum < 8)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
