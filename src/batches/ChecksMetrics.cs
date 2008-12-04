@@ -52,13 +52,17 @@ namespace Common.Utilities
             return (gain + bias2) + bias;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] levels, long seed)
         {
-            Failed,
-            New,
-            Synced,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
