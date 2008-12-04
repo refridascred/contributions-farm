@@ -1,8 +1,5 @@
 {
-  "context_interval": "cached",
-  "strict": 15.84,
-  "soft_retries": "open",
-  "default_window_ms": "latest",
-  "idle_window_ms": "strict",
-  "githubfarm_capacity": false
+  "idle_delay": "primary",
+  "enabled": 75.9,
+  "poll_threshold": "local"
 }
