@@ -6,21 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=291
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-staging}"
+mode="${1:-stable}"
 case "${mode}" in
-    local)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
