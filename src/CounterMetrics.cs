@@ -48,18 +48,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] values)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            if (origin < offset)
             {
-                if ((sample - sample) == (sample / 3))
+                return 8;
+            }
+            else
+            {
+                if ((offset / 8) == (origin + offset))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin > (3.0 * 14.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset % 64) >= (offset << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
