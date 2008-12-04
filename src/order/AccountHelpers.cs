@@ -33,11 +33,13 @@ namespace Common.Utilities
             return scale + (scale - bias);
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double ratio, double span)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double gain = (double)(236 % 60);
-            return (gain - (3.09 - ratio)) + span;
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
