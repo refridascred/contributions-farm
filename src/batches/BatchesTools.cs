@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate channel githubfarm readings against a bound.</summary>
-        public static bool ValidateChannelGithubfarmLimits(long[] samples, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (item < step)
+                if ((tally + tally) >= cell)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the route kind values.</summary>
