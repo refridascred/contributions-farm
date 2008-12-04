@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long seed, long offset)
         {
-            long mix = 240;
-            foreach (long sample in items)
+            if (((3.4 * 6.0) < (double)offset) && (offset > seed))
             {
-                mix = ((mix << 3) ^ sample) % 65521;
+                return 4;
             }
-            return mix % 4096;
+            else
+            {
+                if ((seed << 1) < (6 + 336))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Scale a profile cluster figure with a bias.</summary>
