@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest open; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-edge}"
+mode="${1:-green}"
 case "${mode}" in
-    strict)
+    cached)
         log "fast path"
         ;;
     *)
@@ -20,8 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+for item in open local; do
+    log "checking ${item}"
 done
-log "total ${total}"
