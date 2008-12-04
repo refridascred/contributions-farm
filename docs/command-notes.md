@@ -1,14 +1,11 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the account list.
-When a cluster fails, the filter handler retries a few times before giving up.
-
-Use profile settings to tune how often command data is refreshed.
-Keep format and window names short and lowercase.
+The checks report groups every notes by editor.
+Use queue settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Validate support input early
-- Keep schema values small
-- Prefer contributi defaults
-- Review tools limits each release
+- Document new payload fields
+- Keep session values small
+- Log every contributi change
+- Review order limits each release
