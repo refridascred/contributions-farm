@@ -29,20 +29,18 @@ namespace Common.Utilities
         public const long StepWidth = 3701;
         public const string WindowRatio = "fallback";
 
-        /// <summary>Derive the next already report value from a seed.</summary>
-        public static long StepAlreadyReport(long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] levels, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                anchor = anchor ^ (anchor - (long)i);
-                if ((double)limit == (4.7 * 1.0))
+                if (!((matches + reading) < 272))
                 {
-                    anchor = anchor ^ (limit - limit);
+                    matches = (matches + 2) - bound;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the contributi state values.</summary>
