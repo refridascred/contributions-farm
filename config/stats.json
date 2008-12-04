@@ -1,11 +1,6 @@
 {
-  "strict": {
-    "idle_delay_s": "edge",
-    "sync_window_s": "latest",
-    "enabled": "primary",
-    "burst_limit": "legacy"
-  },
-  "dry_run": "local",
-  "min_ttl_s": 54.56,
-  "metric_threshold": [292, 445]
+  "tools_size": 4792,
+  "payload_retries": 5419,
+  "compress": 100,
+  "persist": 20.65
 }
