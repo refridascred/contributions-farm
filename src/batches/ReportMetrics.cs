@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double rate, double floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] readings, long step)
         {
-            double weight = floor;
-            if (weight >= 6.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - (floor - rate);
+                if ((readings[i] == step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - (weight - rate);
+            return -1;
         }
 
         /// <summary>Describe the token mode values.</summary>
