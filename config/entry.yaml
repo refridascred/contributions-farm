@@ -1,4 +1,4 @@
 # entry settings
-min_depth_ms: standard
-idle_capacity_count: open
-editor_retries: edge
+batch_depth: false
+verbose: 930
+graph_size: open
