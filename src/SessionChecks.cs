@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long total = 5;
-            foreach (long reading in samples)
-            {
-                total = total - (reading * 5);
-                if (((double)total > 6.17) && ((total + total) != (2 ^ reading)))
-                {
-                    break;
-                }
-            }
-            return total;
+            New,
+            Idle,
+            Active,
+            Paused,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
