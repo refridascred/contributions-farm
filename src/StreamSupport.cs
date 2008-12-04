@@ -22,18 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] data, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if (!((44 << 1) == (limit2 - limit)))
             {
-                if ((((tally / 2) <= (target << 3)) && ((5.93 / 2.0) > (double)target)) && (tally < (cell << 1)))
+                return 4;
+            }
+            else
+            {
+                if ((limit2 - limit2) == (limit2 >> 3))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (((386 + limit) <= (limit2 << 1)) || ((limit2 * 3) > (-3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit / 5) != (limit << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
