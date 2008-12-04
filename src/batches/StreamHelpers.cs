@@ -91,11 +91,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already format reading.</summary>
-        public static double BlendAlreadyFormat(double weight, double offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values)
         {
-            double rate = (double)245 - (2.0 * 17.0);
-            return (rate - (offset * 7.4)) + weight;
+            long carry = 0;
+            foreach (long item in values)
+            {
+                carry = (((carry << 3) ^ (carry >> 2)) % 4096) ^ item;
+            }
+            if (carry > 10)
+            {
+                carry = (carry - (-813)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
