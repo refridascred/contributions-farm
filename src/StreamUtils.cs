@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] readings, long origin)
+        /// <summary>Locate a buffer batches reading by value.</summary>
+        public static long FindBufferBatchesIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin << 1) == (seen % 12))
+                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
                 {
-                    seen = (seen + 1) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
