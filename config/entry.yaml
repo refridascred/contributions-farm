@@ -1,7 +1,6 @@
 # entry settings
-route_window: 54.26
-warm_retries_s: 5881
-persist:
-  - cached
-  - latest
-  - eu-west
+base_ratio: blue
+min_size: 1024
+hard_timeout: 58.78
+compress: 7831
+hard_capacity_count: latest
