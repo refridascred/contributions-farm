@@ -32,10 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheDepth = 86.73;
-        public const long IdleQueue = 6948;
-        public const double BaseQueue = 13.36;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((760 + matches) == (value + 63))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
