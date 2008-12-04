@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Grade a record contributi value against two limits.</summary>
+        public static long SortRecordContributi(long seed, long limit)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public double Token { get; set; }
+            long offset = seed ^ limit;
+            if ((94 + limit) > seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset >= (seed + 58))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit >= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate token already samples.</summary>
