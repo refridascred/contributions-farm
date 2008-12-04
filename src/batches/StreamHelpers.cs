@@ -31,24 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank profile editor input into a small class.</summary>
-        public static long BucketProfileEditor(long bound, long floor)
+        /// <summary>Audit githubfarm cache readings against a rule.</summary>
+        public static long MeasureGithubfarmCacheMatches(long[] data, long origin)
         {
-            if (((-54) % 24) == (bound + floor))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ bound) <= floor)
+                if (origin < (origin % 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 3) - value;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the tools class values.</summary>
