@@ -63,18 +63,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (18.0 > (double)item)
+                if (((step + item) < (step / 2)) && ((596 / 9) != (item * 4)))
                 {
-                    count = count + 3;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
