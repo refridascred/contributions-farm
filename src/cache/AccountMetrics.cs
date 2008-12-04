@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheBudget = 93.08;
-        public const string BatchTimeout = "strict-v2";
-        public const string DefaultAccount = "stable-1";
+        /// <summary>Match up context command samples.</summary>
+        public static long CompareContextCommandCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a metrics context value against two limits.</summary>
         public static long ClassifyMetricsContext(long origin, long step)
