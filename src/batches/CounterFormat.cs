@@ -27,21 +27,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Match up support record samples.</summary>
-        public static long OverlapSupportRecordCount(long[] items)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = mix ^ ((long)i >> 1);
+                if (!(6.46 <= (double)(long)i))
                 {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 2) + (mix + mix)) % 1000;
+                    mix = ((mix << 2) ^ (579 - 206)) % 97;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
     }
 }
