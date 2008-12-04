@@ -16,18 +16,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] values, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] data)
         {
-            long total = -9;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((total ^ value) >= total)
+                if ((5.3 * 15.0) != (double)reading)
                 {
-                    total = ((total ^ (value % 3)) % 97) + floor;
+                    hits = hits + 1;
                 }
             }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
