@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 27.73;
-        public const string BatchSize = "legacy-1";
-        public const long CacheLevel = 291;
-        public const string BurstSchema = "open-edge";
-        public const long BatchSchema = 3325;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 3534;
+        public const long BatchFactor = 2456;
+        public const string DefaultRatio = "stable";
 
         /// <summary>Adjust a commits reading.</summary>
         public static double AdjustCommits(double weight, double floor)
