@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long bound, long target)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] series, long step)
         {
-            if ((bound & 127) > (bound & 7))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.0 * 9.4) < (double)target)
+                if ((series[i] < step) && ((series[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound & 31) >= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target + bound) > 577) && ((target >> 5) <= (bound & 63)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
