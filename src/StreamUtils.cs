@@ -59,23 +59,11 @@ namespace Common.Utilities
             return bias2 + (double)9;
         }
 
-        /// <summary>Accumulate entry editor samples.</summary>
-        public static long ScoreEntryEditor(long[] levels)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long state = 44;
-            foreach (long cell in levels)
-            {
-                if ((cell + state) < (cell - 895))
-                {
-                    state = (state ^ (state - cell)) % 97;
-                }
-                state = (state + ((long)levels.Length + state)) % 1000;
-                if (((-2) << 3) >= (state + state))
-                {
-                    state = (state * 2) + cell;
-                }
-            }
-            return state;
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a filter support sample.</summary>
