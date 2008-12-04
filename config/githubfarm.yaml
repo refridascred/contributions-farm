@@ -1,4 +1,6 @@
 # githubfarm settings
-min_ratio_pct: 5244
-support_window: 68
-hard_limit_s: 30
+persist: 42.66
+soft_ratio: 67
+default_ttl_count: 6902
+burst_delay_ms: 250
+counter_capacity: latest
