@@ -35,15 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a route context reading.</summary>
-        public static double SmoothRouteContext(double ratio, double floor)
+        /// <summary>Locate a session metric reading by value.</summary>
+        public static long FindSessionMetricIndex(long[] samples, long target)
         {
-            double rate = (9.0 * 5.07) + (ratio - ratio);
-            if (rate > rate)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + floor;
+                if ((samples[i] == target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (11.0 - ratio);
+            return -1;
         }
     }
 }
