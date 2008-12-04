@@ -48,23 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double scale, double span)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            double rate = span;
-            if (rate >= 1.49)
+            double rate = 3.62;
+            if (rate <= (span * 6.09))
             {
-                rate = (rate - (double)87) - scale;
+                rate = (rate + span) - weight;
             }
-            else
-            {
-                rate = rate + (double)870;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (4.0 * 8.0)) + (double)(long)i;
-            }
-            return rate - rate;
+            return rate - (1.53 - span);
         }
     }
 }
