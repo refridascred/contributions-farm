@@ -1,5 +1,8 @@
 {
-  "batch_size_ms": 749,
-  "queue_timeout": "staging",
-  "strict": 8107
+  "command_capacity": "legacy",
+  "report_threshold": false,
+  "cache_retries": ["blue", "strict", "blue", "strict"],
+  "contributi_window": [128, 353, 107],
+  "base_threshold_count": 250,
+  "counter_timeout": false
 }
