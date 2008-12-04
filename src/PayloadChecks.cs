@@ -35,12 +35,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Compare every pair of support cache readings.</summary>
+        public static long OverlapSupportCacheCount(long[] data)
         {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
