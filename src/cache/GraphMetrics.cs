@@ -20,13 +20,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Ready,
-            Done,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitCount = 8713;
+        public const double StepProfile = 58.66;
+        public const long HardProfile = 7900;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxSpan = 6819;
