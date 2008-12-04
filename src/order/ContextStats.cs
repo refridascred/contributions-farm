@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 6834;
-        public const long HardSize = 9547;
-        public const long StepContributi = 7154;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Draft,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LocateCacheIndex(long[] samples, long bound)
