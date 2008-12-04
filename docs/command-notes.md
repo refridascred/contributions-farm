@@ -1,11 +1,12 @@
 # Command notes
 
-Use cluster settings to tune how often format data is refreshed.
-The queue report groups every batch by record.
+Defaults for schema live in the config folder and can be overridden per environment.
+Run the profile check before changing any buffer limits.
+A queue that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Log every filter change
-- Document new batches fields
-- Review githubfarm limits each release
-- Prefer report defaults
+- Validate stats input early
+- Document new record fields
+- Prefer batches defaults
+- Keep filter values small
