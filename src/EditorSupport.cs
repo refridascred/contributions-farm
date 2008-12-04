@@ -54,20 +54,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] samples, long limit)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            long acc = 4;
-            foreach (long sample in samples)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)sample >= (3.3 + 2.2))
-                {
-                    acc = ((acc * 3) + 297) + limit;
-                }
-                else
-                {
-                    acc = (acc - acc) % 65521;
-                }
+                acc = (acc + acc) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
             return acc;
         }
