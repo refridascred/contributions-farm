@@ -1,9 +1,7 @@
 # support settings
-persist: false
-cache_limit_ms: false
-hard_window_count:
-  - 296
-  - 406
-  - 353
-compress: cached
-burst_capacity_ms: false
+command_timeout: true
+min_window_pct: 32
+order_capacity: 6558
+contributi_delay: true
+sync_timeout_ms: fallback
+min_depth: 17.33
