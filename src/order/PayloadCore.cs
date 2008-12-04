@@ -12,17 +12,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] values, long step)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
