@@ -1,30 +1,10 @@
 # githubfarm settings
-poll_depth_s: false
-already_limit: 51
-warm_ttl_ms:
-  - 408
-  - 263
-  - 428
-  - 456
-batch_retries_ms:
-  min_size_s: false
-  retry_window_ms: legacy
-  burst_retries: 97.27
-  base_capacity: 23.46
-  support_threshold:
-    cache_ttl_count: legacy
-    sync_window_count:
-      - 440
-      - 385
-    hard_interval_ms: standard
-    min_window:
-      - 485
-      - 305
-      - 199
-      - 273
-  readonly:
-    - 112
-    - 217
-    - 153
-    - 19
-cache_timeout_s: stable
+githubfarm_capacity:
+  - primary
+  - blue
+min_limit_ms:
+  - 476
+  - 334
+  - 12
+max_interval: legacy
+notes_capacity: 250
