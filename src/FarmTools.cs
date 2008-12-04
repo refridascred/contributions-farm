@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] items, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] values, long bound)
         {
-            long mark = 838;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                mark = (mark - (cell & 7)) + target;
+                if (!(((long)values.Length >> 4) >= (value + (-789))))
+                {
+                    count = (count + 1) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
