@@ -12,16 +12,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next commits metric value from a seed.</summary>
-        public static long StepCommitsMetric(long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] readings, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score * 3) + (score - score);
-                score = ((score * 4) + (long)i) % 101;
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
