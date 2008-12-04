@@ -24,22 +24,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((173 & 15) <= (item - item)) && ((double)hits != (double)item))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 2149;
+        public const double DefaultChecks = 5.64;
+        public const long IdleChecks = 8524;
     }
 }
