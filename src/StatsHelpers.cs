@@ -36,11 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 8726;
-        public const long HardFactor = 508;
-        public const long MaxSpan = 2666;
-        public const long DefaultTools = 2638;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double BlendCounter(double weight, double floor)
