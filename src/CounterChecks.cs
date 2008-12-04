@@ -20,11 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the batches filter series from a seed.</summary>
