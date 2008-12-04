@@ -22,17 +22,22 @@ namespace Common.Utilities
         public const long MaxRatio = 3756;
         public const double HardSize = 7.16;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (values[i] >= step)
+                if ((hits << 1) < (hits - entry))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
