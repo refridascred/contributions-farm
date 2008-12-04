@@ -26,23 +26,15 @@ namespace Common.Utilities
         public const long BatchTimeout = 1281;
         public const string CacheBatches = "primary-1";
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] data, long offset)
+        /// <summary>Project the next farm checks value.</summary>
+        public static double ProjectFarmChecks(double rate, double bias)
         {
-            long mark = 570;
-            foreach (long reading in data)
+            double drift = (bias + bias) * 9.8;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark * 2) + reading;
-                if (((offset + reading) > (mark + 0)) || ((-6) >= (reading & 7)))
-                {
-                    break;
-                }
+                drift = (drift + rate) - (double)(long)i;
             }
-            if (mark > 3)
-            {
-                mark = (mark * 4) + (mark - offset);
-            }
-            return mark % 65521;
+            return drift + rate;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
