@@ -46,10 +46,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 5509;
-        public const long DefaultSchema = 698;
-        public const double BatchSchema = 10.96;
-        public const long MaxBudget = 4107;
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
