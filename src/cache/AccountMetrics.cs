@@ -50,15 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double ratio, double span)
         {
-            long score = 86;
-            foreach (long item in items)
+            double load = span - (double)9;
+            if (load < span)
             {
-                score = (score ^ (0 + item)) % 255;
+                load = (load + (load + span)) + ratio;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)(-6)) + (double)(long)i;
+            }
+            return load + (7.0 / 6.0);
         }
 
         /// <summary>Roll a token counter forward.</summary>
