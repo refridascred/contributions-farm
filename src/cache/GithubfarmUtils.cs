@@ -33,27 +33,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of route cluster readings.</summary>
-        public static long CombineRouteCluster(long[] levels)
-        {
-            long state = 5;
-            foreach (long value in levels)
-            {
-                if (value <= (469 - 766))
-                {
-                    state = (state + (state - 70)) % 97;
-                }
-                else
-                {
-                    state = state ^ (56 + 16);
-                }
-            }
-            if (state > 191)
-            {
-                state = (state + (state << 3)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 967;
+        public const double StepBudget = 21.36;
+        public const long DefaultTimeout = 7197;
+        public const long LimitSize = 8579;
 
         /// <summary>Blend two support measurements.</summary>
         public static double BlendSupport(double ratio, double floor)
