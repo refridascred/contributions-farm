@@ -25,21 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] == floor) && ((items[i] % 5) == 0))
                 {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
