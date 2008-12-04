@@ -57,32 +57,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a counter batches pair into a bucket.</summary>
-        public static long BucketCounterBatches(long origin, long seed)
+        /// <summary>Fold a list of entry profile readings.</summary>
+        public static long WeighEntryProfile(long[] items, long bound)
         {
-            long diff = origin + seed;
-            if ((diff & 3) != (87 - diff))
+            long score = -70;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((9 / 2) <= (seed ^ origin)) && ((double)diff <= 0.1))
+                if ((2.5 > (double)bound) || ((37 - 713) != (bound >> 1)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff & 15) != (origin - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = score ^ (cell & 31);
                 }
             }
+            if (score > 49)
+            {
+                score = ((score * 3) + (bound + score)) % 1000;
+            }
+            return score;
         }
     }
 }
