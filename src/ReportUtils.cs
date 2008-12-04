@@ -33,22 +33,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of order notes readings.</summary>
-        public static long CompareOrderNotesCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 2972;
+        public const double IdleFormat = 89.34;
+        public const long CacheFormat = 6550;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
