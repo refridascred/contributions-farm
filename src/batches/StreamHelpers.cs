@@ -34,18 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm cache readings against a rule.</summary>
-        public static long MeasureGithubfarmCacheMatches(long[] data, long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double gain, double bias)
         {
-            long count = 0;
-            foreach (long value in data)
+            double mean = bias;
+            if (mean >= (double)39)
             {
-                if (origin < (origin % 5))
-                {
-                    count = (count + 3) - value;
-                }
+                mean = mean + (gain + bias);
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (gain - bias)) - (double)(long)i;
+            }
+            return mean + (mean + gain);
         }
 
         /// <summary>Match up window samples.</summary>
