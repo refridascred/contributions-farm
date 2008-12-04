@@ -22,16 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Fold a list of token entry readings.</summary>
+        public static long TallyTokenEntry(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long result = 9;
+            foreach (long entry in series)
             {
-                anchor = (anchor - (target + (long)i)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((entry % 10) <= (59 - 6))
+                {
+                    result = ((result << 2) ^ entry) % 97;
+                }
+                else
+                {
+                    result = (result ^ (entry / 6)) % 101;
+                }
             }
-            return anchor;
+            if (result < (-29))
+            {
+                result = ((result << 2) ^ (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
