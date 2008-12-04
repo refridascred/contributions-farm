@@ -33,19 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache queue readings against a rule.</summary>
-        public static long TallyCacheQueueOutliers(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry >= tally) || ((entry << 3) >= bound))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 1008;
+        public const long CacheSpan = 7348;
+        public const long BaseBatches = 6405;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesHits(long[] values)
