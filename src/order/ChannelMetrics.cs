@@ -35,10 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "legacy";
-        public const long StepInterval = 569;
-        public const long HardNotes = 6816;
-        public const double DefaultNotes = 8.36;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleRatio = 4371;
+        public const string MinTimeout = "stable-edge";
+        public const long HardFormat = 2978;
+        public const long BatchFormat = 2165;
     }
 }
