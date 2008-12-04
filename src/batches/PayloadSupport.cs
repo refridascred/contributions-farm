@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 3713;
-        public const double WindowSupport = 71.92;
-        public const string BatchSupport = "fallback-edge";
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc ^ (acc * 3)) % 65521;
+                acc = acc - (acc << 2);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = ((acc << 3) ^ ((long)i2 + (long)i2)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
