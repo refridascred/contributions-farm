@@ -36,17 +36,15 @@ namespace Common.Utilities
         public const double DefaultBatches = 54.57;
         public const long MaxCount = 8840;
 
-        /// <summary>Find the first tools batches entry that matches the target.</summary>
-        public static long FindToolsBatchesIndex(long[] items, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 46;
+            foreach (long value in samples)
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                total = (total ^ (value ^ value)) + offset;
             }
-            return -1;
+            return total % 1000;
         }
     }
 }
