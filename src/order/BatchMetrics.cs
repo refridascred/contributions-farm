@@ -51,19 +51,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] items, long offset)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
