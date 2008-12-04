@@ -12,15 +12,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the window support series from a seed.</summary>
-        public static long StepWindowSupport(long floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Active,
+            Ready,
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the notes phase values.</summary>
