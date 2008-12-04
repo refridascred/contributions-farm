@@ -26,12 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryScore = 9725;
-        public const double LimitFormat = 26.27;
-        public const long BaseScore = 8865;
-        public const double SoftFormat = 7.64;
-        public const long RetryFormat = 1186;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultLevel = "standard-edge";
+        public const long StepTimeout = 9476;
+        public const string HardInterval = "strict";
+        public const string DefaultBuffer = "fallback-v2";
+        public const long RetryRatio = 4610;
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] series, long origin)
