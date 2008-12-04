@@ -50,19 +50,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits layout samples.</summary>
-        public static long FoldCommitsLayout(long[] samples, long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            long result = 75;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + (result + value)) - target;
-                if (((value << 3) > result) && ((value / 4) != (result & 127)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
