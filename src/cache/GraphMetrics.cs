@@ -33,19 +33,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] levels, long step)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Stale,
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
