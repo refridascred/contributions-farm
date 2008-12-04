@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the token notes entries that pass the check.</summary>
-        public static long CountTokenNotesHits(long[] values)
+        /// <summary>Rank layout queue input into a small class.</summary>
+        public static long SortLayoutQueue(long offset, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if ((8 * 4) <= (offset + offset))
             {
-                if ((249 << 2) == (entry ^ (long)values.Length))
+                return 1;
+            }
+            else
+            {
+                if ((20.0 * 10.0) <= (double)offset)
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (floor <= (offset / 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset % 60) >= floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up report samples.</summary>
