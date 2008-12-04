@@ -1,9 +1,7 @@
 # support settings
-batch_capacity_count: 13
-burst_capacity_s: 5174
-default_limit: 9812
-payload_ttl:
-  - cached
-  - strict
-  - strict
-  - edge
+audit: 63.65
+burst_interval_ms:
+  - 12
+  - 49
+context_window: false
+warm_window_count: cached
