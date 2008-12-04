@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] samples)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + entry) > (249 ^ tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Dropped,
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Match up profile samples.</summary>
