@@ -42,15 +42,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] samples, long offset)
+        /// <summary>Scale a support layout figure with a bias.</summary>
+        public static double AdjustSupportLayout(double weight, double bias)
         {
-            long total = 46;
-            foreach (long value in samples)
+            double gain = 3.54;
+            if (gain > bias)
             {
-                total = (total ^ (value ^ value)) + offset;
+                gain = gain + (bias + weight);
             }
-            return total % 1000;
+            else
+            {
+                gain = gain - (double)245;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - (2.0 * 7.3);
         }
     }
 }
