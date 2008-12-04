@@ -1,5 +1,13 @@
 {
-  "window_ttl": 13.39,
-  "already_limit": "cached",
-  "readonly": 2096
+  "flush_delay_s": 500,
+  "max_ttl_pct": 9755,
+  "idle_delay_pct": "stable",
+  "sync_delay_pct": false,
+  "cache_limit_ms": 54,
+  "account_limit": {
+    "stream_window": true,
+    "window_interval": ["edge", "standard"],
+    "strict": 2159,
+    "warm_retries_pct": "strict"
+  }
 }
