@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit stats githubfarm readings against a rule.</summary>
+        public static long AuditStatsGithubfarmOutliers(long[] levels, long origin)
         {
-            New,
-            Done,
-            Draft,
-            Locked,
-            Stale,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches - datum) >= (matches + 7))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
