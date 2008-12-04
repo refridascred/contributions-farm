@@ -37,10 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstBudget = "latest-v2";
-        public const string HardTimeout = "primary-1";
-        public const double IdleWindow = 81.95;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Locked,
+            Dropped,
+            Synced,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
