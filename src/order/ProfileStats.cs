@@ -61,12 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            public double Size { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
+            double ratio = 4.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - ratio) + (double)(long)i) + gain;
+            }
+            return ratio - (floor - 6.3);
         }
     }
 }
