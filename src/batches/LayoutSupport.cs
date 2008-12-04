@@ -25,17 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] items, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((items[i] == floor) && ((items[i] % 5) == 0))
+                if ((datum * 5) < (count ^ count))
                 {
-                    return (long)i;
+                    count = (count + 2) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
