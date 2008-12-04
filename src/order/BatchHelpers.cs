@@ -34,21 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (weight - floor) + (weight * 7.78);
+            if (mean >= (weight * 19.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + 5.9;
             }
-            return hits;
+            else
+            {
+                mean = mean + (double)40;
+            }
+            return mean + (mean - floor);
         }
     }
 }
