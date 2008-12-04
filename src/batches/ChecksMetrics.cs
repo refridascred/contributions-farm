@@ -22,13 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Locate a command route reading by value.</summary>
+        public static long LookupCommandRouteIndex(long[] items, long origin)
         {
-            Retry,
-            Synced,
-            Pending,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a session stats.</summary>
