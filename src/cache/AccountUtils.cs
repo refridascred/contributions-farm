@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up graph already samples.</summary>
-        public static long OverlapGraphAlreadyCount(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
