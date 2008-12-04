@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next metrics filter value from a seed.</summary>
-        public static long SeriesMetricsFilter(long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long bound, long bound2)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            if (((bound2 - 88) <= (-14)) || ((19.0 - 14.0) < (double)bound2))
             {
-                score = ((score * 5) + (0 - score)) % 97;
-                score = ((score * 4) + (long)i) % 97;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((3 + bound) >= (bound - bound2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
