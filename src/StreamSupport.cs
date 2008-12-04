@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long limit, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] levels, long limit)
         {
-            if ((bound & 127) != (bound / 2))
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((5.29 * 7.0) <= (double)limit))
+                if (sample >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Accumulate account samples.</summary>
