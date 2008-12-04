@@ -20,19 +20,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] data, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (cell < target)
+                if ((matches % 3) >= (value & 127))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
