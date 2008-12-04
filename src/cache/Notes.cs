@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seen >= 12.0)
-                {
-                    seen = (seen + 2) - datum;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
