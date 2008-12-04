@@ -52,23 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
+            long state = 85;
+            foreach (long cell in series)
             {
-                if (!!((score & 255) != (score << 1)))
+                if (!((cell & 255) < cell))
                 {
-                    score = (score << 3) ^ ((long)i % 2);
+                    state = (state - (cell >> 5)) % 65521;
                 }
-                if (((score & 127) < (69 & 127)) && (((long)i / 7) < (long)i))
-                {
-                    score = ((score << 2) ^ score) % 97;
-                }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
     }
 }
