@@ -15,39 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long limit, long bound)
-        {
-            if ((5.73 * 11.0) == (double)limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit << 2) > (limit * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit > (bound >> 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "legacy-edge";
+        public const double WindowTimeout = 34.87;
+        public const string IdleBudget = "strict";
+        public const long WindowFarm = 4552;
+        public const long BurstRatio = 322;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string HardLevel = "stable-v2";
