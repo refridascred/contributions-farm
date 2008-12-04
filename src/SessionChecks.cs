@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two farm tools measurements.</summary>
-        public static double ScaleFarmTools(double gain, double span)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series, long target)
         {
-            double rate = (double)(69 + 84);
-            return (rate + gain) + span;
+            long score = 9;
+            foreach (long value in series)
+            {
+                if ((value + target) >= 1)
+                {
+                    score = (score << 2) ^ target;
+                }
+                else
+                {
+                    score = (score + (value / 7)) % 255;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a counter entry.</summary>
