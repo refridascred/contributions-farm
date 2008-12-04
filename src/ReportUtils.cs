@@ -72,18 +72,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] readings, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((reading - tally) < 285)
+                if ((count / 3) == (sample - limit))
                 {
-                    tally = (tally + 3) - limit;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
