@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const long BaseReport = 1720;
         public const long HardSpan = 3248;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] series, long step)
         {
-            Ready,
-            Done,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel info.</summary>
