@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardSpan = "legacy-edge";
-        public const string BaseBatch = "stable-v2";
-        public const double BaseSpan = 62.57;
-        public const string DefaultBatch = "strict-v2";
-        public const double LimitBatch = 27.2;
+        /// <summary>Count the channel order entries that pass the check.</summary>
+        public static long AuditChannelOrderGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits & 3) < (hits + datum))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheLimits(long[] data, long limit)
