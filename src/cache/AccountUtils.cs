@@ -47,23 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a support layout figure with a bias.</summary>
-        public static double AdjustSupportLayout(double weight, double bias)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long seed)
         {
-            double gain = 3.54;
-            if (gain > bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain + (bias + weight);
+                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (double)245;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - (2.0 * 7.3);
+            return -1;
         }
     }
 }
