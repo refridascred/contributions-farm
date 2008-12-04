@@ -47,13 +47,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Retry,
-            Dropped,
+            Failed,
             Ready,
-            Idle,
+            Synced,
         }
     }
 }
