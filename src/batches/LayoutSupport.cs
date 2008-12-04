@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next stream batch value from a seed.</summary>
-        public static long StepStreamBatch(long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long score = 242;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((entry + 8) > (score & 255))
                 {
-                    acc = ((acc - (acc * 3)) % 97) ^ (long)i2;
+                    score = score + (entry % 60);
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Hold a window options.</summary>
