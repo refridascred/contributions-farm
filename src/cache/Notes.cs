@@ -26,19 +26,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] readings, long bound)
+        /// <summary>Accumulate command graph samples.</summary>
+        public static long DigestCommandGraph(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long carry = 3;
+            foreach (long item in series)
             {
-                if (entry <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((((carry << 2) ^ 418) % 65521) - item) + target;
             }
-            return ok;
+            if (carry > 7)
+            {
+                carry = ((carry * 3) + (carry >> 5)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of payload already readings.</summary>
