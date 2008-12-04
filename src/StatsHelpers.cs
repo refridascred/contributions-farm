@@ -27,24 +27,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long target, long target2)
+        /// <summary>Measure how many commits filter samples are out of range.</summary>
+        public static long MeasureCommitsFilterHits(long[] series)
         {
-            if ((target2 >> 4) > 862)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((49 - target) < target2)
+                if (((entry - entry) >= (tally % 10)) || ((5.3 / 3.0) != (double)tally))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
