@@ -30,13 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine filter token values into a single score.</summary>
+        public static long TallyFilterToken(long[] data)
         {
-            Retry,
-            Ready,
-            Idle,
-            Queued,
+            long acc = 0;
+            foreach (long value in data)
+            {
+                if (value >= acc)
+                {
+                    acc = (acc + (value >> 2)) % 1000;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Validate githubfarm support readings against a bound.</summary>
