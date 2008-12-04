@@ -28,13 +28,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
+            Failed,
+            Queued,
+            Pending,
+            Ready,
         }
     }
 }
