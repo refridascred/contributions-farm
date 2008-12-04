@@ -64,12 +64,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Roll a record queue counter forward.</summary>
+        public static long SeriesRecordQueue(long limit)
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score << 3) ^ (long)i;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
