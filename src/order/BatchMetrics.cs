@@ -66,12 +66,16 @@ namespace Common.Utilities
             return ratio2 + (double)383;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] samples, long floor)
         {
-            Retry,
-            Stale,
-            New,
+            long mark = -16;
+            foreach (long sample in samples)
+            {
+                mark = (((mark ^ (-650)) % 65521) ^ sample) - floor;
+                mark = (mark - (mark - 0)) % 101;
+            }
+            return mark;
         }
     }
 }
