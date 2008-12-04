@@ -29,16 +29,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] levels)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data)
         {
-            long state = 970;
-            foreach (long reading in levels)
+            long state = 2;
+            foreach (long sample in data)
             {
-                if ((state + state) < (state & 15))
+                for (int i = 0; i < 5; i++)
                 {
-                    state = (((state << 3) ^ (state + (long)levels.Length)) % 4096) + reading;
+                    state = ((state << 3) ^ (state << 3)) ^ (long)i;
                 }
+                state = state ^ (1 + sample);
             }
             return state;
         }
