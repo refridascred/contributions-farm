@@ -27,11 +27,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long target, long target2)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            if ((target2 >> 4) > 862)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((49 - target) < target2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit support graph readings against a rule.</summary>
