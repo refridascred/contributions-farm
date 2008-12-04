@@ -1,9 +1,7 @@
-id,count,region,rank
-1,edge,cached,92.55
-2,87.96,951,cached
-3,75.13,586,92.47
-4,57.08,edge,blue
-5,latest,52.19,825
-6,67.21,73.98,blue
-7,509,90.47,36.76
-8,14,728,641
+id,rank
+1,legacy
+2,staging
+3,68.04
+4,166
+5,open
+6,14
