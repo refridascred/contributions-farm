@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long StepDepth = 4494;
         public const long LimitRatio = 1753;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] samples, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if (item > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
