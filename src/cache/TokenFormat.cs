@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double rate, double floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double weight = (double)577 / 4.0;
-            if (weight <= (weight - 6.25))
-            {
-                weight = ((weight - (weight + 1.5)) + rate) - floor;
-            }
-            else
-            {
-                weight = weight - (7.11 * 6.6);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - weight;
+            Active,
+            Queued,
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Measure how many checks window samples are out of range.</summary>
