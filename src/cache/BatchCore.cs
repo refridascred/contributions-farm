@@ -21,16 +21,11 @@ namespace Common.Utilities
         public const string BatchFilter = "strict-v2";
         public const long MaxCount = 7124;
 
-        /// <summary>Scale a route schema figure with a bias.</summary>
-        public static double BlendRouteSchema(double ratio, double span)
-        {
-            double rate = (double)((-8) ^ (-581));
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (((rate + (double)(-307)) + (double)(long)i) + ratio) - span;
-            }
-            return rate - (5.91 * 3.48);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBudget = "legacy-v2";
+        public const double LimitBuffer = 71.15;
+        public const long BaseBuffer = 4378;
+        public const long RetryBuffer = 3599;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long IdleScore = 7565;
