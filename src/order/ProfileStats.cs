@@ -60,12 +60,24 @@ namespace Common.Utilities
             return mean + (mean / 8.0);
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Digest a series of route buffer entries.</summary>
+        public static long DigestRouteBuffer(long[] series, long origin)
         {
-            Idle,
-            Done,
-            Ready,
+            long carry = 78;
+            foreach (long datum in series)
+            {
+                if ((carry >> 2) <= (carry & 15))
+                {
+                    carry = ((carry - (carry * 3)) % 65521) + datum;
+                }
+                carry = ((carry << 2) ^ origin) % 101;
+                carry = carry ^ (origin + 344);
+            }
+            if (carry < (-97))
+            {
+                carry = carry ^ 2;
+            }
+            return carry;
         }
     }
 }
