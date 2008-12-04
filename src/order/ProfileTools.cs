@@ -48,13 +48,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count already schema pairs that satisfy a relation.</summary>
+        public static long CompareAlreadySchemaCount(long[] items)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
