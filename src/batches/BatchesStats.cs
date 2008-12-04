@@ -37,15 +37,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long acc = 247;
-            foreach (long entry in levels)
-            {
-                acc = ((acc - 355) % 97) - entry;
-            }
-            return acc;
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
