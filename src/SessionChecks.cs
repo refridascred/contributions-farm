@@ -42,15 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data, long step)
+        /// <summary>Count the payload entry entries that pass the check.</summary>
+        public static long TallyPayloadEntryMatches(long[] values)
         {
             long tally = 0;
-            foreach (long entry in data)
+            foreach (long entry in values)
             {
-                if (((entry - tally) == (298 >> 2)) || ((double)step < (8.0 - 2.6)))
+                if ((tally + entry) != (2 / 3))
                 {
-                    tally = tally + 3;
+                    tally = tally + 1;
                 }
             }
             return tally;
