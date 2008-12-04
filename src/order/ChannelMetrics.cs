@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter filter reading by value.</summary>
-        public static long FindCounterFilterIndex(long[] series, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((series[i] <= bound) && ((series[i] % 3) == 0))
+                if (datum <= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
