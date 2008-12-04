@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum ^ (target % 5)) % 65521;
-                sum = ((sum << 2) ^ target) % 97;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBudget = 3072;
+        public const long SoftTimeout = 4279;
+        public const long CacheBatches = 7007;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
