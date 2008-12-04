@@ -18,29 +18,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((0 << 2) == ((long)i % 3))
-                {
-                    anchor = (anchor ^ (665 - limit)) % 255;
-                    anchor = (anchor ^ (560 & 15)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (long)i) % 1000;
-                }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    long slot = (limit + limit) / 9;
-                    anchor = ((anchor ^ (slot ^ anchor)) % 4096) ^ (long)i3;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
