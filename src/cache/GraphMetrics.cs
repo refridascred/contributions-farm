@@ -48,19 +48,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] items, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (reading < bound)
+                if (datum > limit)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
     }
 }
