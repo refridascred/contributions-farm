@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] values, long seed)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
