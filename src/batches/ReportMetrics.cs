@@ -19,17 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 21;
+            foreach (long cell in data)
             {
-                if ((readings[i] == step) && ((readings[i] % 2) != 0))
+                mark = (mark ^ (mark % 60)) % 4096;
+                mark = ((mark * 3) + mark) % 4096;
+                if (mark > (mark << 3))
                 {
-                    return (long)i;
+                    mark = mark + cell;
+                }
+                if ((double)cell == (double)mark)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 9)
+            {
+                mark = (mark * 3) + (2 ^ 116);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
