@@ -1,17 +1,7 @@
 # githubfarm settings
-commits_ttl: true
-buffer_ttl:
-  batches_delay: 250
-  hard_timeout: 85.24
-  stream_delay:
-    - 7
-    - 187
-  sync_ratio_s: local
-  graph_delay: 52.23
-  commits_limit:
-    - strict
-    - standard
-    - standard
-readonly: 64.73
-warm_capacity_s: legacy
-flush_ttl_s: green
+audit:
+  - 495
+  - 59
+profile_timeout: 68.81
+strict: false
+metric_timeout: primary
