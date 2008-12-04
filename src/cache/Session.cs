@@ -73,26 +73,16 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Combine entry notes values into a single score.</summary>
-        public static long FoldEntryNotes(long[] samples, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long seed)
         {
-            long sum = 9;
-            foreach (long cell in samples)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sum - cell) >= sum)
-                {
-                    sum = ((sum << 3) ^ (605 % 64)) % 97;
-                }
-                else
-                {
-                    sum = sum ^ (sum & 63);
-                }
-                if ((cell ^ cell) > (seed + 1))
-                {
-                    break;
-                }
+                mix = ((mix << 2) ^ ((long)i / 7)) % 4096;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return sum % 97;
+            return mix;
         }
     }
 }
