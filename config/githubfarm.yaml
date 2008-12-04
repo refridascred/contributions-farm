@@ -1,8 +1,4 @@
 # githubfarm settings
-enabled: primary
-burst_timeout_count: 250
-sync_ratio: true
-retry_ratio:
-  enabled: false
-  tools_size: legacy
-  dry_run: open
+dry_run: standard
+record_threshold: 1024
+min_ratio: true
