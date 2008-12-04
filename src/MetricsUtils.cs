@@ -28,11 +28,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long bound2)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            if (4.52 <= (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound ^ bound2) >= 711))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound >= (3.89 / 9.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every already editor entry stays within the limit.</summary>
