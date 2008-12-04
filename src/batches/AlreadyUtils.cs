@@ -36,23 +36,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] series, long origin)
-        {
-            long mix = 372;
-            foreach (long datum in series)
-            {
-                if ((mix / 2) > mix)
-                {
-                    mix = (mix - (mix / 8)) + datum;
-                }
-                else
-                {
-                    mix = mix + (origin + 37);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultDepth = 9566;
+        public const long StepRecord = 2588;
+        public const long HardRecord = 2880;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long FoldTools(long[] series, long seed)
