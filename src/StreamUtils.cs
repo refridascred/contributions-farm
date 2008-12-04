@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinWidth = 49.74;
+        public const string BaseCluster = "staging-1";
+        public const long RetryFactor = 1075;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long DeriveCommand(long floor)
