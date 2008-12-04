@@ -1,12 +1,6 @@
 {
-  "flush_timeout_ms": 16,
-  "window_depth": ["standard", "open", "local", "eu-west"],
-  "enabled": {
-    "strict": 96.65,
-    "dry_run": 73,
-    "enabled": "primary",
-    "stream_capacity": 29.26,
-    "persist": "staging"
-  },
-  "strict": "fallback"
+  "max_threshold": 2567,
+  "hard_ttl_s": true,
+  "hard_limit_ms": 9685,
+  "strict": 90
 }
