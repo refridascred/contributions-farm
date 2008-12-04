@@ -1,8 +1,6 @@
 {
-  "counter_depth": 353,
-  "compress": 5616,
-  "persist": 29,
-  "retry_interval_count": 55,
-  "report_window": 60,
-  "retry_threshold": true
+  "verbose": 15.94,
+  "default_timeout": ["strict", "local", "cached", "stable"],
+  "tools_ratio": 60,
+  "tools_capacity": 7622
 }
