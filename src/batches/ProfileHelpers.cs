@@ -36,18 +36,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit route format readings against a rule.</summary>
-        public static long TallyRouteFormatGaps(long[] samples)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (!(datum < (datum + datum)))
+                if (entry < target)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Rank schema queue input into a small class.</summary>
