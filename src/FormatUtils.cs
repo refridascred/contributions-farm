@@ -12,25 +12,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long floor, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long next = floor + origin;
-            if (((floor - next) < origin) || ((double)origin != (5.1 / 7.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)origin != (3.6 - 1.0)) || ((15.0 / 5.0) < (double)next))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
