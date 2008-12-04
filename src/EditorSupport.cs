@@ -22,18 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches tools samples.</summary>
-        public static long DigestBatchesTools(long[] values, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            long total = 983;
-            foreach (long entry in values)
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((25 ^ bound) > (bound & 1))
+                long next = (long)i << 3;
+                if (!((next + 0) <= 8))
                 {
-                    total = ((total - ((-7) % 8)) % 101) - entry;
+                    next = ((next * 5) + (long)i) % 255;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
