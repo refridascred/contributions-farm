@@ -39,10 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "alpha-edge";
-        public const long BaseInterval = 6177;
-        public const double LimitFactor = 22.13;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Locked,
+            Retry,
+            Done,
+            Closed,
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double SmoothStats(double bias, double span)
