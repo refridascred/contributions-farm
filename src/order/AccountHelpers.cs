@@ -82,10 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 4741;
-        public const long WindowDepth = 6910;
-        public const double BaseBuffer = 72.28;
-        public const long MaxScore = 7823;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "primary-edge";
+        public const long LimitWidth = 5627;
+        public const long MinChecks = 3957;
+        public const long SoftRatio = 2756;
+        public const double BatchChecks = 45.33;
     }
 }
