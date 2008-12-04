@@ -15,14 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
+            New,
             Pending,
+            Synced,
             Locked,
-            Queued,
-            Dropped,
-            Idle,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
