@@ -39,26 +39,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series, long target)
+        /// <summary>Digest a series of command session entries.</summary>
+        public static long CombineCommandSession(long[] values, long step)
         {
-            long sum = 705;
-            foreach (long cell in series)
+            long mark = -170;
+            foreach (long cell in values)
             {
-                if ((double)sum > (9.3 * 8.4))
+                if ((double)step <= 6.53)
                 {
-                    sum = (sum << 3) ^ (target << 3);
+                    mark = (mark * 5) + (mark + cell);
                 }
                 else
                 {
-                    sum = (sum - (target + cell)) % 1000;
+                    mark = ((mark * 5) + step) % 97;
                 }
             }
-            if (sum > 9)
-            {
-                sum = (sum * 4) + (sum ^ target);
-            }
-            return sum;
+            return mark;
         }
     }
 }
