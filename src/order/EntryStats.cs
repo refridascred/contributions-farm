@@ -46,13 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Done,
-            New,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheTimeout = 4042;
+        public const long DefaultLayout = 3558;
+        public const double BurstLayout = 69.93;
+        public const long HardFactor = 1057;
+        public const long StepCount = 9241;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
