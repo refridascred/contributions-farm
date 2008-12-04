@@ -1,16 +1,15 @@
 # entry settings
-editor_retries: edge
-hard_capacity: green
-notes_ttl: false
-retry_window_s:
-  idle_window_pct: false
-  burst_threshold_pct: green
-  flush_delay_ms: 60
-  cache_timeout_pct:
-    tools_window: legacy
-    audit: fallback
-    strict: strict
-    default_limit_s: latest
-  readonly: 48
-  order_depth: edge
-batch_threshold_ms: 5147
+hard_window_count: 500
+order_size:
+  audit: cached
+  idle_ttl: false
+  enabled: 7005
+  githubfarm_interval:
+    min_interval_count:
+      - 331
+      - 356
+      - 217
+      - 363
+    poll_depth_ms: 4953
+    strict: false
+readonly: 1024
