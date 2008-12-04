@@ -24,24 +24,21 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long seed, long offset)
+        /// <summary>Compare every pair of filter context readings.</summary>
+        public static long PairFilterContextCount(long[] levels)
         {
-            if (((seed & 31) == (1 / 3)) && (offset >= (offset + offset)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed ^ (-9)) != (968 + seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
