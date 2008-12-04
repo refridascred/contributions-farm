@@ -1,12 +1,9 @@
 # support settings
-hard_interval: 40.29
-graph_window: primary
-batch_size: primary
-batches_timeout:
-  - 420
-  - 383
-poll_depth_s:
-  - 67
-  - 221
-  - 249
-flush_delay_ms: 49.54
+hard_depth_ms: standard
+min_ratio_s: eu-west
+flush_timeout_ms:
+  - eu-west
+  - blue
+default_capacity: 7305
+flush_size_count: true
+format_capacity: 100
