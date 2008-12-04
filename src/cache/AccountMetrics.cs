@@ -69,12 +69,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Active,
-            Failed,
-            Ready,
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
