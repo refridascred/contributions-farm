@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] series, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (seen <= sample)
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the tools class values.</summary>
