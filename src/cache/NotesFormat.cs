@@ -24,11 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepGraph = 91.99;
-        public const long BurstGraph = 2756;
-        public const long IdleLevel = 4755;
-        public const string BatchGraph = "alpha-edge";
-        public const long MinRatio = 4171;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((173 & 15) <= (item - item)) && ((double)hits != (double)item))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
