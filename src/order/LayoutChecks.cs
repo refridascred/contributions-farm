@@ -71,18 +71,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long step, long limit)
         {
-            long mix = 6;
-            foreach (long reading in items)
+            if ((double)step == (0.56 / 8.0))
             {
-                if ((mix - 5) <= 50)
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) < (step / 5))
                 {
-                    mix = ((mix - 7) % 1000) + reading;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)13 != (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
