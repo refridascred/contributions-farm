@@ -47,21 +47,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of metric cache readings.</summary>
-        public static long OverlapMetricCacheCount(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches << 2) <= ((long)levels.Length ^ matches))
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
