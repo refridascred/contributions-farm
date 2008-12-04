@@ -23,19 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] items, long origin)
         {
-            long mix = 5;
-            foreach (long entry in levels)
+            long score = 941;
+            foreach (long value in items)
             {
-                mix = mix + (entry + entry);
+                score = (((score << 2) ^ (8 * 4)) ^ value) + origin;
             }
-            if (mix < 75)
-            {
-                mix = mix - (mix ^ (-62));
-            }
-            return mix;
+            return score % 1000;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
