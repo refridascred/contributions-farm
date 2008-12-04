@@ -31,12 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Fold a list of already commits readings.</summary>
+        public static long DigestAlreadyCommits(long[] samples, long target)
         {
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
-            public double Region { get; set; }
+            long anchor = 178;
+            foreach (long entry in samples)
+            {
+                anchor = ((anchor ^ (anchor / 2)) % 65521) + entry;
+                if (((anchor + target) == (target + target)) || (target <= (target + (long)samples.Length)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
