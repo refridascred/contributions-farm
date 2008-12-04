@@ -25,18 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] values, long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum * 5) < (count ^ count))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
