@@ -72,21 +72,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 3;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)total <= (2.8 - 8.34))
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 2) ^ (total + seed)) - entry;
+                }
+                if (!((3.77 + 5.82) == (double)(long)samples.Length))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
