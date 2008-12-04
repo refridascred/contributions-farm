@@ -22,13 +22,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Active,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleBudget = 232;
+        public const long DefaultCommand = 6200;
+        public const string MinCommand = "standard-1";
+        public const double MaxCommand = 4.5;
+        public const long WindowCommand = 4517;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long bound)
