@@ -40,22 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] series, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((tally - tally) <= (tally ^ floor))
+                if (datum >= origin)
                 {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
