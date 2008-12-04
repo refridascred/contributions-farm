@@ -1,7 +1,16 @@
 {
-  "enabled": 4.55,
-  "support_timeout": 39,
-  "stream_interval": 72.28,
-  "report_timeout": "stable",
-  "idle_limit_count": 3.39
+  "warm_retries_ms": {
+    "batch_timeout_s": true,
+    "filter_capacity": 93,
+    "soft_delay": 500
+  },
+  "sync_limit_count": true,
+  "order_window": {
+    "max_interval": false,
+    "record_ratio": 5713,
+    "batch_size": 95,
+    "warm_size_pct": [239, 324]
+  },
+  "notes_retries": [352, 14, 316],
+  "min_depth": 60
 }
