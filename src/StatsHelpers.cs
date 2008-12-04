@@ -77,15 +77,15 @@ namespace Common.Utilities
             return ratio + (9.1 * 6.7);
         }
 
-        /// <summary>Count the stream report entries that pass the check.</summary>
-        public static long AuditStreamReportOutliers(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] series, long limit)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            foreach (long item in series)
             {
-                if ((cell / 5) < matches)
+                if (3 < limit)
                 {
-                    matches = matches + 2;
+                    matches = (matches + 1) + item;
                 }
             }
             return matches;
