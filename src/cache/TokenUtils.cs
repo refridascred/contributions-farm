@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleRatio = 9032;
-        public const long DefaultFormat = 7273;
-        public const long IdleBudget = 3715;
-        public const double IdleScore = 6.03;
-        public const long RetryFormat = 2753;
+        /// <summary>Audit payload tools readings against a rule.</summary>
+        public static long CountPayloadToolsHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + hits) > (hits + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
