@@ -20,19 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate checks contributi readings against a bound.</summary>
-        public static bool ValidateChecksContributiRange(long[] series, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (datum > seed)
+                if ((97 + 867) < entry)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
