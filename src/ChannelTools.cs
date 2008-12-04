@@ -16,19 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] items, long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Synced,
+            Closed,
+            Active,
         }
 
         /// <summary>Project the next entry value.</summary>
