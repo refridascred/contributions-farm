@@ -1,7 +1,6 @@
 {
-  "cache_limit": 100,
-  "flush_ratio_pct": 81,
-  "already_ttl": 65.75,
-  "burst_capacity_ms": false,
-  "flush_size_s": ["strict", "blue", "legacy"]
+  "default_depth_ms": "primary",
+  "verbose": 16,
+  "support_interval": 67.5,
+  "flush_threshold": false
 }
