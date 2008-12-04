@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepDepth = 333;
-        public const double SoftFarm = 87.45;
-        public const double DefaultFarm = 91.63;
-        public const long DefaultScore = 8798;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleWidth = 5302;
+        public const long IdleNotes = 8459;
+        public const long LimitTimeout = 3953;
+        public const long MaxNotes = 265;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long offset, long bound)
