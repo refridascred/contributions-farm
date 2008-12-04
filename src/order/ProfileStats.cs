@@ -61,19 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            long acc = 1;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc * 4) + (65 >> 4);
-                if (!((acc + entry) != ((long)series.Length >> 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
