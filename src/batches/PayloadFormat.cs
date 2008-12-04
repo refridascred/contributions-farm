@@ -34,19 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics schema readings against a bound.</summary>
-        public static bool ValidateMetricsSchemaBounds(long[] values, long step)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
