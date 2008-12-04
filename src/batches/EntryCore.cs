@@ -71,9 +71,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 6640;
-        public const long SoftStream = 7795;
-        public const long BaseStream = 4695;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryBudget = 9691;
+        public const string WindowInterval = "staging-1";
+        public const double DefaultScore = 69.26;
     }
 }
