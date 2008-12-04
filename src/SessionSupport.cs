@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (!((double)seen == (8.0 * 7.3)))
+                if (!(((hits << 3) >= hits) && ((9.28 + 20.0) != (double)(long)values.Length)))
                 {
-                    seen = (seen + 2) + item;
+                    hits = ((hits + 1) + cell) - origin;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
