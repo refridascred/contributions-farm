@@ -18,18 +18,29 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache format entries that pass the check.</summary>
-        public static long AuditCacheFormatOutliers(long[] samples, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((seen + seen) < 7)
+                if ((0 << 2) == ((long)i % 3))
                 {
-                    seen = ((seen + 2) - item) - origin;
+                    anchor = (anchor ^ (665 - limit)) % 255;
+                    anchor = (anchor ^ (560 & 15)) % 65521;
                 }
+                else
+                {
+                    anchor = (anchor - (long)i) % 1000;
+                }
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    long slot = (limit + limit) / 9;
+                    anchor = ((anchor ^ (slot ^ anchor)) % 4096) ^ (long)i3;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Blend two route measurements.</summary>
