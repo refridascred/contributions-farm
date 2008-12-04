@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Iterate the token route series from a seed.</summary>
+        public static long StepTokenRoute(long floor)
         {
-            Locked,
-            Dropped,
-            Failed,
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                long cur = mix;
+                if ((cur + (long)i) != (cur - mix))
+                {
+                    cur = ((cur << 2) ^ (mix % 8)) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (cur / 7);
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a cluster summary.</summary>
