@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a buffer batches reading by value.</summary>
-        public static long FindBufferBatchesIndex(long[] readings, long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ (800 * 3)) % 1000;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
