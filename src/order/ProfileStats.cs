@@ -41,18 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxFactor = 97.03;
+        public const double MaxInterval = 15.77;
+        public const long StepSpan = 3587;
+        public const long HardContext = 5795;
 
         /// <summary>Project the next queue value.</summary>
         public static double AdjustQueue(double gain, double floor)
