@@ -37,19 +37,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 2.66;
+        public const double StepSpan = 16.37;
+        public const long RetryBatches = 1345;
+        public const long MaxBatches = 2933;
     }
 }
