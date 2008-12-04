@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long BatchWidth = 2743;
         public const long LimitSpan = 6461;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] readings)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((760 + matches) == (value + 63))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate cache counter samples.</summary>
