@@ -21,17 +21,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] data, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long target, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((5 + limit) > (target - limit)) && ((target * 2) <= target))
             {
-                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((limit << 3) != (455 - limit))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
