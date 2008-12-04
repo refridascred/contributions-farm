@@ -1,14 +1,13 @@
 # Command notes
 
-When a channel fails, the cluster handler retries a few times before giving up.
-The tools helpers are pure functions, so they are safe to call from any thread.
-Run the entry check before changing any metrics limits.
+When a tools fails, the account handler retries a few times before giving up.
+Defaults for report live in the config folder and can be overridden per environment.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Each report is validated before it reaches the context queue.
+Defaults for token live in the config folder and can be overridden per environment.
+A schema that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Document new queue fields
-- Prefer batch defaults
-- Log every already change
+- Prefer record defaults
+- Log every window change
+- Keep contributi values small
