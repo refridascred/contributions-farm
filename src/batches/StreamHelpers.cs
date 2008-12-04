@@ -13,12 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 54.62;
-        public const long MaxCount = 6650;
-        public const long StepBatches = 5241;
-        public const long RetryLevel = 973;
-        public const long CacheDepth = 1722;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleFactor = 4320;
+        public const long DefaultFactor = 5565;
+        public const double DefaultProfile = 93.79;
+        public const long DefaultWidth = 4263;
+        public const double CacheInterval = 56.36;
 
         /// <summary>Audit githubfarm cache readings against a rule.</summary>
         public static long MeasureGithubfarmCacheMatches(long[] data, long origin)
