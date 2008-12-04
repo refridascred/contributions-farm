@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long RetryScore = 9724;
         public const long SoftLevel = 6422;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchWidth = 7215;
-        public const long LimitDepth = 4455;
-        public const string MinOrder = "alpha-edge";
-        public const string DefaultOrder = "legacy";
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Grade a format commits value against two limits.</summary>
         public static long GradeFormatCommits(long target, long offset)
