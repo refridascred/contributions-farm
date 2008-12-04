@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the editor notes entries that pass the check.</summary>
-        public static long AuditEditorNotesHits(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long result = 51;
+            foreach (long value in readings)
             {
-                if ((sample % 60) > (tally ^ 914))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result << 2) ^ (value % 3)) % 255;
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Accumulate editor samples.</summary>
