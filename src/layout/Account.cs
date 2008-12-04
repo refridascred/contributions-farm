@@ -28,18 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long sum = 4;
-            foreach (long value in values)
-            {
-                if (((long)values.Length + value) == (sum - sum))
-                {
-                    sum = (sum - (0 << 3)) % 97;
-                }
-            }
-            return sum;
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
