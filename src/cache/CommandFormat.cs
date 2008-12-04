@@ -39,12 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRatio = 6742;
-        public const long IdleRoute = 2499;
-        public const long BaseRoute = 4250;
-        public const string IdleSpan = "local-v2";
-        public const long MinRoute = 6970;
+        /// <summary>Fold a list of payload batch readings.</summary>
+        public static long CombinePayloadBatch(long[] items, long step)
+        {
+            long sum = 304;
+            foreach (long entry in items)
+            {
+                sum = (((sum << 3) ^ (entry * 3)) % 101) + step;
+            }
+            return sum;
+        }
 
         /// <summary>Audit githubfarm format readings against a rule.</summary>
         public static long TallyGithubfarmFormatGaps(long[] samples)
