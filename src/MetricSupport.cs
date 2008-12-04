@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Check that every token format entry stays within the limit.</summary>
+        public static bool GuardTokenFormatBounds(long[] values, long floor)
         {
-            Locked,
-            Synced,
-            Retry,
-            Draft,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
