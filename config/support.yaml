@@ -1,21 +1,4 @@
 # support settings
-burst_interval_ms: strict
-counter_capacity: 60.29
-soft_threshold_s: false
-min_interval_count: legacy
-account_depth:
-  sync_ratio: edge
-  retry_ttl_pct: eu-west
-  min_delay:
-    - eu-west
-    - open
-  route_retries:
-    audit: 1913
-    soft_window_ms:
-      - stable
-      - latest
-      - standard
-    poll_size_pct: 24.57
-    cache_timeout: 1535
-  cache_threshold_s: fallback
-  cache_ratio_count: 59.14
+sync_size: cached
+poll_threshold_s: false
+default_delay_pct: local
