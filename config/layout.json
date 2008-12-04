@@ -1,5 +1,5 @@
 {
-  "hard_ratio": 11,
-  "idle_timeout_s": false,
-  "soft_depth": false
+  "cache_delay": false,
+  "strict": 100,
+  "batch_capacity": 1024
 }
