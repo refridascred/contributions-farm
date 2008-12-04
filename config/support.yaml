@@ -1,4 +1,9 @@
 # support settings
-soft_ratio_count: 93
-retry_window_ms: legacy
-route_delay: 55.29
+verbose:
+  batch_interval_count: true
+  cache_window: cached
+  audit: true
+account_delay: 90
+notes_threshold: 49
+checks_depth: 7098
+cache_size_s: 4761
