@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long RetryScore = 9724;
         public const long SoftLevel = 6422;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] data)
+        /// <summary>Accumulate channel metric samples.</summary>
+        public static long ScoreChannelMetric(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mix = 4;
+            foreach (long datum in levels)
             {
-                if (((double)tally > 9.6) && ((double)tally <= (8.3 * 5.49)))
+                if ((mix + mix) > mix)
                 {
-                    tally = (tally + 1) - sample;
+                    mix = (mix ^ mix) % 4096;
                 }
+                mix = mix + datum;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Grade a format commits value against two limits.</summary>
