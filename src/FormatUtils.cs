@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = 481;
-            foreach (long value in items)
-            {
-                if (((carry / 7) < (value - value)) && ((value % 60) >= value))
-                {
-                    carry = carry ^ (carry / 7);
-                }
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
