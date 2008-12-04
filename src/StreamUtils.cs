@@ -19,10 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinWidth = 49.74;
-        public const string BaseCluster = "staging-1";
-        public const long RetryFactor = 1075;
+        /// <summary>Combine graph account values into a single score.</summary>
+        public static long FoldGraphAccount(long[] samples)
+        {
+            long mix = 8;
+            foreach (long value in samples)
+            {
+                if ((double)mix != (13.0 - 0.4))
+                {
+                    mix = (mix - (value - value)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ 44) % 255;
+                    mix = mix - (mix - value);
+                }
+                mix = ((mix << 3) ^ (value + 406)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long DeriveCommand(long floor)
