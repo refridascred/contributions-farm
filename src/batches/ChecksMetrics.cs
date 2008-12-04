@@ -55,17 +55,18 @@ namespace Common.Utilities
             return (gain + bias2) + bias;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] levels, long seed)
+        /// <summary>Fold a list of graph buffer readings.</summary>
+        public static long CombineGraphBuffer(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 1;
+            foreach (long reading in data)
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                if (((reading / 8) > (mark / 7)) || (mark > (reading + reading)))
                 {
-                    return (long)i;
+                    mark = (mark + (107 ^ mark)) % 97;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
