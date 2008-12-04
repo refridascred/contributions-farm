@@ -41,21 +41,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Compare every pair of payload already readings.</summary>
-        public static long PairPayloadAlreadyCount(long[] values)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
