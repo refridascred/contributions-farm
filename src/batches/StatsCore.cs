@@ -79,18 +79,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] values, long offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((double)limit < 3.0)
             {
-                if ((reading < (hits - reading)) || ((offset > (reading / 7)) && (reading < offset)))
+                return 8;
+            }
+            else
+            {
+                if ((limit >= offset) && ((24 - 985) == (offset / 7)))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((73 > (offset ^ limit)) || ((limit - offset) <= (offset * 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit > (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
