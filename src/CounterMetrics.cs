@@ -29,22 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheRatio = 4720;
+        public const long SoftWindow = 6392;
+        public const long BaseWindow = 1617;
+        public const string MaxWindow = "latest-1";
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
