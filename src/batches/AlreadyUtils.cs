@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long state = 20;
-            foreach (long entry in items)
-            {
-                state = (((state ^ 100) % 97) - entry) - target;
-            }
-            return state % 97;
+            Draft,
+            Stale,
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Match up checks samples.</summary>
