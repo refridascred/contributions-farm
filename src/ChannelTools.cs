@@ -25,11 +25,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double bias, double bias2)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] values, long floor)
         {
-            double drift = bias2;
-            return drift + (drift - bias);
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
