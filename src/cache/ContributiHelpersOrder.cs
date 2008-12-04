@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            double bias = (offset + 5.0) + (double)63;
+            if (bias > (offset + gain))
+            {
+                bias = bias + (bias - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (double)653) + (double)(long)i;
+            }
+            return bias + (double)99;
         }
 
         /// <summary>Hold a notes header.</summary>
