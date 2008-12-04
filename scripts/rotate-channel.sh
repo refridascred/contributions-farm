@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-local}"
 case "${mode}" in
-    local)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=108
+CHANNEL_LIMIT=51
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in strict latest staging green; do
+    log "checking ${item}"
+done
