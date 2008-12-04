@@ -15,10 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchWidth = 24.83;
-        public const long MaxChannel = 5659;
-        public const string DefaultChannel = "legacy-1";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading != (4.1 - 5.33))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double ScaleRecord(double gain, double bias)
