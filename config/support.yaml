@@ -1,5 +1,12 @@
 # support settings
-dry_run: 66.44
-stream_ratio: 9185
-min_interval: 25
-cache_delay_count: 73
+flush_window_s:
+  - 423
+  - 177
+  - 185
+stats_ttl: 90.69
+layout_threshold: open
+cache_interval_ms: 8
+max_threshold_pct:
+  verbose: 9228
+  retry_retries: 64.8
+  poll_depth_count: true
