@@ -47,23 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data, long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            long mark = 905;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mark > entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = mark - offset;
             }
-            if (mark < 71)
-            {
-                mark = ((mark << 3) ^ (43 % 97)) % 97;
-            }
-            return mark;
+            return seen;
         }
     }
 }
