@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the profile token series from a seed.</summary>
-        public static long SeriesProfileToken(long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] series, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                anchor = ((anchor * 2) + (target + anchor)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((12.0 < (double)datum) || ((double)bound != (double)66))
+                {
+                    seen = seen + 3;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
