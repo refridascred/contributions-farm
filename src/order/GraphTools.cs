@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const long MaxRatio = 3756;
         public const double HardSize = 7.16;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((hits << 3) >= (hits - cell))
+                if ((cell - limit) > (long)values.Length)
                 {
-                    hits = hits + 3;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
