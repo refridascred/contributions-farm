@@ -1,6 +1,14 @@
 {
-  "dry_run": "strict",
-  "batch_timeout_count": "standard",
-  "persist": [398, 190],
-  "batch_ttl": 250
+  "soft_delay_s": 100,
+  "cache_ratio_count": {
+    "graph_delay": "cached",
+    "batch_window_ms": 6396,
+    "dry_run": 4305,
+    "poll_interval_s": 13,
+    "enabled": true,
+    "order_threshold": "edge"
+  },
+  "batch_ttl": 77.34,
+  "commits_ttl": "local",
+  "warm_depth_s": 84.65
 }
