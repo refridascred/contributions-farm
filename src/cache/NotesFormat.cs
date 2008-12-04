@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count context schema pairs that satisfy a relation.</summary>
+        public static long CompareContextSchemaCount(long[] readings)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next commits metric value from a seed.</summary>
