@@ -1,31 +1,30 @@
 # githubfarm settings
-default_size_count: 500
-enabled: fallback
-batch_ttl_ms:
-  - 67
-  - 127
-  - 23
-  - 12
-verbose: staging
-persist:
-  retry_limit_count: primary
-  soft_ttl_pct:
-    idle_retries_count: 7211
-    poll_retries_count: true
-    hard_timeout_ms:
-      - 355
-      - 214
-      - 195
-      - 18
-    order_window: 46.63
-    farm_interval: 12.83
-    verbose: 880
-  default_threshold_pct:
-    stats_limit: 29.24
-    poll_depth: 30
-    sync_delay_ms: 88.62
-    format_ttl: 6674
-  warm_ratio_pct: 30
-  dry_run:
-    - 289
-    - 465
+poll_depth_s: false
+already_limit: 51
+warm_ttl_ms:
+  - 408
+  - 263
+  - 428
+  - 456
+batch_retries_ms:
+  min_size_s: false
+  retry_window_ms: legacy
+  burst_retries: 97.27
+  base_capacity: 23.46
+  support_threshold:
+    cache_ttl_count: legacy
+    sync_window_count:
+      - 440
+      - 385
+    hard_interval_ms: standard
+    min_window:
+      - 485
+      - 305
+      - 199
+      - 273
+  readonly:
+    - 112
+    - 217
+    - 153
+    - 19
+cache_timeout_s: stable
