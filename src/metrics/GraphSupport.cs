@@ -41,16 +41,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Grade a checks account value against two limits.</summary>
+        public static long SortChecksAccount(long target, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            if ((6.32 + 1.1) == (double)bound)
             {
-                state = (state ^ (seed / 2)) % 1000;
-                state = ((state * 5) + (long)i) % 101;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((double)target <= (3.8 / 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Roll a report metric counter forward.</summary>
