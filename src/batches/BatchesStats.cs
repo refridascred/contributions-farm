@@ -37,11 +37,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Scale a already layout figure with a bias.</summary>
+        public static double AdjustAlreadyLayout(double rate, double floor)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            double mean = floor;
+            if (mean < mean)
+            {
+                mean = mean - (rate - floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (floor - floor)) + (double)(long)i;
+            }
+            return mean - (rate / 6.0);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
