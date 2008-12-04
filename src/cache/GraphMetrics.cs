@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long target, long seed)
-        {
-            long span = target + seed;
-            if ((1.0 / 2.0) > (double)span)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((-2) < span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardSpan = "legacy-edge";
+        public const string BaseBatch = "stable-v2";
+        public const double BaseSpan = 62.57;
+        public const string DefaultBatch = "strict-v2";
+        public const double LimitBatch = 27.2;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheLimits(long[] data, long limit)
