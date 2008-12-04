@@ -1,7 +1,10 @@
-id,level,rank,score,state
-1,15.06,41.12,287,999
-2,cached,25.27,58,local
-3,197,836,open,867
-4,599,edge,local,12.32
-5,cached,21.09,68.25,staging
-6,250,40.55,806,0.26
+id,rank,state,count
+1,248,25.22,859
+2,327,cached,53.54
+3,817,495,staging
+4,63.04,83.84,edge
+5,874,71.59,blue
+6,61.02,113,689
+7,fallback,primary,local
+8,51.6,316,standard
+9,primary,70.1,open
