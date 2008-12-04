@@ -38,17 +38,9 @@ namespace Common.Utilities
             return rate + 20.0;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 7765;
+        public const long RetryDepth = 739;
+        public const long MaxBudget = 6224;
     }
 }
