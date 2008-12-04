@@ -1,6 +1,7 @@
-id,state,region
-1,standard,103
-2,85.54,53.91
-3,600,156
-4,22,primary
-5,fallback,42.23
+id,score,ratio
+1,60.85,977
+2,664,83
+3,266,90.12
+4,13.71,edge
+5,78.48,staging
+6,24,748
