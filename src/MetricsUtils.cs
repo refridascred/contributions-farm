@@ -69,19 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] series, long target)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result - (long)i) < target)
+                if ((series[i] >= target) && ((series[i] % 2) != 0))
                 {
-                    result = (result ^ result) % 101;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
