@@ -41,12 +41,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Combine entry notes values into a single score.</summary>
+        public static long FoldEntryNotes(long[] samples, long seed)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long sum = 9;
+            foreach (long cell in samples)
+            {
+                if ((sum - cell) >= sum)
+                {
+                    sum = ((sum << 3) ^ (605 % 64)) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (sum & 63);
+                }
+                if ((cell ^ cell) > (seed + 1))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
     }
 }
