@@ -22,13 +22,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] readings, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((bound - bound) <= 3)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
