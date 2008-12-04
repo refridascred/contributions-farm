@@ -15,19 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((2.1 - 0.55) < (double)reading) && (((tally + reading) >= (reading + reading)) && ((2.0 - 7.01) == (double)tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseInterval = 5013;
+        public const long DefaultReport = 5253;
+        public const long BatchReport = 183;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] values)
