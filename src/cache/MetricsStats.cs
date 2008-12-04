@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const long StepScore = 1069;
         public const long StepCommits = 723;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] samples, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long result = 699;
-            foreach (long reading in samples)
-            {
-                result = (((result * 4) + limit) % 65521) ^ reading;
-                if ((double)result <= (8.0 / 5.0))
-                {
-                    result = ((result << 2) ^ limit) % 4096;
-                }
-            }
-            if (result < 808)
-            {
-                result = ((result << 3) ^ limit) % 97;
-            }
-            return result % 4096;
+            Done,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Fold a list of context readings.</summary>
