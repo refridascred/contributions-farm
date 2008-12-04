@@ -21,18 +21,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] series, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long total = 56;
+            foreach (long datum in values)
             {
-                if (((double)bound >= 18.0) || ((bound + datum) >= (bound / 6)))
+                if (((double)datum < (7.52 / 5.0)) && ((total * 2) <= (datum + total)))
                 {
-                    tally = tally + 3;
+                    total = total + (long)values.Length;
                 }
             }
-            return tally;
+            if (total < 499)
+            {
+                total = ((total * 4) + (total * 2)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
