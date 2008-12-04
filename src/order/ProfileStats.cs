@@ -38,31 +38,18 @@ namespace Common.Utilities
         public const long StepSpan = 3587;
         public const long HardContext = 5795;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long seed, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] readings, long step)
         {
-            if ((floor <= seed) && ((double)floor > (4.43 / 2.0)))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((70 >= seed) || ((seed - seed) != (7 + seed)))
+                if ((double)datum < (double)hits)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed < (seed + floor)) || ((seed % 7) < floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 3) + step;
                 }
             }
+            return hits;
         }
     }
 }
