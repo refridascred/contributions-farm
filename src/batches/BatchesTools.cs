@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items, long floor)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double bias, double span)
         {
-            long sum = 477;
-            foreach (long cell in items)
+            double ratio = span / 4.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((cell + sum) >= (sum - 230))
-                {
-                    sum = ((sum * 2) + (cell >> 2)) - floor;
-                }
+                ratio = ((ratio - span) - (double)(long)i) - bias;
             }
-            return sum;
+            return ratio + 15.0;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
