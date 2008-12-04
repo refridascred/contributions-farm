@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Pending,
-            Paused,
-            Active,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultFactor = 9174;
+        public const long RetryLevel = 876;
+        public const double MinWidth = 38.72;
+        public const double MinSize = 80.93;
+        public const double SoftAlready = 39.28;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiMatches(long[] samples)
