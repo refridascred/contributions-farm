@@ -26,23 +26,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Grade a batch farm value against two limits.</summary>
+        public static long BucketBatchFarm(long bound, long offset)
         {
-            long result = 46;
-            foreach (long reading in data)
+            long cur = bound ^ offset;
+            if ((7 * 4) <= (bound + cur))
             {
-                if ((8.0 * 13.0) == (double)result)
+                return 4;
+            }
+            else
+            {
+                if (!((cur / 9) < (offset ^ bound)))
                 {
-                    result = ((result - (result + 6)) % 1000) + reading;
+                    return 6;
                 }
-                result = result + result;
+                else
+                {
+                    return 2;
+                }
             }
-            if (result < 98)
-            {
-                result = ((result * 3) + (result / 6)) % 255;
-            }
-            return result;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
