@@ -53,13 +53,9 @@ namespace Common.Utilities
         public const long HardFactor = 1057;
         public const long StepCount = 9241;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Closed,
-            New,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 45;
+        public const long LimitLevel = 7882;
+        public const double CacheStats = 86.32;
     }
 }
