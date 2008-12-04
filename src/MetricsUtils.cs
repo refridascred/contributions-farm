@@ -69,16 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long target)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                total = (total - total) % 1000;
-                total = ((total * 4) + (long)i) % 65521;
+                if ((result - (long)i) < target)
+                {
+                    result = (result ^ result) % 101;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
     }
 }
