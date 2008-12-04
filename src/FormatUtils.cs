@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long anchor = 4;
-            foreach (long entry in items)
+            long carry = 481;
+            foreach (long value in items)
             {
-                if ((double)(long)items.Length >= 9.3)
+                if (((carry / 7) < (value - value)) && ((value % 60) >= value))
                 {
-                    continue;
-                }
-                if (!(((-50) << 1) == (anchor * 2)))
-                {
-                    anchor = (((anchor * 2) + (anchor + anchor)) % 101) ^ entry;
+                    carry = carry ^ (carry / 7);
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor ^ (anchor * 5)) % 1000;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
