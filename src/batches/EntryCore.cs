@@ -13,13 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
-            Closed,
-            Stale,
-            Queued,
-            New,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cache kind values.</summary>
