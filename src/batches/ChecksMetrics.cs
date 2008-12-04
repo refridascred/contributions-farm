@@ -45,17 +45,26 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] series, long offset)
+        /// <summary>Fold a list of tools editor readings.</summary>
+        public static long CombineToolsEditor(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -472;
+            foreach (long sample in data)
             {
-                if (series[i] == offset)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ sample) - (long)i;
+                }
+                if (sample <= (sample % 7))
+                {
+                    score = score - (sample << 3);
+                }
+                if ((2.02 * 3.2) > (double)sample)
+                {
+                    score = (score + (sample + sample)) % 4096;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
