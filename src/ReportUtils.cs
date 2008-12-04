@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long mark = 339;
+            foreach (long datum in series)
             {
-                score = (score - score) % 101;
-                score = ((score * 5) + (long)i) % 97;
+                if ((double)mark > (double)datum)
+                {
+                    mark = ((mark << 2) ^ 10) % 65521;
+                    continue;
+                }
+                if (6.03 < (double)origin)
+                {
+                    mark = (mark + ((-131) + datum)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (origin / 6)) % 97;
+                }
             }
-            return score;
+            return mark % 4096;
         }
 
         /// <summary>Locate a support reading by value.</summary>
