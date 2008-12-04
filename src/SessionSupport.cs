@@ -33,25 +33,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] samples, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (((long)i % 60) > (offset / 4))
+                if (entry <= limit)
                 {
-                    sum = (sum - (sum + offset)) % 255;
-                    continue;
+                    found = false;
+                    break;
                 }
-                sum = (sum << 2) ^ (sum - sum);
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (sum + ((long)i2 / 4)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return found;
         }
     }
 }
