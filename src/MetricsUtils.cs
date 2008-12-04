@@ -31,31 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long bound2)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long seed)
         {
-            if (4.52 <= (double)bound)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((bound ^ bound2) >= 711))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound >= (3.89 / 9.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Locate a payload command reading by value.</summary>
