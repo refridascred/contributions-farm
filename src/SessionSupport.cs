@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] values, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!(((hits << 3) >= hits) && ((9.28 + 20.0) != (double)(long)values.Length)))
+                if (2.7 <= (double)tally)
                 {
-                    hits = ((hits + 1) + cell) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the payload class values.</summary>
