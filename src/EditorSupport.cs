@@ -33,17 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long origin)
+        /// <summary>Fold a list of buffer metric readings.</summary>
+        public static long TotalBufferMetric(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 77;
+            foreach (long sample in series)
             {
-                if (series[i] <= origin)
+                sum = ((sum << 3) ^ (sum + 5)) % 4096;
+                if (((sample + sample) <= (sum + sample)) && ((872 - sample) == (8 / 6)))
                 {
-                    return (long)i;
+                    sum = (sum - sample) % 4096;
                 }
             }
-            return -1;
+            if (sum > 30)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
