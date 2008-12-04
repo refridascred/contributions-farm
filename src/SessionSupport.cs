@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] items, long target)
         {
-            Paused,
-            New,
-            Ready,
-            Draft,
-            Active,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the checks githubfarm entries that pass the check.</summary>
