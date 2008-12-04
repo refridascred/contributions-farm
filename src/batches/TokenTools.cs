@@ -45,10 +45,22 @@ namespace Common.Utilities
         public const long BurstSize = 3039;
         public const double BurstBudget = 64.6;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 741;
-        public const long BaseScore = 9271;
-        public const string IdleTimeout = "local";
-        public const double BatchChannel = 17.72;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)limit >= (1.0 - 8.0))
+                {
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
