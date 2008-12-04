@@ -1,5 +1,5 @@
 {
-  "window_depth": 21.76,
-  "cluster_depth": 72.75,
-  "route_interval": "local"
+  "max_interval_count": "local",
+  "default_limit_s": 81,
+  "account_interval": "fallback"
 }
