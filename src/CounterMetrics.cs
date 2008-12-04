@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleRatio = 41.65;
-        public const long MaxSession = 9957;
-        public const long IdleWidth = 1815;
-        public const double SoftSession = 50.31;
-        public const long BurstSession = 4749;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state ^ (seed + seed);
+                if ((seed / 5) < (seed / 7))
+                {
+                    state = (state * 2) + state;
+                }
+                if ((state > ((-869) >> 1)) && (1.6 < (double)seed))
+                {
+                    state = (state << 2) ^ (5 % 10);
+                }
+                else
+                {
+                    state = ((state * 4) + (seed - seed)) % 97;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] series)
