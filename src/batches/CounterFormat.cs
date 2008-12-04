@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] items, long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            long mix = 761;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix * 3) + sample) - (long)i;
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 4) + (target + mix)) % 101;
             }
-            if (mix < 6)
-            {
-                mix = (mix << 3) ^ target;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
