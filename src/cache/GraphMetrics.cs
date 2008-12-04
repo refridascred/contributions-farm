@@ -19,19 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] data, long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long edge = seed + bound;
+            if (229 > (bound - seed))
             {
-                if (datum <= limit)
+                return 7;
+            }
+            else
+            {
+                if ((seed > (seed * 5)) || ((4.74 / 4.0) > (double)edge))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((edge & 63) == (bound - bound)) || ((edge >> 4) > (695 * 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (edge > (seed / 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
