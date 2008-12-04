@@ -1,9 +1,7 @@
 {
-  "cache_limit_pct": {
-    "sync_ratio_ms": 4750,
-    "base_ttl": 100,
-    "enabled": "blue"
-  },
-  "payload_limit": 2.35,
-  "audit": true
+  "metric_delay": 75.59,
+  "audit": 250,
+  "strict": 250,
+  "burst_delay": 250,
+  "dry_run": 1058
 }
