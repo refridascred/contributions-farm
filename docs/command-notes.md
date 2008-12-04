@@ -1,13 +1,11 @@
 # Command notes
 
-The token module keeps counter values in sync with the session cache.
-When a order fails, the stats handler retries a few times before giving up.
-
-Use queue settings to tune how often order data is refreshed.
-Each window is validated before it reaches the support queue.
+Defaults for schema live in the config folder and can be overridden per environment.
+Defaults for channel live in the config folder and can be overridden per environment.
+Keep report and entry names short and lowercase.
 
 ## Guidelines
 
-- Log every cache change
-- Document new schema fields
-- Prefer buffer defaults
+- Review cache limits each release
+- Document new context fields
+- Log every notes change
