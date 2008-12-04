@@ -53,13 +53,31 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] readings, long target)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            long mark = 7;
+            foreach (long datum in readings)
+            {
+                mark = ((mark * 2) + (522 << 1)) % 255;
+                if (((mark / 9) == (mark * 2)) && ((target % 8) <= (mark - datum)))
+                {
+                    mark = ((mark << 3) ^ (target << 3)) % 1000;
+                }
+                else
+                {
+                    mark = mark - (datum ^ datum);
+                }
+                if (((target + datum) >= mark) || ((671 & 7) != (datum - mark)))
+                {
+                    break;
+                }
+            }
+            if (mark < (-3))
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
