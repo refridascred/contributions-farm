@@ -39,27 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (limit > (score * 3))
-                {
-                    score = ((score * 3) + (limit & 255)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (score + (long)i)) % 101;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = ((score * 5) + (score * 3)) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public double Owner { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
