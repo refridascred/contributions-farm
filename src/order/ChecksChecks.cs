@@ -14,12 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] items)
         {
-            Retry,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((4.0 * 4.0) < (double)item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
