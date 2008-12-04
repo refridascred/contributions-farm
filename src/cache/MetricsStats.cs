@@ -57,13 +57,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] data)
         {
-            New,
-            Active,
-            Locked,
-            Synced,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)count >= (double)datum)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
