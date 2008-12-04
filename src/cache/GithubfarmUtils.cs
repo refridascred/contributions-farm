@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings, long target)
+        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
+        public static double BlendClusterGithubfarm(double weight, double span)
         {
-            long mix = 1;
-            foreach (long datum in readings)
+            double weight2 = span + (weight * 6.53);
+            if (weight2 >= weight)
             {
-                if ((datum % 24) < datum)
-                {
-                    mix = (((mix << 3) ^ datum) % 255) + target;
-                }
+                weight2 = weight2 + (double)78;
             }
-            return mix;
+            else
+            {
+                weight2 = weight2 - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 + (double)90;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
