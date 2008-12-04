@@ -22,18 +22,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] readings, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long diff = origin - offset;
+            if ((diff * 2) >= offset)
             {
-                if ((bound - bound) <= 3)
+                return 6;
+            }
+            else
+            {
+                if (((double)offset != (3.86 * 0.06)) && ((97 << 3) < (offset * 3)))
                 {
-                    seen = (seen + 3) ^ sample;
+                    return 2;
+                }
+                else
+                {
+                    if ((721 ^ origin) >= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin << 1) <= (origin / 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
