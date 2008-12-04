@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 85.98;
-        public const long BatchBudget = 1734;
-        public const long BatchFormat = 5335;
-        public const long MinFormat = 7695;
-        public const long MaxFormat = 2615;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] series)
+        {
+            long state = -96;
+            foreach (long cell in series)
+            {
+                if (((5.0 / 7.0) < (double)state) && ((state ^ cell) != (cell ^ cell)))
+                {
+                    state = (state + (state + state)) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long MatchFarmCount(long[] levels)
