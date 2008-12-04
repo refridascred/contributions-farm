@@ -16,22 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] values, long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long total = 7;
-            foreach (long datum in values)
-            {
-                if ((145 - 719) != (total - seed))
-                {
-                    total = ((total << 2) ^ (seed >> 2)) % 1000;
-                }
-                if ((1.0 + 4.2) <= (double)datum)
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Project the next entry value.</summary>
