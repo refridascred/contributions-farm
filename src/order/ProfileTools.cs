@@ -14,21 +14,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample * 4) < (sample - count))
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the commits status values.</summary>
