@@ -69,18 +69,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] data)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!(((long)data.Length ^ 360) >= (reading / 6)) || ((759 - reading) != (reading - reading)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Paused,
         }
     }
 }
