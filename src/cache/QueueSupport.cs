@@ -16,11 +16,12 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseDepth = 9859;
-        public const long BaseRatio = 9199;
-        public const long StepChannel = 6022;
-        public const long MaxRatio = 9682;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long SoftCount = 6999;
