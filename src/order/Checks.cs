@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a tools schema sample.</summary>
-        public static long LookupToolsSchemaIndex(long[] samples, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
