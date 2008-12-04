@@ -44,32 +44,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long target, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
-            long span = target + seed;
-            if (span < (target & 3))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)span > (5.31 * 4.0))
+                if (531 >= (count + entry))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((span % 60) <= (98 ^ 77))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
