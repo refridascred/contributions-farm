@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double BurstSupport = 40.23;
         public const long SoftSupport = 9034;
 
-        /// <summary>Validate commits already readings against a bound.</summary>
-        public static bool VerifyCommitsAlreadyRange(long[] levels, long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the report kind values.</summary>
