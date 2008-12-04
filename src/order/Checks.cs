@@ -15,18 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (((-62) << 2) >= (item - item))
-                {
-                    seen = seen + 1;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a profile record.</summary>
