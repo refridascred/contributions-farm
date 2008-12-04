@@ -22,14 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count notes channel pairs that satisfy a relation.</summary>
+        public static long OverlapNotesChannelCount(long[] items)
         {
-            Closed,
-            Paused,
-            Active,
-            Pending,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
