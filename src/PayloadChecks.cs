@@ -31,12 +31,12 @@ namespace Common.Utilities
         public const string WindowInterval = "open-edge";
         public const long CacheProfile = 5838;
 
-        /// <summary>Look up the position of a format context sample.</summary>
-        public static long SeekFormatContextIndex(long[] items, long origin)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > origin)
+                if (levels[i] == origin)
                 {
                     return (long)i;
                 }
