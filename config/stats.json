@@ -1,8 +1,13 @@
 {
-  "command_capacity": "legacy",
-  "report_threshold": false,
-  "cache_retries": ["blue", "strict", "blue", "strict"],
-  "contributi_window": [128, 353, 107],
-  "base_threshold_count": 250,
-  "counter_timeout": false
+  "idle_interval_pct": {
+    "soft_delay_ms": [342, 42, 40],
+    "checks_capacity": 44.56,
+    "retry_timeout_count": 769,
+    "cache_delay_pct": true,
+    "default_depth_s": [15, 390, 149, 358],
+    "profile_limit": 9
+  },
+  "retry_window_count": [382, 456],
+  "cache_depth_ms": "primary",
+  "flush_threshold_count": "fallback"
 }
