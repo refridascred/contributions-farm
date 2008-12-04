@@ -23,12 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardScore = 48.96;
+        public const string IdleTimeout = "primary";
+        public const long StepOrder = 8921;
+        public const double HardCount = 75.42;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double WindowEditor = 23.73;
