@@ -49,22 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] samples, long limit)
         {
-            long sum = 8;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((sum - datum) < datum)
+                if ((6.2 / 6.0) != (double)entry)
                 {
-                    sum = sum - (sum + sum);
+                    tally = (tally + 1) + limit;
                 }
             }
-            if (sum < 390)
-            {
-                sum = sum ^ ((long)samples.Length + sum);
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
