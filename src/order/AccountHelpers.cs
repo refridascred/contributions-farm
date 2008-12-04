@@ -57,11 +57,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultWidth = "local-edge";
-        public const long SoftReport = 3660;
-        public const long RetryReport = 7835;
-        public const double StepCount = 55.91;
-        public const long StepTimeout = 9424;
+        /// <summary>Accumulate entry channel samples.</summary>
+        public static long TallyEntryChannel(long[] readings)
+        {
+            long score = 81;
+            foreach (long cell in readings)
+            {
+                score = (score ^ (score / 5)) - cell;
+            }
+            if (score < 6)
+            {
+                score = (score - (long)readings.Length) % 4096;
+            }
+            return score % 97;
+        }
     }
 }
