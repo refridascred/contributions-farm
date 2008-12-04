@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 22.92;
-        public const double HardSize = 16.4;
-        public const string SoftLevel = "stable";
-        public const long CacheWidth = 8780;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 6834;
+        public const long HardSize = 9547;
+        public const long StepContributi = 7154;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long ScoreLayout(long[] values, long step)
