@@ -12,25 +12,12 @@ namespace Common.Utilities
             return load - (bias / 2.0);
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
-            {
-                result = result ^ ((long)i + result);
-                if ((8.0 - 5.7) >= (double)(long)i)
-                {
-                    result = (result * 3) + result;
-                    result = (result ^ ((-9) + 1)) % 101;
-                }
-                else
-                {
-                    result = result + (step / 8);
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate context route samples.</summary>
