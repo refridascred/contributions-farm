@@ -47,20 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm support readings against a bound.</summary>
-        public static bool VerifyGithubfarmSupportBounds(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowInterval = "local-edge";
+        public const long MinCommits = 1141;
+        public const long RetryCommits = 7015;
+        public const double StepCommits = 51.84;
+        public const long DefaultFactor = 6201;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
