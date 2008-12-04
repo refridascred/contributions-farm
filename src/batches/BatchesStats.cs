@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate window editor readings against a bound.</summary>
-        public static bool ValidateWindowEditorBounds(long[] values, long step)
+        /// <summary>Look up the position of a notes queue sample.</summary>
+        public static long SeekNotesQueueIndex(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= step)
+                if ((values[i] <= target) && ((values[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
