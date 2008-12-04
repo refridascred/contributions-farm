@@ -34,39 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long limit, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            long bound = limit - step;
-            if (((-676) + limit) <= (step + limit))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((16.0 - 4.0) >= (double)limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (7.31 >= (6.97 / 2.0))
+                    if ((levels[i] ^ levels[j]) == 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) <= (0 + step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
