@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 8322;
+        public const long LimitFactor = 3474;
+        public const string BatchDepth = "fallback";
+        public const string StepFilter = "open-v2";
+        public const long HardBudget = 3659;
 
         /// <summary>Audit account window readings against a rule.</summary>
         public static long MeasureAccountWindowOutliers(long[] items)
