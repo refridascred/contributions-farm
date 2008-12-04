@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest green legacy fallback; do
+mode="${1:-latest}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in green strict blue latest; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
