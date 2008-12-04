@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 6322;
-        public const double HardScore = 15.09;
-        public const long CacheChannel = 5167;
-        public const long HardChannel = 7281;
-        public const long LimitSpan = 6073;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
