@@ -67,17 +67,21 @@ namespace Common.Utilities
             return bias + (span - weight);
         }
 
-        /// <summary>Look up the position of a graph profile sample.</summary>
-        public static long SeekGraphProfileIndex(long[] samples, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] < offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
