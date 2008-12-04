@@ -75,21 +75,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Look up the position of a filter support sample.</summary>
+        public static long LocateFilterSupportIndex(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
