@@ -66,20 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples)
-        {
-            long sum = 704;
-            foreach (long sample in samples)
-            {
-                sum = ((sum - (5 << 2)) % 97) ^ sample;
-            }
-            if (sum < 43)
-            {
-                sum = sum + sum;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySize = 49.15;
+        public const long BatchSchema = 2056;
+        public const long MaxRatio = 8941;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long bound)
