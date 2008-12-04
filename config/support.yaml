@@ -1,21 +1,6 @@
 # support settings
-strict: stable
-buffer_window:
-  persist: 20
-  report_window: cached
-  sync_delay_pct:
-    - local
-    - green
-    - green
-    - edge
-  default_timeout_pct:
-    cache_size_count: fallback
-    batch_interval_ms: 55.93
-    graph_ttl: true
-    dry_run: strict
-    counter_timeout: primary
-    warm_size_pct: 3248
-  tools_ratio: true
-  hard_ttl_ms: false
-poll_retries: 83.77
-idle_limit: 35.65
+idle_ttl_pct: 100
+default_timeout_pct: 96.83
+flush_limit_s: 30
+metrics_delay: 61
+cache_threshold: staging
