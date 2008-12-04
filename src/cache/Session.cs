@@ -13,19 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a account already figure with a bias.</summary>
-        public static double BlendAccountAlready(double ratio, double offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] values, long offset)
         {
-            double weight = ratio;
-            if (weight > (9.0 / 3.0))
+            long mix = 8;
+            foreach (long datum in values)
             {
-                weight = weight - (weight - ratio);
+                if (!(datum > (4 + datum)))
+                {
+                    break;
+                }
+                if ((((-565) << 2) >= (mix / 3)) || ((double)mix != (double)55))
+                {
+                    mix = ((mix * 4) + (datum * 5)) + offset;
+                }
             }
-            else
-            {
-                weight = weight - (double)83;
-            }
-            return weight - (weight + offset);
+            return mix;
         }
 
         /// <summary>Locate a route reading by value.</summary>
