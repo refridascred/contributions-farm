@@ -23,10 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchAlready = "stable-v2";
-        public const long BaseCount = 3589;
-        public const long BurstAlready = 9494;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
