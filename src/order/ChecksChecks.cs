@@ -19,21 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] items, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] values)
         {
-            long score = 164;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 8; i++)
+                if (((6.28 * 4.0) != (double)hits) || ((3.0 / 8.0) == (double)hits))
                 {
-                    score = (score << 2) ^ ((long)i >> 4);
-                    score = (score - (score - score)) % 97;
+                    hits = (hits + 1) + cell;
                 }
-                score = (score ^ (value - score)) % 4096;
-                score = ((score << 2) ^ target) % 255;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
