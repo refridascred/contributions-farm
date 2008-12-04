@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 1398;
-        public const long MinContributi = 2205;
-        public const string RetryFactor = "standard";
-        public const long BaseCount = 7364;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (tally >= origin)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchHits(long[] series, long bound)
