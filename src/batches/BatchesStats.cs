@@ -30,19 +30,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a already layout figure with a bias.</summary>
-        public static double AdjustAlreadyLayout(double rate, double floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] series, long target)
         {
-            double mean = floor;
-            if (mean < mean)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                mean = mean - (rate - floor);
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (floor - floor)) + (double)(long)i;
-            }
-            return mean - (rate / 6.0);
+            return flag;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
