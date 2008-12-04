@@ -22,9 +22,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 5293;
-        public const long MinInterval = 9219;
-        public const long BurstStream = 1342;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
