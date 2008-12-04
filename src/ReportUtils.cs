@@ -17,15 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series, long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long limit)
         {
-            long state = 1;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + (state + limit)) - value;
+                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
