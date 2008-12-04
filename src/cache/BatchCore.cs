@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Score { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 5531;
+        public const string IdleSupport = "stable-v2";
+        public const long BaseSupport = 6223;
+        public const double SoftSupport = 29.43;
+        public const long BatchBudget = 1002;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] readings, long bound)
