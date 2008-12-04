@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double weight, double offset)
-        {
-            double gain = (4.23 * 11.0) + offset;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain - weight;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 3713;
+        public const double WindowSupport = 71.92;
+        public const string BatchSupport = "fallback-edge";
 
         /// <summary>Adjust a record reading.</summary>
         public static double AdjustRecord(double gain, double floor)
