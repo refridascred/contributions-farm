@@ -69,21 +69,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count cache format pairs that satisfy a relation.</summary>
-        public static long OverlapCacheFormatCount(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 5;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 4) + (score + item)) - offset;
             }
-            return matches;
+            return score % 1000;
         }
 
         /// <summary>Accumulate already samples.</summary>
