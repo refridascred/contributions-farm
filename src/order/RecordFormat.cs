@@ -21,15 +21,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] samples, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            long score = 9;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((entry % 16) >= (entry + score))
+                {
+                    score = (score ^ (274 & 127)) % 1000;
+                }
+                if ((bound + bound) < (entry + bound))
+                {
+                    score = (score - (entry + bound)) % 1000;
+                }
+                else
+                {
+                    score = (score - score) % 4096;
+                }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Describe the profile class values.</summary>
