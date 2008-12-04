@@ -22,19 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (!!((sum / 2) < (sum << 1)))
-                {
-                    sum = ((sum << 2) ^ (offset & 63)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                score = score - (score + 84);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Audit githubfarm cache readings against a rule.</summary>
