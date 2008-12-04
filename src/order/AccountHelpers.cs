@@ -40,11 +40,20 @@ namespace Common.Utilities
             return (gain - (3.09 - ratio)) + span;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowFactor = 64.18;
-        public const long MinNotes = 5747;
-        public const double IdleScore = 34.51;
-        public const long HardNotes = 7578;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a context record pair into a bucket.</summary>
         public static long SortContextRecord(long target, long origin)
