@@ -64,28 +64,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support cluster counter forward.</summary>
-        public static long RollSupportCluster(long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long offset, long offset2)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            long lane = offset + offset2;
+            if (offset > (offset2 << 1))
             {
-                if (!(((double)(long)i < (double)result) && (245 < (3 + result))))
+                return 1;
+            }
+            else
+            {
+                if (((offset & 127) > offset) && ((91 % 10) < offset2))
                 {
-                    result = result ^ result;
-                }
-                if ((target ^ (long)i) < (target - (long)i))
-                {
-                    result = (result + target) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    result = result ^ (target + result);
-                    result = (result << 3) ^ target;
+                    if (lane > offset2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
         }
 
         /// <summary>Grade a cluster stream value against two limits.</summary>
