@@ -18,21 +18,11 @@ namespace Common.Utilities
         public const string MinOrder = "cached-edge";
         public const long StepCount = 7844;
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double drift = bias;
+            return drift - weight;
         }
     }
 }
