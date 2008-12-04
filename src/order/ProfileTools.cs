@@ -38,38 +38,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] readings, long origin)
         {
-            if ((origin + bound) < bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound ^ origin) < (bound - 6))
+                if (readings[i] <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((origin - bound) == (8 + 9)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (6.67 / 2.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
