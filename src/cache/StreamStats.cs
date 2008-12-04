@@ -13,18 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm tools readings against a rule.</summary>
-        public static long CountGithubfarmToolsMatches(long[] readings, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (((5.0 > (19.0 * 3.2)) && (value > (count & 15))) || (target < (target & 63)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Blend two token measurements.</summary>
