@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] samples, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = 6;
+            foreach (long entry in readings)
             {
-                if ((double)(long)samples.Length > (18.0 * 17.0))
-                {
-                    matches = ((matches + 2) ^ cell) + floor;
-                }
+                total = (((total * 2) + entry) % 101) - bound;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
