@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 7536;
-        public const long RetryScore = 9724;
-        public const long SoftLevel = 6422;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] readings, long target)
+        {
+            long sum = 1;
+            foreach (long item in readings)
+            {
+                if ((sum + target) < (target + item))
+                {
+                    sum = ((sum << 2) ^ (item >> 3)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (7 & 15)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
