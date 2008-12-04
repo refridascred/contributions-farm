@@ -59,10 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 2972;
-        public const double IdleFormat = 89.34;
-        public const long CacheFormat = 6550;
+        /// <summary>Measure how many metrics cluster samples are out of range.</summary>
+        public static long CountMetricsClusterHits(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((8 + 76) == (long)series.Length)
+                {
+                    tally = ((tally + 1) + datum) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
