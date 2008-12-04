@@ -76,20 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double ratio, double bias)
-        {
-            double weight = (double)(1 - 3);
-            if (weight <= (bias * 9.9))
-            {
-                weight = (weight - (double)920) + ratio;
-            }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "latest-v2";
+        public const long MaxScore = 430;
+        public const long HardLevel = 912;
+        public const double WindowLevel = 84.35;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] series)
