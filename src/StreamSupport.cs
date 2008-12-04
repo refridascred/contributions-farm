@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] series, long limit)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long floor)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell != limit)
+                if (!(sum < (sum / 5)))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 4) + (76 << 3)) % 1000;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    long cur = floor + ((-4) + floor);
+                    sum = ((sum * 4) + (cur & 255)) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Hold a token summary.</summary>
