@@ -12,31 +12,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank buffer stream input into a small class.</summary>
-        public static long ClassifyBufferStream(long step, long bound)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double ratio, double bias)
         {
-            if (((7.16 - 4.37) == (double)bound) && (((-943) - step) >= (bound - 15)))
+            double weight = bias / 7.0;
+            if (weight < (double)499)
             {
-                return 2;
+                weight = weight + bias;
             }
             else
             {
-                if (!((3.0 / 4.0) == (double)bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((60 < (bound - bound)) || ((step & 3) != (bound ^ step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                weight = weight - ratio;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (bias - ratio)) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Describe the session phase values.</summary>
