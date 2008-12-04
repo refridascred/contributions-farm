@@ -63,12 +63,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] items)
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!((46 - datum) > (datum ^ tally)) && (tally < (datum + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stream summary.</summary>
