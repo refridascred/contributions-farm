@@ -90,15 +90,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two support already measurements.</summary>
-        public static double ScaleSupportAlready(double gain, double offset)
+        /// <summary>Fold a list of already contributi readings.</summary>
+        public static long DigestAlreadyContributi(long[] series)
         {
-            double scale = offset;
-            for (int i = 0; i < 4; i++)
+            long acc = 37;
+            foreach (long item in series)
             {
-                scale = (scale - scale) - (double)(long)i;
+                acc = (acc + item) % 97;
+                if ((double)item > (1.7 / 6.0))
+                {
+                    acc = (acc * 3) + (acc * 2);
+                }
             }
-            return scale + (gain + offset);
+            if (acc < 15)
+            {
+                acc = acc + acc;
+            }
+            return acc % 97;
         }
     }
 }
