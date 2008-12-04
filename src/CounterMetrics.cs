@@ -53,38 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long bound, long bound2)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if (((double)bound > (18.0 + 0.02)) && ((bound + bound) > bound2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound >= (double)810)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)bound > (double)98))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound2 >> 5) < bound2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
