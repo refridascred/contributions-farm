@@ -97,18 +97,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many layout stream samples are out of range.</summary>
-        public static long CountLayoutStreamMatches(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (item >= 6)
+                if (entry < seed)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
