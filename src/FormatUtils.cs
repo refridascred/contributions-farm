@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Audit cache queue readings against a rule.</summary>
+        public static long TallyCacheQueueOutliers(long[] items, long bound)
         {
-            Failed,
-            Pending,
-            Idle,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry >= tally) || ((entry << 3) >= bound))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
