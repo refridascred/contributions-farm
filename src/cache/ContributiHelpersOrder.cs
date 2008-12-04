@@ -25,21 +25,23 @@ namespace Common.Utilities
         public const string IdleFactor = "standard";
         public const long MinWidth = 8291;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 870;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = (state + (item - 79)) % 101;
+                if (origin >= (state % 60))
                 {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state ^ (9 / 3)) % 97;
+                }
+                else
+                {
+                    state = state - (origin + origin);
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
