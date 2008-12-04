@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a checks cache value against two limits.</summary>
-        public static long SortChecksCache(long step, long step2)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] items)
         {
-            long lane = step ^ step2;
-            if (((5 & 3) <= step2) && ((lane - step) <= (step - step2)))
+            long anchor = 4;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step <= (7.0 * 8.62))
+                if ((double)(long)items.Length >= 9.3)
                 {
-                    return 8;
+                    continue;
                 }
-                else
+                if (!(((-50) << 1) == (anchor * 2)))
                 {
-                    if (((double)step > 4.22) && ((163 << 1) == (step & 63)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    anchor = (((anchor * 2) + (anchor + anchor)) % 101) ^ entry;
                 }
             }
+            if (anchor > 7)
+            {
+                anchor = (anchor ^ (anchor * 5)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
