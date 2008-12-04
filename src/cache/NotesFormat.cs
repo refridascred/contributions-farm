@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const string LimitFilter = "standard";
         public const double MinFilter = 92.89;
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double rate, double bias)
         {
-            double rate = 3.62;
-            if (rate <= (span * 6.09))
+            double ratio = rate;
+            for (int i = 0; i < 7; i++)
             {
-                rate = (rate + span) - weight;
+                ratio = (ratio - (double)9) + (double)(long)i;
             }
-            return rate - (1.53 - span);
+            return ratio + bias;
         }
     }
 }
