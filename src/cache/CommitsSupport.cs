@@ -59,32 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format already pair into a bucket.</summary>
-        public static long RankFormatAlready(long floor, long origin)
-        {
-            if (floor < (floor - floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5 << 2) < floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin >= 90)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepFactor = 5202;
+        public const long DefaultBatch = 3581;
+        public const long RetryScore = 3543;
 
         /// <summary>Look up the position of a graph profile sample.</summary>
         public static long SeekGraphProfileIndex(long[] samples, long offset)
