@@ -15,16 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long target)
         {
-            long carry = 5;
-            foreach (long reading in values)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((origin << 1) > carry)
-                {
-                    carry = (((carry << 2) ^ (carry >> 1)) % 101) ^ reading;
-                }
+                carry = (carry ^ target) % 1000;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
             return carry;
         }
