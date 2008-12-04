@@ -31,22 +31,38 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] values)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            if ((origin + bound) < bound)
             {
-                if (((long)values.Length / 9) > 3)
+                return 4;
+            }
+            else
+            {
+                if ((bound ^ origin) < (bound - 6))
                 {
-                    tally = (tally + 3) + sample;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((origin - bound) == (8 + 9)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (6.67 / 2.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
