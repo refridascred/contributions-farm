@@ -1,12 +1,25 @@
 # support settings
-flush_window_s:
-  - 423
-  - 177
-  - 185
-stats_ttl: 90.69
-layout_threshold: open
-cache_interval_ms: 8
-max_threshold_pct:
-  verbose: 9228
-  retry_retries: 64.8
-  poll_depth_count: true
+strict:
+  - 316
+  - 70
+order_retries: 1268
+enabled:
+  dry_run: 70
+  poll_ratio_s:
+    dry_run:
+      - legacy
+      - edge
+    idle_limit:
+      - 312
+      - 129
+      - 254
+      - 188
+    commits_threshold:
+      - strict
+      - edge
+      - latest
+  poll_size_count: edge
+  soft_ttl_s: true
+session_window: 7
+retry_window_count: 32
+verbose: stable
