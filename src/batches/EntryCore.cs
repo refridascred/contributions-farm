@@ -32,17 +32,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long floor, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((888 + step) != (floor + floor))
             {
-                if ((data[i] == floor) && ((data[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)step <= 10.0)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor << 3) != (372 * 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step % 7) > floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
