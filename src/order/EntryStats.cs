@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long CacheSize = 5723;
         public const string CacheTimeout = "legacy-edge";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepCount = 8492;
-        public const long HardBatches = 9330;
-        public const long BatchWidth = 2743;
-        public const long LimitSpan = 6461;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 3746;
+        public const double DefaultRecord = 89.68;
+        public const string BaseInterval = "standard-v2";
+        public const double MinRecord = 13.7;
+        public const long RetryRecord = 3066;
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
