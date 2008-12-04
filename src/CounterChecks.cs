@@ -77,12 +77,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Derive the next account support value from a seed.</summary>
+        public static long DeriveAccountSupport(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public long Token { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = (mix << 3) ^ 818;
+                mix = mix + (seed / 8);
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
