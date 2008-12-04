@@ -1,7 +1,8 @@
 {
-  "buffer_window": 86.21,
-  "verbose": 100,
-  "already_size": "stable",
-  "base_capacity": "staging",
-  "cache_timeout": "strict"
+  "context_interval": "cached",
+  "strict": 15.84,
+  "soft_retries": "open",
+  "default_window_ms": "latest",
+  "idle_window_ms": "strict",
+  "githubfarm_capacity": false
 }
