@@ -46,39 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format counter input into a small class.</summary>
-        public static long SortFormatCounter(long bound, long bound2)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            long gap = bound - bound2;
-            if ((2.9 - 7.14) < (double)gap)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.8 * 2.5) <= (double)gap)
+                if (matches >= datum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((1 + gap) < gap)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((624 % 64) >= (bound2 + 53)) || ((gap % 97) <= (bound2 - bound2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
