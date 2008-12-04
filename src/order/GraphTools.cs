@@ -39,12 +39,19 @@ namespace Common.Utilities
         public const long StepCount = 5157;
         public const double SoftEditor = 89.12;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] levels, long offset)
         {
-            Active,
-            New,
-            Synced,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
