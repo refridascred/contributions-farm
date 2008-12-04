@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double BaseCounter = 15.82;
         public const long HardLevel = 8759;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double rate, double offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            double rate2 = rate;
-            if (rate2 > rate)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate2 = (rate2 - (rate2 - rate)) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 + (rate - 7.0);
-            }
-            return rate2 + 9.0;
+            return matches;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
