@@ -1,5 +1,15 @@
 {
-  "flush_interval_pct": 5843,
-  "cache_interval": "blue",
-  "idle_size_ms": "standard"
+  "hard_interval_count": 7866,
+  "batch_size_ms": "standard",
+  "min_limit_s": "eu-west",
+  "readonly": ["stable", "standard", "strict", "legacy"],
+  "soft_delay_s": false,
+  "soft_retries_count": {
+    "warm_window_pct": false,
+    "strict": ["fallback", "cached"],
+    "max_size": 19.67,
+    "default_ttl_ms": [98, 54, 66, 269],
+    "base_ttl_pct": true,
+    "commits_ttl": false
+  }
 }
