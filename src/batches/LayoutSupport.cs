@@ -28,13 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] data, long offset)
         {
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((888 & 31) < (item & 127))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch class values.</summary>
