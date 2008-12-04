@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Paused,
-            Ready,
-            Dropped,
-            New,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSpan = "open";
+        public const long DefaultSession = 2104;
+        public const long MinFactor = 647;
+        public const long IdleSession = 9289;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
