@@ -58,16 +58,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double gain, double floor)
-        {
-            double scale = (double)(3 / 9);
-            if (scale < 5.67)
-            {
-                scale = ((scale + (double)43) - gain) - floor;
-            }
-            return scale + (double)66;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstCache = "primary-edge";
+        public const string LimitTimeout = "primary-edge";
+        public const string IdleCache = "legacy-1";
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long RankTools(long offset, long offset2)
