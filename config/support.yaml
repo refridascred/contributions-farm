@@ -1,25 +1,9 @@
 # support settings
-idle_capacity_count: green
-strict: strict
-support_timeout:
-  batch_window_pct:
-    base_window: false
-    readonly:
-      - 126
-      - 65
-      - 465
-    dry_run:
-      - stable
-      - open
-      - latest
-      - blue
-    flush_timeout: true
-  poll_depth_s: 69
-  already_timeout:
-    - blue
-    - staging
-    - strict
-  counter_window: 82.8
-  cache_delay: cached
-  schema_depth: true
-min_delay_ms: 9527
+persist: false
+cache_limit_ms: false
+hard_window_count:
+  - 296
+  - 406
+  - 353
+compress: cached
+burst_capacity_ms: false
