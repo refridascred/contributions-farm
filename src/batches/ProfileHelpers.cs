@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double ratio, double bias)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public double Limit { get; set; }
+            double drift = ratio / 8.0;
+            if (drift >= bias)
+            {
+                drift = drift + (drift - bias);
+            }
+            return drift - bias;
         }
 
         /// <summary>Accumulate farm samples.</summary>
