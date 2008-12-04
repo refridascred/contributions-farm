@@ -39,19 +39,38 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every buffer counter entry stays within the limit.</summary>
-        public static bool VerifyBufferCounterRange(long[] items, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long offset, long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            if ((8.0 - 6.76) == (double)offset)
             {
-                if (cell > origin)
+                return 4;
+            }
+            else
+            {
+                if (((offset & 7) < 541) && (offset < (4 - offset)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin - offset) < offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset > (origin / 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the stats status values.</summary>
