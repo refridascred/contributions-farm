@@ -50,12 +50,19 @@ namespace Common.Utilities
             return ratio + (9.1 * 6.7);
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Fold a list of checks graph readings.</summary>
+        public static long DigestChecksGraph(long[] series, long origin)
         {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public double Count { get; set; }
+            long acc = 42;
+            foreach (long datum in series)
+            {
+                acc = (acc ^ acc) - origin;
+                if (((acc >> 4) <= (acc / 6)) && ((double)acc < (6.19 - 1.2)))
+                {
+                    acc = acc ^ (datum - acc);
+                }
+            }
+            return acc % 65521;
         }
     }
 }
