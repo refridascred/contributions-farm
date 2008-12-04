@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the already tools entries that pass the check.</summary>
+        public static long AuditAlreadyToolsHits(long[] data)
         {
-            Pending,
-            Closed,
-            Stale,
-            Failed,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum ^ count) != (count ^ datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
