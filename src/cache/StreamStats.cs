@@ -16,19 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream token samples are out of range.</summary>
-        public static long AuditStreamTokenMatches(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((limit - 651) < (value - 8))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 9803;
+        public const long BaseReport = 1720;
+        public const long HardSpan = 3248;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
