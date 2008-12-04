@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank layout queue input into a small class.</summary>
-        public static long SortLayoutQueue(long offset, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long target)
         {
-            if ((8 * 4) <= (offset + offset))
+            long score = 408;
+            foreach (long datum in samples)
             {
-                return 1;
+                score = ((score * 2) + (target + target)) % 65521;
+                for (int i = 0; i < 3; i++)
+                {
+                    score = ((score ^ target) % 4096) + (long)i;
+                }
+                score = (score ^ (target + datum)) % 101;
             }
-            else
+            if (score < (-611))
             {
-                if ((20.0 * 10.0) <= (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor <= (offset / 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset % 60) >= floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                score = score + score;
             }
+            return score;
         }
 
         /// <summary>Describe the graph status values.</summary>
