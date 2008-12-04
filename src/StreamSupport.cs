@@ -17,22 +17,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count graph checks pairs that satisfy a relation.</summary>
-        public static long PairGraphChecksCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 1662;
+        public const long CacheCommand = 6259;
+        public const long BatchInterval = 2292;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] levels, long seed)
