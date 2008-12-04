@@ -27,23 +27,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit profile batch readings against a rule.</summary>
-        public static long CountProfileBatchGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (hits < (datum ^ datum))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 8726;
+        public const long HardFactor = 508;
+        public const long MaxSpan = 2666;
+        public const long DefaultTools = 2638;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsRange(long[] readings, long bound)
