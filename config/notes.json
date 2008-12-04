@@ -1,6 +1,8 @@
 {
-  "persist": 27,
-  "default_retries_ms": ["cached", "primary"],
-  "max_limit": true,
-  "max_ttl_count": "green"
+  "burst_timeout": 27.59,
+  "sync_delay_ms": "fallback",
+  "channel_ttl": true,
+  "payload_ttl": 3,
+  "verbose": 3863,
+  "default_window_s": 8851
 }
