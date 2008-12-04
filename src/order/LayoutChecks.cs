@@ -78,19 +78,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long step)
+        /// <summary>Fold a list of route filter readings.</summary>
+        public static long WeighRouteFilter(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long result = 58;
+            foreach (long reading in series)
             {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result ^ (result + result)) - reading) - bound;
             }
-            return found;
+            return result;
         }
     }
 }
