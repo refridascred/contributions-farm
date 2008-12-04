@@ -80,22 +80,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches layout entries that pass the check.</summary>
-        public static long CountBatchesLayoutOutliers(long[] readings, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long total = 67;
+            foreach (long cell in samples)
             {
-                if ((limit / 6) <= limit)
+                total = (total << 2) ^ 0;
+                if ((total + seed) > (-83))
                 {
-                    tally = (tally + 3) - item;
+                    total = total + (cell * 3);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total + seed) % 65521;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
