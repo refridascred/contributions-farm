@@ -62,18 +62,11 @@ namespace Common.Utilities
         public const long LimitLevel = 8170;
         public const long HardLevel = 9584;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)seed <= (3.0 + 8.0))
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstDepth = 3668;
+        public const long LimitDepth = 7618;
+        public const long HardMetrics = 3023;
+        public const double StepMetrics = 70.0;
+        public const long HardCount = 4949;
     }
 }
