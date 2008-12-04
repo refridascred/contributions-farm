@@ -1,12 +1,14 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Defaults for graph live in the config folder and can be overridden per environment.
-Use graph settings to tune how often session data is refreshed.
+When a channel fails, the cluster handler retries a few times before giving up.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Run the entry check before changing any metrics limits.
+
+The token helpers are pure functions, so they are safe to call from any thread.
+Each report is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Review payload limits each release
-- Keep buffer values small
-- Log every window change
-- Prefer metric defaults
+- Document new queue fields
+- Prefer batch defaults
+- Log every already change
