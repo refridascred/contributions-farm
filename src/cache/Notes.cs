@@ -41,13 +41,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double gain, double offset)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            double gain2 = (gain / 6.0) + (double)86;
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 - offset) - (double)(long)i;
+            }
+            return gain2 - (gain2 + 1.7);
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
