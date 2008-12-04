@@ -1,13 +1,12 @@
 {
-  "base_timeout_s": false,
-  "report_delay": 100,
-  "hard_limit_ms": 38.42,
-  "burst_timeout": {
-    "enabled": "green",
-    "contributi_timeout": 15.03,
-    "poll_interval_count": 22,
-    "account_depth": "local"
+  "persist": true,
+  "cache_retries": 48.54,
+  "cache_size_pct": 9276,
+  "enabled": {
+    "default_timeout_ms": 5830,
+    "batch_limit_ms": 26,
+    "dry_run": true,
+    "cache_ratio_ms": "staging"
   },
-  "verbose": "open",
-  "readonly": 83.77
+  "max_timeout": "primary"
 }
