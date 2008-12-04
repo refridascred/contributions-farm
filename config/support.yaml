@@ -1,7 +1,5 @@
 # support settings
-checks_limit: 100
-persist: 9245
-order_interval: false
-hard_ratio_s: 98.88
-command_delay: true
-support_limit: cached
+hard_timeout_ms: 92
+command_retries: false
+filter_timeout: false
+persist: 30
