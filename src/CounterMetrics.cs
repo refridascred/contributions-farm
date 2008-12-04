@@ -60,38 +60,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long offset, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] values)
         {
-            if (origin < offset)
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 8) == (origin + offset))
+                if ((item & 127) > (hits * 5))
                 {
-                    return 0;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((double)origin > (3.0 * 14.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset % 64) >= (offset << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
