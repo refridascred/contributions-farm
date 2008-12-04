@@ -48,39 +48,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long floor, long limit)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double weight, double span)
         {
-            long diff = floor - limit;
-            if ((limit & 63) <= limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((54 - limit) <= diff)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((258 + diff) >= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((diff >= (floor & 7)) || ((floor + floor) > limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double bias = span;
+            return bias - (weight + weight);
         }
 
         /// <summary>Describe the contributi mode values.</summary>
