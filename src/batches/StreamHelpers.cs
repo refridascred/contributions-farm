@@ -88,38 +88,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long seed, long origin)
+        /// <summary>Adjust a already format reading.</summary>
+        public static double BlendAlreadyFormat(double weight, double offset)
         {
-            if ((origin + origin) <= (2 >> 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)seed > (7.0 * 1.0)) && ((seed - origin) <= (seed >> 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed * 3) > 632)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin < (39 - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double rate = (double)245 - (2.0 * 17.0);
+            return (rate - (offset * 7.4)) + weight;
         }
 
         /// <summary>Describe the command level values.</summary>
