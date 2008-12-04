@@ -30,18 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of graph buffer readings.</summary>
-        public static long CombineGraphBuffer(long[] data)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long offset)
         {
-            long mark = 1;
-            foreach (long reading in data)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (((reading / 8) > (mark / 7)) || (mark > (reading + reading)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    mark = (mark + (107 ^ mark)) % 97;
+                    sum = ((sum - ((long)i % 3)) % 97) ^ (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mark % 97;
+            return sum;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
