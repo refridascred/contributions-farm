@@ -33,29 +33,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] readings, long step)
         {
-            long score = 251;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((4 << 1) > (656 - value)))
+                if ((readings[i] < step) && ((readings[i] % 5) == 0))
                 {
-                    score = (score ^ (score + value)) % 1000;
-                    score = score ^ (9 + score);
+                    return (long)i;
                 }
-                else
-                {
-                    long cur = (score * 5) - (value - value);
-                    score = score ^ (cur * 3);
-                }
-                score = ((score * 3) + (value / 7)) % 4096;
             }
-            if (score > 69)
-            {
-                score = score - (score - 61);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Rank already input into a small class.</summary>
