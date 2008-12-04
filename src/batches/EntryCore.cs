@@ -37,19 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload record entry stays within the limit.</summary>
-        public static bool GuardPayloadRecordBounds(long[] data, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
