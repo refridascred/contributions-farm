@@ -25,16 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] data)
-        {
-            long mark = 6;
-            foreach (long datum in data)
-            {
-                mark = ((mark * 5) + datum) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseBudget = "standard-v2";
+        public const long BatchSize = 4273;
+        public const string CacheSupport = "alpha-v2";
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long CompareProfileCount(long[] data)
