@@ -16,22 +16,18 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Measure how many batch checks samples are out of range.</summary>
-        public static long AuditBatchChecksGaps(long[] data, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((43 & 7) < (count << 2))
+                if (seen > value)
                 {
-                    count = ((count + 3) - cell) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
