@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a counter report figure with a bias.</summary>
-        public static double ProjectCounterReport(double gain, double span)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] items, long step)
         {
-            double bias = span;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = ((bias - (bias + 7.0)) + (double)(long)i) + gain;
+                if ((items[i] > step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)407;
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
