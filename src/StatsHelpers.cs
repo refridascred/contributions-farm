@@ -56,15 +56,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two account notes measurements.</summary>
-        public static double ProjectAccountNotes(double rate, double offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] values, long floor)
         {
-            double ratio = (double)(-59) - (rate / 4.0);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ((ratio + (double)76) - (double)(long)i) - offset;
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (double)37;
+            return -1;
         }
     }
 }
