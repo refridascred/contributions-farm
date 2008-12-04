@@ -32,31 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long limit, long bound)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double scale, double bias)
         {
-            if (limit >= (bound * 5))
+            double weight = (double)20;
+            if (weight > (double)70)
             {
-                return 8;
+                weight = (weight - (bias + weight)) - scale;
             }
-            else
-            {
-                if (!((double)limit < (3.0 - 6.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((19.0 * 8.48) > (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return weight - (bias / 2.0);
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
