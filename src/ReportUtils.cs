@@ -25,12 +25,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long bound, long origin)
         {
-            Active,
-            Closed,
-            Locked,
+            if ((double)origin == (1.9 + 4.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + bound) == (bound << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - bound) < (origin / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4 - bound) >= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
