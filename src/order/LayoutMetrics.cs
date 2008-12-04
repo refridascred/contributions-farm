@@ -27,14 +27,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] samples, long origin)
         {
-            Done,
-            Active,
-            Locked,
-            Dropped,
-            Queued,
+            long total = 8;
+            foreach (long entry in samples)
+            {
+                if (((double)origin <= (double)total) || ((origin & 3) >= (938 / 8)))
+                {
+                    total = ((total << 2) ^ (-4)) ^ entry;
+                }
+                else
+                {
+                    total = total + (total * 4);
+                }
+            }
+            if (total < 547)
+            {
+                total = (total * 5) + ((-617) ^ total);
+            }
+            return total;
         }
     }
 }
