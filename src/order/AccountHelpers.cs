@@ -82,22 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((((double)bound > (0.53 / 4.0)) || ((double)bound > (4.17 - 2.45))) || ((matches - bound) == (matches + bound)))
-                {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 4741;
+        public const long WindowDepth = 6910;
+        public const double BaseBuffer = 72.28;
+        public const long MaxScore = 7823;
     }
 }
