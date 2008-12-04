@@ -59,19 +59,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleDepth = 95.09;
+        public const long WindowSize = 2648;
+        public const long DefaultCount = 3657;
     }
 }
