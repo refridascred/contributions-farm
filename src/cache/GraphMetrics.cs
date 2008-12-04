@@ -53,17 +53,31 @@ namespace Common.Utilities
         public const long MinBuffer = 2008;
         public const string CacheBuffer = "legacy-1";
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] readings, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long limit, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((7.9 + 9.3) >= (double)step) || (limit <= (817 / 6)))
             {
-                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (((2.4 * 7.2) < (double)limit) || ((3.0 * 4.4) != (double)step))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (step <= (limit & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
