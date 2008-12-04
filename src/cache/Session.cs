@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const double BaseCounter = 15.82;
         public const long HardLevel = 8759;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Project the next account batches value.</summary>
+        public static double SmoothAccountBatches(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = weight;
+            if (load >= load)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + weight) - offset;
             }
-            return matches;
+            return load + (weight + load);
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
