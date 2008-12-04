@@ -1,5 +1,6 @@
 # entry settings
-session_window: 0.41
-checks_threshold: 30
-filter_threshold: 80.67
-stream_size: 59.71
+burst_capacity: 67.62
+flush_capacity_count: false
+warm_interval: true
+retry_limit: 65
+batch_interval_pct: cached
