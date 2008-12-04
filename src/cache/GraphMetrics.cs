@@ -63,23 +63,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] items, long bound)
         {
-            long carry = -1;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                carry = ((carry * 5) + carry) % 97;
-                if (((carry - 5) > (sample << 1)) && ((double)carry <= (5.2 + 9.74)))
+                if (reading < bound)
                 {
-                    carry = carry - (sample ^ sample);
+                    valid = false;
+                    break;
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry - carry) % 101;
-            }
-            return carry;
+            return valid;
         }
     }
 }
