@@ -28,15 +28,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] data, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] series, long origin)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long item in series)
             {
-                if ((888 & 31) < (item & 127))
+                if ((item > (item + matches)) || ((item + item) > (item % 2)))
                 {
-                    matches = (matches + 3) + offset;
+                    matches = (matches + 3) - origin;
                 }
             }
             return matches;
