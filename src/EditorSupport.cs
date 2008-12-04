@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Grade a queue report value against two limits.</summary>
+        public static long SortQueueReport(long target, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = target + limit;
+            if ((target % 16) >= (target >> 2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((step + target) <= (limit * 2)))
                 {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
