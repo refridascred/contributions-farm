@@ -59,31 +59,17 @@ namespace Common.Utilities
         public const string LimitTimeout = "primary-edge";
         public const string IdleCache = "legacy-1";
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long offset, long offset2)
+        /// <summary>Locate a session profile reading by value.</summary>
+        public static long SeekSessionProfileIndex(long[] samples, long seed)
         {
-            if (offset <= offset2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset2 ^ offset2) >= (offset2 * 2))
+                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset >= (609 - offset2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
