@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support graph readings against a rule.</summary>
-        public static long TallySupportGraphOutliers(long[] items, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (((-980) - seed) >= (seen + reading))
+                if (entry <= bound)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Blend two account notes measurements.</summary>
