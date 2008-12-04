@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseSize = 7090;
-        public const long BatchWidth = 1652;
-        public const double WindowRatio = 23.5;
-        public const long StepFactor = 7097;
-        public const long LimitWidth = 5996;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
