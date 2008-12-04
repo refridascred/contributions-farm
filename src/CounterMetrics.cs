@@ -62,18 +62,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] values)
         {
-            long mix = -4;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (mix <= (mix % 60))
+                if ((sample - sample) == (sample / 3))
                 {
-                    mix = ((mix ^ ((-200) ^ mix)) % 101) ^ datum;
+                    seen = seen + 3;
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
