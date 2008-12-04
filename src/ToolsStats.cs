@@ -75,22 +75,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up checks filter samples.</summary>
-        public static long OverlapChecksFilterCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 3004;
+        public const long LimitBudget = 5440;
+        public const long MinLevel = 2606;
+        public const long MaxBatches = 4340;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] series)
