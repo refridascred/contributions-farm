@@ -1,26 +1,4 @@
 # entry settings
-base_capacity_ms: 6734
-layout_size:
-  warm_retries_count: true
-  default_window:
-    - fallback
-    - staging
-  persist:
-    - 134
-    - 444
-flush_retries_ms: cached
-window_limit:
-  soft_depth_pct: legacy
-  verbose: false
-  sync_window:
-    - 496
-    - 217
-  soft_window_ms: staging
-  payload_size: local
-audit:
-  - open
-  - local
-flush_capacity:
-  flush_size_pct: edge
-  session_depth: 100
-  metrics_threshold: false
+base_ratio_s: eu-west
+soft_interval_ms: edge
+command_threshold: 1024
