@@ -33,27 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long origin)
         {
-            long sum = 3;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + 6) >= (sum - sum))
+                if (series[i] <= origin)
                 {
-                    sum = (sum ^ 5) % 1000;
-                }
-                else
-                {
-                    sum = sum + (sum & 31);
-                }
-                sum = (sum + item) % 97;
-                if ((7 % 5) != (sum << 2))
-                {
-                    sum = sum - (sum >> 5);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
