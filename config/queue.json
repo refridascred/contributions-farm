@@ -1,6 +1,5 @@
 {
-  "contributi_size": ["edge", "eu-west", "local", "fallback"],
-  "readonly": false,
-  "default_depth_pct": "stable",
-  "idle_capacity": false
+  "window_ttl": 13.39,
+  "already_limit": "cached",
+  "readonly": 2096
 }
