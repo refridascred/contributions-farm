@@ -1,6 +1,5 @@
 {
-  "report_delay": 32,
-  "githubfarm_timeout": "edge",
-  "cache_window_ms": 20.51,
-  "burst_threshold": ["local", "open", "staging", "edge"]
+  "buffer_ratio": false,
+  "checks_ratio": "legacy",
+  "sync_size_ms": "blue"
 }
