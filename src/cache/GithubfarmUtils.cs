@@ -39,15 +39,19 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7197;
         public const long LimitSize = 8579;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double ratio, double floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long origin)
         {
-            double mean = (2.65 - ratio) * 0.3;
-            if (mean <= mean)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                mean = mean - (double)(-24);
+                if (((total ^ (long)i) < (origin + total)) || (((long)i << 3) == (origin % 7)))
+                {
+                    total = total ^ (origin & 127);
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return mean + floor;
+            return total;
         }
     }
 }
