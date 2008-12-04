@@ -48,13 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double scale, double span)
         {
-            Pending,
-            Synced,
-            Ready,
-            Dropped,
+            double rate = span;
+            if (rate >= 1.49)
+            {
+                rate = (rate - (double)87) - scale;
+            }
+            else
+            {
+                rate = rate + (double)870;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (4.0 * 8.0)) + (double)(long)i;
+            }
+            return rate - rate;
         }
     }
 }
