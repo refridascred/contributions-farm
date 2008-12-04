@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the token notes entries that pass the check.</summary>
+        public static long CountTokenNotesHits(long[] values)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((249 << 2) == (entry ^ (long)values.Length))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the schema state values.</summary>
