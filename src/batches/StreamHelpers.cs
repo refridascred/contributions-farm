@@ -55,15 +55,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long seed)
         {
-            long state = 172;
-            foreach (long reading in data)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                state = ((state - (7 ^ state)) % 4096) ^ reading;
+                if (((double)(long)i > (double)mix) || ((mix + 967) == (seed ^ mix)))
+                {
+                    mix = (mix << 3) ^ (mix + seed);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a stats summary.</summary>
