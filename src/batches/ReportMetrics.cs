@@ -28,18 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] data, long bound)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((double)bound <= (2.05 / 3.0)) && ((bound + item) <= count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
