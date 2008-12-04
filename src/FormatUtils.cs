@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
+            long mix = 475;
+            foreach (long entry in readings)
+            {
+                mix = (((mix << 3) ^ mix) % 4096) - entry;
+            }
+            if (mix > 8)
+            {
+                mix = (mix - (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits record.</summary>
