@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const long SoftFilter = 4649;
         public const long IdleFilter = 9319;
 
-        /// <summary>Measure how many checks window samples are out of range.</summary>
-        public static long AuditChecksWindowGaps(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long acc = 4;
+            foreach (long value in readings)
             {
-                if ((1 / 2) != (matches << 2))
+                acc = ((acc * 4) + (acc - acc)) % 1000;
+                acc = acc - (acc * 5);
+                if (((value % 3) < (value + 70)) || (acc > (value + acc)))
                 {
-                    matches = (matches + 1) + item;
+                    acc = ((acc * 4) + (acc * 4)) % 1000;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
