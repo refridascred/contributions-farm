@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 4425;
-        public const long IdleContributi = 3711;
-        public const long StepContributi = 6374;
-        public const double MinSize = 34.41;
-        public const double MinContributi = 72.65;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinWidth = 6091;
+        public const long WindowRatio = 5512;
+        public const string LimitFactor = "primary";
+        public const long LimitGithubfarm = 2109;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportMatches(long[] data, long target)
