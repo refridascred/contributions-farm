@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardTimeout = 64.57;
+        public const long CacheCount = 1678;
+        public const double BaseCommits = 28.72;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long floor, long origin)
