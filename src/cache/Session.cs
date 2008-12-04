@@ -27,16 +27,39 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long seed, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            long edge = seed ^ target;
+            if ((double)seed == (3.0 / 7.0))
             {
-                mix = (mix ^ ((long)i + offset)) % 255;
-                mix = ((mix * 2) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((seed - target) > (edge & 15))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + 392) != (seed - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((77 % 5) >= (seed - target)) || ((target / 5) > (512 + target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a profile order figure with a bias.</summary>
