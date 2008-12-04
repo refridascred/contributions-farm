@@ -21,19 +21,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long floor)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
