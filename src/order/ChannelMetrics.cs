@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long offset, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] items)
         {
-            if (((step ^ step) <= step) || ((78 >> 3) < offset))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (13 < (offset & 63))
+                if (3.0 <= (double)matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 1) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
