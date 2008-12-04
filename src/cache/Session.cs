@@ -26,15 +26,19 @@ namespace Common.Utilities
             return rate2 + 9.0;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] items, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] data, long limit)
         {
-            long result = 428;
-            foreach (long item in items)
+            long sum = -58;
+            foreach (long value in data)
             {
-                result = ((((result * 3) + (result & 3)) % 1000) ^ item) + origin;
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = (((sum ^ (long)i) % 97) ^ value) - limit;
+                }
+                sum = (sum + 4) % 255;
             }
-            return result;
+            return sum % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
