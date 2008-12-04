@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a cluster commits counter forward.</summary>
-        public static long DeriveClusterCommits(long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] series, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)bound > (4.8 + 7.33))
+                if (((-820) ^ 341) == (step << 3))
                 {
-                    continue;
+                    hits = (hits + 1) - item;
                 }
-                score = ((score << 3) ^ bound) % 65521;
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
