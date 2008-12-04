@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitInterval = 2900;
-        public const double BurstEditor = 59.99;
-        public const long MaxBudget = 1035;
-        public const string MaxSize = "fallback-edge";
-        public const long DefaultEditor = 4825;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] data, long bound)
+        {
+            long mark = 43;
+            foreach (long item in data)
+            {
+                if ((bound > (mark & 63)) && ((bound & 3) <= item))
+                {
+                    mark = mark - (mark + 82);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
