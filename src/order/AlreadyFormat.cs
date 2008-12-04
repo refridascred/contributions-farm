@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 6916;
-        public const long BaseCache = 8701;
-        public const long MinTimeout = 700;
-        public const double RetryCount = 88.91;
-        public const long IdleTimeout = 9724;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long floor, long bound)
+        {
+            if (!((65 ^ 4) != (bound * 5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor <= (bound >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((68 + floor) == (floor >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long PairBufferCount(long[] levels)
