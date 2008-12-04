@@ -52,12 +52,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long origin)
         {
-            Draft,
-            Retry,
-            Active,
+            long total = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((origin << 1) != (origin - total))
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
