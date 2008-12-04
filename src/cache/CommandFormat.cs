@@ -25,20 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((bound - mix) != ((long)i - mix))
-                {
-                    mix = (mix ^ (mix + bound)) % 97;
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Pending,
+            Active,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a report options.</summary>
