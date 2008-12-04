@@ -39,20 +39,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitSpan = "latest-v2";
+        public const double RetryTimeout = 6.66;
+        public const long BurstCount = 4813;
 
         /// <summary>Classify a context record pair into a bucket.</summary>
         public static long SortContextRecord(long target, long origin)
