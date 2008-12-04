@@ -33,19 +33,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double bias, double bias2)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            double rate = (bias / 8.0) - bias;
-            if (rate >= (double)24)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (rate * 5.0)) + bias2;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (double)699) + (double)(long)i;
-            }
-            return rate + 20.0;
+            return tally;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
