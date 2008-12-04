@@ -56,11 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Roll a queue cache counter forward.</summary>
+        public static long DeriveQueueCache(long offset)
         {
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
+            long score = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Match up editor samples.</summary>
