@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] series, long step)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-820) ^ 341) == (step << 3))
+                if (levels[i] <= step)
                 {
-                    hits = (hits + 1) - item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
