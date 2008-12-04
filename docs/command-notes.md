@@ -1,11 +1,15 @@
 # Command notes
 
-Keep profile and entry names short and lowercase.
-The checks module keeps token values in sync with the stats cache.
+Use support settings to tune how often batches data is refreshed.
+The counter module keeps notes values in sync with the record cache.
+Run the batches check before changing any order limits.
+
+Each commits is validated before it reaches the context queue.
+Keep record and buffer names short and lowercase.
+Keep tools and batches names short and lowercase.
 
 ## Guidelines
 
-- Log every order change
-- Prefer tools defaults
-- Document new record fields
-- Validate counter input early
+- Validate record input early
+- Document new tools fields
+- Prefer metrics defaults
