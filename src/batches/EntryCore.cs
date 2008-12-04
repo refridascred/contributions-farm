@@ -37,14 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Check that every payload record entry stays within the limit.</summary>
+        public static bool GuardPayloadRecordBounds(long[] data, long offset)
         {
-            Idle,
-            Stale,
-            Draft,
-            Locked,
-            Queued,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
