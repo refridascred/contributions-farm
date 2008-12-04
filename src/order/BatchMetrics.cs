@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] items, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mix = 15;
+            foreach (long value in series)
             {
-                if ((entry >> 2) >= (78 % 24))
+                if ((mix << 2) >= (mix * 2))
                 {
-                    count = (count + 3) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = ((mix << 3) ^ mix) + value;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the payload phase values.</summary>
