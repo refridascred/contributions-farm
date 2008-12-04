@@ -17,10 +17,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 1662;
-        public const long CacheCommand = 6259;
-        public const long BatchInterval = 2292;
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double weight, double span)
+        {
+            double rate = span - (weight / 5.0);
+            if (rate > weight)
+            {
+                rate = rate + weight;
+            }
+            else
+            {
+                rate = rate + span;
+            }
+            return rate + weight;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] levels, long seed)
