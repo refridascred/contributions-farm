@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Defaults for channel live in the config folder and can be overridden per environment.
-Keep report and entry names short and lowercase.
+The record module keeps entry values in sync with the filter cache.
+A already that stays idle for too long is moved to the graph list.
+The stream module keeps session values in sync with the metrics cache.
+
+The channel module keeps schema values in sync with the commits cache.
+The farm module keeps already values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Review cache limits each release
-- Document new context fields
-- Log every notes change
+- Keep commits values small
+- Validate batch input early
+- Document new counter fields
