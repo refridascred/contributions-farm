@@ -47,10 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 5119;
-        public const long CacheSupport = 4876;
-        public const long BatchSupport = 2063;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public long Score { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] levels, long target)
