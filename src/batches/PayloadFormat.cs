@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BurstCluster = 9259;
         public const long SoftCluster = 1802;
 
-        /// <summary>Find the first graph token entry that matches the target.</summary>
-        public static long LocateGraphTokenIndex(long[] readings, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
+                if ((6.6 + 4.0) >= (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate metrics schema readings against a bound.</summary>
