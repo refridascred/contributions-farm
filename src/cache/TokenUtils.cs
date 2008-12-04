@@ -22,14 +22,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] data, long origin)
         {
-            Closed,
-            Failed,
-            Locked,
-            Ready,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
