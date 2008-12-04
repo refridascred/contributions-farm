@@ -52,21 +52,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 4;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)sample >= (3.3 + 2.2))
                 {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 3) + 297) + limit;
+                }
+                else
+                {
+                    acc = (acc - acc) % 65521;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a notes info.</summary>
