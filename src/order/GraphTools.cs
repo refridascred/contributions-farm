@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] data, long offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            double mean = (2.65 - gain) / 4.0;
+            if (mean <= (double)67)
             {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - 5.34;
             }
-            return stale;
+            else
+            {
+                mean = mean - (gain - mean);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (7.03 - gain)) + (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
