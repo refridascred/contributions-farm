@@ -1,12 +1,11 @@
 # Command notes
 
-Each buffer is validated before it reaches the editor queue.
-A batches that stays idle for too long is moved to the profile list.
-Each farm is validated before it reaches the checks queue.
+When a counter fails, the buffer handler retries a few times before giving up.
+Each stats is validated before it reaches the contributi queue.
+When a cache fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep command values small
-- Validate tools input early
-- Log every entry change
+- Keep farm values small
+- Review profile limits each release
+- Document new queue fields
