@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Synced,
-            Ready,
-            Pending,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 6916;
+        public const long BaseCache = 8701;
+        public const long MinTimeout = 700;
+        public const double RetryCount = 88.91;
+        public const long IdleTimeout = 9724;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long PairBufferCount(long[] levels)
