@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const long RetryInterval = 135;
         public const string CacheFactor = "alpha-edge";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "legacy-edge";
-        public const double WindowTimeout = 34.87;
-        public const string IdleBudget = "strict";
-        public const long WindowFarm = 4552;
-        public const long BurstRatio = 322;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] series)
+        {
+            long total = 550;
+            foreach (long value in series)
+            {
+                total = total - (value + (-4));
+            }
+            return total % 97;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string HardLevel = "stable-v2";
