@@ -57,22 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry profile readings.</summary>
-        public static long WeighEntryProfile(long[] items, long bound)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long score = -70;
-            foreach (long cell in items)
-            {
-                if ((2.5 > (double)bound) || ((37 - 713) != (bound >> 1)))
-                {
-                    score = score ^ (cell & 31);
-                }
-            }
-            if (score > 49)
-            {
-                score = ((score * 3) + (bound + score)) % 1000;
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
