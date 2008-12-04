@@ -16,14 +16,11 @@ namespace Common.Utilities
             return rate - (double)(-5);
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Retry,
-            Idle,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepCount = 8492;
+        public const long HardBatches = 9330;
+        public const long BatchWidth = 2743;
+        public const long LimitSpan = 6461;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] readings)
