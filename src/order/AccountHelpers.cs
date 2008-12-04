@@ -34,19 +34,21 @@ namespace Common.Utilities
             return scale + (scale - bias);
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] levels, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
