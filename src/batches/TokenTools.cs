@@ -47,20 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = mark ^ ((long)i2 ^ mark);
-                }
-                mark = mark ^ ((long)i - target);
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepSize = "fallback-edge";
+        public const double RetryGraph = 27.29;
+        public const long MinGraph = 6945;
     }
 }
