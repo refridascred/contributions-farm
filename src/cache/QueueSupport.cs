@@ -16,20 +16,11 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseDepth = 9859;
+        public const long BaseRatio = 9199;
+        public const long StepChannel = 6022;
+        public const long MaxRatio = 9682;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long SoftCount = 6999;
