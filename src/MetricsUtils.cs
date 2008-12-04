@@ -75,22 +75,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] series, long offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - seen) == (seen + 31))
-                {
-                    seen = (seen + 2) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Retry,
+            New,
+            Synced,
         }
     }
 }
