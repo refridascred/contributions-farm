@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 8120;
+        public const long CacheRecord = 2010;
+        public const long RetryRecord = 6081;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ProjectOrder(double bias, double floor)
