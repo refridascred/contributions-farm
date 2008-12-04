@@ -1,4 +1,18 @@
 # entry settings
-batch_depth: false
-verbose: 930
-graph_size: open
+graph_limit: 1024
+token_interval:
+  - fallback
+  - strict
+  - green
+  - primary
+buffer_window:
+  checks_ratio:
+    - 433
+    - 133
+    - 64
+    - 74
+  retry_interval: true
+  idle_ttl_pct: 32.84
+  notes_size: true
+soft_ttl_s: 60
+batch_ratio: true
