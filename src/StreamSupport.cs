@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metrics batch value.</summary>
-        public static double BlendMetricsBatch(double bias, double bias2)
+        /// <summary>Count the contributi counter entries that pass the check.</summary>
+        public static long MeasureContributiCounterHits(long[] items, long target)
         {
-            double drift = (bias * 2.7) * 14.0;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                drift = (drift - (double)(long)i) - bias2;
+                if (((seen & 3) < (329 >> 1)) && ((0.26 * 5.4) == (double)seen))
+                {
+                    seen = ((seen + 3) - value) + target;
+                }
             }
-            return drift + (double)649;
+            return seen;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
