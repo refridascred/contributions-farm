@@ -30,14 +30,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowEditor = 23.73;
+        public const double RetryEditor = 31.78;
+        public const long StepBudget = 894;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesBounds(long[] samples, long bound)
