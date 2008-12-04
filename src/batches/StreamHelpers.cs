@@ -53,21 +53,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
