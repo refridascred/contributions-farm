@@ -15,13 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile class values.</summary>
