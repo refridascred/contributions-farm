@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCommits = "staging-v2";
-        public const long StepScore = 1069;
-        public const long StepCommits = 723;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
