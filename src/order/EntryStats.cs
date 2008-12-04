@@ -16,12 +16,20 @@ namespace Common.Utilities
             return rate - (double)(-5);
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            long sum = 1;
+            foreach (long datum in data)
+            {
+                sum = sum + (long)data.Length;
+                sum = (sum + (31 ^ datum)) % 101;
+                if (((datum - 511) < (329 * 2)) && ((sum + sum) < 98))
+                {
+                    sum = ((sum << 3) ^ (datum * 3)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
