@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double BurstSupport = 40.23;
         public const long SoftSupport = 9034;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] readings, long floor)
+        /// <summary>Validate commits already readings against a bound.</summary>
+        public static bool VerifyCommitsAlreadyRange(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (entry < floor)
+                if (reading >= seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Describe the report kind values.</summary>
