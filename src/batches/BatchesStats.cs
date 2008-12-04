@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long step)
+        /// <summary>Count the editor notes entries that pass the check.</summary>
+        public static long AuditEditorNotesHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] < step)
+                if ((sample % 60) > (tally ^ 914))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate editor samples.</summary>
