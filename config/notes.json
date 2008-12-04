@@ -1,5 +1,6 @@
 {
-  "sync_timeout_pct": 84.46,
-  "token_capacity": 250,
-  "warm_timeout_count": 2936
+  "dry_run": false,
+  "audit": 58.33,
+  "checks_timeout": false,
+  "warm_ratio_ms": false
 }
