@@ -1,9 +1,21 @@
 # support settings
-hard_depth_ms: standard
-min_ratio_s: eu-west
-flush_timeout_ms:
-  - eu-west
-  - blue
-default_capacity: 7305
-flush_size_count: true
-format_capacity: 100
+strict: stable
+buffer_window:
+  persist: 20
+  report_window: cached
+  sync_delay_pct:
+    - local
+    - green
+    - green
+    - edge
+  default_timeout_pct:
+    cache_size_count: fallback
+    batch_interval_ms: 55.93
+    graph_ttl: true
+    dry_run: strict
+    counter_timeout: primary
+    warm_size_pct: 3248
+  tools_ratio: true
+  hard_ttl_ms: false
+poll_retries: 83.77
+idle_limit: 35.65
