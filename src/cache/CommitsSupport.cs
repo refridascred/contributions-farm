@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(275 > total))
-                {
-                    total = ((total << 2) ^ ((long)i / 3)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseBuffer = "stable-1";
+        public const long LimitSize = 5879;
+        public const string MaxTimeout = "staging-v2";
+        public const long IdleBuffer = 8195;
 
         /// <summary>Match up metric account samples.</summary>
         public static long MatchMetricAccountCount(long[] samples)
