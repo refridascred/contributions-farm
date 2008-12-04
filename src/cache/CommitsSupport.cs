@@ -48,18 +48,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout profile samples are out of range.</summary>
-        public static long MeasureLayoutProfileGaps(long[] series)
+        /// <summary>Classify a format already pair into a bucket.</summary>
+        public static long RankFormatAlready(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if (floor < (floor - floor))
             {
-                if ((seen & 255) <= seen)
+                return 2;
+            }
+            else
+            {
+                if ((5 << 2) < floor)
                 {
-                    seen = (seen + 2) - item;
+                    return 0;
+                }
+                else
+                {
+                    if (origin >= 90)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
