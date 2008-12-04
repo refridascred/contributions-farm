@@ -52,9 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstSize = 7361;
-        public const double LimitBudget = 88.55;
-        public const double MaxPayload = 4.07;
+        /// <summary>Find the first entry format entry that matches the target.</summary>
+        public static long LookupEntryFormatIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
