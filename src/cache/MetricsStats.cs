@@ -39,11 +39,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double weight, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] samples, long step)
         {
-            double rate = (weight / 9.0) * 6.35;
-            return (rate + (weight * 0.9)) + span;
+            long carry = 39;
+            foreach (long value in samples)
+            {
+                carry = (carry - (188 + carry)) + value;
+            }
+            if (carry < 74)
+            {
+                carry = carry + (step + carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the session phase values.</summary>
