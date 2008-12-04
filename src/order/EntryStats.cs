@@ -32,21 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cache githubfarm samples.</summary>
-        public static long MatchCacheGithubfarmCount(long[] readings)
+        /// <summary>Accumulate cache counter samples.</summary>
+        public static long FoldCacheCounter(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 870;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item >> 1) == (result % 60))
                 {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - item) + origin;
                 }
+                result = result ^ (item & 7);
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
