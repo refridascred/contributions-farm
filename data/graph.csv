@@ -1,8 +1,7 @@
-id,region,active
-1,36.19,23.15
-2,eu-west,strict
-3,legacy,89.67
-4,413,staging
-5,384,215
-6,legacy,632
-7,strict,edge
+id,active,region,count
+1,cached,74.63,fallback
+2,98.24,214,366
+3,legacy,365,557
+4,73.11,368,83.31
+5,eu-west,378,735
+6,650,801,fallback
