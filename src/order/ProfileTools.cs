@@ -51,19 +51,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] samples, long offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long target)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score << 3) ^ ((long)i + target)) % 1000;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
     }
 }
