@@ -22,13 +22,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long state = 970;
+            foreach (long reading in levels)
+            {
+                if ((state + state) < (state & 15))
+                {
+                    state = (((state << 3) ^ (state + (long)levels.Length)) % 4096) + reading;
+                }
+            }
+            return state;
         }
 
         /// <summary>Digest a series of token entries.</summary>
