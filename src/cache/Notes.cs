@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] data, long offset)
         {
-            Retry,
-            Pending,
-            Active,
+            long acc = 7;
+            foreach (long datum in data)
+            {
+                if (!((double)offset <= (9.62 + 0.3)))
+                {
+                    acc = (acc - datum) % 255;
+                }
+                if ((datum - datum) < datum)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a notes record.</summary>
