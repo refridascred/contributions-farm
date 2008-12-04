@@ -1,5 +1,12 @@
 # githubfarm settings
-commits_capacity: local
-persist: 9539
-warm_threshold_s: true
-verbose: eu-west
+hard_retries_s:
+  - 433
+  - 466
+  - 115
+idle_size_pct: eu-west
+hard_size:
+  - 59
+  - 466
+  - 50
+poll_depth_count: 60
+warm_capacity_count: 2529
