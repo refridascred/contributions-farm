@@ -56,22 +56,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long origin, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long target, long bound)
         {
-            if (!((double)origin == (4.5 - 4.49)))
+            if (bound < target)
             {
                 return 3;
             }
             else
             {
-                if ((double)offset > 17.0)
+                if ((-449) <= target)
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if (3 > bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
