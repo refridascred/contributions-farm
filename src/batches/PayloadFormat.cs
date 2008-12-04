@@ -43,19 +43,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate metric context readings against a bound.</summary>
-        public static bool VerifyMetricContextLimits(long[] data, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (reading > limit)
+                if (item <= step)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
