@@ -78,19 +78,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] data, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] levels)
         {
-            long total = -402;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                total = ((total + (bound / 3)) % 4096) + entry;
+                if (5.01 < (double)hits)
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            if (total > 0)
-            {
-                total = total - (total - 3);
-            }
-            return total;
+            return hits;
         }
     }
 }
