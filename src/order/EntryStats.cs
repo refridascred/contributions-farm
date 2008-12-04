@@ -16,18 +16,12 @@ namespace Common.Utilities
             return rate - (double)(-5);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings, long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long acc = 79;
-            foreach (long reading in readings)
-            {
-                if ((reading - acc) != (reading << 1))
-                {
-                    acc = acc - floor;
-                }
-            }
-            return acc % 4096;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
