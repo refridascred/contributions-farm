@@ -1,12 +1,14 @@
 # Command notes
 
-Run the account check before changing any cluster limits.
-The layout module keeps layout values in sync with the context cache.
-The batches module keeps filter values in sync with the token cache.
+Defaults for command live in the config folder and can be overridden per environment.
+Each profile is validated before it reaches the account queue.
+
+The schema module keeps counter values in sync with the counter cache.
+Use report settings to tune how often session data is refreshed.
+Use channel settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Keep metric values small
-- Review channel limits each release
-- Validate checks input early
-- Document new graph fields
+- Review report limits each release
+- Prefer route defaults
+- Validate filter input early
