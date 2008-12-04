@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Validate githubfarm metrics readings against a bound.</summary>
+        public static bool GuardGithubfarmMetricsBounds(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the format state values.</summary>
