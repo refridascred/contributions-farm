@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long step, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long bound, long target)
         {
-            if (limit >= (step - limit))
+            if ((target & 127) > (target / 9))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if (9.36 <= (double)limit)
+                if (bound < (bound << 2))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((limit + step) == (step << 1))
+                    if (((target - 4) <= target) || ((bound % 8) <= (target * 4)))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        if ((1 ^ limit) != (step + step))
+                        if (((double)bound >= (7.76 * 12.0)) && ((bound ^ target) < (bound & 3)))
                         {
-                            return 4;
+                            return 7;
                         }
                         else
                         {
-                            return 7;
+                            return 6;
                         }
                     }
                 }
