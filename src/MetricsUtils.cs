@@ -25,11 +25,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long target2)
         {
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
+            if ((target >> 5) < target2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0.81 - 10.0) != (double)target2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
