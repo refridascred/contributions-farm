@@ -63,11 +63,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardScore = 7442;
-        public const long DefaultRatio = 9677;
-        public const long MinLevel = 8517;
-        public const long MaxBatch = 8229;
-        public const string MinWidth = "open";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data, long limit)
+        {
+            long anchor = 22;
+            foreach (long datum in data)
+            {
+                if (!((double)anchor < (8.5 * 20.0)))
+                {
+                    anchor = (anchor ^ (limit * 2)) + datum;
+                }
+            }
+            return anchor;
+        }
     }
 }
