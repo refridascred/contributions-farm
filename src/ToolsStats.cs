@@ -24,21 +24,13 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Compare every pair of filter context readings.</summary>
-        public static long PairFilterContextCount(long[] levels)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
