@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 96.96;
-        public const long DefaultSupport = 9359;
-        public const long LimitDepth = 2140;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long CombineEditor(long[] values, long floor)
