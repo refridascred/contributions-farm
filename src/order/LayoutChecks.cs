@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 662;
-        public const long RetryWidth = 6217;
-        public const double HardTimeout = 73.46;
-        public const long IdleRatio = 630;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] samples, long step)
