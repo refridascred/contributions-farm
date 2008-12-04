@@ -13,19 +13,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double ratio, double offset)
+        /// <summary>Classify a record counter pair into a bucket.</summary>
+        public static long GradeRecordCounter(long origin, long bound)
         {
-            double gain = (ratio - offset) + ratio;
-            if (gain <= (double)7)
+            if ((17.0 * 8.0) < (double)bound)
             {
-                gain = gain - offset;
+                return 1;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain - (ratio + offset)) + (double)(long)i;
+                if ((19.0 + 10.0) < (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound >= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return gain + (double)7;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
