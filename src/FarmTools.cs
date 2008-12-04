@@ -16,17 +16,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] data, long floor)
+        /// <summary>Scale a profile cluster figure with a bias.</summary>
+        public static double AdjustProfileCluster(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = (bias + offset) * 6.71;
+            if (bias2 < (double)1)
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (offset + 6.93);
             }
-            return -1;
+            return bias2 - offset;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
