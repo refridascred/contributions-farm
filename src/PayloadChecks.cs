@@ -25,11 +25,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryFactor = 9964;
-        public const string WindowProfile = "primary-edge";
-        public const string WindowInterval = "open-edge";
-        public const long CacheProfile = 5838;
+        /// <summary>Check that every schema batch entry stays within the limit.</summary>
+        public static bool CheckSchemaBatchRange(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LookupQueueIndex(long[] levels, long origin)
