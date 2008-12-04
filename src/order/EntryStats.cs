@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings, long floor)
         {
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
+            long acc = 79;
+            foreach (long reading in readings)
+            {
+                if ((reading - acc) != (reading << 1))
+                {
+                    acc = acc - floor;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
