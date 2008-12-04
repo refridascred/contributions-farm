@@ -40,24 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel commits series from a seed.</summary>
-        public static long RollChannelCommits(long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
+            long sum = 3;
+            foreach (long value in levels)
             {
-                if (((origin << 1) < (long)i) || ((6.0 - 2.13) < (double)carry))
-                {
-                    carry = (carry ^ 44) % 255;
-                    carry = (carry + ((long)i ^ origin)) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (origin % 2);
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                sum = ((sum ^ (value % 100)) % 65521) - origin;
             }
-            return carry;
+            return sum;
         }
     }
 }
