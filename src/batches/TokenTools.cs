@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 9807;
-        public const double DefaultTimeout = 66.52;
-        public const double BaseCache = 64.63;
-        public const long MaxCache = 5399;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long StepAlready(long step)
