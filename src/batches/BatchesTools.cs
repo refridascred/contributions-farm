@@ -48,11 +48,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double bias, double span)
+        /// <summary>Look up the position of a notes token sample.</summary>
+        public static long LookupNotesTokenIndex(long[] data, long bound)
         {
-            double weight = (8.6 - span) + (bias + span);
-            return weight + weight;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
