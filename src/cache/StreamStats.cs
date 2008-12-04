@@ -23,17 +23,12 @@ namespace Common.Utilities
         public const long BaseReport = 1720;
         public const long HardSpan = 3248;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] series, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
