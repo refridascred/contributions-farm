@@ -52,14 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data, long step)
         {
-            New,
-            Draft,
-            Paused,
-            Synced,
-            Ready,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (((entry - tally) == (298 >> 2)) || ((double)step < (8.0 - 2.6)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
