@@ -39,11 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 3.14;
-        public const long HardWidth = 5003;
-        public const long RetrySpan = 3387;
-        public const long IdleFactor = 4656;
-        public const double CacheLevel = 49.91;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
