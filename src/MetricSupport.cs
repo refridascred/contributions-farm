@@ -37,13 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] samples)
         {
-            New,
-            Closed,
-            Idle,
-            Dropped,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (value <= (value + value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
