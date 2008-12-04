@@ -36,19 +36,12 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mark = 8;
-            foreach (long datum in levels)
-            {
-                mark = ((mark << 3) ^ mark) + datum;
-            }
-            if (mark > 6)
-            {
-                mark = (mark - (mark * 4)) % 65521;
-            }
-            return mark;
+            Pending,
+            Queued,
+            Done,
         }
     }
 }
