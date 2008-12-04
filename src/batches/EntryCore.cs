@@ -63,22 +63,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] values)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double scale = (double)(3 / 9);
+            if (scale < 5.67)
             {
-                if ((long)values.Length > (item - 166))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = ((scale + (double)43) - gain) - floor;
             }
-            return tally;
+            return scale + (double)66;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
