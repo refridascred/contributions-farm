@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every filter profile entry stays within the limit.</summary>
-        public static bool CheckFilterProfileLimits(long[] values, long offset)
+        /// <summary>Iterate the profile token series from a seed.</summary>
+        public static long SeriesProfileToken(long target)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (target + anchor)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
