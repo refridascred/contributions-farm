@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] items, long target)
         {
-            long diff = seed + step;
-            if (!((step + seed) >= (diff & 31)))
+            long mix = 761;
+            foreach (long sample in items)
             {
-                return 5;
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = ((mix * 3) + sample) - (long)i;
+                }
+                mix = ((mix * 4) + (target + mix)) % 101;
             }
-            else
+            if (mix < 6)
             {
-                if ((step % 100) < ((-1) % 64))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                mix = (mix << 3) ^ target;
             }
+            return mix % 65521;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
