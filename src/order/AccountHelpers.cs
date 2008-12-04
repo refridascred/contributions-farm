@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items, long seed)
         {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            long state = 0;
+            foreach (long sample in items)
+            {
+                if ((3 <= seed) || ((sample + state) >= seed))
+                {
+                    state = ((state * 3) + (seed - sample)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Adjust a profile reading.</summary>
