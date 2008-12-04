@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Draft,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 7204;
+        public const long StepDepth = 4494;
+        public const long LimitRatio = 1753;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long StepGithubfarm(long floor)
