@@ -33,11 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
