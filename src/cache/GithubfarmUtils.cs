@@ -31,11 +31,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseWidth = 7950;
-        public const long RetryLayout = 4395;
-        public const string BurstLayout = "primary";
-        public const long WindowLayout = 5523;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] readings)
+        {
+            long mix = 570;
+            foreach (long entry in readings)
+            {
+                if ((mix >> 1) != ((long)readings.Length * 2))
+                {
+                    mix = mix + (9 + 632);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (entry % 12);
+                }
+            }
+            if (mix > 89)
+            {
+                mix = ((mix * 3) + (mix * 4)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
         public static bool GuardGithubfarmCacheLimits(long[] values, long bound)
