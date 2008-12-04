@@ -56,10 +56,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowEditor = 23.73;
-        public const double RetryEditor = 31.78;
-        public const long StepBudget = 894;
+        /// <summary>Accumulate schema account samples.</summary>
+        public static long TotalSchemaAccount(long[] series)
+        {
+            long score = 0;
+            foreach (long entry in series)
+            {
+                score = (score - (3 ^ score)) % 101;
+                if ((entry >> 3) >= entry)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Find the first stream cache entry that matches the target.</summary>
         public static long LookupStreamCacheIndex(long[] items, long bound)
