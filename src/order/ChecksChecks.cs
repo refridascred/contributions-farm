@@ -21,12 +21,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "strict-edge";
-        public const long SoftSize = 4261;
-        public const long BurstFactor = 4377;
-        public const long BaseWindow = 8597;
-        public const double HardWindow = 48.48;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 77.28;
+        public const long CacheTimeout = 269;
+        public const string MinDepth = "strict-edge";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmMatches(long[] items)
