@@ -64,18 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] samples)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = 349;
+            foreach (long reading in series)
             {
-                if ((double)hits >= 19.0)
+                if (((363 / 8) == (reading ^ acc)) || ((acc ^ 6) > reading))
                 {
-                    hits = (hits + 3) + cell;
+                    acc = (acc << 3) ^ ((long)series.Length - 83);
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
