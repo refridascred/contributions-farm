@@ -1,7 +1,10 @@
-id,token,region,score,label
-1,blue,858,169,56.88
-2,957,72.46,36.96,standard
-3,254,95.3,918,25.34
-4,630,stable,64.05,754
-5,blue,24.55,953,46.84
-6,cached,staging,27.31,629
+id,active,score,owner,state
+1,stable,790,90.53,72.07
+2,320,32.89,323,76.35
+3,legacy,primary,370,56.64
+4,blue,20.67,10.49,latest
+5,31.15,239,85.06,427
+6,83.25,386,local,949
+7,150,409,535,664
+8,cached,753,31.43,latest
+9,stable,local,27.95,fallback
