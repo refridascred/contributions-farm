@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long bound, long seed)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] data, long bound)
         {
-            if (!((bound & 3) < bound))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed < (969 + bound)) || ((seed - seed) <= (7 * 4)))
+                if ((data[i] == bound) && ((data[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
