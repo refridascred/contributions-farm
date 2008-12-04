@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long step)
         {
-            Idle,
-            Synced,
-            Retry,
-            Stale,
-            Failed,
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                double gain = 6.5;
+                long span = ((long)i + (long)i) + (state * 5);
+                if (1.41 < (gain * 1.6))
+                {
+                    state = ((state * 2) + span) % 1000;
+                    state = ((state * 2) + step) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
