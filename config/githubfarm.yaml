@@ -1,16 +1,31 @@
 # githubfarm settings
-hard_ratio_ms:
-  - blue
-  - edge
-  - blue
-hard_threshold: blue
-flush_interval:
-  - 84
-  - 396
-  - 434
-  - 373
-compress:
-  burst_retries: 45.33
-  cache_threshold: 46
-  verbose: 23.75
-report_depth: 79.16
+default_size_count: 500
+enabled: fallback
+batch_ttl_ms:
+  - 67
+  - 127
+  - 23
+  - 12
+verbose: staging
+persist:
+  retry_limit_count: primary
+  soft_ttl_pct:
+    idle_retries_count: 7211
+    poll_retries_count: true
+    hard_timeout_ms:
+      - 355
+      - 214
+      - 195
+      - 18
+    order_window: 46.63
+    farm_interval: 12.83
+    verbose: 880
+  default_threshold_pct:
+    stats_limit: 29.24
+    poll_depth: 30
+    sync_delay_ms: 88.62
+    format_ttl: 6674
+  warm_ratio_pct: 30
+  dry_run:
+    - 289
+    - 465
