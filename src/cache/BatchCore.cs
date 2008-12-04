@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] readings, long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double weight, double span)
         {
-            long total = 6;
-            foreach (long entry in readings)
+            double weight2 = span / 7.0;
+            if (weight2 < (12.0 / 9.0))
             {
-                total = (((total * 2) + entry) % 101) - bound;
+                weight2 = (weight2 + 3.0) - weight;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + (1.0 / 7.0)) + (double)(long)i;
+            }
+            return weight2 + span;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
