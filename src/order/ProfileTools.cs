@@ -57,19 +57,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Classify a counter batches pair into a bucket.</summary>
+        public static long BucketCounterBatches(long origin, long seed)
         {
-            long mix = 15;
-            foreach (long sample in values)
+            long diff = origin + seed;
+            if ((diff & 3) != (87 - diff))
             {
-                mix = mix - sample;
+                return 6;
             }
-            if (mix < 651)
+            else
             {
-                mix = ((mix * 3) + (mix * 5)) % 4096;
+                if (((9 / 2) <= (seed ^ origin)) && ((double)diff <= 0.1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((diff & 15) != (origin - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return mix % 65521;
         }
     }
 }
