@@ -26,20 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] values, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                long next = (long)i << 3;
-                if (!((next + 0) <= 8))
+                if ((60 + bound) <= (seen + bound))
                 {
-                    next = ((next * 5) + (long)i) % 255;
+                    seen = (seen + 3) + value;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
