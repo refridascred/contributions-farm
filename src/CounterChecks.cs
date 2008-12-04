@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] series, long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)count != (8.6 - 8.0))
-                {
-                    count = ((count + 1) ^ value) + bound;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
