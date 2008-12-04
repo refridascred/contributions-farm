@@ -1,4 +1,11 @@
 # entry settings
-default_retries_s: 79.68
-max_ttl_pct: 100
-metric_size: false
+compress: 67
+max_delay: true
+min_limit: 81.39
+base_capacity_pct:
+  readonly: 53
+  counter_timeout: false
+  base_delay: 50.57
+  cluster_depth: 500
+  idle_limit: false
+  compress: eu-west
