@@ -1,6 +1,7 @@
 {
-  "audit": 500,
-  "base_capacity": 3860,
-  "stream_ratio": "standard",
-  "poll_retries": 63.14
+  "entry_limit": 93,
+  "dry_run": "latest",
+  "profile_window": false,
+  "readonly": "staging",
+  "min_depth": 1615
 }
