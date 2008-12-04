@@ -45,25 +45,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long seed, long seed2)
+        /// <summary>Compare every pair of graph payload readings.</summary>
+        public static long MatchGraphPayloadCount(long[] items)
         {
-            long step = seed ^ seed2;
-            if ((step & 63) == (step % 100))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step << 3) < ((-3) >> 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
