@@ -49,38 +49,17 @@ namespace Common.Utilities
         public const long BatchSchema = 2056;
         public const long MaxRatio = 8941;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long bound, long step)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] data, long limit)
         {
-            if (((step + (-9)) != (step >> 3)) || ((step / 9) < (step + step)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound + 1) >= (step >> 3)) && (bound >= (step >> 2)))
+                if ((data[i] == limit) && ((data[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound + bound) <= (bound - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound > (11.0 - 20.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
