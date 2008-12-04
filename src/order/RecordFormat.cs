@@ -52,21 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
     }
 }
