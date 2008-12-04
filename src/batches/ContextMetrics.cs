@@ -23,11 +23,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long target)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(anchor < (target & 15)))
+                {
+                    anchor = ((anchor << 2) ^ (target - anchor)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate format order samples.</summary>
