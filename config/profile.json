@@ -1,12 +1,6 @@
 {
-  "soft_timeout_s": ["cached", "local"],
-  "cache_retries_ms": 500,
-  "max_size_ms": {
-    "route_depth": true,
-    "max_threshold_ms": 9438,
-    "enabled": 30,
-    "poll_size_pct": 20,
-    "readonly": 20.89
-  },
-  "hard_timeout_pct": true
+  "enabled": 82.65,
+  "contributi_size": true,
+  "tools_interval": [258, 21, 431, 497],
+  "checks_depth": 46.0
 }
