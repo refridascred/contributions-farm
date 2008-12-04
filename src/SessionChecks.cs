@@ -37,19 +37,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] data, long step)
+        /// <summary>Check that every cluster support entry stays within the limit.</summary>
+        public static bool GuardClusterSupportLimits(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (datum != step)
+                if (item < bound)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Describe the route level values.</summary>
