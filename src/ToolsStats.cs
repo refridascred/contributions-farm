@@ -13,25 +13,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a batch context value against two limits.</summary>
-        public static long SortBatchContext(long limit, long seed)
-        {
-            if (((seed / 6) >= limit) || (limit >= (seed * 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (seed & 255))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "standard-edge";
+        public const long DefaultSpan = 4424;
+        public const long WindowSize = 9210;
+        public const long StepScore = 4900;
+        public const string SoftStats = "primary-v2";
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long step)
