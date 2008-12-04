@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long floor, long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            if (!((65 ^ 4) != (bound * 5)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor <= (bound >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((68 + floor) == (floor >> 2))
+                    if ((items[i] + items[j]) > 11)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the report graph series from a seed.</summary>
