@@ -38,13 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            Dropped,
+            Queued,
+            Done,
+            Retry,
         }
     }
 }
