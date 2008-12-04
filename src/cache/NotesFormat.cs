@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 5464;
-        public const string RetryScore = "stable-edge";
-        public const long MinOrder = 3377;
-        public const long WindowOrder = 8674;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ProjectOrder(double bias, double floor)
