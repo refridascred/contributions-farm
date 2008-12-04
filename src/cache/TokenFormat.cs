@@ -29,18 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] samples, long offset)
+        /// <summary>Audit metric already readings against a rule.</summary>
+        public static long TallyMetricAlreadyMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((323 + offset) >= (long)samples.Length)
+                if (((1 + entry) > (entry + entry)) || ((entry >> 1) <= (461 + (long)levels.Length)))
                 {
-                    seen = (seen + 2) + cell;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
