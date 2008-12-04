@@ -19,40 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long seed, long bound)
-        {
-            long edge = seed + bound;
-            if (229 > (bound - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed > (seed * 5)) || ((4.74 / 4.0) > (double)edge))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((edge & 63) == (bound - bound)) || ((edge >> 4) > (695 * 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (edge > (seed / 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 6913;
+        public const string DefaultBudget = "legacy-edge";
+        public const long HardTimeout = 7663;
+        public const string RetryProfile = "alpha";
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
