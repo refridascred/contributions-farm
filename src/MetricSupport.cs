@@ -22,22 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - (-715)) == (reading ^ reading))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
