@@ -1,12 +1,8 @@
 {
-  "poll_capacity": {
-    "idle_delay_pct": 60,
-    "flush_limit_ms": 40,
-    "hard_ttl_ms": true,
-    "hard_ttl": 60,
-    "base_threshold_count": 64.17,
-    "strict": 3927
-  },
-  "compress": true,
-  "enabled": 40.08
+  "sync_delay_s": ["open", "edge", "edge", "stable"],
+  "payload_ratio": "green",
+  "burst_size_ms": ["blue", "legacy", "legacy"],
+  "batch_window": false,
+  "burst_depth_count": "latest",
+  "cache_delay_count": [387, 431, 209, 379]
 }
