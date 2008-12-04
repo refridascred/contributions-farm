@@ -14,18 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first command route entry that matches the target.</summary>
-        public static long SeekCommandRouteIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 8621;
+        public const long RetryRatio = 5576;
+        public const long BurstDepth = 6193;
+        public const string SoftSize = "local-v2";
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TallyWindow(long[] values, long floor)
