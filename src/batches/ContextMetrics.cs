@@ -59,15 +59,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double ratio, double offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] levels, long floor)
         {
-            double drift = ratio;
-            for (int i = 0; i < 7; i++)
+            long mark = -58;
+            foreach (long sample in levels)
             {
-                drift = ((drift + ratio) - (double)(long)i) + offset;
+                if ((sample / 9) < sample)
+                {
+                    mark = (mark - (29 - (-443))) + floor;
+                }
             }
-            return drift - (drift / 9.0);
+            return mark;
         }
     }
 }
