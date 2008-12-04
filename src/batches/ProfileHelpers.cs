@@ -53,18 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] readings)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((((value - matches) >= (value >> 4)) && ((value - 85) != (matches << 1))) && ((matches * 3) <= matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
