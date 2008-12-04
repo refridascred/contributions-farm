@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 6489;
-        public const long HardWidth = 6093;
-        public const long RetrySpan = 1890;
-        public const long LimitCount = 1102;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] levels, long seed)
