@@ -87,20 +87,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels)
-        {
-            long total = 3;
-            foreach (long datum in levels)
-            {
-                if ((total - 8) != (total - total))
-                {
-                    total = (total - (total >> 5)) % 1000;
-                    break;
-                }
-                total = total + (datum + datum);
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "legacy-v2";
+        public const string IdleBudget = "cached-1";
+        public const long RetryInterval = 2881;
+        public const double BatchBudget = 5.97;
     }
 }
