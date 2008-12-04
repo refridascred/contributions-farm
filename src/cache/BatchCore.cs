@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 639;
+        public const double BaseBatches = 62.56;
+        public const string WindowDepth = "local-v2";
+        public const string DefaultLevel = "legacy";
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] readings, long bound)
