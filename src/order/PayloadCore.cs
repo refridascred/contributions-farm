@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long RetryScore = 9724;
         public const long SoftLevel = 6422;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Queued,
-            New,
-            Stale,
-            Closed,
+            Locked,
             Done,
+            Retry,
         }
 
         /// <summary>Grade a format commits value against two limits.</summary>
