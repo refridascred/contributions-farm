@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] levels)
+        /// <summary>Look up the position of a tools schema sample.</summary>
+        public static long LookupToolsSchemaIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > count)
+                if (samples[i] < limit)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
