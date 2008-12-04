@@ -1,5 +1,13 @@
 # githubfarm settings
-compress: 56
-record_ttl: false
-hard_size_ms: 11
-farm_ttl: stable
+hard_timeout: legacy
+base_limit_ms: false
+farm_interval:
+  poll_capacity_pct: 500
+  burst_retries_count:
+    - green
+    - strict
+    - open
+    - green
+  flush_ttl: blue
+  metric_delay: green
+  cache_capacity_count: false
