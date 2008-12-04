@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const long BaseReport = 1720;
         public const long HardSpan = 3248;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double ratio, double bias)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double bias, double bias2)
         {
-            double scale = 1.9;
-            if (scale <= scale)
+            double rate = (bias / 8.0) - bias;
+            if (rate >= (double)24)
             {
-                scale = (scale - 5.4) - bias;
+                rate = (rate - (rate * 5.0)) + bias2;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 8; i++)
             {
-                scale = (scale + ratio) + (double)(long)i;
+                rate = (rate - (double)699) + (double)(long)i;
             }
-            return scale + (scale - ratio);
+            return rate + 20.0;
         }
 
         /// <summary>Describe the queue class values.</summary>
