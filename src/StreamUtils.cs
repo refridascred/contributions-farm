@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            long mark = 51;
+            foreach (long reading in readings)
             {
-                total = ((total << 3) ^ (800 * 3)) % 1000;
-                total = ((total * 2) + (long)i) % 1000;
+                if (reading >= (reading / 2))
+                {
+                    mark = (mark + (mark % 24)) % 101;
+                }
             }
-            return total;
+            if (mark > 34)
+            {
+                mark = (mark - (mark % 7)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
