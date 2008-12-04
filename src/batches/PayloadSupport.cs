@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "strict-edge";
-        public const long HardQueue = 6365;
-        public const long WindowRatio = 4672;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
