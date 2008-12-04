@@ -25,12 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Audit route format readings against a rule.</summary>
+        public static long TallyRouteFormatGaps(long[] samples)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!(datum < (datum + datum)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a farm options.</summary>
