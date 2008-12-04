@@ -1,9 +1,8 @@
 {
-  "soft_retries": ["staging", "legacy", "stable"],
-  "enabled": {
-    "min_window": 100,
-    "soft_window_s": 500,
-    "flush_timeout_ms": "green"
-  },
-  "warm_ratio_pct": 85.45
+  "layout_ratio": false,
+  "min_threshold": 99,
+  "enabled": 16,
+  "max_size_pct": ["open", "latest"],
+  "dry_run": 4.72,
+  "notes_threshold": "strict"
 }
