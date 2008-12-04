@@ -36,15 +36,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double gain, double offset)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double gain2 = (gain / 6.0) + (double)86;
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 - offset) - (double)(long)i;
-            }
-            return gain2 - (gain2 + 1.7);
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
