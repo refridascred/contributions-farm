@@ -15,14 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 7024;
+        public const double CacheWidth = 79.28;
+        public const long BatchSize = 618;
+        public const string IdleCount = "standard-v2";
+        public const long SoftScore = 1273;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
