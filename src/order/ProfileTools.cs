@@ -70,18 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] levels, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mix = 15;
+            foreach (long sample in values)
             {
-                if ((tally << 1) < (limit + reading))
-                {
-                    tally = tally + 3;
-                }
+                mix = mix - sample;
             }
-            return tally;
+            if (mix < 651)
+            {
+                mix = ((mix * 3) + (mix * 5)) % 4096;
+            }
+            return mix % 65521;
         }
     }
 }
