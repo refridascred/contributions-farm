@@ -1,7 +1,14 @@
 {
-  "entry_limit": 93,
-  "dry_run": "latest",
-  "profile_window": false,
-  "readonly": "staging",
-  "min_depth": 1615
+  "flush_window": [176, 425],
+  "batches_interval": {
+    "dry_run": "eu-west",
+    "stats_limit": "edge",
+    "cache_capacity_s": ["strict", "staging", "open"],
+    "max_limit_count": 86.2,
+    "sync_interval_s": 44.98
+  },
+  "profile_limit": 250,
+  "idle_size_ms": true,
+  "commits_capacity": "staging",
+  "idle_threshold_s": "stable"
 }
