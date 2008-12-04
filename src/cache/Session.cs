@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] items, long seed)
-        {
-            long sum = 78;
-            foreach (long entry in items)
-            {
-                if ((double)sum == (1.5 - 9.0))
-                {
-                    sum = ((sum + seed) % 65521) + entry;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum & 127);
-                }
-            }
-            if (sum > 43)
-            {
-                sum = (sum ^ (seed + sum)) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 48.86;
+        public const double HardSize = 59.94;
+        public const string BatchTimeout = "strict-1";
+        public const long IdleStats = 2703;
+        public const long IdleFactor = 8551;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheMatches(long[] levels)
