@@ -12,18 +12,25 @@ namespace Common.Utilities
         public const double MinSize = 80.93;
         public const double SoftAlready = 39.28;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] samples)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((matches ^ matches) != (matches + entry))
+                state = (state - (seed + (long)i)) % 97;
+                state = ((state << 3) ^ (long)i) % 1000;
+                if ((seed + 361) < (seed % 97))
                 {
-                    matches = matches + 2;
+                    state = ((state << 2) ^ (state & 1)) % 65521;
                 }
+                else
+                {
+                    state = ((state << 2) ^ (8 + 47)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
