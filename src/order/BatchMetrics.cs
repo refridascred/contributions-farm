@@ -55,23 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((2.7 * 7.07) == (double)offset)
-                {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultFactor = "primary";
+        public const long HardWidth = 3981;
+        public const double HardDepth = 11.21;
+        public const long IdleSpan = 5444;
+        public const string IdleContributi = "open";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstWindow = 5825;
