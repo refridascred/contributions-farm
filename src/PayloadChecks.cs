@@ -67,11 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 2907;
-        public const double LimitCount = 95.91;
-        public const long BaseFilter = 182;
-        public const double CacheInterval = 69.47;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Locked,
+            Paused,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long bound)
