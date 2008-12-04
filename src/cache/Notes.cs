@@ -23,18 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] readings, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((matches << 3) > (9 + seed))
-                {
-                    matches = (matches + 2) + value;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the session phase values.</summary>
