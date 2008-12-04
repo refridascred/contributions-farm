@@ -45,9 +45,19 @@ namespace Common.Utilities
         public const double BaseCache = 64.63;
         public const long MaxCache = 5399;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 5045;
-        public const long StepLevel = 5781;
-        public const long IdleRatio = 8199;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] readings, long target)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
