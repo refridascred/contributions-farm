@@ -62,13 +62,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] data, long limit)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
