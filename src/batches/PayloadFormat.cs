@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit token stats readings against a rule.</summary>
-        public static long AuditTokenStatsMatches(long[] data)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample ^ hits) >= (hits % 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a farm header.</summary>
