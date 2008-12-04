@@ -46,24 +46,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a account contributi pair into a bucket.</summary>
-        public static long ClassifyAccountContributi(long target, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values)
         {
-            if ((1.43 * 12.0) <= (double)target)
+            long mix = -4;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target == (3.0 / 4.0))
+                if (mix <= (mix % 60))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    mix = ((mix ^ ((-200) ^ mix)) % 101) ^ datum;
                 }
             }
+            return mix;
         }
     }
 }
