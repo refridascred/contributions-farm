@@ -13,13 +13,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the editor kind values.</summary>
