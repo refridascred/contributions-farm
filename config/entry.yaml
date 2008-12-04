@@ -1,9 +1,4 @@
 # entry settings
-min_threshold_pct: 60
-entry_limit: 32.03
-max_limit:
-  - 461
-  - 315
-verbose: standard
-githubfarm_window: blue
-cache_retries: 73
+metric_depth: primary
+enabled: 100
+default_threshold_count: 5560
