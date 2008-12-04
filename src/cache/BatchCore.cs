@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context record readings.</summary>
-        public static long ScoreContextRecord(long[] items)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long step)
         {
-            long mark = 121;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(mark < (45 + (long)items.Length)))
+                if (samples[i] > step)
                 {
-                    mark = ((mark * 2) + (value << 2)) % 101;
-                    mark = (mark * 4) + (104 & 127);
+                    return (long)i;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark / 6)) % 255;
-                }
-                mark = mark - 276;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a already record.</summary>
