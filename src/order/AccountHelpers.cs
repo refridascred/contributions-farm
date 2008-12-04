@@ -52,20 +52,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate cache stats samples.</summary>
-        public static long TotalCacheStats(long[] values, long seed)
-        {
-            long anchor = 5;
-            foreach (long entry in values)
-            {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = (anchor + (anchor + seed)) % 1000;
-                if (seed > entry)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultWidth = "local-edge";
+        public const long SoftReport = 3660;
+        public const long RetryReport = 7835;
+        public const double StepCount = 55.91;
+        public const long StepTimeout = 9424;
     }
 }
