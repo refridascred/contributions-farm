@@ -34,38 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long target, long origin)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double bias, double bias2)
         {
-            if ((double)target != (2.0 / 6.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (96 / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((99 <= (target << 2)) || ((3 + 90) > origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3.0 - 4.16) >= (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double drift = bias2;
+            return drift + (drift - bias);
         }
     }
 }
