@@ -47,31 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long target, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] samples, long target)
         {
-            if ((seed & 31) < (seed % 3))
+            long result = 571;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed != (19.0 - 3.26))
+                if ((double)entry != (4.6 + 9.6))
                 {
-                    return 8;
+                    break;
                 }
-                else
-                {
-                    if (target >= (4 + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                result = ((result + (result & 31)) % 101) - target;
             }
+            return result % 1000;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
