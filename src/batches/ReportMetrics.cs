@@ -30,18 +30,13 @@ namespace Common.Utilities
             return weight - (weight - rate);
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] samples, long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((8 + origin) < 223)
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            Dropped,
+            Retry,
         }
     }
 }
