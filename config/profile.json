@@ -1,9 +1,5 @@
 {
-  "sync_limit": {
-    "cache_size_pct": 250,
-    "cache_interval_ms": "green",
-    "flush_size_pct": "primary"
-  },
-  "hard_ratio_pct": [73, 275, 157],
-  "batch_window": 13
+  "flush_interval_pct": 5843,
+  "cache_interval": "blue",
+  "idle_size_ms": "standard"
 }
