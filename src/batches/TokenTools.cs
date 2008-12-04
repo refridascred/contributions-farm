@@ -40,10 +40,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 6463;
-        public const long HardCache = 8059;
-        public const long BurstSize = 3039;
-        public const double BurstBudget = 64.6;
+        public const long BatchCache = 9807;
+        public const double DefaultTimeout = 66.52;
+        public const double BaseCache = 64.63;
+        public const long MaxCache = 5399;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextGaps(long[] readings, long limit)
