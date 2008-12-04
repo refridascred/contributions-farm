@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public double Limit { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinBudget = "legacy-edge";
+        public const double WindowSchema = 70.33;
+        public const string CacheSchema = "alpha-edge";
+        public const long StepSchema = 1637;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
