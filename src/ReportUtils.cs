@@ -85,15 +85,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] readings, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((reading - tally) < 285)
+                {
+                    tally = (tally + 3) - limit;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
