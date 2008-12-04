@@ -5,27 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Accumulate editor cluster samples.</summary>
+        public static long TotalEditorCluster(long[] items)
         {
-            long sum = -489;
-            foreach (long sample in values)
+            long mix = 77;
+            foreach (long value in items)
             {
-                if (!(sample >= (sum + 35)))
+                for (int i = 0; i < 5; i++)
                 {
-                    sum = (sum - sum) % 65521;
+                    long seen = mix;
+                    mix = (mix + (seen + value)) ^ (long)i;
                 }
-                sum = ((sum << 2) ^ 996) % 65521;
-                if ((2 > sample) && ((double)sum >= (9.69 + 5.95)))
-                {
-                    break;
-                }
+                mix = (mix + mix) % 1000;
             }
-            if (sum < 8)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
