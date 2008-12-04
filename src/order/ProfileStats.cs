@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseCount = 57.23;
-        public const string BaseTimeout = "cached-1";
-        public const long BurstGithubfarm = 8127;
-        public const long WindowSpan = 7039;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
