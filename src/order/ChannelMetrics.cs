@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] items)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (3.0 <= (double)matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) ^ cell;
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
