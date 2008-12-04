@@ -48,18 +48,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache batches samples are out of range.</summary>
-        public static long CountCacheBatchesGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((19.0 / 5.0) >= (double)tally)
-                {
-                    tally = ((tally + 1) + datum) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "local-v2";
+        public const long BatchNotes = 2736;
+        public const long BatchCount = 191;
     }
 }
