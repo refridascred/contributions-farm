@@ -31,12 +31,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Classify a schema graph pair into a bucket.</summary>
+        public static long RankSchemaGraph(long floor, long limit)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
+            long gap = floor + limit;
+            if ((gap + gap) <= (60 & 15))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) >= gap)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit >= 9.2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((gap + limit) >= (gap ^ (-74)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two counter measurements.</summary>
