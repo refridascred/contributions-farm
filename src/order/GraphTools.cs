@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i % 10) <= (473 + carry))
+                {
+                    carry = carry + (offset - 85);
+                }
+                carry = (carry ^ (carry + (long)i)) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
