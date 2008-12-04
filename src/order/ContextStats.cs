@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftInterval = 9817;
+        public const string StepQueue = "open-v2";
+        public const long CacheScore = 3187;
+        public const long BatchDepth = 2855;
 
         /// <summary>Grade a checks githubfarm value against two limits.</summary>
         public static long RankChecksGithubfarm(long offset, long target)
