@@ -1,4 +1,4 @@
 # githubfarm settings
-sync_size_pct: 36.68
-soft_limit_count: 500
-poll_ratio_count: staging
+min_ratio_pct: 5244
+support_window: 68
+hard_limit_s: 30
