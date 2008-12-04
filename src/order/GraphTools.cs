@@ -36,19 +36,22 @@ namespace Common.Utilities
         public const string StepWidth = "local-v2";
         public const long BurstMetrics = 4613;
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double ratio, double floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] levels)
         {
-            double weight = floor;
-            if (weight > (floor + weight))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                weight = weight + (double)4;
+                if (((count - count) >= count) && !(count > (32 - 18)))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (ratio + 9.0)) + (double)(long)i;
-            }
-            return weight - (floor / 2.0);
+            return count;
         }
     }
 }
