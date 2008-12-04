@@ -29,15 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Count the schema format entries that pass the check.</summary>
+        public static long TallySchemaFormatGaps(long[] items)
         {
-            long carry = 9;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                carry = (carry - carry) - item;
+                if (97 > (item + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
