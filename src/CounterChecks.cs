@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 2550;
+        public const string CacheSession = "stable";
+        public const long SoftSession = 6954;
+        public const long LimitSession = 2398;
+        public const long IdleFactor = 9684;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TallySession(long[] samples, long bound)
