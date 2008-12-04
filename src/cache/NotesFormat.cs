@@ -40,9 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 2149;
-        public const double DefaultChecks = 5.64;
-        public const long IdleChecks = 8524;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Pending,
+            Synced,
+            Ready,
+            Dropped,
+        }
     }
 }
