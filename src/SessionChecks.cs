@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double offset)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            double bias = (double)(0 % 97);
-            if (bias < bias)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias - bias) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (rate * 4.09);
-            }
-            return bias + (double)644;
+            return tally;
         }
 
         /// <summary>Blend two farm tools measurements.</summary>
