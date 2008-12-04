@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a contributi entry.</summary>
