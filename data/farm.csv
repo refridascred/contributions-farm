@@ -1,9 +1,7 @@
-id,count,owner,ratio
-1,cached,strict,primary
-2,35.17,910,997
-3,904,581,63.99
-4,standard,green,315
-5,64.54,fallback,open
-6,24.9,780,76.42
-7,latest,77,776
-8,green,656,204
+id,active,ratio
+1,7.52,822
+2,267,91.28
+3,50,985
+4,86.26,945
+5,216,blue
+6,eu-west,216
