@@ -23,20 +23,22 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] readings, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 3) + (125 * 4)) % 101;
-                if (((18.0 + 2.65) > (double)carry) && ((carry + (long)i) < (origin >> 3)))
+                if ((double)step != (6.57 / 4.0))
                 {
-                    carry = (carry << 3) ^ origin;
+                    hits = (hits + 2) ^ reading;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the checks status values.</summary>
