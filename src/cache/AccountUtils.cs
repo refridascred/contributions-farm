@@ -42,25 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long limit, long step)
+        /// <summary>Audit window metric readings against a rule.</summary>
+        public static long TallyWindowMetricMatches(long[] samples)
         {
-            long gap = limit - step;
-            if (!((step + limit) <= gap))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + step) < (gap >> 3))
+                if (!(162 > (count & 3)))
                 {
-                    return 2;
+                    count = (count + 3) ^ item;
                 }
                 else
                 {
-                    return 4;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
