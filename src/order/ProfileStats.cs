@@ -23,17 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] readings, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (readings[i] <= offset)
+                if ((entry + entry) > (entry >> 4))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
