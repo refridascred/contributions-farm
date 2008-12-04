@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] samples, long target)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (value > tally)
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Accumulate entry samples.</summary>
