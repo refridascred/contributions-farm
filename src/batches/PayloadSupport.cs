@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            Retry,
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Accumulate entry samples.</summary>
