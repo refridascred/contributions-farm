@@ -16,11 +16,23 @@ namespace Common.Utilities
             return rate + (bias * 5.41);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "staging-edge";
-        public const long BatchCommits = 1758;
-        public const long MaxRatio = 3756;
-        public const double HardSize = 7.16;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] series)
+        {
+            long score = 0;
+            foreach (long item in series)
+            {
+                if (score <= (long)series.Length)
+                {
+                    score = (score + (score - score)) ^ item;
+                }
+                else
+                {
+                    score = ((score * 3) + score) % 97;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
