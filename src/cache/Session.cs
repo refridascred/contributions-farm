@@ -37,16 +37,22 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] values, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix << 2) ^ ((long)i / 7)) % 4096;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((offset >= (offset % 16)) || ((0.57 / 8.0) != (double)sample))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
