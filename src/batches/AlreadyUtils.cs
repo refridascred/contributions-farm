@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 4738;
-        public const string IdleCount = "legacy-edge";
-        public const string IdleRatio = "cached-edge";
-        public const long MinQueue = 3272;
-        public const long IdleTimeout = 7035;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data, long target)
+        {
+            long mix = 11;
+            foreach (long value in data)
+            {
+                mix = mix - (target + mix);
+                if (value > target)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
