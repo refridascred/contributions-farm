@@ -72,18 +72,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] levels)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((10 / 8) < tally)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            Pending,
+            Dropped,
+            New,
         }
     }
 }
