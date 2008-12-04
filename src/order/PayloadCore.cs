@@ -52,18 +52,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((step < ((long)data.Length + hits)) && ((hits * 2) >= (step ^ sample)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstSize = 7361;
+        public const double LimitBudget = 88.55;
+        public const double MaxPayload = 4.07;
     }
 }
