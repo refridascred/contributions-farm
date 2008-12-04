@@ -1,13 +1,6 @@
 {
-  "batch_ttl": true,
-  "strict": 7402,
-  "burst_capacity_ms": {
-    "batch_window_count": true,
-    "strict": true,
-    "cache_retries_count": "standard",
-    "compress": 59.93
-  },
-  "soft_threshold": 100,
-  "batch_window": 42,
-  "cache_retries_count": false
+  "base_capacity_count": "staging",
+  "idle_ratio_ms": 9576,
+  "sync_capacity_s": [103, 203],
+  "order_retries": ["cached", "edge", "staging"]
 }
