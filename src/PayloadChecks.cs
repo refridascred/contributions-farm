@@ -18,19 +18,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster buffer samples are out of range.</summary>
-        public static long AuditClusterBufferGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((83 + cell) > (7 + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryFactor = 9964;
+        public const string WindowProfile = "primary-edge";
+        public const string WindowInterval = "open-edge";
+        public const long CacheProfile = 5838;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long RankReport(long floor, long seed)
