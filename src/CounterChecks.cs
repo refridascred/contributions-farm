@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] series, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((series[i] < step) && ((series[i] % 5) == 0))
+                if ((double)count != (8.6 - 8.0))
                 {
-                    return (long)i;
+                    count = ((count + 1) ^ value) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a entry reading.</summary>
