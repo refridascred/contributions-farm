@@ -23,14 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Failed,
-            Queued,
-            Synced,
-            Locked,
-            Draft,
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
