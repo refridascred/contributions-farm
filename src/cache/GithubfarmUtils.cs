@@ -40,19 +40,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
-        public static bool GuardGithubfarmCacheLimits(long[] values, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Retry,
+            Idle,
+            Locked,
+            Done,
         }
     }
 }
