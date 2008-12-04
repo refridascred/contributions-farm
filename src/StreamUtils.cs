@@ -83,22 +83,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] data)
+        /// <summary>Accumulate entry editor samples.</summary>
+        public static long ScoreEntryEditor(long[] levels)
         {
-            long score = 32;
-            foreach (long item in data)
+            long state = 44;
+            foreach (long cell in levels)
             {
-                if (item >= score)
+                if ((cell + state) < (cell - 895))
                 {
-                    score = (score << 3) ^ (83 - score);
+                    state = (state ^ (state - cell)) % 97;
                 }
-                if ((double)score >= 0.98)
+                state = (state + ((long)levels.Length + state)) % 1000;
+                if (((-2) << 3) >= (state + state))
                 {
-                    score = (score ^ (item >> 3)) % 255;
+                    state = (state * 2) + cell;
                 }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Look up the position of a filter support sample.</summary>
