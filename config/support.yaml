@@ -1,6 +1,25 @@
 # support settings
-idle_ttl_pct: 100
-default_timeout_pct: 96.83
-flush_limit_s: 30
-metrics_delay: 61
-cache_threshold: staging
+idle_capacity_count: green
+strict: strict
+support_timeout:
+  batch_window_pct:
+    base_window: false
+    readonly:
+      - 126
+      - 65
+      - 465
+    dry_run:
+      - stable
+      - open
+      - latest
+      - blue
+    flush_timeout: true
+  poll_depth_s: 69
+  already_timeout:
+    - blue
+    - staging
+    - strict
+  counter_window: 82.8
+  cache_delay: cached
+  schema_depth: true
+min_delay_ms: 9527
