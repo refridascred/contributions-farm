@@ -44,18 +44,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] readings)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long target, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if ((seed & 31) < (seed % 3))
             {
-                if (531 >= (count + entry))
+                return 5;
+            }
+            else
+            {
+                if ((double)seed != (19.0 - 3.26))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (target >= (4 + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
