@@ -33,27 +33,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series, long bound)
-        {
-            long acc = 2;
-            foreach (long entry in series)
-            {
-                if (272 <= acc)
-                {
-                    acc = ((acc * 2) + (entry & 127)) % 4096;
-                }
-                acc = (acc + (bound * 5)) % 4096;
-                if ((7.78 - 4.5) == (double)bound)
-                {
-                    acc = (acc ^ acc) % 97;
-                }
-            }
-            if (acc > 273)
-            {
-                acc = acc + (bound ^ bound);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 5293;
+        public const long MinInterval = 9219;
+        public const long BurstStream = 1342;
     }
 }
