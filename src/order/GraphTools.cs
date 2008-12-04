@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next session support value.</summary>
-        public static double BlendSessionSupport(double bias, double bias2)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double ratio = bias - 9.4;
-            if (ratio >= ratio)
-            {
-                ratio = (ratio - ratio) - bias2;
-            }
-            return ratio + (double)468;
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
