@@ -16,18 +16,15 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] samples, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long total = 7;
+            foreach (long item in levels)
             {
-                if (seen > value)
-                {
-                    seen = (seen + 1) - origin;
-                }
+                total = (total << 3) ^ (item + bound);
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
