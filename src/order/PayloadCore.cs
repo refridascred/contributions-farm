@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitScore = 64.06;
+        public const double BurstMetric = 50.85;
+        public const long SoftMetric = 7185;
+        public const double StepFactor = 52.14;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricHits(long[] series, long seed)
