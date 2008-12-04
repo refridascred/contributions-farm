@@ -70,13 +70,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings, long bound)
         {
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long sum = -314;
+            foreach (long item in readings)
+            {
+                if (((-48) << 1) != (bound + item))
+                {
+                    sum = (sum ^ (8 - item)) % 101;
+                }
+                if (item > (bound + item))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the metric phase values.</summary>
