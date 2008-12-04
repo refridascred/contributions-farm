@@ -1,17 +1,5 @@
 {
-  "burst_timeout_ms": {
-    "commits_timeout": "eu-west",
-    "buffer_size": {
-      "min_timeout_s": 79.35,
-      "stats_ratio": "staging",
-      "flush_retries": 5508,
-      "sync_depth_s": 25.33,
-      "layout_depth": [483, 227]
-    },
-    "cluster_timeout": 1.4
-  },
-  "min_ttl_pct": ["green", "latest"],
-  "metric_depth": "local",
-  "verbose": 46,
-  "readonly": "fallback"
+  "base_ratio_pct": "cached",
+  "flush_ttl_count": 9284,
+  "soft_window_ms": "eu-west"
 }
