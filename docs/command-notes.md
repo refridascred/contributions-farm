@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-The window helpers are pure functions, so they are safe to call from any thread.
+Keep profile and entry names short and lowercase.
+The checks module keeps token values in sync with the stats cache.
 
 ## Guidelines
 
-- Validate stream input early
-- Keep record values small
-- Review cache limits each release
-- Document new buffer fields
+- Log every order change
+- Prefer tools defaults
+- Document new record fields
+- Validate counter input early
