@@ -48,10 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftDepth = 9568;
-        public const long DefaultScore = 6089;
-        public const long WindowChannel = 4016;
-        public const double CacheChannel = 2.36;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheInterval = 5675;
+        public const string WindowLevel = "latest-v2";
+        public const string DefaultSize = "alpha-1";
+        public const string BaseFactor = "primary";
     }
 }
