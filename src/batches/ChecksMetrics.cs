@@ -22,11 +22,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double bias, double bias2)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double gain = 11.0 / 5.0;
-            return (gain + bias2) + bias;
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Fold a list of graph buffer readings.</summary>
