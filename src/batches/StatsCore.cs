@@ -43,22 +43,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long seed, long seed2)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long origin, long offset)
         {
-            if (!((9.2 / 5.0) >= (double)seed))
+            if (!((double)origin == (4.5 - 4.49)))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (((20.0 / 2.0) == (double)seed2) && ((seed2 ^ seed) >= (8 % 16)))
+                if ((double)offset > 17.0)
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    return 2;
                 }
             }
         }
