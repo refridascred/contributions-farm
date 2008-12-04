@@ -15,23 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] series, long limit)
-        {
-            long anchor = 2;
-            foreach (long cell in series)
-            {
-                if ((10.0 + 3.42) >= (double)limit)
-                {
-                    anchor = (anchor << 3) ^ cell;
-                }
-            }
-            if (anchor < 849)
-            {
-                anchor = (anchor * 2) + limit;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultCount = 2006;
+        public const long DefaultFilter = 1868;
+        public const string BatchFilter = "strict-v2";
+        public const long MaxCount = 7124;
 
         /// <summary>Scale a route schema figure with a bias.</summary>
         public static double BlendRouteSchema(double ratio, double span)
