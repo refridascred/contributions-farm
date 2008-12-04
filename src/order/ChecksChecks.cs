@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] readings)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (matches > (matches & 255))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            Dropped,
+            Draft,
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
