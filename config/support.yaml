@@ -1,5 +1,10 @@
 # support settings
-enabled: 45.72
-audit: latest
-entry_ttl: 56
-verbose: blue
+compress: 31.49
+default_delay_pct:
+  - 119
+  - 324
+  - 366
+audit: fallback
+default_window_pct:
+  - 444
+  - 379
