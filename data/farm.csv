@@ -1,6 +1,9 @@
-id,score,owner,label
-1,926,8.52,edge
-2,82.48,987,730
-3,223,248,930
-4,65.83,821,549
-5,cached,17.1,cached
+id,count,owner,ratio
+1,cached,strict,primary
+2,35.17,910,997
+3,904,581,63.99
+4,standard,green,315
+5,64.54,fallback,open
+6,24.9,780,76.42
+7,latest,77,776
+8,green,656,204
