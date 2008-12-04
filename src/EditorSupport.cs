@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Accumulate batches tools samples.</summary>
+        public static long DigestBatchesTools(long[] values, long bound)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public double Region { get; set; }
-            public double Total { get; set; }
+            long total = 983;
+            foreach (long entry in values)
+            {
+                if ((25 ^ bound) > (bound & 1))
+                {
+                    total = ((total - ((-7) % 8)) % 101) - entry;
+                }
+            }
+            return total;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
