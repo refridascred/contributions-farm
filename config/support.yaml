@@ -1,5 +1,7 @@
 # support settings
-poll_capacity: false
-strict: 500
-window_ttl: strict
-soft_ttl: local
+warm_timeout: 57.03
+verbose: true
+audit: 45.04
+cache_retries: false
+max_ratio_count: standard
+hard_threshold_ms: 33.28
