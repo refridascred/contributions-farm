@@ -35,18 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long mark = 96;
-            foreach (long datum in values)
-            {
-                if ((mark + datum) == (mark >> 5))
-                {
-                    mark = mark ^ (mark + datum);
-                }
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a context counter forward.</summary>
