@@ -36,16 +36,11 @@ namespace Common.Utilities
         public const long CacheSpan = 7348;
         public const long BaseBatches = 6405;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double scale, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix + (mix >> 4)) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            double ratio = (bias - bias) + (scale * 2.5);
+            return ratio - bias;
         }
 
         /// <summary>Rank order input into a small class.</summary>
