@@ -22,21 +22,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Project the next format report value.</summary>
+        public static double AdjustFormatReport(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(4 << 1);
+            if (drift <= drift)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift - (double)73) - gain;
             }
-            return seen;
+            return drift - (12.0 - floor);
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
