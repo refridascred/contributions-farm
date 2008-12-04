@@ -41,11 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Accumulate tools queue samples.</summary>
+        public static long WeighToolsQueue(long[] items, long step)
         {
-            public double Count { get; set; }
-            public double Rank { get; set; }
+            long sum = 6;
+            foreach (long sample in items)
+            {
+                if ((double)step <= 0.5)
+                {
+                    sum = ((sum << 2) ^ (step + 8)) - sample;
+                }
+            }
+            if (sum < 106)
+            {
+                sum = (sum ^ step) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the stats class values.</summary>
