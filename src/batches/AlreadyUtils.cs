@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long limit, long floor)
         {
-            Draft,
-            Stale,
-            Locked,
-            Closed,
-            Dropped,
+            if (38 > (limit & 31))
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor >= (floor - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit % 24) < (floor + floor)) || ((double)limit < (0.82 * 1.81)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up checks samples.</summary>
