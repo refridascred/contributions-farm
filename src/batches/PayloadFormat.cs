@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BurstCluster = 9259;
         public const long SoftCluster = 1802;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "alpha";
-        public const long LimitLevel = 1425;
-        public const long BaseWindow = 8227;
-        public const long MinSpan = 5956;
-        public const long HardWindow = 7046;
+        /// <summary>Find the first graph token entry that matches the target.</summary>
+        public static long LocateGraphTokenIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate metrics schema readings against a bound.</summary>
         public static bool ValidateMetricsSchemaBounds(long[] values, long step)
