@@ -45,13 +45,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Retry,
-            Idle,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepGraph = 91.99;
+        public const long BurstGraph = 2756;
+        public const long IdleLevel = 4755;
+        public const string BatchGraph = "alpha-edge";
+        public const long MinRatio = 4171;
     }
 }
