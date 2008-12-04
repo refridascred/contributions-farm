@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSpan = "open";
-        public const long DefaultSession = 2104;
-        public const long MinFactor = 647;
-        public const long IdleSession = 9289;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings)
+        {
+            long result = 313;
+            foreach (long reading in readings)
+            {
+                if ((result + result) < (reading * 5))
+                {
+                    result = result - ((long)readings.Length + reading);
+                    result = ((result * 2) + (reading + 68)) % 65521;
+                }
+                result = result + result;
+            }
+            if (result < 6)
+            {
+                result = result ^ (result + result);
+            }
+            return result;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
