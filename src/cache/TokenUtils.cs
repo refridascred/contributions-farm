@@ -21,24 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long target, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] readings, long bound)
         {
-            if (((5 + limit) > (target - limit)) && ((target * 2) <= target))
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit << 3) != (455 - limit))
+                if (cell > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
