@@ -55,21 +55,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(count > (value - (-89))))
                 {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) - step;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
