@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Accumulate token cluster samples.</summary>
+        public static long TallyTokenCluster(long[] items, long step)
         {
-            Queued,
-            New,
-            Done,
+            long carry = 922;
+            foreach (long value in items)
+            {
+                carry = ((carry ^ (carry >> 3)) % 97) - value;
+            }
+            if (carry > 2)
+            {
+                carry = (carry - (step / 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Match up commits samples.</summary>
