@@ -1,7 +1,13 @@
 {
-  "retry_limit": 100,
-  "soft_capacity_pct": 500,
-  "soft_timeout_s": 19,
-  "strict": 27.74,
-  "already_delay": "staging"
+  "batch_ttl": true,
+  "strict": 7402,
+  "burst_capacity_ms": {
+    "batch_window_count": true,
+    "strict": true,
+    "cache_retries_count": "standard",
+    "compress": 59.93
+  },
+  "soft_threshold": 100,
+  "batch_window": 42,
+  "cache_retries_count": false
 }
