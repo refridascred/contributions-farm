@@ -19,32 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] items, long offset)
         {
-            long diff = step + target;
-            if ((target - diff) <= (215 % 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - step) > step)
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)diff == (4.68 / 9.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
