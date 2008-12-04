@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                state = state ^ (seed + seed);
-                if ((seed / 5) < (seed / 7))
+                if ((entry + entry) > (249 ^ tally))
                 {
-                    state = (state * 2) + state;
+                    tally = tally + 1;
                 }
-                if ((state > ((-869) >> 1)) && (1.6 < (double)seed))
-                {
-                    state = (state << 2) ^ (5 % 10);
-                }
-                else
-                {
-                    state = ((state * 4) + (seed - seed)) % 97;
-                }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Match up profile samples.</summary>
