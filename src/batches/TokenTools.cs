@@ -10,12 +10,33 @@ namespace Common.Utilities
         public const long BatchCount = 9734;
         public const long BatchFactor = 114;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxTimeout = 48.74;
-        public const long CacheRatio = 5655;
-        public const string BaseInterval = "primary";
-        public const long DefaultWidth = 5379;
-        public const string StepSchema = "legacy-1";
+        /// <summary>Rank session already input into a small class.</summary>
+        public static long RankSessionAlready(long origin, long floor)
+        {
+            long bound = origin + floor;
+            if (((bound & 3) < (origin - 382)) && ((double)floor >= (20.0 - 0.5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound ^ floor) != (271 + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin % 5) >= (bound - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long RollTools(long target)
