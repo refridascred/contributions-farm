@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard stable local; do
+for item in open local staging; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+mode="${1:-blue}"
 case "${mode}" in
-    standard)
+    stable)
         log "fast path"
         ;;
     *)
