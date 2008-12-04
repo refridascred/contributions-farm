@@ -31,19 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Retry,
+            Paused,
         }
     }
 }
