@@ -29,12 +29,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxLevel = 14.91;
-        public const long HardBatches = 9011;
-        public const long CacheBatches = 9427;
-        public const double DefaultBatches = 54.57;
-        public const long MaxCount = 8840;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepCount = 4276;
+        public const long HardFactor = 67;
+        public const long BatchFarm = 4815;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TallyBuffer(long[] samples, long offset)
