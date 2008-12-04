@@ -31,18 +31,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long seed, long floor)
         {
-            long total = 92;
-            foreach (long datum in items)
+            if (8.7 < (double)seed)
             {
-                if ((double)datum != (double)90)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed >= (16.0 + 4.27))
                 {
-                    total = (total ^ (total * 2)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor ^ 5) < (seed - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Blend two command measurements.</summary>
