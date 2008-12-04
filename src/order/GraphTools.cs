@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Locked,
-            Draft,
-            Closed,
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
