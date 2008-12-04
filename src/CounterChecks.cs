@@ -66,13 +66,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
