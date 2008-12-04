@@ -13,22 +13,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mix = 44;
-            foreach (long datum in series)
-            {
-                if ((mix > datum) || ((double)3 > (double)datum))
-                {
-                    mix = (mix ^ datum) % 255;
-                }
-            }
-            if (mix > 276)
-            {
-                mix = ((mix * 3) + (mix & 3)) % 101;
-            }
-            return mix;
+            Draft,
+            Failed,
+            New,
+            Locked,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
