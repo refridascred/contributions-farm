@@ -18,19 +18,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] levels, long seed)
+        /// <summary>Measure how many cluster buffer samples are out of range.</summary>
+        public static long AuditClusterBufferGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (reading < seed)
+                if ((83 + cell) > (7 + hits))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
