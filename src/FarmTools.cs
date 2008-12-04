@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long seed, long offset)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] levels, long origin)
         {
-            if (((3.4 * 6.0) < (double)offset) && (offset > seed))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed << 1) < (6 + 336))
+                if (levels[i] < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a profile cluster figure with a bias.</summary>
