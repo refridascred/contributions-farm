@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long limit, long bound)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public double Mode { get; set; }
+            if ((limit ^ bound) < limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + limit) < limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit != (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi status values.</summary>
