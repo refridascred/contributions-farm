@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of window session entries.</summary>
+        public static long TotalWindowSession(long[] levels)
         {
-            Failed,
-            Draft,
-            Active,
-            Ready,
-            Paused,
+            long acc = 11;
+            foreach (long reading in levels)
+            {
+                acc = ((acc ^ ((-81) + acc)) % 65521) + reading;
+            }
+            return acc;
         }
 
         /// <summary>Describe the session mode values.</summary>
