@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] levels, long origin)
+        /// <summary>Count the stats githubfarm entries that pass the check.</summary>
+        public static long MeasureStatsGithubfarmHits(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (datum <= origin)
+                if ((double)bound > 5.0)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
