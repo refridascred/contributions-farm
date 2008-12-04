@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftInterval = 9817;
-        public const string StepQueue = "open-v2";
-        public const long CacheScore = 3187;
-        public const long BatchDepth = 2855;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Draft,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Grade a checks githubfarm value against two limits.</summary>
         public static long RankChecksGithubfarm(long offset, long target)
