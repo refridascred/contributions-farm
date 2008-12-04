@@ -1,7 +1,8 @@
 {
-  "verbose": 18,
-  "max_size_s": 1024,
-  "editor_size": 5,
-  "default_depth_s": [258, 112, 203],
-  "audit": 43.16
+  "metrics_capacity": "green",
+  "payload_capacity": 3871,
+  "cache_size_pct": [89, 360],
+  "retry_size": "cached",
+  "readonly": false,
+  "idle_ratio_pct": "fallback"
 }
