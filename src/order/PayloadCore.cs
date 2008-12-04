@@ -47,9 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 960;
-        public const long BurstFactor = 504;
-        public const string SoftCount = "staging-edge";
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
