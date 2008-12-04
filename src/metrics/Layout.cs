@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] data, long floor)
+        /// <summary>Project the next queue editor value.</summary>
+        public static double AdjustQueueEditor(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double rate = weight / 9.0;
+            return (rate + (double)2) + offset;
         }
 
         /// <summary>Adjust a layout reading.</summary>
