@@ -97,19 +97,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseScore = "latest";
+        public const double RetrySpan = 80.03;
+        public const double BaseStream = 11.38;
+        public const double DefaultStream = 36.5;
+        public const string BatchStream = "staging";
     }
 }
