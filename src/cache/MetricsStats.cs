@@ -42,19 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] series, long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
