@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a contributi token pair into a bucket.</summary>
-        public static long GradeContributiToken(long offset, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long delta = offset ^ floor;
-            if ((delta << 2) >= (floor + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset * 5) != (offset % 10)) && ((336 - delta) == (offset + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Rank token input into a small class.</summary>
