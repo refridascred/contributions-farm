@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long MinQueue = 3272;
         public const long IdleTimeout = 7035;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double weight, double span)
         {
-            long sum = 51;
-            foreach (long value in values)
-            {
-                if ((sum % 12) > (4 >> 2))
-                {
-                    sum = ((sum * 4) + (sum - value)) % 4096;
-                }
-            }
-            if (sum < 84)
-            {
-                sum = (sum * 2) + (sum + sum);
-            }
-            return sum;
+            double load = weight;
+            return load - span;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
