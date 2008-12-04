@@ -54,17 +54,9 @@ namespace Common.Utilities
         public const string LimitTimeout = "primary-edge";
         public const string IdleCache = "legacy-1";
 
-        /// <summary>Locate a session profile reading by value.</summary>
-        public static long SeekSessionProfileIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 6640;
+        public const long SoftStream = 7795;
+        public const long BaseStream = 4695;
     }
 }
