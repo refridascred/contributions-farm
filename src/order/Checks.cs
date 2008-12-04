@@ -67,18 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric stream readings against a rule.</summary>
-        public static long AuditMetricStreamOutliers(long[] data)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)seen >= 9.29)
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
