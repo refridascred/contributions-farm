@@ -1,10 +1,6 @@
-id,state,count,score,region
-1,cached,844,579,84.47
-2,green,green,866,legacy
-3,281,582,737,521
-4,90.14,71.55,63.31,latest
-5,610,18.37,open,890
-6,990,314,415,32.12
-7,70.14,937,891,388
-8,15.38,88.88,eu-west,47.66
-9,433,staging,92.18,legacy
+id,token,score,ratio,rank
+1,539,37.27,820,staging
+2,fallback,845,fallback,539
+3,33.48,edge,580,349
+4,137,773,74.53,cached
+5,474,1.4,767,fallback
