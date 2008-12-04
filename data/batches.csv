@@ -1,8 +1,7 @@
-id,region,owner
-1,17.05,429
-2,586,strict
-3,907,199
-4,open,strict
-5,721,stable
-6,786,845
-7,latest,18.58
+id,level,state,ratio
+1,679,443,360
+2,20,edge,53.52
+3,125,cached,stable
+4,stable,848,227
+5,local,989,231
+6,891,364,107
