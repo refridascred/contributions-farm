@@ -50,15 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools route values into a single score.</summary>
-        public static long WeighToolsRoute(long[] values, long origin)
+        /// <summary>Accumulate commits layout samples.</summary>
+        public static long FoldCommitsLayout(long[] samples, long target)
         {
-            long anchor = 8;
-            foreach (long item in values)
+            long result = 75;
+            foreach (long value in samples)
             {
-                anchor = (anchor ^ (item + origin)) % 4096;
+                result = (result + (result + value)) - target;
+                if (((value << 3) > result) && ((value / 4) != (result & 127)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
