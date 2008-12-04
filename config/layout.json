@@ -1,23 +1,7 @@
 {
-  "flush_capacity": 55,
-  "queue_depth": true,
-  "default_timeout_s": "open",
-  "sync_interval_pct": {
-    "buffer_limit": {
-      "default_timeout": 3.42,
-      "profile_ttl": 30,
-      "idle_depth_count": [469, 187, 66, 167],
-      "soft_retries_pct": ["standard", "edge"],
-      "dry_run": 44
-    },
-    "enabled": 83,
-    "filter_retries": {
-      "idle_timeout": "local",
-      "buffer_limit": "primary",
-      "retry_interval": [467, 204]
-    },
-    "stats_size": false,
-    "sync_delay_s": 87,
-    "verbose": 41.97
-  }
+  "burst_limit": "primary",
+  "dry_run": ["latest", "staging"],
+  "max_retries": 9725,
+  "readonly": 40,
+  "schema_interval": false
 }
