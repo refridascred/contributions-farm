@@ -29,19 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] levels, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Compare every pair of payload already readings.</summary>
