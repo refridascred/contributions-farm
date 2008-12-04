@@ -12,17 +12,31 @@ namespace Common.Utilities
         public const double StepReport = 28.79;
         public const long DefaultReport = 1258;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long bound)
+        /// <summary>Grade a checks githubfarm value against two limits.</summary>
+        public static long RankChecksGithubfarm(long offset, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((target & 3) >= (target - offset))
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((9.0 + 2.7) <= (double)target) || ((offset + offset) >= target))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (offset >= (offset - 906))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
