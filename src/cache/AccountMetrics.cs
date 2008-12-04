@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up context command samples.</summary>
-        public static long CompareContextCommandCount(long[] items)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = offset + step;
+            if ((24 >> 1) <= (span / 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)step < (11.0 * 3.6))
                 {
-                    if ((items[i] - items[j]) > 16)
+                    return 1;
+                }
+                else
+                {
+                    if ((span > offset) && ((span / 7) > (step / 5)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (4.0 <= (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a metrics context value against two limits.</summary>
