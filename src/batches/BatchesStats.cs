@@ -30,15 +30,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
