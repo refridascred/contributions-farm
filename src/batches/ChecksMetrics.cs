@@ -29,17 +29,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long sum = 404;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int i = 0; i < 2; i++)
                 {
-                    sum = ((sum - ((long)i % 3)) % 97) ^ (long)i2;
+                    sum = ((sum << 3) ^ (item << 1)) + (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
+                sum = ((sum << 3) ^ sum) % 101;
             }
             return sum;
         }
