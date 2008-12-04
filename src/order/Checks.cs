@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] items, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Paused,
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
