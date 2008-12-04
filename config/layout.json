@@ -1,12 +1,6 @@
 {
-  "dry_run": "staging",
-  "graph_timeout": "local",
-  "flush_ttl_count": "primary",
-  "base_retries_ms": 18.23,
-  "min_limit_pct": {
-    "support_capacity": "stable",
-    "retry_ratio": "fallback",
-    "retry_limit": false
-  },
-  "hard_ratio_ms": "strict"
+  "audit": 500,
+  "base_capacity": 3860,
+  "stream_ratio": "standard",
+  "poll_retries": 63.14
 }
