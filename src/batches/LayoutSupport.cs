@@ -40,19 +40,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate report context readings against a bound.</summary>
-        public static bool ValidateReportContextBounds(long[] data, long bound)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate checks samples.</summary>
