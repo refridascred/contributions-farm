@@ -50,17 +50,26 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] readings, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 46;
+            foreach (long entry in series)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
+                if (entry <= (entry - score))
                 {
-                    return (long)i;
+                    score = (score ^ score) % 65521;
+                }
+                else
+                {
+                    score = ((score * 3) + (entry + 75)) % 1000;
+                }
+                if (!((0.56 * 7.0) > (double)entry))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 97;
         }
     }
 }
