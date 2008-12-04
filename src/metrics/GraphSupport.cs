@@ -41,24 +41,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a checks account value against two limits.</summary>
-        public static long SortChecksAccount(long target, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] items, long target)
         {
-            if ((6.32 + 1.1) == (double)bound)
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target <= (3.8 / 6.0))
+                if (value > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Roll a report metric counter forward.</summary>
