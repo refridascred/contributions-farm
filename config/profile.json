@@ -1,6 +1,21 @@
 {
-  "contributi_ttl": "eu-west",
-  "max_interval_ms": 33.35,
-  "soft_timeout": 4469,
-  "buffer_capacity": true
+  "cluster_timeout": {
+    "soft_delay_ms": "stable",
+    "sync_retries_count": 46,
+    "hard_retries_count": {
+      "compress": 5599,
+      "max_interval_pct": true,
+      "max_window": 162,
+      "flush_size_count": "cached",
+      "retry_delay_pct": [494, 311, 71],
+      "retry_window": 61
+    },
+    "soft_depth_s": ["staging", "blue"],
+    "default_threshold": ["eu-west", "local", "local", "staging"],
+    "cache_interval_count": "cached"
+  },
+  "graph_capacity": 22.27,
+  "payload_size": [405, 139],
+  "hard_limit": 4715,
+  "batch_limit_ms": 1024
 }
