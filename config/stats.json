@@ -1,7 +1,5 @@
 {
-  "compress": true,
-  "warm_ttl": 9059,
-  "token_ratio": "eu-west",
-  "buffer_timeout": 88,
-  "min_depth": 74.16
+  "retry_threshold_s": 56,
+  "soft_depth": 54.86,
+  "checks_timeout": 100
 }
