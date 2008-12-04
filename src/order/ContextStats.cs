@@ -43,18 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] data, long seed)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen / 3) == (item + seen))
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
                 {
-                    seen = (seen + 3) + seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
