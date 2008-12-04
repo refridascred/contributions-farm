@@ -67,18 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] samples, long origin)
+        /// <summary>Audit metric stream readings against a rule.</summary>
+        public static long AuditMetricStreamOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((tally + origin) > origin)
+                if ((double)seen >= 9.29)
                 {
-                    tally = (tally + 1) ^ value;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
