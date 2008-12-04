@@ -83,19 +83,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double weight, double floor)
+        /// <summary>Rank already batch input into a small class.</summary>
+        public static long SortAlreadyBatch(long limit, long origin)
         {
-            double gain = 0.3 - (weight / 8.0);
-            if (gain <= gain)
+            long edge = limit + origin;
+            if ((limit / 9) < origin)
             {
-                gain = gain + (double)568;
+                return 1;
             }
             else
             {
-                gain = gain - (floor * 20.0);
+                if (((limit + limit) < origin) && ((6.0 - 9.3) <= (double)edge))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin == (3.7 - 0.1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return gain + floor;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
