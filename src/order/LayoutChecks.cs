@@ -60,31 +60,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long step, long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            if ((double)step == (0.56 / 8.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) < (step / 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)13 != (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Digest a series of already counter entries.</summary>
