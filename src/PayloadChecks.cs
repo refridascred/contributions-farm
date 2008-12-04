@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] series, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ 41) % 65521;
+                mix = (mix ^ step) % 1000;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
