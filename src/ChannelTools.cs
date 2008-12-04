@@ -16,13 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next entry value.</summary>
