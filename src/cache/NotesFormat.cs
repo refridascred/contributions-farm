@@ -24,13 +24,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Derive the next payload editor value from a seed.</summary>
+        public static long SeriesPayloadEditor(long seed)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
+            long score = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                score = score ^ score;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = (((score * 5) + (seed * 5)) % 101) ^ (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
