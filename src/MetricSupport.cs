@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftAccount = "local-1";
-        public const long MaxRatio = 8684;
-        public const string MaxInterval = "latest-edge";
-        public const long RetryLevel = 3380;
-        public const double IdleAccount = 55.83;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 92.89;
+        public const double RetryBudget = 41.12;
+        public const double LimitFactor = 15.79;
+        public const double BaseDepth = 53.19;
 
         /// <summary>Project the next command value.</summary>
         public static double ProjectCommand(double scale, double bias)
