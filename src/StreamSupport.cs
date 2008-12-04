@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] items, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (entry != step)
+                if (cell != limit)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
