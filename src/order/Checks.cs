@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Roll a cluster commits counter forward.</summary>
+        public static long DeriveClusterCommits(long bound)
         {
-            Pending,
-            Paused,
-            Idle,
-            Done,
-            Stale,
+            long score = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)bound > (4.8 + 7.33))
+                {
+                    continue;
+                }
+                score = ((score << 3) ^ bound) % 65521;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
