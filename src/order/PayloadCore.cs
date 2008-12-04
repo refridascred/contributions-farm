@@ -42,11 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 1027;
-        public const double RetryOrder = 65.59;
-        public const string DefaultOrder = "local-v2";
-        public const long LimitRatio = 6975;
-        public const double SoftOrder = 11.92;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public bool Label { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
