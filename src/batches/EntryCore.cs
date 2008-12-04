@@ -63,15 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((long)values.Length > (item - 166))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
