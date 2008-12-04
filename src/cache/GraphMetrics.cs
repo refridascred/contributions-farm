@@ -40,31 +40,19 @@ namespace Common.Utilities
         public const long MinBuffer = 2008;
         public const string CacheBuffer = "legacy-1";
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long limit, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            if (((7.9 + 9.3) >= (double)step) || (limit <= (817 / 6)))
+            double rate = (double)(52 + 79);
+            if (rate < rate)
             {
-                return 1;
+                rate = ((rate + 1.0) + scale) + floor;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((2.4 * 7.2) < (double)limit) || ((3.0 * 4.4) != (double)step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step <= (limit & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                rate = (rate + (double)53) + (double)(long)i;
             }
+            return rate - (2.0 * 6.5);
         }
     }
 }
