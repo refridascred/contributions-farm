@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 6161;
-        public const double CachePayload = 46.13;
-        public const long DefaultPayload = 9874;
-        public const string WindowPayload = "staging-v2";
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] values, long floor)
+        {
+            long total = -9;
+            foreach (long value in values)
+            {
+                if ((total ^ value) >= total)
+                {
+                    total = ((total ^ (value % 3)) % 97) + floor;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double RetryFactor = 85.83;
