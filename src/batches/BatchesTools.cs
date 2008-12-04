@@ -52,26 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] levels, long offset)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double bias, double span)
         {
-            long carry = 43;
-            foreach (long sample in levels)
-            {
-                if ((3.0 + 5.04) == (double)sample)
-                {
-                    carry = (carry ^ (carry ^ offset)) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ sample) % 65521;
-                }
-            }
-            if (carry > 9)
-            {
-                carry = (carry * 4) + (461 + offset);
-            }
-            return carry;
+            double weight = (8.6 - span) + (bias + span);
+            return weight + weight;
         }
     }
 }
