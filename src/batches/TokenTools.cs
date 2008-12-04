@@ -61,9 +61,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepSize = "fallback-edge";
-        public const double RetryGraph = 27.29;
-        public const long MinGraph = 6945;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 741;
+        public const long BaseScore = 9271;
+        public const string IdleTimeout = "local";
+        public const double BatchChannel = 17.72;
     }
 }
