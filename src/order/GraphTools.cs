@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two tools record measurements.</summary>
-        public static double ScaleToolsRecord(double scale, double bias)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] series, long step)
         {
-            double scale2 = 1.75 * 2.51;
-            if (scale2 <= (3.0 + scale2))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale2 = (scale2 + bias) - scale;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)9;
-            }
-            return scale2 - (bias * 4.0);
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
