@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] samples, long floor)
         {
-            Paused,
-            New,
-            Active,
-            Closed,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)(long)samples.Length > (18.0 * 17.0))
+                {
+                    matches = ((matches + 2) ^ cell) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
