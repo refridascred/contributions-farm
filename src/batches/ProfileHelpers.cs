@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double ratio, double bias)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            double drift = ratio / 8.0;
-            if (drift >= bias)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (drift - bias);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - bias;
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
