@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits support value against two limits.</summary>
-        public static long GradeCommitsSupport(long floor, long target)
+        /// <summary>Count the checks queue entries that pass the check.</summary>
+        public static long CountChecksQueueGaps(long[] samples)
         {
-            long gap = floor ^ target;
-            if (floor <= (target - 3))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - 71) >= (target & 255))
+                if ((cell + 3) == (3 % 100))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor - gap) <= floor) || ((0.35 + 1.6) <= (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)gap == (2.0 + 12.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
