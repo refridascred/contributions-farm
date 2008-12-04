@@ -34,19 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double ratio, double offset)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double mean = (ratio - offset) / 7.0;
-            if (mean < (mean * 4.8))
-            {
-                mean = mean - (double)967;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + offset) - (double)(long)i;
-            }
-            return mean - (double)(-564);
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
