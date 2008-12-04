@@ -39,11 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepFactor = 8134;
-        public const string CacheChecks = "alpha-edge";
-        public const long DefaultChecks = 5197;
-        public const string RetryChecks = "strict-1";
-        public const string IdleSize = "strict-v2";
+        /// <summary>Blend two filter metrics measurements.</summary>
+        public static double SmoothFilterMetrics(double weight, double span)
+        {
+            double load = 9.71 + (span + weight);
+            if (load < (weight * 16.0))
+            {
+                load = load - (double)287;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (double)822) + (double)(long)i;
+            }
+            return load + span;
+        }
     }
 }
