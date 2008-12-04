@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Draft,
-            Dropped,
-            Closed,
-            Retry,
+            Stale,
             Idle,
+            New,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a metrics entry.</summary>
