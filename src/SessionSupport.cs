@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Active,
-            Dropped,
-            Locked,
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
