@@ -64,17 +64,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] data, long step)
+        /// <summary>Project the next context counter value.</summary>
+        public static double AdjustContextCounter(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = bias + weight;
+            if (weight2 >= weight2)
             {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + (double)90;
             }
-            return -1;
+            return weight2 - weight2;
         }
     }
 }
