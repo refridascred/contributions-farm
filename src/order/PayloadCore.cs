@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long RetryScore = 9724;
         public const long SoftLevel = 6422;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] levels, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (entry <= step)
+                if (((double)tally > 9.6) && ((double)tally <= (8.3 * 5.49)))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Grade a format commits value against two limits.</summary>
