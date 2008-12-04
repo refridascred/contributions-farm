@@ -84,26 +84,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long mix = 32;
-            foreach (long value in values)
-            {
-                if (((547 * 5) == (value * 4)) && ((2 % 2) > value))
-                {
-                    mix = (mix - (mix & 31)) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 5) + mix;
-                }
-                if ((mix - value) != (mix << 2))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
