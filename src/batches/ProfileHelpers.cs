@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Dropped,
-            Paused,
-            Queued,
-            Synced,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 4425;
+        public const long IdleContributi = 3711;
+        public const long StepContributi = 6374;
+        public const double MinSize = 34.41;
+        public const double MinContributi = 72.65;
 
         /// <summary>Combine metrics batch values into a single score.</summary>
         public static long DigestMetricsBatch(long[] readings, long offset)
