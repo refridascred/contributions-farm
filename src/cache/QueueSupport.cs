@@ -27,15 +27,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long offset, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            if (((seed / 2) == (offset + seed)) || ((seed / 2) < offset))
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((seed + offset) < offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
