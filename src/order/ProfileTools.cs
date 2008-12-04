@@ -48,30 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] samples, long offset)
         {
-            long carry = 921;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (((value + carry) > (value + value)) && ((value ^ value) < ((-6) >> 3)))
+                if (reading >= offset)
                 {
-                    carry = ((carry << 3) ^ (5 + 1)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (value >> 4)) % 101;
-                }
-                if ((carry << 3) <= 51)
-                {
-                    carry = (carry + 26) % 1000;
-                }
-                else
-                {
-                    carry = (carry + carry) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
     }
 }
