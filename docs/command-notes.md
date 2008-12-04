@@ -1,12 +1,14 @@
 # Command notes
 
-Use entry settings to tune how often context data is refreshed.
-A stream that stays idle for too long is moved to the counter list.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Use cluster settings to tune how often batches data is refreshed.
+When a cache fails, the already handler retries a few times before giving up.
+Keep stream and cluster names short and lowercase.
+
+The editor report groups every cache by editor.
+Run the report check before changing any commits limits.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Review editor limits each release
-- Document new command fields
-- Keep metric values small
+- Log every editor change
+- Document new githubfarm fields
+- Review cluster limits each release
