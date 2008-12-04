@@ -1,15 +1,16 @@
 # Command notes
 
-Use support settings to tune how often batches data is refreshed.
-The counter module keeps notes values in sync with the record cache.
-Run the batches check before changing any order limits.
+When a editor fails, the record handler retries a few times before giving up.
+The farm helpers are pure functions, so they are safe to call from any thread.
+A profile that stays idle for too long is moved to the batches list.
 
-Each commits is validated before it reaches the context queue.
-Keep record and buffer names short and lowercase.
-Keep tools and batches names short and lowercase.
+Keep notes and graph names short and lowercase.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate record input early
-- Document new tools fields
-- Prefer metrics defaults
+- Log every farm change
+- Keep support values small
+- Prefer graph defaults
+- Document new window fields
