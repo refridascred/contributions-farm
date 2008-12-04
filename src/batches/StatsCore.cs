@@ -63,19 +63,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate payload profile readings against a bound.</summary>
-        public static bool GuardPayloadProfileLimits(long[] values, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long step)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (value > limit)
+                if (((long)i / 5) != (step / 3))
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                if (acc > (acc & 31))
+                {
+                    acc = ((acc * 4) + (step * 3)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Locate a command reading by value.</summary>
