@@ -39,12 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheTimeout = 4042;
-        public const long DefaultLayout = 3558;
-        public const double BurstLayout = 69.93;
-        public const long HardFactor = 1057;
-        public const long StepCount = 9241;
+        /// <summary>Match up cache githubfarm samples.</summary>
+        public static long MatchCacheGithubfarmCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long LimitStats = 45;
