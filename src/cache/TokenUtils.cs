@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long RetryLevel = 2142;
         public const double SoftCluster = 83.3;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSize = 7294;
-        public const long LimitDepth = 5522;
-        public const string DefaultDepth = "fallback";
-        public const long MaxChannel = 4076;
+        /// <summary>Blend two format report measurements.</summary>
+        public static double SmoothFormatReport(double weight, double span)
+        {
+            double load = span;
+            if (load >= (load * 6.3))
+            {
+                load = (load + load) - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (span * 9.7)) - (double)(long)i;
+            }
+            return load + (load - 17.0);
+        }
 
         /// <summary>Find the first batch token entry that matches the target.</summary>
         public static long SeekBatchTokenIndex(long[] samples, long target)
