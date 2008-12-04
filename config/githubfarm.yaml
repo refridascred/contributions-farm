@@ -1,4 +1,7 @@
 # githubfarm settings
-dry_run: standard
-record_threshold: 1024
-min_ratio: true
+audit: cached
+persist: true
+strict: 8523
+retry_interval_s:
+  - 244
+  - 453
