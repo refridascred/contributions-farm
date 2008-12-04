@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double IdleFormat = 82.76;
         public const string SoftFormat = "fallback-v2";
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] data, long target)
+        /// <summary>Count the schema account entries that pass the check.</summary>
+        public static long AuditSchemaAccountMatches(long[] samples, long offset)
         {
-            long mark = 6;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (!(((-910) << 1) > (target + 826)))
+                if ((offset - entry) >= entry)
                 {
-                    mark = (mark + (sample / 3)) % 97;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Describe the window state values.</summary>
