@@ -1,10 +1,7 @@
-id,rank,state,count
-1,248,25.22,859
-2,327,cached,53.54
-3,817,495,staging
-4,63.04,83.84,edge
-5,874,71.59,blue
-6,61.02,113,689
-7,fallback,primary,local
-8,51.6,316,standard
-9,primary,70.1,open
+id,owner,rank,count,ratio
+1,30.96,73.83,745,780
+2,strict,45.35,126,edge
+3,open,66.05,539,edge
+4,28.88,local,79.31,blue
+5,829,88.4,606,3.55
+6,526,6.58,924,primary
