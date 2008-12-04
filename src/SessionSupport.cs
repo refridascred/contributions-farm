@@ -18,11 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long bound, long floor)
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            if (((bound + bound) < floor) || ((bound >> 2) >= (479 + bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound * 2) > (floor >> 1)) && ((-230) > (floor + bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((671 << 3) >= (floor & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
