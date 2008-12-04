@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Measure how many support batches samples are out of range.</summary>
+        public static long MeasureSupportBatchesOutliers(long[] data, long target)
         {
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum * 2) != (datum - hits))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats mode values.</summary>
