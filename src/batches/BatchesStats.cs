@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
