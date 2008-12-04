@@ -29,18 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] readings, long bound)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((matches ^ reading) == (reading & 15))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate format order samples.</summary>
