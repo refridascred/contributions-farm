@@ -20,13 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Pending,
-            Synced,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchAlready = "stable-v2";
+        public const long BaseCount = 3589;
+        public const long BurstAlready = 9494;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
