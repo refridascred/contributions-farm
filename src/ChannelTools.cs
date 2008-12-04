@@ -16,30 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long offset, long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long origin, long seed)
         {
-            long next = offset ^ origin;
-            if ((origin < offset) && ((double)offset >= (7.33 - 5.14)))
+            if ((origin + seed) > origin)
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((88 < (origin << 1)) && (((-2) + origin) == (348 - next)))
+                if ((seed + origin) != (47 / 7))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if (!((origin & 15) <= (origin + origin)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 1;
                 }
             }
         }
