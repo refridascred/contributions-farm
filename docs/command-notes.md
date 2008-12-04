@@ -1,14 +1,10 @@
 # Command notes
 
-Use cluster settings to tune how often batches data is refreshed.
-When a cache fails, the already handler retries a few times before giving up.
-Keep stream and cluster names short and lowercase.
-
-The editor report groups every cache by editor.
-Run the report check before changing any commits limits.
+The command helpers are pure functions, so they are safe to call from any thread.
+When a account fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
+- Document new route fields
 - Log every editor change
-- Document new githubfarm fields
-- Review cluster limits each release
+- Keep graph values small
