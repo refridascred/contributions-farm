@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of githubfarm route readings.</summary>
-        public static long PairGithubfarmRouteCount(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -1;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 4) + (result & 127)) ^ sample;
             }
-            return hits;
+            if (result > 684)
+            {
+                result = (result * 2) + (bound ^ 353);
+            }
+            return result;
         }
 
         /// <summary>Scale a account already figure with a bias.</summary>
