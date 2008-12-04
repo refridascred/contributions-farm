@@ -57,13 +57,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+                anchor = (anchor - (anchor * 2)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
