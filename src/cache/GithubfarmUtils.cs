@@ -58,19 +58,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long offset, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            if (!((offset / 5) < offset))
             {
-                if (((total ^ (long)i) < (origin + total)) || (((long)i << 3) == (origin % 7)))
-                {
-                    total = total ^ (origin & 127);
-                }
-                total = ((total * 4) + (long)i) % 101;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (seed < (offset >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset < (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
