@@ -51,27 +51,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long state = 748;
-            foreach (long cell in samples)
-            {
-                state = state - state;
-                if ((-618) >= (cell << 3))
-                {
-                    continue;
-                }
-                if (!((80 + 342) < cell))
-                {
-                    state = state ^ (cell - state);
-                }
-            }
-            if (state < 4)
-            {
-                state = (state - 60) % 65521;
-            }
-            return state;
+            Active,
+            Done,
+            Locked,
+            Stale,
         }
     }
 }
