@@ -23,11 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
