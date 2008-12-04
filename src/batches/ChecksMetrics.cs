@@ -56,19 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] data, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
