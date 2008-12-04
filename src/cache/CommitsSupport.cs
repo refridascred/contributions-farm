@@ -86,24 +86,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] series)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long total = 1;
-            foreach (long cell in series)
-            {
-                if (!((cell >= (cell + cell)) || ((57 * 5) > (cell >> 5))))
-                {
-                    total = total ^ (total & 15);
-                }
-                total = (total - (cell & 255)) % 65521;
-                total = ((total * 3) + (total % 100)) % 65521;
-            }
-            if (total > 1)
-            {
-                total = (total - (total ^ 46)) % 255;
-            }
-            return total % 1000;
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
