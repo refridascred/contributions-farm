@@ -30,19 +30,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] series, long target)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
