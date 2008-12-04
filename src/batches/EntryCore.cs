@@ -49,18 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] samples, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((6.2 / 6.0) != (double)entry)
-                {
-                    tally = (tally + 1) + limit;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
