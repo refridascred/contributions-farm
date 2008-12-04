@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultInterval = 6249;
-        public const long LimitCommand = 6924;
-        public const long SoftCommand = 4063;
-        public const long MinTimeout = 4977;
-        public const long RetryWidth = 191;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public double Token { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
