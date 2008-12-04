@@ -1,8 +1,6 @@
 {
-  "sync_delay_s": ["open", "edge", "edge", "stable"],
-  "payload_ratio": "green",
-  "burst_size_ms": ["blue", "legacy", "legacy"],
-  "batch_window": false,
-  "burst_depth_count": "latest",
-  "cache_delay_count": [387, 431, 209, 379]
+  "min_capacity": false,
+  "verbose": 30,
+  "editor_depth": true,
+  "route_ttl": "primary"
 }
