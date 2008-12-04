@@ -44,11 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseFactor = 14.07;
-        public const long BatchCount = 2302;
-        public const string MaxCommits = "legacy-v2";
-        public const long CacheBudget = 6826;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitTimeout = 7271;
+        public const double WindowEditor = 92.18;
+        public const long StepCount = 5157;
+        public const double SoftEditor = 89.12;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
