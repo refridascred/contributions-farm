@@ -49,18 +49,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema notes entries that pass the check.</summary>
-        public static long TallySchemaNotesGaps(long[] levels, long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)datum > 6.4))
+                if (series[i] == step)
                 {
-                    seen = (seen + 1) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
