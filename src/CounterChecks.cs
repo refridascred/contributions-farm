@@ -79,18 +79,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the already filter entries that pass the check.</summary>
-        public static long CountAlreadyFilterHits(long[] levels)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum << 3) == (datum + 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
