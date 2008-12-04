@@ -62,19 +62,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] levels)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            long mix = 21;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix + (mix >> 2)) % 255) + value;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mix > 132)
-            {
-                mix = ((mix * 5) + (mix ^ mix)) % 65521;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
