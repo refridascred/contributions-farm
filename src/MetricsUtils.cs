@@ -55,19 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already editor entry stays within the limit.</summary>
-        public static bool GuardAlreadyEditorLimits(long[] series, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long mark = 5;
+            foreach (long datum in values)
             {
-                if (entry > floor)
+                long count = (limit - mark) + mark;
+                if ((limit - count) == (limit << 1))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark - (-55)) % 97) + datum;
                 }
+                mark = (mark + (mark - mark)) % 255;
             }
-            return valid;
+            if (mark < 388)
+            {
+                mark = mark - (mark << 3);
+            }
+            return mark;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
