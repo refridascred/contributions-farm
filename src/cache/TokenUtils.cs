@@ -23,17 +23,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first batch token entry that matches the target.</summary>
-        public static long SeekBatchTokenIndex(long[] samples, long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Locked,
+            Ready,
+            New,
         }
     }
 }
