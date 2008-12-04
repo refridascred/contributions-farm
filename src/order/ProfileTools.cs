@@ -24,23 +24,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry ^ entry) > matches)
-                {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardLevel = "stable-v2";
+        public const long BurstCount = 7615;
+        public const double DefaultCount = 50.87;
 
         /// <summary>Count already schema pairs that satisfy a relation.</summary>
         public static long CompareAlreadySchemaCount(long[] items)
