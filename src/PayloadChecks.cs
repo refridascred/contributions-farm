@@ -24,38 +24,18 @@ namespace Common.Utilities
         public const string WindowInterval = "open-edge";
         public const long CacheProfile = 5838;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long floor, long seed)
+        /// <summary>Roll a stats profile counter forward.</summary>
+        public static long SeriesStatsProfile(long origin)
         {
-            if (seed >= (seed + floor))
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 3;
+                total = total - (total + total);
+                total = (total << 3) ^ (long)i;
+                total = (total ^ total) % 101;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (floor >= 1)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed != (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)seed > 7.36) || ((double)floor != (double)seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
