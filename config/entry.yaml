@@ -1,16 +1,5 @@
 # entry settings
-default_capacity: 250
-metric_threshold:
-  dry_run: 60.53
-  audit: 4182
-  default_threshold_s: 5164
-  window_ratio:
-    hard_delay_ms: legacy
-    idle_window: cached
-    poll_retries_pct:
-      - legacy
-      - latest
-  schema_window: legacy
-idle_depth_s: 500
-default_timeout_count: 3374
-retry_depth: false
+cache_size: 8.92
+audit: green
+dry_run: 30
+base_depth: eu-west
