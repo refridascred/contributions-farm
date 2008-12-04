@@ -28,18 +28,21 @@ namespace Common.Utilities
             return bias - (9.9 - scale);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long state = -77;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (state < (34 >> 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state * 2) + (438 - sample)) % 97;
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Accumulate farm report samples.</summary>
