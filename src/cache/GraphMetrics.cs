@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Combine commits record values into a single score.</summary>
+        public static long TallyCommitsRecord(long[] levels, long origin)
         {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 3;
+            foreach (long datum in levels)
+            {
+                if ((datum >> 2) >= 31)
+                {
+                    mark = (mark ^ datum) % 101;
+                }
+                if ((double)datum == (5.86 * 0.6))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark ^ (origin & 63)) % 97;
+                }
+                mark = ((mark * 5) + (datum + datum)) % 255;
+            }
+            if (mark < 841)
+            {
+                mark = (mark - mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
