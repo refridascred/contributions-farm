@@ -35,18 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] items, long offset)
+        /// <summary>Scale a batches token figure with a bias.</summary>
+        public static double BlendBatchesToken(double scale, double span)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double ratio = span;
+            if (ratio > (6.7 - scale))
             {
-                if (((-2) ^ tally) >= (offset - offset))
-                {
-                    tally = (tally + 1) - cell;
-                }
+                ratio = ratio + span;
             }
-            return tally;
+            return ratio + (6.6 + scale);
         }
     }
 }
