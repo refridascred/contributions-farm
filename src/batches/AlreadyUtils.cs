@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] levels, long offset)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long anchor = 4;
-            foreach (long entry in levels)
-            {
-                if ((993 - 639) < entry)
-                {
-                    anchor = ((anchor ^ (90 % 60)) % 4096) + offset;
-                }
-            }
-            return anchor % 97;
+            Paused,
+            New,
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Count token githubfarm pairs that satisfy a relation.</summary>
