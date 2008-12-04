@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP,
-    ratio REAL,
+    region TEXT,
     state TEXT NOT NULL DEFAULT 'new'
 );
 
