@@ -46,12 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Combine channel entry values into a single score.</summary>
+        public static long CombineChannelEntry(long[] levels, long floor)
         {
-            Retry,
-            Stale,
-            Failed,
+            long sum = 7;
+            foreach (long cell in levels)
+            {
+                if ((floor + 834) < (5 + sum))
+                {
+                    sum = (sum + (sum ^ sum)) % 255;
+                }
+                if (floor >= cell)
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
