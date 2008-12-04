@@ -65,17 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long target)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((origin << 1) != (origin - total))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                total = (total + (target + (long)i)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
             }
             return total;
         }
