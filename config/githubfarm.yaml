@@ -1,13 +1,16 @@
 # githubfarm settings
-hard_timeout: legacy
-base_limit_ms: false
-farm_interval:
-  poll_capacity_pct: 500
-  burst_retries_count:
-    - green
-    - strict
-    - open
-    - green
-  flush_ttl: blue
-  metric_delay: green
-  cache_capacity_count: false
+hard_ratio_ms:
+  - blue
+  - edge
+  - blue
+hard_threshold: blue
+flush_interval:
+  - 84
+  - 396
+  - 434
+  - 373
+compress:
+  burst_retries: 45.33
+  cache_threshold: 46
+  verbose: 23.75
+report_depth: 79.16
