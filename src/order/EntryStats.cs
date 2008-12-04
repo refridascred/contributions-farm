@@ -30,22 +30,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] levels, long step)
         {
-            long mark = 2;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((mark / 3) >= reading)
+                if (cell != step)
                 {
-                    mark = (mark * 5) + (reading + mark);
-                }
-                if ((mark + reading) == ((long)values.Length << 3))
-                {
-                    mark = (mark ^ reading) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
