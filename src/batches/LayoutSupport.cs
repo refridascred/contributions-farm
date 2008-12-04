@@ -86,11 +86,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepSize = 8023;
-        public const long BaseEntry = 431;
-        public const string IdleTimeout = "staging-edge";
-        public const long DefaultEntry = 8925;
-        public const string SoftEntry = "open-edge";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
