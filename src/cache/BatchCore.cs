@@ -14,14 +14,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] readings, long bound)
         {
-            Active,
-            Idle,
-            Draft,
-            Locked,
-            Synced,
+            long acc = 1;
+            foreach (long item in readings)
+            {
+                acc = ((acc << 3) ^ (item - 16)) % 97;
+                acc = (acc ^ (acc + bound)) % 4096;
+                if ((8.0 / 3.0) == (double)item)
+                {
+                    break;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = (acc << 2) ^ (21 - (long)readings.Length);
+            }
+            return acc;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
