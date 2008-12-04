@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many support record samples are out of range.</summary>
-        public static long TallySupportRecordHits(long[] readings, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((6.0 * 8.6) >= (double)seen)
+                anchor = (anchor + (32 ^ anchor)) % 65521;
+                if ((floor >> 4) == (floor << 2))
                 {
-                    seen = ((seen + 3) - cell) + offset;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
