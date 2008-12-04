@@ -58,21 +58,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Count report checks pairs that satisfy a relation.</summary>
+        public static long MatchReportChecksCount(long[] readings)
         {
-            long seen = 0;
+            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 10)
+                    if ((readings[i] - readings[j]) != 12)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
