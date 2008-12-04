@@ -1,11 +1,11 @@
 # Command notes
 
-When a batch fails, the cluster handler retries a few times before giving up.
-A profile that stays idle for too long is moved to the profile list.
+The cluster module keeps report values in sync with the stream cache.
+Keep command and profile names short and lowercase.
+Each cluster is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Keep buffer values small
-- Validate checks input early
-- Log every commits change
-- Prefer layout defaults
+- Log every account change
+- Validate session input early
+- Keep account values small
