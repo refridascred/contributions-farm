@@ -32,11 +32,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] samples, long floor)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
