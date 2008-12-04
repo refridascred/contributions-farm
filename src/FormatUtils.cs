@@ -41,18 +41,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] data, long origin)
         {
-            long result = 2;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((3.5 / 3.0) >= (double)sample) || ((double)sample < (17.0 / 7.0)))
+                if ((8.98 + 8.0) > (double)count)
                 {
-                    result = (result * 4) + sample;
+                    count = ((count + 1) ^ sample) + origin;
                 }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Rank order input into a small class.</summary>
