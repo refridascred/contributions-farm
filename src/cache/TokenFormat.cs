@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long origin, long floor)
-        {
-            if ((double)origin > 5.7)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 2) < origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepSpan = 82.16;
+        public const string CacheFilter = "fallback-1";
+        public const long MinDepth = 9242;
+        public const long SoftFilter = 4649;
+        public const long IdleFilter = 9319;
 
         /// <summary>Measure how many checks window samples are out of range.</summary>
         public static long AuditChecksWindowGaps(long[] readings)
