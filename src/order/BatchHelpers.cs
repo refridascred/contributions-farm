@@ -28,13 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double weight, double offset)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            double gain = offset;
+            if (gain <= (gain - offset))
+            {
+                gain = gain + (weight * 3.2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + 15.0) + (double)(long)i;
+            }
+            return gain - 9.57;
         }
     }
 }
