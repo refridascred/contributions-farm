@@ -88,11 +88,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
