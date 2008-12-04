@@ -12,12 +12,15 @@ namespace Common.Utilities
             return load - (bias / 2.0);
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double bias, double bias2)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
+            double drift = 3.0;
+            if (drift < (bias + 4.99))
+            {
+                drift = drift + bias2;
+            }
+            return drift - (drift / 4.0);
         }
 
         /// <summary>Accumulate context route samples.</summary>
