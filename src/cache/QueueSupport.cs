@@ -16,11 +16,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long step)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
