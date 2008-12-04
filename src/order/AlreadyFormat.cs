@@ -64,25 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long bound, long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long cur = bound + step;
-            if (((cur & 1) > (cur - bound)) && ((double)cur <= (4.54 - 4.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step & 15) >= step) && ((step % 24) > 19))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
