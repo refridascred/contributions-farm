@@ -47,21 +47,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 705;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sum > (9.3 * 8.4))
                 {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum << 3) ^ (target << 3);
+                }
+                else
+                {
+                    sum = (sum - (target + cell)) % 1000;
                 }
             }
-            return hits;
+            if (sum > 9)
+            {
+                sum = (sum * 4) + (sum ^ target);
+            }
+            return sum;
         }
     }
 }
