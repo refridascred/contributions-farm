@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const string IdleSpan = "local-v2";
         public const long MinRoute = 6970;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] samples, long bound)
+        /// <summary>Audit githubfarm format readings against a rule.</summary>
+        public static long TallyGithubfarmFormatGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (reading != bound)
+                if (cell >= (tally % 8))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
