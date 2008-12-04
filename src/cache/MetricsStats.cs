@@ -38,19 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] samples, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] items, long limit)
         {
-            long carry = 39;
-            foreach (long value in samples)
+            long sum = 2;
+            foreach (long item in items)
             {
-                carry = (carry - (188 + carry)) + value;
+                sum = ((((sum * 2) + (sum * 4)) % 97) + item) + limit;
             }
-            if (carry < 74)
-            {
-                carry = carry + (step + carry);
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
