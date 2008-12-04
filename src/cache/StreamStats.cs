@@ -58,19 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] readings, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long total = 3;
+            foreach (long sample in levels)
             {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total - sample) - step;
             }
-            return flag;
+            return total;
         }
     }
 }
