@@ -24,16 +24,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long score = 203;
-            foreach (long entry in values)
-            {
-                score = score - (entry ^ entry);
-                score = (score - (score ^ entry)) % 65521;
-            }
-            return score % 97;
+            Done,
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
