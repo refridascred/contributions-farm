@@ -23,17 +23,18 @@ namespace Common.Utilities
             return weight - (weight - rate);
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] readings, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (readings[i] <= target)
+                if ((8 + origin) < 223)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
