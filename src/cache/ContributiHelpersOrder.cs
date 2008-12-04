@@ -29,11 +29,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
