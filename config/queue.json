@@ -1,6 +1,6 @@
 {
-  "min_capacity": false,
-  "verbose": 30,
-  "editor_depth": true,
-  "route_ttl": "primary"
+  "base_depth_s": "staging",
+  "readonly": 54,
+  "cache_interval_s": 30,
+  "strict": 10.65
 }
