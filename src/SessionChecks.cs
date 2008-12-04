@@ -29,20 +29,13 @@ namespace Common.Utilities
             return (rate + gain) + span;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((step ^ (-57)) == (acc << 2))
-                {
-                    acc = ((acc << 3) ^ (step + acc)) % 65521;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
