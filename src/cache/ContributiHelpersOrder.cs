@@ -12,11 +12,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 1754;
-        public const string CacheAlready = "standard";
-        public const long DefaultAlready = 7022;
-        public const string BatchAlready = "primary";
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchCount = 3779;
