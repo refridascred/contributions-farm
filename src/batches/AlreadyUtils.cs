@@ -26,12 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultLevel = "standard-edge";
-        public const long StepTimeout = 9476;
-        public const string HardInterval = "strict";
-        public const string DefaultBuffer = "fallback-v2";
-        public const long RetryRatio = 4610;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] series, long origin)
