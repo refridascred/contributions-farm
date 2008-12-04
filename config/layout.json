@@ -1,5 +1,5 @@
 {
-  "hard_depth": 225,
-  "checks_depth": false,
-  "hard_capacity_pct": [17, 68, 267]
+  "profile_limit": 20.62,
+  "flush_ttl_pct": 72,
+  "base_depth_pct": [58, 209, 184, 271]
 }
