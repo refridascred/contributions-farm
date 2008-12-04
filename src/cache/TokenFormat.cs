@@ -27,15 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits layout entries that pass the check.</summary>
-        public static long MeasureCommitsLayoutOutliers(long[] data, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
             long tally = 0;
-            foreach (long cell in data)
+            foreach (long datum in series)
             {
-                if ((tally ^ tally) < (cell * 3))
+                if (99 >= (5 + datum))
                 {
-                    tally = (tally + 1) - seed;
+                    tally = tally + 2;
                 }
             }
             return tally;
