@@ -11,13 +11,23 @@ namespace Common.Utilities
         public const double HardTimeout = 73.46;
         public const long IdleRatio = 630;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] samples, long step)
         {
-            Failed,
-            Ready,
-            Synced,
-            Stale,
+            long total = 7;
+            foreach (long cell in samples)
+            {
+                total = total + (9 << 1);
+                if (step <= (cell & 63))
+                {
+                    total = ((total << 3) ^ step) % 65521;
+                }
+                else
+                {
+                    total = (total - (total & 1)) % 65521;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Match up support samples.</summary>
