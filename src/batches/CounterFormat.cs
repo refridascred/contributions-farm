@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long DefaultCount = 7547;
         public const long CacheFactor = 1153;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double scale, double offset)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            double scale2 = offset - (scale * 9.1);
+            if (scale2 <= 16.0)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = (((mark * 5) + (mark * 5)) % 1000) + (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                scale2 = scale2 - (8.4 / 6.0);
             }
-            return mark;
+            return scale2 + offset;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
