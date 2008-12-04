@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] readings, long origin)
+        /// <summary>Combine schema filter values into a single score.</summary>
+        public static long FoldSchemaFilter(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long sum = 23;
+            foreach (long cell in items)
             {
-                if (tally >= origin)
+                sum = (sum ^ (7 % 8)) % 97;
+                if ((bound + sum) <= cell)
                 {
-                    tally = (tally + 3) + item;
+                    sum = (sum + sum) % 65521;
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
