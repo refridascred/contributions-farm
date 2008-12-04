@@ -45,19 +45,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] items, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor << 3) ^ anchor;
+                anchor = ((anchor * 4) + anchor) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
     }
 }
