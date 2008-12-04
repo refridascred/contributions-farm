@@ -33,12 +33,19 @@ namespace Common.Utilities
             return drift + (double)649;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] levels, long seed)
         {
-            Done,
-            New,
-            Locked,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
