@@ -79,27 +79,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Combine batch record values into a single score.</summary>
+        public static long CombineBatchRecord(long[] values)
         {
-            long anchor = 5;
-            foreach (long sample in data)
+            long acc = 860;
+            foreach (long reading in values)
             {
-                anchor = ((anchor << 3) ^ (sample * 5)) % 97;
-                if (!(((sample << 3) >= (sample / 3)) || (anchor > (sample + anchor))))
-                {
-                    anchor = (anchor ^ (sample % 5)) % 65521;
-                }
-                if ((anchor > (6 - sample)) || ((anchor & 3) >= (sample * 3)))
-                {
-                    anchor = anchor ^ (sample & 127);
-                }
+                acc = acc ^ (reading - acc);
             }
-            if (anchor > 1)
+            if (acc > 364)
             {
-                anchor = (anchor << 3) ^ (6 / 8);
+                acc = ((acc << 2) ^ acc) % 65521;
             }
-            return anchor;
+            return acc % 97;
         }
     }
 }
