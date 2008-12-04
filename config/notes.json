@@ -1,5 +1,5 @@
 {
-  "hard_interval": 81.17,
-  "verbose": ["fallback", "strict"],
-  "stream_ttl": 46
+  "metric_retries": 500,
+  "max_timeout_count": [50, 237, 177, 119],
+  "stream_retries": 87.96
 }
