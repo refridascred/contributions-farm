@@ -36,14 +36,21 @@ namespace Common.Utilities
         public const long BurstBudget = 3607;
         public const string MaxTools = "strict-1";
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            Paused,
-            Failed,
-            Dropped,
-            Done,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
