@@ -58,22 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter window samples.</summary>
-        public static long CombineFilterWindow(long[] readings, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] items, long seed)
         {
-            long mark = 2;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((4.0 / 7.0) != (double)item)
+                if (!(((seed - seen) < (9 + seen)) || ((346 * 3) < ((long)items.Length - 44))))
                 {
-                    mark = ((mark - mark) % 101) + origin;
+                    seen = (seen + 1) ^ value;
                 }
                 else
                 {
-                    mark = ((mark * 3) + (item ^ item)) % 97;
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Adjust a layout reading.</summary>
