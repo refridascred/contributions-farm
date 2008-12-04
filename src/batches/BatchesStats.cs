@@ -44,22 +44,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] values)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels, long limit)
         {
-            long mark = -94;
-            foreach (long cell in values)
+            long mix = 85;
+            foreach (long value in levels)
             {
-                if (((double)cell < (double)mark) && ((cell - cell) > cell))
+                mix = (((mix * 2) + (limit >> 3)) % 65521) - value;
+                if ((long)levels.Length < (2 << 3))
                 {
-                    mark = mark + ((-6) + cell);
-                }
-                else
-                {
-                    mark = (mark * 2) + mark;
+                    mix = mix - 5;
                 }
             }
-            return mark;
+            if (mix > 1)
+            {
+                mix = mix + (mix / 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate window samples.</summary>
