@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultDepth = 2312;
-        public const double BaseLevel = 11.6;
-        public const double IdleFormat = 82.76;
-        public const string SoftFormat = "fallback-v2";
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Count the schema account entries that pass the check.</summary>
         public static long AuditSchemaAccountMatches(long[] samples, long offset)
