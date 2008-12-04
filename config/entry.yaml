@@ -1,18 +1,6 @@
 # entry settings
-hard_window_count: stable
-cache_timeout_s:
-  base_limit_ms:
-    - 71
-    - 160
-    - 461
-  hard_window_pct: eu-west
-  batch_depth_s: true
-  enabled: 1024
-  strict: 1445
-cache_depth:
-  min_delay_ms:
-    - staging
-    - green
-    - blue
-  burst_capacity_pct: 30
-  min_size: 6459
+hard_threshold_pct: true
+batch_size_ms: 75.49
+poll_size_s: legacy
+poll_ratio_ms: fallback
+hard_timeout: stable
