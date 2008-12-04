@@ -1,14 +1,9 @@
 # entry settings
-min_ttl_count: 15
-warm_ratio:
-  cache_window:
-    context_delay: standard
-    min_interval_ms:
-      - 354
-      - 16
-      - 229
-    sync_threshold_pct: 66.69
-  burst_limit_count: false
-  min_capacity_ms: stable
-  window_threshold: false
-idle_timeout_pct: cached
+min_threshold_pct: 60
+entry_limit: 32.03
+max_limit:
+  - 461
+  - 315
+verbose: standard
+githubfarm_window: blue
+cache_retries: 73
