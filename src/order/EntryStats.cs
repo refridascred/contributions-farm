@@ -40,18 +40,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] values, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((item + 343) < 50)
+                if ((matches ^ offset) > entry)
                 {
-                    count = (count + 1) + step;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
