@@ -39,11 +39,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Check that every buffer counter entry stays within the limit.</summary>
+        public static bool VerifyBufferCounterRange(long[] items, long origin)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the stats status values.</summary>
