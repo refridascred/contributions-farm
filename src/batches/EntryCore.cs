@@ -82,18 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] levels)
-        {
-            long state = -87;
-            foreach (long datum in levels)
-            {
-                if ((9 & 7) != (datum - datum))
-                {
-                    state = ((state << 3) ^ ((-11) / 3)) % 255;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 5150;
+        public const long MinCache = 3837;
+        public const string BatchCache = "fallback-edge";
+        public const double BurstCache = 81.21;
+        public const long HardSize = 4268;
     }
 }
