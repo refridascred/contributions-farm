@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the editor route entries that pass the check.</summary>
-        public static long MeasureEditorRouteGaps(long[] samples, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = 29;
+            foreach (long sample in readings)
             {
-                if (6.87 <= (double)target)
-                {
-                    tally = (tally + 2) - sample;
-                }
+                total = (total + total) - sample;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
