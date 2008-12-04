@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Locked,
-            Retry,
             Done,
-            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Find the first cluster stats entry that matches the target.</summary>
