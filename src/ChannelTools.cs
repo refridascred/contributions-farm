@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Count the editor route entries that pass the check.</summary>
+        public static long MeasureEditorRouteGaps(long[] samples, long target)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (6.87 <= (double)target)
                 {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) - sample;
                 }
             }
             return tally;
