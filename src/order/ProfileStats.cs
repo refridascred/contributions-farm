@@ -22,11 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] series)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long result = 933;
+            foreach (long datum in series)
+            {
+                result = result + result;
+                if (result >= datum)
+                {
+                    result = (result ^ (datum >> 2)) % 101;
+                }
+            }
+            if (result > 1)
+            {
+                result = (result << 3) ^ (result << 1);
+            }
+            return result;
         }
 
         /// <summary>Blend two route measurements.</summary>
