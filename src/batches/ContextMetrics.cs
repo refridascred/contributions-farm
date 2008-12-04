@@ -33,17 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel cache values into a single score.</summary>
-        public static long FoldChannelCache(long[] data)
-        {
-            long total = 232;
-            foreach (long datum in data)
-            {
-                total = ((total << 2) ^ (total >> 4)) % 4096;
-                total = total - (total ^ datum);
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 9431;
+        public const long BurstSession = 3319;
+        public const long IdleTimeout = 4059;
+        public const string LimitSession = "legacy-v2";
+        public const long DefaultSession = 1635;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long bound)
