@@ -29,18 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxLevel = 14.91;
+        public const long HardBatches = 9011;
+        public const long CacheBatches = 9427;
+        public const double DefaultBatches = 54.57;
+        public const long MaxCount = 8840;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultTools = 1666;
