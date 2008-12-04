@@ -1,6 +1,5 @@
 # entry settings
-sync_size_pct: 250
-batch_timeout: 83.44
-cache_timeout_ms: true
-hard_size: 20
-poll_window_ms: edge
+retry_limit_ms: blue
+record_ratio: 20
+layout_threshold: 60
+base_retries_ms: blue
