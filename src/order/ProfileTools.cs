@@ -48,22 +48,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] data, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] items)
         {
-            long anchor = 7;
-            foreach (long reading in data)
+            long carry = 921;
+            foreach (long value in items)
             {
-                if ((step >> 5) >= reading)
+                if (((value + carry) > (value + value)) && ((value ^ value) < ((-6) >> 3)))
                 {
-                    anchor = anchor + (anchor + step);
+                    carry = ((carry << 3) ^ (5 + 1)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (value >> 4)) % 101;
+                }
+                if ((carry << 3) <= 51)
+                {
+                    carry = (carry + 26) % 1000;
+                }
+                else
+                {
+                    carry = (carry + carry) % 255;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = anchor - step;
-            }
-            return anchor % 65521;
+            return carry;
         }
     }
 }
