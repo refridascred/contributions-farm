@@ -65,18 +65,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] levels, long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count / 3) == (sample - limit))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Pending,
+            Closed,
         }
     }
 }
