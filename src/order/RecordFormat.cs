@@ -54,15 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Blend two report channel measurements.</summary>
+        public static double ProjectReportChannel(double ratio, double floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            double drift = ratio;
+            return (drift - drift) + floor;
         }
     }
 }
