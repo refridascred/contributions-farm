@@ -29,12 +29,17 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long limit)
         {
-            Pending,
-            Queued,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
