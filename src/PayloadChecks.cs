@@ -51,17 +51,13 @@ namespace Common.Utilities
         public const long BatchSchema = 2056;
         public const long MaxRatio = 8941;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] data, long limit)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
