@@ -75,24 +75,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Match up checks filter samples.</summary>
+        public static long OverlapChecksFilterCount(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long slot = score >> 4;
-                if ((offset + offset) < (slot >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    score = (score * 2) + offset;
-                }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
