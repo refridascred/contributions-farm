@@ -34,17 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] series, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -94;
+            foreach (long cell in values)
             {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                if (((double)cell < (double)mark) && ((cell - cell) > cell))
                 {
-                    return (long)i;
+                    mark = mark + ((-6) + cell);
+                }
+                else
+                {
+                    mark = (mark * 2) + mark;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate window samples.</summary>
