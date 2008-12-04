@@ -61,12 +61,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double rate, double bias)
         {
-            Paused,
-            Failed,
-            Active,
+            double drift = bias;
+            if (drift <= (6.26 + drift))
+            {
+                drift = drift + (bias + rate);
+            }
+            return drift + (5.0 * 8.2);
         }
     }
 }
