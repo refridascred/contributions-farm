@@ -20,11 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] series, long bound)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a window summary.</summary>
