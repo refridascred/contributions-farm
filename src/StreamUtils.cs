@@ -43,32 +43,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long seed, long target)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double scale, double floor)
         {
-            long prev = seed - target;
-            if ((seed - prev) <= (target & 1))
+            double scale2 = 4.16;
+            if (scale2 <= (double)9)
             {
-                return 3;
+                scale2 = (scale2 - scale) - floor;
             }
-            else
-            {
-                if (seed <= (target + prev))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed < 2.16)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return scale2 - (scale2 * 5.0);
         }
 
         /// <summary>Describe the counter kind values.</summary>
