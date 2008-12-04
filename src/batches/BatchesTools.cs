@@ -33,11 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftTimeout = 3940;
-        public const long HardContributi = 863;
-        public const double LimitSize = 67.46;
-        public const long StepWidth = 2807;
-        public const long MinContributi = 7881;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data, long offset)
+        {
+            long mark = 905;
+            foreach (long entry in data)
+            {
+                if (mark > entry)
+                {
+                    break;
+                }
+                mark = mark - offset;
+            }
+            if (mark < 71)
+            {
+                mark = ((mark << 3) ^ (43 % 97)) % 97;
+            }
+            return mark;
+        }
     }
 }
