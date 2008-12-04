@@ -52,15 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            long sum = 382;
-            foreach (long reading in data)
+            double bias = weight;
+            if (bias < (weight - 0.91))
             {
-                sum = ((sum * 4) + (reading / 7)) % 65521;
+                bias = bias + span;
             }
-            return sum % 65521;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias + (span - weight);
         }
 
         /// <summary>Look up the position of a graph profile sample.</summary>
