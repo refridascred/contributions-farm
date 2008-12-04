@@ -49,18 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] items, long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading == (8.4 * 17.0))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next payload value.</summary>
