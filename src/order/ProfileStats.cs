@@ -23,22 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] values, long bound)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) > (entry >> 4))
-                {
-                    hits = (hits + 1) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
