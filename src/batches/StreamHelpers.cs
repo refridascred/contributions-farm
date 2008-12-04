@@ -34,14 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count report entry pairs that satisfy a relation.</summary>
+        public static long MatchReportEntryCount(long[] readings)
         {
-            Queued,
-            Failed,
-            Stale,
-            Locked,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
