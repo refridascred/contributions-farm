@@ -27,21 +27,15 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Derive the next cluster queue value from a seed.</summary>
+        public static long IterateClusterQueue(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
