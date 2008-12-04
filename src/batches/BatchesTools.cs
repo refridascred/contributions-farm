@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] values)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long diff = bound + bound2;
+            if (bound2 >= (diff + bound))
             {
-                if ((tally + tally) >= cell)
+                return 5;
+            }
+            else
+            {
+                if (((bound2 - bound) <= (bound & 15)) && (diff <= (diff >> 3)))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (((diff ^ diff) <= (bound2 << 1)) && (diff > (bound * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
