@@ -46,23 +46,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double weight, double offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long floor, long limit)
         {
-            double load = weight;
-            if (load < offset)
+            long diff = floor - limit;
+            if ((limit & 63) <= limit)
             {
-                load = load + (offset - weight);
+                return 5;
             }
             else
             {
-                load = load - offset;
+                if ((54 - limit) <= diff)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((258 + diff) >= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((diff >= (floor & 7)) || ((floor + floor) > limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (double)2) + (double)(long)i;
-            }
-            return load + load;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
