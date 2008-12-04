@@ -41,24 +41,23 @@ namespace Common.Utilities
         public const long MaxDepth = 5846;
         public const string IdleFactor = "alpha-1";
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long carry = -1;
+            foreach (long sample in readings)
             {
-                long span = (long)i;
-                if (!(target >= result))
+                carry = ((carry * 5) + carry) % 97;
+                if (((carry - 5) > (sample << 1)) && ((double)carry <= (5.2 + 9.74)))
                 {
-                    result = (result * 3) + (target + span);
+                    carry = carry - (sample ^ sample);
                 }
-                if (!((6 - target) <= (long)i))
-                {
-                    result = (result * 3) + (result / 7);
-                }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            if (carry > 7)
+            {
+                carry = (carry - carry) % 101;
+            }
+            return carry;
         }
     }
 }
