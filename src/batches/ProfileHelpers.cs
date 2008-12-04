@@ -52,16 +52,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchTimeout = "stable";
+        public const double HardLevel = 88.93;
+        public const long CacheRatio = 4799;
+        public const long WindowInterval = 5300;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
