@@ -34,10 +34,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 6872;
-        public const string SoftRoute = "local-v2";
-        public const long IdleRoute = 1851;
-        public const long StepRoute = 2813;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double rate, double bias)
+        {
+            double ratio = bias / 4.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio + 9.17) + (double)(long)i) - rate;
+            }
+            return ratio + ratio;
+        }
     }
 }
