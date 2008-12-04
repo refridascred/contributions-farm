@@ -57,24 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] values, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] levels)
         {
-            long mark = 5;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                long count = (limit - mark) + mark;
-                if ((limit - count) == (limit << 1))
+                if ((((double)sample != (6.1 + 1.93)) || ((hits * 5) < hits)) && ((hits / 3) > hits))
                 {
-                    mark = ((mark - (-55)) % 97) + datum;
+                    hits = hits + 3;
                 }
-                mark = (mark + (mark - mark)) % 255;
             }
-            if (mark < 388)
-            {
-                mark = mark - (mark << 3);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the token state values.</summary>
