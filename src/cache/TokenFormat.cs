@@ -12,21 +12,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ origin) % 255;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
