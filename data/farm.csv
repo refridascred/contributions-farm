@@ -1,6 +1,7 @@
-id,state,weight
-1,88.08,34.45
-2,650,latest
-3,55.04,281
-4,215,staging
-5,976,70.33
+id,state,label
+1,237,cached
+2,85.82,94.13
+3,348,705
+4,281,stable
+5,23.05,strict
+6,123,92.04
