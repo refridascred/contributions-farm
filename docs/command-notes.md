@@ -1,11 +1,15 @@
 # Command notes
 
-When a command fails, the contributi handler retries a few times before giving up.
-The metrics module keeps graph values in sync with the metric cache.
+A cluster that stays idle for too long is moved to the batches list.
+Run the metrics check before changing any cluster limits.
+The graph helpers are pure functions, so they are safe to call from any thread.
+
+Run the order check before changing any editor limits.
+Use support settings to tune how often cluster data is refreshed.
+Each tools is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Validate editor input early
-- Prefer batches defaults
-- Keep payload values small
-- Log every cache change
+- Review stats limits each release
+- Document new channel fields
+- Prefer command defaults
