@@ -42,19 +42,13 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] samples, long step)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
