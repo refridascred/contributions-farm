@@ -15,20 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchWidth = 24.83;
+        public const long MaxChannel = 5659;
+        public const string DefaultChannel = "legacy-1";
 
         /// <summary>Adjust a record reading.</summary>
         public static double ScaleRecord(double gain, double bias)
