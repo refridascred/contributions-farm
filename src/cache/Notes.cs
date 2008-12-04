@@ -40,12 +40,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] readings, long bound)
         {
-            Ready,
-            Closed,
-            Locked,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of payload already readings.</summary>
