@@ -1,7 +1,7 @@
 # support settings
-stats_size:
-  - local
-  - blue
-max_ttl: fallback
-batch_retries: legacy
-metric_size: standard
+retry_interval_ms: 7.65
+max_capacity:
+  - 29
+  - 14
+  - 137
+support_ratio: 10.01
