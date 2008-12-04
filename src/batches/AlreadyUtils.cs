@@ -46,14 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryScore = 9725;
+        public const double LimitFormat = 26.27;
+        public const long BaseScore = 8865;
+        public const double SoftFormat = 7.64;
+        public const long RetryFormat = 1186;
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] series, long origin)
