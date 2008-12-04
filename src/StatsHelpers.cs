@@ -50,11 +50,12 @@ namespace Common.Utilities
             return ratio + (9.1 * 6.7);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 8515;
-        public const long CacheInterval = 9212;
-        public const long BaseReport = 8575;
-        public const double WindowReport = 52.62;
-        public const long LimitReport = 3218;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
