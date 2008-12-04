@@ -1,20 +1,13 @@
 {
-  "cache_size_ms": 38.55,
-  "profile_threshold": {
-    "max_capacity_count": true,
-    "base_timeout_pct": ["local", "standard", "open", "open"],
-    "context_interval": 60,
-    "account_timeout": true
+  "default_timeout_count": [322, 257, 39, 196],
+  "audit": "eu-west",
+  "readonly": {
+    "max_interval": "stable",
+    "max_delay_s": "local",
+    "batch_size": true,
+    "warm_depth": 100,
+    "window_limit": 30,
+    "cache_interval": 69.03
   },
-  "route_depth": {
-    "readonly": "primary",
-    "dry_run": true,
-    "burst_retries_ms": true,
-    "account_delay": 1.24,
-    "soft_interval_s": "standard",
-    "flush_capacity_pct": 30
-  },
-  "soft_limit_s": [351, 419],
-  "min_limit_pct": "cached",
-  "max_timeout_ms": [153, 454]
+  "burst_size_s": 30
 }
