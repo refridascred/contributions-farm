@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] samples)
+        /// <summary>Iterate the buffer metrics series from a seed.</summary>
+        public static long IterateBufferMetrics(long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((9.6 / 2.0) <= (double)tally)
+                if (49 < step)
                 {
-                    tally = (tally + 2) + item;
+                    sum = (sum + 4) % 4096;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
