@@ -40,22 +40,19 @@ namespace Common.Utilities
             return mean - (double)(-564);
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] readings, long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double weight = gain;
+            if (weight <= gain)
             {
-                if (!((double)matches > 3.0))
-                {
-                    matches = ((matches + 1) + reading) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + (double)30;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (gain + weight)) + (double)(long)i;
+            }
+            return weight - (bias / 4.0);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
