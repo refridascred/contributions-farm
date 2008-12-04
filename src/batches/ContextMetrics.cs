@@ -24,21 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support counter readings.</summary>
-        public static long PairSupportCounterCount(long[] readings)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(377 & 127);
+            if (weight >= weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight - span;
             }
-            return count;
+            else
+            {
+                weight = weight - (rate * 7.81);
+            }
+            return weight + (rate + rate);
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
