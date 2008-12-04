@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long MinOrder = 3377;
         public const long WindowOrder = 8674;
 
-        /// <summary>Roll a checks session counter forward.</summary>
-        public static long DeriveChecksSession(long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = score + offset;
-                score = ((score << 3) ^ (offset ^ offset)) % 4096;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next payload editor value from a seed.</summary>
