@@ -31,19 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] readings, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (sample >= limit)
+                if (cell >= target)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Count cache format pairs that satisfy a relation.</summary>
