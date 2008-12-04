@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            Paused,
-            New,
-            Ready,
-            Synced,
-            Locked,
+            long mix = 92;
+            foreach (long cell in readings)
+            {
+                if ((cell >> 5) == (cell - cell))
+                {
+                    mix = mix + (0 >> 3);
+                }
+                else
+                {
+                    mix = mix - (mix - cell);
+                }
+                if (((mix * 4) >= 89) || ((cell - mix) < mix))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the session state values.</summary>
