@@ -74,9 +74,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheScore = 3807;
-        public const long MinBatch = 4595;
-        public const string DefaultScore = "standard-1";
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] values)
+        {
+            long mix = 32;
+            foreach (long value in values)
+            {
+                if (((547 * 5) == (value * 4)) && ((2 % 2) > value))
+                {
+                    mix = (mix - (mix & 31)) % 65521;
+                }
+                else
+                {
+                    mix = (mix * 5) + mix;
+                }
+                if ((mix - value) != (mix << 2))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
