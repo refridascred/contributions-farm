@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long LimitSession = 2398;
         public const long IdleFactor = 9684;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] samples, long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long total = 1;
-            foreach (long value in samples)
-            {
-                total = ((total - (53 - bound)) % 65521) ^ value;
-                total = ((total << 2) ^ (total / 5)) % 101;
-            }
-            return total;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
