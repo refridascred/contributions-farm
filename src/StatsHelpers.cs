@@ -35,22 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long mark = 96;
+            foreach (long datum in values)
             {
-                if ((hits >> 1) < cell)
+                if ((mark + datum) == (mark >> 5))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = mark ^ (mark + datum);
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Roll a context counter forward.</summary>
