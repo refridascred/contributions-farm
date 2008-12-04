@@ -24,25 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a batch farm value against two limits.</summary>
-        public static long BucketBatchFarm(long bound, long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long cur = bound ^ offset;
-            if ((7 * 4) <= (bound + cur))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((cur / 9) < (offset ^ bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
