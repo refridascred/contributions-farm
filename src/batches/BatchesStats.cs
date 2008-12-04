@@ -28,12 +28,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryFactor = 85.83;
-        public const long BaseTools = 4047;
-        public const long HardTools = 1113;
-        public const long MinTools = 1472;
-        public const string BatchSpan = "strict";
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long MeasureAlreadyMatches(long[] values, long floor)
