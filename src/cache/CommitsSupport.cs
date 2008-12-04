@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "stable-1";
-        public const long LimitSize = 5879;
-        public const string MaxTimeout = "staging-v2";
-        public const long IdleBuffer = 8195;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up metric account samples.</summary>
         public static long MatchMetricAccountCount(long[] samples)
