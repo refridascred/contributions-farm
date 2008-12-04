@@ -19,19 +19,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
