@@ -29,13 +29,11 @@ namespace Common.Utilities
             return scale + (scale - bias);
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double ratio, double span)
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            double gain = (double)(236 % 60);
+            return (gain - (3.09 - ratio)) + span;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
