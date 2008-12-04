@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a batch command reading by value.</summary>
-        public static long LocateBatchCommandIndex(long[] items, long limit)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
