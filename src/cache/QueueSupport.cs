@@ -16,20 +16,12 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 2912;
+        public const string IdleWidth = "local-v2";
+        public const long MinSupport = 604;
+        public const string BatchCount = "cached-edge";
+        public const long BaseScore = 2430;
 
         /// <summary>Adjust a buffer profile reading.</summary>
         public static double ScaleBufferProfile(double rate, double offset)
