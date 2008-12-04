@@ -1,10 +1,12 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-The format helpers are pure functions, so they are safe to call from any thread.
+Run the account check before changing any cluster limits.
+The layout module keeps layout values in sync with the context cache.
+The batches module keeps filter values in sync with the token cache.
 
 ## Guidelines
 
-- Validate metrics input early
-- Review stats limits each release
-- Prefer account defaults
+- Keep metric values small
+- Review channel limits each release
+- Validate checks input early
+- Document new graph fields
