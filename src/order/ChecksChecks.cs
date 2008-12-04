@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Failed,
-            Stale,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 1398;
+        public const long MinContributi = 2205;
+        public const string RetryFactor = "standard";
+        public const long BaseCount = 7364;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchHits(long[] series, long bound)
