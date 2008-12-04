@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] values, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((sample * 4) >= (target - sample))
+                if ((datum << 3) < (datum + datum))
                 {
-                    tally = tally + 1;
+                    count = (count + 1) + origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a batches header.</summary>
