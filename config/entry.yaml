@@ -1,6 +1,18 @@
 # entry settings
-burst_capacity: 67.62
-flush_capacity_count: false
-warm_interval: true
-retry_limit: 65
-batch_interval_pct: cached
+hard_window_count: stable
+cache_timeout_s:
+  base_limit_ms:
+    - 71
+    - 160
+    - 461
+  hard_window_pct: eu-west
+  batch_depth_s: true
+  enabled: 1024
+  strict: 1445
+cache_depth:
+  min_delay_ms:
+    - staging
+    - green
+    - blue
+  burst_capacity_pct: 30
+  min_size: 6459
