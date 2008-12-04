@@ -29,16 +29,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long offset, long bound)
         {
-            long result = -744;
-            foreach (long item in data)
+            long gap = offset + bound;
+            if ((gap ^ offset) != (bound ^ offset))
             {
-                result = result + (item % 60);
-                result = ((result * 3) + (result + result)) % 1000;
+                return 0;
             }
-            return result % 97;
+            else
+            {
+                if (((gap ^ offset) != (offset - 8)) && ((offset - gap) <= 682))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)57 == (double)gap)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
