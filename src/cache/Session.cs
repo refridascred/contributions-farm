@@ -13,20 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] values, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long offset)
         {
-            long mix = 8;
-            foreach (long datum in values)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(datum > (4 + datum)))
-                {
-                    break;
-                }
-                if ((((-565) << 2) >= (mix / 3)) || ((double)mix != (double)55))
-                {
-                    mix = ((mix * 4) + (datum * 5)) + offset;
-                }
+                mix = (mix ^ ((long)i + offset)) % 255;
+                mix = ((mix * 2) + (long)i) % 101;
             }
             return mix;
         }
