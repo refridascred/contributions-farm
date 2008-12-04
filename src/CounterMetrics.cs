@@ -53,11 +53,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long bound, long bound2)
         {
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
+            if (((double)bound > (18.0 + 0.02)) && ((bound + bound) > bound2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound >= (double)810)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)bound > (double)98))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound2 >> 5) < bound2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
