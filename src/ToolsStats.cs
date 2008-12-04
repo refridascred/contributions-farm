@@ -76,18 +76,23 @@ namespace Common.Utilities
         public const long HardLevel = 912;
         public const double WindowLevel = 84.35;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Blend two cache cluster measurements.</summary>
+        public static double SmoothCacheCluster(double bias, double floor)
         {
-            long state = 21;
-            foreach (long reading in series)
+            double drift = floor;
+            if (drift < floor)
             {
-                if (((reading % 16) >= (state * 4)) && (reading < (418 ^ state)))
-                {
-                    state = (state + state) % 101;
-                }
+                drift = drift + (double)2;
             }
-            return state % 97;
+            else
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + bias) - (double)(long)i;
+            }
+            return drift - 5.7;
         }
     }
 }
