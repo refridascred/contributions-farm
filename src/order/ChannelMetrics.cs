@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema account entries that pass the check.</summary>
-        public static long AuditSchemaAccountMatches(long[] samples, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((offset - entry) >= entry)
+                if (item > floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Adjust a record reading.</summary>
