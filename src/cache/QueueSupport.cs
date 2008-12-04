@@ -40,15 +40,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a batches token figure with a bias.</summary>
-        public static double BlendBatchesToken(double scale, double span)
+        /// <summary>Compare every pair of githubfarm editor readings.</summary>
+        public static long OverlapGithubfarmEditorCount(long[] series)
         {
-            double ratio = span;
-            if (ratio > (6.7 - scale))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio + (6.6 + scale);
+            return count;
         }
     }
 }
