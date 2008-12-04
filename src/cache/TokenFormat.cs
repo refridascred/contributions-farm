@@ -26,16 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Audit payload stats readings against a rule.</summary>
+        public static long MeasurePayloadStatsGaps(long[] series, long step)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                score = ((score << 2) ^ ((long)i * 2)) % 101;
-                score = ((score * 5) + (long)i) % 101;
+                if ((361 + item) <= (item - hits))
+                {
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
