@@ -1,5 +1,5 @@
 {
-  "dry_run": "latest",
-  "idle_interval": 92.22,
-  "token_timeout": [386, 207]
+  "batch_size_ms": 749,
+  "queue_timeout": "staging",
+  "strict": 8107
 }
