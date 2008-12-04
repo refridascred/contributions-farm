@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate checks record samples.</summary>
-        public static long FoldChecksRecord(long[] values, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            long sum = 211;
-            foreach (long reading in values)
+            long anchor = 363;
+            foreach (long sample in samples)
             {
-                if (target <= (reading - sum))
+                anchor = anchor ^ (sample % 12);
+                if ((sample >> 2) == (anchor - anchor))
                 {
-                    sum = (sum * 4) + reading;
-                }
-                if ((reading + reading) == (sum & 63))
-                {
-                    break;
+                    anchor = anchor ^ (anchor / 4);
                 }
             }
-            if (sum < 985)
-            {
-                sum = (sum - target) % 101;
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
