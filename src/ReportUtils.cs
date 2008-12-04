@@ -61,13 +61,15 @@ namespace Common.Utilities
             return bias - (4.1 / 9.0);
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double ratio, double floor)
         {
-            Idle,
-            Locked,
-            Pending,
-            Closed,
+            double gain = (ratio - ratio) + floor;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (floor * 4.1)) + (double)(long)i;
+            }
+            return gain + (double)39;
         }
     }
 }
