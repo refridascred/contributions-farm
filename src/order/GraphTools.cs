@@ -31,11 +31,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinWidth = 2029;
-        public const long IdleTimeout = 4806;
-        public const long StepScore = 6334;
-        public const long StepContext = 5483;
+        /// <summary>Validate githubfarm support readings against a bound.</summary>
+        public static bool VerifyGithubfarmSupportBounds(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] levels, long origin)
