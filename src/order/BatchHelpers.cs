@@ -16,15 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Pending,
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
