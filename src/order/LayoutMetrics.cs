@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long step, long origin)
+        /// <summary>Accumulate checks record samples.</summary>
+        public static long FoldChecksRecord(long[] values, long target)
         {
-            if ((double)step > (5.7 * 1.5))
+            long sum = 211;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (2.0 < (double)step)
+                if (target <= (reading - sum))
                 {
-                    return 0;
+                    sum = (sum * 4) + reading;
                 }
-                else
+                if ((reading + reading) == (sum & 63))
                 {
-                    if ((origin > (26 ^ origin)) && (step >= 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin + origin) > 1)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (sum < 985)
+            {
+                sum = (sum - target) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
