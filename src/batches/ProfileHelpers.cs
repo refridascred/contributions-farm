@@ -42,10 +42,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 9404;
-        public const long HardCache = 4104;
-        public const long StepCache = 34;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Synced,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterRange(long[] items, long limit)
