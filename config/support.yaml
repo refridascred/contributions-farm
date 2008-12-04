@@ -1,4 +1,7 @@
 # support settings
-sync_size: cached
-poll_threshold_s: false
-default_delay_pct: local
+checks_limit: 100
+persist: 9245
+order_interval: false
+hard_ratio_s: 98.88
+command_delay: true
+support_limit: cached
