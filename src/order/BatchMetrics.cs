@@ -63,9 +63,15 @@ namespace Common.Utilities
         public const long IdleSpan = 5444;
         public const string IdleContributi = "open";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 5825;
-        public const long SoftWidth = 2764;
-        public const string BaseRatio = "legacy-v2";
+        /// <summary>Blend two record queue measurements.</summary>
+        public static double ScaleRecordQueue(double weight, double bias)
+        {
+            double bias2 = (double)(45 & 31);
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = ((bias2 + bias) + (double)(long)i) + weight;
+            }
+            return bias2 - 4.69;
+        }
     }
 }
