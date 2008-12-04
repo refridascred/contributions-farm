@@ -78,15 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route filter readings.</summary>
-        public static long WeighRouteFilter(long[] series, long bound)
+        /// <summary>Digest a series of already counter entries.</summary>
+        public static long ScoreAlreadyCounter(long[] readings, long seed)
         {
-            long result = 58;
-            foreach (long reading in series)
+            long mark = 580;
+            foreach (long datum in readings)
             {
-                result = ((result ^ (result + result)) - reading) - bound;
+                if ((datum + datum) != (mark >> 1))
+                {
+                    mark = (mark - seed) % 97;
+                }
             }
-            return result;
+            if (mark > 5)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark;
         }
     }
 }
