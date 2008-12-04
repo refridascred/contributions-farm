@@ -23,25 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] items, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state - (seed + (long)i)) % 97;
-                state = ((state << 3) ^ (long)i) % 1000;
-                if ((seed + 361) < (seed % 97))
+                if (items[i] == limit)
                 {
-                    state = ((state << 2) ^ (state & 1)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    state = ((state << 2) ^ (8 + 47)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
