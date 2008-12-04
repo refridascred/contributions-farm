@@ -21,14 +21,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Validate commits order readings against a bound.</summary>
+        public static bool ValidateCommitsOrderRange(long[] series, long seed)
         {
-            New,
-            Active,
-            Pending,
-            Stale,
-            Draft,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
