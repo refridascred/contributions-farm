@@ -32,18 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] readings)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((origin < (origin & 63)) && (limit <= (origin * 3)))
             {
-                if ((cell / 2) > (seen + 282))
+                return 6;
+            }
+            else
+            {
+                if (((double)origin < 5.32) && ((431 >> 3) == (origin ^ 202)))
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
