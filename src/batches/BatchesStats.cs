@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long bound, long step)
         {
-            long result = 51;
-            foreach (long value in readings)
+            if ((0 + step) > (step + bound))
             {
-                result = ((result << 2) ^ (value % 3)) % 255;
+                return 2;
             }
-            return result % 1000;
+            else
+            {
+                if ((double)bound > (8.8 + 3.7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound % 2) > (bound & 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
