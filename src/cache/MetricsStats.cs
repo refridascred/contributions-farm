@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((12.0 < (double)datum) || ((double)bound != (double)66))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCommits = "staging-v2";
+        public const long StepScore = 1069;
+        public const long StepCommits = 723;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] samples, long limit)
