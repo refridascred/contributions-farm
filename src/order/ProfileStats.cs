@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultFactor = 9174;
-        public const long RetryLevel = 876;
-        public const double MinWidth = 38.72;
-        public const double MinSize = 80.93;
-        public const double SoftAlready = 39.28;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((((tally + tally) >= value) && ((value - 15) >= (579 - tally))) && (((double)tally != (double)value) && ((double)tally <= 6.41)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long SeriesNotes(long seed)
