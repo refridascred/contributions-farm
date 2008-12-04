@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                acc = (acc ^ (acc * 3)) % 65521;
-                acc = acc - (acc << 2);
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)matches > (6.2 + 6.9))
                 {
-                    acc = ((acc << 3) ^ ((long)i2 + (long)i2)) % 1000;
+                    matches = (matches + 2) ^ reading;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a graph header.</summary>
