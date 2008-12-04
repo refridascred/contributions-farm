@@ -26,21 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support tools samples.</summary>
-        public static long OverlapSupportToolsCount(long[] values)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = step + seed;
+            if (next < (step + seed))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((16.0 - 6.0) > (double)step)
                 {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
