@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((seen % 5) >= value)
+                if (item <= (tally << 3))
                 {
-                    seen = seen + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a account record.</summary>
