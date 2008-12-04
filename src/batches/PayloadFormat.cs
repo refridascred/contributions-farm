@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BurstCluster = 9259;
         public const long SoftCluster = 1802;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading == (double)matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "alpha";
+        public const long LimitLevel = 1425;
+        public const long BaseWindow = 8227;
+        public const long MinSpan = 5956;
+        public const long HardWindow = 7046;
 
         /// <summary>Validate metrics schema readings against a bound.</summary>
         public static bool ValidateMetricsSchemaBounds(long[] values, long step)
