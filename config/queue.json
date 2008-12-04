@@ -1,9 +1,17 @@
 {
-  "schema_delay": "legacy",
-  "audit": {
-    "hard_window": "eu-west",
-    "dry_run": ["latest", "fallback", "open", "strict"],
-    "compress": "standard"
-  },
-  "schema_capacity": 8854
+  "base_timeout_ms": 19,
+  "base_timeout": "green",
+  "poll_delay": {
+    "default_threshold_count": "latest",
+    "min_delay_s": {
+      "strict": 70.97,
+      "max_delay": [143, 169, 253],
+      "base_threshold_s": "primary",
+      "githubfarm_interval": ["strict", "blue", "blue", "legacy"]
+    },
+    "burst_ratio_s": "staging",
+    "audit": "blue",
+    "flush_window": "fallback",
+    "enabled": "stable"
+  }
 }
