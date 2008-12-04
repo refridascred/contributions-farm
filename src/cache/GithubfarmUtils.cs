@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const long StepWidth = 3701;
         public const string WindowRatio = "fallback";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxLevel = 85.09;
-        public const long WindowSize = 5473;
-        public const long CacheBuffer = 8112;
-        public const double BurstSpan = 70.97;
-        public const string CacheLevel = "open-edge";
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark ^ (801 ^ (long)i);
+                if ((7 <= target) && (((-792) - mark) < (target >> 3)))
+                {
+                    mark = (mark ^ (mark + target)) % 255;
+                    mark = (mark + target) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
         public static bool GuardGithubfarmCacheLimits(long[] values, long bound)
