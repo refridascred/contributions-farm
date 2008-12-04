@@ -52,11 +52,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseTimeout = "open-1";
-        public const long RetryWidth = 4627;
-        public const long RetryDepth = 4290;
-        public const double BatchNotes = 74.67;
-        public const string CacheNotes = "cached";
+        /// <summary>Accumulate cache stats samples.</summary>
+        public static long TotalCacheStats(long[] values, long seed)
+        {
+            long anchor = 5;
+            foreach (long entry in values)
+            {
+                anchor = (anchor << 2) ^ anchor;
+                anchor = (anchor + (anchor + seed)) % 1000;
+                if (seed > entry)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
