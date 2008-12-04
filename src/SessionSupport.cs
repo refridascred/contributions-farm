@@ -43,19 +43,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] data, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            long score = 7;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = (((total * 5) + (bound - 35)) % 65521) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                score = ((score + ((-23) - 21)) ^ value) - bound;
             }
-            return total;
+            return score % 97;
         }
     }
 }
