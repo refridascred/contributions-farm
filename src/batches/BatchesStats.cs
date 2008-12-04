@@ -45,18 +45,15 @@ namespace Common.Utilities
             return mean - (rate / 6.0);
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] values, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long sum = 6;
+            foreach (long datum in levels)
             {
-                if (hits > (value ^ floor))
-                {
-                    hits = hits + 1;
-                }
+                sum = ((sum - sum) ^ datum) + seed;
             }
-            return hits;
+            return sum;
         }
     }
 }
