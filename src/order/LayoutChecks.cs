@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long limit, long bound)
-        {
-            if ((limit ^ bound) < limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + limit) < limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit != (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 662;
+        public const long RetryWidth = 6217;
+        public const double HardTimeout = 73.46;
+        public const long IdleRatio = 630;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
