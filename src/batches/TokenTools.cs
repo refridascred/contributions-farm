@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long bound, long target)
-        {
-            if ((target & 127) > (target / 9))
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound < (bound << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((target - 4) <= target) || ((bound % 8) <= (target * 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)bound >= (7.76 * 12.0)) && ((bound ^ target) < (bound & 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryDepth = 4545;
+        public const string BaseTimeout = "stable-edge";
+        public const double CacheBudget = 11.46;
+        public const long SoftAlready = 4154;
+        public const string CacheAlready = "legacy-1";
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] readings, long offset)
