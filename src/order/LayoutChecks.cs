@@ -79,23 +79,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a entry batch reading.</summary>
-        public static double AdjustEntryBatch(double scale, double floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] samples, long step)
         {
-            double gain = (double)((-55) & 31);
-            if (gain <= floor)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                gain = gain + (gain + floor);
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (double)8;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + scale;
+            return found;
         }
     }
 }
