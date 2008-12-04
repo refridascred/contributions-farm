@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] readings)
         {
-            Draft,
-            Dropped,
-            Done,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell / 2) > (seen + 282))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
