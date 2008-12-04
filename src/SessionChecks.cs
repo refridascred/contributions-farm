@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] readings)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = 5;
+            foreach (long reading in samples)
             {
-                if (cell <= (cell + cell))
+                total = total - (reading * 5);
+                if (((double)total > 6.17) && ((total + total) != (2 ^ reading)))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate cache samples.</summary>
