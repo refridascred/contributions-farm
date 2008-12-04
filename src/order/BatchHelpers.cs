@@ -15,17 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first window batches entry that matches the target.</summary>
-        public static long FindWindowBatchesIndex(long[] levels, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Project the next account value.</summary>
