@@ -38,19 +38,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] samples, long seed)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long floor2)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long offset = floor + floor2;
+            if ((33 / 2) > (floor2 >> 1))
             {
-                if (value >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((floor & 15) < (floor - floor))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset > (double)floor2) || ((floor2 / 5) <= (offset + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define route limits and defaults.</summary>
