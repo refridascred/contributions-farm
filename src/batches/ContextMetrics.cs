@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] samples, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (item >= limit)
+                if (!(((long)i << 3) <= (result & 1)))
                 {
-                    ok = false;
-                    break;
+                    result = (result ^ (long)i) % 65521;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
