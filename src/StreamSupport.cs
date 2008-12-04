@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] levels, long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= limit)
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
