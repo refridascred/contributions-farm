@@ -12,17 +12,32 @@ namespace Common.Utilities
         public const long SoftAlready = 4154;
         public const string CacheAlready = "legacy-1";
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] readings, long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long step, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step2 = step ^ bound;
+            if ((double)bound < (3.0 + 17.0))
             {
-                if (readings[i] == offset)
+                return 1;
+            }
+            else
+            {
+                if ((step2 + step2) < (step >> 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((30 + bound) <= (0 & 127))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate context samples.</summary>
