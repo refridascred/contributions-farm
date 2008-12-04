@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long StepFactor = 7097;
         public const long LimitWidth = 5996;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] readings, long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (9.39 <= (double)sample)
-                {
-                    matches = (matches + 3) + floor;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a cache info.</summary>
