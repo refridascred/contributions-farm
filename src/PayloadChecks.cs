@@ -33,17 +33,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] levels, long origin)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ (result - seed)) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Rank account input into a small class.</summary>
