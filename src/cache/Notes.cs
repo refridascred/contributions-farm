@@ -45,12 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the layout phase values.</summary>
