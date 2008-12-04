@@ -39,17 +39,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] readings, long step)
+        /// <summary>Scale a profile order figure with a bias.</summary>
+        public static double SmoothProfileOrder(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = floor;
+            if (mean > 14.0)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (bias + 3.5);
             }
-            return -1;
+            return mean + bias;
         }
 
         /// <summary>Combine entry notes values into a single score.</summary>
