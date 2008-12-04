@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 4220;
-        public const long MaxDepth = 9885;
-        public const long HardCount = 4606;
-        public const double CacheInterval = 30.91;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long FindRouteIndex(long[] samples, long origin)
