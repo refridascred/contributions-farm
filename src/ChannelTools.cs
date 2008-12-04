@@ -36,17 +36,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long target, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)target != (2.0 / 6.0))
             {
-                if ((data[i] <= origin) && ((data[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if (origin <= (96 / 9))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((99 <= (target << 2)) || ((3 + 90) > origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3.0 - 4.16) >= (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
