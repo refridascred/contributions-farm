@@ -32,18 +32,16 @@ namespace Common.Utilities
         public const long CacheSpan = 7348;
         public const long BaseBatches = 6405;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] values)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((984 - hits) != (4 - hits)))
-                {
-                    hits = (hits + 3) + sample;
-                }
+                mix = (mix + (mix >> 4)) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Rank order input into a small class.</summary>
