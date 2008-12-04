@@ -26,18 +26,23 @@ namespace Common.Utilities
         public const long CacheTimeout = 269;
         public const string MinDepth = "strict-edge";
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] items)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] items)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long score = -808;
+            foreach (long cell in items)
             {
-                if ((matches % 3) >= (value & 127))
+                score = ((score << 2) ^ 234) % 65521;
+                if ((cell >> 4) == ((long)items.Length + cell))
                 {
-                    matches = matches + 3;
+                    score = ((score * 2) + (cell - score)) % 4096;
                 }
             }
-            return matches;
+            if (score < 5)
+            {
+                score = (score + score) % 97;
+            }
+            return score;
         }
     }
 }
