@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] values)
         {
-            Paused,
-            New,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (0 >= (cell * 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
