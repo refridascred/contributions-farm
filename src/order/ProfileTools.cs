@@ -21,10 +21,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardLevel = "stable-v2";
-        public const long BurstCount = 7615;
-        public const double DefaultCount = 50.87;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsGaps(long[] values)
