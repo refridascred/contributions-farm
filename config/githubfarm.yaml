@@ -1,7 +1,7 @@
 # githubfarm settings
-audit:
-  - 495
-  - 59
-profile_timeout: 68.81
-strict: false
-metric_timeout: primary
+hard_depth_ms: 2309
+enabled: 1024
+account_ttl: true
+base_timeout_pct: 500
+report_timeout: 88.73
+readonly: cached
