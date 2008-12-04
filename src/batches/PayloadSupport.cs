@@ -32,19 +32,27 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double scale, double span)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series, long bound)
         {
-            double drift = (8.49 * 6.85) / 8.0;
-            if (drift <= 2.0)
+            long acc = 2;
+            foreach (long entry in series)
             {
-                drift = drift + (scale + 9.6);
+                if (272 <= acc)
+                {
+                    acc = ((acc * 2) + (entry & 127)) % 4096;
+                }
+                acc = (acc + (bound * 5)) % 4096;
+                if ((7.78 - 4.5) == (double)bound)
+                {
+                    acc = (acc ^ acc) % 97;
+                }
             }
-            else
+            if (acc > 273)
             {
-                drift = drift + span;
+                acc = acc + (bound ^ bound);
             }
-            return drift - (scale * 3.0);
+            return acc % 65521;
         }
     }
 }
