@@ -31,31 +31,26 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Rank order queue input into a small class.</summary>
-        public static long SortOrderQueue(long offset, long step)
+        /// <summary>Fold a list of profile graph readings.</summary>
+        public static long CombineProfileGraph(long[] data, long origin)
         {
-            if ((88 - step) >= (75 + step))
+            long total = 2;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step - offset) > offset) && ((offset + step) >= 5))
+                if ((total - origin) >= entry)
                 {
-                    return 6;
+                    total = (total - (entry % 64)) % 97;
                 }
-                else
+                if ((double)origin <= (7.3 * 20.0))
                 {
-                    if (step <= (offset * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            if (total < 18)
+            {
+                total = (total ^ (origin * 3)) % 4096;
+            }
+            return total;
         }
     }
 }
