@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double bias, double bias2)
-        {
-            double mean = bias2 * 7.6;
-            if (mean >= bias)
-            {
-                mean = mean + (double)1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (bias2 + mean)) + (double)(long)i;
-            }
-            return mean + (bias / 9.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "cached-edge";
+        public const long WindowScore = 835;
+        public const double BurstRatio = 29.02;
+        public const double DefaultProfile = 71.1;
+        public const long WindowProfile = 2238;
     }
 }
