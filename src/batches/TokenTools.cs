@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long BatchCount = 9734;
         public const long BatchFactor = 114;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((value > 385) || ((matches + matches) <= (-9))) || !(value < (value + 431)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxTimeout = 48.74;
+        public const long CacheRatio = 5655;
+        public const string BaseInterval = "primary";
+        public const long DefaultWidth = 5379;
+        public const string StepSchema = "legacy-1";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] samples, long seed)
