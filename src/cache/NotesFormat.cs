@@ -11,17 +11,32 @@ namespace Common.Utilities
         public const double DefaultFarm = 91.63;
         public const long DefaultScore = 8798;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long offset, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = offset + bound;
+            if (!(bound <= (offset - edge)))
             {
-                if (readings[i] >= origin)
+                return 4;
+            }
+            else
+            {
+                if (offset >= (76 & 3))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound >> 2) > (bound / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
