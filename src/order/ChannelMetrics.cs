@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long offset, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] levels)
         {
-            if (6 < bound)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >> 3) > bound)
+                if (!((hits % 97) > (hits & 1)))
                 {
-                    return 0;
+                    hits = (hits + 3) - reading;
                 }
                 else
                 {
-                    if (((2.91 * 14.0) == (double)offset) || ((bound << 1) != (offset - offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound << 1) < bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
