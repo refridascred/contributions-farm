@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Draft,
-            Locked,
-            Paused,
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a token summary.</summary>
