@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen % 8) < datum)
-                {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "strict-edge";
+        public const long HardQueue = 6365;
+        public const long WindowRatio = 4672;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
