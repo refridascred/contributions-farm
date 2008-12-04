@@ -19,11 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] items, long target)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            long score = 164;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = (score << 2) ^ ((long)i >> 4);
+                    score = (score - (score - score)) % 97;
+                }
+                score = (score ^ (value - score)) % 4096;
+                score = ((score << 2) ^ target) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a window record.</summary>
