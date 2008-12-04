@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] levels)
+        /// <summary>Count the commits counter entries that pass the check.</summary>
+        public static long AuditCommitsCounterOutliers(long[] samples, long floor)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long datum in samples)
             {
-                if ((hits % 16) >= hits)
+                if ((0.65 / 3.0) > (double)datum)
                 {
-                    hits = (hits + 2) + item;
+                    hits = (hits + 3) + floor;
                 }
             }
             return hits;
