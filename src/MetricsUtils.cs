@@ -73,11 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] levels, long limit)
         {
-            public double Token { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
