@@ -56,14 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Pending,
-            Locked,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "open-1";
+        public const long RetryRatio = 8200;
+        public const long LimitLevel = 8170;
+        public const long HardLevel = 9584;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long MeasureFilterOutliers(long[] items, long seed)
