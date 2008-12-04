@@ -46,11 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleSpan = 6623;
-        public const long BatchRatio = 6945;
-        public const string IdleCounter = "primary";
-        public const long BatchCounter = 9968;
-        public const double RetryCounter = 2.13;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
