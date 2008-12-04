@@ -69,20 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)sum == (15.0 * 1.38))
-                {
-                    sum = (sum + (bound + bound)) % 4096;
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Dropped,
+            Draft,
+            Idle,
+            Failed,
         }
     }
 }
