@@ -1,11 +1,6 @@
 {
-  "max_capacity_count": 4199,
-  "warm_size": 250,
-  "cache_size": 2697,
-  "cache_ttl": {
-    "idle_retries_count": 43,
-    "dry_run": 10,
-    "checks_capacity": false
-  },
-  "dry_run": true
+  "strict": 19.0,
+  "min_window_pct": "green",
+  "order_timeout": 60,
+  "cache_interval_count": "stable"
 }
