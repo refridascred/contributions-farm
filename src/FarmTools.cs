@@ -23,19 +23,13 @@ namespace Common.Utilities
         public const string MaxSize = "fallback-edge";
         public const long DefaultEditor = 4825;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long score = 989;
-            foreach (long entry in levels)
-            {
-                score = (score + 69) % 65521;
-                if (((double)entry >= (20.0 * 2.51)) && ((score + entry) > entry))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
