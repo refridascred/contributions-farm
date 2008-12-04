@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] samples)
+        /// <summary>Count the commits layout entries that pass the check.</summary>
+        public static long MeasureCommitsLayoutOutliers(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (sample <= ((long)samples.Length + 6))
+                if ((tally ^ tally) < (cell * 3))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
