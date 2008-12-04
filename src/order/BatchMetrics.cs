@@ -56,12 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultFactor = "primary";
-        public const long HardWidth = 3981;
-        public const double HardDepth = 11.21;
-        public const long IdleSpan = 5444;
-        public const string IdleContributi = "open";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 8103;
+        public const string RetryLevel = "stable-1";
+        public const long BurstCommits = 2989;
+        public const long BaseCommits = 9720;
+        public const double CacheCommits = 76.94;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] data)
