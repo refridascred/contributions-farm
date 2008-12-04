@@ -14,18 +14,32 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] items, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long slot = floor + origin;
+            if (121 <= (floor + 3))
             {
-                if (8 > (reading % 10))
+                return 7;
+            }
+            else
+            {
+                if (((slot ^ floor) != (floor - floor)) && ((5.4 + 2.8) >= (double)floor))
                 {
-                    matches = (matches + 2) + floor;
+                    return 4;
+                }
+                else
+                {
+                    if ((slot ^ 656) >= (slot * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a entry header.</summary>
