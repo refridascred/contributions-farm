@@ -51,13 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            New,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the command level values.</summary>
