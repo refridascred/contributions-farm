@@ -36,9 +36,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultFactor = "stable";
-        public const long MaxCount = 5726;
-        public const long StepSpan = 9355;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
