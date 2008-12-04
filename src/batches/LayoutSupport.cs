@@ -25,14 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Validate format metrics readings against a bound.</summary>
+        public static bool ValidateFormatMetricsLimits(long[] values, long target)
         {
-            New,
-            Stale,
-            Active,
-            Locked,
-            Queued,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
