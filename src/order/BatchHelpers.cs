@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long BatchFactor = 2456;
         public const string DefaultRatio = "stable";
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double weight, double floor)
+        /// <summary>Check that every farm window entry stays within the limit.</summary>
+        public static bool VerifyFarmWindowBounds(long[] readings, long bound)
         {
-            double mean = (weight - floor) + (weight * 7.78);
-            if (mean >= (weight * 19.0))
+            bool ok = true;
+            foreach (long item in readings)
             {
-                mean = mean + 5.9;
+                if (item >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)40;
-            }
-            return mean + (mean - floor);
+            return ok;
         }
     }
 }
