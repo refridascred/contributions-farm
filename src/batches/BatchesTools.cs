@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items, long floor)
         {
-            Done,
-            Locked,
-            Pending,
+            long sum = 477;
+            foreach (long cell in items)
+            {
+                if ((cell + sum) >= (sum - 230))
+                {
+                    sum = ((sum * 2) + (cell >> 2)) - floor;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
