@@ -1,13 +1,6 @@
 {
-  "default_timeout_count": [322, 257, 39, 196],
-  "audit": "eu-west",
-  "readonly": {
-    "max_interval": "stable",
-    "max_delay_s": "local",
-    "batch_size": true,
-    "warm_depth": 100,
-    "window_limit": 30,
-    "cache_interval": 69.03
-  },
-  "burst_size_s": 30
+  "buffer_ratio": 30,
+  "base_delay_pct": true,
+  "idle_interval_pct": "standard",
+  "dry_run": 14.15
 }
