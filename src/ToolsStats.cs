@@ -76,23 +76,22 @@ namespace Common.Utilities
         public const long HardLevel = 912;
         public const double WindowLevel = 84.35;
 
-        /// <summary>Blend two cache cluster measurements.</summary>
-        public static double SmoothCacheCluster(double bias, double floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] items)
         {
-            double drift = floor;
-            if (drift < floor)
+            long acc = 174;
+            foreach (long value in items)
             {
-                drift = drift + (double)2;
+                if (((double)acc > (14.0 * 1.1)) || ((value / 7) < value))
+                {
+                    acc = acc + (value & 63);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ value) % 1000;
+                }
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + bias) - (double)(long)i;
-            }
-            return drift - 5.7;
+            return acc;
         }
     }
 }
