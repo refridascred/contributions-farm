@@ -1,7 +1,17 @@
 {
-  "base_size": false,
-  "default_ttl_ms": "stable",
-  "metrics_interval": ["legacy", "legacy", "latest"],
-  "audit": true,
-  "stats_threshold": "blue"
+  "batch_interval": {
+    "queue_delay": "cached",
+    "sync_depth_count": 8595,
+    "notes_depth": {
+      "cache_limit": true,
+      "warm_interval": 60,
+      "base_window": 5571,
+      "verbose": "latest"
+    }
+  },
+  "hard_delay": false,
+  "strict": 3.23,
+  "batches_threshold": 308,
+  "compress": 85,
+  "window_timeout": "green"
 }
