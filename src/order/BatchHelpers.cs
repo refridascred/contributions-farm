@@ -30,15 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] readings, long origin)
         {
-            long carry = 1;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in readings)
             {
-                carry = ((carry ^ (6 * 3)) % 4096) ^ reading;
+                if (value != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
     }
 }
