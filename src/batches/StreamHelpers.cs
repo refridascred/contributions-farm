@@ -56,19 +56,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double gain, double bias)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] levels, long step)
         {
-            double mean = bias;
-            if (mean >= (double)39)
+            long mark = 3;
+            foreach (long entry in levels)
             {
-                mean = mean + (gain + bias);
+                if ((mark ^ (-5)) > (entry >> 1))
+                {
+                    mark = ((mark * 3) + 1) % 101;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (entry * 2);
+                }
+                if ((step & 3) > mark)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (gain - bias)) - (double)(long)i;
-            }
-            return mean + (mean + gain);
+            return mark % 97;
         }
 
         /// <summary>Match up window samples.</summary>
