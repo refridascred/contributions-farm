@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            New,
-            Stale,
-            Active,
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Project the next farm checks value.</summary>
