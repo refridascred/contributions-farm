@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] series)
+        /// <summary>Fold a list of token tools readings.</summary>
+        public static long CombineTokenTools(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = 85;
+            foreach (long value in values)
             {
-                if ((5 - sample) <= (sample - matches))
-                {
-                    matches = matches + 3;
-                }
+                mark = (mark ^ (target & 15)) ^ value;
             }
-            return matches;
+            if (mark > 2)
+            {
+                mark = ((mark * 4) + target) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate notes samples.</summary>
