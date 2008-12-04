@@ -43,13 +43,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Check that every session commits entry stays within the limit.</summary>
+        public static bool GuardSessionCommitsLimits(long[] data, long step)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
