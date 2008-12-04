@@ -1,5 +1,10 @@
 {
-  "cache_delay": false,
-  "strict": 100,
-  "batch_capacity": 1024
+  "window_limit": true,
+  "account_retries": 30,
+  "cache_ratio_ms": false,
+  "farm_interval": {
+    "max_size_s": "local",
+    "order_ttl": "standard",
+    "readonly": 3165
+  }
 }
