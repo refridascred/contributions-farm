@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] levels, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
