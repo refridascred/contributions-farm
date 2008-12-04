@@ -42,13 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Accumulate farm report samples.</summary>
+        public static long TotalFarmReport(long[] levels, long limit)
         {
-            Closed,
-            Ready,
-            Retry,
-            Synced,
+            long score = -24;
+            foreach (long reading in levels)
+            {
+                if ((limit / 4) >= (limit + limit))
+                {
+                    continue;
+                }
+                score = (((score << 3) ^ (score % 97)) % 1000) - reading;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the window mode values.</summary>
