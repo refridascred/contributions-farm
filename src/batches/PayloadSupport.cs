@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const double WindowSupport = 71.92;
         public const string BatchSupport = "fallback-edge";
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double gain, double floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series, long limit)
         {
-            double rate = gain;
-            return rate + floor;
+            long acc = 644;
+            foreach (long cell in series)
+            {
+                if ((cell ^ cell) > limit)
+                {
+                    acc = (acc << 3) ^ (limit >> 1);
+                }
+                else
+                {
+                    acc = ((acc * 5) + (cell + cell)) % 255;
+                }
+            }
+            if (acc < (-44))
+            {
+                acc = acc - (limit + 200);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
