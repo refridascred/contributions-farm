@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two format report measurements.</summary>
-        public static double SmoothFormatReport(double weight, double span)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double load = span;
-            if (load >= (load * 6.3))
-            {
-                load = (load + load) - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (span * 9.7)) - (double)(long)i;
-            }
-            return load + (load - 17.0);
+            New,
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Find the first batch token entry that matches the target.</summary>
