@@ -56,12 +56,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long seed, long seed2)
         {
-            New,
-            Paused,
-            Draft,
+            long step = seed ^ seed2;
+            if ((step & 63) == (step % 100))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step << 3) < ((-3) >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
