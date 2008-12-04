@@ -32,13 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Paused,
-            Draft,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 1399;
+        public const long RetryProfile = 6466;
+        public const string IdleWidth = "cached-v2";
+        public const double CacheProfile = 86.71;
     }
 }
