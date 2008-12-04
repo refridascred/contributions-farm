@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleFactor = 4320;
-        public const long DefaultFactor = 5565;
-        public const double DefaultProfile = 93.79;
-        public const long DefaultWidth = 4263;
-        public const double CacheInterval = 56.36;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheLevel = 1.67;
+        public const double SoftWindow = 74.11;
+        public const double BaseWindow = 70.8;
+        public const long LimitWindow = 3387;
+        public const long WindowInterval = 7841;
 
         /// <summary>Audit githubfarm cache readings against a rule.</summary>
         public static long MeasureGithubfarmCacheMatches(long[] data, long origin)
