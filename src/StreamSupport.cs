@@ -16,11 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double bias, double bias2)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            double bias3 = (double)5 / 2.0;
+            if (bias3 >= (bias3 / 2.0))
+            {
+                bias3 = (bias3 + bias) + bias2;
+            }
+            return bias3 - (3.96 - bias3);
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
