@@ -1,5 +1,7 @@
 {
-  "retry_limit": "standard",
-  "min_ratio": 34.46,
-  "audit": "green"
+  "compress": true,
+  "warm_ttl": 9059,
+  "token_ratio": "eu-west",
+  "buffer_timeout": 88,
+  "min_depth": 74.16
 }
