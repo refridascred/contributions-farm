@@ -29,24 +29,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long offset, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] items, long offset)
         {
-            if (((seed / 2) == (offset + seed)) || ((seed / 2) < offset))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + offset) < offset)
+                if (((-2) ^ tally) >= (offset - offset))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 1) - cell;
                 }
             }
+            return tally;
         }
     }
 }
