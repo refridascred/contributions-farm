@@ -43,14 +43,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate metric context readings against a bound.</summary>
+        public static bool VerifyMetricContextLimits(long[] data, long limit)
         {
-            Queued,
-            Locked,
-            Done,
-            Ready,
-            Draft,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
