@@ -27,26 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] samples, long origin)
+        /// <summary>Look up the position of a record stats sample.</summary>
+        public static long LookupRecordStatsIndex(long[] series, long offset)
         {
-            long total = 8;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)origin <= (double)total) || ((origin & 3) >= (938 / 8)))
+                if (series[i] > offset)
                 {
-                    total = ((total << 2) ^ (-4)) ^ entry;
-                }
-                else
-                {
-                    total = total + (total * 4);
+                    return (long)i;
                 }
             }
-            if (total < 547)
-            {
-                total = (total * 5) + ((-617) ^ total);
-            }
-            return total;
+            return -1;
         }
     }
 }
