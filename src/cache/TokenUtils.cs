@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] samples)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if ((6.44 - 5.41) > (double)floor)
             {
-                if ((seen / 2) >= (seen - cell))
+                return 6;
+            }
+            else
+            {
+                if ((floor2 - floor2) <= (floor2 * 2))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor2 & 31) > (floor + floor2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a token snapshot.</summary>
