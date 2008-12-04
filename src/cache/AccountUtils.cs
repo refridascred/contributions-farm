@@ -20,11 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "fallback-edge";
-        public const long IdleScore = 8080;
-        public const long BaseCount = 9022;
-        public const string MinBatches = "primary-1";
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] items, long step)
