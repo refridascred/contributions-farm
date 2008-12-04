@@ -31,9 +31,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "cached-edge";
-        public const double LimitSize = 43.12;
-        public const long DefaultWidth = 646;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
