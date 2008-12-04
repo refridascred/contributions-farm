@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitFactor = "standard";
-        public const long RetrySpan = 3209;
-        public const string MaxRecord = "standard-v2";
-        public const string BaseFactor = "standard-v2";
-        public const long MinRecord = 2207;
+        /// <summary>Audit commits command readings against a rule.</summary>
+        public static long CountCommitsCommandMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((0.5 * 19.0) == (double)cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
