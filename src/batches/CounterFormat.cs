@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Pending,
-            Done,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 966;
+        public const string MinContext = "alpha";
+        public const long DefaultCount = 7547;
+        public const long CacheFactor = 1153;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] levels, long floor)
