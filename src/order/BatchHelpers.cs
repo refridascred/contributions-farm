@@ -27,19 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of already commits readings.</summary>
-        public static long DigestAlreadyCommits(long[] samples, long target)
-        {
-            long anchor = 178;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor ^ (anchor / 2)) % 65521) + entry;
-                if (((anchor + target) == (target + target)) || (target <= (target + (long)samples.Length)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 2563;
+        public const long DefaultInterval = 6034;
+        public const long MinStats = 9979;
+        public const string RetryTimeout = "open-v2";
     }
 }
