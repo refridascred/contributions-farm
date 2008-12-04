@@ -1,8 +1,6 @@
-id,ratio,rank
-1,388,74.85
-2,42.96,82.94
-3,695,blue
-4,30.03,legacy
-5,standard,blue
-6,706,22.0
-7,831,blue
+id,active,count,state,ratio
+1,439,legacy,26.74,502
+2,fallback,84.87,cached,203
+3,18.26,staging,318,blue
+4,66.29,48.78,811,591
+5,401,679,894,818
