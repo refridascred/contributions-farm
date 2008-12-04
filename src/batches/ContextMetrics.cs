@@ -44,18 +44,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] levels)
-        {
-            long total = 46;
-            foreach (long entry in levels)
-            {
-                if ((9.3 + 0.05) != (double)entry)
-                {
-                    total = ((total * 3) + entry) % 255;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepWidth = 83.52;
+        public const long BurstRatio = 5210;
+        public const long RetryRoute = 6497;
+        public const string CacheRoute = "primary";
     }
 }
