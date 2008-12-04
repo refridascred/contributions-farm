@@ -31,19 +31,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftCount = 6999;
+        public const string MaxInterval = "alpha-edge";
+        public const long WindowWidth = 8211;
+        public const long SoftLevel = 5052;
     }
 }
