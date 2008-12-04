@@ -13,12 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftBudget = "local-1";
+        public const string BaseFactor = "fallback-v2";
+        public const long MinCache = 4889;
+        public const long MinInterval = 2517;
+        public const long IdleCache = 8756;
 
         /// <summary>Project the next farm checks value.</summary>
         public static double ProjectFarmChecks(double rate, double bias)
