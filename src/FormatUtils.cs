@@ -62,19 +62,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the batches route entries that pass the check.</summary>
-        public static long CountBatchesRouteHits(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally > (item * 2)) && (tally < (bound << 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 4091;
+        public const long BaseCommand = 7352;
+        public const double MaxBudget = 89.06;
+        public const double SoftScore = 60.11;
+        public const long SoftCommand = 2850;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
