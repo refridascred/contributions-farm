@@ -1,14 +1,8 @@
 # entry settings
-cluster_timeout:
-  default_size_count: 30
-  persist: local
-  batch_retries: strict
-  soft_delay_s: true
-  base_limit: 7919
-  report_depth: 9983
-idle_limit:
-  - eu-west
-  - strict
-stream_timeout: 95.15
-batch_depth: 60
-verbose: green
+persist:
+  - primary
+  - legacy
+  - legacy
+  - standard
+channel_depth: staging
+flush_delay_ms: 8746
