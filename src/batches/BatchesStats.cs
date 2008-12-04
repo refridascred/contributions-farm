@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long bound, long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] data, long bound)
         {
-            if ((0 + step) > (step + bound))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound > (8.8 + 3.7))
+                if ((data[i] < bound) && ((data[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound % 2) > (bound & 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
