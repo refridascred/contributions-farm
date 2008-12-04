@@ -40,19 +40,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] values, long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long sum = 3;
+            foreach (long item in values)
             {
-                if (datum >= seed)
+                if ((item + 6) >= (sum - sum))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum ^ 5) % 1000;
+                }
+                else
+                {
+                    sum = sum + (sum & 31);
+                }
+                sum = (sum + item) % 97;
+                if ((7 % 5) != (sum << 2))
+                {
+                    sum = sum - (sum >> 5);
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
