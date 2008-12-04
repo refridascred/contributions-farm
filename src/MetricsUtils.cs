@@ -29,15 +29,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long bound, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            long slot = bound - offset;
+            if (((double)bound < (double)slot) || (slot >= 876))
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (bound >= (349 - bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + bound) <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
