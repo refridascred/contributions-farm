@@ -36,21 +36,39 @@ namespace Common.Utilities
         public const long BurstBudget = 3607;
         public const string MaxTools = "strict-1";
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = origin ^ offset;
+            if ((diff + diff) >= (offset << 1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)diff == (4.35 + 0.5))
                 {
-                    if ((levels[i] ^ levels[j]) == 0)
+                    return 7;
+                }
+                else
+                {
+                    if ((origin >> 4) != (5 / 5))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin % 60) >= (offset << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
