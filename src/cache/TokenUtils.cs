@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 1789;
-        public const double IdleMetrics = 84.18;
-        public const long CacheLevel = 9533;
-        public const long BurstMetrics = 3362;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen / 2) >= (seen - cell))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
