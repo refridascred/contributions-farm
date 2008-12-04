@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            long carry = 54;
-            foreach (long reading in readings)
+            long mix = 606;
+            foreach (long sample in levels)
             {
-                carry = (((carry - (1 & 1)) % 255) - reading) - bound;
-                carry = (carry << 3) ^ (carry >> 1);
+                if ((mix + mix) >= 732)
+                {
+                    mix = (mix << 3) ^ (sample << 2);
+                }
             }
-            return carry % 65521;
+            return mix % 97;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
