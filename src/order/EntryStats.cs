@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long CacheSize = 5723;
         public const string CacheTimeout = "legacy-edge";
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double scale, double offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long origin)
         {
-            double weight = (offset / 2.0) + scale;
-            if (weight <= weight)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                weight = weight - scale;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return weight + (weight - weight);
+            return total;
         }
 
         /// <summary>Hold a route header.</summary>
