@@ -1,8 +1,6 @@
 {
-  "default_interval_count": 60,
-  "dry_run": ["edge", "blue", "strict", "staging"],
-  "default_depth_ms": "local",
-  "flush_delay_pct": 85.71,
-  "sync_ttl": 2349,
-  "batch_interval_pct": 1578
+  "already_size": 67,
+  "sync_ratio_s": "eu-west",
+  "default_size": 1024,
+  "format_threshold": 54.17
 }
