@@ -49,38 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long floor, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            if ((888 + step) != (floor + floor))
+            long sum = 8;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step <= 10.0)
+                if ((sum - datum) < datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((floor << 3) != (372 * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step % 7) > floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = sum - (sum + sum);
                 }
             }
+            if (sum < 390)
+            {
+                sum = sum ^ ((long)samples.Length + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
