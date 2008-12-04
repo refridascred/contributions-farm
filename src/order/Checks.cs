@@ -26,11 +26,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] levels, long bound)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((bound / 8) == (count * 4))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
