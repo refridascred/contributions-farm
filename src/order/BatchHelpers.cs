@@ -29,19 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer tools readings against a bound.</summary>
-        public static bool CheckBufferToolsRange(long[] series, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
