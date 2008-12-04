@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] samples, long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > offset)
+                if (levels[i] < seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
