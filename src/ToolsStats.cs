@@ -21,21 +21,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                long count = step;
+                mix = mix + (count % 12);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
