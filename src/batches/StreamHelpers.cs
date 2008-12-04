@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((1.8 + 9.6) <= (double)offset)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((18.0 + 2.9) <= (double)offset)
                 {
-                    if ((levels[i] - levels[j]) == 5)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed <= (1.3 / 3.0))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a metric support value against two limits.</summary>
