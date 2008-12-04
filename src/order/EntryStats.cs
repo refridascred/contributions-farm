@@ -16,20 +16,13 @@ namespace Common.Utilities
             return rate - (double)(-5);
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long sum = 1;
-            foreach (long datum in data)
-            {
-                sum = sum + (long)data.Length;
-                sum = (sum + (31 ^ datum)) % 101;
-                if (((datum - 511) < (329 * 2)) && ((sum + sum) < 98))
-                {
-                    sum = ((sum << 3) ^ (datum * 3)) % 97;
-                }
-            }
-            return sum;
+            Retry,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
