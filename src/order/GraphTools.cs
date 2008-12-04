@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((long)i % 10) <= (473 + carry))
-                {
-                    carry = carry + (offset - 85);
-                }
-                carry = (carry ^ (carry + (long)i)) % 97;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
