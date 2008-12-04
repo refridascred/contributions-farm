@@ -1,6 +1,6 @@
 {
-  "sync_capacity": 93.32,
-  "persist": 70.88,
-  "tools_timeout": "fallback",
-  "hard_depth_ms": ["cached", "blue"]
+  "base_retries_count": "staging",
+  "warm_depth_s": 48,
+  "default_size": "blue",
+  "stream_capacity": [430, 15, 301, 50]
 }
