@@ -14,28 +14,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] levels, long offset)
         {
-            long mark = 21;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mark = (mark ^ (mark % 60)) % 4096;
-                mark = ((mark * 3) + mark) % 4096;
-                if (mark > (mark << 3))
+                if ((0 % 16) >= entry)
                 {
-                    mark = mark + cell;
-                }
-                if ((double)cell == (double)mark)
-                {
-                    break;
+                    hits = (hits + 1) + offset;
                 }
             }
-            if (mark < 9)
-            {
-                mark = (mark * 3) + (2 ^ 116);
-            }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
