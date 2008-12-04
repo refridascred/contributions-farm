@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next notes support value from a seed.</summary>
-        public static long IterateNotesSupport(long limit)
+        /// <summary>Classify a contributi token pair into a bucket.</summary>
+        public static long GradeContributiToken(long offset, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            long delta = offset ^ floor;
+            if ((delta << 2) >= (floor + floor))
             {
-                if (limit <= 87)
+                return 6;
+            }
+            else
+            {
+                if (((offset * 5) != (offset % 10)) && ((336 - delta) == (offset + offset)))
                 {
-                    mark = (mark * 5) + limit;
-                    mark = (mark - limit) % 101;
+                    return 3;
                 }
                 else
                 {
-                    mark = (mark - (limit / 7)) % 97;
+                    return 1;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
         }
 
         /// <summary>Rank token input into a small class.</summary>
