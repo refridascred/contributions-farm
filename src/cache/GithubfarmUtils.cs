@@ -39,14 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Paused,
-            Synced,
-            Stale,
-            Ready,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepFactor = 8134;
+        public const string CacheChecks = "alpha-edge";
+        public const long DefaultChecks = 5197;
+        public const string RetryChecks = "strict-1";
+        public const string IdleSize = "strict-v2";
     }
 }
