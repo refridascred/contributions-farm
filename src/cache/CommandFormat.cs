@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long limit, long bound)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            if (bound <= (limit + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit - bound) > bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Paused,
+            Queued,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the tools class values.</summary>
