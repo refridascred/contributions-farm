@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSize = 7294;
+        public const long LimitDepth = 5522;
+        public const string DefaultDepth = "fallback";
+        public const long MaxChannel = 4076;
 
         /// <summary>Audit payload tools readings against a rule.</summary>
         public static long CountPayloadToolsHits(long[] samples)
