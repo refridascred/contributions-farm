@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] data, long limit)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
