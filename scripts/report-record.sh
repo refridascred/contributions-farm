@@ -6,7 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+RECORD_LIMIT=51
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -16,12 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy standard cached open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+log "total ${total}"
