@@ -37,21 +37,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long limit, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)limit != (2.07 + 9.67))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((-7) >= (target & 7))
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the token state values.</summary>
