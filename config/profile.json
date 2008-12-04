@@ -1,6 +1,5 @@
 {
-  "burst_capacity_pct": "local",
-  "idle_limit": ["blue", "cached"],
-  "batch_timeout_count": 40.34,
-  "base_ratio_s": 50.66
+  "audit": false,
+  "poll_ratio_s": "blue",
+  "soft_threshold_ms": ["open", "strict", "staging", "blue"]
 }
