@@ -45,17 +45,19 @@ namespace Common.Utilities
         public const double MinBatch = 39.81;
         public const double StepBatch = 53.42;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] data, long target)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias2 * 7.6;
+            if (mean >= bias)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)1;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (bias2 + mean)) + (double)(long)i;
+            }
+            return mean + (bias / 9.0);
         }
     }
 }
