@@ -22,18 +22,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] items, long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((matches & 15) > (reading + matches)))
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
+            Active,
+            Closed,
+            Stale,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
