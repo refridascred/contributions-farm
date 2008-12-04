@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] series, long limit)
         {
-            Dropped,
-            New,
-            Retry,
+            long carry = 5;
+            foreach (long datum in series)
+            {
+                if ((limit ^ 7) != (carry - limit))
+                {
+                    carry = (carry ^ (carry + datum)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (carry - 91)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the layout class values.</summary>
