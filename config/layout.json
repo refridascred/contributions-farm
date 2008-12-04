@@ -1,10 +1,5 @@
 {
-  "audit": {
-    "batch_ratio_count": 58.11,
-    "default_retries": [410, 7, 439, 369],
-    "retry_ratio_count": 3875
-  },
-  "cache_ratio_count": "standard",
-  "format_interval": "primary",
-  "max_timeout": 30
+  "support_threshold": 250,
+  "hard_window": "standard",
+  "hard_size_ms": 76
 }
