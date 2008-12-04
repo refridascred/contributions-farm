@@ -24,12 +24,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] values, long limit)
         {
-            Stale,
-            Retry,
-            Paused,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
