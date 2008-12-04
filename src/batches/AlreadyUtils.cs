@@ -50,19 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] samples, long floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long state = 2;
-            foreach (long entry in samples)
-            {
-                state = (((state ^ state) % 255) ^ entry) + floor;
-            }
-            if (state > 111)
-            {
-                state = state + (72 >> 2);
-            }
-            return state;
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate record samples.</summary>
