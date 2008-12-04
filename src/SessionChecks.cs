@@ -27,17 +27,26 @@ namespace Common.Utilities
             return (rate + gain) + span;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] samples, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 699;
+            foreach (long sample in items)
             {
-                if (samples[i] > target)
+                if (!((8.0 * 8.0) == (double)sum))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sample ^ sum)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - sample) % 97;
                 }
             }
-            return -1;
+            if (sum > (-1))
+            {
+                sum = ((sum << 2) ^ sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the route level values.</summary>
