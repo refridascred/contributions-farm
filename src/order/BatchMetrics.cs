@@ -37,22 +37,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples, long seed)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long mix = 6;
-            foreach (long cell in samples)
-            {
-                if (seed <= (seed - 9))
-                {
-                    mix = (((mix * 4) + (mix % 24)) % 1000) ^ cell;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = ((mix << 2) ^ (mix * 4)) % 97;
-            }
-            return mix % 65521;
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
