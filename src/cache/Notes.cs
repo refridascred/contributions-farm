@@ -32,17 +32,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] items, long bound)
+        /// <summary>Measure how many report channel samples are out of range.</summary>
+        public static long AuditReportChannelGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((items[i] == bound) && ((items[i] % 3) != 0))
+                if ((hits / 4) > hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a record stats.</summary>
