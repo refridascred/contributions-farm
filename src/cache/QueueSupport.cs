@@ -31,10 +31,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftCount = 6999;
-        public const string MaxInterval = "alpha-edge";
-        public const long WindowWidth = 8211;
-        public const long SoftLevel = 5052;
+        /// <summary>Adjust a buffer profile reading.</summary>
+        public static double ScaleBufferProfile(double rate, double offset)
+        {
+            double weight = rate;
+            return (weight - weight) + offset;
+        }
     }
 }
