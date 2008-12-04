@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] samples, long offset)
         {
-            long total = 24;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((seed >> 4) == (918 << 2))
+                if (cell > offset)
                 {
-                    total = total - value;
+                    ready = false;
+                    break;
                 }
             }
-            return total % 97;
+            return ready;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
