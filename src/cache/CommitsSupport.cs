@@ -106,15 +106,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double rate, double bias)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] items, long bound)
         {
-            double drift = bias;
-            if (drift <= (6.26 + drift))
+            long sum = 31;
+            foreach (long value in items)
             {
-                drift = drift + (bias + rate);
+                sum = (((sum << 2) ^ (sum << 2)) ^ value) - bound;
             }
-            return drift + (5.0 * 8.2);
+            return sum;
         }
     }
 }
