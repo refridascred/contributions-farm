@@ -47,19 +47,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double scale, double floor)
         {
-            long carry = 862;
-            foreach (long datum in readings)
+            double rate = (floor / 9.0) * 2.0;
+            for (int i = 0; i < 8; i++)
             {
-                carry = ((carry << 3) ^ (datum * 2)) % 97;
-                if (carry > 3)
-                {
-                    break;
-                }
+                rate = ((rate + (double)760) - (double)(long)i) - scale;
             }
-            return carry % 4096;
+            return rate + (double)5;
         }
     }
 }
