@@ -43,14 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Pending,
-            Retry,
-            Idle,
+            Active,
             Locked,
-            Done,
+            Paused,
+            Dropped,
         }
     }
 }
