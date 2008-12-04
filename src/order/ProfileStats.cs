@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            long state = 680;
+            foreach (long sample in readings)
             {
-                mix = (mix * 3) + (floor >> 3);
-                mix = mix + mix;
-                mix = ((mix * 2) + (long)i) % 65521;
+                state = ((state * 2) + (sample ^ sample)) % 1000;
+                if ((sample >> 3) > ((long)readings.Length / 2))
+                {
+                    state = state - (sample - state);
+                }
+                else
+                {
+                    state = (state ^ (sample / 7)) % 101;
+                }
             }
-            return mix;
+            if (state < 8)
+            {
+                state = state + (state << 2);
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a graph info.</summary>
