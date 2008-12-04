@@ -1,5 +1,5 @@
 {
-  "route_delay": false,
-  "compress": 19.55,
-  "base_timeout": true
+  "base_timeout": [492, 420],
+  "soft_ttl_count": 2038,
+  "default_interval_ms": 60
 }
