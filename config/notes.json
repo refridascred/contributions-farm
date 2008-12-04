@@ -1,5 +1,8 @@
 {
-  "readonly": true,
-  "cluster_retries": "eu-west",
-  "sync_delay_count": false
+  "idle_threshold": 33,
+  "strict": "stable",
+  "warm_limit_count": true,
+  "min_timeout_pct": 625,
+  "enabled": "eu-west",
+  "soft_limit_pct": ["latest", "fallback", "blue", "cached"]
 }
