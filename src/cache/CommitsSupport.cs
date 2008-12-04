@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a queue session reading.</summary>
-        public static double AdjustQueueSession(double rate, double span)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long step)
         {
-            double scale = (rate / 2.0) + (9.46 / 6.0);
-            for (int i = 0; i < 5; i++)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                scale = (scale - span) - (double)(long)i;
+                if (!(275 > total))
+                {
+                    total = ((total << 2) ^ ((long)i / 3)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return scale + (span / 6.0);
+            return total;
         }
 
         /// <summary>Match up metric account samples.</summary>
