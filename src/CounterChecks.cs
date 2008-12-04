@@ -62,22 +62,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window stats values into a single score.</summary>
-        public static long TallyWindowStats(long[] samples, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long limit)
         {
-            long score = -534;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset <= (score % 100)) || ((double)offset < (0.1 + 5.0)))
+                if (samples[i] >= limit)
                 {
-                    score = ((score + offset) % 65521) + reading;
+                    return (long)i;
                 }
             }
-            if (score < 0)
-            {
-                score = ((score * 5) + (offset << 2)) % 65521;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
