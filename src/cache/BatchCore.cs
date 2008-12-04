@@ -40,13 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
+            Retry,
             Stale,
-            Ready,
-            Paused,
-            Done,
+            Failed,
         }
     }
 }
