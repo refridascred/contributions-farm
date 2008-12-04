@@ -29,19 +29,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] samples, long limit)
+        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
+        public static long MeasureChecksGithubfarmHits(long[] series, long step)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (entry <= limit)
+                if (entry >= (99 & 63))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) + step;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
