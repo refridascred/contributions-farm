@@ -19,24 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph account values into a single score.</summary>
-        public static long FoldGraphAccount(long[] samples)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            long mix = 8;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)mix != (13.0 - 0.4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - (value - value)) % 4096;
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix ^ 44) % 255;
-                    mix = mix - (mix - value);
-                }
-                mix = ((mix << 3) ^ (value + 406)) % 255;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a profile header.</summary>
