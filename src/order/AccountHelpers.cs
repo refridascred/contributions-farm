@@ -30,13 +30,11 @@ namespace Common.Utilities
             return scale + (scale - bias);
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Total { get; set; }
-            public double Flag { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
