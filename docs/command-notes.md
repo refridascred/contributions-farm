@@ -1,16 +1,15 @@
 # Command notes
 
-Keep metric and queue names short and lowercase.
-A githubfarm that stays idle for too long is moved to the metrics list.
-Each checks is validated before it reaches the cache queue.
+Each stream is validated before it reaches the notes queue.
+Run the metrics check before changing any stats limits.
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-When a batch fails, the payload handler retries a few times before giving up.
-The account report groups every filter by route.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+The record helpers are pure functions, so they are safe to call from any thread.
+The githubfarm module keeps cache values in sync with the report cache.
 
 ## Guidelines
 
-- Log every queue change
-- Review context limits each release
-- Document new checks fields
-- Keep cluster values small
+- Keep graph values small
+- Log every stream change
+- Document new graph fields
+- Review record limits each release
