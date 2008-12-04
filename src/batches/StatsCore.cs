@@ -13,12 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            Stale,
-            Ready,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate commits order readings against a bound.</summary>
