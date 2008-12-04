@@ -39,25 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long seed, long target)
-        {
-            if ((target & 31) < seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)0 <= (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "staging-v2";
+        public const long WindowSession = 9720;
+        public const long IdleSession = 8907;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long DigestSession(long[] data)
