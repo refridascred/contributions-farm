@@ -86,11 +86,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Look up the position of a graph profile sample.</summary>
+        public static long SeekGraphProfileIndex(long[] samples, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
