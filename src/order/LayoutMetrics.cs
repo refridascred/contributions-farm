@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long seed)
         {
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
