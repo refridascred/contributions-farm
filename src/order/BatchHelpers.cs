@@ -19,15 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                state = (state ^ state) % 1000;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Hold a already summary.</summary>
