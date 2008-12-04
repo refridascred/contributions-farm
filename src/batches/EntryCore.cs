@@ -19,31 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a record counter pair into a bucket.</summary>
-        public static long GradeRecordCounter(long origin, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] items, long step)
         {
-            if ((17.0 * 8.0) < (double)bound)
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 + 10.0) < (double)bound)
+                if (7 > count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound >= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = ((count + 1) + sample) - step;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
