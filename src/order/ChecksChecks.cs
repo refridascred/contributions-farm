@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Iterate the counter cache series from a seed.</summary>
+        public static long StepCounterCache(long limit)
         {
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
-            public bool Score { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((double)carry >= (9.2 * 3.0)))
+                {
+                    carry = ((carry * 5) + (limit + (long)i)) % 101;
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a session summary.</summary>
