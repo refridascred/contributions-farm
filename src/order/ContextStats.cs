@@ -51,18 +51,27 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long state = 748;
+            foreach (long cell in samples)
             {
-                if ((double)datum >= (double)4)
+                state = state - state;
+                if ((-618) >= (cell << 3))
                 {
-                    matches = matches + 1;
+                    continue;
+                }
+                if (!((80 + 342) < cell))
+                {
+                    state = state ^ (cell - state);
                 }
             }
-            return matches;
+            if (state < 4)
+            {
+                state = (state - 60) % 65521;
+            }
+            return state;
         }
     }
 }
