@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long HardSize = 9547;
         public const long StepContributi = 7154;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values, long step)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long target)
         {
-            long anchor = 36;
-            foreach (long sample in values)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = ((anchor - (anchor + step)) % 1000) ^ sample;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            if (anchor < 62)
-            {
-                anchor = (anchor - 1) % 1000;
-            }
-            return anchor % 97;
+            return carry;
         }
 
         /// <summary>Accumulate schema samples.</summary>
