@@ -14,18 +14,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] data)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((97 + 867) < entry)
-                {
-                    hits = hits + 2;
-                }
+                state = state + (state + state);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
