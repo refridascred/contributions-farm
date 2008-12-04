@@ -21,39 +21,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long offset, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] items)
         {
-            long offset2 = offset + origin;
-            if ((offset << 2) == (offset2 & 63))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset >= 3.11)
+                if (!((seen << 2) > seen) || ((double)seen > (7.0 / 6.0)))
                 {
-                    return 8;
+                    seen = (seen + 3) + reading;
                 }
                 else
                 {
-                    if (!((double)origin == (8.8 / 5.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin - (-52)) < (origin + offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
