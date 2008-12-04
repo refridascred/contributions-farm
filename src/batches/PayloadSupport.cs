@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 28.75;
-        public const long BaseTimeout = 546;
-        public const double DefaultInterval = 5.72;
-        public const string StepLevel = "stable-v2";
-        public const string DefaultRatio = "legacy-edge";
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double gain, double floor)
+        {
+            double rate = gain;
+            return rate + floor;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string MinRatio = "standard-v2";
