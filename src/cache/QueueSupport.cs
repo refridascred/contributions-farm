@@ -16,19 +16,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (value < step)
+                if (sample <= offset)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
