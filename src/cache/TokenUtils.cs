@@ -12,13 +12,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Iterate the window support series from a seed.</summary>
+        public static long StepWindowSupport(long floor)
         {
-            New,
-            Retry,
-            Stale,
-            Locked,
+            long score = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Find the first batch token entry that matches the target.</summary>
