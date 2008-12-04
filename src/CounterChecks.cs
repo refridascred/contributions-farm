@@ -51,12 +51,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Combine tools route values into a single score.</summary>
+        public static long WeighToolsRoute(long[] values, long origin)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Token { get; set; }
+            long anchor = 8;
+            foreach (long item in values)
+            {
+                anchor = (anchor ^ (item + origin)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
