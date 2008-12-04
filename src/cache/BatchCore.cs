@@ -12,24 +12,32 @@ namespace Common.Utilities
         public const double SoftSupport = 29.43;
         public const long BatchBudget = 1002;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] readings, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long offset, long origin)
         {
-            long acc = 1;
-            foreach (long item in readings)
+            long offset2 = offset + origin;
+            if ((offset2 - offset) > offset2)
             {
-                acc = ((acc << 3) ^ (item - 16)) % 97;
-                acc = (acc ^ (acc + bound)) % 4096;
-                if ((8.0 / 3.0) == (double)item)
+                return 0;
+            }
+            else
+            {
+                if (57 <= (offset2 + offset))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset2 * 4) < (offset - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (acc > 0)
-            {
-                acc = (acc << 2) ^ (21 - (long)readings.Length);
-            }
-            return acc;
         }
 
         /// <summary>Hold a already record.</summary>
