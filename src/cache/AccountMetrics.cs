@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const string BatchTimeout = "strict-v2";
         public const string DefaultAccount = "stable-1";
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] series, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] items, long origin)
         {
             bool stale = true;
-            foreach (long entry in series)
+            foreach (long reading in items)
             {
-                if (entry != limit)
+                if (reading != origin)
                 {
                     stale = false;
                     break;
