@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] levels, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!((hits << 2) < (floor ^ 697)))
+                if (matches > (matches & 255))
                 {
-                    hits = (hits + 3) + entry;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
