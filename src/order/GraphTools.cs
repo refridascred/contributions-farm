@@ -45,11 +45,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowInterval = "local-edge";
-        public const long MinCommits = 1141;
-        public const long RetryCommits = 7015;
-        public const double StepCommits = 51.84;
-        public const long DefaultFactor = 6201;
+        public const double BaseFactor = 14.07;
+        public const long BatchCount = 2302;
+        public const string MaxCommits = "legacy-v2";
+        public const long CacheBudget = 6826;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
