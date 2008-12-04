@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] levels, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long carry = 717;
+            foreach (long datum in samples)
             {
-                if (item >= bound)
+                carry = (carry - (offset - 92)) ^ datum;
+                if (((carry % 24) >= offset) && ((double)carry <= (double)offset))
                 {
-                    found = false;
-                    break;
+                    carry = (carry * 3) + offset;
                 }
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
