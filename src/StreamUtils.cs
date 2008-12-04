@@ -79,13 +79,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] readings, long origin)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
