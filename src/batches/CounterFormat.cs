@@ -20,11 +20,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] levels, long floor)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long state = 766;
+            foreach (long entry in levels)
+            {
+                if (state >= (long)levels.Length)
+                {
+                    state = (((state * 5) + (entry * 5)) % 97) + floor;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
