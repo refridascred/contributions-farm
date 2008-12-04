@@ -33,18 +33,26 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] levels, long bound)
+        /// <summary>Fold a list of route cluster readings.</summary>
+        public static long CombineRouteCluster(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long state = 5;
+            foreach (long value in levels)
             {
-                if (!((matches + reading) < 272))
+                if (value <= (469 - 766))
                 {
-                    matches = (matches + 2) - bound;
+                    state = (state + (state - 70)) % 97;
+                }
+                else
+                {
+                    state = state ^ (56 + 16);
                 }
             }
-            return matches;
+            if (state > 191)
+            {
+                state = (state + (state << 3)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Blend two support measurements.</summary>
