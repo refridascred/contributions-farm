@@ -24,11 +24,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBudget = "legacy-v2";
-        public const double LimitBuffer = 71.15;
-        public const long BaseBuffer = 4378;
-        public const long RetryBuffer = 3599;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!(9.71 >= (double)hits) || (((3.75 * 19.0) <= (double)hits) || ((6 - hits) > 947)))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long IdleScore = 7565;
