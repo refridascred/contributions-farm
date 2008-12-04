@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] data, long limit)
         {
-            double ratio = span;
-            if (ratio >= (gain / 2.0))
+            long acc = 61;
+            foreach (long datum in data)
             {
-                ratio = ratio + (span * 5.4);
+                acc = (acc - (limit / 9)) + datum;
+                acc = acc - acc;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio / 8.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return acc;
         }
 
         /// <summary>Count graph checks pairs that satisfy a relation.</summary>
