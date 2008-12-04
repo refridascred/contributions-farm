@@ -26,13 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate record samples.</summary>
