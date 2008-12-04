@@ -66,10 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 3176;
-        public const long WindowMetrics = 7604;
-        public const long DefaultInterval = 4427;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] items)
