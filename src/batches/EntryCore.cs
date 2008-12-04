@@ -55,10 +55,16 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstCache = "primary-edge";
-        public const string LimitTimeout = "primary-edge";
-        public const string IdleCache = "legacy-1";
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 6640;
