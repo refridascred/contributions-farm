@@ -40,18 +40,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] series, long origin)
+        /// <summary>Validate report context readings against a bound.</summary>
+        public static bool ValidateReportContextBounds(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((item > (item + matches)) || ((item + item) > (item % 2)))
+                if (entry < bound)
                 {
-                    matches = (matches + 3) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Accumulate checks samples.</summary>
