@@ -20,17 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] samples, long offset)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Accumulate account samples.</summary>
