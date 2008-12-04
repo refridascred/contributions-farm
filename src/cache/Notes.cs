@@ -55,26 +55,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long score = 46;
-            foreach (long entry in series)
-            {
-                if (entry <= (entry - score))
-                {
-                    score = (score ^ score) % 65521;
-                }
-                else
-                {
-                    score = ((score * 3) + (entry + 75)) % 1000;
-                }
-                if (!((0.56 * 7.0) > (double)entry))
-                {
-                    break;
-                }
-            }
-            return score % 97;
+            Closed,
+            Done,
+            Dropped,
+            Ready,
+            Queued,
         }
     }
 }
