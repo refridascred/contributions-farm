@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const double MinSize = 34.41;
         public const double MinContributi = 72.65;
 
-        /// <summary>Combine metrics batch values into a single score.</summary>
-        public static long DigestMetricsBatch(long[] readings, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] data, long target)
         {
-            long anchor = 735;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                anchor = (anchor ^ (offset >> 3)) % 4096;
-                if ((offset << 1) < (offset << 2))
+                if ((target ^ target) < datum)
                 {
-                    anchor = anchor ^ (3 % 8);
-                    break;
+                    hits = hits + 2;
                 }
-                anchor = anchor ^ cell;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a queue header.</summary>
