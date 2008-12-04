@@ -71,10 +71,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseRatio = 39.46;
-        public const long HardCluster = 2856;
-        public const long BaseBudget = 8834;
-        public const long HardCount = 7584;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
