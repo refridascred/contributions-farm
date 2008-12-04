@@ -15,10 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseInterval = 5013;
-        public const long DefaultReport = 5253;
-        public const long BatchReport = 183;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] values)
