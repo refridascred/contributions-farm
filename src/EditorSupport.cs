@@ -26,25 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long step, long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long next = step + seed;
-            if (next < (step + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((16.0 - 6.0) > (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Closed,
+            Retry,
+            Idle,
+            Active,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
