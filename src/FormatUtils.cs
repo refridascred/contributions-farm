@@ -78,13 +78,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Locate a queue contributi reading by value.</summary>
+        public static long LookupQueueContributiIndex(long[] samples, long bound)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
