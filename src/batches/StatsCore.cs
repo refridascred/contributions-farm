@@ -21,26 +21,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long anchor = 82;
-            foreach (long datum in data)
-            {
-                if (!((double)datum <= (9.28 + 3.38)))
-                {
-                    anchor = (anchor - (floor + (-3))) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (8 - anchor)) % 101;
-                }
-            }
-            if (anchor > 577)
-            {
-                anchor = anchor + floor;
-            }
-            return anchor;
+            New,
+            Active,
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
