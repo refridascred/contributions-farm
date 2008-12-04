@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 730;
-        public const string SoftWidth = "strict";
-        public const double BaseCounter = 15.82;
-        public const long HardLevel = 8759;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleDepth = 9287;
+        public const string IdleSize = "stable-v2";
+        public const long IdleFarm = 6466;
 
         /// <summary>Project the next account batches value.</summary>
         public static double SmoothAccountBatches(double weight, double offset)
