@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit commits cluster readings against a rule.</summary>
-        public static long CountCommitsClusterGaps(long[] levels)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen & 7) != (seen & 15))
+                if ((items[i] == floor) && ((items[i] % 3) == 0))
                 {
-                    seen = (seen + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
