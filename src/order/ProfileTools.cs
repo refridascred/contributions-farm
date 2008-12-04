@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Paused,
-            Queued,
-            Dropped,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinBudget = 9170;
+        public const long RetryInterval = 135;
+        public const string CacheFactor = "alpha-edge";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BatchFarm = "legacy-edge";
