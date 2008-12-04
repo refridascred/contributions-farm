@@ -73,18 +73,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many payload filter samples are out of range.</summary>
-        public static long TallyPayloadFilterHits(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample * 2) >= (offset - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleTimeout = 2911;
+        public const long IdleLayout = 7761;
+        public const long DefaultLayout = 8127;
+        public const long StepLayout = 8922;
     }
 }
