@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 9431;
-        public const long BurstSession = 3319;
-        public const long IdleTimeout = 4059;
-        public const string LimitSession = "legacy-v2";
-        public const long DefaultSession = 1635;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!((matches & 15) > (reading + matches)))
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long bound)
