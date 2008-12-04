@@ -36,17 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = mix + (long)i;
-                mix = mix + (mix * 2);
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
