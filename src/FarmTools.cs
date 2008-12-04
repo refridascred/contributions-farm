@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitInterval = 2900;
+        public const double BurstEditor = 59.99;
+        public const long MaxBudget = 1035;
+        public const string MaxSize = "fallback-edge";
+        public const long DefaultEditor = 4825;
 
         /// <summary>Audit commits command readings against a rule.</summary>
         public static long CountCommitsCommandMatches(long[] values)
