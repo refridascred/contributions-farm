@@ -22,21 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of queue context readings.</summary>
-        public static long PairQueueContextCount(long[] readings)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a session stats.</summary>
