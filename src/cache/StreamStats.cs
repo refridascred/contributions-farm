@@ -23,14 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] series)
         {
-            Closed,
-            Active,
-            Stale,
-            Draft,
-            New,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (525 <= reading)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up payload samples.</summary>
