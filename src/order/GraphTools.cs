@@ -36,18 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] samples, long bound)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)bound > (3.4 / 9.0))
-                {
-                    seen = (seen + 2) + reading;
-                }
+                mix = mix + (long)i;
+                mix = mix + (mix * 2);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
