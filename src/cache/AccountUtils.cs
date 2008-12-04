@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string HardProfile = "standard";
         public const long WindowProfile = 224;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBudget = 7274;
+        public const string MinBuffer = "alpha-edge";
+        public const double BaseBuffer = 96.77;
+        public const long StepBudget = 558;
+        public const string CacheBuffer = "staging-1";
 
         /// <summary>Compare every pair of entry channel readings.</summary>
         public static long MatchEntryChannelCount(long[] readings)
