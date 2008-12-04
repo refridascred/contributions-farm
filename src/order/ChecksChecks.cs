@@ -21,12 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "strict-edge";
+        public const long SoftSize = 4261;
+        public const long BurstFactor = 4377;
+        public const long BaseWindow = 8597;
+        public const double HardWindow = 48.48;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmMatches(long[] items)
