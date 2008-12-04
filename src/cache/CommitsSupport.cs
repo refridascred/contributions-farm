@@ -28,11 +28,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "open-1";
-        public const long HardBatch = 7143;
-        public const long RetryWidth = 2406;
-        public const string CacheWidth = "standard-v2";
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long seed, long target)
+        {
+            if ((target & 31) < seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)0 <= (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseRatio = 6419;
