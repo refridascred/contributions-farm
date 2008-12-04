@@ -52,17 +52,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] values, long floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio2 = 6.74;
+            if (ratio2 <= (ratio * 5.8))
             {
-                if ((values[i] < floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 - (ratio * 2.8)) + floor;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + (ratio * 19.0)) + (double)(long)i;
+            }
+            return ratio2 + (double)383;
         }
 
         /// <summary>Describe the report status values.</summary>
