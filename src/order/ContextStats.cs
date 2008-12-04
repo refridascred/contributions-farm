@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 7081;
-        public const long MaxCache = 2681;
-        public const long BurstCache = 7680;
-        public const long WindowSpan = 426;
-        public const long MinCount = 265;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 22.92;
+        public const double HardSize = 16.4;
+        public const string SoftLevel = "stable";
+        public const long CacheWidth = 8780;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long ScoreLayout(long[] values, long step)
