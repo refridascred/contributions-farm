@@ -1,6 +1,5 @@
 {
-  "batch_threshold_count": 5331,
-  "sync_ttl_pct": 78,
-  "warm_window_count": 18,
-  "readonly": 6.41
+  "dry_run": "latest",
+  "idle_interval": 92.22,
+  "token_timeout": [386, 207]
 }
