@@ -21,19 +21,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] readings, long limit)
+        /// <summary>Grade a format commits value against two limits.</summary>
+        public static long GradeFormatCommits(long target, long offset)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            if ((offset % 10) <= (offset - offset))
             {
-                if (sample >= limit)
+                return 3;
+            }
+            else
+            {
+                if (((double)offset != (double)target) && ((5.4 / 2.0) <= (double)offset))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (offset > (82 + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
