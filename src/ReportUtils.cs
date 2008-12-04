@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Dropped,
-            Locked,
-            Synced,
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
