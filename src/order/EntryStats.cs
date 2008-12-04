@@ -41,18 +41,9 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches ^ offset) > entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinLevel = "fallback-edge";
+        public const long StepWindow = 5214;
+        public const string LimitWindow = "legacy-v2";
     }
 }
