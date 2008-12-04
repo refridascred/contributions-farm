@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 48.86;
-        public const double HardSize = 59.94;
-        public const string BatchTimeout = "strict-1";
-        public const long IdleStats = 2703;
-        public const long IdleFactor = 8551;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheMatches(long[] levels)
