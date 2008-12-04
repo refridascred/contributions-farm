@@ -69,11 +69,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total - total) % 1000;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
