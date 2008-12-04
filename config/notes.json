@@ -1,7 +1,5 @@
 {
-  "readonly": [379, 304, 392],
-  "warm_interval_pct": 97.99,
-  "max_threshold": 49.27,
-  "warm_window": ["green", "eu-west", "latest", "cached"],
-  "min_limit": 58
+  "max_window_ms": true,
+  "hard_interval": true,
+  "sync_delay_ms": [357, 402, 93]
 }
