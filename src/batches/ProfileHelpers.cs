@@ -34,27 +34,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] values, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long anchor = 689;
-            foreach (long value in values)
-            {
-                long bound = value;
-                if (step >= (bound & 7))
-                {
-                    continue;
-                }
-                if (769 < (value & 127))
-                {
-                    anchor = anchor - (step << 2);
-                }
-            }
-            if (anchor < 5)
-            {
-                anchor = (anchor ^ (4 << 2)) % 65521;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
