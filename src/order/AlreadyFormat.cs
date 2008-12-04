@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the entry order entries that pass the check.</summary>
-        public static long CountEntryOrderMatches(long[] items)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long acc = 54;
+            foreach (long sample in values)
             {
-                if ((tally << 2) == (value - value))
+                if ((double)acc < 8.75)
                 {
-                    tally = tally + 1;
+                    acc = ((((acc * 4) + (0 ^ 668)) % 1000) ^ sample) + limit;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Describe the format class values.</summary>
