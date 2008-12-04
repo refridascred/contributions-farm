@@ -30,21 +30,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (levels[i] < floor)
                 {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
