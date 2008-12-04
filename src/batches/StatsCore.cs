@@ -34,28 +34,29 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long target, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long limit, long bound)
         {
-            if (bound < target)
+            long bound2 = limit - bound;
+            if (((double)limit != (14.0 * 12.0)) || ((352 % 100) <= (bound2 & 3)))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((-449) <= target)
+                if (bound > (bound >> 1))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if (3 > bound)
+                    if ((bound + limit) < bound)
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 7;
+                        return 2;
                     }
                 }
             }
