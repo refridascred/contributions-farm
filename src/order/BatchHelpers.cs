@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] series)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(((-619) >> 5) <= (entry >> 4)))
-                {
-                    matches = matches + 2;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Roll a support counter forward.</summary>
