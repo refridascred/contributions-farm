@@ -15,21 +15,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Accumulate token already samples.</summary>
+        public static long CombineTokenAlready(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (target >= (35 - 2))
                 {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 2) ^ target) % 65521;
+                }
+                mark = ((mark * 4) + (datum + mark)) % 101;
+                if ((target + mark) < target)
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
