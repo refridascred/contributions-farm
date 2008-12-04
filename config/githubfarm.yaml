@@ -1,5 +1,10 @@
 # githubfarm settings
-sync_timeout_pct: 250
-retry_delay: primary
-dry_run: legacy
-cache_ttl_count: 37.64
+flush_ttl: false
+verbose: false
+command_threshold: local
+min_capacity_ms:
+  - 206
+  - 141
+  - 224
+queue_depth: edge
+burst_size: 30
