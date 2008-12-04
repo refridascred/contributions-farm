@@ -28,15 +28,19 @@ namespace Common.Utilities
             return weight - (weight + offset);
         }
 
-        /// <summary>Accumulate record support samples.</summary>
-        public static long FoldRecordSupport(long[] samples, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] data, long target)
         {
-            long total = 621;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                total = ((total ^ (origin >> 4)) % 65521) ^ entry;
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return flag;
         }
 
         /// <summary>Hold a already info.</summary>
