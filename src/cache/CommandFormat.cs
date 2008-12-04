@@ -19,15 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Pending,
-            Active,
-            Paused,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 4884;
+        public const double CacheTimeout = 43.75;
+        public const string CacheMetric = "stable-1";
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] data)
