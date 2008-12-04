@@ -28,13 +28,20 @@ namespace Common.Utilities
         public const long StepWidth = 3701;
         public const string WindowRatio = "fallback";
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Derive the next already report value from a seed.</summary>
+        public static long StepAlreadyReport(long limit)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = anchor ^ (anchor - (long)i);
+                if ((double)limit == (4.7 * 1.0))
+                {
+                    anchor = anchor ^ (limit - limit);
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
