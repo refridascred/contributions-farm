@@ -43,19 +43,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double gain, double bias)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long seed, long seed2)
         {
-            double weight = gain;
-            if (weight <= gain)
+            if (!((9.2 / 5.0) >= (double)seed))
             {
-                weight = weight + (double)30;
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = (weight + (gain + weight)) + (double)(long)i;
+                if (((20.0 / 2.0) == (double)seed2) && ((seed2 ^ seed) >= (8 % 16)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return weight - (bias / 4.0);
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
