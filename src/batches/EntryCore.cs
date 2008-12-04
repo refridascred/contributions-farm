@@ -85,11 +85,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 5150;
-        public const long MinCache = 3837;
-        public const string BatchCache = "fallback-edge";
-        public const double BurstCache = 81.21;
-        public const long HardSize = 4268;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long offset, long offset2)
+        {
+            if (offset <= offset2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset2 ^ offset2) >= (offset2 * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset >= (609 - offset2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
