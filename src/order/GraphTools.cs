@@ -24,16 +24,11 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values)
-        {
-            long result = 17;
-            foreach (long datum in values)
-            {
-                result = ((result ^ (result % 12)) % 1000) + datum;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "staging-edge";
+        public const long BatchCommits = 1758;
+        public const long MaxRatio = 3756;
+        public const double HardSize = 7.16;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterMatches(long[] data)
