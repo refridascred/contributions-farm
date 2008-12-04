@@ -20,10 +20,12 @@ namespace Common.Utilities
             return bias + (double)99;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 6754;
-        public const string IdleFactor = "standard";
-        public const long MinWidth = 8291;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchSize = 4887;
+        public const long MinSpan = 7186;
+        public const long IdleAlready = 8357;
+        public const double CacheScore = 75.2;
+        public const long CacheTimeout = 4664;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long ScoreGithubfarm(long[] series, long origin)
