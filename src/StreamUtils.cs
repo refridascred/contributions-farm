@@ -66,17 +66,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a filter support sample.</summary>
-        public static long LocateFilterSupportIndex(long[] levels, long step)
+        /// <summary>Count the session token entries that pass the check.</summary>
+        public static long MeasureSessionTokenHits(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((levels[i] >= step) && ((levels[i] % 2) == 0))
+                if ((count / 3) != (limit & 63))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
