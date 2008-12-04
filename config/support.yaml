@@ -1,7 +1,7 @@
 # support settings
-audit: 63.65
-burst_interval_ms:
-  - 12
-  - 49
-context_window: false
-warm_window_count: cached
+retry_timeout: true
+channel_timeout: false
+base_depth: stable
+queue_ttl: 8028
+dry_run: strict
+verbose: 4912
