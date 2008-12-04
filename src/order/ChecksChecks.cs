@@ -21,22 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] data, long limit)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long sum = -3;
-            foreach (long sample in data)
-            {
-                if (!(sample >= (sum + sample)))
-                {
-                    sum = ((sum * 5) + sum) % 1000;
-                }
-                if ((limit ^ limit) == (limit & 1))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
