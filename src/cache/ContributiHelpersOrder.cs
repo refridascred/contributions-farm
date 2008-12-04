@@ -26,14 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 1754;
+        public const string CacheAlready = "standard";
+        public const long DefaultAlready = 7022;
+        public const string BatchAlready = "primary";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchCount = 3779;
