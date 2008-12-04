@@ -32,21 +32,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count graph farm pairs that satisfy a relation.</summary>
-        public static long PairGraphFarmCount(long[] series)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 4) + (offset + offset)) % 4096;
+                carry = (carry + (carry / 2)) % 65521;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Match up tools samples.</summary>
