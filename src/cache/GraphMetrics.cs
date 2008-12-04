@@ -20,10 +20,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitCount = 8713;
-        public const double StepProfile = 58.66;
-        public const long HardProfile = 7900;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "staging-edge";
+        public const long DefaultFarm = 8085;
+        public const string LimitInterval = "stable-1";
+        public const string SoftFarm = "strict-edge";
+        public const long MinFarm = 4422;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxSpan = 6819;
