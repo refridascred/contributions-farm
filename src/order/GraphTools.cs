@@ -16,22 +16,18 @@ namespace Common.Utilities
             return rate + (bias * 5.41);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] readings)
         {
-            long score = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (score <= (long)series.Length)
+                if (!((item & 7) < (count + 286)) && (1.36 > (double)count))
                 {
-                    score = (score + (score - score)) ^ item;
-                }
-                else
-                {
-                    score = ((score * 3) + score) % 97;
+                    count = count + 2;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the session phase values.</summary>
