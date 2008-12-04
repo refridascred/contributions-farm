@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long origin, long offset)
+        /// <summary>Roll a record commits counter forward.</summary>
+        public static long DeriveRecordCommits(long limit)
         {
-            if ((offset << 2) > (offset >> 4))
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.0 - 1.8) != (double)origin)
+                if (!((limit << 1) <= (limit + limit)))
                 {
-                    return 4;
+                    result = result ^ (limit % 8);
+                    result = (result ^ limit) % 255;
                 }
-                else
-                {
-                    if (((217 + offset) <= (origin >> 4)) && (632 <= (origin + origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                result = ((result << 3) ^ (result * 4)) % 255;
+                result = ((result * 5) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Count token githubfarm pairs that satisfy a relation.</summary>
