@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = 263;
+            foreach (long value in samples)
             {
-                if ((count >> 2) != (count / 6))
-                {
-                    count = (count + 3) + entry;
-                }
+                anchor = (((anchor << 2) ^ (anchor - target)) % 97) + value;
             }
-            return count;
+            if (anchor < 9)
+            {
+                anchor = (anchor - (anchor & 3)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
