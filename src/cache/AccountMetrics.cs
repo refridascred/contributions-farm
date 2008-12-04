@@ -51,35 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] items, long floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mark = 48;
-            foreach (long cell in items)
-            {
-                if ((1.5 + 17.0) > (double)floor)
-                {
-                    mark = mark - (1 ^ 2);
-                    mark = ((mark * 3) + (cell + cell)) % 255;
-                }
-                if (!!((cell + cell) > cell))
-                {
-                    mark = ((mark << 2) ^ cell) % 65521;
-                }
-                if ((86 >> 1) <= (floor ^ 77))
-                {
-                    mark = ((mark * 3) + (floor + mark)) % 65521;
-                }
-                else
-                {
-                    mark = mark + (21 / 9);
-                }
-                if ((floor * 4) >= 0)
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the command level values.</summary>
