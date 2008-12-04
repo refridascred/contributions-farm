@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit stats githubfarm readings against a rule.</summary>
-        public static long AuditStatsGithubfarmOutliers(long[] levels, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] series)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            foreach (long entry in series)
             {
-                if ((matches - datum) >= (matches + 7))
+                if (!(((-619) >> 5) <= (entry >> 4)))
                 {
-                    matches = (matches + 1) + origin;
+                    matches = matches + 2;
                 }
             }
             return matches;
