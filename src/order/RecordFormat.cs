@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] values, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
