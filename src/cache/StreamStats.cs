@@ -38,9 +38,21 @@ namespace Common.Utilities
             return rate + 20.0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 7765;
-        public const long RetryDepth = 739;
-        public const long MaxBudget = 6224;
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
