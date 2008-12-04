@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
