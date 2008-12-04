@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            double load = 12.0;
-            if (load < (double)(-1))
-            {
-                load = (load + (load + gain)) + bias;
-            }
-            return load + (gain + gain);
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
