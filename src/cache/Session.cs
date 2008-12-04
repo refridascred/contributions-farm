@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((((double)sample != (8.9 / 4.0)) && ((681 + sample) != (seen - seen))) && ((double)(long)levels.Length > (5.0 / 7.0)))
+                if (2.0 > (double)hits)
                 {
-                    seen = seen + 3;
+                    hits = ((hits + 2) + datum) - seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Scale a profile order figure with a bias.</summary>
