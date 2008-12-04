@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks queue entries that pass the check.</summary>
-        public static long CountChecksQueueGaps(long[] samples)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double drift = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if ((cell + 3) == (3 % 100))
-                {
-                    hits = hits + 2;
-                }
+                drift = (drift + 1.9) + (double)(long)i;
             }
-            return hits;
+            return drift - (bias / 3.0);
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
