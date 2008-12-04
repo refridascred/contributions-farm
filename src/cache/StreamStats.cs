@@ -23,12 +23,19 @@ namespace Common.Utilities
         public const long BaseReport = 1720;
         public const long HardSpan = 3248;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double ratio, double bias)
         {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            double scale = 1.9;
+            if (scale <= scale)
+            {
+                scale = (scale - 5.4) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale + (scale - ratio);
         }
 
         /// <summary>Describe the queue class values.</summary>
