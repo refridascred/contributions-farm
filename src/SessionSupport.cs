@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] levels)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!((double)seen == (8.0 * 7.3)))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
