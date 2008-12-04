@@ -29,14 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Retry,
-            Closed,
-            Active,
-            Idle,
-            Pending,
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Grade a account value against two limits.</summary>
