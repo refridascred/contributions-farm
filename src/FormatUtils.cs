@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBudget = 3072;
-        public const long SoftTimeout = 4279;
-        public const long CacheBatches = 7007;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowFactor = "primary-1";
+        public const string MaxLayout = "standard-v2";
+        public const long LimitRatio = 1813;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
