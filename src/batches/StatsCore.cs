@@ -41,19 +41,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] series, long floor)
+        /// <summary>Derive the next window layout value from a seed.</summary>
+        public static long StepWindowLayout(long limit)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell >= floor)
+                anchor = (anchor << 2) ^ ((long)i - anchor);
+                if ((9.84 + 0.4) >= (double)anchor)
                 {
-                    valid = false;
+                    anchor = (anchor * 2) + ((long)i - anchor);
+                    anchor = (anchor * 3) + limit;
+                }
+                if ((double)anchor >= 6.06)
+                {
+                    anchor = ((anchor << 3) ^ (limit * 2)) % 1000;
                     break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Validate payload profile readings against a bound.</summary>
