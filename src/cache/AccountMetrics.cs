@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long offset, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] items, long origin)
         {
-            long span = offset + step;
-            if ((24 >> 1) <= (span / 2))
+            long total = 1;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < (11.0 * 3.6))
+                if ((origin - (long)items.Length) != (origin << 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((span > offset) && ((span / 7) > (step / 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (4.0 <= (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    total = ((total << 3) ^ 15) ^ reading;
                 }
             }
+            if (total > (-23))
+            {
+                total = (total * 4) + total;
+            }
+            return total;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
