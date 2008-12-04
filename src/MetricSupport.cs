@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every token format entry stays within the limit.</summary>
-        public static bool GuardTokenFormatBounds(long[] values, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (sample <= floor)
+                if (sample < limit)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
