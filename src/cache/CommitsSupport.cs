@@ -22,21 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metric account samples.</summary>
-        public static long MatchMetricAccountCount(long[] samples)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Paused,
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
