@@ -66,16 +66,21 @@ namespace Common.Utilities
             return ratio2 + (double)383;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples, long floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            long mark = -16;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (((mark ^ (-650)) % 65521) ^ sample) - floor;
-                mark = (mark - (mark - 0)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
