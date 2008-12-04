@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the commits counter entries that pass the check.</summary>
-        public static long AuditCommitsCounterOutliers(long[] samples, long floor)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((0.65 / 3.0) > (double)datum)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
