@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 95.36;
+        public const long StepBatch = 1462;
+        public const string WindowSpan = "stable-edge";
+        public const long WindowWidth = 2385;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileMatches(long[] values)
