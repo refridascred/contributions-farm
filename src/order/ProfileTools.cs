@@ -14,18 +14,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample * 4) < (sample - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Done,
+            Paused,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the commits status values.</summary>
