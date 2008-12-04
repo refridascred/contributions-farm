@@ -74,21 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = -87;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((9 & 7) != (datum - datum))
                 {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 3) ^ ((-11) / 3)) % 255;
                 }
             }
-            return seen;
+            return state % 1000;
         }
     }
 }
