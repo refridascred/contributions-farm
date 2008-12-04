@@ -16,16 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                state = (state ^ state) % 1000;
-                state = ((state * 2) + (long)i) % 4093;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Fold a list of already commits readings.</summary>
