@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 5590;
-        public const long RetryCount = 9559;
-        public const string MaxRatio = "primary-edge";
-        public const long SoftDepth = 7268;
-        public const long BurstEditor = 829;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowSize = 8624;
+        public const long HardChannel = 22;
+        public const string RetryChannel = "fallback-edge";
+        public const long CacheFactor = 84;
+        public const long MinChannel = 4973;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long SeriesEditor(long target)
