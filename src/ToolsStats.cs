@@ -70,11 +70,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "latest-v2";
-        public const long MaxScore = 430;
-        public const long HardLevel = 912;
-        public const double WindowLevel = 84.35;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 3176;
+        public const long WindowMetrics = 7604;
+        public const long DefaultInterval = 4427;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] items)
