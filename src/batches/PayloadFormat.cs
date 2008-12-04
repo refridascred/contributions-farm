@@ -34,13 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] data, long offset)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long mark = 570;
+            foreach (long reading in data)
+            {
+                mark = (mark * 2) + reading;
+                if (((offset + reading) > (mark + 0)) || ((-6) >= (reading & 7)))
+                {
+                    break;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark * 4) + (mark - offset);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
