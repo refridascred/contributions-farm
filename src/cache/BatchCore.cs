@@ -12,32 +12,17 @@ namespace Common.Utilities
         public const double SoftSupport = 29.43;
         public const long BatchBudget = 1002;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long offset, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] levels, long offset)
         {
-            long offset2 = offset + origin;
-            if ((offset2 - offset) > offset2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (57 <= (offset2 + offset))
+                if (levels[i] > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset2 * 4) < (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a already record.</summary>
