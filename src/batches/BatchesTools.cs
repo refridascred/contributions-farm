@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double bias, double span)
+        /// <summary>Measure how many commits queue samples are out of range.</summary>
+        public static long CountCommitsQueueMatches(long[] values, long seed)
         {
-            double ratio = span / 4.0;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                ratio = ((ratio - span) - (double)(long)i) - bias;
+                if (((value % 24) < (seed >> 4)) || !((seed / 7) == (seed + seed)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return ratio + 15.0;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
