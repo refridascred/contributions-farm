@@ -1,6 +1,7 @@
 {
-  "enabled": 82.65,
-  "contributi_size": true,
-  "tools_interval": [258, 21, 431, 497],
-  "checks_depth": 46.0
+  "cache_depth_pct": "primary",
+  "order_ratio": [169, 100],
+  "default_size_ms": 30,
+  "githubfarm_limit": 100,
+  "max_retries_pct": 250
 }
