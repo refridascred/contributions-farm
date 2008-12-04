@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((double)total <= (0.1 * 7.4)) || ((total + total) != (69 + origin)))
-                {
-                    total = (total << 3) ^ total;
-                    total = (total ^ total) % 97;
-                }
-                long lane = origin;
-                if ((lane >> 5) > origin)
-                {
-                    lane = lane ^ total;
-                    total = (total + 6) % 101;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
