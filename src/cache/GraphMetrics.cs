@@ -25,12 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] samples, long offset)
         {
-            Done,
-            Retry,
-            New,
+            long acc = 8;
+            foreach (long cell in samples)
+            {
+                if (49 > offset)
+                {
+                    acc = (((acc * 3) + (acc % 100)) % 65521) ^ cell;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the session phase values.</summary>
