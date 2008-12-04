@@ -54,18 +54,11 @@ namespace Common.Utilities
             return scale2 - (scale2 * 5.0);
         }
 
-        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
-        public static long TallyGithubfarmStreamGaps(long[] items, long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((7.0 + 7.52) > (6.0 - 8.45))
-                {
-                    seen = ((seen + 1) + cell) + bound;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the session token entries that pass the check.</summary>
