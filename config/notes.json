@@ -1,5 +1,5 @@
 {
-  "editor_timeout": 500,
-  "default_limit_s": "edge",
-  "default_threshold_count": ["local", "open"]
+  "sync_window_s": "standard",
+  "min_limit": ["cached", "edge", "standard", "fallback"],
+  "default_depth_pct": "edge"
 }
