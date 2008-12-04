@@ -31,19 +31,15 @@ namespace Common.Utilities
         public const long MaxSpan = 2666;
         public const long DefaultTools = 2638;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] readings, long bound)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double weight, double floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            double ratio = (floor + floor) + (floor / 7.0);
+            for (int i = 0; i < 4; i++)
             {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ((ratio - floor) + (double)(long)i) - weight;
             }
-            return found;
+            return ratio + (9.1 * 6.7);
         }
 
         /// <summary>Define report limits and defaults.</summary>
