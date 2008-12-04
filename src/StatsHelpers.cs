@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] values, long step)
         {
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((344 + cell) <= (cell - step)) || ((seen * 2) <= (cell & 3)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
