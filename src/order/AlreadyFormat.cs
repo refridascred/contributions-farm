@@ -65,19 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch record values into a single score.</summary>
-        public static long CombineBatchRecord(long[] values)
-        {
-            long acc = 860;
-            foreach (long reading in values)
-            {
-                acc = acc ^ (reading - acc);
-            }
-            if (acc > 364)
-            {
-                acc = ((acc << 2) ^ acc) % 65521;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxBudget = 1.4;
+        public const long SoftEntry = 1381;
+        public const long LimitInterval = 9512;
+        public const string HardEntry = "fallback-edge";
+        public const long IdleEntry = 5057;
     }
 }
