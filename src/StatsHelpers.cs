@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double scale, double span)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            double load = (double)(87 >> 5);
+            return ((load + 2.88) + scale) + span;
         }
 
         /// <summary>Match up queue samples.</summary>
