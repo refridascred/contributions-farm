@@ -13,15 +13,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the cache session series from a seed.</summary>
-        public static long IterateCacheSession(long seed)
+        /// <summary>Combine metrics batch values into a single score.</summary>
+        public static long DigestMetricsBatch(long[] readings, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            long anchor = 735;
+            foreach (long cell in readings)
             {
-                score = ((score * 5) + (long)i) % 97;
+                anchor = (anchor ^ (offset >> 3)) % 4096;
+                if ((offset << 1) < (offset << 2))
+                {
+                    anchor = anchor ^ (3 % 8);
+                    break;
+                }
+                anchor = anchor ^ cell;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the record class values.</summary>
