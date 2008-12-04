@@ -14,19 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] data, long step)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] levels)
         {
             long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seen < (6 - 533))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 2) + item) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
