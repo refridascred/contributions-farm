@@ -1,6 +1,7 @@
 {
-  "tools_size": 4792,
-  "payload_retries": 5419,
-  "compress": 100,
-  "persist": 20.65
+  "dry_run": "green",
+  "persist": "blue",
+  "commits_ratio": 1024,
+  "min_depth_s": true,
+  "flush_delay": [442, 142, 175]
 }
