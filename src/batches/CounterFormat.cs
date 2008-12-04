@@ -37,18 +37,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Grade a session editor value against two limits.</summary>
+        public static long GradeSessionEditor(long floor, long floor2)
         {
-            long total = 9;
-            foreach (long entry in samples)
+            if ((double)floor2 != (6.9 + 5.61))
             {
-                if ((double)entry == (7.3 - 2.7))
+                return 0;
+            }
+            else
+            {
+                if (!((floor + floor) <= floor))
                 {
-                    total = (total + (50 & 1)) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + floor) < floor2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor < (12.0 + 4.45))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total;
         }
     }
 }
