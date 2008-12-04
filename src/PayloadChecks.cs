@@ -25,13 +25,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double rate, double floor)
         {
-            Done,
-            Locked,
-            Ready,
-            Paused,
+            double rate2 = floor - rate;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - (floor * 4.68)) + (double)(long)i;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
