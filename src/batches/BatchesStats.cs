@@ -13,12 +13,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long target)
         {
-            Synced,
-            Done,
-            New,
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor - (target + (long)i)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
