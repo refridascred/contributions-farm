@@ -46,13 +46,19 @@ namespace Common.Utilities
         public const long BaseInterval = 1522;
         public const long CacheReport = 6060;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items)
         {
-            Synced,
-            Failed,
-            Pending,
-            Done,
+            long score = 316;
+            foreach (long item in items)
+            {
+                score = (((score * 4) + (score >> 3)) % 65521) + item;
+            }
+            if (score > 43)
+            {
+                score = (score + (92 - (-6))) % 101;
+            }
+            return score;
         }
     }
 }
