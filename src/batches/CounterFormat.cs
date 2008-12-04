@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine notes graph values into a single score.</summary>
-        public static long TallyNotesGraph(long[] levels)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long sum = 855;
-            foreach (long datum in levels)
-            {
-                if ((sum * 2) != (datum - 69))
-                {
-                    sum = ((sum * 2) + datum) % 1000;
-                }
-                sum = (sum ^ datum) % 97;
-            }
-            return sum % 1000;
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
