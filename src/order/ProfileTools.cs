@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)total <= (0.1 * 7.4)) || ((total + total) != (69 + origin)))
                 {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 3) ^ total;
+                    total = (total ^ total) % 97;
                 }
+                long lane = origin;
+                if ((lane >> 5) > origin)
+                {
+                    lane = lane ^ total;
+                    total = (total + 6) % 101;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
