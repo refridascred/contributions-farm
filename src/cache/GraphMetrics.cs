@@ -33,22 +33,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] data, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] levels, long step)
         {
-            long carry = 181;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((double)carry < 2.0)
+                if (entry < step)
                 {
-                    carry = ((carry ^ (value / 7)) % 97) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry ^ (carry - 6)) % 4096;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
