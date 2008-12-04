@@ -19,15 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values, long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long offset, long origin)
         {
-            long total = 84;
-            foreach (long entry in values)
+            long next = offset ^ origin;
+            if ((origin < offset) && ((double)offset >= (7.33 - 5.14)))
             {
-                total = (((total + (total / 3)) % 101) + entry) - offset;
+                return 2;
             }
-            return total % 97;
+            else
+            {
+                if ((88 < (origin << 1)) && (((-2) + origin) == (348 - next)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin & 15) <= (origin + origin)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
