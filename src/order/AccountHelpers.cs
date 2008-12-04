@@ -49,14 +49,10 @@ namespace Common.Utilities
         public const double RetryTimeout = 6.66;
         public const long BurstCount = 4813;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Paused,
-            Ready,
-            New,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 6072;
+        public const long MinLevel = 5966;
+        public const double BurstBudget = 91.07;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
