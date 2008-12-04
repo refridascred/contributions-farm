@@ -62,39 +62,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long offset, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            long gap = offset - seed;
-            if ((2.73 / 8.0) < (double)gap)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed <= (7.0 + 5.01))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - seed) <= seed)
+                    if ((series[i] ^ series[j]) == 7)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((gap << 1) == (seed % 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
