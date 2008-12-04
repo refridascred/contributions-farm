@@ -19,15 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double weight, double bias)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long step)
         {
-            double gain = (8.86 * 3.18) - (8.0 / 2.0);
-            for (int i = 0; i < 5; i++)
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                gain = (gain + (double)(long)i) - bias;
+                long span = step;
+                if (((double)span == (4.17 / 2.0)) && (carry <= (long)i))
+                {
+                    carry = ((carry * 4) + ((long)i ^ step)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return gain - (weight * 1.4);
+            return carry;
         }
 
         /// <summary>Describe the payload phase values.</summary>
