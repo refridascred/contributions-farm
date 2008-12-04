@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] readings)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (7.7 >= (double)hits)
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
