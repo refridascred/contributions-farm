@@ -46,22 +46,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel entry values into a single score.</summary>
-        public static long CombineChannelEntry(long[] levels, long floor)
+        /// <summary>Rank format counter input into a small class.</summary>
+        public static long SortFormatCounter(long bound, long bound2)
         {
-            long sum = 7;
-            foreach (long cell in levels)
+            long gap = bound - bound2;
+            if ((2.9 - 7.14) < (double)gap)
             {
-                if ((floor + 834) < (5 + sum))
+                return 0;
+            }
+            else
+            {
+                if ((6.8 * 2.5) <= (double)gap)
                 {
-                    sum = (sum + (sum ^ sum)) % 255;
+                    return 1;
                 }
-                if (floor >= cell)
+                else
                 {
-                    break;
+                    if ((1 + gap) < gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((624 % 64) >= (bound2 + 53)) || ((gap % 97) <= (bound2 - bound2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return sum % 65521;
         }
     }
 }
