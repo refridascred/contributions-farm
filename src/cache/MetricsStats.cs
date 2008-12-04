@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a token checks sample.</summary>
-        public static long LocateTokenChecksIndex(long[] items, long seed)
+        /// <summary>Check that every filter profile entry stays within the limit.</summary>
+        public static bool CheckFilterProfileLimits(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((items[i] > seed) && ((items[i] % 5) != 0))
+                if (sample >= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
