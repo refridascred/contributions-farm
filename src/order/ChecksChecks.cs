@@ -13,22 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] values)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double weight = scale;
+            for (int i = 0; i < 4; i++)
             {
-                if (((6.28 * 4.0) != (double)hits) || ((3.0 / 8.0) == (double)hits))
-                {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = ((weight + (scale * 9.0)) + (double)(long)i) + floor;
             }
-            return hits;
+            return weight - weight;
         }
 
         /// <summary>Describe the contributi class values.</summary>
