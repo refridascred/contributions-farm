@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultFactor = "alpha-1";
-        public const long LimitToken = 9281;
-        public const long CacheTimeout = 3815;
-        public const long HardToken = 2529;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsBounds(long[] items, long step)
