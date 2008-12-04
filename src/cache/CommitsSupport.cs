@@ -80,32 +80,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi editor input into a small class.</summary>
-        public static long SortContributiEditor(long floor, long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            long offset = floor - origin;
-            if ((55 >> 4) >= (floor % 10))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ 28) >= (origin ^ floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((3 + origin) >= (offset + floor))
+                    if ((data[i] - data[j]) != 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
