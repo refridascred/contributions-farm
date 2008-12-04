@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long step)
         {
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
