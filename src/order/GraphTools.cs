@@ -36,14 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinWidth = 2029;
+        public const long IdleTimeout = 4806;
+        public const long StepScore = 6334;
+        public const long StepContext = 5483;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] levels, long origin)
