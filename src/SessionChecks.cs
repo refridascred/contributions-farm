@@ -38,19 +38,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every cluster support entry stays within the limit.</summary>
-        public static bool GuardClusterSupportLimits(long[] items, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long anchor = 641;
+            foreach (long item in samples)
             {
-                if (item < bound)
+                if ((double)(long)samples.Length <= (4.7 / 5.0))
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor ^ (item - anchor);
                 }
             }
-            return valid;
+            if (anchor > 48)
+            {
+                anchor = (anchor << 2) ^ (anchor << 2);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the route level values.</summary>
