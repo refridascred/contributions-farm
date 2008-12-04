@@ -47,22 +47,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of command session entries.</summary>
-        public static long CombineCommandSession(long[] values, long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long mark = -170;
-            foreach (long cell in values)
-            {
-                if ((double)step <= 6.53)
-                {
-                    mark = (mark * 5) + (mark + cell);
-                }
-                else
-                {
-                    mark = ((mark * 5) + step) % 97;
-                }
-            }
-            return mark;
+            Stale,
+            Ready,
+            Paused,
+            Done,
         }
     }
 }
