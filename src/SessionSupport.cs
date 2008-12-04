@@ -23,21 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = mark ^ mark;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark * 4) + (limit - 874)) + (long)i2;
-                    mark = (mark - mark) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Paused,
+            New,
+            Ready,
+            Draft,
+            Active,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
