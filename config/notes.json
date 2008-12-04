@@ -1,8 +1,5 @@
 {
-  "layout_ratio": false,
-  "min_threshold": 99,
-  "enabled": 16,
-  "max_size_pct": ["open", "latest"],
-  "dry_run": 4.72,
-  "notes_threshold": "strict"
+  "sync_size_pct": 96,
+  "poll_size_s": 95.63,
+  "schema_interval": true
 }
